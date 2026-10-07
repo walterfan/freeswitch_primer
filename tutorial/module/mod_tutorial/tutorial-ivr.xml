@@ -1,0 +1,38 @@
+<!-- Mount this file into a tutorial-only dialplan context. Do not copy it to
+     the product's vanilla profile. tone_stream keeps the lab usable without a
+     sound package. -->
+<include>
+  <context name="tutorial">
+    <extension name="tutorial-ivr">
+      <condition field="destination_number" expression="^9000$">
+        <action application="answer"/>
+        <action application="read"
+                data="1 1 'tone_stream://%(1000,0,350,440)' tutorial_main_digit 5000 #"/>
+
+        <condition field="${tutorial_main_digit}" expression="^1$" break="never">
+          <action application="tutorial_ivr_metric" data="main 1"/>
+          <action application="read"
+                  data="1 1 'tone_stream://%(1000,0,440,480)' tutorial_submenu_digit 5000 #"/>
+          <condition field="${tutorial_submenu_digit}" expression="^1$" break="never">
+            <action application="tutorial_ivr_metric" data="submenu 1"/>
+            <action application="playback" data="tone_stream://%(500,0,660,880)"/>
+          </condition>
+          <condition field="${tutorial_submenu_digit}" expression="^2$" break="never">
+            <action application="tutorial_ivr_metric" data="submenu 2"/>
+            <action application="playback" data="tone_stream://%(500,0,880,660)"/>
+          </condition>
+        </condition>
+
+        <condition field="${tutorial_main_digit}" expression="^2$" break="never">
+          <action application="tutorial_ivr_metric" data="main 2"/>
+          <action application="playback" data="tone_stream://%(500,0,440,660)"/>
+        </condition>
+        <condition field="${tutorial_main_digit}" expression="^3$" break="never">
+          <action application="tutorial_ivr_metric" data="main 3"/>
+          <action application="playback" data="tone_stream://%(500,0,660,440)"/>
+        </condition>
+        <action application="hangup" data="NORMAL_CLEARING"/>
+      </condition>
+    </extension>
+  </context>
+</include>

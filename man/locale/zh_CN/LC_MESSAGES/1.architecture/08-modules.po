@@ -1,0 +1,968 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Zoom Video Communications
+# This file is distributed under the same license as the FreeSWITCH package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FreeSWITCH \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-18 16:34+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:1
+#: e541a96c57d146a3a72a4ff016ce9c7c
+msgid "15. FreeSWITCH Modules"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:5
+#: 5ace0b538d3d402385bc1050a5064d61
+msgid ""
+"This chapter explains how to build, load, initialize, run, and unload an "
+"in-process FreeSWITCH module. It uses three modules as contrasting "
+"examples:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md
+#: c33e3c093e1a480c99c3334f5594ce44
+msgid "Module"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md
+#: e7b2ad8284584e91970a32699eceb5de
+msgid "Category"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md
+#: 796968173ba14ebfbed31de84869c7be
+msgid "Main extension point"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md
+#: 7abaf413024941f38add336dff131d82
+msgid "Lifecycle shape"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md
+#: 3723693527df4830b7f0a59daff2a0e8
+msgid "`mod_sofia`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md
+#: e6043cfd9eb642d0a379446b1926ce45
+msgid "`src/mod/endpoints/`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md
+#: 711e3ecca65b480c9f6385bf204d1f2c
+msgid "SIP endpoint, I/O routines, state handlers, APIs, applications"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md
+#: 08d69304e63443d4ac2123194395e152
+msgid "No core `runtime()` callback; starts and joins its own worker threads"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md
+#: da2bc34cc10d4adaaf89625e3be525c8
+msgid "`mod_xml_rpc`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md
+#: b937b589d3814689a32543147c2e85ec
+msgid "`src/mod/xml_int/`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md
+#: a9e928f005074952ae7d1506d879c454
+msgid "Embedded HTTP/XML-RPC service"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md
+#: 19b3125f6d9c479ca07ffba4ecf8a994
+msgid "Uses `runtime()` for the blocking Abyss server loop"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md
+#: 975beab8766c44bdaf41408f9c45292a
+msgid "`mod_opus`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md
+#: 1ec3f0499919446abaf22504f63fa3cc
+msgid "`src/mod/codecs/`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md
+#: 3dae2ebd362d497881ad4f2af24b4d2b
+msgid "Audio codec implementations"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md
+#: a5cf528c35154e48b5161229df99c1a2
+msgid "`load()` only; per-codec cleanup happens in codec callbacks"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:14
+#: 8732a48599c8401cb10b7ce5e04da339
+msgid ""
+"The module contract is defined by `SWITCH_MODULE_DEFINITION` and the "
+"function types in `src/include/switch_types.h`. The loader implementation"
+" is in `src/switch_loadable_module.c`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:18
+#: 1040f014d76744f69d38f0dc2e5b5285
+msgid "1. What a FreeSWITCH module is"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:20
+#: 5b329bf3adac47f2b17fbdd97d516d99
+msgid ""
+"A module is a shared library loaded into the `freeswitch` process. It "
+"compiles against `src/include/switch.h`, shares the core address space, "
+"and extends one or more registries owned by the module loader. It is not "
+"a separate process and does not communicate with the core through RPC."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:25
+#: 1fa56d3cafa84bfc9236a36f425f1664
+msgid ""
+"The module exports a function table whose symbol name is derived from the"
+" module name:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:41
+#: 8ec43c21d06b4ac6b9a1662d8e9ef9d0
+msgid ""
+"This creates `mod_example_module_interface`, containing the API version "
+"and the three function pointers. The loader uses "
+"`dlopen`/`LoadLibraryEx`, resolves that symbol, checks "
+"`SWITCH_API_VERSION`, and calls the load function."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:45
+#: a3089ff1cabc43f2aca4cce71c5c6040
+msgid ""
+"The module interface created by "
+"`switch_loadable_module_create_module_interface` is the module's "
+"capability bag. Registration macros such as `SWITCH_ADD_API`, "
+"`SWITCH_ADD_APP`, `SWITCH_ADD_CHAT`, and `SWITCH_ADD_CODEC` append "
+"entries to that bag. After `load()` returns successfully, the core "
+"indexes those entries in global hashes for runtime lookup."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:62
+#: d669c77a7fa041f5a600af241395a6a4
+msgid "2. Build and configuration model"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:64
+#: 09eac77d96be407a82a0c90938a0280c
+msgid "2.1 Module directory"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:66
+#: 1cf72551af0046b082aee9d0757a2f2b
+msgid "An in-tree module normally lives at:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:76
+#: 1c0bd8f75da34a89bd8192c22231b9e1
+msgid ""
+"The category describes the primary capability: `endpoints`, `codecs`, "
+"`applications`, `event_handlers`, `xml_int`, and so on. A module may "
+"register additional interfaces, but its directory should still reflect "
+"its primary role."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:81
+#: 2b7f654dc2214bfb842131459dcf1bc0
+msgid "2.2 Autotools build files"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:83
+#: 2f938ba4fa9949f081d22155dca38b0e
+msgid ""
+"`Makefile.am` declares sources, include flags, libraries, and the shared-"
+"module link flags. For example, `mod_opus` has:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:100
+#: 9bf35e8e4a714ab78a7ef6cc2e6eee35
+msgid ""
+"The build list is controlled by `build/modules.conf.in`, copied to the "
+"working-tree `modules.conf` by `bootstrap.sh` when needed:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:109
+#: d078f0f5f6724ab5856c7ffc0b11a365
+msgid ""
+"This only determines whether a DSO is compiled. It does not load the DSO "
+"at runtime."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:112
+#: d7e592c624d2485f85b436bdcb7762a4
+msgid "2.3 Runtime configuration"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:114
+#: dd78a7e7f5b845ed9c94840b29a37da4
+msgid "The runtime load list is a different file:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:126
+#: 4693fd5ca19943769ed9a9feb626a71d
+msgid ""
+"The XML is normally under "
+"`conf/<profile>/autoload_configs/modules.conf.xml`. A module must satisfy"
+" both conditions:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:135
+#: 475d6459f20643e696b3a1617987727d
+msgid ""
+"`reloadxml` reparses XML but does not rebuild a module or automatically "
+"re-walk the module load list. Use the module `load`, `unload`, or "
+"`reload` commands for runtime module operations."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:139
+#: ab48fd0e106f4fca9a22bb9c935c2e0a
+msgid "2.4 Build steps"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:141
+#: a870c0027a814b4188a47644ee19512e
+msgid "For a new or newly enabled module:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:151
+#: 11d2e95766804ab4ad9e51f309e88ce7
+msgid "For example:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:158
+#: 262c444e30f641a8a996a58f05bbe054
+msgid ""
+"`mod_opus` additionally requires the external Opus development library. "
+"Its `Makefile.am` deliberately fails with `You must install libopus-dev` "
+"when `HAVE_OPUS` is not available. `mod_sofia` similarly depends on the "
+"out-of-tree Sofia-SIP library; see [Tech Stack](02-tech-stack.md)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:163
+#: b45229ef8f674409b067df8be2133a15
+msgid "3. Module lifecycle"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:165
+#: 2f2ad8b166b0433d852d672912550694
+msgid ""
+"The lifecycle has three module callbacks, plus loader-owned registration "
+"and DSO cleanup:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:191
+#: 782950ef038a435ab82888ffeaa7ce1c
+msgid "3.1 Load: initialization and registration"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:193
+#: 39562c3885f64a5fb5e4b26c2555ecef
+msgid ""
+"`load()` receives the module interface pointer and a module memory pool. "
+"The usual order is:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:196
+#: 34668f75c7624db2b9f5f2f82acabbc6
+msgid ""
+"Initialize module globals, mutexes, queues, hashes, and external library "
+"state."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:198
+#: 377bf7c65df340d38e60134b4dbb23a3
+msgid "Reserve event subclasses or bind event callbacks when needed."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:199
+#: 228d7bfe620e4ac2bfa65d0087df17ed
+msgid "Read module configuration."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:200
+#: e2b9486fd6ff4cd7b28cebfb793ebcff
+msgid ""
+"Create the module interface with "
+"`switch_loadable_module_create_module_interface(pool, modname)`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:202
+#: fd5acb77fca84888bb6774cc9aa00bbf
+msgid "Register APIs, applications, endpoints, codecs, or other capabilities."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:203
+#: 6ef23effb62c451bab006efefb4b3981
+msgid "Return a failure status if a required initialization step failed."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:205
+#: bd1d90be595f4b6f84bf7bd0a0def1b7
+msgid ""
+"The interface must be created before registration. Registered interfaces "
+"are allocated from the module pool and are owned by the module loader."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:208
+#: 9261b2f28cb84dc6b126940bb8207a6e
+msgid "3.2 Runtime: optional long-running work"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:210
+#: 755d92e36deb48798dae17ef5ddcb43b
+msgid ""
+"`runtime()` is optional. When it is non-`NULL`, the loader starts a core "
+"thread that calls it. A module runtime function normally blocks in a "
+"server loop or waits for work and returns `SWITCH_STATUS_TERM` when the "
+"loop has ended."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:214
+#: dc6459fe8ce84695a43df4c2fa5e901b
+msgid ""
+"This callback is different from module-owned worker threads. `mod_sofia` "
+"has no core runtime callback but starts its own message and presence "
+"threads from `mod_sofia_load`; therefore its shutdown function must stop "
+"and join those threads itself."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:219
+#: 818c5e651c3f4129a9ee3324e45f78dc
+msgid "3.3 Shutdown: stop before free"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:221
+#: f37567d31c3c4003a74d748855d4a5aa
+msgid "During unload, the loader:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:223
+#: 60be8d311fe2480ca2280ec5a70ad47d
+msgid "Removes the module's interfaces from the global hashes."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:224
+#: 8d69edaa23fe4049a8ce191fbd7f4744
+msgid "Marks the module as shutting down."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:225
+#: f6cf46d9d700431e954b9ac2f52271e3
+msgid "Calls the module's `shutdown()` callback."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:226
+#: e7e2ea0fa8ce4da681debd75e687b1da
+msgid "Joins the module runtime thread, if any."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:227
+#: b5d0a4c680fe4f4c97525021036c669a
+msgid "Destroys the DSO and module memory pool."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:229
+#: 99d772a44b7b46d3875169ed0d63ee61
+msgid ""
+"The shutdown callback must signal all module-owned threads and wait for "
+"any resources they use before freeing those resources. A module that is "
+"busy or protected by `switch_loadable_module_protect()` may reject "
+"unloading. The loader uses the module interface read/write lock to detect"
+" active users."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:234
+#: e81aa4676b064bb2bfa41867fe2f811f
+msgid ""
+"The callback order matters for `mod_xml_rpc`: its `shutdown()` calls "
+"`ServerTerminate()` and waits for `ServerRun()` to finish before "
+"`ServerFree()` releases the server state."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:238
+#: 50cc5893cfeb45ed8844dc46987f74c3
+msgid "4. Example: `mod_sofia`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:240
+#: 0aa9705aa1604546be314aff19ea9794
+msgid "Source: `src/mod/endpoints/mod_sofia/mod_sofia.c`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:242
+#: afd611cf7d9e4d8e8ce2fe38d0a3662c
+msgid "`mod_sofia` is the representative endpoint module. Its module table is:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:250
+#: d0610e5904774fbb84f9b7f927e654f7
+msgid ""
+"It has no module-level `runtime()` callback. That does not mean it is "
+"single-threaded: `mod_sofia_load()` starts Sofia and its own "
+"message/presence worker threads."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:254
+#: 1cd6dfae44a548d897f41c037abf9a46
+msgid "Initialization"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:256
+#: f12c69a967e24dafb2595d9c597e4d64
+msgid ""
+"`mod_sofia_load()` performs substantially more initialization than a "
+"simple API module:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:259
+#: bb176200d60c447bb5718d19bf991d75
+msgid "Clears and initializes `mod_sofia_globals`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:260
+#: 27d446fb5b0a408b8b606d0d6c0354f4
+msgid "Creates the module mutexes, profile hash, gateway hash, and queues."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:261
+#: cd2786392eef4e14897191f33a0413a8
+msgid "Reserves many custom event subclasses."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:262
+#: 6fb0550087d848798fa041c3cb75c17b
+msgid "Detects the local address and switch hostname."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:263
+#: fca761c54b0c4c31b6d04747188c38de
+msgid "Calls `sofia_init()`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:264
+#: 66103b642e8c45af9426b95d40b87349
+msgid ""
+"Reads SIP profile configuration with `config_sofia(SOFIA_CONFIG_LOAD, "
+"NULL)`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:265
+#: 4c0b1170c1ef4013ab89ee20ab596cb8
+msgid "Starts the Sofia message thread."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:266
+#: 79d8983536f046ce80268206b440773a
+msgid ""
+"Binds event callbacks for presence, multicast, notifications, and related"
+" events."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:269
+#: e962d833725b40168c815ac91074030e
+msgid "It then creates and fills several FreeSWITCH interfaces:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:281
+#: 0aea42ea51424d8abb3b8fbd1c97083f
+msgid ""
+"It also registers management, JSON APIs, applications such as "
+"`sofia_sla`, APIs such as `sofia` and `sofia_contact`, and the Sofia chat"
+" protocol."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:284
+#: ec5fab28b2834886b77cc8e3707f059f
+msgid ""
+"At runtime, a channel URL such as `sofia/internal/1000@example.com` is "
+"resolved through the endpoint hash to the `sofia` interface. The core "
+"then calls the endpoint's I/O routines and state handlers."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:306
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:380
+#: 36a7e186935e4c489438b793e9382d8a 7d080ccc2a0e4983bea5883ecf76540d
+msgid "Shutdown"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:308
+#: ab5d6d8e65804c748c780707074d3ff0
+msgid "`mod_sofia_shutdown()` delegates to `mod_sofia_shutdown_cleanup()`, which:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:310
+#: 0b37ba127caf43d1bf3443b1742ae741
+msgid "Frees the custom event subclasses."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:311
+#: 6bab9829203647f5a0c8d230ed03581e
+msgid "Removes console completion callbacks."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:312
+#: 56cab9f0374842a68d235c8af5c16289
+msgid "Unbinds event callbacks."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:313
+#: cbf8f10403f34a1daa0b02767eea10ff
+msgid "Sets the running flag to false."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:314
+#: 73fb25427a3745df81d5f14742d796dc
+msgid "Interrupts the presence and message queues."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:315
+#: fbc9c2525aab4045bf4e5673ffa7ceab
+msgid "Joins message and presence threads."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:316
+#: 679e6ed6b74345629634508ae28edb54
+msgid "Deinitializes the Sofia parser/runtime."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:317
+#: b6e6bc5ef3aa427fa7d9b4a035178e83
+msgid "Destroys profile and gateway hashes."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:318
+#: 6cfc0f5f33ce41db853df1c686f179ae
+msgid "Destroys STIR/SHAKEN services when enabled."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:320
+#: a8453fbfea7e4f95b1bb5695ba86e7bd
+msgid ""
+"The key lesson is that the endpoint has no core `runtime()` callback, but"
+" its own threads still form part of the module lifecycle and must be "
+"stopped before unload."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:324
+#: 182792114305460aaeb1b5ac8072feee
+msgid "5. Example: `mod_xml_rpc`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:326
+#: 1c628aa2028b4d0a87881c0c75b3ea5d
+msgid "Source: `src/mod/xml_int/mod_xml_rpc/mod_xml_rpc.c`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:328
+#: 843cda09056c4fd4afa382129170605d
+msgid ""
+"`mod_xml_rpc` demonstrates a module that hosts a long-lived external "
+"service:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:342
+#: 4b68306bf66342f2a85a940174554e94
+msgid "Load and configuration"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:344
+#: 442d240c9e56470ebda9805976de278f
+msgid "`mod_xml_rpc_load()`:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:346
+#: c139ccabcf7044e79d96417b5c9aa4b3
+msgid "Reserves the `websocket::stophook` event subclass."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:347
+#: 46c764f63c894a9ba4e14d6f9f81cc8b
+msgid "Creates the FreeSWITCH module interface."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:348
+#: 4dbb2277e316491fb7f7bf907014d8ff
+msgid "Clears the module global state."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:349
+#: 3b269c788250403eb23f47c8b8b45d91
+msgid "Reads `xml_rpc.conf` using `switch_xml_open_cfg()`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:350
+#: 3c445b40d4fc45348fe4334b7ef5d931
+msgid ""
+"Stores the HTTP port, authentication, virtual-host, WebSocket, and "
+"logging settings in `globals`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:353
+#: 1cd8e7ef45b14182bfd9ef50d8015e1a
+msgid ""
+"It does not start the HTTP server. Delaying `ServerRun()` to `runtime()` "
+"keeps the loader thread from being blocked during module initialization."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:356
+#: 220f80101c5f4d2e9be4aa19d25daf40
+msgid "Runtime server"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:358
+#: 21a8588ef7df4f79aa8c3fcd39a3b8b3
+msgid "`mod_xml_rpc_runtime()`:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:360
+#: e81332c56842454baba0d04fdd36c495
+msgid "Creates an XML-RPC registry."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:361
+#: cc8300733592415e80e94212bff74566
+msgid "Registers `freeswitch.api` and `freeswitch.management` methods."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:362
+#: 6ea3ff1f96184b1e9fbde661d1db50a3
+msgid "Initializes MIME types."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:363
+#: a928e6ca9ef54f748b7eba3d1f7c9691
+msgid "Creates the Abyss HTTP server rooted at the configured `htdocs` directory."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:364
+#: f9a7506af8dd4dee93cba62c57fa66f1
+msgid "Maps `/RPC2` to the XML-RPC registry."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:365
+#: d89fe8b6fba74392b2b038a1fe3c1193
+msgid "Adds HTTP and authentication hooks."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:366
+#: 3b837c5c1de94bd5acced89bf83859c1
+msgid "Blocks in `ServerRun()`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:368
+#: 319d16f753ef4554b4361b25e00590f9
+msgid ""
+"The HTTP and XML-RPC callbacks eventually call the existing core APIs "
+"rather than reimplementing command execution:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:376
+#: 181a2640a93a44b5a574a331aa30c6e5
+msgid ""
+"`freeswitch_api()` also checks `is_authorized()` before executing a "
+"command. Its output is converted into an XML-RPC string. HTTP API output "
+"uses a `switch_stream_handle_t` whose write functions call `HTTPWrite()`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:382
+#: 1aa75db248c241c78703044e0791d233
+msgid "`mod_xml_rpc_shutdown()`:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:384
+#: e8ced0091d924a5f94edcf76ba734520
+msgid "Frees the WebSocket stop-hook subclass."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:385
+#: 10f9ba701a53484badcb2496fc4168e9
+msgid "Fires the stop event for active WebSockets."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:386
+#: cb5ef0e1034e432990bc820f1d3aad6a
+msgid "Calls `ServerTerminate()` to make `ServerRun()` return."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:387
+#: ab998943d97d4b32909b7ff33094b9e0
+msgid "Waits for `globals.running` to become false."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:388
+#: 76a930fd2dd24c7690411121be58b999
+msgid "Calls `ServerFree()`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:389
+#: d11d83ad6c4b41078bb16c8af78b9be1
+msgid "Frees the XML-RPC registry and MIME table."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:390
+#: 37feddb884af4d6b8e773841ce2cc7ab
+msgid "Frees authentication and domain strings."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:392
+#: 89c10499c5df46c4bf2c15918c05d514
+msgid ""
+"This is the canonical pattern for a module whose runtime callback blocks "
+"in a server loop: signal termination first, wait for the loop to leave, "
+"then free the server object."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:396
+#: 9bead2384fa3442ea60452e6b93d3a24
+msgid "6. Example: `mod_opus`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:398
+#: 6ee2172f92bf43c4b375ad593a368bb9
+msgid "Source: `src/mod/codecs/mod_opus/mod_opus.c`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:400
+#: 92ebd748e28147349c018f590c5489f1
+msgid "`mod_opus` is the smallest lifecycle shape of the three:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:407
+#: 04e5fbb4be534d6eb9240ae5eeb61c6c
+msgid ""
+"It has no module shutdown callback and no module runtime thread. Its "
+"external dependency is libopus, and its build is conditional on "
+"`HAVE_OPUS`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:410
+#: ca52b50ab55f454e8e21d391bda78a9f
+msgid "Load and codec registration"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:412
+#: bbc25dfe2cf645c896688028952a7363
+msgid ""
+"`mod_opus_load()` first reads `opus.conf` through `opus_load_config()`. "
+"It then:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:414
+#: e033d4778d074de88eb9a1a875984ab2
+msgid "Creates the module interface."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:415
+#: d02f57b0e7ac4aeabbcc44b0d405838e
+msgid "Registers the codec named `OPUS (STANDARD)` with `SWITCH_ADD_CODEC`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:416
+#: e626ae423217404e8dfc9a4b85f0ae70
+msgid "Registers the `opus_debug` API."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:417
+#: c74fdf1bad534bdca83dacce00647a0c
+msgid "Installs `switch_opus_fmtp_parse` for SDP `fmtp` processing."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:418
+#: d1ff3209744443899e46b91471cad8b6
+msgid ""
+"Adds multiple codec implementations for 48 kHz, 16 kHz, 8 kHz, mono, "
+"stereo, and supported packetization intervals."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:421
+#: 106a9856439d423cad6c363a4985def7
+msgid "Each implementation supplies the codec vtable:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:430
+#: 541269468e9e4c6f869a981c9910b80d
+msgid ""
+"The module registers codec metadata in the core, but encoder and decoder "
+"objects are created per active codec instance. `switch_opus_init()` "
+"allocates an `opus_context`, creates the libopus encoder/decoder, and "
+"applies negotiated FMTP settings. `switch_opus_destroy()` destroys those "
+"per-call libopus objects."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:446
+#: 9846d7a9716945d0b0592d9b233e4efb
+msgid ""
+"There is no module-level cleanup because the module does not create a "
+"long-lived worker or library-wide object that needs an explicit stop "
+"sequence. The module pool owns the registered interface metadata; each "
+"codec instance owns and destroys its own encoder and decoder."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:451
+#: e3e1c95972734519b4d55947d95ccae2
+msgid "7. Practical checklist"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:453
+#: 2624e3a3974d41d59f0926e08aa8e5b6
+msgid "Before adding a module, answer these questions:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:455
+#: 83882414cd9a45a28ac6192cabe1bf28
+msgid ""
+"What interface does it provide: API, application, endpoint, codec, "
+"dialplan, file, or another existing type?"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:457
+#: 284dd46ff8fe4463b0f5e55397280e69
+msgid ""
+"Does it need a core `runtime()` callback, or can synchronous callbacks "
+"handle all work?"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:459
+#: 1542b01def0a4732bfcb5c815abe3217
+msgid ""
+"Does it create its own threads, queues, sockets, event bindings, or "
+"external library state?"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:461
+#: f4516d2a555c4088bfe34e4d0ca599aa
+msgid ""
+"Which configuration file does it read, and what happens when that file is"
+" missing or invalid?"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:463
+#: 0c93de6862d64cd39a5820c22af531c5
+msgid "Can it be unloaded while an interface callback is active?"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:464
+#: 81378d1c4c4a4c248cc6968d42dab8df
+msgid ""
+"What exact operation signals each worker to stop, and where is each "
+"worker joined?"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:466
+#: 658d06c5b8df4a99bd144a015760435c
+msgid "Does `Makefile.am` fail clearly when an external dependency is absent?"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:467
+#: 9cdd99c6a86e49128150d4d0426d9644
+msgid "Are both the build list and runtime `<load>` entry present?"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:469
+#: 12cf48f9ac384b66a128f183ba2b9286
+msgid "The shortest safe implementation is usually:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:477
+#: aaa31af5e49f4e518878b01ed5c1f2a5
+msgid ""
+"Do not add a runtime thread, reload framework, or custom registry unless "
+"the module's actual resource model requires it."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:480
+#: 60ed23e52adb4b6e8c9b59ae7e3e6a89
+msgid "Related source and documentation"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:482
+#: 0fd68df7f52b435781deb6ebedd4a50a
+msgid "[Architecture](01-architecture.md)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:483
+#: 0b619146488941858acb18a266dc9bbc
+msgid "[Build, Release, and Publish](../4.development/02-build.md)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:484
+#: 65ae6099ff0440c3aeb7a3d997313184
+msgid "[C Runtime Framework](06-c-runtime.md)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:485
+#: 8424d8e8077549c3af609bd683b7f7e5
+msgid "`src/include/switch_types.h`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:486
+#: 17e54e0a39324cb78e5ba715f53fcb87
+msgid "`src/switch_loadable_module.c`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:487
+#: 8ac71c439fdc4758ba4a4557a3fb7b90
+msgid "`src/mod/applications/mod_skel/mod_skel.c`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:488
+#: f62da062298d4eb79a58f9335d0f4f9e
+msgid "`src/mod/endpoints/mod_sofia/mod_sofia.c`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:489
+#: 3b688d06943d4615a6f1d99a122ae9ef
+msgid "`src/mod/xml_int/mod_xml_rpc/mod_xml_rpc.c`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/08-modules.md:490
+#: 7a6c68d970364f0da806fc3d101b5d1b
+msgid "`src/mod/codecs/mod_opus/mod_opus.c`"
+msgstr ""
+
+#~ msgid "[Build, Release, and Publish](../3.development/08-build.md)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`mod_opus` additionally requires the external"
+#~ " Opus development library. Its "
+#~ "`Makefile.am` deliberately fails with `You "
+#~ "must install libopus-dev` when "
+#~ "`HAVE_OPUS` is not available. `mod_sofia` "
+#~ "similarly depends on the out-of-"
+#~ "tree Sofia-SIP library; see [Tech "
+#~ "Stack](03-tech-stack.md)."
+#~ msgstr ""
+
+#~ msgid "[Architecture](02-architecture.md)"
+#~ msgstr ""
+
+#~ msgid "[Build, Release, and Publish](../4.development/08-build.md)"
+#~ msgstr ""
+
+#~ msgid "[C Runtime Framework](13-c-runtime.md)"
+#~ msgstr ""
+

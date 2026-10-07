@@ -1,0 +1,16 @@
+[req]
+distinguished_name = dn
+req_extensions = v3_req
+prompt = no
+
+[dn]
+CN = 10.100.212.8
+
+[v3_req]
+subjectAltName = @alt_names
+basicConstraints = critical,CA:FALSE
+keyUsage = critical,digitalSignature,keyEncipherment
+extendedKeyUsage = serverAuth
+
+[alt_names]
+IP.1 = 10.100.212.8

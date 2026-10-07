@@ -1,0 +1,3367 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Zoom Video Communications
+# This file is distributed under the same license as the FreeSWITCH package.
+# Walter Fan <walter.fan@ustc.etu>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version:  FreeSWITCH\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-18 16:34+0800\n"
+"PO-Revision-Date: 2026-08-30 23:13+0800\n"
+"Last-Translator: Walter Fan <walter.fan@ustc.etu>\n"
+"Language: zh_CN\n"
+"Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1
+#: bcac804de26543b68751877b44932c2d
+msgid "02. Architecture"
+msgstr "02. 架构"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:5
+#: dd1f4b45ff2f450abb0b11d277153260
+#, fuzzy
+msgid ""
+"C4 view of this FreeSWITCH tree. Product scope is in [Overview](../0"
+".getting-started/01-overview.md); directory ownership in [Repository "
+"Map](03-repo-map.md). How to read the `switch_*` runtime (pools, FSPR vs "
+"core, frames): [C Runtime Framework](06-c-runtime.md). Loadable modules "
+"live **in-process** as DSOs — they are components, not separate "
+"deployable containers."
+msgstr ""
+"本 FreeSWITCH 源码树的 C4 视图。产品范围见 [概述](00-overview.md)；目录归属见 [仓库地图](04-repo-"
+"map.md)。可加载模块以 DSO 形式运行在**进程内**——它们是组件，不是独立可部署的容器。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:7
+#: d031c334ae3040d0847a6a169c719eba
+msgid ""
+"Two different “modules.conf” files matter ([Users Manual Chapter "
+"5](https://developer.signalwire.com/freeswitch/configuration/module-"
+"loading/)):"
+msgstr ""
+"有两份不同的 “modules.conf” 需要分清（[用户手册第 5 "
+"章](https://developer.signalwire.com/freeswitch/configuration/module-"
+"loading/)）："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: 2d0fc026a2b0496f887bb34cf0a34ed6
+msgid "File"
+msgstr "文件"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: 0aed81fe691149debbd1f8963be5f63c
+msgid "When it applies"
+msgstr "适用时机"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: 40642709cacb482aa79bd4ae42f02c6d c469dd905b9b44698ab4c505944369b1
+msgid "Role"
+msgstr "作用"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: f05549b328b649ac82edcfb8d899ff5b
+msgid "`build/modules.conf.in` → `modules.conf`"
+msgstr "`build/modules.conf.in` → `modules.conf`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: c5c93c0ee08349e0a2811c145f9eadd2
+msgid "Build time"
+msgstr "构建时"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: c1e95a37d6b842478491001a1645ec0d
+msgid "Which `src/mod/...` trees are compiled"
+msgstr "编译哪些 `src/mod/...` 目录树"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: 36337ee6b94b49908eca02b83f41368c
+msgid "`conf/vanilla/autoload_configs/modules.conf.xml`"
+msgstr "`conf/vanilla/autoload_configs/modules.conf.xml`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: 12d4d9fea59a49ba9d21acb6a6d94cac
+msgid "Runtime"
+msgstr "运行时"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: 76a1521d442848dcb49581bf75652b3c
+msgid "Which compiled modules `switch_loadable_module_init()` actually loads"
+msgstr "哪些已编译模块会被 `switch_loadable_module_init()` 实际加载"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: e5c8afd0c2c54e0d87f79b3b43639d0a
+msgid "`conf/vanilla/autoload_configs/pre_load_modules.conf.xml`"
+msgstr "`conf/vanilla/autoload_configs/pre_load_modules.conf.xml`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: bf900dc4dd4846fc90bdd2b4760c3e69
+msgid "Runtime, **before** the main list"
+msgstr "运行时，在主列表**之前**"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: db2b4a164aaa4afb9b4e68d3d2022504
+msgid ""
+"Vanilla loads `mod_pgsql` here so DB backends exist before other modules "
+"init"
+msgstr "Vanilla 在此加载 `mod_pgsql`，以便其他模块初始化前数据库后端已就绪"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: 28e32ff63dcc40139d167c98deaa1b33
+msgid "`conf/vanilla/autoload_configs/post_load_modules.conf.xml`"
+msgstr "`conf/vanilla/autoload_configs/post_load_modules.conf.xml`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: 4695650c1b734380a6ca064d7c036ac6
+msgid "Runtime, **after** the main list"
+msgstr "运行时，在主列表**之后**"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: 72a949c9765a4ce59dec829f296edf6a
+msgid "Empty in vanilla"
+msgstr "Vanilla 中为空"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:16
+#: a21227a568664c1ca385823b25db3148
+#, fuzzy
+msgid ""
+"A module must be compiled before it can appear in `modules.conf.xml`. "
+"Enabling a `<load>` for a missing `.so` logs an error and continues; "
+"compiling a module but leaving it commented out in XML is harmless. How "
+"that tag is located in the compiled XML tree and turned into `dlopen`: "
+"[Runtime load tag](#runtime-load-tag)."
+msgstr ""
+"模块必须先编译，才能出现在 `modules.conf.xml` 中。为缺失的 `.so` 启用 `<load>` "
+"会记错误日志并继续启动；编译了模块但在 XML 中保持注释则无害。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:18
+#: 74a904736529449a8364fcbf81647bf7
+msgid "Three configuration domains"
+msgstr "三大配置域"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:20
+#: 2bf44a69315f4293aec21e7284b5bce0
+#, fuzzy
+msgid ""
+"Operator config is three domains ([Users Manual Chapter "
+"1](https://developer.signalwire.com/freeswitch/foundations/introduction)),"
+" not one XML blob. Teaching definitions (endpoint / channel / call / "
+"bridge / session): [Overview — FS core concepts](../0.getting-"
+"started/01-overview.md#fs-core-concepts)."
+msgstr ""
+"运维配置分为三个域（[用户手册第 1 "
+"章](https://developer.signalwire.com/freeswitch/foundations/introduction)），不是一份混在一起的"
+" XML："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: 1127727b023d414cb29377dab80c5cfd
+msgid "Domain"
+msgstr "域"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: 10586299dd3f4642ad5640892b600888
+msgid "Question"
+msgstr "问题"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: c4b15f976c3a4ee98a7165359042136b
+msgid "Vanilla tree"
+msgstr "Vanilla 目录"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: 76551b51797d40e28649821efaf1339f
+msgid "Directory"
+msgstr "号码簿"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: f07cca1a19c747fc99139d46894e1327
+#, fuzzy
+msgid "Who is allowed to connect, and with what properties?"
+msgstr "谁可以接入？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: aa8cc7b3b4b243628a1233b867e4eecc
+msgid "`conf/vanilla/directory/`"
+msgstr "`conf/vanilla/directory/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: 6eb57449f94c411c968caf64f50780c7
+msgid "Dialplan"
+msgstr "拨号计划"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: 6e65a42e730341e2915f267b68950b59
+msgid "When a call arrives, where does it go and what happens to it?"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: 2002cd3db61a46ee86933d87ea9953cf
+msgid "`conf/vanilla/dialplan/`"
+msgstr "`conf/vanilla/dialplan/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: c38a3a380fbb411f8c2a5dfd6298da94
+msgid "Configuration"
+msgstr "配置"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: 3c41f282ba4f4807b5fcc7ff28e28709
+#, fuzzy
+msgid "How does each module and the core behave?"
+msgstr "核心与各模块如何表现？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: 111d63811abe42708731f45df1a0f32e
+msgid "`conf/vanilla/autoload_configs/` plus `sip_profiles/`"
+msgstr "`conf/vanilla/autoload_configs/` 加上 `sip_profiles/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:28
+#: a5bcbd91d2324cf8a4478c803b289d9f
+msgid "Runtime objects the manual names (mapped to this tree):"
+msgstr "手册中的运行时对象（映射到本仓库）："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: c389d8894a134f8fa113cea2eb915580
+msgid "Term"
+msgstr "术语"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: bf2cb5d3c8574c2b9e5db8bfbdd4a94a
+msgid "Meaning"
+msgstr "含义"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: 1b41162d259a401fb5e88dc4365158b0
+msgid "In this tree"
+msgstr "本仓库中"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: da1b469a52644a8b80f4c259081b19bb
+msgid "Endpoint"
+msgstr "端点"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: 6a00be6052f94aacbce6b9d5d43c7f44
+msgid "Protocol interface that originates or receives calls"
+msgstr "发起或接收呼叫的协议接口"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: 85c80f97c9b04fd188e1d5ce686ebc6a
+msgid "`mod_sofia`, `mod_verto`, … under `src/mod/endpoints/`"
+msgstr "`src/mod/endpoints/` 下的 `mod_sofia`、`mod_verto` 等"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:956
+#: 4f91f7314ab149eeb6a3624c4fc9d510 6f92f8b75f2245588fc5e4d011d111a1
+msgid "Channel"
+msgstr "通道"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: 6367a5e3f7ec47728a67957a0dc5642f
+msgid "One leg between FreeSWITCH and one endpoint"
+msgstr "FreeSWITCH 与单个 endpoint 之间的一条腿"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: 61ce1765a2a148a39f2fc891cb754708
+msgid "`switch_channel_t`"
+msgstr "`switch_channel_t`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:956
+#: 707a9979a39a46f99eafcbe39bbca2c5 aeb91378dcd947a89224b7c6d744ed0d
+msgid "Session"
+msgstr "会话"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: b38d299361df4364a159bee3952a8f72
+msgid "Runtime container for a channel plus application state"
+msgstr "channel 及其应用状态的运行时容器"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: 0273011bb8f443a3ae71e32e44c6ef81
+msgid "`switch_core_session_t`"
+msgstr "`switch_core_session_t`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: 054a6320780b4a9a95287c02fe4f7c69
+msgid "Call"
+msgstr "呼叫"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: 0cb93aa382eb4fa68b5e1e355e821ad1
+msgid "One or more associated channels"
+msgstr "一条或多条关联的 channel"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: de3aa6484e7544fa883b4d466220caf8
+msgid "Core SQL `calls` (`caller_uuid` / `callee_uuid`)"
+msgstr "核心 SQL 表 `calls`（`caller_uuid` / `callee_uuid`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: 0c5c8906de8041c692f689d79ce57197
+msgid "Bridge"
+msgstr "桥接"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: fe61077a1255465780a490452a4c3044
+msgid "Association that joins two channels’ media"
+msgstr "把两条 channel 的媒体连在一起的关联"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md
+#: 910825a19b3e4441af406655e1c19bd3
+msgid "`switch_ivr_bridge` / `bridge` app"
+msgstr "`switch_ivr_bridge` / `bridge` 应用"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:38
+#: 66f3e624284242ff8fbdd9e005f6d299
+#, python-brace-format
+msgid ""
+"Channel variables use `${name}` at **call time**. Preprocessor variables "
+"use `$${name}` and expand **once** while assembling XML (`vars.xml`). Do "
+"not mix them ([Chapter "
+"3](https://developer.signalwire.com/freeswitch/configuration/xml))."
+msgstr ""
+"通道变量 `${name}` 在**呼叫时**展开。预处理器变量 `$${name}` 在组装 "
+"XML（`vars.xml`）时**只展开一次**。不要混用（[第 3 "
+"章](https://developer.signalwire.com/freeswitch/configuration/xml)）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:40
+#: 739253e546c542bf9081f0f029b12fb7
+msgid "Context"
+msgstr "系统上下文"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:42
+#: 16607a3b9a1e43a4bf55706d7c0f8043
+msgid ""
+"FreeSWITCH is one softswitch process that terminates signaling and media,"
+" executes a dialplan, and emits events. Callers are SIP phones, trunks, "
+"and WebRTC browsers. Operators edit XML and use `fs_cli`. Application "
+"code either embeds (Lua/Python/V8 modules) or sits **outside** the "
+"process on the Event Socket (ESL). SignalWire is an optional cloud peer "
+"via `mod_signalwire`."
+msgstr ""
+"FreeSWITCH 是一个软交换进程：终结信令与媒体、执行拨号计划并发送事件。呼叫方是 SIP 话机、中继和 WebRTC 浏览器。运维人员编辑"
+" XML 并使用 `fs_cli`。应用代码要么嵌入进程（Lua/Python/V8 模块），要么通过 Event "
+"Socket（ESL）运行在进程**之外**。SignalWire 是可选的云端对等体，经由 `mod_signalwire`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:65
+#: 56b7f59bc2144340aa8d7b0192ef0881
+msgid "UML nearest match: system-context diagram (no standard UML type)."
+msgstr "UML 最接近：系统上下文图（无标准 UML 类型）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:67
+#: 2dc050782412444b945b68e44495ea65
+msgid "Container View"
+msgstr "容器视图"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:69
+#: d3a98c752541456aa90d2a1d76e95b44
+msgid ""
+"Deployable runtime pieces. Modules are **not** listed here; they load "
+"into the `freeswitch` process."
+msgstr "可部署的运行时部件。模块**不**列在此处；它们加载进 `freeswitch` 进程。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:44
+#: db41b75f7cdb4cc09f8add3e4fd2e6be
+msgid "Container"
+msgstr "容器"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:44
+#: e4b93be0595345eb8ecf833257f9edbd
+msgid "Responsibility"
+msgstr "职责"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:44
+#: 69e92c1b23d34a1cb7ab9bf4ba35a931
+msgid "Technology"
+msgstr "技术"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:44
+#: 3b4155fc311e48338a07080991ebf0d5
+msgid "Depends on"
+msgstr "依赖"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:44
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:107
+#: 3146bc706f3b484484774a124c167d7a 7574fd198c0d4079b452c7df4662d9b5
+msgid "`freeswitch` process"
+msgstr "`freeswitch` 进程"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:44
+#: 62ed307423094bbfb978d5c6ff139f57
+msgid "Sessions, state machine, media, module host, XML registry, event bus"
+msgstr "会话、状态机、媒体、模块宿主、XML 注册表、事件总线"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:44
+#: 5d779e139f064d34ad5caa60388cc7b8
+msgid "C, APR, POSIX threads / Windows service"
+msgstr "C、APR、POSIX 线程 / Windows 服务"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:44
+#: 3d4a3da875844350aa91eb48724fe348
+msgid "XML on disk, core SQLite (or ODBC/pgsql), RTP ports, loaded DSOs"
+msgstr "磁盘上的 XML、核心 SQLite（或 ODBC/pgsql）、RTP 端口、已加载的 DSO"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:44
+#: cfcc9acc17dc43ba9d9469801154089f
+msgid "XML config tree"
+msgstr "XML 配置树"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:44
+#: 990fac0a7be44194ac2eeca646afa0e9
+msgid "Dialplan, directory, SIP profiles, module autoload"
+msgstr "拨号计划、号码簿、SIP 配置文件、模块自动加载"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:44
+#: 28af72103b034129959f0c9f71caa5fb
+msgid "Preprocessed XML (`X-PRE-PROCESS` / `#include`)"
+msgstr "预处理 XML（`X-PRE-PROCESS` / `#include`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:44
+#: e4e48fe049f6495fbea161d2db9181d4
+msgid ""
+"Flattened to `freeswitch.xml.fsxml` at start "
+"(`conf/vanilla/freeswitch.xml`)"
+msgstr "启动时展平为 `freeswitch.xml.fsxml`（`conf/vanilla/freeswitch.xml`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:44
+#: 67f03545c7d6418d8cf31527eb380614
+msgid "Core database"
+msgstr "核心数据库"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:44
+#: f9776675856b4d958ba6934a5531a2d7
+msgid "Internal scoreboard / recovery / some module data"
+msgstr "内部记分板 / 恢复 / 部分模块数据"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:44
+#: eae1cb36f9f24b5380bb39f94aae2670
+msgid ""
+"SQLite by default (`sqlite3_initialize` in `switch_core_init`); optional "
+"ODBC/pgsql"
+msgstr "默认 SQLite（`switch_core_init` 中的 `sqlite3_initialize`）；可选 ODBC/pgsql"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:44
+#: 6362af6c7557412fbac939799ddba75c
+msgid "`db/` under prefix"
+msgstr "安装前缀下的 `db/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:44
+#: ca1996c11fac4a1a9b18ecd8ae2da977
+msgid "ESL client (`fs_cli` or custom)"
+msgstr "ESL 客户端（`fs_cli` 或自定义）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:44
+#: cc8ab5570b784660a52b4be45726163c
+msgid "Out-of-process API + event subscribe"
+msgstr "进程外 API + 事件订阅"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:44
+#: 6b0c61a56d514bdb9b7ed03fb2221f71
+msgid "TCP to `mod_event_socket`"
+msgstr "连到 `mod_event_socket` 的 TCP"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:44
+#: 7001ec50f3d948298771c167329c6ca2
+msgid ""
+"`fs_cli` targets `127.0.0.1:8021` by default; vanilla server config "
+"listens on `::`"
+msgstr "`fs_cli` 默认目标为 `127.0.0.1:8021`；vanilla 服务端配置监听 `::`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:44
+#: 718ceb013c694328ad484e19f9a63671
+msgid "SIP / WebRTC peers"
+msgstr "SIP / WebRTC 对端"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:44
+#: 0198c27aa2914fbab606bd0e14dc3e5e
+msgid "Signaling and media"
+msgstr "信令与媒体"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:44
+#: 445e55736d6340a2a48170f7679271d5
+msgid "Sofia-SIP, Verto"
+msgstr "Sofia-SIP, Verto"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:44
+#: 11edbc07ad52441aba1ff33e9cf53233
+msgid "UDP/TCP 5060/5080, WSS, RTP ranges"
+msgstr "UDP/TCP 5060/5080、WSS、RTP 端口范围"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:95
+#: 037b529921104101a62bb5e5d52e3a88
+msgid "UML nearest match: deployment / component diagram."
+msgstr "UML 最接近：部署图 / 组件图。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:97
+#: 6351f3e69d1f4b24a492e94135eb7f02
+#, fuzzy
+msgid ""
+"Default install prefix is `/usr/local/freeswitch` (`configure.ac`). The "
+"developer commands in [Quick Start](../0.getting-started/02-quick-"
+"start.md) add `--disable-fhs`, so their paths stay below the prefix; a "
+"custom prefix without that flag uses FHS paths. One process per host is "
+"the unit of deployment; extra hosts are operator-owned HA, not an in-tree"
+" orchestrator. `switchname` in "
+"`conf/vanilla/autoload_configs/switch.conf.xml` only overrides hostname "
+"for DB/CURL identity in clustered configs."
+msgstr ""
+"默认安装前缀为 `/usr/local/freeswitch`（`configure.ac`）。[快速开始](01-quick-start.md)"
+" 中的开发者命令添加了 `--disable-fhs`，因此路径都位于前缀下；未指定该选项的自定义前缀使用 FHS "
+"路径。每台主机上的一个进程是部署单元；额外主机属于运维自建 HA，并非树内编排器。集群配置中 "
+"`conf/vanilla/autoload_configs/switch.conf.xml` 的 `switchname` 仅覆盖 "
+"DB/CURL 身份使用的主机名。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:105
+#: 28c5115f1b4049149ba4de0b752298ba
+msgid "Component View"
+msgstr "组件视图"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:128
+#: 5d2336087af54559b33dc9c9cf0ea013
+msgid "Core runtime"
+msgstr "核心运行时"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:130
+#: 1a7f0b1a75e5411c80cdd1bdb24bea90
+msgid ""
+"**Responsibilities**: APR/memory pools, directories, SQLite, SQL flags, "
+"session thread pool (`SCF_SESSION_THREAD_POOL`), signal handlers, "
+"`SWITCH_EVENT_STARTUP`."
+msgstr ""
+"**职责**：APR/内存池、目录、SQLite、SQL "
+"标志、会话线程池（`SCF_SESSION_THREAD_POOL`）、信号处理、`SWITCH_EVENT_STARTUP`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:131
+#: 2d30f503fd0c4630afaa043155abc002
+msgid ""
+"**Key entry points**: `src/switch.c` (`main`), `switch_core_init()` / "
+"`switch_core_init_and_modload()` in `src/switch_core.c`."
+msgstr ""
+"**关键入口**：`src/switch.c`（`main`）、`src/switch_core.c` 中的 "
+"`switch_core_init()` / `switch_core_init_and_modload()`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:132
+#: 8763a39a3b1248f696e5076e33e7d616
+msgid ""
+"**Important dependencies**: bundled APR (`libs/apr`), SQLite, "
+"`libs/srtp`, `libs/libvpx`."
+msgstr "**重要依赖**：捆绑的 APR（`libs/apr`）、SQLite、`libs/srtp`、`libs/libvpx`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:133
+#: 4fb6cac5e7e74379ae5eed8aa8af48e2
+msgid ""
+"**Failure modes**: init aborts if APR or SQLite cannot start; "
+"`SCF_NO_NEW_SESSIONS` is set until the core is ready."
+msgstr "**失败模式**：APR 或 SQLite 无法启动则初始化中止；核心就绪前会设置 `SCF_NO_NEW_SESSIONS`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:135
+#: 4ed75d6f7fd243c38ccad6edb4738532
+msgid "XML configuration"
+msgstr "XML 配置"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:137
+#: 4625eb9fbdb44062b528be6a07fe99d5
+msgid ""
+"**Responsibilities**: parse `conf_dir/freeswitch.xml`, expand "
+"preprocessor includes (`X-PRE-PROCESS` / `#include` / `#set`), serve "
+"sections (`configuration`, `dialplan`, `directory`, `languages`, "
+"`chatplan`). `mod_xml_curl` / `mod_xml_ldap` can replace file-backed "
+"sections at runtime by installing `switch_xml_set_open_root_function()`."
+msgstr ""
+"**职责**：解析 `conf_dir/freeswitch.xml`，展开预处理器 include（`X-PRE-PROCESS` / "
+"`#include` / "
+"`#set`），提供各节（`configuration`、`dialplan`、`directory`、`languages`、`chatplan`）。`mod_xml_curl`"
+" / `mod_xml_ldap` 可通过安装 `switch_xml_set_open_root_function()` "
+"在运行时替换基于文件的节。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:138
+#: 10092c46ae544b37a5de1bce8eba9cde
+#, fuzzy
+msgid ""
+"**Key entry points**: `src/switch_xml.c` (`switch_xml_open_root`, "
+"`__switch_xml_open_root`, `switch_xml_open_cfg`, `switch_xml_locate`), "
+"root document `conf/vanilla/freeswitch.xml`."
+msgstr ""
+"**关键入口**：`src/switch_xml.c`（`switch_xml_open_root`、`__switch_xml_open_root`），根文档"
+" `conf/vanilla/freeswitch.xml`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:139
+#: 197c932faaae4ef9854384b6747d66f1
+msgid ""
+"**Lookup**: `switch_xml_open_cfg(\"modules.conf\", …)` does **not** open "
+"that filename. It locates `section name=\"configuration\"` then a child "
+"`configuration` whose `name` attribute equals the string (`modules.conf`,"
+" `switch.conf`, `sofia.conf`, …). Vanilla stitches those files in via `X"
+"-PRE-PROCESS cmd=\"include\" data=\"autoload_configs/*.xml\"` "
+"(`conf/vanilla/freeswitch.xml`). XML bindings (`mod_xml_curl`) run first;"
+" if none return a tree, the in-memory root (`MAIN_XML_ROOT`) is used."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:140
+#: df052020a93f439983b63df5d826fc71
+#, python-brace-format
+msgid ""
+"**Compiled artifact**: `log_dir/freeswitch.xml.fsxml` (comment in "
+"`conf/vanilla/freeswitch.xml`: `${prefix}/log/freeswitch.xml.fsxml`). "
+"Memory-mapped while running — do not edit it."
+msgstr ""
+"**编译产物**：`log_dir/freeswitch.xml.fsxml`（`conf/vanilla/freeswitch.xml` "
+"注释写的是 `${prefix}/log/freeswitch.xml.fsxml`）。运行时内存映射 — 不要编辑。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:141
+#: b0e8dc916f374f45afbb0962d813d2c8
+msgid ""
+"**Failure modes**: broken include path or XML error leaves the switch "
+"unable to open root (`\"Cannot Open log directory or XML Root!\"`). A "
+"missing `modules.conf` configuration node logs `open of modules.conf "
+"failed` and continues; if **no** `<load>` entries were seen across "
+"pre/common/post lists, the loader falls back to loading every DSO in "
+"`mod_dir`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:143
+#: aeec3540e38b44c78a27083016a5f3c9
+msgid "Session, channel, state machine"
+msgstr "会话、通道与状态机"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:145
+#: daec607b720146878886fd234b393492
+msgid ""
+"**Responsibilities**: each call leg is a `switch_core_session_t` (thread,"
+" codecs, queues, UUID) wrapping a `switch_channel_t` (state, variables, "
+"cause). The core runs `switch_state_handler_table` hooks; endpoints "
+"override them (Sofia’s `sofia_on_init` / `sofia_on_routing`)."
+msgstr ""
+"**职责**：每个呼叫腿是一个 `switch_core_session_t`（线程、编解码器、队列、UUID），内部包裹 "
+"`switch_channel_t`（状态、变量、原因）。核心运行 `switch_state_handler_table` "
+"钩子；端点可覆盖它们（Sofia 的 `sofia_on_init` / `sofia_on_routing`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:146
+#: 6920c6156d1b43de93ad363d819713fe
+msgid ""
+"**Key entry points**: `src/switch_core_session.c`, "
+"`src/switch_channel.c`, `src/switch_core_state_machine.c`, types in "
+"`src/include/switch_types.h` (`switch_channel_state_t`)."
+msgstr ""
+"**关键入口**：`src/switch_core_session.c`、`src/switch_channel.c`、`src/switch_core_state_machine.c`，类型在"
+" `src/include/switch_types.h`（`switch_channel_state_t`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:147
+#: a49a1567700a478b86c69817962a6118
+msgid ""
+"**Failure modes**: hung sessions if an endpoint returns without advancing"
+" state; media/proxy flags (`CF_PROXY_MODE`, `CF_PROXY_MEDIA`) change "
+"SDP/RTP ownership."
+msgstr ""
+"**失败模式**：端点返回却不推进状态会导致会话挂起；媒体/代理标志（`CF_PROXY_MODE`、`CF_PROXY_MEDIA`）会改变 "
+"SDP/RTP 所有权。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:149
+#: 5cb8a721ce084bc38b1588f8c511c6b4
+msgid ""
+"Default inbound path after create: `CS_NEW` → `CS_INIT` → `CS_ROUTING` "
+"(dialplan hunt) → `CS_EXECUTE` (apps) → `CS_EXCHANGE_MEDIA` or hangup "
+"path `CS_HANGUP` → `CS_REPORTING` → `CS_DESTROY`."
+msgstr ""
+"创建后的默认入局路径：`CS_NEW` → `CS_INIT` → `CS_ROUTING`（拨号计划查找）→ `CS_EXECUTE`（应用）→"
+" `CS_EXCHANGE_MEDIA`，或挂断路径 `CS_HANGUP` → `CS_REPORTING` → `CS_DESTROY`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:166
+#: 1788cf189e9c4d1892eae8d66139e0a6
+msgid "`STATE_MACRO`: 一个状态的完整处理管线"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:168
+#: 84c006d17c8447b5b8ec1f5ec0c42364
+msgid ""
+"上面的状态图描述的是 **Channel State 如何变化**；真正消费某个状态的核心代码在 "
+"`src/switch_core_state_machine.c`。这里最容易读错的一点是： `STATE_MACRO(init, "
+"\"INIT\")` 不是单纯调用一个 `on_init()` 函数，而是把一次状态处理拆成 多层 handler，并在最后决定是否执行 "
+"FreeSWITCH 的默认行为。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:173
+#: e4efc9815c454b719d954c6523c70485
+msgid "源码位置："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:175
+#: 3edccb28c50641e986dd2f6171e484bd
+msgid "宏定义：`src/switch_core_state_machine.c:427-511`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:176
+#: 81a5a594487a43fd81956d59deb664c4
+msgid "session 主循环：`src/switch_core_state_machine.c:530-721`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:177
+#: eac30a739aa74588953021d61d4af297
+msgid "handler 表类型：`src/include/switch_module_interfaces.h:65-92`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:179
+#: 574cd5d30e0b4c90aea04a0c90af3034
+msgid "1. 宏参数如何变成具体回调"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:181
+#: 12e748995276458b8bd1196b8ec5dfe9
+msgid "宏使用 token-pasting 运算符 `##`："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:187
+#: 42bdcc70c3994c74b766f06332b493cd
+msgid "宏体中的（这里是预处理器拼接语法示意，不是可直接编译的 C 表达式）："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:193
+#: 01f880dc04a9421ea57123d59f0cc8e9
+msgid "预处理后等价于："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:199
+#: dfd589dd55c64919b9d2b31c017bb1be
+msgid "因此宏的第一个参数必须与 `switch_state_handler_table` 中的字段名对应："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:151
+#: 185b9c28040b4036af32e4069dafc0f3
+msgid "调用"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:151
+#: 553d786d4c0a41c2945e1a46e2c3eb58
+msgid "访问的字段"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:151
+#: 125e805f7b73425498c428e0ea4b7ed2
+msgid "默认处理函数"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:151
+#: 7c86648d08d54abe98e886f9e06201f7
+msgid "`STATE_MACRO(init, \"INIT\")`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:151
+#: c008499ada654c76bb11334e6b55ef94
+msgid "`on_init`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:151
+#: 584d1bc0bbf542d5bede98243c1ab02c
+#, fuzzy
+msgid "`switch_core_standard_on_init()`"
+msgstr "`switch_core_session_t`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:151
+#: 5442a89702284d598c5fba27f39c907a
+msgid "`STATE_MACRO(routing, \"ROUTING\")`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:151
+#: 128404db601f4235bc1e89e5b6ccaa24
+msgid "`on_routing`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:151
+#: c7c425d6be3341a8b134eeae4794ec2b
+#, fuzzy
+msgid "`switch_core_standard_on_routing()`"
+msgstr "`switch_core_session_t`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:151
+#: 69f43dad3e9f4f4cb3ac8cbe357c901e
+msgid "`STATE_MACRO(reset, \"RESET\")`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:151
+#: 2166b211a53e450a81632cc3177c8152
+msgid "`on_reset`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:151
+#: e960ed21e6ec4733a838abbfb3e7d24f
+#, fuzzy
+msgid "`switch_core_standard_on_reset()`"
+msgstr "`switch_core_session_t`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:151
+#: 5a57c5d3ff04458fb54349621c078a14
+msgid "`STATE_MACRO(execute, \"EXECUTE\")`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:151
+#: ae7950f6cefc47c5bd96cd1e8965fe5e
+msgid "`on_execute`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:151
+#: 28c9e95881bd4623bd89bb08280164dc
+#, fuzzy
+msgid "`switch_core_standard_on_execute()`"
+msgstr "`switch_core_session_t`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:151
+#: 6b0349b4f30848ce9add1c6c32773cfc
+msgid "`STATE_MACRO(exchange_media, ...)`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:151
+#: 6cb2afe0209f4435a1391a3149582285
+msgid "`on_exchange_media`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:151
+#: 0732e54370d04dfb9c76a58b7f076f64
+msgid "`switch_core_standard_on_exchange_media()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:151
+#: a42541f6402541608da010bc29c62eea
+msgid "`STATE_MACRO(soft_execute, ...)`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:151
+#: a1d042ee06284a129373aec505e4f173
+msgid "`on_soft_execute`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:151
+#: 7bd01ea59ae44e5abdc9445a6b4b834a
+#, fuzzy
+msgid "`switch_core_standard_on_soft_execute()`"
+msgstr "`switch_core_session_t`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:151
+#: 7ccf8701721a4f279cb01ee26457ef60
+msgid "`STATE_MACRO(park, ...)`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:151
+#: 7d7821f715bb49c69603f8ef00df8eac
+msgid "`on_park`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:151
+#: 546654938ae642088eb3af5dab65234a
+#, fuzzy
+msgid "`switch_core_standard_on_park()`"
+msgstr "`switch_core_session_t`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:151
+#: 38a4b37130384f43badfe0fbbb53de08
+msgid "`STATE_MACRO(consume_media, ...)`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:151
+#: da35ad686f574be7a0c9edc0d8da5ec2
+msgid "`on_consume_media`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:151
+#: 8c389f4c52ab4e8f8e2504b443f2077d
+msgid "`switch_core_standard_on_consume_media()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:151
+#: 9f4a9e00dd3a4e67adbbbef54665a66e
+msgid "`STATE_MACRO(hibernate, ...)`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:151
+#: 573ef86d8b214a32a0d868d27d7f4a6c
+msgid "`on_hibernate`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:151
+#: 58f9d9756d8e40ebab9c1f60fe4d4e35
+#, fuzzy
+msgid "`switch_core_standard_on_hibernate()`"
+msgstr "`switch_core_session_t`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:213
+#: 5d219ffa656c48898d4c84c7278382ea
+#, python-brace-format
+msgid ""
+"`STATE_MACRO` 最后写成 `do { ... } while (silly)`；在调用它的函数里 `silly` 初始化为 "
+"`0`，所以主体只执行一次。这个形式同时保证宏可以安全地放在 `case` 或 `if/else` 语句中， 并不是一个循环状态机。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:217
+#: 0361e5a7a3764c28981c9752e553e91a
+msgid "2. 三类 handler 的来源"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:219
+#: 701528bf829e4dc3ae46096de1d3e8b8
+msgid "一张 `switch_state_handler_table_t` 是一组按状态排列的函数指针；单个回调的签名是："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:225
+#: 0e8ca4a520094cff953b64714cf4ec9a
+msgid "一次状态处理涉及三类表："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:241
+#: 644717ddc63a4d00a07844c7a917332d
+msgid "**Endpoint/Driver handler**"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:243
+#: b399bbb6d418432aaca0b10470f477ec
+msgid "`switch_core_session_run()` 启动时从当前 session 取出 endpoint interface："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:250
+#: 2e02c0e85d9243e1b6c0ebe8331791e0
+msgid "位置：`src/switch_core_state_machine.c:557-561`。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:252
+#: b337acabfe2f45baa835832e46130507
+msgid "endpoint 模块在加载时创建 interface，并手动填充 `state_handler`。例如 `mod_sofia`："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:271
+#: b2fff6a6e0934f66affb3ee287035e91
+msgid "然后在 `mod_sofia.c:6836-6839`："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:277
+#: 0d2d34d5598e4ef9948a621d7f6bcf22
+msgid ""
+"因此，Sofia session 的 `driver_state_handler` 就是 "
+"`sofia_event_handlers`；Verto、RTMP、 Skinny 等 endpoint 则使用各自模块的表。endpoint "
+"interface 的字段定义见 `src/include/switch_module_interfaces.h:177-193`。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:281
+#: ba1d38e317664631816aca8f17a8fd55
+msgid "**当前 Channel 的动态 handler**"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:283
+#: ae77621dcae941d6b371eb14dfe631a4
+#, fuzzy
+msgid "`switch_channel_t` 内部保存："
+msgstr "`switch_channel_t`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:290
+#: 5a67014f5b13445088060b5195a590f2
+msgid "应用或通话流程通过："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:296
+#: 6df9092c36054830a809513c08c81804
+msgid ""
+"注册；宏通过 `switch_channel_get_state_handler(channel, index++)` 按插入顺序读取。 "
+"实现位置：`src/switch_channel.c:3044-3086`。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:299
+#: efd4a073e9b942a48d6cc6cb35e8f42d
+msgid ""
+"这类表通常表示某个 Channel 的临时业务行为，例如 bridge、originate、spy 或 HTTP API 流程。它们不改变 "
+"endpoint 的默认表，而是附加到当前 Channel 上。清理时："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:302
+#: 2933d99771134b0f9589fda3f8a4a66f
+msgid "传入具体指针：只移除那张表；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:303
+#: 531ebd7489dd4ba5965bbd707201b2d1
+msgid "传入 `NULL`：只保留带 `SSH_FLAG_STICKY` 的表；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:304
+#: 63040ce7a6704f2981b80b61d5f2d523
+msgid "所有增删读取都使用 `channel->state_mutex`。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:306
+#: f17962637da64ac5ab47935d5a5f9901
+msgid ""
+"例如 bridge 在 `src/switch_ivr_bridge.c:1563-1564` 把 "
+"`signal_bridge_state_handlers` 加入两个 Channel。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:309
+#: 75ef4f2bde57457b9892636a132eb2fb
+msgid "**Core 全局 handler**"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:311
+#: 9bb4a0eda3834c88a32255d168ae9a12
+#, fuzzy
+msgid "Core runtime 另有一个全局数组："
+msgstr "核心运行时"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:318
+#: 82904d15f4bf401cb7c7085781babf11
+msgid "模块通过："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:324
+#: 6823999a4af0414f91920f8325c774ad
+msgid ""
+"注册，宏通过 `switch_core_get_state_handler(index++)` 读取，实现位置是 "
+"`src/switch_core.c:291-343`。例如 `mod_nibblebill` 在加载时注册 "
+"`nibble_state_handler`（`src/mod/applications/mod_nibblebill/mod_nibblebill.c:1057`）。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:328
+#: 9ea8feb6070d4dc9851c03bb063494f5
+msgid ""
+"这类 handler 面向整个 Core 的 session，而不是某个特定 Channel；注册和移除使用 "
+"`runtime.global_mutex`。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:331
+#: fd9060e650fb4a3a8700fe5ad1bdc54a
+msgid "3. 每次状态处理的执行顺序"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:333
+#: 479fef25e5a940ee95c3d6058222c50a
+msgid "以 `STATE_MACRO(routing, \"ROUTING\")` 为例，完整顺序如下："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:351
+#: 30748b4226a444c7bc408b3106c30b2f
+msgid "具体分为以下步骤："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:353
+#: dfe4ac27c5af4b83be56a97c1f3b770c
+msgid ""
+"保存 `midstate = state`，输出 `State ROUTING` 日志；如果通话仍处于未保持状态， 将 callstate 设为 "
+"`CCS_ACTIVE`，并请求视频刷新、生成媒体关键帧。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:355
+#: 5e2bf8ecd81d40ff96251167f686d9df
+msgid ""
+"从 `switch_channel_get_state_handler()` 遍历当前 Channel 的表，只执行带 "
+"`SSH_FLAG_PRE_EXEC` 的回调。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:357
+#: 831b99303108472291b5b1524666d072
+msgid ""
+"从 `switch_core_get_state_handler()` 遍历 Core 全局表，只执行带 `SSH_FLAG_PRE_EXEC` "
+"的回调。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:359
+#: b29d085e3f3b420d913cfa908ef22cb3
+msgid ""
+"调用 endpoint 的 `driver_state_handler->on_routing`。如果该字段为 `NULL`，也视为 "
+"成功；否则只有返回 `SWITCH_STATUS_SUCCESS` 才进入下一阶段。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:361
+#: 508db41559ab4a41b462c1cced4f8063
+msgid "再次遍历 Channel 表，跳过 PRE handler，执行未设置 `SSH_FLAG_PRE_EXEC` 的回调。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:362
+#: a4c4f3118d0b44b192a31bc2a2bc69f9
+msgid "再次遍历 Core 表，跳过 PRE handler，执行未设置 `SSH_FLAG_PRE_EXEC` 的回调。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:363
+#: b6841760241140af911cb993fdc65955
+msgid ""
+"如果没有 veto，且 handler 执行期间没有改变 Channel State，调用 "
+"`switch_core_standard_on_routing()`。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:366
+#: f594780935754f66b60a6b1a828a7441
+msgid ""
+"没有对应状态函数的槽位（例如表中的 `on_consume_media = NULL`）不构成失败；宏把 `NULL` "
+"当作“本层没有意见”，继续执行后续流程。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:369
+#: 1d2ac101d7a842e99ca48ef29234cc5c
+msgid "4. `proceed`、`global_proceed` 与返回值"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:371
+#: 7f0422622b4c4fc69dc14bf022305481
+msgid "handler 的返回值在这里是“是否允许后续状态行为继续”的控制信号，而不只是普通的错误码："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:335
+#: 900599b3a2a249aba61db34198ba4bbf
+msgid "位置"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:335
+#: d6a0061b06c9482b81470a1df4f063a1
+msgid "返回 `SWITCH_STATUS_SUCCESS` 或函数为 `NULL`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:335
+#: f5d932b9fcb149ba923e6ea357ef3392
+msgid "返回其他状态"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:335
+#: 14c30c4bc54c42bda89b3746a3c88e5c
+#, fuzzy
+msgid "Channel PRE"
+msgstr "通道"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:335
+#: 4819cd185a284350bd75470d71c16e6c a1639d7538564ca3a62c106d2ce5b6da
+msgid "继续扫描并继续后续阶段"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:335
+#: 56b34e830f3e4df09259d74989d2f287 af49bc73bddc4cb5969acc73d8f80177
+msgid "记录全局 veto；driver 仍会被调用"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:335
+#: d726ba159ca34ae6a6b93f5d49e34bf6
+#, fuzzy
+msgid "Core PRE"
+msgstr "核心运行时"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:335
+#: 1fe438a10b0d4537b84c4a8137ebcb1c
+msgid "Driver"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:335
+#: 37a6750dbd3d41e0bab87c2a8fe73e89
+msgid "进入 POST handler"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:335
+#: 109d0a06e34c45258870241e6ad321a6
+msgid "直接跳过 POST 和默认行为"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:335
+#: ba5bf7d4f5ed4cb0b9e1472249d6899c
+#, fuzzy
+msgid "Channel POST"
+msgstr "通道"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:335
+#: 6963bedf10824fcab22e5bd96f0691d4 90285611241149b6abec2d14b85bf883
+msgid "继续"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:335
+#: 3cc359d9b8a84cd48615ee6afd4fba74 cd48831c8db44b2e90c9f69f0300bbde
+msgid "禁止默认行为，并停止当前 POST 扫描"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:335
+#: ca9ddf6634784d6085e964b71d4cb869
+msgid "Core POST"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:381
+#: 4e8aed45cf4f4f9c877efd0b9d8a1e86
+msgid "这里有两个容易混淆的变量："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:383
+#: 223dd2e058e34db3a08da6abb8c33cba
+msgid ""
+"`proceed`：当前一轮 handler 扫描能否继续。某个 handler 返回非成功时置零；Core PRE/POST "
+"的循环还会用它决定是否继续扫描下一个 handler。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:385
+#: cb108871383c4ab4bc151fdcc540db2b
+msgid ""
+"`global_proceed`：本次状态是否允许进入默认 `switch_core_standard_on_<state>()`。 "
+"Channel PRE、Core PRE、Channel POST、Core POST 的 veto，以及状态被中途改变，都会 让它变成 `0`。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:389
+#: 3536bb95d4fd43f6af31041aca85302d
+msgid ""
+"因此，Channel/Core 的 PRE handler 返回失败并不等于 driver 不执行；它主要阻止最后的 默认行为。Driver "
+"handler 返回失败则是更强的截断点，会连 POST handler 一起跳过。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:392
+#: f43d36434fdd40708c6479f8707fbe58
+msgid "状态变化也会阻止旧状态的默认逻辑继续执行：宏最后检查："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:398
+#: 43c84f1307d848fab8d6c0fcb7fd4cea
+msgid "例如 `on_routing()` 已经把 Channel 改到 `CS_HANGUP`，本轮就不会再执行旧的默认 `on_routing` 行为。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:401
+#: bfaae80c4292400fbc4deec097760285
+msgid "5. 默认行为如何推动状态变化"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:403
+#: 70df3a2f595e4035b9353262cdb8bd99
+msgid "`STATE_MACRO` 自身不负责状态跳转；它只是调用 handler 和默认函数。真正的跳转发生在 这些回调内部："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:427
+#: 7aa14243d7e94b52bd150697c2d4fe1c
+msgid ""
+"例如 "
+"`switch_core_standard_on_routing()`（`src/switch_core_state_machine.c:222-316`）会："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:429
+#: de1afa38e5d0488a9848806036de7294
+msgid "根据 caller profile 选择 dialplan；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:430
+#: d536b07f91834f2d9cb83a0d6906bb7a
+msgid "调用 dialplan interface 的 `hunt_function`；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:431
+#: ae4bcdf82037492cb5e5b971a2c8d8d4
+msgid "找到 extension 后设置 `CS_EXECUTE`；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:432
+#: f4494a8e901f4b8593e97e2f7385121d
+msgid "outbound 无 dialplan 时进入 `CS_CONSUME_MEDIA` 或挂断；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:433
+#: ff696d333412494bb328b7ca931e44a4
+msgid "无法路由时以 `SWITCH_CAUSE_NO_ROUTE_DESTINATION` 挂断。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:435
+#: e970bd71787e4ca28cefc5a48929eeeb
+msgid ""
+"`switch_core_standard_on_execute()`（`src/switch_core_state_machine.c:318-386`）则循环执行"
+" 当前 extension 的 application；应用执行完且 Channel 仍然处于 `CS_EXECUTE` 时，默认会 以 "
+"`SWITCH_CAUSE_NORMAL_CLEARING` 挂断。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:439
+#: 0ad8b4cc79734550ac5564434eead4a5
+#, fuzzy
+msgid "6. `switch_core_session_run()` 如何触发这条管线"
+msgstr "`switch_core_session_t`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:441
+#: ba891a6197df4100b5eccb2a03c22659
+msgid "session 线程在 `switch_core_session_run()` 中持续观察 Channel State："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:464
+#: 397dba69b8c2499f9466314513d3f8ee
+msgid "主循环中的关键点："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:466
+#: 2d9e150c977a4520826f1f6aecb9d5e7
+msgid ""
+"`running_state` 表示 session 线程当前已经认领并正在处理（或等待中的）状态；只有 state "
+"与它不同，才会进入新的状态处理分支（`src/switch_core_state_machine.c:575-584`）。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:468
+#: ac218dcbd0644dc8aad837c1f5f8f00c
+msgid ""
+"`CS_HANGUP` 和 `CS_REPORTING` 在主循环中分别调用专门函数，但这两个函数内部仍然 使用同一个 "
+"`STATE_MACRO`，所以挂断和 CDR/reporting 也共享 handler 管线。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:470
+#: 9487882d3ec2429fba81d21dd5c552eb
+msgid ""
+"`CS_NEW` 只记录日志；如果长期没有推进，主循环经过 500 次等待后将 Channel 以 "
+"`SWITCH_CAUSE_WRONG_CALL_STATE` "
+"挂断（`src/switch_core_state_machine.c:682-691`）。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:472
+#: 251583230ea44625b593a0d0892b6abd
+msgid ""
+"当 state 没有变化且没有 `CF_STATE_REPEAT` 时，session thread 设置 "
+"`CF_THREAD_SLEEPING`，在 `session->cond` 上等待；状态变化或事件会唤醒它 "
+"（`src/switch_core_state_machine.c:693-708`）。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:476
+#: 6652d312aee8458a925b50a4f0be6ac2
+msgid ""
+"所以“handler 执行”和“状态跳转”是两个动作：handler 或默认行为修改 Channel State， session "
+"主循环在下一轮看到新值，再选择新的 `case` 和新的 `STATE_MACRO`。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:479
+#: 2140349d26a844f284aa13bdd2bb460a
+msgid "7. 代码阅读导航与调试要点"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:481
+#: 44eaeb960038475e820ba16e05df2644
+msgid "阅读或排查一个状态时，按下面顺序定位最省时间："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:483
+#: 482048cb9d8f4534a0433caf7ddcc66a
+msgid ""
+"在 `switch_core_state_machine.c` 找主循环中的 `case CS_*`，确认该状态是否直接调用 宏，还是委托给 "
+"`hangup_state` / `reporting_state`。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:485
+#: 85fbd7a7a5054c6588c28196aec8bc2e
+msgid ""
+"找 `session->endpoint_interface` 的创建位置，确认具体 endpoint 的 `state_handler` "
+"表；Sofia 入口是 `mod_sofia.c:6836-6839`。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:487
+#: 81d19643b8e948c6a4e25810ac40b8c1
+msgid "搜索 `switch_channel_add_state_handler()`，列出当前业务流程可能附加的 Channel 表。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:488
+#: 085539942bff4373b9080244565b97b5
+msgid "搜索 `switch_core_add_state_handler()`，列出全局模块附加的 Core 表。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:489
+#: edf69dafae144ca9907160b15ef6fa54
+msgid "对每张表检查目标槽位是否为 `NULL`、是否设置 `SSH_FLAG_PRE_EXEC`、以及回调返回值。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:490
+#: 8519bea2e1c14d3c8eaa425221cd2d47
+msgid ""
+"最后检查回调内部的 `switch_channel_set_state()`、`switch_channel_hangup()` 和默认 "
+"行为，确认是谁推动了下一次状态变化。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:493
+#: 56dd17f80f8b41bbaffa54359a73f8e3
+msgid "常见误区："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:495
+#: f1b35734425b45c8b15800f5755030d4
+msgid "`state_handler` 不是一个 handler，而是一张包含所有 `on_<state>` 槽位的表；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:496
+#: 40468c5b8f5344849bc615005808890f
+msgid "endpoint 表、Channel 表、Core 全局表是三个不同的存储位置，不能混为一谈；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:497
+#: 448150632d814bf1b2117cad16d99918
+msgid "`SWITCH_STATUS_FALSE` 在这里常常表示“拦截默认行为”，不一定表示整个 session 失败；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:498
+#: 7faf3b666a194c8ea79bc156184363a2
+msgid "`STATE_MACRO` 不会自动把 `CS_ROUTING` 改成 `CS_EXECUTE`，状态改变必须由回调或默认行为 显式完成；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:500
+#: 5471257425df49f8b620c72940bc1b52
+msgid "`CS_HANGUP` / `CS_REPORTING` 的宏调用位于辅助函数中，不在主循环的 `case` 语句表面直接 展开。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:503
+#: 40a96101e9804d7ba7fec1d010998de1
+msgid "实例分析：`audio_bridge_on_exchange_media`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:505
+#: 4a4a3a1c7a3a4d0497a6c63e7c864f3a
+msgid ""
+"前面的 `STATE_MACRO` 机制可以用 `src/switch_ivr_bridge.c:969-1039` 这个函数具体说明。 "
+"它是一个很典型的 **Channel 级临时 state handler**：bridge 流程创建一个 B-leg 专用的 handler "
+"表，把它挂到 B-leg；当 B-leg 进入 `CS_EXCHANGE_MEDIA` 时，这个回调接管该状态， 启动 B-leg "
+"侧的音频桥接循环，桥接结束后清理 handler 并选择后续动作。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:510
+#: 5a87815e27c44a15a14c37252c85812c
+msgid ""
+"这里的“state handler”不是 `mod_sofia` 之类 endpoint interface 上的固定 driver 表，而是 "
+"`switch_channel_add_state_handler()` 加到某个 Channel 上的附加表。它的完整关系是："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:525
+#: 37dd06fa9d5c44b8b7c254644e6197fb
+msgid "1. 先看这张 handler 表"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:527
+#: 957ffe64f1ee4c438559d18ae44693b6
+#, fuzzy
+msgid ""
+"函数前面有一个前置声明：`src/switch_ivr_bridge.c:35`；完整表定义在 "
+"`src/switch_ivr_bridge.c:1062-1070`："
+msgstr "`switch_ivr_originate`, `src/switch_ivr_bridge.c`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:542
+#: bbb88d8b8ad94b97a8fa138ed91432f4
+msgid ""
+"这个初始化器只填到 `on_consume_media`，后面的 `on_hibernate`、`on_reset`、 "
+"`on_park`、`on_reporting`、`on_destroy` 和 `flags` 都由 C 的静态初始化规则置为零。 因此这张表的 "
+"`flags == 0`，没有设置 `SSH_FLAG_PRE_EXEC`："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:552
+#: bc3c2fa2c53648b6aa8926493a684c5f
+msgid "对 `CS_EXCHANGE_MEDIA` 来说，真正被调用的是表中的："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:559
+#: ef7619388b25455ca699ec1fd11ac4a9
+msgid ""
+"而不是 `audio_bridge_on_routing()` 或 "
+"`audio_bridge_on_consume_media()`。同一张表还拦截 `CS_ROUTING` 和 "
+"`CS_CONSUME_MEDIA`，用于把 bridge 对端置于被动状态；本实例只追踪 `on_exchange_media`。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:563
+#: 305b3f1113f24dbb9ff4a10b12c835e8
+msgid "2. 谁安装它：`switch_ivr_multi_threaded_bridge`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:565
+#: 267097ee911b4475b00a33bb7c5e6043
+#, fuzzy
+msgid ""
+"安装入口是 `switch_ivr_multi_threaded_bridge()`，源码位于 "
+"`src/switch_ivr_bridge.c:1613-1961`。"
+msgstr "`switch_ivr_originate`, `src/switch_ivr_bridge.c`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:568
+#: 1b845a00d8c5450a9604195ae8035ca6
+msgid "它先为两条腿建立 bridge context："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:577
+#: a456e84dab5b4ed083dab6afa8de5cc2
+#, fuzzy
+msgid "`switch_ivr_bridge_data_t` 定义在 `src/switch_ivr_bridge.c:344-354`，关键字段是："
+msgstr "`switch_ivr_originate`, `src/switch_ivr_bridge.c`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:513
+#: 3a70de4c3d6e4138a9575405596f4e63
+msgid "字段"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:513
+#: 54655a5fea164f8791016f43c054d551
+msgid "A-leg context (`a_leg`)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:513
+#: 2ca68e8799134f239a38b5945a880d40
+msgid "B-leg context (`b_leg`)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:513
+#: 6245eb79d3084acbb77516bb2aa55f0a eb6d3e7ee4ab49d59ab7cab62954c13e
+#, fuzzy
+msgid "`session`"
+msgstr "会话"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:513
+#: ca506a7c55bc4147ae8aa9a02824e246
+#, fuzzy
+msgid "`peer_session`"
+msgstr "会话"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:513
+#: 8db614c27fc449aa872af3b0d6d44708
+msgid "`b_uuid`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:513
+#: 0827e94a6b9e4ffc8687c158f3601c9f
+msgid "B-leg 的 UUID"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:513
+#: d382341772e24fd59fda6b686016557d
+msgid "A-leg 的 UUID"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:513
+#: 105d8a1c1d784bb988e554e2868a3b12
+msgid "`other_leg_data`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:513
+#: e0ba4dcbcea74e40b7331c51e1724a52
+msgid "`b_leg`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:513
+#: 1e12dd85da7e40a698d6306fa8e31c6a
+msgid "`a_leg`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:513
+#: e2c74ccff76f4dd4b170fccb4acbb79c
+msgid "`input_callback` / `session_data`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:513
+#: b6aacfab1ecf40c09d75dd91335baefa
+msgid "A-leg 侧数据"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:513
+#: bcfa5650671345279fed20fd9c54cd79
+msgid "B-leg 侧数据"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:586
+#: 901db4267c614382add75aa41cb49bfb
+msgid "具体赋值在 `src/switch_ivr_bridge.c:1648-1662`。随后只把这张临时表挂到 B-leg："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:593
+#: d4914f5d73204ef7912c6f1ae14ef538
+#, fuzzy
+msgid "位置：`src/switch_ivr_bridge.c:1664`。"
+msgstr "`switch_ivr_originate`, `src/switch_ivr_bridge.c`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:595
+#: 5351adae16344947ae76293b69484454
+msgid ""
+"这一步只“安装回调表”，还没有立刻调用 `audio_bridge_on_exchange_media()`。后续代码在 "
+"确认两条腿已经具备桥接条件、设置完桥接变量后，才把 B-leg context 放入 Channel 私有 数据，并推动 B-leg 状态："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:604
+#: 20e321bc009a47b6922fd6ea114316c6
+msgid ""
+"位置：`src/switch_ivr_bridge.c:1786-1792`。`CF_ARRANGED_BRIDGE` 分支可能跳过这里的 "
+"`CS_EXCHANGE_MEDIA` 设置；下面按普通 audio bridge 路径说明。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:607
+#: 24d8dfddeed542f5b4ca28a1034136dd
+msgid "3. 为什么是 B-leg handler、A-leg 却先启动 bridge loop"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:609
+#: a31a19c0073946caa00245c039b368c7
+msgid "普通路径里紧接着执行："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:615
+#: 06784e996e104c14a8acda05cb6e7820
+#, fuzzy
+msgid "位置：`src/switch_ivr_bridge.c:1794`。"
+msgstr "`switch_ivr_originate`, `src/switch_ivr_bridge.c`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:617
+#: 1432dd9eb74b4b64874f016657129faf
+msgid "这里传入 `NULL` 作为 thread 参数并不会创建新线程，而是直接同步调用函数。于是普通 audio bridge 会形成如下配对："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:644
+#: 4e4b1d69b09c46a7825c2a12f7e7cf45
+msgid ""
+"也就是说，A-leg 侧的 `audio_bridge_thread(a_leg)` 由调用 "
+"`switch_ivr_multi_threaded_bridge()` 的上下文直接运行；B-leg 侧的同一个函数则由 "
+"`audio_bridge_on_exchange_media(b_session)` 从 B-leg 的 session state "
+"machine 调用。 两边通过各自 context 的 `b_uuid` 找到对端 session，形成两条方向相反的媒体处理循环。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:649
+#: b9b0bfc75146463bb31847caf9e2f322
+#, fuzzy
+msgid "`audio_bridge_thread()` 的定义在 `src/switch_ivr_bridge.c:356`。它会："
+msgstr "`switch_ivr_originate`, `src/switch_ivr_bridge.c`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:651
+#: 048e7ae360f94a99bcb004946f1ef52b
+msgid "通过 `data->b_uuid` 调用 `switch_core_session_locate()` 找到对端 session；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:652
+#: 5e8fdfca640547ccab409a3f9ef4cc49
+#, fuzzy
+msgid "获取两条腿的 Channel；"
+msgstr "通道"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:653
+#: 1a7d7bf349e7422193ef04cb9d9e874f
+msgid "循环读取音频帧、处理 DTMF、静音、媒体旁路，以及可选的文本/视频桥接；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:654
+#: 77d49b112a4c44579eb9e788138afaab
+msgid "把帧写入另一条腿；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:655
+#: 8a7724c94d8b4e69957436bb72ac3b18
+msgid "任一腿结束、读写失败、收到 break 或 bridge 策略触发时退出循环。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:657
+#: b23b34c239b940118bd3693756656dd8
+msgid ""
+"因此 `audio_bridge_on_exchange_media()` 不是音频帧循环本身；它是把 B-leg 从状态机接入 已经存在的 "
+"bridge context 的“入口适配器”。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:660
+#: b1d20ace5f484995bdd62c1e1a8370c0
+msgid "4. 它在 `STATE_MACRO` 的哪一层执行"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:662
+#: c187450a52664e8595d2521f6c6baeaa
+msgid ""
+"假设 B-leg 使用 Sofia endpoint，那么 B-leg 的固定 driver 表来自 "
+"`sofia_endpoint_interface->state_handler`，其中："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:669
+#: 3a996e642f16458886c62c69d6d0a4bb
+msgid ""
+"`sofia_on_exchange_media()` 在 "
+"`src/mod/endpoints/mod_sofia/mod_sofia.c:693-697` 返回 "
+"`SWITCH_STATUS_SUCCESS`。B-leg 进入 `CS_EXCHANGE_MEDIA` 时，实际顺序是："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:682
+#: be2b286d3e2e41a69a7570aa31b3c79f
+msgid ""
+"所以它不是在 `CS_EXCHANGE_MEDIA` 刚进入时最先执行，而是在 endpoint driver 成功之后 执行。对于其他 "
+"endpoint，driver handler 的返回值不同，可能会影响这个 Channel POST handler "
+"是否有机会执行：`STATE_MACRO` 在 driver 返回非成功时会跳过整个 POST 阶段。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:686
+#: c1e07d03fc004ff49fcacaa20725b59b
+msgid "5. 逐段解释 `audio_bridge_on_exchange_media`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:688
+#: a9604e513bb44a898f5bd4fa41e625b3
+msgid "**(a) 取出 Channel 和 bridge context**"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:696
+#: 6c783bd9116f49d59e126d6f2bb0bb8a
+msgid ""
+"`session` 是 B-leg session；`channel` 是 B-leg Channel；`bd` 应该就是此前在 "
+"`switch_channel_set_private(peer_channel, \"_bridge_\", b_leg)` 放进去的 "
+"B-leg context。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:699
+#: 781ca8747a97460c8fb92aa59494f542
+msgid "**(b) 先清掉私有指针，再执行 bridge loop**"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:706
+#: 67e9bf6f1bc64a38ac35c36e1231e64e
+msgid ""
+"这是消费一次性 bridge context 的动作，避免同一个指针在重复进入 `CS_EXCHANGE_MEDIA` 时被再次消费。它清掉的是 "
+"Channel 私有数据中的引用，不是释放 `bd`；`bd` 来自 session memory pool，生命周期仍由 session "
+"pool 管理。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:710
+#: fbde863edf21415485a35363c7eb662a
+msgid "**(c) 校验 context 是否属于当前 session，且对端 UUID 存在**"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:716
+#: 6014eba7774c4d91acb0ff3715c3c768
+msgid ""
+"`b_leg->session` 在 `src/switch_ivr_bridge.c:1648` 被设为 `peer_session`，正好对应"
+" 调用这个 handler 的 B-leg session；`b_leg->b_uuid` 则在 "
+"`src/switch_ivr_bridge.c:1649` 保存 A-leg UUID。这个判断防止用错误的 context 启动 "
+"bridge。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:720
+#: 6d6871c42bbe4961a0caa9603735c188
+msgid "**(d) 同步进入 B-leg 的 bridge loop，然后重置媒体资源**"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:727
+#: 33048671473b45a3b89719815137b6f0
+msgid ""
+"这里仍然是同步调用：`audio_bridge_thread()` 返回前，当前 B-leg session thread 会一直 "
+"停留在该调用中。bridge loop 退出后，`switch_core_session_reset()` 清理/重置读写 codec、 "
+"resampler、session message、raw buffer 和 DTMF 等资源（实现： "
+"`src/switch_core_session.c:1391-1432`）。这个 reset 函数本身不负责把 Channel State 改成"
+" `CS_RESET`；后面的代码会根据 bridge 结果决定下一状态。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:733
+#: 5133774d32f348e38a3a64e9a2b043f5
+msgid "如果 context 不合法，或根本没有 `_bridge_` context，则走："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:740
+#: f51affef34c849c69201e0cd3f9e5545
+msgid "对应源码：`src/switch_ivr_bridge.c:976-986`。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:742
+#: 1bd2d775259e445b99309a07fd3bc67b
+msgid "**(e) 无论如何都移除这张临时 handler 表**"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:749
+#: c676f05066874df98efdc6848efdd6fc
+msgid ""
+"位置：`src/switch_ivr_bridge.c:987`。传入具体表指针意味着只移除 "
+"`audio_bridge_peer_state_handlers`，不会误删其他 Channel handler。此后 B-leg 不再通过 "
+"这张表处理后续状态。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:753
+#: 92054c6ece484ed0bc28e0b7232fae37
+msgid "**(f) bridge 结束后的策略分支**"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:755
+#: 341f6d942d224762a0a9be34ee636b03
+msgid ""
+"函数随后重新读取当前状态，并检查 transfer、redirect、zombie、`clean_exit`、inner bridge "
+"等条件。普通 audio bridge 的主要结果如下："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: 9f736699915341bba05b27541191816c
+msgid "条件"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: f6beb314c3614a5a9f2a0ac77ed0c240
+msgid "动作"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: 10a0ec140d0f4631bdd14af0616c34d8
+msgid "返回值/状态效果"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: 70aeb86e2f9e408b8cb69326099de397
+msgid "`park_after_bridge`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: 4ec5ca733ea0470ea4ac344fa9897385
+#, fuzzy
+msgid "`switch_ivr_park_session(session)`"
+msgstr "`switch_core_session_t`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: 92fa2e4b899849ecb28c19c04aa3d55b
+msgid "返回 `SWITCH_STATUS_FALSE`，交给 park 流程"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: 0a66089126b34556ad45efdbe014a152
+msgid "`transfer_after_bridge`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: dc83c1a603f94bedbf8168cb2fc108ac
+msgid "`transfer_after_bridge(session, var)`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: 938de8c3ad3b4f898e24b00814dd2ed5
+msgid "返回 `SWITCH_STATUS_FALSE`，发起转移"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: bc88debc70c745069d249fcd8a984547
+msgid "B-leg 被 intercepted"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: d895c8bc3ce14503b9944461f0622c19
+msgid "清理 intercept 标志"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: 654cad6e764a4b6ca6f1cd1514a5fbd5 dd75eaae1791413790ed3150c583b101
+#: e89089fbbb224fe18176a2aea5281f37 f2236c931fea46cf9d3737d50c48057e
+msgid "返回 `SWITCH_STATUS_FALSE`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: 98b588a5083541959cec636bad0896ac
+msgid "未接通且没有 orphaned B-leg hooks"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: d6d83a96e09147368854360d67848b97
+msgid "B-leg 以 `ORIGINATOR_CANCEL` 挂断"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: a072d38940914e1c9df4212a238d8980
+msgid "已接通"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: 6d0557f69b5441ce87df44722aba3132
+msgid "B-leg 以 `NORMAL_CLEARING` 挂断"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: 5a70bb5873784ceabec53cf5e8ea5ff5
+msgid "仍处于 `CS_EXCHANGE_MEDIA`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: 4bb87df017e74499915830ff93b063a7
+msgid "设置 `park_timeout=3`，转到 `CS_PARK`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:767
+#: 70ccfa00ce1544fa8e7f1bc467f6f1d9
+msgid ""
+"相关代码在 `src/switch_ivr_bridge.c:989-1038`。如果未接通，代码会先尝试 "
+"`execute_on_orphaned_bleg` 和 `api_on_orphaned_bleg`；至少一个 hook 成功执行时，不会 "
+"立即执行默认的 `ORIGINATOR_CANCEL` 挂断。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:771
+#: 88a72f9ab6064b3488af5b363d2fd2d6
+msgid "6. 为什么它总是返回 `SWITCH_STATUS_FALSE`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:773
+#: 5c218362ef474b458d8b46ff102e1ed4
+msgid "这个函数最后无条件："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:779
+#: f1f7f6facd6c448c9f3d4eb92f7ba127
+msgid ""
+"在普通业务函数里看到 `FALSE` 容易误以为 bridge 失败；在这里它是有意的状态机控制 信号。由于这张表没有 "
+"`SSH_FLAG_PRE_EXEC`，它是在 Channel POST 阶段运行；返回 FALSE 会让 `STATE_MACRO`："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:783
+#: 208e632c03ae4356811a6549094273ff
+msgid "把 `proceed` 置零；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:784
+#: 9f212dd5a19e4a6ba2dad92a013c31c3
+msgid "把 `global_proceed` 置零；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:785
+#: 1f7c37f17d284f4e9de2aaf76a1273b0
+msgid "不再执行 `switch_core_standard_on_exchange_media()`。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:787
+#: c9fcbee1d4884785949398726e290516
+msgid ""
+"这样做表示：B-leg 的 `CS_EXCHANGE_MEDIA` 已经由 audio bridge 逻辑处理，不能再让通用 默认 handler"
+" 接管。即使当前代码最后把 B-leg 放入 `CS_PARK`，这个状态变化也是本函数 显式完成的，不是 `return FALSE` "
+"自动完成的。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:791
+#: 62710c2274fd4ca799716a06c6aea6ec
+msgid "完整控制流可以压缩为："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:804
+#: a1c115cf65a2445c9f989baf0b830d2d
+msgid "7. 这个实例揭示的通用模式"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:806
+#: ba097e7a764848628f981e2d77e454a7
+msgid ""
+"`audio_bridge_on_exchange_media()` 展示了 FreeSWITCH 中临时 state handler 的几个关键"
+" 设计点："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:809
+#: f0cede181fc1479096d396edf38443eb
+msgid ""
+"**表是能力集合，不是单个回调**：同一张表可以同时覆盖 routing、exchange media、 consume media；未填槽位就是"
+" `NULL`。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:811
+#: a33d5db26ee04aa6a1171a68e9d44201
+msgid ""
+"**安装和触发分离**：`add_state_handler()` 只登记表；必须等 Channel State 变成对应 "
+"`CS_*`，session thread 才会在 `STATE_MACRO` 中调用对应槽位。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:813
+#: da3c314e3d124e1da7cc007ff030956d
+msgid ""
+"**handler 可以消费一次状态**：先清 `_bridge_` 私有数据，再清 handler 表，表示这次 exchange-media "
+"进入是一次性入口。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:815
+#: b8f456e5e5c14c3aaa6a3190673c4e09
+msgid ""
+"**handler 可以把状态处理权交给长循环**：状态线程在回调内同步运行 bridge loop；这也 是为什么 bridge "
+"期间不能把这个回调简单理解成一个瞬时通知。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:817
+#: c8ab1f5809cd4f3886e9476919bf5a55
+msgid "**返回值是调度协议**：`SWITCH_STATUS_FALSE` 在这里不是“没有做成 bridge”，而是 “不要执行通用默认状态行为”。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:819
+#: 6d5fd4a33c3f4676a0508c2da13032cd
+msgid ""
+"**状态改变由业务代码显式完成**：`set_state(CS_EXCHANGE_MEDIA)`、`set_state(CS_PARK)`、 "
+"`hangup()` 都是明确的状态推进点；宏只是按当前状态分派处理。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:822
+#: 35bf82393eb74e3dba8a010632a8030c
+msgid "Module loader"
+msgstr "模块加载器"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:824
+#: f084c3c5ca11405a87743c04a6727bb7
+#, fuzzy
+msgid ""
+"**Responsibilities**: dlopen modules from `mod_dir`, register interface "
+"tables (endpoint, dialplan, application, codec, API, file, say, ASR, …) "
+"on `switch_loadable_module_interface`. This registration is the core "
+"extensibility mechanism: [Loadable module contract](#loadable-module-"
+"contract)."
+msgstr ""
+"**职责**：从 `mod_dir` dlopen 模块，在 `switch_loadable_module_interface` "
+"上注册接口表（endpoint、dialplan、application、codec、API、file、say、ASR、…）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:825
+#: 976f48afe4a74b21983498a4d8bab54f
+msgid ""
+"**Key entry points**: `src/switch_loadable_module.c`, "
+"`src/include/switch_loadable_module.h`, "
+"`src/include/switch_module_interfaces.h`. Modules export "
+"`SWITCH_MODULE_DEFINITION` / `SWITCH_MODULE_LOAD_FUNCTION`."
+msgstr ""
+"**关键入口**：`src/switch_loadable_module.c`、`src/include/switch_loadable_module.h`、`src/include/switch_module_interfaces.h`。模块导出"
+" `SWITCH_MODULE_DEFINITION` / `SWITCH_MODULE_LOAD_FUNCTION`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:826
+#: d1c7ddb5c426440e91b0fcf69f0912c2
+#, fuzzy
+msgid ""
+"**Failure modes**: missing `.so` or load error is logged; "
+"`critical=\"true\"` on a `<load>` tag calls `abort()`. "
+"`switch_core_init_and_modload` fails the whole startup if "
+"`switch_loadable_module_init(SWITCH_TRUE)` itself returns failure (for "
+"example core SQL after pre-load). A non-critical missing DSO does **not**"
+" fail that function."
+msgstr ""
+"**失败模式**：缺少 `.so` 或加载错误会被记录；若 `switch_loadable_module_init(SWITCH_TRUE)` "
+"失败，`switch_core_init_and_modload` 会使整个启动失败。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:828
+#: 3d09b860f88e47eabb5a51bbb449ba77
+#, fuzzy
+msgid "Runtime load tag"
+msgstr "运行时"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:830
+#: 829a0b7f72104b6e84acd9c31642ea73
+msgid ""
+"Vanilla example: `<load module=\"mod_sofia\"/>` in "
+"`conf/vanilla/autoload_configs/modules.conf.xml`. Commented `<!-- <load "
+"…/> -->` lines never become XML children."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:832
+#: 231d8036fd6242a1882c0caee08e3af5
+msgid ""
+"Startup order inside `switch_loadable_module_init()` "
+"(`src/switch_loadable_module.c`): built-in `CORE_*` modules → `<load>` "
+"rows in `pre_load_modules.conf` → `switch_core_sqldb_init()` → remaining "
+"`CORE_*` (VPX when built) → `<load>` rows in `modules.conf` → `<load>` "
+"rows in `post_load_modules.conf` → `switch_loadable_module_runtime()`. "
+"Console/ESL `load` / `unload` / `reload` use the same "
+"`switch_loadable_module_load_module()` path; `reloadxml` does **not** re-"
+"walk these lists."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:834
+#: f25beacf0f004a81ba72fd526fb1915e
+msgid "Each `<load>` is a sibling under `<modules>`. Attributes:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: dfbbb696aa2e45f2825a6502ea4d4cd6
+msgid "Attribute"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: ac043fc278784ff2a82bdf9e581e25c2
+msgid "Effect"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: a095484442324ffd9075d4b218583963
+msgid "`module`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: 394e89e2f1714e3c8f08ccdac20cf9a9
+msgid ""
+"Required. Basename (`mod_sofia`). On non-Windows the loader appends `.so`"
+" under `mod_dir` unless `module` is already a filesystem path. A name "
+"containing `.` that is not a recognized DSO suffix is skipped (`Invalid "
+"extension for …`)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: abeec398f1324eb490f379bb94ebf440
+msgid "`path`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: 868a150ec96c48539b5b925c4afccae2
+msgid ""
+"Optional directory of the DSO. Omitted or empty → "
+"`SWITCH_GLOBAL_dirs.mod_dir`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: 2ea8cf11adf9465ea53a8bb36a0c5ea2
+msgid "`global`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: 87b8bc9635834a3893ac8680289e87e8
+msgid ""
+"`true` → open the DSO with global symbols (`RTLD_GLOBAL` via "
+"`switch_dso_open`)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: a2774ecbfb1447b89da410a8801327b8
+msgid "`critical`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: bb84a0e9ba38485f94fd3cc205c000d7
+msgid ""
+"`true` → load `SWITCH_STATUS_GENERR` aborts the process. Vanilla "
+"`mod_sofia` is not marked critical. Not read on the post-load list."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:843
+#: 29a81f2acfe445b19275d6cadd90a35b
+#, python-brace-format
+msgid ""
+"Execution for `module=\"mod_sofia\"`: "
+"`switch_loadable_module_load_module_ex` → "
+"`switch_loadable_module_load_file` opens `{mod_dir}/mod_sofia.so`, "
+"resolves the exported table `mod_sofia_module_interface` "
+"(`SWITCH_MODULE_DEFINITION` in `src/include/switch_types.h`), checks "
+"`SWITCH_API_VERSION`, then calls the `load` pointer (`mod_sofia_load`). "
+"That function registers interfaces and, for Sofia, "
+"`config_sofia(SOFIA_CONFIG_LOAD, NULL)` plus profile threads. Success "
+"logs `Successfully Loaded [mod_sofia]` and inserts the module into "
+"`module_hash`. Duplicate load: `Module … Already Loaded!`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:845
+#: f7cad46a190c4ea68b15e0a2b2f1c591
+#, fuzzy
+msgid ""
+"Startup sequence with these symbols: [Server startup](05-workflows.md"
+"#runtime-load-tag). Operator parameter tables: [Users Manual Chapter "
+"5](https://developer.signalwire.com/freeswitch/configuration/module-"
+"loading/)."
+msgstr ""
+"有两份不同的 “modules.conf” 需要分清（[用户手册第 5 "
+"章](https://developer.signalwire.com/freeswitch/configuration/module-"
+"loading/)）："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:847
+#: 72f8913bdec44a899ea3844b6aa4dbf0
+msgid ""
+"The **tables** that `mod_sofia_load` fills after `dlopen` are the "
+"extensibility contract: [Loadable module contract](#loadable-module-"
+"contract)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:849
+#: d78390989c204473a27dd2c245a11907
+#, fuzzy
+msgid "Loadable module contract"
+msgstr "模块契约"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:851
+#: fc3b0db1892644929fdf21992d8bc4a1
+msgid ""
+"This is the plugin architecture. FreeSWITCH does **not** read an IDL, "
+"protobuf, or GObject type file to discover what a module can do. After "
+"`dlopen`, the module’s **load function runs in-process and pushes C "
+"function pointers plus names into a core registry**. Later, dialplan XML,"
+" `fs_cli`, originate, and the media layer only do **string → hash lookup "
+"→ call the pointer**. That is C-style dependency injection plus a service"
+" locator: providers register; consumers look up by name."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:853
+#: 848fad5174cc461f84c4e21732b0fa0c
+msgid ""
+"`libfreeswitch` owns sessions, the `CS_*` state machine, media, XML, and "
+"the event bus. Modules extend those surfaces; they do not fork the core. "
+"Same ABI, same headers (`src/include/switch.h`), same address space — so "
+"the function pointer **is** the interface. Skeleton: "
+"`src/mod/applications/mod_skel/mod_skel.c`. Types: `switch_types.h`, "
+"`switch_loadable_module.h`, `switch_module_interfaces.h`. Container of "
+"hashes: `struct switch_loadable_module_container loadable_modules` in "
+"`src/switch_loadable_module.c`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:862
+#: b1cfaff0ac6446efb399bfabdc0cb3ee
+msgid "Discover the file, then the entry symbol"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:864
+#: 9738efb77c934bea8bb29b9ed4c6f910
+#, python-brace-format
+msgid ""
+"Phase 1 is XML, not reflection: `<load module=\"mod_sofia\"/>` → "
+"`{mod_dir}/mod_sofia.so` → `switch_dso_open` (`dlopen` / "
+"`LoadLibraryEx`). Detail: [Runtime load tag](#runtime-load-tag)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:866
+#: 389efc4cd2c14c4fb7cb16b87166905b
+#, python-brace-format
+msgid ""
+"Phase 2 is a **C symbol**. `SWITCH_MODULE_DEFINITION(mod_example, "
+"mod_example_load, shutdown, runtime)` expands to "
+"`mod_example_module_interface` of type "
+"`switch_loadable_module_function_table_t`: `{ SWITCH_API_VERSION, load, "
+"shutdown, runtime, flags }` (`switch_types.h`). "
+"`switch_loadable_module_load_file` `dlsym`s that name, checks "
+"`SWITCH_API_VERSION` (currently **5**), then calls "
+"`load(&module_interface, pool)`. A mismatch logs *Trying to load an out "
+"of date module*. `runtime` may be `NULL` (Sofia has no core module-"
+"runtime thread)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:868
+#: dfb96ac308c94a1a81d19e128e2019a1
+msgid "There is no separate “plugin manifest” beside that exported table."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:870
+#: 6d330fd0b685467794e62241c43badbd
+msgid "The module bag vs the global hashes"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:872
+#: 48707b164e1c40e9913115e05c94cf70
+msgid "Load **must** allocate the bag first:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:878
+#: 41c7b16aa8ad4fd99152ad448fcbd191
+msgid ""
+"`switch_loadable_module_interface_t` is this module’s list of "
+"capabilities: `endpoint_interface`, `application_interface`, "
+"`api_interface`, `codec_interface`, `dialplan_interface`, chat, JSON API,"
+" file, speech, ASR, say, timer, directory, management, limit, database, …"
+" Each kind is a **singly linked list** (`next`). "
+"`switch_loadable_module_create_interface(mod, "
+"SWITCH_APPLICATION_INTERFACE)` (`ALLOC_INTERFACE`) appends one node on "
+"the module pool, sets `parent` / `rwlock`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:880
+#: 8eb4ce99086049459357757041b73323
+msgid ""
+"`SWITCH_ADD_APP` / `SWITCH_ADD_API` / `SWITCH_ADD_CHAT` / "
+"`SWITCH_ADD_DIALPLAN` / `SWITCH_ADD_CODEC` / `SWITCH_ADD_JSON_API` / "
+"`SWITCH_ADD_LIMIT` are thin wrappers around `create_interface` plus field"
+" assignment (`switch_loadable_module.h`). **There is no "
+"`SWITCH_ADD_ENDPOINT` macro.** Endpoints call `create_interface(..., "
+"SWITCH_ENDPOINT_INTERFACE)` and fill `interface_name`, `io_routines`, "
+"`state_handler` by hand (`mod_sofia_load`)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:882
+#: 96e6e23d4ade4eb6b12eb44479fbdeb3
+msgid ""
+"When `load` returns success, `switch_loadable_module_process` walks those"
+" lists and inserts into **global, mostly case-insensitive hashes** "
+"(`application_hash`, `api_hash`, `endpoint_hash`, `dialplan_hash`, …). "
+"Codec and file hashes key by IANA / extension and may chain several "
+"implementations. Each successful insert can fire "
+"`SWITCH_EVENT_MODULE_LOAD` (`type` = `application` / `endpoint` / …). "
+"Optional `interface-allowlist` in `switch.conf` can skip app/API/JSON"
+"/chat-app names."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:884
+#: e519ad6306ce4ad29f6fe7de2a6f64af
+msgid "Two stores, two jobs:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: 1564b24c08ca4b2b85f79d701b3ca073
+msgid "Store"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: e730f2d4d7fc496792c98ee2be146280
+msgid "Shape"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: 9608daccbedc4aa9a7d4d4eea07629c2
+msgid "Per-module bag"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: 80cf6a1f64904a6d979eb5a808b616dd
+#, fuzzy
+msgid "linked lists on `switch_loadable_module_interface_t`"
+msgstr "`switch_loadable_module_interface`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: d7af639a727649d08f1996cd18a79e26
+msgid "What this DSO owns; unload walks the same lists"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: 6d7b1670659546f7b91b1634dc73f26c
+msgid "Global hashes"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: b6a6e43b7e6c48009ae072b788b67860
+#, fuzzy
+msgid "`loadable_modules.*_hash`"
+msgstr "`switch_loadable_module_interface`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: 103fa2d4e6404035bae6b436fd5d3332
+msgid "Runtime **name → interface struct**"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:891
+#: 2e16059b0b664c239f51ac884ad931ab
+msgid ""
+"Getters are `switch_loadable_module_get_*_interface(name)` (`HASH_FUNC` "
+"in `switch_loadable_module.c`). `PROTECT_INTERFACE` bumps a refcount "
+"while a call is in flight."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:893
+#: 82c343a4c4994669a8d75449971ae13f
+msgid "What an interface struct is"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:895
+#: 6bfaae622b9247eeac397776c07b8ecb
+msgid ""
+"Not a proxy object. Example — `switch_application_interface_t` "
+"(`switch_module_interfaces.h`): `interface_name`, `application_function`,"
+" `short_desc` / `long_desc`, `syntax`, `flags`, `parent`, `next`. Same "
+"idea for API (`function` + `syntax`), endpoint (`io_routines` + "
+"`state_handler`), codec (`implementations` encode/decode). Unused "
+"IO/state slots are `NULL`. Several tables keep `padding[10]` for ABI "
+"growth."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:897
+#: a3419bd2fd8040158508dfc6759b85f4
+msgid ""
+"`mod_dptools` registers the dialplan name `bridge` as "
+"`audio_bridge_function` (not a direct export of "
+"`switch_ivr_multi_threaded_bridge`; that helper is called from inside the"
+" app). Same module registers `\"answer\"` → `answer_function` "
+"(`SAF_SUPPORT_NOMEDIA`). `mod_commands` registers API `\"status\"` → "
+"`status_function`. Sofia registers endpoint `\"sofia\"` plus APIs "
+"`sofia`, `sofia_contact`, apps `sofia_sla`, chat `SOFIA_CHAT_PROTO`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:899
+#: 28d8701948334be29dd37417a3b9d347
+msgid ""
+"The dialplan XML never names `mod_dptools`. Consumers look up **interface"
+" type + name** (`APPLICATION` + `\"answer\"`). The module is only the "
+"capability container; ownership is `parent` on the interface struct for "
+"unload/refcount."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:901
+#: a678d725f451409bad22634fea7ca584
+msgid "Golden path: answer"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:903
+#: d621124af41342a08820a6475cf54737
+msgid "Four questions, answered from this tree."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:905
+#: 1d473729dd534a0eabb053fda28ba77b
+msgid ""
+"**1. What does `SWITCH_ADD_APP` do?** It is not a separate registrar. "
+"Expansion in `switch_loadable_module.h`:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:918
+#: 74453d99f75c435ebb85396fd08c5c57
+msgid ""
+"`create_interface` (`ALLOC_INTERFACE`) allocates on the **module pool**, "
+"appends to `mod->application_interface` (`next` list), sets `parent` and "
+"`rwlock`. Real call in `mod_dptools_load` (after `*module_interface = "
+"switch_loadable_module_create_module_interface(pool, modname)`):"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:925
+#: 3dfbc3eef7404e5697900109e475de32
+msgid ""
+"`SWITCH_STANDARD_APP(answer_function)` is `static void "
+"answer_function(switch_core_session_t *session, const char *data)` "
+"(`switch_types.h`). Body ends in `switch_channel_answer(channel)`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:927
+#: c15acd4661724dbea7c53d91cb0efb4b
+#, python-brace-format
+msgid ""
+"`SWITCH_MODULE_DEFINITION` only exports `mod_dptools_module_interface` `{"
+" load = mod_dptools_load, shutdown = mod_dptools_shutdown, runtime = NULL"
+" }`. It does **not** register apps; `mod_dptools_load` does."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:929
+#: b6f8702e94ea4501b189fdd2773ce58b
+msgid ""
+"**2. Where is the interface stored?** First on the module bag list. When "
+"load returns, `switch_loadable_module_process` does "
+"`switch_core_hash_insert(loadable_modules.application_hash, \"answer\", "
+"ptr)` (case-insensitive hash) and may fire `SWITCH_EVENT_MODULE_LOAD` "
+"with `type=application`. Unload deletes the same key."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:931
+#: dbf99afb1c18438e8d7c717bbfbc2c0f
+msgid ""
+"**3. How does dialplan find `\"answer\"`?** Hunt (`mod_dialplan_xml`) "
+"reads `application=\"answer\"` and either `exec_app` (inline) or "
+"`switch_caller_extension_add_application` (queue on "
+"`switch_caller_extension_t`). The session then enters `CS_EXECUTE`. "
+"`switch_core_standard_on_execute` walks `extension->current_application` "
+"and calls `switch_core_session_execute_application(session, \"answer\", "
+"data)` — a macro for "
+"`switch_core_session_execute_application_get_flags(..., NULL)`. That "
+"function does "
+"`switch_loadable_module_get_application_interface(\"answer\")`. It does "
+"not search by module name."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:933
+#: 6d03a716dcf54edeabcdb8d96160876b
+msgid ""
+"**4. How is the C function called?** `switch_core_session_exec` logs "
+"`EXECUTE … answer()`, fires `SWITCH_EVENT_CHANNEL_EXECUTE`, then "
+"`application_interface->application_function(session, expanded)` → "
+"`answer_function`. Then `SWITCH_EVENT_CHANNEL_EXECUTE_COMPLETE`. Empty "
+"`data` is a NULL/empty string, not a special IDL “void”."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:935
+#: 26444915b9854a65bc9a8160f8d62121
+msgid ""
+"Step-by-step with mermaid: [Interface registry lookup](05-workflows.md"
+"#worked-example-answer)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:937
+#: 2de19cc6bff9423dafc22c8d8f0e30e8
+msgid "Command vs vtable"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: 7107a94d6bba4706bb063f9dcee691ec
+msgid "Pattern"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: b7b1d9cd5fd249b686bd161b6a93311e
+msgid "Examples"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: 86702b1e240f41599e6a551b098b36af
+#, fuzzy
+msgid "Dispatch"
+msgstr "媒体路径"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: f6e00279e1054c9a8d0816c47a1a8fd8
+#, fuzzy
+msgid "Command"
+msgstr "域"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: 1ad1d4a7891641439199397cf789452d
+msgid "Application, API"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: 153ecb4cabbd4f7e87aedd5d6d2cb646
+msgid "Name → one function (`answer_function`, `status_function`)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: 530ead5c1cca42ecacd31f78bf6158ea
+msgid "Vtable / service"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: 4c93ef0a2fd34c2a8d5dbcf3878a6a2b
+msgid "Endpoint, codec, ASR, file"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:672
+#: 9659c6ed1946400f9c47bdd3cc6799c3
+msgid "Name → struct of many pointers (`io_routines`, codec `implementations`)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:944
+#: 22de4ee1f88f40ecab83964a4c84ec52
+msgid "Runtime lookup (consumers)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:946
+#: 3190d3a52f734d10b6c9ea2ae22b652b
+msgid ""
+"**Application.** `<action application=\"bridge\" data=\"user/1001@…\"/>` "
+"→ `mod_dialplan_xml` / `switch_core_session_execute_application` → "
+"`switch_loadable_module_get_application_interface(\"bridge\")` → "
+"`switch_core_session_exec` → `application_function(session, data)`. "
+"Missing name: `Invalid Application`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:948
+#: 886438dc16224621879d9eafb8ed51c4
+msgid ""
+"**API.** `fs_cli -x status` / ESL `api status` → `switch_api_execute` → "
+"`get_api_interface(\"status\")` → `api->function(arg, session, stream)`. "
+"Unknown: `INVALID COMMAND!`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:950
+#: ead20b4be5b64c83827e885ea20380e7
+msgid ""
+"**Endpoint.** Channel URL first token `sofia/internal/1000@domain` → "
+"`switch_core_session_outgoing_channel` → "
+"`get_endpoint_interface(\"sofia\")` → `io_routines->outgoing_channel` "
+"(`sofia_outgoing_channel`). Missing type: `Could not locate channel "
+"type`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:952
+#: a4c53d2cc605443b9ee5733d165f2c99
+msgid ""
+"**Codec.** Name/IANA in SDP or `absolute_codec_string` → `codec_hash` → "
+"`init` / encode / decode on `switch_codec_implementation_t`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:954
+#: 2528f7e531e841e9a764540268c33db0
+msgid ""
+"**Dialplan interpreter.** `SWITCH_ADD_DIALPLAN` name (vanilla `XML`) is a"
+" hunt function, not an app."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:982
+#: 29771c02f96542079858f31ac761a7a8
+msgid ""
+"State-handler convention (endpoints): return **`SWITCH_STATUS_SUCCESS`** "
+"to let the core run the standard `CS_*` handler; "
+"**`SWITCH_STATUS_FALSE`** to skip it. Sofia’s tables: "
+"`sofia_io_routines`, `sofia_event_handlers` in `mod_sofia.c`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:984
+#: e5bbca00a99d48b9a82d9a49428a0a7d
+msgid "Why there is no IDL"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:986
+#: 81ce2a8bb5704dbe9232f2d4fa2a7351
+msgid ""
+"Core and modules compile against the same `switch.h`. Signatures such as "
+"`switch_application_function_t` are shared at **compile** time. At "
+"**run** time only the name→pointer map is missing, and load fills it. "
+"Out-of-process RPC would need an IDL; in-process C plugins do not."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:988
+#: ad0475a65d65446a807228d625a5c1e9
+msgid ""
+"**Not** this contract: `private_object_t` / `sofia_profile_t` on "
+"`switch_core_session_get_private()`; Sofia-SIP `nua`/`sip_t`. "
+"`src/mod/<category>/` is only Autotools layout."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:990
+#: 43f25d29fb344032b11f39ba1831d3e0
+msgid "Analogy (GStreamer)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:992
+#: 7b70092a4a5a47cfb5292ae832783352
+msgid ""
+"GStreamer also registers by name, but the unit is a **GType / element "
+"factory** that **constructs instances**. FreeSWITCH’s unit is a **pre-"
+"existing C function** hung on a hash. "
+"`gst_element_factory_make(\"videoconvert\")` vs "
+"`get_application_interface(\"bridge\")` then call `application_function`."
+" No GObject in this tree."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:994
+#: 378a0b0a1909482393b170c5dbd36346
+#, fuzzy
+msgid ""
+"How XML `<load>` reaches `dlopen`: [Runtime load tag](#runtime-load-tag)."
+" Dispatch traces: [Interface registry lookup](05-workflows.md#interface-"
+"registry-lookup). Naming: "
+"[Conventions](../4.development/01-conventions.md). Operator lists: [Users"
+" Manual Chapter "
+"5](https://developer.signalwire.com/freeswitch/configuration/module-"
+"loading/)."
+msgstr ""
+"有两份不同的 “modules.conf” 需要分清（[用户手册第 5 "
+"章](https://developer.signalwire.com/freeswitch/configuration/module-"
+"loading/)）："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:996
+#: 2f4578473d0d40dda0c2c049f47b30b0
+msgid ""
+"Source map: `switch_loadable_module_load_file`, "
+"`create_module_interface`, `create_interface`, "
+"`switch_loadable_module_process`, `get_*_interface`, "
+"`switch_api_execute`, `switch_core_session_outgoing_channel`, "
+"`switch_core_session_exec`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:998
+#: 93ec9de6699d449f88cf47e1d985a038
+msgid "Media path"
+msgstr "媒体路径"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1000
+#: cae196ea59a54982a75c7cde2430407f
+msgid ""
+"**Responsibilities**: RTP/SRTP, jitter buffer, codecs, video, media bugs "
+"(tap/spy)."
+msgstr "**职责**：RTP/SRTP、抖动缓冲、编解码器、视频、媒体探针（tap/spy）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1001
+#: 9b93848ec0ed4f8d963c907acc8f021c
+msgid ""
+"**Key entry points**: `src/switch_rtp.c`, `src/switch_core_media.c`, "
+"`src/switch_jitterbuffer.c`, codec modules under `src/mod/codecs/`."
+msgstr ""
+"**关键入口**：`src/switch_rtp.c`、`src/switch_core_media.c`、`src/switch_jitterbuffer.c`，编解码模块位于"
+" `src/mod/codecs/`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1002
+#: 4b699476866145429275a4b47462fd11
+msgid ""
+"**Failure modes**: NAT, wrong ptime (default 20 ms assumption in "
+"`switch.conf.xml`), codec mismatch forcing transcoding."
+msgstr "**失败模式**：NAT、错误的 ptime（`switch.conf.xml` 中默认按 20 ms 假设）、编解码不匹配而被迫转码。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1003
+#: b177d50ef3f24840a84392125c18b799
+msgid ""
+"**Runtime sequence**: Sofia-SIP profile thread → `sofia_event_callback()`"
+" → session signal-data queue → `sofia_receive_message()` → "
+"`sofia_handle_sip_i_state()` → SDP negotiation → local port selection / "
+"SDP generation → `switch_core_media_activate_rtp()` → endpoint "
+"`read_frame` / `write_frame` → `switch_rtp_zerocopy_read_frame()` / "
+"`switch_rtp_write_frame()`. The detailed timing and call graph are in "
+"[Media negotiation and RTP activation](05-workflows.md#media-negotiation-"
+"and-rtp-activation)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1005
+#: f7e143ee0d734149a1fcaf074d8bd61f
+msgid "Signaling endpoints (in-process)"
+msgstr "信令端点（进程内）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1007
+#: 6a05fba3be4345f59902bdcb3482c97c
+#, fuzzy
+msgid ""
+"**Sofia (`mod_sofia`)**: SIP. Registers endpoint name `\"sofia\"` plus "
+"APIs/apps/chat ([Loadable module contract](#loadable-module-contract)). "
+"State handlers in `src/mod/endpoints/mod_sofia/mod_sofia.c`. Profiles in "
+"`conf/vanilla/sip_profiles/` (internal auth vs external `auth-"
+"calls=false`). Vanilla **internal** `context` is `public`; authenticated "
+"directory users override with `user_context` ([Chapter "
+"7](https://developer.signalwire.com/freeswitch/users-and-endpoints/sip-"
+"profiles)). UDP/TCP sockets live in Sofia-SIP tport, not in "
+"`libfreeswitch` — see [Sofia-SIP (out of tree)](#sofia-sip-out-of-tree)."
+msgstr ""
+"**Sofia（`mod_sofia`）**：SIP。状态处理在 "
+"`src/mod/endpoints/mod_sofia/mod_sofia.c`。配置文件在 "
+"`conf/vanilla/sip_profiles/`（内部鉴权 vs 外部 `auth-calls=false`）。Vanilla "
+"**internal** 的 `context` 是 `public`；已认证号码簿用户用 `user_context` 覆盖（[第 7 "
+"章](https://developer.signalwire.com/freeswitch/users-and-endpoints/sip-"
+"profiles)）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1008
+#: 7c1c987a0ae145148c6ab7d880f6e152
+msgid "**Verto (`mod_verto`)**: HTML5/WebRTC, endpoint name `verto.rtc`."
+msgstr "**Verto（`mod_verto`）**：HTML5/WebRTC，端点名 `verto.rtc`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1009
+#: 16dd74ea63954f81a22bdb425b882c6c
+msgid ""
+"**Loopback / RTC**: in-process and WebRTC helper endpoints loaded by "
+"vanilla `modules.conf.xml`."
+msgstr "**Loopback / RTC**：vanilla `modules.conf.xml` 加载的进程内与 WebRTC 辅助端点。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1011
+#: b1add0e72fa747f6906c807207f8e69b
+msgid ""
+"Media mode on a Sofia profile ([Chapter "
+"17](https://developer.signalwire.com/freeswitch/media-and-"
+"codecs/handling)): vanilla internal sets `inbound-late-negotiation=true` "
+"(defer A-leg codec until after dialplan). `inbound-bypass-media` sets "
+"`CF_PROXY_MODE` (RTP endpoint-to-endpoint); `inbound-proxy-media` sets "
+"`CF_PROXY_MEDIA` (RTP through the server without payload inspection)."
+msgstr ""
+"Sofia profile 上的媒体模式（[第 17 章](https://developer.signalwire.com/freeswitch"
+"/media-and-codecs/handling)）：vanilla internal 设置 `inbound-late-"
+"negotiation=true`（把 A 腿编解码推迟到拨号计划之后）。`inbound-bypass-media` 设置 "
+"`CF_PROXY_MODE`（RTP 端到端）；`inbound-proxy-media` 设置 `CF_PROXY_MEDIA`（RTP "
+"经服务器但不检查载荷）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1013
+#: 3b0b9e0721ad4d64b4725f8935b29144
+msgid "Sofia-SIP (out of tree)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1015
+#: 78e4f42124594c16a7fd1d86cbb88314
+msgid ""
+"[Sofia-SIP](https://github.com/freeswitch/sofia-sip) is an LGPL, RFC 3261"
+" SIP User-Agent library (Nokia Research Center lineage; FreeSWITCH "
+"maintains the fork used here). It is **not** under `libs/`. "
+"`configure.ac` requires `sofia-sip-ua >= 1.13.18`. Install/build notes: "
+"[Quick Start](../0.getting-started/02-quick-start.md), "
+"[FAQ](../7.appendix/02-faq.md). Submodule map: [Tech Stack](02-tech-"
+"stack.md#sofia-sip-library)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1017
+#: ece741eb670a4ecb932b5debdc707ab1
+msgid ""
+"`mod_sofia` is the application on top of `libsofia-sip-ua`. One **profile"
+" thread** owns one `su_root_t` reactor and one (or more alias) `nua_t` "
+"from `nua_create(..., sofia_event_callback, profile, NUTAG_URL(bindurl), "
+"...)`. `su_root_step()` waits on tport file descriptors. Inbound bytes "
+"become `sip_t` in the library; the first FreeSWITCH symbol is "
+"`sofia_event_callback`. That callback clones the event (`nua_save_event`)"
+" and hops to a **session** thread (`signal_data_queue`) or the global "
+"**MSG** queue so the profile thread can keep reading packets. Packet-"
+"level INVITE trace: [Inbound SIP Call](05-workflows.md#inbound-sip-call)."
+" NUA/NTA usage, tag lists, and callback rules: [Tech Stack — Sofia-SIP "
+"library](02-tech-stack.md#sofia-sip-library)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1019
+#: 7aaba9b61bf34a44ba3de69a2efc4b7b
+msgid ""
+"SIP retransmission timers (`NTATAG_SIP_T1` / `T2` / `T4`) and TCP "
+"keepalive tags are Sofia-SIP tport/nta, configured from profile XML in "
+"`nua_create`. RTP is **not** Sofia-SIP; it is `switch_rtp` after SDP "
+"negotiation."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1021
+#: 54a2c37de3aa474e960d69e6be21b1aa
+msgid "Dialplan and applications"
+msgstr "拨号计划与应用"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1023
+#: 460af07f4f914bdda8dc102de8a14dc2
+msgid ""
+"**Dialplan**: `mod_dialplan_xml` matches XML extensions "
+"(`src/mod/dialplans/mod_dialplan_xml/mod_dialplan_xml.c`). Asterisk-style"
+" `mod_dialplan_asterisk` is optional."
+msgstr ""
+"**拨号计划**：`mod_dialplan_xml` 匹配 XML "
+"分机（`src/mod/dialplans/mod_dialplan_xml/mod_dialplan_xml.c`）。Asterisk 风格的 "
+"`mod_dialplan_asterisk` 为可选。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1024
+#: bd4963019a4942ec9e70643aa485497d
+msgid ""
+"**Applications**: `mod_dptools` (bridge, answer, playback, …), "
+"`mod_conference`, `mod_voicemail`, `mod_commands` (CLI/API). Originate "
+"lives in core `switch_ivr_originate()` (`src/switch_ivr_originate.c`)."
+msgstr ""
+"**应用**：`mod_dptools`（bridge、answer、playback、…）、`mod_conference`、`mod_voicemail`、`mod_commands`（CLI/API）。Originate"
+" 位于核心 `switch_ivr_originate()`（`src/switch_ivr_originate.c`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1026
+#: 4aa02bbc704c4832bd458e9b7f0f7f22
+msgid "Event engine and ESL"
+msgstr "事件引擎与 ESL"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1028
+#: 134083b29e684e5f95a13921da1184c8
+msgid ""
+"**Bus**: APR FIFO + backend thread (`src/include/switch_event.h`). Bind "
+"callbacks or consume from `mod_event_socket`."
+msgstr ""
+"**总线**：APR FIFO + 后端线程（`src/include/switch_event.h`）。绑定回调或从 "
+"`mod_event_socket` 消费。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1029
+#: 54f470b8777646b8a98a3007786b7312
+msgid ""
+"**ESL**: the vanilla `mod_event_socket` configuration listens on wildcard"
+" IPv6 `::`:8021 with password `ClueCon`; the module sample binds "
+"`127.0.0.1`. `fs_cli` is built from `libs/esl/fs_cli.c` and targets "
+"`127.0.0.1:8021` by default. Auth flag `LFLAG_AUTHED` is in "
+"`mod_event_socket.c`. Slow consumers must queue locally — the core warns "
+"against blocking the delivery thread."
+msgstr ""
+"**ESL**：vanilla 的 `mod_event_socket` 配置在通配 IPv6 `::`:8021 上监听，密码为 "
+"`ClueCon`；模块示例绑定 `127.0.0.1`。`fs_cli` 从 `libs/esl/fs_cli.c` 构建，默认目标为 "
+"`127.0.0.1:8021`。认证标志 `LFLAG_AUTHED` 位于 "
+"`mod_event_socket.c`。慢消费者必须在本地排队——核心警告不要阻塞投递线程。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1036
+#: 1359fc4aea734e3eb589f6c2e2270329
+msgid "Logging"
+msgstr "日志"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1038
+#: 3e970e471ee54ec48cdf036456fce224
+msgid ""
+"`mod_console`, `mod_logfile` (vanilla loads both). Levels via "
+"`SWITCH_CHANNEL_LOG` macros in `switch_types.h`."
+msgstr ""
+"`mod_console`、`mod_logfile`（vanilla 两者都加载）。级别通过 `switch_types.h` 中的 "
+"`SWITCH_CHANNEL_LOG` 宏。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1040
+#: 0d5c8866544447f7920e0798bd891c45
+msgid "Code-Level View"
+msgstr "代码级视图"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1042
+#: d620be276b034f18bfdf674d3290e6da
+msgid "Only types on the hot path. Full headers are the API; this is the map."
+msgstr "仅列出热路径上的类型。完整头文件才是 API；这里是地图。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:956
+#: 537c741a14984d11a345b4ac2a54b676
+msgid "Area"
+msgstr "领域"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:956
+#: 2e7171719d61441295c61437b2fd45f5
+msgid "Important files or symbols"
+msgstr "重要文件或符号"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:956
+#: e75969bbd48a4dd2a7dac396e5b73263
+msgid "Why it matters"
+msgstr "为何重要"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:956
+#: 9a6e3591b069426791e3a1f3ca8395d4
+msgid "Process boot"
+msgstr "进程启动"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:956
+#: a7f9040267ac4e02806ab7234f7af0ee
+msgid "`src/switch.c` `main`; `switch_core_init`, `switch_core_init_and_modload`"
+msgstr "`src/switch.c` `main`; `switch_core_init`, `switch_core_init_and_modload`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:956
+#: c445cde42020410a8c5a98ac25dc886f
+msgid "Single-runlevel init; modules load only in the second function"
+msgstr "单运行级初始化；模块仅在第二个函数中加载"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:956
+#: bd7234e79eff4ee7acf6e5532735204e
+msgid ""
+"`struct switch_core_session` in `src/include/private/switch_core_pvt.h`; "
+"`switch_core_session_request_uuid`"
+msgstr ""
+"`struct switch_core_session` in `src/include/private/switch_core_pvt.h`; "
+"`switch_core_session_request_uuid`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:956
+#: e1514863bb3f41eb9d74dcc51418977b
+msgid "UUID, endpoint pointer, codec pair, event/message queues, media bugs"
+msgstr "UUID、端点指针、编解码器对、事件/消息队列、媒体探针"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:956
+#: e6d55bd1a863470aba2bcae5218bc7bd
+msgid "`switch_channel_t`, `switch_channel_state_t` (`CS_*`), call state `CCS_*`"
+msgstr "`switch_channel_t`, `switch_channel_state_t` (`CS_*`), call state `CCS_*`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:956
+#: 0bf396418b884f7380f6461e1dda42e8
+msgid "Dialplan and apps key off channel state/variables"
+msgstr "拨号计划与应用依据通道状态/变量"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:956
+#: 8559f7f273bd436bb53788e16f681d66
+msgid "Endpoint contract"
+msgstr "端点契约"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:956
+#: a02fbce17bb34fcf99e47bb95dd65676
+#, fuzzy
+msgid ""
+"`switch_endpoint_interface_t`, `switch_io_routines_t`, "
+"`switch_state_handler_table_t`"
+msgstr "`switch_endpoint_interface_t`, `switch_state_handler_table`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:956
+#: 93affae80bfe4add9f8408610908e194
+msgid ""
+"Channel prefix + IO + `CS_*` hooks; [Loadable module contract](#loadable-"
+"module-contract)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:956
+#: 1ecc3d1ed3f0408e9c5869994f96b2cd
+msgid "Sofia profile I/O"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:956
+#: 6095a0c05c284112bebec0950cf5324f
+msgid "`sofia_profile_thread_run`, `nua_create`, `sofia_event_callback`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:956
+#: 6de89077afe14b99b4cde7cf49dfaba0
+msgid "Profile thread owns SIP sockets via Sofia-SIP `su_root`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:956
+#: 1a700825d58f49708f8f96fa0cd4daa5
+msgid "Module contract"
+msgstr "模块契约"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:956
+#: bac440efb6364f73a72da6e36912a732
+msgid ""
+"`SWITCH_MODULE_DEFINITION`, `switch_loadable_module_interface_t`, "
+"`SWITCH_ADD_*`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:956
+#: 2da02171c20e4f33b10970a67b58129d
+msgid "In-process DSO extensibility; lookup by name"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:956
+#: 76ab8665ae7240bda89ecebf71c55984
+msgid "Events"
+msgstr "事件"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:956
+#: b4e6eb3c4eb041f38aab4a9d557f8d8b
+msgid "`switch_event_t`, `SWITCH_EVENT_CHANNEL_*`, `SWITCH_EVENT_STARTUP`"
+msgstr "`switch_event_t`, `SWITCH_EVENT_CHANNEL_*`, `SWITCH_EVENT_STARTUP`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:956
+#: 68e8dff58d814a1193ba40b8166d3720
+msgid "ESL, CDR, and scripts subscribe here"
+msgstr "ESL、CDR 与脚本在此订阅"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:956
+#: 42afe0aed5bb4a04bc478422f6f05af6
+msgid "XML"
+msgstr "XML"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:956
+#: 3675243a79794684b2a0298b67c6eba1
+msgid "`switch_xml_open_root`, preprocessor in `conf/vanilla/freeswitch.xml`"
+msgstr "`switch_xml_open_root`，预处理器在 `conf/vanilla/freeswitch.xml`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:956
+#: 8c1a16a19efd41839420933898c637e0
+msgid "Config is data, not code"
+msgstr "配置是数据，不是代码"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:956
+#: 0b1ea4bb37354a678f2debdb7ce5e4e7
+msgid "Originate / bridge"
+msgstr "Originate / 桥接"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:956
+#: 0b3343f607aa4395a41d1e2f0d8f3c42
+msgid "`switch_ivr_originate`, `src/switch_ivr_bridge.c`"
+msgstr "`switch_ivr_originate`, `src/switch_ivr_bridge.c`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:956
+#: d5bf5b4532a74d4f989e2580063d68e3
+msgid "Outbound legs and B2BUA"
+msgstr "出局腿与 B2BUA"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1096
+#: 264caa2077ef45888fae98037ca52e6a
+msgid "UML nearest match: class diagram + state machine (channel states above)."
+msgstr "UML 最接近：类图 + 状态机（上方通道状态）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1098
+#: 2c4c8def93424461964b87ad45b692b3
+msgid "Key Runtime Flows"
+msgstr "关键运行时流程"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1100
+#: 1821b4dbdc13496896836a3f55ff9cd0
+msgid "Inbound SIP call (vanilla)"
+msgstr "入局 SIP 呼叫（vanilla）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1128
+#: b188498a58bb4526bf8e0a6e5c70f33b
+#, fuzzy
+msgid ""
+"**Success path**: UDP/TCP packet → Sofia-SIP tport/nta/nua → "
+"`sofia_event_callback` (profile thread) → session thread `CS_NEW` → "
+"INIT/ROUTING → XML extension → apps (bridge/conference/voicemail) → RTP →"
+" hangup/CDR events. Detail: [Workflows](05-workflows.md#inbound-sip-"
+"call)."
+msgstr ""
+"**成功路径**：INVITE → 会话线程 → INIT/ROUTING → XML 分机 → "
+"应用（bridge/conference/voicemail）→ RTP → 挂断/CDR 事件。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1129
+#: 5275cb24440944cfb6e8ee6d2edbb480
+msgid ""
+"**Validation boundaries**: Sofia profile ACL (`apply-inbound-acl` on "
+"internal profile uses `domains` from `acl.conf.xml`); `auth-calls` on "
+"internal vs `false` on external; directory digest auth for users "
+"1000–1019 in vanilla. Authenticated INVITE uses directory `user_context` "
+"(`default`); the profile’s own `context=public` is for unauthenticated "
+"inbound only ([Chapter "
+"1](https://developer.signalwire.com/freeswitch/foundations/introduction) "
+"anatomy of a call)."
+msgstr ""
+"**校验边界**：Sofia 配置文件 ACL（内部配置的 `apply-inbound-acl` 使用 `acl.conf.xml` 中的 "
+"`domains`）；内部 `auth-calls` vs 外部 `false`；vanilla 中用户 1000–1019 的号码簿 "
+"digest 鉴权。已认证 INVITE 使用号码簿 `user_context`（`default`）；profile 自身的 "
+"`context=public` 仅用于未认证入局（[第 1 "
+"章](https://developer.signalwire.com/freeswitch/foundations/introduction) "
+"呼叫解剖）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1130
+#: 1010d34a47ad49ed825b4538fb65bb9c
+msgid ""
+"**Consistency**: one session thread owns the channel state machine. SQL "
+"scoreboard is internal (disable with `-nosql`). Channel recovery flags "
+"`CF_RECOVERING` skip routing and jump to `CS_EXECUTE`."
+msgstr ""
+"**一致性**：一个会话线程拥有通道状态机。SQL 记分板是内部的（用 `-nosql` 禁用）。通道恢复标志 `CF_RECOVERING` "
+"会跳过路由并跳到 `CS_EXECUTE`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1131
+#: a5d29f817f5543969a393b74a26a8a69
+msgid ""
+"**Retry / compensation**: SIP retransmits are Sofia/Sofia-SIP’s job. "
+"Dialplan `bridge` failover is application-level (pipe-separated "
+"gateways), not a core saga. ESL clients must not block the event thread."
+msgstr ""
+"**重试 / 补偿**：SIP 重传是 Sofia/Sofia-SIP 的职责。拨号计划 `bridge` "
+"故障转移是应用层（管道分隔的网关），不是核心 saga。ESL 客户端不得阻塞事件线程。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1133
+#: c6226a75f7cb4a8dae7708a37819f8c6
+msgid "Outbound originate"
+msgstr "出局 originate"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1135
+#: 3e09de9b8ae34ec1879c7e992ee91e93
+msgid ""
+"`switch_ivr_originate()` allocates an outbound session through the named "
+"endpoint (`sofia/gateway/...`, `loopback/...`), runs the same state table"
+" with `TFLAG_OUTBOUND` so `sofia_on_init` sends INVITE via "
+"`sofia_glue_do_invite()`."
+msgstr ""
+"`switch_ivr_originate()` "
+"通过指定端点（`sofia/gateway/...`、`loopback/...`）分配出局会话，以 `TFLAG_OUTBOUND` "
+"运行同一状态表，因此 `sofia_on_init` 会经由 `sofia_glue_do_invite()` 发送 INVITE。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1137
+#: 7eee50cd952849818a9ab6e8495f1065
+msgid "ESL control"
+msgstr "ESL 控制"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1139
+#: f2f2ab5ad90d4d27a6cf4832c7c60be1
+msgid ""
+"Client connects to 8021, authenticates, then `api` / `bgapi` / `event` / "
+"`sendmsg` (uuid). Health check used by Docker: `fs_cli -x status` must "
+"match `^UP`."
+msgstr ""
+"客户端连接 8021、鉴权，然后 `api` / `bgapi` / `event` / `sendmsg`（uuid）。Docker "
+"使用的健康检查：`fs_cli -x status` 必须匹配 `^UP`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1141
+#: 40d06def61dd4bdb9949b79c69fe0db5
+msgid "Cross-Cutting Concerns"
+msgstr "横切关注点"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1143
+#: 3cb23f3fb27a419589472c772c642f1c
+msgid ""
+"**Authentication and authorization**: SIP digest + ACL lists "
+"(`conf/vanilla/autoload_configs/acl.conf.xml`, Sofia `apply-inbound-"
+"acl`). ESL password in `event_socket.conf.xml` (default `ClueCon`); "
+"vanilla binds to wildcard `::` with its inbound ACL commented out, while "
+"the module sample is loopback-only. Directory users are **not** OS users."
+msgstr ""
+"**认证与授权**：SIP digest 加 ACL "
+"列表（`conf/vanilla/autoload_configs/acl.conf.xml`、Sofia `apply-inbound-"
+"acl`）。ESL 密码位于 `event_socket.conf.xml`（默认 `ClueCon`）；vanilla 绑定通配 `::` "
+"且入站 ACL 被注释掉，而模块示例仅绑定 loopback。号码簿用户**不是**操作系统用户。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1144
+#: d18a7f995e0d45d38520d155869bc696
+msgid ""
+"**Error handling**: `switch_status_t` and hangup `switch_call_cause_t` on"
+" the channel. Endpoints return `SWITCH_STATUS_FALSE` from a state handler"
+" to skip the core’s standard handler (`sofia_on_init` comment)."
+msgstr ""
+"**错误处理**：通道上的 `switch_status_t` 与挂断 `switch_call_cause_t`。端点从状态处理函数返回 "
+"`SWITCH_STATUS_FALSE` 以跳过核心的标准处理（见 `sofia_on_init` 注释）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1145
+#: f74ff5d0fd8e4e6da040c95b5ecb16e3
+msgid ""
+"**Logging and tracing**: `switch_log_printf` with session UUID via "
+"`SWITCH_CHANNEL_SESSION_LOG`. Sofia `siptrace` is a profile/CLI switch, "
+"not distributed tracing. No OpenTelemetry in this tree."
+msgstr ""
+"**日志与追踪**：通过 `SWITCH_CHANNEL_SESSION_LOG` 带会话 UUID 的 "
+"`switch_log_printf`。Sofia `siptrace` 是配置文件/CLI 开关，不是分布式追踪。本源码树没有 "
+"OpenTelemetry。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1146
+#: 494979431c7249fab1d893a07c647611
+msgid ""
+"**Caching**: compiled XML root is memory-mapped (`freeswitch.xml.fsxml`);"
+" `reloadxml` re-parses. Directory/ACL can be rebuilt from XML. RTP jitter"
+" buffer is per-session, not a shared cache."
+msgstr ""
+"**缓存**：编译后的 XML 根以内存映射（`freeswitch.xml.fsxml`）；`reloadxml` 会重新解析。号码簿/ACL "
+"可从 XML 重建。RTP 抖动缓冲是每会话的，不是共享缓存。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1147
+#: e49284b8a60a4243b41ae63c338f1046
+msgid ""
+"**Configuration and secrets**: XML under `confdir`; `vars.xml` "
+"preprocessor `$$` vars (including `default_password`). Not a secret "
+"manager. Change demo passwords before any public bind "
+"(`conf/vanilla/README_IMPORTANT.txt`)."
+msgstr ""
+"**配置与密钥**：XML 位于 `confdir`；`vars.xml` 预处理器 `$$` 变量（包括 "
+"`default_password`）。不是密钥管理器。对外绑定前请更改演示密码（`conf/vanilla/README_IMPORTANT.txt`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1149
+#: 07280f14fe38485881fa152c14ff7423
+msgid "Deployment and Scaling Notes"
+msgstr "部署与扩展说明"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1151
+#: 0919d9c3a1ff47a8b63252839e7a2978
+msgid ""
+"**Environments**: same binary; profile choice (`vanilla`, `sbc`, "
+"`minimal`, `curl`) is the environment. CI builds on Debian containers, "
+"macOS, Windows."
+msgstr ""
+"**环境**：同一二进制；配置档案选择（`vanilla`、`sbc`、`minimal`、`curl`）即环境。CI 在 Debian "
+"容器、macOS、Windows 上构建。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1152
+#: bb911906984a4a9a9994c7b3349963f0
+msgid ""
+"**Scaling model**: **vertical** (more cores / less transcoding) and "
+"**more processes/hosts** behind an SBC or Kamailio. Not a horizontally "
+"sharded in-process cluster. RTP needs host networking in Docker "
+"(`docker/README.md`)."
+msgstr ""
+"**扩展模型**：**纵向**（更多核 / 更少转码）以及在 SBC 或 Kamailio "
+"后面部署**更多进程/主机**。不是进程内水平分片集群。Docker 中 RTP 需要主机网络（`docker/README.md`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1153
+#: 67dc4c2757404791a5f44b22277a9f7e
+msgid ""
+"**Recovery**: `-nonat` to skip UPnP pinholes; session recovery flags in "
+"the state machine; core SQL can persist some state. Site HA, backups, and"
+" RTO are **[NEEDS INPUT: operator-owned]** — not specified in this repo."
+msgstr ""
+"**恢复**：`-nonat` 跳过 UPnP 打洞；状态机中的会话恢复标志；核心 SQL 可持久化部分状态。站点 HA、备份和 RTO 为 "
+"**[NEEDS INPUT: 由运营商自行负责]** —— 本仓库未规定。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1155
+#: d2fe099414584aa6ab2986d5c9655f9c
+msgid "Related Documentation"
+msgstr "相关文档"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1157
+#: d75d905728e04b44921b8ae68a155c9a
+msgid ""
+"[Overview](../0.getting-started/01-overview.md) ([FS core concepts](../0"
+".getting-started/01-overview.md#fs-core-concepts))"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1158
+#: 37b02b7947344293849b6f000aeef60f
+msgid "[C Runtime Framework](06-c-runtime.md)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1159
+#: 441e4162634d489ab4a92c6d0a4db553
+msgid ""
+"[Tech Stack](02-tech-stack.md) (Sofia-SIP NUA usage: [Sofia-SIP "
+"library](02-tech-stack.md#sofia-sip-library))"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1160
+#: e5f3de069e544765816d2550ad5030bb
+#, fuzzy
+msgid "[Repository Map](03-repo-map.md)"
+msgstr "[仓库地图](04-repo-map.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1161
+#: 9f585a2fe08849eea77dd5e1604c1c44
+#, fuzzy
+msgid "[Data and API](04-data-and-api.md)"
+msgstr "[数据与 API](05-data-and-api.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1162
+#: 8068c09ecb924542a218ef9b73b35e4c
+msgid "[Conventions](../4.development/01-conventions.md)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1163
+#: 9437d4f342844085ad18b984bb1ef5c3
+#, fuzzy
+msgid "[Workflows](05-workflows.md)"
+msgstr "[工作流](06-workflows.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1164
+#: 7603419d40354b85a0c2dfee893e853e
+#, fuzzy
+msgid "[ADRs](../7.appendix/6.decisions/adr/index.md)"
+msgstr "[ADR](adr/index.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/01-architecture.md:1165
+#: b9fce6bffbd646f0bc443412446e3f15
+msgid ""
+"[Users Manual Ch "
+"1](https://developer.signalwire.com/freeswitch/foundations/introduction),"
+" [Ch 3 "
+"XML](https://developer.signalwire.com/freeswitch/configuration/xml), [Ch "
+"5 modules](https://developer.signalwire.com/freeswitch/configuration"
+"/module-loading/)"
+msgstr ""
+"[用户手册第 1 "
+"章](https://developer.signalwire.com/freeswitch/foundations/introduction)、[第"
+" 3 章 "
+"XML](https://developer.signalwire.com/freeswitch/configuration/xml)、[第 5 "
+"章模块](https://developer.signalwire.com/freeswitch/configuration/module-"
+"loading/)"
+
+#~ msgid ""
+#~ "**Failure modes**: broken include path "
+#~ "or XML error leaves the switch "
+#~ "unable to open root (`\"Cannot Open "
+#~ "log directory or XML Root!\"`)."
+#~ msgstr ""
+#~ "**失败模式**：include 路径损坏或 XML 错误会导致交换机无法打开根文档（`\"Cannot"
+#~ " Open log directory or XML Root!\"`）。"
+
+#~ msgid "Sofia fills `on_init` / `on_routing` / …"
+#~ msgstr "Sofia 填充 `on_init` / `on_routing` / …"
+
+#~ msgid "Named tables the core looks up (endpoint, app, codec, API)"
+#~ msgstr "核心查找的命名表（endpoint、app、codec、API）"
+
+#~ msgid "[Tech Stack](03-tech-stack.md)"
+#~ msgstr "[技术栈](03-tech-stack.md)"
+
+#~ msgid "Where does a call go?"
+#~ msgstr "呼叫去哪里？"
+
+#~ msgid ""
+#~ "How XML `<load>` reaches `dlopen`: "
+#~ "[Runtime load tag](#runtime-load-tag). "
+#~ "Dispatch traces: [Interface registry "
+#~ "lookup](06-workflows.md#interface-registry-lookup). "
+#~ "Naming: [Conventions](07-conventions.md). Operator "
+#~ "lists: [Users Manual Chapter "
+#~ "5](https://developer.signalwire.com/freeswitch/configuration"
+#~ "/module-loading/)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "[Sofia-SIP](https://github.com/freeswitch/sofia-sip) "
+#~ "is an LGPL, RFC 3261 SIP User-"
+#~ "Agent library (Nokia Research Center "
+#~ "lineage; FreeSWITCH maintains the fork "
+#~ "used here). It is **not** under "
+#~ "`libs/`. `configure.ac` requires `sofia-"
+#~ "sip-ua >= 1.13.18`. Install/build notes:"
+#~ " [Quick Start](01-quick-start.md), "
+#~ "[FAQ](appendix-01-faq.md). Submodule map: [Tech "
+#~ "Stack](03-tech-stack.md#sofia-sip-library)."
+#~ msgstr ""
+
+#~ msgid "[Overview](00-overview.md)"
+#~ msgstr "[概述](00-overview.md)"
+
+#~ msgid "[Conventions](07-conventions.md)"
+#~ msgstr ""
+
+#~ msgid "{#golden-path-answer}"
+#~ msgstr ""
+
+#~ msgid "Golden path: `answer`"
+#~ msgstr ""
+
+#~ msgid "[Conventions](../3.development/07-conventions.md)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Step-by-step with mermaid: [Interface"
+#~ " registry lookup](06-workflows.md#worked-example-"
+#~ "answer)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Runtime sequence**: Sofia-SIP profile "
+#~ "thread → `sofia_event_callback()` → session"
+#~ " signal-data queue → "
+#~ "`sofia_receive_message()` → `sofia_handle_sip_i_state()`"
+#~ " → SDP negotiation → local port "
+#~ "selection / SDP generation → "
+#~ "`switch_core_media_activate_rtp()` → endpoint "
+#~ "`read_frame` / `write_frame` → "
+#~ "`switch_rtp_zerocopy_read_frame()` / "
+#~ "`switch_rtp_write_frame()`. The detailed timing "
+#~ "and call graph are in [Media "
+#~ "negotiation and RTP activation](06-workflows.md"
+#~ "#media-negotiation-and-rtp-activation)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "[Sofia-SIP](https://github.com/freeswitch/sofia-sip) "
+#~ "is an LGPL, RFC 3261 SIP User-"
+#~ "Agent library (Nokia Research Center "
+#~ "lineage; FreeSWITCH maintains the fork "
+#~ "used here). It is **not** under "
+#~ "`libs/`. `configure.ac` requires `sofia-"
+#~ "sip-ua >= 1.13.18`. Install/build notes:"
+#~ " [Quick Start](../0.getting-started/01-quick-"
+#~ "start.md), [FAQ](../7.appendix/appendix-01-faq.md). "
+#~ "Submodule map: [Tech Stack](03-tech-stack.md"
+#~ "#sofia-sip-library)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`mod_sofia` is the application on top"
+#~ " of `libsofia-sip-ua`. One **profile"
+#~ " thread** owns one `su_root_t` reactor "
+#~ "and one (or more alias) `nua_t` "
+#~ "from `nua_create(..., sofia_event_callback, profile,"
+#~ " NUTAG_URL(bindurl), ...)`. `su_root_step()` "
+#~ "waits on tport file descriptors. Inbound"
+#~ " bytes become `sip_t` in the library;"
+#~ " the first FreeSWITCH symbol is "
+#~ "`sofia_event_callback`. That callback clones "
+#~ "the event (`nua_save_event`) and hops to"
+#~ " a **session** thread (`signal_data_queue`) "
+#~ "or the global **MSG** queue so the"
+#~ " profile thread can keep reading "
+#~ "packets. Packet-level INVITE trace: "
+#~ "[Inbound SIP Call](06-workflows.md#inbound-sip-"
+#~ "call). NUA/NTA usage, tag lists, and "
+#~ "callback rules: [Tech Stack — Sofia-"
+#~ "SIP library](03-tech-stack.md#sofia-sip-"
+#~ "library)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "[Overview](../0.getting-started/00-overview.md) ([FS "
+#~ "core concepts](../0.getting-started/00-overview.md#fs-"
+#~ "core-concepts))"
+#~ msgstr ""
+
+#~ msgid "[C Runtime Framework](13-c-runtime.md)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "[Tech Stack](03-tech-stack.md) (Sofia-SIP "
+#~ "NUA usage: [Sofia-SIP library](03-tech-"
+#~ "stack.md#sofia-sip-library))"
+#~ msgstr ""
+
+#~ msgid "[Conventions](../4.development/07-conventions.md)"
+#~ msgstr ""
+

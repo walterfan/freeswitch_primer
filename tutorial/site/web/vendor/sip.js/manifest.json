@@ -1,0 +1,10 @@
+{
+  "name": "sip.js",
+  "version": "0.21.2",
+  "license": "MIT",
+  "release_url": "https://github.com/onsip/SIP.js/releases/tag/0.21.2",
+  "asset_url": "https://github.com/onsip/SIP.js/releases/download/0.21.2/sip-0.21.2.min.js",
+  "asset": "sip-0.21.2.min.js",
+  "sha256": "8a797aaec58d1fc31e0e13722739def8458f9e56d5c4a1c1297860fb69c75ef8",
+  "sri": "sha256-inl6rsWNH8MeDhNyJzne+EWPnlbVxKHBKXhg+2nHXvg="
+}

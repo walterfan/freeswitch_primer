@@ -1,0 +1,922 @@
+# Chinese translations for FreeSWITCH package.
+# Copyright (C) 2026, Zoom Video Communications
+# This file is distributed under the same license as the FreeSWITCH package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version:  FreeSWITCH\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-18 16:34+0800\n"
+"PO-Revision-Date: 2026-09-15 15:51+0800\n"
+"Last-Translator: Automatically generated\n"
+"Language: zh_CN\n"
+"Language-Team: none\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:1
+#: ad6bc82c53014545a5a56e0131cd5134
+msgid "13. C Runtime Framework"
+msgstr "13. C 运行时框架"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:5
+#: 5eea6b5d7fb54a7cb35cc874e2f13a49
+msgid ""
+"FreeSWITCH is a **C realtime communications switch that ships its own "
+"runtime**, not a typical “sockets plus `malloc`” C program. The "
+"`switch_*` APIs, memory pools, sessions, channels, modules, events, "
+"queues, and threads are that runtime. APR (forked here as **FSPR**) is "
+"only the portable OS layer underneath it."
+msgstr ""
+"可以把 FreeSWITCH 理解成一个**用 C 写的、自己构建了一套运行时框架的高性能实时通信系统**。`switch_*` "
+"API、memory pool、session、channel、module、event、queue、thread "
+"组成了这套运行时。APR（本树中的 fork 为 **FSPR**）只是其下的可移植 OS 层。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:7
+#: e188d0bb1361417796e5e21cfa9310d9
+#, fuzzy
+msgid ""
+"This page is a reading model for the C core. C4 containers and the "
+"session state machine stay on [Architecture](01-architecture.md). "
+"Operator terms stay in the [Users Manual Chapter "
+"1](https://developer.signalwire.com/freeswitch/foundations/introduction)."
+" Directory ownership stays on [Repository Map](03-repo-map.md)."
+msgstr ""
+"本页是阅读 C 核心的心智模型。C4 容器与 session 状态机见 "
+"[Architecture](02-architecture.md)。运营侧术语见 [Users Manual 第 1 "
+"章](https://developer.signalwire.com/freeswitch/foundations/introduction)。目录归属见"
+" [Repository Map](04-repo-map.md)。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:9
+#: b7e742f0f398492398a6446ed626ad68
+msgid "Two layers"
+msgstr "两层"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:12
+#: 0ef8af9a4b2f4db0bbe2ee00132ed9ed
+msgid ""
+"**APR/FSPR** answers “how do I mutex, socket, and allocate portably on "
+"Linux, macOS, and Windows?” **FreeSWITCH core** answers “how do I "
+"represent a call, a codec, a module, and a media frame?”"
+msgstr ""
+"**APR/FSPR** 回答的是：如何在 Linux、macOS、Windows 上可移植地做 mutex、socket "
+"和分配。**FreeSWITCH Core** 回答的是：如何表达一次呼叫、一个 codec、一个 module、一帧媒体。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:15
+#: d6df5c0069df4583b2cec37721bbf64b
+msgid ""
+"`FreeSWITCH = C + APR` understates the project. Treat core as a "
+"telephony-oriented runtime on top of FSPR."
+msgstr "`FreeSWITCH = C + APR` 会低估这个项目。应把 Core 看成架在 FSPR 之上、面向电话/实时通信的 runtime。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:18
+#: 05d0c38d83f541d1973ae6292ac1a0b7
+msgid "Layering"
+msgstr "分层"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:39
+#: 774eab0bce1c472591981309789565f6
+msgid ""
+"Public umbrella header: `src/include/switch.h`. Portability wrappers: "
+"`src/include/switch_apr.h` implemented in `src/switch_apr.c` (calls "
+"`fspr_*`, not raw `pthread_*` / BSD sockets). Telephony objects: "
+"`src/include/switch_core.h`, `switch_channel.h`, `switch_event.h`, "
+"`switch_frame.h`, `switch_rtp.h`, `switch_loadable_module.h`."
+msgstr ""
+"对外总头文件：`src/include/switch.h`。可移植封装：`src/include/switch_apr.h`，实现于 "
+"`src/switch_apr.c`（调用 `fspr_*`，而不是直接 `pthread_*` / BSD "
+"socket）。电话对象：`src/include/switch_core.h`、`switch_channel.h`、`switch_event.h`、`switch_frame.h`、`switch_rtp.h`、`switch_loadable_module.h`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:41
+#: 756d1d668892436da578bb83248f0e3f
+msgid ""
+"There is **no** `switch_thread.h` / `switch_mutex.h` / `switch_queue.h` /"
+" `switch_socket.h`. Those types live in `switch_apr.h`."
+msgstr ""
+"**没有**单独的 `switch_thread.h` / `switch_mutex.h` / `switch_queue.h` / "
+"`switch_socket.h`。这些类型都在 `switch_apr.h` 里。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:43
+#: 7c4134abc591432ebfdf60d76da44213
+msgid "1. Traditional C vs FreeSWITCH C"
+msgstr "1. 传统 C 与 FreeSWITCH C"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:45
+#: e317ebbf15354254a3447bb2d1ecb256
+msgid "Typical C:"
+msgstr "典型 C："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:59
+#: 8cb84bd4a8664240aef68b9c0202ca6a
+msgid "FreeSWITCH style:"
+msgstr "FreeSWITCH 风格："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:71
+#: 70dc101117494bb696cfac6704ef7c6f
+msgid ""
+"The design goal is: **modules and objects should not each invent their "
+"own resource lifetime.** Pools, mutexes, sockets, and threads are tied to"
+" a pool. Destroying the pool releases the allocations created from it."
+msgstr ""
+"设计目标是：**不要让每个模块、每个对象各自发明一套底层资源生命周期。** mutex、socket、thread 都挂在 pool 上；销毁 "
+"pool 会释放从它分配出去的内存。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: eb58d9f1ab744d7a9ce53ac5488f6af4
+msgid "Area"
+msgstr "领域"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: c2d2c296630d492cb39c964843203e5e
+msgid "Traditional C"
+msgstr "传统 C"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: e2938588e1de4f30a4fd59d8e1728fec
+msgid "FreeSWITCH"
+msgstr "FreeSWITCH"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: b0db4a3b7ad14a8e9ae4e36b9e14caca
+msgid "Memory"
+msgstr "内存"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: 623ab95994c2401eb4d638937c91854c
+msgid "`malloc` / `free`"
+msgstr "`malloc` / `free`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: ead5d9ba269b4462b08575e2b302b160
+msgid ""
+"`switch_core_alloc`, `switch_core_session_alloc` "
+"(`src/include/switch_core.h`)"
+msgstr ""
+"`switch_core_alloc`, `switch_core_session_alloc` "
+"(`src/include/switch_core.h`)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: 46516df00055424796fe1182754d1093
+msgid "Threads"
+msgstr "线程"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: afddf25960264b20a1042ee113fde6ef
+msgid "`pthread_create`"
+msgstr "`pthread_create`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: 7f616ad1e313487686588b7eccf65404
+msgid "`switch_thread_create` (`switch_apr.h`)"
+msgstr "`switch_thread_create` (`switch_apr.h`)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: 55d260c4376a42bca82e4b95a45a3b13
+msgid "Mutex"
+msgstr "互斥锁"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: 726dd53607704eb9a1a2ce18750c55da
+msgid "`pthread_mutex_*`"
+msgstr "`pthread_mutex_*`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: f0e105270aa8462b86f89e0334c6f91e
+msgid "`switch_mutex_*`"
+msgstr "`switch_mutex_*`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: c11d9faa7e5a41b8b85e7be6ad6d72b9
+msgid "RWLock"
+msgstr "读写锁"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: 12080579dda4442d86b4b568884e37f4
+msgid "pthread rwlock"
+msgstr "pthread rwlock"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: 74fdf323ee3042ca8d434db218c623c7
+msgid "`switch_thread_rwlock_*`"
+msgstr "`switch_thread_rwlock_*`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: 63495191de544df58dbce3cc9e6c44de
+msgid "Queue"
+msgstr "队列"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: 458f06524dbd48c4aeabaf66d0566bd1
+msgid "ad hoc"
+msgstr "自行实现"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: d6b56edf78064c8a9a457bce7f70895a
+msgid "`switch_queue_*`"
+msgstr "`switch_queue_*`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: 72bb6a46b85c452cad1b12da2764dc73
+msgid "Socket"
+msgstr "套接字"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: 0a52cd3613094d80a48f0608a383528a
+msgid "BSD / Winsock"
+msgstr "BSD / Winsock"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: 6474cff0a02a440d9cc0da848d763cd9
+msgid "`switch_socket_*` / `switch_sockaddr_t`"
+msgstr "`switch_socket_*` / `switch_sockaddr_t`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: 79f5b7fbcee0420fbf3154be3b6eda32
+msgid "Plugin"
+msgstr "插件"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: 5961108d7f0244f694dee5c1e3cee979
+msgid "`dlopen` by hand"
+msgstr "`dlopen` by hand"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: b448e496f6874b0a9801731f9833e8e0
+#, fuzzy
+msgid ""
+"`SWITCH_MODULE_DEFINITION` + interface hashes "
+"([Architecture](01-architecture.md#loadable-module-contract))"
+msgstr ""
+"`SWITCH_MODULE_DEFINITION` + 接口哈希（[Architecture](02-architecture.md"
+"#loadable-module-contract)）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: 39d6daa334d04f3fa0b7334ef6d02174
+msgid "Call"
+msgstr "呼叫"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: f61e896cd7d643a2a4fe1ba9136c9dce
+msgid "a struct you own"
+msgstr "自己管理的 struct"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: 1ac74f1d980a4c2fb863ad323df11de7
+msgid "`switch_core_session_t` + `switch_channel_t`"
+msgstr "`switch_core_session_t` + `switch_channel_t`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: 642fbcbdf82c4a26b7f9f8d56ffdca3c
+msgid "Media"
+msgstr "媒体"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: ba3062b96e724de783a73d551c68ee0a
+msgid "a buffer"
+msgstr "一块 buffer"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: f72f686db90d4f34bd3c884df8f90abb
+msgid "`switch_frame_t`"
+msgstr "`switch_frame_t`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: 5279d5728a754dec84bd0afa8a1b5521
+msgid "Logging"
+msgstr "日志"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: 70b12c78f0fa4673b4c1a703e6cc7ee0
+msgid "`printf`"
+msgstr "`printf`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: 565b72f622174032a3a18b3f27ade95a
+msgid "`switch_log_printf`"
+msgstr "`switch_log_printf`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: f7637d9cf48b4c808d9fe6655f1a1939
+msgid "Config"
+msgstr "配置"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: cd9c9b2ac4e1498dbba9d623b0326454
+msgid "custom parser"
+msgstr "自行解析"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:20
+#: 20cb0c02e008446cb7960b7a2af37a59
+#, fuzzy
+msgid "XML + preprocessor ([Architecture](01-architecture.md))"
+msgstr "XML + 预处理器（[Architecture](02-architecture.md)）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:87
+#: 2bb6c3710f6f479da3a731358e6d4f19
+msgid ""
+"`switch_core_alloc` is zeroed (`switch_core.h` remark: memory is `memset`"
+" to zero). Macros pass `__FILE__` / `__LINE__` into "
+"`switch_core_perform_*` for leak tracking."
+msgstr ""
+"`switch_core_alloc` 会把内存清零（`switch_core.h` 注明 `memset` 为 0）。宏会把 "
+"`__FILE__` / `__LINE__` 传入 `switch_core_perform_*`，便于泄漏追踪。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:89
+#: 10a2b72d55114c3b98b061a81dda5a22
+msgid "2. What APR/FSPR is for"
+msgstr "2. APR/FSPR 扮演什么角色"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:91
+#: 279b11171fb6478c89356eb3ae9c1edb
+msgid ""
+"Apache Portable Runtime (vendored as `libs/apr`, types prefixed `fspr_`) "
+"abstracts OS primitives. FreeSWITCH does **not** treat Linux syscalls as "
+"the programming model."
+msgstr ""
+"Apache Portable Runtime（vendored 在 `libs/apr`，类型前缀 `fspr_`）抽象 OS "
+"原语。FreeSWITCH **并不**把 Linux syscall 当成自己的编程模型。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:105
+#: 9fc7541b54d44d068a8d019b85c0066c
+#, fuzzy
+msgid ""
+"Sockets are a typical stack. `switch_socket_accept` in `src/switch_apr.c`"
+" returns `fspr_socket_accept(...)`, which eventually calls the OS "
+"`accept()`. `mod_event_socket` creates TCP sockets with "
+"`switch_socket_create` "
+"(`src/mod/event_handlers/mod_event_socket/mod_event_socket.c`). Version "
+"pin: [Tech Stack](02-tech-stack.md) (`fspr_version.h`)."
+msgstr ""
+"Socket 是典型例子。`src/switch_apr.c` 里的 `switch_socket_accept` 返回 "
+"`fspr_socket_accept(...)`，最终走到 OS 的 `accept()`。`mod_event_socket` 用 "
+"`switch_socket_create` 建 TCP "
+"socket（`src/mod/event_handlers/mod_event_socket/mod_event_socket.c`）。版本见 "
+"[Tech Stack](03-tech-stack.md)（`fspr_version.h`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:107
+#: c3005e09bf3c4981a35271b16bbc0947
+msgid "3. Core is more than APR"
+msgstr "3. Core 不只是“用了 APR”"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:124
+#: cce52e98af124ad7a558e84086ea3f30
+msgid ""
+"FSPR does not know what a SIP INVITE or an Opus frame is. That is core + "
+"modules."
+msgstr "FSPR 不知道 SIP INVITE 或 Opus 帧是什么。那是 core 与模块的事。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:126
+#: d5b4b092e902490c933a949e327c86b6
+msgid "4. Memory pools"
+msgstr "4. 内存管理：Memory Pool"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:128
+#: e1e0b2c1a1244986aefd29542a8b7a64
+msgid ""
+"Implementation: `src/switch_core_memory.c`. Create/destroy macros: "
+"`switch_core_new_memory_pool` / `switch_core_destroy_memory_pool`."
+msgstr ""
+"实现：`src/switch_core_memory.c`。创建/销毁宏：`switch_core_new_memory_pool` / "
+"`switch_core_destroy_memory_pool`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:130
+#: 3934ef309b1d45e284b09591902010b4
+msgid ""
+"Pattern used in modules (example: profile structs allocated from a "
+"module-owned pool):"
+msgstr "模块里常见的写法（例如从模块自己的 pool 分配 profile）："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:140
+#: 93bd76acb56f4842b272986a51ce41f6
+msgid ""
+"Destroying the pool frees every allocation from that pool. That matches a"
+" **call/session lifetime boundary** better than pairing every `malloc` "
+"with a `free`."
+msgstr ""
+"销毁 pool 会释放该 pool 上的全部分配。这比给每一次 `malloc` 配对 `free` 更符合 **呼叫/session "
+"的生命周期边界**。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:142
+#: f9c0d77e475e49deb3e31dae3962cdde
+msgid ""
+"A SIP call creates a session, channel, RTP, codecs, variables, and "
+"events. On hangup the session pool goes away instead of walking a free-"
+"list of dozens of objects. Leaks, double-frees, and use-after-free still "
+"happen if you stash a pointer after the pool is gone, or allocate from "
+"the wrong pool."
+msgstr ""
+"一次 SIP 呼叫会创建 session、channel、RTP、codec、变量和 event。挂机时销毁 session "
+"pool，而不是逐个走几十个对象的 free 列表。若在 pool 销毁后仍握着指针，或从错误的 pool 分配，仍然会出现泄漏、double "
+"free、use-after-free。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:144
+#: dcd792731b4642dead6d3f1c58b66673
+msgid "5. Session is the main lifetime"
+msgstr "5. Session 是理解内存管理的关键"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:146
+#: f48a3d30dfc8478e9a9e4986a94969f7
+msgid ""
+"Private layout (`src/include/private/switch_core_pvt.h` — not installed; "
+"do not include it from modules):"
+msgstr "私有布局（`src/include/private/switch_core_pvt.h` — 不会安装；模块不要 include 它）："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:148
+#: 5cadcd99a1424106957e0e1c22195370
+msgid "`pool` — session memory"
+msgstr "`pool` — session 内存"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:149
+#: c419fd728b5343f18be01384e6869139
+msgid "`thread` / `thread_id`"
+msgstr "`thread` / `thread_id`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:150
+#: 279508bb7dff42eabb8936b483394d46
+msgid "`endpoint_interface`"
+msgstr "`endpoint_interface`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:151
+#: 1741ad6e6f9f4dc4acbd78c6a5a3a7dc
+msgid "`channel`"
+msgstr "`channel`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:152
+#: e5461be643d54eccb94e5d72119ee29d
+msgid "read/write codecs and `switch_frame_t` scratch buffers"
+msgstr "读写 codec 以及 `switch_frame_t` 暂存缓冲"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:153
+#: da63b19eb8b34c54a0319394bdb32c7b
+msgid "mutexes, rwlocks, cond"
+msgstr "mutex、rwlock、cond"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:154
+#: 420dc64ca18a43fbae82583736b24619
+msgid "`event_queue`, `message_queue`, `signal_data_queue`"
+msgstr "`event_queue`、`message_queue`、`signal_data_queue`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:155
+#: 452f1addf8814c45b5e36a3c24b71272
+msgid "`media_handle`, UUID"
+msgstr "`media_handle`、UUID"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:157
+#: 94f24cdf3d3c4f0ca8b33f736ed28f10
+msgid ""
+"`switch_core_session_alloc(session, size)` is “memory that dies with this"
+" session.” Codecs often bind context to `codec->memory_pool`. Example: "
+"`mod_opus` (`src/mod/codecs/mod_opus/mod_opus.c`) does "
+"`switch_core_alloc(codec->memory_pool, sizeof(*context))`."
+msgstr ""
+"`switch_core_session_alloc(session, size)` 的意思是：**“给我一块和这个 session "
+"生命周期绑定的内存。”** Codec 常把 context 绑到 `codec->memory_pool`。例如 "
+"`mod_opus`（`src/mod/codecs/mod_opus/mod_opus.c`）使用 "
+"`switch_core_alloc(codec->memory_pool, sizeof(*context))`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:163
+#: c0f0deb5c12b4dab97187a58b5526c98
+#, fuzzy
+msgid ""
+"State machine and `CS_*`: [Architecture](01-architecture.md). Packet path"
+" into `signal_data_queue`: [Workflows](05-workflows.md)."
+msgstr ""
+"状态机与 `CS_*`：[Architecture](02-architecture.md)。进入 `signal_data_queue` "
+"的报文路径：[Workflows](06-workflows.md)。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:165
+#: fdc0db85be3343de868ce2a03d58b8cd
+msgid "6. Lifetime-centric, not allocation-centric"
+msgstr "6. 以生命周期为中心，而不是以分配为中心"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:167
+#: c1165a137c064ed8baa3abe97378e8db
+msgid "Traditional C: whoever `malloc`s must `free`."
+msgstr "传统 C：谁 `malloc`，谁负责 `free`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:169
+#: 34f68ffde4154ace9916afdb7a8d404b
+msgid ""
+"FreeSWITCH: **which lifetime does this object belong to?** Session pool, "
+"channel (via session), module/profile pool, listener pool, core permanent"
+" pool (`switch_core_permanent_alloc`). When that lifetime ends, destroy "
+"the pool."
+msgstr ""
+"FreeSWITCH：**这个对象属于哪个生命周期？** session pool、channel（经由 "
+"session）、module/profile pool、listener pool、core 永久 "
+"pool（`switch_core_permanent_alloc`）。生命周期结束就销毁对应 pool。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:171
+#: 71189a06332f4e20a19c1c537d2e7083
+msgid "7. Concurrency is not one-connection-one-thread"
+msgstr "7. 并发不是简单地“一个连接一个线程”"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:173
+#: 028371bded27412197075dce4bf1eacc
+msgid ""
+"A call mixes SIP signaling, channel state, RTP, codecs, applications, "
+"events, and timers. Core uses threads, mutexes, rwlocks, condvars, "
+"queues, and the event bus — not a single `pthread_create` per TCP "
+"connection."
+msgstr ""
+"一次呼叫同时涉及 SIP 信令、channel 状态、RTP、codec、application、event 和 timer。Core 使用 "
+"thread、mutex、rwlock、condvar、queue 和 event bus，而不是每个 TCP 连接一次 "
+"`pthread_create`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:175
+#: caa79facc8734d2f92dbe932f2fc4a94
+msgid ""
+"Session launch (`src/switch_core_session.c` "
+"`switch_core_session_thread_launch`): if `SCF_SESSION_THREAD_POOL` is "
+"set, it uses `switch_core_session_thread_pool_launch`; otherwise it "
+"`switch_thread_create`s a detached thread on the session pool."
+msgstr ""
+"启动 session 线程（`src/switch_core_session.c` 的 "
+"`switch_core_session_thread_launch`）：若设置了 `SCF_SESSION_THREAD_POOL`，走 "
+"`switch_core_session_thread_pool_launch`；否则在 session pool 上 "
+"`switch_thread_create` 一个 detached thread。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:177
+#: 7a5efc2790894e01881146adbd55c630
+msgid ""
+"`SCF_SESSION_THREAD_POOL` is **set by default** in `switch_core_init` "
+"(`src/switch_core.c`). XML `switch.conf` param `session-thread-pool` can "
+"set or clear the flag. Vanilla "
+"`conf/vanilla/autoload_configs/switch.conf.xml` does **not** currently "
+"list that param; the default core flag still applies."
+msgstr ""
+"`SCF_SESSION_THREAD_POOL` 在 "
+"`switch_core_init`（`src/switch_core.c`）里**默认打开**。XML `switch.conf` 参数 "
+"`session-thread-pool` 可以打开或关闭。Vanilla "
+"`conf/vanilla/autoload_configs/switch.conf.xml` **当前没有**写出该参数；核心默认标志仍然生效。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:179
+#: 7247c9a954714d41b1794bbe26feac4c
+msgid ""
+"Event fan-out uses dispatch threads in `src/switch_event.c` "
+"(`switch_event_dispatch_thread`, `EVENT_DISPATCH_QUEUE_THREADS`)."
+msgstr ""
+"事件分发使用 `src/switch_event.c` 中的 dispatch "
+"线程（`switch_event_dispatch_thread`、`EVENT_DISPATCH_QUEUE_THREADS`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:181
+#: 6a6347efca894fffb9d7b3b3e83195ca
+msgid "8. Mutex, rwlock, queue"
+msgstr "8. Mutex / RWLock / Queue 如何组合"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:183
+#: 1c06752d60714a3b8ea327a88f4a6657
+msgid ""
+"Shared tables typically use `switch_thread_rwlock_rdlock` / `wrlock` / "
+"`unlock`. Example: `mod_prefix` protects prefix trees with "
+"`switch_thread_rwlock_t` "
+"(`src/mod/applications/mod_prefix/mod_prefix.c`)."
+msgstr ""
+"共享表通常用 `switch_thread_rwlock_rdlock` / `wrlock` / `unlock`。例如 "
+"`mod_prefix` 用 `switch_thread_rwlock_t` "
+"保护前缀树（`src/mod/applications/mod_prefix/mod_prefix.c`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:185
+#: fc88b79534e741fd9275c37da374ff05
+msgid ""
+"`switch_queue_t` (APR queue wrapper in `switch_apr.h`) decouples a "
+"realtime producer from a slower consumer:"
+msgstr "`switch_queue_t`（`switch_apr.h` 里的 APR queue 封装）把实时生产者和较慢的消费者隔开："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:192
+#: 8b3d939478bf4b5bb63c90ed0a9069ac
+msgid ""
+"Session-private queues (`event_queue`, `signal_data_queue`) are the same "
+"idea inside one leg."
+msgstr "session 私有队列（`event_queue`、`signal_data_queue`）是同一思路在一条腿内部的应用。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:194
+#: 3215dc8046cc4ee9a71662955c29032b
+msgid "9. Events as decoupling"
+msgstr "9. Event 是并发解耦机制"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:196
+#: ee32269e1c64484eafd08313f3675d5d
+#, fuzzy
+msgid ""
+"Core does not require `mod_sofia` to call every CDR/logger/ESL consumer. "
+"It fires events (`switch_event_fire` → `switch_event_fire_detailed` in "
+"`src/include/switch_event.h`). Names include `CHANNEL_CREATE`, "
+"`CHANNEL_ANSWER`, `CHANNEL_BRIDGE`, `CHANNEL_HANGUP`, `CUSTOM`, "
+"`HEARTBEAT` (enum comments in `src/include/switch_types.h`). Subscribers:"
+" loggers, CDR, `mod_event_socket`, scripts. ESL vs in-process bus: [Data "
+"and API](04-data-and-api.md)."
+msgstr ""
+"Core 不要求 `mod_sofia` 直接调用每一个 CDR/日志/ESL 消费者。它触发 event（`switch_event_fire`"
+" → `src/include/switch_event.h` 的 `switch_event_fire_detailed`）。名称包括 "
+"`CHANNEL_CREATE`、`CHANNEL_ANSWER`、`CHANNEL_BRIDGE`、`CHANNEL_HANGUP`、`CUSTOM`、`HEARTBEAT`（`src/include/switch_types.h`"
+" 枚举注释）。订阅者：logger、CDR、`mod_event_socket`、脚本。ESL 与进程内总线：[Data and API](05"
+"-data-and-api.md)。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:198
+#: 84ece66e3461418585bcaff7153ae917
+msgid "10. Network vs SIP vs RTP"
+msgstr "10. 网络编程：socket 抽象与 SIP/RTP 不是同一层"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:200
+#: a6f91f5d623f4711b7f65937ea2bfd75
+msgid ""
+"`switch_socket_*` is the portable TCP/UDP helper (ESL listen/accept, some"
+" module TCP). It is **not** the SIP stack and **not** the media engine."
+msgstr ""
+"`switch_socket_*` 是可移植的 TCP/UDP 辅助（ESL listen/accept、部分模块 TCP）。它**不是** "
+"SIP 协议栈，也**不是**媒体引擎。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:213
+#: f40b6a1d692049169eaadc4e516bc4a5
+#, fuzzy
+msgid ""
+"SIP: UDP/TCP/TLS/WebSocket → Sofia-SIP → `mod_sofia` ([Tech Stack](02"
+"-tech-stack.md#sofia-sip-library))."
+msgstr ""
+"SIP：UDP/TCP/TLS/WebSocket → Sofia-SIP → `mod_sofia`（[Tech Stack](03-tech-"
+"stack.md#sofia-sip-library)）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:214
+#: c1274bf1d31141b1a524f53ec4a04912
+msgid ""
+"RTP: UDP → `src/switch_rtp.c` / `src/switch_core_media.c` → codec → "
+"`switch_frame_t`."
+msgstr ""
+"RTP：UDP → `src/switch_rtp.c` / `src/switch_core_media.c` → codec → "
+"`switch_frame_t`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:216
+#: 04d72193ae9a4eb5ae11039bed8bcfee
+msgid "Do not mix those layers when reading code."
+msgstr "读网络相关代码时，不要把这几层混在一起。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:219
+#: e7687c0e454147008689a3d2e36c960e
+msgid "11. Frames"
+msgstr "11. Frame"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:221
+#: e5c8ce135740451bb7ed8e76667cdd26
+msgid ""
+"`switch_frame_t` (`src/include/switch_frame.h`, typedef in "
+"`switch_types.h`) is the media-processing unit. Codecs encode/decode "
+"frames; they do not own SIP or the UDP fd."
+msgstr ""
+"`switch_frame_t`（`src/include/switch_frame.h`，typedef 在 "
+"`switch_types.h`）是媒体处理单元。Codec 编解码的是 frame，并不拥有 SIP 或 UDP fd。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:228
+#: 7e075074aa494df7b66424d07129e6e3
+msgid "12. Modules"
+msgstr "12. Module"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:230
+#: 917ba304c2d74b0ab58879ae86459d19
+#, fuzzy
+msgid ""
+"Not a single C binary of all features. Categories under "
+"`src/mod/<category>/mod_<name>/` register through "
+"`SWITCH_MODULE_DEFINITION` (`src/include/switch_types.h`) and then "
+"`SWITCH_ADD_*` into core hashes: endpoint, application, API, codec, "
+"dialplan, event, file, say, … Example codec: `mod_opus`. Contract: "
+"[Architecture](01-architecture.md#loadable-module-contract). Naming: "
+"[Conventions](../4.development/01-conventions.md)."
+msgstr ""
+"不是把所有功能编进一个巨型 C 程序。`src/mod/<category>/mod_<name>/` 下的模块通过 "
+"`SWITCH_MODULE_DEFINITION`（`src/include/switch_types.h`）注册，再用 "
+"`SWITCH_ADD_*` 写入 core "
+"哈希：endpoint、application、API、codec、dialplan、event、file、say……例如 "
+"`mod_opus`。契约：[Architecture](02-architecture.md#loadable-module-"
+"contract)。命名：[Conventions](07-conventions.md)。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:232
+#: f85a3e5231884490ba51ad79e487c843
+msgid "13. Where to start reading"
+msgstr "13. 建议的源码阅读顺序"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:234
+#: b412e967eab84d0682495280833db488
+msgid "Do **not** start in `mod_sofia.c`. Suggested order:"
+msgstr "**不要**从 `mod_sofia.c` 直接开始。建议顺序："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:236
+#: 28bbd42233f8423c8bd411b812cbefa0
+msgid "`src/include/switch.h` (includes only — see the real headers it pulls)"
+msgstr "`src/include/switch.h`（只看它 include 了哪些真正的头文件）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:237
+#: fd3e959fb53d43e590879a2c831516d6
+msgid "`src/include/switch_types.h`"
+msgstr "`src/include/switch_types.h`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:238
+#: 631c86221c2040138bfc059a47d3ea8b
+msgid "Memory: `src/switch_core_memory.c`, `switch_core.h` pool macros"
+msgstr "内存：`src/switch_core_memory.c`、`switch_core.h` 的 pool 宏"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:239
+#: 6e3121ad0dd64f4884e4319d558304db
+msgid "Threads / mutex / queue: `src/include/switch_apr.h`, `src/switch_apr.c`"
+msgstr "线程 / mutex / queue：`src/include/switch_apr.h`、`src/switch_apr.c`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:240
+#: 27308769fecb46de97b852c6ca695d0a
+msgid "Events: `src/switch_event.c`, `src/include/switch_event.h`"
+msgstr "Event：`src/switch_event.c`、`src/include/switch_event.h`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:241
+#: 49f9b710cf4143e0a5d30ff19a05b207
+msgid ""
+"Session / channel: `src/switch_core_session.c`, `src/switch_channel.c`, "
+"`src/switch_core_state_machine.c`"
+msgstr ""
+"Session / "
+"channel：`src/switch_core_session.c`、`src/switch_channel.c`、`src/switch_core_state_machine.c`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:242
+#: 3b289c1dac3e49dca4dcb1c0246be8a3
+msgid "Sockets: `switch_socket_*` in `switch_apr.c` (then ESL, not Sofia)"
+msgstr "Socket：`switch_apr.c` 中的 `switch_socket_*`（先看 ESL，不要先看 Sofia）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:243
+#: 73aceb3ee34e4889aabc901bbddaf617
+msgid ""
+"RTP / frame / codec: `src/switch_rtp.c`, `switch_frame.h`, a small codec "
+"(`mod_opus`)"
+msgstr ""
+"RTP / frame / codec：`src/switch_rtp.c`、`switch_frame.h`、一个小 "
+"codec（`mod_opus`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:244
+#: fa83185d3ccd4dd580947d4738f64b16
+msgid "Module loader: `src/switch_loadable_module.c`"
+msgstr "模块加载器：`src/switch_loadable_module.c`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:245
+#: 927e5d44c4e74e28b6bc525e022abfd7
+msgid "Then `src/mod/endpoints/mod_sofia/`"
+msgstr "然后才是 `src/mod/endpoints/mod_sofia/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:247
+#: c650b959539d4a8a88e81c076d6ccaa3
+msgid ""
+"Mental spine: **pool → session → channel → thread → event → queue → "
+"socket → RTP → SIP**."
+msgstr ""
+"主线：**pool → session → channel → thread → event → queue → socket → RTP → "
+"SIP**。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:249
+#: 31ab43d26e0c4086b9a96048d0f3dce2
+msgid "14. Go-shaped analogies (optional)"
+msgstr "14. 用 Go 做类比（可选）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:251
+#: 07caca1ce68f4efc8d20b7e3e0ce840f
+msgid "If you think in Go, map loosely:"
+msgstr "如果你习惯 Go，可以大致这样对应："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:202
+#: d41fc80d9d63451d8ccbea3a05014c3d
+msgid "C API"
+msgstr "C API"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:202
+#: 498f0fee4d2940449466fb5820681037
+msgid "Rough Go picture"
+msgstr "大致对应的 Go 图景"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:202
+#: f94ffc1cb5994918b9d219200623071d
+msgid "`switch_core_session_t`"
+msgstr "`switch_core_session_t`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:202
+#: 2c45722334dd4814b6bf92f5079f56dd
+msgid "`Session` with pool, channel, media"
+msgstr "`Session` with pool, channel, media"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:202
+#: 9de6982afd0f44b29da953f3a7bc5038
+msgid "`switch_core_session_alloc`"
+msgstr "`switch_core_session_alloc`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:202
+#: ed29d4458cbd42c08086f776cbde7e6e
+msgid "object allocated on the session’s arena"
+msgstr "分配在该 session arena 上的对象"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:202
+#: 733750232b2746318100746f46bfb1e0
+msgid "`switch_mutex_lock`"
+msgstr "`switch_mutex_lock`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:202
+#: d8ba88ff7f664e6eaef8ec5c549931e0
+msgid "`mutex.Lock()`"
+msgstr "`mutex.Lock()`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:202
+#: 80049749e47645c7883ed43f34f7015e
+msgid "`switch_queue_push`"
+msgstr "`switch_queue_push`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:202
+#: 73565aff074f415e8945a529ff24c054
+msgid "send on a bounded channel"
+msgstr "向有界 channel 发送"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:202
+#: 53ddf03740d64b91bf5c48b513382d87
+msgid "`switch_event_fire`"
+msgstr "`switch_event_fire`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:202
+#: 801fa72e7fda41f1824926ddf8cac502
+msgid "publish on an event bus"
+msgstr "发布到事件总线"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:202
+#: 926221646acb4a95acd57f8131c072e6
+msgid "`SWITCH_MODULE_DEFINITION`"
+msgstr "`SWITCH_MODULE_DEFINITION`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:202
+#: e866000eeebe4faa99c82da05a367ee3
+msgid "plugin `init()` registering interfaces"
+msgstr "插件 `init()` 注册接口"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:262
+#: 33b697ffcbfa49a1af25bdd910bd7c5d
+msgid "These are analogies, not bindings. There is no Go runtime in core."
+msgstr "这只是类比，不是绑定。核心里没有 Go 运行时。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:264
+#: 7e25059c05b74873869171dcd7335b9f
+msgid "15. One-line summary"
+msgstr "15. 一句话总结"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:266
+#: bf7adb2c7cd8491e888d9933d6fc288f
+msgid ""
+"**The design center is not “how to malloc in C.” It is “how a call’s many"
+" objects share a clear lifetime.”** Hangup destroys the session pool; the"
+" attached channel, codec contexts, queues, and frames go with it. "
+"APR/FSPR is POSIX-like portability. Core is the realtime-communications "
+"OS on top."
+msgstr ""
+"**设计核心不是“如何在 C 里管理 malloc”，而是“如何让复杂实时通信对象拥有清晰的生命周期”。** 挂机销毁 session "
+"pool，其上的 channel、codec context、queue、frame 一并回收。APR/FSPR 是 POSIX "
+"式可移植层；Core 则是其上专门服务实时通信的操作系统。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:268
+#: 80ca7b0183914efb8b8382c11f0c4a73
+msgid "Related Documentation"
+msgstr "相关文档"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:270
+#: c0535bb2ca99470e8b9c267131e5bd01
+#, fuzzy
+msgid "[Architecture](01-architecture.md) — C4, `CS_*`, module contract"
+msgstr "[Architecture](02-architecture.md) — C4、`CS_*`、模块契约"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:271
+#: 8c9b04c7ea8c47b1b14b6e7195e6659e
+#, fuzzy
+msgid "[Tech Stack](02-tech-stack.md) — FSPR version, Sofia-SIP"
+msgstr "[Tech Stack](03-tech-stack.md) — FSPR 版本、Sofia-SIP"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:272
+#: 31274a3a30794abca38135f5216e148f
+#, fuzzy
+msgid "[Workflows](05-workflows.md) — INVITE path, registry lookup"
+msgstr "[Workflows](06-workflows.md) — INVITE 路径、注册表查找"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:273
+#: 4ebb1345d3ff4f28ba2270fdd35bd88d
+#, fuzzy
+msgid ""
+"[Conventions](../4.development/01-conventions.md) — `SWITCH_MODULE_*`, "
+"`switch.h`"
+msgstr "[Conventions](07-conventions.md) — `SWITCH_MODULE_*`、`switch.h`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:274
+#: 4dc016715786485e8e9bd1796bf4d7c9
+#, fuzzy
+msgid "[Data and API](04-data-and-api.md) — events, ESL"
+msgstr "[Data and API](05-data-and-api.md) — event、ESL"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/06-c-runtime.md:275
+#: 8362885e93064f99a2a8efcb39f86287
+msgid ""
+"[Users Manual Ch "
+"1](https://developer.signalwire.com/freeswitch/foundations/introduction)"
+msgstr ""
+"[Users Manual 第 1 "
+"章](https://developer.signalwire.com/freeswitch/foundations/introduction)"
+

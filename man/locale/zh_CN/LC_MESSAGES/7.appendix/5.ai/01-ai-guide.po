@@ -1,0 +1,742 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Zoom Video Communications
+# This file is distributed under the same license as the FreeSWITCH package.
+# Walter Fan <walter.fan@ustc.etu>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version:  FreeSWITCH\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-18 16:34+0800\n"
+"PO-Revision-Date: 2026-08-30 23:13+0800\n"
+"Last-Translator: Walter Fan <walter.fan@ustc.etu>\n"
+"Language: zh_CN\n"
+"Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:1
+#: 1b2bd6bf9ceb46b692a74ced9cebd57b
+msgid "13. How to Use This Documentation for AI"
+msgstr "13. 如何用本文档驱动 AI"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:5
+#: f07698ab18414efdafdc379b2a4b5d41
+msgid ""
+"This guide explains how AI assistants should consume and use the Project "
+"Knowledge Base."
+msgstr "本指南说明 AI 助手应如何阅读和使用项目知识库。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:7
+#: e5bfd809b4294251a651df43720956bc
+msgid "Recommended Reading Order"
+msgstr "建议阅读顺序"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:9
+#: 9792f58dbab9417f93261f4d27fc7987
+#, fuzzy
+msgid ""
+"Start with [Project Overview](../../0.getting-started/01-overview.md) for"
+" purpose, scope, and users. If the three configuration domains (directory"
+" / dialplan / configuration) are new, also read [Users Manual Chapter "
+"1](https://developer.signalwire.com/freeswitch/foundations/introduction)."
+msgstr ""
+"先读 [项目概述](00-overview.md) 了解目的、范围与用户。若三大配置域（directory / dialplan / "
+"configuration）还不熟，再读 [用户手册第 1 "
+"章](https://developer.signalwire.com/freeswitch/foundations/introduction)。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:10
+#: cc061a560852479eb6863b544db7c5c2
+#, fuzzy
+msgid ""
+"Read [Repository Map](../../1.architecture/03-repo-map.md) to locate "
+"entry points and important directories."
+msgstr "再看 [仓库地图](04-repo-map.md)，定位入口和重要目录。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:11
+#: 2f5818ea71274f188030a81ce0af7c9f
+#, fuzzy
+msgid ""
+"Read [Architecture](../../1.architecture/01-architecture.md) for cross-"
+"cutting behavior, then [C Runtime "
+"Framework](../../1.architecture/06-c-runtime.md) before tracing "
+"`switch_*` / pools / sessions, then [Tech Stack](../../1.architecture/02"
+"-tech-stack.md) for build and dependency boundaries."
+msgstr "阅读[架构](02-architecture.md)了解跨领域行为，然后阅读[技术栈](03-tech-stack.md)了解构建和依赖边界。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:12
+#: f5da07b60b4a4d62b2ebe57e453f8c2f
+#, fuzzy
+msgid ""
+"Check [Data and API](../../1.architecture/04-data-and-api.md) and "
+"[Workflows](../../1.architecture/05-workflows.md) before changing "
+"contracts or runtime behavior."
+msgstr "修改契约或运行时行为前，检查[数据和 API](05-data-and-api.md)以及[工作流](06-workflows.md)。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:13
+#: f48d452add52488cb1293f853f26d220
+#, fuzzy
+msgid ""
+"Use [Conventions](../../4.development/01-conventions.md), "
+"[Build](../../4.development/02-build.md), and "
+"[Testing](../../4.development/03-testing.md) before implementing or "
+"validating changes."
+msgstr "实现或验证更改前，使用[约定](07-conventions.md)、[构建](08-build.md)和[测试](09-testing.md)。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:14
+#: af6943d1b64040f59daaa3f533dfe97a
+#, fuzzy
+msgid ""
+"Use [Runbook](../../5.operations/01-runbook.md) and "
+"[Observability](../../5.operations/02-observability.md) when debugging or"
+" operating the switch."
+msgstr "调试或运维交换机时，使用[运维手册](10-runbook.md)和[可观测性](11-observability.md)。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:15
+#: 0df5e88190ea490e8d2ee7636448ba9c
+#, fuzzy
+msgid ""
+"Use [Documentation Process](../../5.operations/03-document.md) when "
+"refreshing the PKB itself."
+msgstr "刷新 PKB 本身时，使用 [文档流程](12-document.md)。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:17
+#: 53333aeb457e4b8c8a65689e5eceac94
+msgid "The Three-Round Learning Process"
+msgstr "三轮学习过程"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:19
+#: 96678c07a75448e4b29efa19948558d4
+msgid "Round 1: Build the mental model"
+msgstr "第 1 轮：建立心智模型"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:21
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:37
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:51
+#: ba61a01d51b74eba9ef03134ddb38c0e f8aafbe244de4051bf5b4ebe312d22c9
+#: fdcc62875b714b9381e377559b4f4e8d
+msgid "Read:"
+msgstr "阅读："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:23
+#: 1e30f93b93674eb8a7490cdd77f5cd78
+#, fuzzy
+msgid "[Project Overview](../../0.getting-started/01-overview.md)"
+msgstr "[项目概述](00-overview.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:24
+#: daef51d079dd475bac73b55a38ee0d14
+#, fuzzy
+msgid "[Repository Map](../../1.architecture/03-repo-map.md)"
+msgstr "[仓库地图](04-repo-map.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:25
+#: fc5d74478c284b1c9ce13a3e71902386
+#, fuzzy
+msgid "[Architecture](../../1.architecture/01-architecture.md)"
+msgstr "[架构](02-architecture.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:26
+#: ee570e791d864e1791806576b149c4ac
+msgid ""
+"[C Runtime Framework](../../1.architecture/06-c-runtime.md) when the task"
+" is reading or changing C core / modules"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:27
+#: 574732d03d4649dba076a3e293d7942a
+#, fuzzy
+msgid "[C Runtime Framework](../../1.architecture/06-c-runtime.md)"
+msgstr "[工作流](06-workflows.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:29
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:43
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:59
+#: b43638a5dbbf4e36a042e91a8f299cc4 cd2f09cb1b1a4a36b4c1f7cfa371698b
+#: d5375d591ffc4ad7a2ea91fb18ee0ae7
+msgid "Expected output:"
+msgstr "预期产出："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:31
+#: 156995672b9e466da55300b746e38307
+msgid "A short system summary"
+msgstr "一份简短的系统摘要"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:32
+#: 2d5b2b9e48cb439b8547e9dbbe534248
+msgid "A map of entry points and high-change modules"
+msgstr "一张入口与高频变更模块地图"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:33
+#: 533faa2c4beb4bfcb58377a322d9a85b
+msgid "A list of missing knowledge that blocks safe implementation"
+msgstr "一份会挡住安全实现的缺失知识清单"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:35
+#: f61a1e5f96394e0594ea8a6b70a5acb2
+msgid "Round 2: Trace critical flows"
+msgstr "第 2 轮：追踪关键流程"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:39
+#: 0e987537501440cb80663ea6625f2005
+#, fuzzy
+msgid "[Data and API](../../1.architecture/04-data-and-api.md)"
+msgstr "[数据与 API](05-data-and-api.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:40
+#: 8f85aea67cb34abe9b0a1bb401c1aa7d
+#, fuzzy
+msgid "[Workflows](../../1.architecture/05-workflows.md)"
+msgstr "[工作流](06-workflows.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:41
+#: 4ec5529968184f8681837cd31b486d48
+msgid "relevant code files referenced by those docs"
+msgstr "那些文档引用的相关代码文件"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:45
+#: 69de49cc015a4664b0b721185a62f8a0
+msgid "End-to-end call chains for 2-3 critical flows"
+msgstr "2–3 条关键流程的端到端调用链"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:46
+#: 6c09e2d31f9544408a124a59c7cd208b
+msgid "Boundary conditions and likely failure modes"
+msgstr "边界条件与常见失败模式"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:47
+#: 5c0bffc54b584b03b7f770731806d7fe
+msgid "A focused validation plan"
+msgstr "一份聚焦的验证计划"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:49
+#: 546534e01a2642ad821121eccb6e9b4d
+msgid "Round 3: Prepare production-safe changes"
+msgstr "第 3 轮：准备可安全上线的变更"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:53
+#: d2ead7505b7d47118022c97709f93198
+#, fuzzy
+msgid ""
+"[Documentation Process](../../5.operations/03-document.md) when the "
+"change itself updates this PKB"
+msgstr "当更改本身更新此 PKB 时，使用[文档流程](12-document.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:54
+#: 3e11654ed2544fa6a29a64f27497d731
+#, fuzzy
+msgid "[Testing](../../4.development/03-testing.md)"
+msgstr "[测试](09-testing.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:55
+#: 44853f3c15c24e56b30f929f6ae6b722
+#, fuzzy
+msgid "[Runbook](../../5.operations/01-runbook.md)"
+msgstr "[运维手册](10-runbook.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:56
+#: 082d0523d6ab4b758c659a15c29e9b8e
+#, fuzzy
+msgid "[Observability](../../5.operations/02-observability.md)"
+msgstr "[可观测性](11-observability.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:57
+#: 0cdd51f6830c4cc0a47451dd700cf709
+#, fuzzy
+msgid "[ADRs](../6.decisions/adr/index.md) when design rationale matters"
+msgstr "需要设计理由时看 [ADR](adr/index.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:61
+#: 43e9b33c2aa6467898c56ee1a118bf8e
+msgid "A contained implementation plan"
+msgstr "一份范围可控的实现计划"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:62
+#: d9e52fc935e84f8c8cfd72de543e75dc
+msgid "Validation and rollback steps"
+msgstr "验证与回滚步骤"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:63
+#: 56d2e6542a0748bfaf29d0a5f89e51c9
+msgid "Any documentation that must change with the code"
+msgstr "必须随代码一起改的文档"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:65
+#: 8915f16ef9e94b73b423339bf2a7ed93
+msgid "When to use the Users Manual vs this PKB"
+msgstr "何时用用户手册，何时用本 PKB"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md
+#: 6d529144a0da43ca87271c17ae10844c
+msgid "Question"
+msgstr "问题"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md
+#: ec96216cd9994ea3b59fac67859033ee
+msgid "Read"
+msgstr "阅读"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md
+#: 69ce12d1dbc8450b9d388bd46c075bf6
+msgid "What does this XML parameter mean? Default? Allowed values?"
+msgstr "这个 XML 参数是什么意思？默认值？允许取值？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md
+#: d5a457b7236f4e6aa7698a054bec5a97
+msgid ""
+"[Users Manual](https://developer.signalwire.com/freeswitch/) (Parts 1–8, "
+"Part 9 module reference)"
+msgstr "[用户手册](https://developer.signalwire.com/freeswitch/)（第 1–8 部分，第 9 部分模块参考）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md
+#: 736d132c07084122837321c1a8118842
+msgid "Where is that implemented in **this clone**?"
+msgstr "它在**本克隆**里实现在哪？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md
+#: a7236b2332c14ba1bc626093853b679a
+#, fuzzy
+msgid ""
+"PKB [Repo map](../../1.architecture/03-repo-map.md), "
+"[Architecture](../../1.architecture/01-architecture.md), code references "
+"on the page"
+msgstr "PKB [仓库地图](04-repo-map.md)、[架构](02-architecture.md) 以及页内代码引用"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md
+#: 6ae42860fae74a2c905bd8fa2a55dec7
+msgid "How do I build/test/CI this tree?"
+msgstr "如何构建/测试/跑本仓库的 CI？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md
+#: 6112dde92b1443a8b54b1fc49a10f56d
+#, fuzzy
+msgid ""
+"PKB [Quick Start](../../0.getting-started/02-quick-start.md), "
+"[Build](../../4.development/02-build.md), "
+"[Testing](../../4.development/03-testing.md)"
+msgstr "PKB [快速开始](01-quick-start.md)、[构建](08-build.md)、[测试](09-testing.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md
+#: be817700af774d5585b468737f37ab52
+msgid "How do I write an ESL client?"
+msgstr "如何写 ESL 客户端？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md
+#: 183f6d6128444e15a72b563f6b950004
+#, fuzzy
+msgid ""
+"Users Manual [Ch 46 Inbound "
+"ESL](https://developer.signalwire.com/freeswitch/programming/esl-inbound)"
+" plus PKB [Data and API](../../1.architecture/04-data-and-api.md) and "
+"`libs/esl/`"
+msgstr ""
+"用户手册 [第 46 章入站 "
+"ESL](https://developer.signalwire.com/freeswitch/programming/esl-"
+"inbound)，加上 PKB [数据与 API](05-data-and-api.md) 与 `libs/esl/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md
+#: 09fdfe4a974840f682ae13918f349cf3
+msgid "Historical wiki / old recipes"
+msgstr "历史 wiki / 旧配方"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md
+#: ea737e57b76349c4b32d0570b1b0b9fb
+msgid ""
+"[FreeSWITCH Explained](https://developer.signalwire.com/freeswitch"
+"/FreeSWITCH-Explained/)"
+msgstr ""
+"[FreeSWITCH Explained](https://developer.signalwire.com/freeswitch"
+"/FreeSWITCH-Explained/)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:75
+#: 839411de4b9942e6b72ccceed1b78439
+msgid ""
+"Do not paste Users Manual parameter tables into PKB pages. Link the "
+"chapter; keep PKB facts verified against this tree (file paths, C "
+"symbols, Autotools)."
+msgstr "不要把用户手册参数表粘进 PKB 页面。链到章节；PKB 事实应对本仓库核实（文件路径、C 符号、Autotools）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:77
+#: 8b57174b3d5b4e0abf39ba7beaa54b03
+msgid "Core Capabilities"
+msgstr "核心能力"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:79
+#: e5eba4de5bee448eaa84ff749d0be3e2
+msgid "Locate"
+msgstr "定位"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:81
+#: d014bb27a4114033bb7573ef421650ce
+#, fuzzy
+msgid "Use [Repository Map](../../1.architecture/03-repo-map.md) to find:"
+msgstr "用 [仓库地图](04-repo-map.md) 查找："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:83
+#: e88ceb72e9cf44319712eda122cd99c1
+msgid "startup files"
+msgstr "启动文件"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:84
+#: 0052cfbb8b624fee827df3591d74b945
+msgid "routers, handlers, and command boundaries"
+msgstr "路由、处理程序和命令边界"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:85
+#: b7ddf05e81c14f5bb2927f1859b26406
+msgid "scripts, tests, and release config"
+msgstr "脚本、测试和发版配置"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:87
+#: 007d5463ec3d4663b38666e7e2174114
+msgid "Understand"
+msgstr "理解"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:89
+#: 5f211fa835d54a3783644e4db94f9480
+#, fuzzy
+msgid ""
+"Use [Architecture](../../1.architecture/01-architecture.md), [Tech "
+"Stack](../../1.architecture/02-tech-stack.md), and "
+"[Workflows](../../1.architecture/05-workflows.md) to understand:"
+msgstr ""
+"用 [架构](02-architecture.md)、[技术栈](03-tech-stack.md) 和 "
+"[工作流](06-workflows.md) 理解："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:91
+#: c7f95ca704d346c48d958a5256ce10ce
+msgid "why the system is shaped this way"
+msgstr "系统为何是这种形状"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:92
+#: e0d6c11253744581ac7a82198fea12f5
+msgid "how the main layers interact"
+msgstr "主要层如何交互"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:93
+#: 1faf14eecde747538922e7b2d6bdfc7d
+msgid "where important trade-offs live"
+msgstr "重要权衡落在何处"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:95
+#: 381f09f4c0d24808b395432e4784fc00
+msgid "Execute"
+msgstr "执行"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:97
+#: 03b748c355504d45968c69b245ff146e
+#, fuzzy
+msgid ""
+"Use [Quick Start](../../0.getting-started/02-quick-start.md), "
+"[Build](../../4.development/02-build.md), and "
+"[Runbook](../../5.operations/01-runbook.md) to:"
+msgstr "用 [快速开始](01-quick-start.md)、[构建](08-build.md) 和 [运维手册](10-runbook.md) 来："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:99
+#: 60cf62bd0bdc4615b9c713ba2e3504af
+msgid "start the project locally"
+msgstr "在本地启动项目"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:100
+#: 5ffaa8ed78bf451c805abee1f0d0f21d
+msgid "run builds and tests"
+msgstr "跑构建和测试"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:101
+#: b48a92b198e046b5b8826bb3a2ee221c
+msgid "inspect state and debug failures"
+msgstr "检查状态并调试失败"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:103
+#: 94d8e94c774d49a787acb65271e4203e
+msgid "Verify"
+msgstr "验证"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:105
+#: 0d90586284de45f697f63f998a16592d
+#, fuzzy
+msgid ""
+"Use [Testing](../../4.development/03-testing.md) and "
+"[Observability](../../5.operations/02-observability.md) to:"
+msgstr "用 [测试](09-testing.md) 和 [可观测性](11-observability.md) 来："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:107
+#: f8875f85fcc84342a342a33ac4995638
+msgid "choose the right validation depth"
+msgstr "选择合适的验证深度"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:108
+#: 7474cc40fc73494e8da75a7c5a6ae25b
+msgid "inspect logs, metrics, traces, and alerts"
+msgstr "查看日志、指标、追踪和告警"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:109
+#: ccf4455dae33430391a9920dc62cdaae
+msgid "confirm whether a fix really addressed the issue"
+msgstr "确认修复是否真正解决了问题"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:111
+#: 58f70d9986364118b319791e9aa876ac
+msgid "When Updating Docs"
+msgstr "更新文档时"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:113
+#: 804975481ad04d2fad846f24d5b89526
+msgid "Before refreshing PKB pages:"
+msgstr "刷新 PKB 页面之前："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:115
+#: 887d9bd46e9345939f00da4f0c4018c9
+#, fuzzy
+msgid "Read [Documentation Process](../../5.operations/03-document.md)."
+msgstr "阅读 [文档流程](12-document.md)。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:116
+#: 8c25f7807a30435897d964e1384be6f7
+msgid "Prefer rule-based freshness checks first."
+msgstr "优先做基于规则的新鲜度检查。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:117
+#: 2698306b16ac4fd6abad8016532e4f6b
+msgid "Apply zero-token Level 1 updates before asking the LLM to rewrite prose."
+msgstr "先做零 token 的 Level 1 更新，再让 LLM 改写叙述。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:118
+#: 97d885d486494eeab3e67d3b4dc543bb
+msgid ""
+"Give the LLM only the affected PKB pages, relevant diff, and "
+"source/config snippets."
+msgstr "只把受影响的 PKB 页面、相关 diff 和源码/配置片段交给 LLM。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:119
+#: a0c13234769a4d689d62f46f17cc9625
+msgid "Keep ADR rationale and product intent human-led."
+msgstr "ADR 理由和产品意图由人主导。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:121
+#: 2def2586c6544afca0833ae0794f6fe9
+msgid "Change Checklist"
+msgstr "变更检查清单"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:123
+#: 347bdb91a27b4ed288d34b064a625f4b
+msgid "Before proposing a change:"
+msgstr "提出变更之前："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:125
+#: 456ae0c684ed4d91ad23f5df35235fe4
+msgid "Have you read the relevant PKB pages?"
+msgstr "你读过相关 PKB 页面了吗？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:126
+#: 8e186445b5c34c18885693bcf792b4bf
+#, fuzzy
+msgid "Have you checked related [ADRs](../6.decisions/adr/index.md)?"
+msgstr "你查过相关 [ADR](adr/index.md) 了吗？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:127
+#: 411e461d924847dea166106c1235d47b
+#, fuzzy
+msgid ""
+"Does the change follow "
+"[Conventions](../../4.development/01-conventions.md)?"
+msgstr "变更是否遵循 [约定](07-conventions.md)？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:128
+#: 620ccaf27e584d7f8f307f072593854f
+#, fuzzy
+msgid ""
+"Do [Testing](../../4.development/03-testing.md) and "
+"[Runbook](../../5.operations/01-runbook.md) suggest extra validation?"
+msgstr "[测试](09-testing.md) 和 [运维手册](10-runbook.md) 是否提示额外验证？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:129
+#: 385b92b533794d829dee89ff6a150524
+#, fuzzy
+msgid ""
+"Should [03-document.md](../../5.operations/03-document.md) or other PKB "
+"pages be refreshed too?"
+msgstr "是否也应刷新 [12-document.md](12-document.md) 或其他 PKB 页面？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:131
+#: 7d255b04da644b4ab22ccfb065005295
+msgid "Example Workflows"
+msgstr "示例工作流"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:133
+#: 8900ac24698a4b9f959a297ac9164aab
+msgid "Answering \"How does authentication work?\""
+msgstr "回答「认证是怎么工作的？」"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:135
+#: 6045eebd0f584901952d2ee94df51445
+#, fuzzy
+msgid "Read [Architecture](../../1.architecture/01-architecture.md)."
+msgstr "阅读 [架构](02-architecture.md)。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:136
+#: 214df44161fe49deb8451e4c4b5c792d
+#, fuzzy
+msgid ""
+"Read the relevant section in "
+"[Workflows](../../1.architecture/05-workflows.md)."
+msgstr "阅读 [工作流](06-workflows.md) 中的相关章节。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:137
+#: 84e537a89f14487bb9d3453b1244771f
+#, fuzzy
+msgid ""
+"Check [Data and API](../../1.architecture/04-data-and-api.md) for "
+"contracts and models."
+msgstr "在 [数据与 API](05-data-and-api.md) 查契约和模型。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:138
+#: 3df01d73145947829128d10fcf3ccff3
+msgid "Read the code references cited by the PKB."
+msgstr "阅读 PKB 引用的代码。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:139
+#: 6abab6a9205a4e73b0597fcc3a66e9b2
+#, fuzzy
+msgid ""
+"Use [Runbook](../../5.operations/01-runbook.md) and "
+"[Observability](../../5.operations/02-observability.md) for failure "
+"analysis."
+msgstr "用 [运维手册](10-runbook.md) 和 [可观测性](11-observability.md) 做失败分析。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:141
+#: 04e7b532da3e4dd79d82a6144e15a005
+msgid "Implementing a new feature"
+msgstr "实现一个新功能"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:143
+#: fa84c76bd7af438b8c843102d868eef2
+#, fuzzy
+msgid "Read [Project Overview](../../0.getting-started/01-overview.md) for scope."
+msgstr "阅读 [项目概述](00-overview.md) 了解范围。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:144
+#: b0f3b643e20e40f3939cae7c3421d70e
+#, fuzzy
+msgid ""
+"Read [Architecture](../../1.architecture/01-architecture.md) and [Tech "
+"Stack](../../1.architecture/02-tech-stack.md)."
+msgstr "阅读 [架构](02-architecture.md) 和 [技术栈](03-tech-stack.md)。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:145
+#: 74e67a2047844b4ea52ee32eaf61f7eb
+#, fuzzy
+msgid "Trace affected flows in [Workflows](../../1.architecture/05-workflows.md)."
+msgstr "在 [工作流](06-workflows.md) 中追踪受影响的流程。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:146
+#: 6daffe9431da49e1be792ae65ea73811
+#, fuzzy
+msgid "Plan validation using [Testing](../../4.development/03-testing.md)."
+msgstr "用 [测试](09-testing.md) 规划验证。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:147
+#: d8024d1082a04f819d88afe3174886bf
+msgid "Update relevant PKB pages after the change."
+msgstr "变更后更新相关 PKB 页面。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:149
+#: 736d5606f87c46d7b2f24e4e584e2be3
+msgid "Debugging an issue"
+msgstr "排查问题"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:151
+#: 99b7e976fadb4e9eb11feb0523736de1
+#, fuzzy
+msgid ""
+"Check [Runbook](../../5.operations/01-runbook.md) for common issues and "
+"inspection commands."
+msgstr "在 [运维手册](10-runbook.md) 查常见问题和检查命令。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:152
+#: a5204c0cf1544821aa2704213954f558
+#, fuzzy
+msgid ""
+"Check [Observability](../../5.operations/02-observability.md) for logs, "
+"metrics, and diagnostic signals."
+msgstr "在 [可观测性](11-observability.md) 查日志、指标和诊断信号。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:153
+#: eeee9d6c4b3249e0bf2204aeff13a248
+#, fuzzy
+msgid ""
+"Re-read the affected flow in "
+"[Workflows](../../1.architecture/05-workflows.md)."
+msgstr "重读 [工作流](06-workflows.md) 中受影响的流程。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:154
+#: 68e7729578ee46719f7ee8323ffb7239
+#, fuzzy
+msgid "Validate the fix against [Testing](../../4.development/03-testing.md)."
+msgstr "对照 [测试](09-testing.md) 验证修复。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:156
+#: 9b06c4d17ef04eeba0a65075bcbb0754
+msgid "Continuous Improvement"
+msgstr "持续改进"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:158
+#: f1a846dc13ce4805b850e5c4fb03f4df
+msgid "When the PKB is unclear or stale:"
+msgstr "当 PKB 不清楚或过时时："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:160
+#: 559ca461dcb9443483bf86b15a780074
+msgid "report the gap explicitly"
+msgstr "明确报告缺口"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:161
+#: 3e28d3334b514e6bb5111b8b403df81f
+msgid "propose the smallest doc refresh that resolves the ambiguity"
+msgstr "提出能消解歧义的最小文档刷新"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:162
+#: 8717af215ea34941bdbbba126bd74e4c
+msgid "prefer targeted updates over large, generic rewrites"
+msgstr "宁可做定向更新，也不要大而空的重写"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/5.ai/01-ai-guide.md:166
+#: 3bf24eefe8984865a0fd1bb0cf9ac2fc
+msgid ""
+"**Remember**: the goal is not to memorize everything. The goal is to know"
+" where trustworthy information lives, what still needs human input, and "
+"how to keep context small enough for accurate AI work."
+msgstr "**记住**：目标不是把一切背下来。目标是知道可信信息在哪、哪些仍需人类输入，以及如何把上下文保持得足够小，好让 AI 工作准确。"
+
+#~ msgid ""
+#~ "[C Runtime Framework](13-c-runtime.md) when "
+#~ "the task is reading or changing C"
+#~ " core / modules"
+#~ msgstr ""
+
+#~ msgid "[C Runtime Framework](13-c-runtime.md)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "[C Runtime Framework](../1.architecture/13-c-runtime.md)"
+#~ " when the task is reading or "
+#~ "changing C core / modules"
+#~ msgstr ""
+
+#~ msgid "[C Runtime Framework](../1.architecture/13-c-runtime.md)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "[C Runtime "
+#~ "Framework](../../1.architecture/13-c-runtime.md) when the"
+#~ " task is reading or changing C "
+#~ "core / modules"
+#~ msgstr ""
+
+#~ msgid "[C Runtime Framework](../../1.architecture/13-c-runtime.md)"
+#~ msgstr ""
+

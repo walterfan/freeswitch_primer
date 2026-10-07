@@ -1,0 +1,1410 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Zoom Video Communications
+# This file is distributed under the same license as the FreeSWITCH package.
+# Walter Fan <walter.fan@ustc.etu>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version:  FreeSWITCH\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-18 16:34+0800\n"
+"PO-Revision-Date: 2026-08-30 23:13+0800\n"
+"Last-Translator: Walter Fan <walter.fan@ustc.etu>\n"
+"Language: zh_CN\n"
+"Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:1
+#: 531c1d589a9a49dd931ea62242c42f52
+msgid "Appendix-01: FAQ"
+msgstr "附录-01: 常见问题"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:5
+#: d06a18ce63c64325a63ff127cf8ef1ba
+#, fuzzy
+msgid ""
+"Answers below come from [Quick Start](../0.getting-started/02-quick-"
+"start.md), [Architecture](../1.architecture/01-architecture.md), "
+"[Build](../4.development/02-build.md), [Data and "
+"API](../1.architecture/04-data-and-api.md), "
+"[Observability](../5.operations/02-observability.md), the [Users "
+"Manual](https://developer.signalwire.com/freeswitch/), and `README.md`. "
+"Vanilla XML is a demo PBX, not a production baseline."
+msgstr ""
+"下列答案来自 [快速开始](01-quick-"
+"start.md)、[架构](02-architecture.md)、[构建](08-build.md)、[数据与 API](05-data-"
+"and-api.md)、[用户手册](https://developer.signalwire.com/freeswitch/) 和 "
+"`README.md`。vanilla XML 是演示用 PBX，不是生产基线。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:7
+#: 346836a3b93448178942bd8628e0a572
+msgid "Frequently Asked Questions"
+msgstr "常见问题"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:9
+#: 5e70c727718a4f5daaac790056204f00
+msgid "Should I install from source or from packages?"
+msgstr "应该从源码安装还是从软件包安装？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:11
+#: 9a357aa2933446cf8390cd1907fb8ef0
+msgid ""
+"`README.md` recommends **packages** for operators. That path is FSGET "
+"plus `freeswitch-meta-all` (`scripts/packaging/README.md`). FSGET needs a"
+" SignalWire Personal Access Token; without it, `apt` / `docker/master` "
+"returns **401**."
+msgstr ""
+"`README.md` 建议运维人员用 **软件包**。那条路径是 FSGET 加上 `freeswitch-meta-"
+"all`（`scripts/packaging/README.md`）。FSGET 需要 SignalWire Personal Access "
+"Token；没有它，`apt` / `docker/master` 会返回 **401**。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:13
+#: 78db81b0425f493fb00425ff3cbeef9f
+msgid ""
+"This clone is the **source** path: install Sofia-SIP / libks / SpanDSP / "
+"signalwire-c first, then `./bootstrap.sh -j && ./configure "
+"--prefix=\"$HOME/fs\" --disable-fhs && make && make install`. `release` "
+"tracks packaged releases; `prerelease` tracks `master`."
+msgstr ""
+"本克隆走的是**源码**路径：先安装 Sofia-SIP / libks / SpanDSP / signalwire-c，再运行 "
+"`./bootstrap.sh -j && ./configure --prefix=\"$HOME/fs\" --disable-fhs && "
+"make && make install`。`release` 跟踪已打包发行版；`prerelease` 跟踪 `master`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:15
+#: 9986488b845c4a3d8d1eaef9dd1c390b
+msgid "Why are Sofia-SIP, SpanDSP, and libks missing from this git tree?"
+msgstr "为什么本 git 树里没有 Sofia-SIP、SpanDSP 和 libks？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:17
+#: 6e4cb556e2d44ca7ba6f5132b9e472b1
+#, fuzzy, python-brace-format
+msgid ""
+"They are **out-of-tree**. CI clones [sofia-"
+"sip](https://github.com/freeswitch/sofia-sip); "
+"`docker/examples/Debian11/Dockerfile` also builds libks, SpanDSP, and "
+"signalwire-c. macOS CI uses Homebrew `signalwire/homebrew-"
+"signalwire/{libks2,signalwire-c2,spandsp}`. `configure` / link fails "
+"until those libraries are installed. They are not under `libs/` (APR, "
+"SRTP, ESL, VPX *are*). Sofia-SIP layout, NUA/NTA usage, and how "
+"`mod_sofia` uses `nua`/`tport`: [Tech Stack](../1.architecture/02-tech-"
+"stack.md#sofia-sip-library), "
+"[Architecture](../1.architecture/01-architecture.md#sofia-sip-out-of-"
+"tree)."
+msgstr ""
+"它们是 **树外** 依赖。CI 会克隆 [sofia-sip](https://github.com/freeswitch/sofia-"
+"sip)；`docker/examples/Debian11/Dockerfile` 也会构建 libks、SpanDSP 和 "
+"signalwire-c。macOS CI 使用 Homebrew `signalwire/homebrew-"
+"signalwire/{libks2,signalwire-c2,spandsp}`。这些库没装好时，`configure` / "
+"链接会失败。它们不在 `libs/` 下（APR、SRTP、ESL、VPX *在*）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:19
+#: f62fa2a17a5f4d76b9aa2b121cb5d670
+#, fuzzy
+msgid "What is the difference between endpoint, channel, session, and call?"
+msgstr "`$${var}` 与 `${var}` 有何区别？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:21
+#: 0a794fa8370c483680f20fb3a875525e
+msgid ""
+"An **endpoint** is a protocol module (`mod_sofia`, `mod_verto`). A "
+"**channel** is one leg (`switch_channel_t`). A **session** is the runtime"
+" container around that channel (`switch_core_session_t`). A **call** is "
+"one or more associated channels (typically two legs joined by a "
+"**bridge**). Directory / dialplan / configuration are three separate XML "
+"domains. Numbered definitions: [Overview — FS core concepts](../0"
+".getting-started/01-overview.md#fs-core-concepts)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:23
+#: ccf0b14b5e69483d8293bfa270d923d5
+msgid "Why are there two files named `modules.conf`?"
+msgstr "为什么有两个叫 `modules.conf` 的文件？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md
+#: 57a273ec538549c9a1f7b537ac292be5
+msgid "File"
+msgstr "文件"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md
+#: 0e4163aededb4d1aaf8bb502fd7b7147
+msgid "When"
+msgstr "时机"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md
+#: 880fd330adf24dbab972cea7d0b8f8a5
+msgid "Role"
+msgstr "职责"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md
+#: d403ec8f9e7e4e95bef02489fe8fad6a
+msgid "`build/modules.conf.in` → `modules.conf`"
+msgstr "`build/modules.conf.in` → `modules.conf`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md
+#: 99bca2e9d3b64e0e82f37a0e4031c305
+msgid "Build"
+msgstr "构建"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md
+#: 2832adb5e1334ae6b6443ca95aef7130
+msgid "Which `src/mod/...` trees `bootstrap.sh` / Autotools compile"
+msgstr "`bootstrap.sh` / Autotools 会编译哪些 `src/mod/...` 树"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md
+#: 0e3a3a57208b46f6a8935439b8eae54c
+msgid "`conf/vanilla/autoload_configs/modules.conf.xml`"
+msgstr "`conf/vanilla/autoload_configs/modules.conf.xml`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md
+#: 0323ed7f3c47404b8f7088f0f64004cd
+msgid "Runtime"
+msgstr "运行时"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md
+#: 1df6a3835d984609afa9c785d1ea120f
+msgid "Which compiled DSOs `switch_loadable_module_init()` loads"
+msgstr "`switch_loadable_module_init()` 会加载哪些已编译的 DSO"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:30
+#: 4022d0a298b24d3ca7bf77e95ba8746b
+msgid ""
+"`bootstrap.sh` copies `modules.conf.in` → `modules.conf` if missing. "
+"Uncomment a `src/mod/...` line **after** bootstrap and **before** "
+"`./configure` / `make`. A module can be compiled and still stay unloaded "
+"if it is absent from the XML list."
+msgstr ""
+"若缺失，`bootstrap.sh` 会把 `modules.conf.in` 复制为 `modules.conf`。在 bootstrap "
+"**之后**、`./configure` / `make` **之前** 取消注释某一行 `src/mod/...`。模块可以已编译，但若 XML"
+" 列表里没有它，仍不会加载。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:32
+#: e8db3d4197a94b6d8c4e3876f0e2fe61
+msgid "How is `<load module=\"mod_sofia\"/>` parsed?"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:34
+#: 3aa82c91e5934b31be8a9b5aba7cc443
+#, python-brace-format
+msgid ""
+"It is not a separate parser. Vanilla `freeswitch.xml` includes "
+"`autoload_configs/*.xml` into the `configuration` section. After "
+"`switch_xml_init()`, `switch_loadable_module_init()` calls "
+"`switch_xml_open_cfg(\"modules.conf\")`, walks each `<load>` child, and "
+"`dlopen`s `{mod_dir}/mod_sofia.so`. The exported table "
+"`mod_sofia_module_interface` supplies `mod_sofia_load`. `reloadxml` does "
+"not re-run that walk. Detail: "
+"[Architecture](../1.architecture/01-architecture.md#runtime-load-tag), "
+"[Workflows](../1.architecture/05-workflows.md#runtime-load-tag). What the"
+" DSO registers after load: [Loadable module "
+"contract](../1.architecture/01-architecture.md#loadable-module-contract)."
+" Dispatch by name: [Interface registry "
+"lookup](../1.architecture/05-workflows.md#interface-registry-lookup)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:36
+#: 08f4885b83dd410b81f1fdee2d65ba1c
+msgid "How do I load `mod_xml_rpc` and serve a portal page?"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:38
+#: b89238cb2b834cd39db0933d86cf22c5
+msgid ""
+"`mod_xml_rpc` must be enabled in the build-time `modules.conf` as "
+"`xml_int/mod_xml_rpc` and in the runtime "
+"`autoload_configs/modules.conf.xml` with `<load "
+"module=\"mod_xml_rpc\"/>`. Its settings are in "
+"`autoload_configs/xml_rpc.conf.xml`; the default HTTP port is **8080**. "
+"The module exposes XML-RPC at `/RPC2`, API wrappers at `/api/`, "
+"`/webapi/`, `/txtapi/`, and `/xmlapi/`, and serves static files from "
+"`htdocs_dir`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:47
+#: 1affad1cabd24c2d9f197069c38ce097
+msgid ""
+"It is an HTTP server and static-file mechanism, not a complete "
+"administration UI. Put a portal entry page at "
+"`<htdocs_dir>/portal/index.html`; requesting `/portal` redirects there. "
+"The bundled starter assets are under `htdocs/portal/`. Set all three "
+"`auth-realm`, `auth-user`, and `auth-pass` parameters to protect "
+"non-`/pub` requests with Basic Authentication. The sample credentials are"
+" for demonstration only; use a strong password and restrict port 8080 "
+"with a firewall, VPN, or HTTPS reverse proxy."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:55
+#: dca167c433cc4b5980c1e8a61582efca
+msgid "Why is there no IDL for modules?"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:57
+#: 9879b022637549fe8924328a15bec6fe
+msgid ""
+"Modules and core share `switch.h` in one process. Load registers **name +"
+" function pointer** into hashes (`application_hash`, `api_hash`, "
+"`endpoint_hash`, …). Dialplan `application=\"bridge\"` and `api status` "
+"are lookups, not RPC stubs. [Loadable module "
+"contract](../1.architecture/01-architecture.md#loadable-module-contract)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:59
+#: 550c1c68ed824eb29076d95878f36bc6
+msgid "What is the default prefix, and how do I start FreeSWITCH?"
+msgstr "默认 prefix 是什么，怎样启动 FreeSWITCH？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:61
+#: 4a1e6d207ce849e29e3ba71ff0c64bea
+msgid ""
+"Default prefix without `--prefix` is `/usr/local/freeswitch` "
+"(`configure.ac`). The PKB developer path uses `--prefix=\"$HOME/fs\" "
+"--disable-fhs` so the installed files stay below that prefix. A custom "
+"prefix without `--disable-fhs` uses FHS paths."
+msgstr ""
+"不带 `--prefix` 时默认前缀为 `/usr/local/freeswitch`（`configure.ac`）。PKB 开发者路径使用 "
+"`--prefix=\"$HOME/fs\" --disable-fhs`，因此安装文件都位于该前缀下。未指定 `--disable-fhs` "
+"的自定义前缀使用 FHS 路径。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:70
+#: bae3f92705ab402493f0d74711a6503c
+msgid ""
+"`-ncwait`: background, no console, wait until the core is ready "
+"(`src/switch.c`). `-nonat`: skip UPnP/NAT-PMP pinholes — required unless "
+"you *want* auto-NAT (`conf/vanilla/README_IMPORTANT.txt`). Foreground: "
+"`freeswitch -c -nonat`. Stop: `freeswitch -stop`. Debian systemd uses "
+"`/usr/bin/freeswitch -u freeswitch -g freeswitch -ncwait -nonat`."
+msgstr ""
+"`-ncwait`：后台、无控制台，等到核心就绪（`src/switch.c`）。`-nonat`：跳过 UPnP/NAT-PMP 打洞 — "
+"除非你 *想要* 自动 NAT，否则必须加（`conf/vanilla/README_IMPORTANT.txt`）。前台：`freeswitch"
+" -c -nonat`。停止：`freeswitch -stop`。Debian systemd 使用 `/usr/bin/freeswitch "
+"-u freeswitch -g freeswitch -ncwait -nonat`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:72
+#: b3ce723edfd441cdad69be334cfc69be
+msgid "How do I prove FreeSWITCH is up?"
+msgstr "怎样证明 FreeSWITCH 已经起来？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:78
+#: 74499d905d17404392e73dd77eade846
+#, fuzzy
+msgid ""
+"Working output starts with `UP` (same check as "
+"`docker/base_image/healthcheck.sh`, regex `^UP`). Then `fs_cli -x sofia "
+"status` for SIP profiles. If `fs_cli` cannot connect, the switch may be "
+"down, `mod_event_socket` may not be loaded, the client target may not "
+"reach the listener, **or the source IP failed the Event Socket ACL**. "
+"`fs_cli` defaults to `127.0.0.1:8021`; vanilla listens on `::`:8021. "
+"Loopback works while the host LAN IP is rejected until you set `apply-"
+"inbound-acl` — [Remote Event Socket ACL](../5.operations/01-runbook.md"
+"#remote-event-socket-acl)."
+msgstr ""
+"正常输出会以 `UP` 开头（与 `docker/base_image/healthcheck.sh` 相同，正则为 `^UP`）。然后运行 "
+"`fs_cli -x sofia status` 检查 SIP 配置档。如果 `fs_cli` "
+"无法连接，交换机可能未运行、`mod_event_socket` 可能未加载，或客户端目标无法访问服务端监听器。`fs_cli` 默认连接 "
+"`127.0.0.1:8021`；vanilla 监听 `::`:8021，因此请检查主机的 IPv4/IPv6 套接字行为。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:80
+#: 99f99bba9b1641468ee55040fa71e9e4
+#, fuzzy
+msgid ""
+"First call without a second phone: register as `1000` / password `1234` "
+"on port 5060, then dial **`9196`** (echo). See [Quick Start](../0"
+".getting-started/02-quick-start.md) and [Users Manual Chapter "
+"2](https://developer.signalwire.com/freeswitch/foundations/getting-"
+"started)."
+msgstr ""
+"没有第二部话机时的首呼：以 `1000` / 密码 `1234` 在 5060 端口注册，然后拨 **`9196`**（回声）。见 "
+"[快速开始](01-quick-start.md) 与 [用户手册第 2 "
+"章](https://developer.signalwire.com/freeswitch/foundations/getting-"
+"started)。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:82
+#: 32f080912cb04045875f6fa7960c7745
+msgid "How do I track a SIP call from the log?"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:84
+#: 3f2ae77206b64da393b0e47f80556b8b
+msgid ""
+"Correlate with the **channel UUID**, not the SIP `Call-ID`. Core logs "
+"attach the UUID via `SWITCH_CHANNEL_SESSION_LOG` (`mod_logfile` prefixes "
+"it when `uuid=true`). Channel events use header **`Unique-ID`**. A-leg "
+"and B-leg each have their own UUID; `show channels` lists `uuid` per leg "
+"and **`call_uuid`** to join them (`show calls` uses `b_uuid` on the "
+"paired view). SIP `Call-ID` is a signaling identifier — it appears in "
+"siptrace, not as the file-logger prefix. Step-by-step grep / `/uuid` / "
+"`bridge_uuid` / CDR: [Runbook — Follow one call by channel "
+"UUID](../5.operations/01-runbook.md#follow-one-call-by-channel-uuid). "
+"Column meanings and a captured two-leg `bridge`: [Workflows — show "
+"channels during a bridge](../1.architecture/05-workflows.md#worked-"
+"example-show-channels-during-a-bridge)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:86
+#: cb61d6a012334f47bf48079a31e22bd9
+#, python-brace-format
+msgid ""
+"Vanilla console is **`info`** (`$${console_loglevel}`). For one inbound "
+"call:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:88
+#: ee94f68285dd4299959911c9115eb856
+msgid ""
+"Note the time, then `fs_cli -x 'show channels'` while the call is up (or "
+"`show calls` after). Copy the UUID (truncate in notes if you will share "
+"the log). A custom dialplan `log` line (for example `hit test_1005 "
+"uuid=…`) is another way to recover the UUID after hangup."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:89
+#: f13388e6865e447283e4c4d52cb5dd46
+msgid ""
+"Follow `$log_dir/freeswitch.log` (`$prefix/log/freeswitch.log` on a "
+"prefix install). On the source Docker image (`-nf`): `docker logs -f "
+"--since=10s freeswitch`, or `docker exec … tail -F "
+"/usr/local/freeswitch/log/freeswitch.log`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:90
+#: b5e6054884194c7f8c5eccf073d928ee
+msgid ""
+"`sofia profile internal siptrace on` dumps **tport** bytes (Sofia-SIP), "
+"before `sofia_event_callback`. Packet-to-session hop: "
+"[Workflows](../1.architecture/05-workflows.md#packet-path-udptcp-to-nua)."
+" Those lines often omit the channel UUID — also grep `uuid_getvar <uuid> "
+"sip_call_id`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:91
+#: d8036b69eea942e7977a35fb233f8580
+msgid ""
+"Filter: `fs_cli` `/uuid <channel-uuid>` (clear with `/uuid`), or grep the"
+" file logger for that UUID. Typical order: Sofia `recv` INVITE → "
+"`Processing … in context …` → `EXECUTE` apps → `Hangup … [CS_EXECUTE] "
+"[<cause>]`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:93
+#: 3afef9b4e28e413d800d6b3dcd1a837a
+msgid ""
+"A **407** then a second **INVITE** is Digest (`Proxy-Authenticate`); a "
+"**401** then a second **REGISTER** is the same math with `WWW-"
+"Authenticate`. Neither challenge is by itself a failure. `EXECUTE … "
+"ivr(demo_ivr)` plus `mod_sndfile` “No such file or directory” under "
+"`sounds/en/us/callie/ivr/` means missing Callie prompts (`make sounds-"
+"install`), not a SIP routing miss. Redact `Proxy-Authorization`, nonces, "
+"full UUIDs, and `Call-ID` before sharing. Full command list: "
+"[Observability](../5.operations/02-observability.md)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:95
+#: 195941bed3eb465f85f67abb69d62c03
+msgid "How do I read `show channels`?"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:97
+#: f82953a3bb9b4902955d7534bfe31b26
+msgid ""
+"`fs_cli -x 'show channels'` dumps the core SQL `channels` scoreboard as "
+"CSV: one row per **leg**, not per call. Join legs with **`call_uuid`**. "
+"`uuid` is the session id for logs and `uuid_*` APIs. `state` is `CS_*`; "
+"`callstate` is `CCS_*` (`ACTIVE`, `RINGING`, …). Directory user "
+"(`presence_id`, `dest` on the A-leg) can differ from the SIP Contact user"
+" in `name` / `callee_num` on WebRTC (often `user@….invalid`)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:99
+#: 4456844a29744d5faef7e3a800b070ca
+msgid ""
+"Worked example (1002 inbound `bridge` to 1001’s WebRTC Contact, opus"
+"/DTLS-SRTP): [Workflows — show channels during a "
+"bridge](../1.architecture/05-workflows.md#worked-example-show-channels-"
+"during-a-bridge). Schema: `create_channels_sql` in "
+"`src/switch_core_sqldb.c`. Operator command: "
+"[Runbook](../5.operations/01-runbook.md#verification-commands)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:101
+#: d6364c5b481549c18c544f13c36592bb
+msgid "Why does REGISTER get 401 then 200 OK?"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:103
+#: 5059c7beed1d4e6d8c947b64d3464443
+#, python-brace-format
+msgid ""
+"Vanilla internal requires Digest. First REGISTER has no `Authorization` →"
+" Sofia **401** + `WWW-Authenticate` (`sofia_reg_auth_challenge`, nonce in"
+" `sip_authentication`). The UAC retries with `CSeq` incremented and "
+"`Authorization`. Match → **200 OK** and a `sip_registrations` row; "
+"`AUTH_FORBIDDEN` → **403**; stale nonce → **401** `stale=true`. INVITE on"
+" the same profile uses **407** + `Proxy-Authenticate`. Message-level "
+"walkthrough: [Workflows — REGISTER Digest after "
+"401](../1.architecture/05-workflows.md#worked-example-register-digest-"
+"after-401). Directory password is `$${default_password}` in vanilla "
+"(`1234`) — demo only."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:105
+#: 8e017c4f63dd4ca4985a012a54bdaf44
+msgid "Is vanilla XML a production config?"
+msgstr "vanilla XML 是生产配置吗？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:107
+#: 1f1aa52eb85e47f490750ff4e8b62638
+msgid ""
+"No. `conf/vanilla` is a **demo PBX** so you can test immediately "
+"(`conf/vanilla/README_IMPORTANT.txt`). Directory users `1000`–`1019` "
+"share **`default_password=1234`** (`conf/vanilla/vars.xml`). Do not "
+"publish 5060/8021 without ACLs. Before any public bind: change "
+"`default_password` (or `scripts/perl/randomize-passwords.pl`), change the"
+" ESL password, and start with `-nonat` unless NAT helpers are "
+"intentional."
+msgstr ""
+"不是。`conf/vanilla` 是 **演示 "
+"PBX**，方便立刻测试（`conf/vanilla/README_IMPORTANT.txt`）。目录用户 `1000`–`1019` 共享 "
+"**`default_password=1234`**（`conf/vanilla/vars.xml`）。没有 ACL 就不要对外发布 "
+"5060/8021。任何公网绑定之前：改 `default_password`（或 `scripts/perl/randomize-"
+"passwords.pl`），改 ESL 密码，并加上 `-nonat`，除非你有意使用 NAT 助手。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:109
+#: ff789445347d43aaa0d064f0073cec5d
+msgid "What is the default Event Socket port and password?"
+msgstr "默认的 Event Socket 端口和密码是什么？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:111
+#: 382add63569d47c7b607e37952151ec7
+msgid "Password **`ClueCon`**, port **8021**. Distinguish three files:"
+msgstr "密码 **`ClueCon`**，端口 **8021**。请区分三个文件："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:113
+#: def708db93394289b590d6a295f481dd
+#, fuzzy
+msgid ""
+"Vanilla / testing runtime "
+"(`conf/vanilla/autoload_configs/event_socket.conf.xml`, "
+"`conf/testing/autoload_configs/event_socket.conf.xml`) listen on **`::`**"
+" (all interfaces) with `apply-inbound-acl` **commented out**."
+msgstr ""
+"vanilla 运行时（`conf/vanilla/autoload_configs/event_socket.conf.xml`）监听 "
+"**`::`**（所有接口），入站 ACL 被注释掉。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:114
+#: 57d57d40279d4c99b6a59609f2fe60bb
+msgid ""
+"Module sample "
+"(`src/mod/event_handlers/mod_event_socket/conf/autoload_configs/event_socket.conf.xml`)"
+" binds **`127.0.0.1`**."
+msgstr ""
+"模块样例（`src/mod/event_handlers/mod_event_socket/conf/autoload_configs/event_socket.conf.xml`）绑定"
+" **`127.0.0.1`**。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:115
+#: a3773ca6491f4310af3a9e4a7daebbf8
+msgid ""
+"`fs_cli` client default is **`127.0.0.1:8021`** (`libs/esl/fs_cli.c`, "
+"`libs/esl/fs_cli.conf`)."
+msgstr ""
+"`fs_cli` 客户端默认是 "
+"**`127.0.0.1:8021`**（`libs/esl/fs_cli.c`、`libs/esl/fs_cli.conf`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:117
+#: 86fefc7c8055479ea3f39ad74f3acbd7
+msgid ""
+"Commenting out `apply-inbound-acl` is **not** “no ACL”. "
+"`mod_event_socket` `config()` still defaults to **`loopback.auto`** "
+"(`127.0.0.0/8` and `::1/128`). Change the password and set an explicit "
+"ACL before any non-loopback exposure. Wrong password closes the socket "
+"(`-ERR invalid`) **after** the ACL check."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:119
+#: 9c7769b2eacc459bbd2c9404e61e866d
+msgid ""
+"Why does `fs_cli` to the LAN IP fail with `Error Connecting []` while "
+"`127.0.0.1` works?"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:121
+#: 8638695e49af482fad48fda2bcd73ad5
+msgid ""
+"The Event Socket **is** listening on 8021. SIP `rtp-ip` / `sip-ip` are "
+"unrelated. The failure is ESL ACL."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:123
+#: 7cb99678a2614bf9b5530300aee0ad24
+msgid ""
+"TCP opens, then Event Socket sends `Content-Type: text/rude-rejection` "
+"and `Access Denied, go away.` — that is what `fs_cli` surfaces as `Error "
+"Connecting []`. Connecting to the host LAN address (for example "
+"`10.100.212.8:8021`) uses that source IP, not `127.0.0.1`, so "
+"`loopback.auto` denies it. A remote laptop is denied for the same reason."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:125
+#: 993972bd5b504af684d8ad30aebc10c6
+msgid ""
+"Allow loopback **and** the client CIDR on one list (`esl_allowed` in "
+"`acl.conf.xml`), set `<param name=\"apply-inbound-acl\" "
+"value=\"esl_allowed\"/>` in `event_socket.conf.xml`, then `reloadacl` and"
+" `reload mod_event_socket` over **loopback**. Verify with `fs_cli -H "
+"<lan-ip> -P 8021` on the FreeSWITCH box first. Full XML and commands: "
+"[Remote Event Socket ACL](../5.operations/01-runbook.md#remote-event-"
+"socket-acl)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:127
+#: fc7cbf56598b4d8bb9220cdbd48d0dcd
+msgid ""
+"Do not open ESL with `0.0.0.0/0`. ESL is full control of FreeSWITCH; do "
+"not leave `ClueCon` if 8021 is reachable beyond a trusted LAN."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:129
+#: 9b8796360eb14ede8c9ecea23d3f0791
+msgid "Why does Docker SIP or RTP fail unless I use host networking?"
+msgstr "为什么不用 host 网络时 Docker 的 SIP 或 RTP 会失败？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:131
+#: 7d082b56120743e9ad5674deeb7d8b62
+msgid ""
+"Runtime containers expect **`--network host`** (`docker/README.md`). "
+"Typical ports: SIP 5060/5080, TLS 5061/5081, Sofia SIP WebSocket "
+"5066/7443, Verto WS/WSS 8081/8082, ESL **8021**, RTP UDP 16384–32768 and "
+"64535–65535. Publishing those UDP ranges through a user-defined bridge is"
+" the usual failure mode. Packaged images (`docker/master/Dockerfile`) "
+"still need a SignalWire `TOKEN` build-arg. The token-free Debian 11 "
+"source-image example (`docker/examples/Debian11/Dockerfile`) clones "
+"FreeSWITCH and its dependencies during the image build; it does not build"
+" this checkout."
+msgstr ""
+"运行时容器需要 **`--network host`**（`docker/README.md`）。常见端口：SIP 5060/5080、TLS "
+"5061/5081、Sofia SIP WebSocket 5066/7443、Verto WS/WSS 8081/8082、ESL "
+"**8021**、RTP UDP 16384–32768 和 64535–65535。通过用户自定义 bridge 发布这些 UDP "
+"范围是常见失败原因。打包镜像（`docker/master/Dockerfile`）仍需要 SignalWire `TOKEN` 构建参数。无 "
+"token 的 Debian 11 源码镜像示例（`docker/examples/Debian11/Dockerfile`）会在构建镜像时克隆 "
+"FreeSWITCH 及其依赖；它不会构建当前 checkout。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:140
+#: 877c09b1e2ae467598be3792e868b4d8
+msgid "Why is WebRTC media silent over a VPN even though SIP signaling works?"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:142
+#: 5548d3fd01b44723af29b6f117cdf5f6
+msgid ""
+"Inspect the SDP answer returned by FreeSWITCH and check the `a=candidate`"
+" lines. If they contain the server's public address instead of its "
+"reachable VPN address (for example, `10.100.x.x`), SIP signaling may "
+"succeed while RTP media cannot reach the browser. Set `ext-rtp-ip` in the"
+" Sofia profile used by the call to the VPN address:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:153
+#: b386281e710647ab911db724d1b5cf43
+msgid ""
+"`rtp-ip` selects the local RTP interface and `ext-rtp-ip` is the address "
+"advertised in SDP/ICE. Reload the XML and restart the affected profile, "
+"then verify the new SDP answer and confirm that the VPN permits the "
+"configured RTP UDP port range. Do not change a profile used by public "
+"clients to a VPN-only address unless those clients also have a route to "
+"the VPN."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:159
+#: fd4c4166b02f407ab9dba53d67c0750b
+msgid "How do I build on Windows vs Unix?"
+msgstr "Windows 和 Unix 上分别怎么构建？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:161
+#: 4a4394ddb9284f0cbf42d398cd1b78d3
+msgid ""
+"Unix / macOS: Autotools — `./bootstrap.sh -j && ./configure --prefix=... "
+"--disable-fhs && make && make install`. Windows: `Freeswitch.2017.sln` / "
+"`w32/`, typically `msbuild Freeswitch.2017.sln -t:build "
+"-verbosity:minimal -property:Configuration=Release "
+"-property:Platform=x64` (`msbuild.cmd` locates VS via `vswhere.exe`). CI "
+"uploads `x64\\*.msi` on `master` / `v1.10` / `v1.11`. Historical "
+"`src/CMakeLists.txt` is **not** the Unix CI path."
+msgstr ""
+"Unix / macOS：Autotools——`./bootstrap.sh -j && ./configure --prefix=... "
+"--disable-fhs && make && make install`。Windows：`Freeswitch.2017.sln` / "
+"`w32/`，通常使用 `msbuild Freeswitch.2017.sln -t:build -verbosity:minimal "
+"-property:Configuration=Release -property:Platform=x64`（`msbuild.cmd` 通过 "
+"`vswhere.exe` 定位 VS）。CI 在 `master` / `v1.10` / `v1.11` 上上传 "
+"`x64\\*.msi`。历史 `src/CMakeLists.txt` **不是** Unix CI 路径。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:163
+#: 424cf4cc16cb4e23962979a9f61373b9
+msgid "Where are the prompt / sound files?"
+msgstr "提示音 / 语音文件在哪里？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:165
+#: 69ea553bcb434eada74a81f10ae385f0
+msgid ""
+"They are **not** in this git tree. `make sounds` / `make sounds-install` "
+"downloads Callie 8 kHz packages (`Makefile.am`, default `en-us-"
+"callie-8000`). Specs at repo root: `freeswitch-sounds-*.spec`. Windows "
+"sound packages live in a separate [freeswitch-"
+"sounds](https://github.com/freeswitch/freeswitch-sounds) release repo "
+"(`README.md`)."
+msgstr ""
+"它们 **不在** 本 git 树里。`make sounds` / `make sounds-install` 会下载 Callie 8 kHz"
+" 包（`Makefile.am`，默认 `en-us-callie-8000`）。仓库根目录的 spec：`freeswitch-"
+"sounds-*.spec`。Windows 语音包在单独的 [freeswitch-"
+"sounds](https://github.com/freeswitch/freeswitch-sounds) "
+"发行仓库（`README.md`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:167
+#: bd681cd777234d2cb00b763813f7454e
+#, python-brace-format
+msgid "What is the difference between `$${var}` and `${var}`?"
+msgstr "`$${var}` 与 `${var}` 有何区别？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:169
+#: 2fdc3b8dddf4400abcb0d684766616f4
+#, fuzzy, python-brace-format
+msgid ""
+"`$${name}` is a **preprocessor** variable, expanded once while assembling"
+" XML (`vars.xml`, `#set` / `X-PRE-PROCESS cmd=\"set\"`). `${name}` is a "
+"**channel** variable, expanded at call time. Mixing them is a common "
+"config bug. [Users Manual Chapter "
+"3](https://developer.signalwire.com/freeswitch/configuration/xml). Print "
+"them from `fs_cli` with the next question."
+msgstr ""
+"`$${name}` 是**预处理器**变量，组装 XML 时展开一次（`vars.xml`、`#set` / `X-PRE-PROCESS "
+"cmd=\"set\"`）。`${name}` 是**通道**变量，在呼叫时展开。混用是常见配置错误。[用户手册第 3 "
+"章](https://developer.signalwire.com/freeswitch/configuration/xml)。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:171
+#: 016e0ed6368947388da261312b0b5622
+#, fuzzy
+msgid "How do I print variables with fs_cli?"
+msgstr "怎样证明 FreeSWITCH 已经起来？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:173
+#: de89a8fb3ce5437c93da977580eed236
+msgid ""
+"`mod_commands` registers these APIs "
+"(`src/mod/applications/mod_commands/mod_commands.c`). Globals live on the"
+" core (`switch_core_dump_variables()` / `switch_core_get_variable_dup()` "
+"in `src/switch_core.c`). Channel vars need a live session UUID (`show "
+"channels`)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md
+#: 72d64faa8f2141788adbbc695c5e8c15
+msgid "Goal"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md
+#: 76bf90dde6d749259320e583313a773e
+msgid "Command"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md
+#: 92d23da1056c4d298bbafbd5b9bcb91c
+msgid "All globals (`name=value`)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md
+#: e990a351cd8e46fe9729e9dddcef9bec
+msgid "`global_getvar`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md
+#: d627105dad714a20a526e63a9576d4b7
+msgid "One global"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md
+#: d50f736479a24a59ac9e6d776002453d
+msgid "`global_getvar <var>`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md
+#: 795ff53a41cd4899a969272c99db2ee6
+#, python-brace-format
+msgid "Expand `$${name}`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md
+#: a6b76d27942b4b93adffd11ff9b8c77f
+#, python-brace-format
+msgid "`eval $${name}`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md
+#: 6ef9d79defa74553b190a0aca1fbe625
+msgid "All channel vars"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md
+#: 25d7648d9e554cd7873e0e6c1342e6f6
+msgid "`uuid_dump <uuid>`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md
+#: 226161ff659c4e9cabdba8fa6983750f
+msgid "One channel var"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md
+#: d33defecb8334bb3b6215dbe648f03a4
+msgid "`uuid_getvar <uuid> <var>`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md
+#: 68be08df48db4920bad93bdbff35d13b
+#, python-brace-format
+msgid "Expand `${name}` on a call"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md
+#: 3c23fc6e624e48a68186cde5098d2e5b
+#, python-brace-format
+msgid "`eval uuid:<uuid> ${name}`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:195
+#: 84c0e7c61dfe47c995197ac97a9a94b6
+msgid ""
+"`uuid_dump` format defaults to `txt`; also `json` and `xml`. A missing "
+"channel name prints `_undef_`. Interactive: `fs_cli`, then the same APIs "
+"(`help global_getvar`, `help uuid_dump`, `help uuid_getvar`, `help "
+"eval`). Other inspect commands: [Runbook](../5.operations/01-runbook.md"
+"#verification-commands)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:197
+#: 9886e33b0d854935abd85470c226a2e1
+msgid ""
+"Why does my internal SIP profile say `context=public` but registered "
+"phones use the `default` dialplan?"
+msgstr "为什么 internal SIP profile 写着 `context=public`，已注册话机却走 `default` 拨号计划？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:199
+#: 18a9bfcc4d294328827b3832c316c060
+msgid ""
+"Vanilla `sip_profiles/internal.xml` sets `context=public` for "
+"**unauthenticated** inbound. After digest auth, the directory user’s "
+"`user_context` (vanilla `default`) wins. [Chapter "
+"1](https://developer.signalwire.com/freeswitch/foundations/introduction)."
+msgstr ""
+"Vanilla `sip_profiles/internal.xml` 把 `context=public` 用于**未认证**入局。Digest"
+" 认证后，号码簿用户的 `user_context`（vanilla 为 `default`）优先。[第 1 "
+"章](https://developer.signalwire.com/freeswitch/foundations/introduction)。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:201
+#: 4b9645cb498d401794a225f0112a9a82
+msgid ""
+"How can I add a special FreeSWITCH number that plays a video to a video "
+"call?"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:203
+#: 2593ceda5b9941ae8ca91dea1e164d4e
+msgid "最简单的方案是复用 `mod_av`，让拨号计划用标准 `playback` 播放 MP4，不需要写 C 模块。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:205
+#: b92801edf74c4e0cb3698416edbbf402
+#, python-brace-format
+msgid "在实际运行目录的 `$${conf_dir}/dialplan/default/` 下新增 `10_video_demo.xml`："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:219
+#: 49e3386d43354800842c5d270f269637
+msgid "然后："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:226
+#: 68d7f39c2a554f76be26341e8eb87c4b
+#, python-brace-format
+msgid ""
+"第一条应返回 `true`。把视频放到 `$${sounds_dir}/video/demo.mp4`，并确保 FreeSWITCH "
+"进程有读取权限。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:228
+#: bf9288c57f1c4f75a12ef67feb46bac9
+msgid "客户端发起视频呼叫并拨 9527，SIP SDP 必须带 `m=video`；纯音频呼叫不会凭空建立视频流。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:230
+#: 60b96fec1913472787c3807c251fabba
+msgid "当前仓库已经默认编译并加载 `mod_av`："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:232
+#: 81eeca96b5124e6986c1c6ebbfe1cf3f
+msgid "`modules.conf` (line 1)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:233
+#: a0d6b8af91bd4cd19658fa569c7379db
+msgid "`modules.conf.xml` (line 89)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:234
+#: 828f2c2644ba497ebc281f55c1eff1e7
+msgid "默认支持 H264/VP8：`vars.xml` (line 244)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:236
+#: db633a0c0cd84f58bfe0b8ef6ef4bbcf
+msgid "仓库还有现成的 FSV 测试号码：`9193` 录像、`9194` 播放，见 `default.xml` (line 697)。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:238
+#: 57ed7cdbdf5941d0ba39bbd72c17bf3f
+msgid ""
+"注意把号码放在认证用户使用的 `default` context，不要直接暴露到 `public` context；文件路径应固定，不能直接取自 "
+"SIP Header 等外部输入。遇到只有声音、没有画面时，优先检查呼叫是否协商出 H264/VP8 视频流。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:240
+#: e05f26d022cb4be6aa94b4b5fb35b36a
+msgid "Where is this Project Knowledge Base?"
+msgstr "这份项目知识库在哪里？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:242
+#: 8f3659c07520472e9f4d560341c0e333
+msgid ""
+"**`man/`** at the repo root — not `docs/man/` (Unix man pages). Sphinx: "
+"`cd man && poetry install && make html-en`. Operator configuration is the"
+" [FreeSWITCH Users Manual](https://developer.signalwire.com/freeswitch/)."
+" Historical tutorials remain on [FreeSWITCH "
+"Explained](https://developer.signalwire.com/freeswitch/FreeSWITCH-"
+"Explained/) and [Confluence](https://freeswitch.org/confluence/). The PKB"
+" maps those concepts onto files in this clone; it does not copy parameter"
+" tables."
+msgstr ""
+"**`man/`** 在仓库根目录 — 不是 `docs/man/`（Unix man page）。Sphinx：`cd man && "
+"poetry install && make html-en`。运维配置以 [FreeSWITCH "
+"用户手册](https://developer.signalwire.com/freeswitch/) 为准。历史教程仍在 [FreeSWITCH"
+" Explained](https://developer.signalwire.com/freeswitch/FreeSWITCH-"
+"Explained/) 和 [Confluence](https://freeswitch.org/confluence/)。PKB "
+"把这些概念映射到本克隆中的文件，不复制参数表。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:244
+#: 921905e481db470d969ccdfb39e975a2
+msgid ""
+"Why does FreeSWITCH C look unlike typical C (`malloc` / `pthread` / BSD "
+"sockets)?"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:246
+#: 38ff819c94dd4e6ca5e769ed976c0bf1
+msgid ""
+"It is a **lifetime-centric runtime** on top of FSPR, not a thin syscall "
+"wrapper. Allocate from a memory pool (`switch_core_alloc`, "
+"`switch_core_session_alloc`); destroy the pool at hangup or module "
+"shutdown. Threads, mutexes, queues, and sockets are `switch_*` in "
+"`src/include/switch_apr.h`. Read [C Runtime "
+"Framework](../1.architecture/06-c-runtime.md) before `mod_sofia.c`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:248
+#: 85d18cd732b14232ab139b25cf1330fa
+msgid "Why does this tree say `1.11.3-dev` when CI also builds `v1.10` / `v1.11`?"
+msgstr "为什么本树写着 `1.11.3-dev`，而 CI 也会构建 `v1.10` / `v1.11`？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:250
+#: b4adab34270f40be8114a1401063e424
+msgid ""
+"This workspace is **1.11.3-dev** (`AC_INIT` in `configure.ac`; keep in "
+"sync with `SWITCH_VERSION_*` and `build/next-release.txt`). GitHub "
+"Actions run on `master`, `v1.10`, and `v1.11`. Packaged `build.yml`: "
+"those version branches → `release`; `master` → **unstable**. FSGET "
+"`prerelease` tracks what you see on `master`. Verify a running binary "
+"with `freeswitch -version` / `fs_cli -x version`."
+msgstr ""
+"本工作区是 **1.11.3-dev**（`configure.ac` 里的 `AC_INIT`；需与 `SWITCH_VERSION_*` 和 "
+"`build/next-release.txt` 保持同步）。GitHub Actions 跑在 `master`、`v1.10` 和 "
+"`v1.11`。打包用的 `build.yml`：那些版本分支 → `release`；`master` → **unstable**。FSGET"
+" 的 `prerelease` 跟踪你在 `master` 上看到的内容。用 `freeswitch -version` / `fs_cli -x"
+" version` 核对正在运行的二进制。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:252
+#: 66334a20a64b4c2c818e5277dde19560
+msgid "Related Documentation"
+msgstr "相关文档"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:254
+#: 3f0721ea906e4dd9af8e26e3568eb6c0
+#, fuzzy
+msgid "[Quick Start](../0.getting-started/02-quick-start.md)"
+msgstr "[快速开始](01-quick-start.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:255
+#: ff14ae16b1a7447fbfaef5953bb350ed
+#, fuzzy
+msgid "[Architecture](../1.architecture/01-architecture.md)"
+msgstr "[架构](02-architecture.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:256
+#: 81847bb750414a3eb4b003dd0087662a
+msgid "[C Runtime Framework](../1.architecture/06-c-runtime.md)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:257
+#: d1daa93f050c48458df0058ddf70299d
+#, fuzzy
+msgid "[Build](../4.development/02-build.md)"
+msgstr "[构建](08-build.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:258
+#: 6e0bec2d056c41e7983e3413ebd821c8
+#, fuzzy
+msgid "[Runbook](../5.operations/01-runbook.md)"
+msgstr "[运维手册](10-runbook.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:259
+#: 6ec59a70e2394094924495ebc67968ff
+#, fuzzy
+msgid "[Observability](../5.operations/02-observability.md)"
+msgstr "[运维手册](10-runbook.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:260
+#: c427945b6b30437593d4a142aef47589
+#, fuzzy
+msgid "[Documentation Process](../5.operations/03-document.md)"
+msgstr "[文档流程](12-document.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:261
+#: f88ca10cfb7a4e35a7080131afd4fecd
+#, fuzzy
+msgid "[Glossary](03-glossary.md)"
+msgstr "[术语表](appendix-02-glossary.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/02-faq.md:262
+#: 4f717c0009f84656bc778c6ce604b6cf
+msgid "[Users Manual](https://developer.signalwire.com/freeswitch/)"
+msgstr "[用户手册](https://developer.signalwire.com/freeswitch/)"
+
+#~ msgid ""
+#~ "Change the password and bind/ACL before"
+#~ " any non-loopback exposure. Wrong "
+#~ "password closes the socket (`-ERR "
+#~ "invalid`)."
+#~ msgstr "在任何非回环暴露之前，先改密码和绑定/ACL。密码错误会关闭套接字（`-ERR invalid`）。"
+
+#~ msgid ""
+#~ "It is not a separate parser. "
+#~ "Vanilla `freeswitch.xml` includes "
+#~ "`autoload_configs/*.xml` into the `configuration`"
+#~ " section. After `switch_xml_init()`, "
+#~ "`switch_loadable_module_init()` calls "
+#~ "`switch_xml_open_cfg(\"modules.conf\")`, walks each "
+#~ "`<load>` child, and `dlopen`s "
+#~ "`{mod_dir}/mod_sofia.so`. The exported table "
+#~ "`mod_sofia_module_interface` supplies `mod_sofia_load`."
+#~ " `reloadxml` does not re-run that "
+#~ "walk. Detail: [Architecture](02-architecture.md"
+#~ "#runtime-load-tag), [Workflows](06-workflows.md"
+#~ "#runtime-load-tag). What the DSO "
+#~ "registers after load: [Loadable module "
+#~ "contract](02-architecture.md#loadable-module-contract)."
+#~ " Dispatch by name: [Interface registry "
+#~ "lookup](06-workflows.md#interface-registry-lookup)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Modules and core share `switch.h` in "
+#~ "one process. Load registers **name + "
+#~ "function pointer** into hashes "
+#~ "(`application_hash`, `api_hash`, `endpoint_hash`, "
+#~ "…). Dialplan `application=\"bridge\"` and `api"
+#~ " status` are lookups, not RPC stubs."
+#~ " [Loadable module contract](02-architecture.md"
+#~ "#loadable-module-contract)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Correlate with the **channel UUID**, not"
+#~ " the SIP `Call-ID`. Core logs "
+#~ "attach the UUID via "
+#~ "`SWITCH_CHANNEL_SESSION_LOG` (`mod_logfile` prefixes "
+#~ "it when `uuid=true`). Channel events use"
+#~ " header **`Unique-ID`**. A-leg and "
+#~ "B-leg each have their own UUID; "
+#~ "`show channels` lists `uuid` per leg "
+#~ "and **`call_uuid`** to join them (`show"
+#~ " calls` uses `b_uuid` on the paired"
+#~ " view). SIP `Call-ID` is a "
+#~ "signaling identifier — it appears in "
+#~ "siptrace, not as the file-logger "
+#~ "prefix. Step-by-step grep / "
+#~ "`/uuid` / `bridge_uuid` / CDR: [Runbook"
+#~ " — Follow one call by channel "
+#~ "UUID](10-runbook.md#follow-one-call-by-"
+#~ "channel-uuid). Column meanings and a "
+#~ "captured two-leg `bridge`: [Workflows —"
+#~ " show channels during a "
+#~ "bridge](06-workflows.md#worked-example-show-"
+#~ "channels-during-a-bridge)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`sofia profile internal siptrace on` "
+#~ "dumps **tport** bytes (Sofia-SIP), "
+#~ "before `sofia_event_callback`. Packet-to-"
+#~ "session hop: [Workflows](06-workflows.md#packet-"
+#~ "path-udptcp-to-nua). Those lines "
+#~ "often omit the channel UUID — also"
+#~ " grep `uuid_getvar <uuid> sip_call_id`."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A **407** then a second **INVITE** "
+#~ "is Digest (`Proxy-Authenticate`); a "
+#~ "**401** then a second **REGISTER** is"
+#~ " the same math with `WWW-"
+#~ "Authenticate`. Neither challenge is by "
+#~ "itself a failure. `EXECUTE … "
+#~ "ivr(demo_ivr)` plus `mod_sndfile` “No such "
+#~ "file or directory” under "
+#~ "`sounds/en/us/callie/ivr/` means missing Callie "
+#~ "prompts (`make sounds-install`), not a"
+#~ " SIP routing miss. Redact `Proxy-"
+#~ "Authorization`, nonces, full UUIDs, and "
+#~ "`Call-ID` before sharing. Full command "
+#~ "list: [Observability](11-observability.md)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Worked example (1002 inbound `bridge` to"
+#~ " 1001’s WebRTC Contact, opus/DTLS-SRTP):"
+#~ " [Workflows — show channels during a"
+#~ " bridge](06-workflows.md#worked-example-show-"
+#~ "channels-during-a-bridge). Schema: "
+#~ "`create_channels_sql` in `src/switch_core_sqldb.c`. "
+#~ "Operator command: [Runbook](10-runbook.md#verification-"
+#~ "commands)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Vanilla internal requires Digest. First "
+#~ "REGISTER has no `Authorization` → Sofia"
+#~ " **401** + `WWW-Authenticate` "
+#~ "(`sofia_reg_auth_challenge`, nonce in "
+#~ "`sip_authentication`). The UAC retries with"
+#~ " `CSeq` incremented and `Authorization`. "
+#~ "Match → **200 OK** and a "
+#~ "`sip_registrations` row; `AUTH_FORBIDDEN` → "
+#~ "**403**; stale nonce → **401** "
+#~ "`stale=true`. INVITE on the same profile"
+#~ " uses **407** + `Proxy-Authenticate`. "
+#~ "Message-level walkthrough: [Workflows — "
+#~ "REGISTER Digest after 401](06-workflows.md"
+#~ "#worked-example-register-digest-after-401). "
+#~ "Directory password is `$${default_password}` "
+#~ "in vanilla (`1234`) — demo only."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Allow loopback **and** the client CIDR"
+#~ " on one list (`esl_allowed` in "
+#~ "`acl.conf.xml`), set `<param name=\"apply-"
+#~ "inbound-acl\" value=\"esl_allowed\"/>` in "
+#~ "`event_socket.conf.xml`, then `reloadacl` and "
+#~ "`reload mod_event_socket` over **loopback**. "
+#~ "Verify with `fs_cli -H <lan-ip> -P"
+#~ " 8021` on the FreeSWITCH box first."
+#~ " Full XML and commands: [Remote Event"
+#~ " Socket ACL](10-runbook.md#remote-event-"
+#~ "socket-acl)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`uuid_dump` format defaults to `txt`; "
+#~ "also `json` and `xml`. A missing "
+#~ "channel name prints `_undef_`. Interactive:"
+#~ " `fs_cli`, then the same APIs (`help"
+#~ " global_getvar`, `help uuid_dump`, `help "
+#~ "uuid_getvar`, `help eval`). Other inspect "
+#~ "commands: [Runbook](10-runbook.md#verification-commands)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "It is a **lifetime-centric runtime** "
+#~ "on top of FSPR, not a thin "
+#~ "syscall wrapper. Allocate from a memory"
+#~ " pool (`switch_core_alloc`, "
+#~ "`switch_core_session_alloc`); destroy the pool "
+#~ "at hangup or module shutdown. Threads,"
+#~ " mutexes, queues, and sockets are "
+#~ "`switch_*` in `src/include/switch_apr.h`. Read "
+#~ "[C Runtime Framework](13-c-runtime.md) before "
+#~ "`mod_sofia.c`."
+#~ msgstr ""
+
+#~ msgid "[C Runtime Framework](13-c-runtime.md)"
+#~ msgstr ""
+
+#~ msgid "[Observability](11-observability.md)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Correlate with the **channel UUID**, not"
+#~ " the SIP `Call-ID`. Core logs "
+#~ "attach the UUID via "
+#~ "`SWITCH_CHANNEL_SESSION_LOG` (`mod_logfile` prefixes "
+#~ "it when `uuid=true`). Channel events use"
+#~ " header **`Unique-ID`**. A-leg and "
+#~ "B-leg each have their own UUID; "
+#~ "`show channels` lists `uuid` per leg "
+#~ "and **`call_uuid`** to join them (`show"
+#~ " calls` uses `b_uuid` on the paired"
+#~ " view). SIP `Call-ID` is a "
+#~ "signaling identifier — it appears in "
+#~ "siptrace, not as the file-logger "
+#~ "prefix. Step-by-step grep / "
+#~ "`/uuid` / `bridge_uuid` / CDR: [Runbook"
+#~ " — Follow one call by channel "
+#~ "UUID](../4.operations/10-runbook.md#follow-one-call-"
+#~ "by-channel-uuid). Column meanings and "
+#~ "a captured two-leg `bridge`: [Workflows"
+#~ " — show channels during a "
+#~ "bridge](../1.architecture/06-workflows.md#worked-example-"
+#~ "show-channels-during-a-bridge)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A **407** then a second **INVITE** "
+#~ "is Digest (`Proxy-Authenticate`); a "
+#~ "**401** then a second **REGISTER** is"
+#~ " the same math with `WWW-"
+#~ "Authenticate`. Neither challenge is by "
+#~ "itself a failure. `EXECUTE … "
+#~ "ivr(demo_ivr)` plus `mod_sndfile` “No such "
+#~ "file or directory” under "
+#~ "`sounds/en/us/callie/ivr/` means missing Callie "
+#~ "prompts (`make sounds-install`), not a"
+#~ " SIP routing miss. Redact `Proxy-"
+#~ "Authorization`, nonces, full UUIDs, and "
+#~ "`Call-ID` before sharing. Full command "
+#~ "list: [Observability](../4.operations/11-observability.md)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Worked example (1002 inbound `bridge` to"
+#~ " 1001’s WebRTC Contact, opus/DTLS-SRTP):"
+#~ " [Workflows — show channels during a"
+#~ " bridge](../1.architecture/06-workflows.md#worked-example-"
+#~ "show-channels-during-a-bridge). Schema: "
+#~ "`create_channels_sql` in `src/switch_core_sqldb.c`. "
+#~ "Operator command: [Runbook](../4.operations/10-runbook.md"
+#~ "#verification-commands)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Allow loopback **and** the client CIDR"
+#~ " on one list (`esl_allowed` in "
+#~ "`acl.conf.xml`), set `<param name=\"apply-"
+#~ "inbound-acl\" value=\"esl_allowed\"/>` in "
+#~ "`event_socket.conf.xml`, then `reloadacl` and "
+#~ "`reload mod_event_socket` over **loopback**. "
+#~ "Verify with `fs_cli -H <lan-ip> -P"
+#~ " 8021` on the FreeSWITCH box first."
+#~ " Full XML and commands: [Remote Event"
+#~ " Socket ACL](../4.operations/10-runbook.md#remote-"
+#~ "event-socket-acl)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`uuid_dump` format defaults to `txt`; "
+#~ "also `json` and `xml`. A missing "
+#~ "channel name prints `_undef_`. Interactive:"
+#~ " `fs_cli`, then the same APIs (`help"
+#~ " global_getvar`, `help uuid_dump`, `help "
+#~ "uuid_getvar`, `help eval`). Other inspect "
+#~ "commands: [Runbook](../4.operations/10-runbook.md"
+#~ "#verification-commands)."
+#~ msgstr ""
+
+#~ msgid "[Observability](../4.operations/11-observability.md)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "An **endpoint** is a protocol module "
+#~ "(`mod_sofia`, `mod_verto`). A **channel** is"
+#~ " one leg (`switch_channel_t`). A "
+#~ "**session** is the runtime container "
+#~ "around that channel (`switch_core_session_t`). "
+#~ "A **call** is one or more "
+#~ "associated channels (typically two legs "
+#~ "joined by a **bridge**). Directory / "
+#~ "dialplan / configuration are three "
+#~ "separate XML domains. Numbered definitions:"
+#~ " [Overview — FS core concepts](../0"
+#~ ".getting-started/00-overview.md#fs-core-concepts)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "It is not a separate parser. "
+#~ "Vanilla `freeswitch.xml` includes "
+#~ "`autoload_configs/*.xml` into the `configuration`"
+#~ " section. After `switch_xml_init()`, "
+#~ "`switch_loadable_module_init()` calls "
+#~ "`switch_xml_open_cfg(\"modules.conf\")`, walks each "
+#~ "`<load>` child, and `dlopen`s "
+#~ "`{mod_dir}/mod_sofia.so`. The exported table "
+#~ "`mod_sofia_module_interface` supplies `mod_sofia_load`."
+#~ " `reloadxml` does not re-run that "
+#~ "walk. Detail: "
+#~ "[Architecture](../1.architecture/02-architecture.md#runtime-"
+#~ "load-tag), [Workflows](../1.architecture/06-workflows.md"
+#~ "#runtime-load-tag). What the DSO "
+#~ "registers after load: [Loadable module "
+#~ "contract](../1.architecture/02-architecture.md#loadable-"
+#~ "module-contract). Dispatch by name: "
+#~ "[Interface registry "
+#~ "lookup](../1.architecture/06-workflows.md#interface-registry-"
+#~ "lookup)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Modules and core share `switch.h` in "
+#~ "one process. Load registers **name + "
+#~ "function pointer** into hashes "
+#~ "(`application_hash`, `api_hash`, `endpoint_hash`, "
+#~ "…). Dialplan `application=\"bridge\"` and `api"
+#~ " status` are lookups, not RPC stubs."
+#~ " [Loadable module "
+#~ "contract](../1.architecture/02-architecture.md#loadable-"
+#~ "module-contract)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Correlate with the **channel UUID**, not"
+#~ " the SIP `Call-ID`. Core logs "
+#~ "attach the UUID via "
+#~ "`SWITCH_CHANNEL_SESSION_LOG` (`mod_logfile` prefixes "
+#~ "it when `uuid=true`). Channel events use"
+#~ " header **`Unique-ID`**. A-leg and "
+#~ "B-leg each have their own UUID; "
+#~ "`show channels` lists `uuid` per leg "
+#~ "and **`call_uuid`** to join them (`show"
+#~ " calls` uses `b_uuid` on the paired"
+#~ " view). SIP `Call-ID` is a "
+#~ "signaling identifier — it appears in "
+#~ "siptrace, not as the file-logger "
+#~ "prefix. Step-by-step grep / "
+#~ "`/uuid` / `bridge_uuid` / CDR: [Runbook"
+#~ " — Follow one call by channel "
+#~ "UUID](../5.operations/10-runbook.md#follow-one-call-"
+#~ "by-channel-uuid). Column meanings and "
+#~ "a captured two-leg `bridge`: [Workflows"
+#~ " — show channels during a "
+#~ "bridge](../1.architecture/06-workflows.md#worked-example-"
+#~ "show-channels-during-a-bridge)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`sofia profile internal siptrace on` "
+#~ "dumps **tport** bytes (Sofia-SIP), "
+#~ "before `sofia_event_callback`. Packet-to-"
+#~ "session hop: [Workflows](../1.architecture/06-workflows.md"
+#~ "#packet-path-udptcp-to-nua). Those "
+#~ "lines often omit the channel UUID "
+#~ "— also grep `uuid_getvar <uuid> "
+#~ "sip_call_id`."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A **407** then a second **INVITE** "
+#~ "is Digest (`Proxy-Authenticate`); a "
+#~ "**401** then a second **REGISTER** is"
+#~ " the same math with `WWW-"
+#~ "Authenticate`. Neither challenge is by "
+#~ "itself a failure. `EXECUTE … "
+#~ "ivr(demo_ivr)` plus `mod_sndfile` “No such "
+#~ "file or directory” under "
+#~ "`sounds/en/us/callie/ivr/` means missing Callie "
+#~ "prompts (`make sounds-install`), not a"
+#~ " SIP routing miss. Redact `Proxy-"
+#~ "Authorization`, nonces, full UUIDs, and "
+#~ "`Call-ID` before sharing. Full command "
+#~ "list: [Observability](../5.operations/11-observability.md)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Worked example (1002 inbound `bridge` to"
+#~ " 1001’s WebRTC Contact, opus/DTLS-SRTP):"
+#~ " [Workflows — show channels during a"
+#~ " bridge](../1.architecture/06-workflows.md#worked-example-"
+#~ "show-channels-during-a-bridge). Schema: "
+#~ "`create_channels_sql` in `src/switch_core_sqldb.c`. "
+#~ "Operator command: [Runbook](../5.operations/10-runbook.md"
+#~ "#verification-commands)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Vanilla internal requires Digest. First "
+#~ "REGISTER has no `Authorization` → Sofia"
+#~ " **401** + `WWW-Authenticate` "
+#~ "(`sofia_reg_auth_challenge`, nonce in "
+#~ "`sip_authentication`). The UAC retries with"
+#~ " `CSeq` incremented and `Authorization`. "
+#~ "Match → **200 OK** and a "
+#~ "`sip_registrations` row; `AUTH_FORBIDDEN` → "
+#~ "**403**; stale nonce → **401** "
+#~ "`stale=true`. INVITE on the same profile"
+#~ " uses **407** + `Proxy-Authenticate`. "
+#~ "Message-level walkthrough: [Workflows — "
+#~ "REGISTER Digest after "
+#~ "401](../1.architecture/06-workflows.md#worked-example-"
+#~ "register-digest-after-401). Directory password"
+#~ " is `$${default_password}` in vanilla "
+#~ "(`1234`) — demo only."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Allow loopback **and** the client CIDR"
+#~ " on one list (`esl_allowed` in "
+#~ "`acl.conf.xml`), set `<param name=\"apply-"
+#~ "inbound-acl\" value=\"esl_allowed\"/>` in "
+#~ "`event_socket.conf.xml`, then `reloadacl` and "
+#~ "`reload mod_event_socket` over **loopback**. "
+#~ "Verify with `fs_cli -H <lan-ip> -P"
+#~ " 8021` on the FreeSWITCH box first."
+#~ " Full XML and commands: [Remote Event"
+#~ " Socket ACL](../5.operations/10-runbook.md#remote-"
+#~ "event-socket-acl)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`uuid_dump` format defaults to `txt`; "
+#~ "also `json` and `xml`. A missing "
+#~ "channel name prints `_undef_`. Interactive:"
+#~ " `fs_cli`, then the same APIs (`help"
+#~ " global_getvar`, `help uuid_dump`, `help "
+#~ "uuid_getvar`, `help eval`). Other inspect "
+#~ "commands: [Runbook](../5.operations/10-runbook.md"
+#~ "#verification-commands)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "It is a **lifetime-centric runtime** "
+#~ "on top of FSPR, not a thin "
+#~ "syscall wrapper. Allocate from a memory"
+#~ " pool (`switch_core_alloc`, "
+#~ "`switch_core_session_alloc`); destroy the pool "
+#~ "at hangup or module shutdown. Threads,"
+#~ " mutexes, queues, and sockets are "
+#~ "`switch_*` in `src/include/switch_apr.h`. Read "
+#~ "[C Runtime Framework](../1.architecture/13-c-runtime.md)"
+#~ " before `mod_sofia.c`."
+#~ msgstr ""
+
+#~ msgid "[C Runtime Framework](../1.architecture/13-c-runtime.md)"
+#~ msgstr ""
+

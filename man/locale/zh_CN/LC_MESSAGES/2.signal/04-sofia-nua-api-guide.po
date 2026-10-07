@@ -1,0 +1,1023 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Zoom Video Communications
+# This file is distributed under the same license as the FreeSWITCH package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FreeSWITCH \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-18 16:04+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:1
+#: a641615f82bd4deeaf5409b69d802020
+msgid "19. Sofia-SIP NUA：API、事件和 Tags 速查"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:5
+#: 3ad75f86da874909a3fcafae18db929d
+msgid ""
+"本章把 NUA API 按“应用要做什么”分类。完整函数、参数和枚举仍应以当前 Sofia-SIP "
+"头文件为准；这里的目标是让读代码和写最小调用路径变得容易。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:8
+#: a121cc6d59d2491cba8b3e0381097c01
+msgid "1. Agent 和事件循环"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: d08e9a8ad76a421f8ccfd8a85b3b47a3
+msgid "任务"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: e739b943b94748d7ad9a8cbec418364d
+msgid "API/Tag"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 4c25ff14863246d4b1716739aa7c7ffc
+msgid "说明"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 651c920eef51474f85d4296d8fa7eaee
+msgid "初始化 Sofia"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 3d040b6e8daf413f8c24337a15a9e1cb
+msgid "`su_init()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: e305e2fadcf7447bbc7d2dbdb1b18dd1
+msgid "进程级初始化"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 3d85b8b579f4408791423c5cde7201ad
+msgid "创建事件循环"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: fb63f2f69ccf400a80c32c4410b16b89
+msgid "`su_root_create()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 33ed17b7aa37400cbe898371c710f1b4
+msgid "返回 `su_root_t *`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 676f38576a0f4a3cb9b0734a8cec4e80
+msgid "创建 NUA"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 2c8c6c9aaac545dda76eeceddb04ead8
+msgid "`nua_create()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 7f33ad2685ff451fac300a85ac4983fd
+msgid "注册 callback，并创建传输"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 8eebf6030f3d46af9b65ae5427ebfe89
+msgid "设置全局参数"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: a02258ecb9d64c0ab2098b882b7a32c7
+msgid "`nua_set_params()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: ad315a463c284414bf93c5f0ae0df4d0
+msgid "agent 级配置"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 75fe44f331574a918f8304a673ba1b37
+msgid "查询全局参数"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 6864416ed57a4fcfa9937a8dc6bbfa92
+msgid "`nua_get_params()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: b9b6ee6700d2480d9269e6a1341d3963
+msgid "用 `_REF` tags 接收结果"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 85372d6d59944678bf66091247a100c0
+msgid "运行事件循环"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 02265109a2784ef0af61d11e33a8d261
+msgid "`su_root_run()` / `su_root_step()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: d4593c2088e7491ca5edcb2155dc732f
+msgid "驱动 callback"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 31dd3a44d95a48c991e271e91b0fca15
+msgid "优雅关闭"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 4e16a51dd88041edb1b3b606fbbd5158
+msgid "`nua_shutdown()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: c804cf9a32ee42fbaa20789c1cfb1c59
+msgid "等待 `nua_r_shutdown`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 155dcbfbf477477aa38a4c0c04c636e0
+msgid "退出事件循环"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 490b134a18d6422287d3769425975f39
+msgid "`su_root_break()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: c37871d5fb634cb3b80c706f0713ebc5
+msgid "通常在 shutdown callback 中调用"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: c3d973e2a26e4e07ba64408af60a3101
+msgid "销毁栈"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 229b31acab08406fb85c92fd3b8fe181
+msgid "`nua_destroy()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 1b1232f56c0a485380a920725d657e7b
+msgid "停止后的最终清理"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:22
+#: fb7cfffd1c674e8c9ac787789bf367b1
+msgid "最小启动骨架："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:40
+#: 8bfeb47fb38748439fa9d3188cff8b19
+msgid ""
+"传输相关的常见参数包括 `NUTAG_URL()`、`NUTAG_SIPS_URL()`、 `NUTAG_CERTIFICATE_DIR()` 和"
+" `NUTAG_SIP_PARSER()`。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:43
+#: 9cc6b4385c4540b0b48656a7ae431405
+msgid "2. Handle 管理"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:62
+#: f50078fcb53b408ea22c740bd8be779e
+msgid "常用 handle 查询："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:76
+#: 6ab0534515724479a26613ab203aa047
+msgid "一个 handle 可以承载对话相关状态；业务代码仍应自己保存呼叫 ID、用户 ID、 媒体资源和清理状态。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:79
+#: 5880591d40eb4a24875f0da7cd3cae2d
+msgid "3. 出站请求 API"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: e6ba8df593294da69865cf65edad9844
+msgid "SIP 目的"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: ca9072445a234f3d9f03613fda60df91
+msgid "NUA 函数"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: af348697c0db457db1ab90f8c0bc0150
+msgid "典型响应事件"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 88017fc7f537446ab4798e8424dfa67b
+msgid "注册"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: e75da4d3b39c4db5b55bb04fb9a1b640
+msgid "`nua_register()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 38b87e250fdb4df698af6cc2493b2ca6
+msgid "`nua_r_register`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 7a070bb4792449799cbb79bc54d606a4
+msgid "注销"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: e942a4d6e84f4d5693cb4b2b2f2e2f38
+msgid "`nua_unregister()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: eac5086c3289413ca37e12e40ba937b6
+msgid "`nua_r_unregister`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: cbca70008adb454e8f4b199ea08cfdd7
+msgid "呼叫"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: bc9fbf74109642f6aad88da28a37c8ed
+msgid "`nua_invite()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: cc4a4cc315ee418d8c0e1b23cf1d4bdd
+msgid "`nua_r_invite`、`nua_i_state`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: d0277a8d93564f2a8c44c6d8c359aba9
+msgid "取消呼叫"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 3536451ff4f54f5395453fb053f1120f
+msgid "`nua_cancel()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: cc272017d33b44c68bcde671eb38de45
+msgid "`nua_r_cancel`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 852e97410b1643a1a67139f13c2c853c efe54ee624fb45c1a81312125b21ed6f
+msgid "ACK"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 6a859080f2f64984a5e97cc79dd6087a
+msgid "`nua_ack()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 51727b858b2e4f28a1518729f8d8a452
+msgid "通常没有独立业务结果"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 3993ba94e684445eb2afe2b8d6dedde6
+msgid "挂断"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: da4d182cf3f046d29cf3ed19763c18f0
+msgid "`nua_bye()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 7859126f50384daeaac02239e0fdf9eb
+msgid "`nua_r_bye`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: d43c65ec1e2d47479037df7fae944fad
+msgid "能力探测"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: e4520fe99b2f470b8ef5494b984faa3f
+msgid "`nua_options()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: f31765847aeb484294d0af5957495d23
+msgid "`nua_r_options`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 8dd7dbe57f9647dcb3e85159943ebc02
+msgid "转接"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 92d72c0ccb09403b84858f9cd6a66277
+msgid "`nua_refer()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 9b9914a7b51c404b932f945612ee532d
+msgid "`nua_r_refer`、`nua_i_notify`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 7d9a2b5937954a25af4fe2af380a2e4d
+msgid "发布事件"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: f2021e86271d414e9b233a01c1034003
+msgid "`nua_publish()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: b71031ce3bbb4b00bfd070e8a68da6e6
+msgid "`nua_r_publish`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: c334a10dfad74e16a2bc7f113a9af5a8
+msgid "撤销发布"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 6ec150f654554c5f81dafda50054f0f6
+msgid "`nua_unpublish()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 5bf757252cb04cdfbe7f2025493b7c0c
+msgid "`nua_r_unpublish`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: c3ff24eec4a541edb9b0fde153518c50
+msgid "PRACK"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: c64d38296a5a48f8bb6101a78e250e51
+msgid "`nua_prack()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 7b4c9322638f4f94b37be893ec11ffab
+msgid "`nua_r_prack`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 1a9d7e7088374405a10eabd1764b0cb6
+msgid "对话内 INFO"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 067d46a99dde4b278f999e854b6ad953
+msgid "`nua_info()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 22d5cbc377824e818d5f043a765c87ba
+msgid "`nua_r_info`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: c4efd7df9e8c4e6dae0c77bd386123a9
+msgid "更新会话"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: ce3e8867715a4f1cbce06a16d6bc861c
+msgid "`nua_update()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 3207313d6be34e0a8266d30e5190ae1c
+msgid "`nua_r_update`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: f233a451d3c1457da2c143b080a618fe
+msgid "即时消息"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: a40827883c95457abc18691f2ae1b937
+msgid "`nua_message()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: df7dba36c2ab46488b5f7ade48d46038
+msgid "`nua_r_message`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: d4ce18f95f6f4ac591373c16f0c34f00
+msgid "订阅"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 7faf8c41d28749f7960f7b1075405e94
+msgid "`nua_subscribe()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: f73d6c7577ab426fa311bf99f5263f26
+msgid "`nua_r_subscribe`、`nua_i_notify`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: fcd917d20ce94815826341a214065355
+msgid "取消订阅"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: ca5e4a4dcf05499780c82893a37dbd29
+msgid "`nua_unsubscribe()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 4e22ffe401224617af18844cae9953be
+msgid "`nua_r_unsubscribe`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: a11cdbfcc32e4b0996c0c2948fa57a67
+msgid "发送通知"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 840d35f14d904c1f9374c5d1d98529a8
+msgid "`nua_notify()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 7051f3d41e4246668e04e94e10411d45
+msgid "`nua_r_notify`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 2d470b3041b9423c80803e831611fe47 68d29e04710b490481d9d92fd44ab0e0
+msgid "自定义方法"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: ee3ca5b3fd774f8d88accbaf1d673b7c
+msgid "`nua_method()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 174861880c7f4a7fba054cd96f738f03
+msgid "`nua_r_method`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:102
+#: 0c7e6cc48603444b8e9b0915f7ebd2c5
+msgid ""
+"这些函数都使用 tag 列表传参，最后必须使用 `TAG_END()` 或 `TAG_NULL()`。 [NUA API Overview 的 "
+"API 分组](https://sofia-"
+"sip.sourceforge.net/refdocs/nua/nua_api_overview.html)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:105
+#: 082aac1ff17b4bda9710f9884dc8d541
+msgid "4. 入站请求 API"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:107
+#: 3bf22942141a4a25b16c21aa584d28ee
+msgid "入站请求通过 callback 事件交给应用，应用用 `nua_respond()` 回复："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 92db37fe4b144e14a5b19484b2194fca
+msgid "入站事件"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: b436cf67026d4f4b9afcb10ac6baa9fb
+msgid "请求"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 16f9c542234f4adcadada4d898299ad7
+msgid "应用动作"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: efabe8ab1e1a48e49b673ac67813990f
+msgid "`nua_i_invite`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: e5070f9759dc4c1990d0d78f1a56eee7
+msgid "INVITE"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: a924678ef2504cfc8a2a74785b730889
+msgid "`nua_respond()` 振铃、接听或拒绝"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 52f4ab9720fc404a98fe9ac3cc3b9898
+msgid "`nua_i_cancel`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 62ff9cf46cb04f8ab1aae376d2214519
+msgid "CANCEL"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: e46e9e4d5c7e42faa1b7a6634f1e73ed
+msgid "通常由 NUA/事务层处理，应用观察状态"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: cc673ce6bec24940a088d489658778ec
+msgid "`nua_i_ack`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 4d16485fa87e4fafbf4c92c764e37c8c
+msgid "确认 2xx，通常进入 READY"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 029202a4cd6c42deb56c925e8fb2c178
+msgid "`nua_i_bye`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: d209ad261ed24c96acdecb2ef102a271
+msgid "BYE"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 574c55d188614035acd9728f39fc6da7
+msgid "清理媒体和业务资源"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: a8a175147c3d498c9be0e98598df8c5f
+msgid "`nua_i_options`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: afd5c3c4b19e475fad8161d1bda2edec
+msgid "OPTIONS"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 37ea932e53404fb193d39e9bf207d2b4
+msgid "返回能力信息"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 2fb938f9090849c4a7cd761d804dcdd9
+msgid "`nua_i_message`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 8d8f972b3e5c4fb796670fc648daef44
+msgid "MESSAGE"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 4496cb69a5b24ded8b1613cfe9f37e42
+msgid "读取 payload，返回 2xx 或错误"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 2d486d6e24ca4e74b78e7752324bc4cf
+msgid "`nua_i_info`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 2149bf15d9d84bf2805c0792691404b0
+msgid "INFO"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 1014689d069f470f8761bca148bfb021
+msgid "按 Content-Type 处理 body"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 254fa5e91bce4bdc81d46ca270d5485e
+msgid "`nua_i_update`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 7ae73ca306234df7b3e4a3a52fc0b071
+msgid "UPDATE"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: d1b0518d26ef48dcba3d2ab0cc8a8d71
+msgid "处理早期/已建立会话变更"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: a499fc8c264c4806ae6a2a4a257fad86
+msgid "`nua_i_refer`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 6fd5f497d0b64d7895344f7a6f2cfb85
+msgid "REFER"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 484aa90f6be74f4ea197f82185a17059
+msgid "执行转接策略并发送 NOTIFY"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: f3bf404280a74ebd9148aa6f25f5ffd4
+msgid "`nua_i_subscribe`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 62a87ae011c3432ebe4047a2584dc7c9
+msgid "SUBSCRIBE"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 8f94b9e4faec44868cd72a1b320ba3ce
+msgid "授权或拒绝订阅"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 86ec501b1aa64efd8ae9b24f5335fce3
+msgid "`nua_i_notify`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 87cb62507b784218913b1b08b5fa0284
+msgid "NOTIFY"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 3cb5392fdfae48c88e9b8ae92efbc26e
+msgid "更新订阅状态和事件内容"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: bf9f490a96894309a24ddad04f783b89
+msgid "`nua_i_publish`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 9ddc207260f34279857884b935e0c223
+msgid "PUBLISH"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: fc2f429c302c4ba5a8e0bf08f37322f2
+msgid "接收或合并发布状态"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 9b8d3b6996504020b9f9fdd4e12231c9
+msgid "`nua_i_register`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 556a9cabbc924142a9b95a21b3e4e49e
+msgid "REGISTER"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 69d788a6abde4561afc10d3a2b1fe641
+msgid "如实现 Registrar，处理注册"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 0a265781f9154639927b4f92dcddb69d
+msgid "`nua_i_method`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 705c67390a8847b982e1890f01965ad8
+msgid "结合 `NUTAG_APPL_METHOD()` 处理"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:126
+#: c1150d04b7a449e5a99a3d01f7b2c16e
+msgid "5. 典型参数写法"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:128
+#: 452df95779104ccb9d64ebc9313c19a3
+msgid "5.1 字符串头域"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:137
+#: 82e305062b1f4186a6f12d6d43b14c81
+msgid "5.2 已解析结构"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:144
+#: 8137c8fc28144f1aad2ac2e9cac2d18f
+msgid "5.3 读取 callback tags"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:156
+#: ab1d22a18f74420490e1a96efb5caa7a
+msgid "实际类型以所使用版本的头文件为准；`_REF` 的关键语义是“取引用”，不是 复制所有权。需要跨 callback 保存时，应复制成应用自己的数据。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:159
+#: 881dd53897e54e0b8d98cd68b64817bb
+msgid "6. 高频功能的最小调用路径"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:161
+#: a6d7308a043f4510aa3a4df0c1043ecf
+msgid "6.1 注册"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:171
+#: b653adf56cec4955a588917586881df9
+msgid ""
+"收到 `401/407` 时，使用 `nua_authenticate()`、`NUTAG_AUTH()` 或应用已有的 "
+"认证配置重新提交请求；不要手工拼接 Digest 响应，除非确实需要自定义认证。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:174
+#: 4428035be196408882227b5e50f17a86
+msgid "6.2 MESSAGE"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:183
+#: 6267c59df2774e09a65b608dc1479e76
+msgid ""
+"在 `nua_i_message` 中读取 `sip->sip_payload`，按 `Content-Type` 决定如何解析； NUA 只负责"
+" SIP 操作，不替应用解释业务 body。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:186
+#: 4668fb497e0d4f1aa0a3b165bb9117fd
+msgid "6.3 SUBSCRIBE"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:196
+#: d75027af30364df78ada7020ae252c17
+msgid ""
+"`nua_i_notify` 中读取 `Event`、`Subscription-State` 和 payload。NUA 可以管理 "
+"订阅刷新，但事件包语义和 XML/JSON body 由应用处理。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:199
+#: aeac49c67af94e71993ce6566a7f59b4
+msgid "6.4 PUBLISH"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:209
+#: 763ab1a5c64a4b05b222d03a9ec0eff7
+msgid "应用应保存成功响应中的 `SIP-ETag`，后续更新使用 `SIP-If-Match`。撤销时调用 `nua_unpublish()`。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:212
+#: 78a6b81d2775466f90b77cb427fa594e
+msgid "6.5 REFER / 转接"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:220
+#: 456a6d0a750e4cb3ae6aa3b07a1e5afd
+msgid ""
+"转接进度通常通过 `NOTIFY` 汇报。需要关联被转接对话时，可结合 `Replaces`、`Referred-By` 和 "
+"`nua_handle_make_replaces()`。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:223
+#: 851609050c584071a43556611f6e8f28
+msgid "7. 呼叫相关 Tags"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 0cdb3062520741d4a56de36fae70c18b
+msgid "目的"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 945335e3e2544c8c9030918e3c8fcb70
+msgid "常见 Tags"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 746bf5296dae4588b28b3e12d16643ca
+msgid "传输地址"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 6e64aee0ccce45ec80feac50977f05f4
+msgid "`NUTAG_URL()`、`NUTAG_SIPS_URL()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: fe543cf8c5d54e778f99f333070bfacf
+msgid "代理/路由"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 45dca02fc703429d848995d6cd073752
+msgid "`NUTAG_PROXY()`、`NUTAG_INITIAL_ROUTE()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: c822ee6dd01a415286b253a537ea55fb
+msgid "能力"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: cb1a45b47b294a5884ded07ff985136b
+msgid "`NUTAG_ALLOW()`、`NUTAG_SUPPORTED()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 214a63ff11b346a1ac11f859b028243c
+msgid "自动呼叫行为"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: aa29f5b6121c4d3584f3894b2abb0aa8
+msgid "`NUTAG_AUTOACK()`、`NUTAG_AUTOALERT()`、`NUTAG_AUTOANSWER()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: f2dcedbe2f514571b42bed123662fe79
+msgid "呼叫状态"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 7ad8d8e5143c4a04881cda8c650e2253
+msgid "`NUTAG_CALLSTATE()`、`NUTAG_CALLSTATE_REF()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: a61f7540e9974f32b61e05be6b4bbcee
+msgid "呼叫定时器"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 4161d72646b745818749f8a28d0dd43e
+msgid "`NUTAG_INVITE_TIMER()`、`NUTAG_SESSION_TIMER()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: b71bd93f5429480f978e343094950e68
+msgid "媒体开关"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 3af3b83dfd65402785c248c74f262efc
+msgid "`NUTAG_MEDIA_ENABLE()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 92739be55245443bbd9adb7509e35f25
+msgid "SDP"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: bdcd5d1ceea04701b4631f196f207878
+msgid "`SOATAG_USER_SDP()`、`SOATAG_USER_SDP_STR()`、`SOATAG_CAPS_SDP()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 6b47ac6a13af453c9a8c387eb7bd1fde
+msgid "Offer/Answer"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 0b84321e6da0493c83b9607e4209565f
+msgid "`NUTAG_EARLY_ANSWER()`、`NUTAG_EARLY_MEDIA()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 9fb0b7bc1e7b4c7c8fe9d5534bce7b9e
+msgid "Session Timer"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md
+#: 85aaa55184d24ebc8f330b5e61e84822
+msgid "`NUTAG_MIN_SE()`、`NUTAG_SESSION_REFRESHER()`、`NUTAG_UPDATE_REFRESH()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:238
+#: 33eb5ff0ce3d4d71aff9a557dd527d93
+msgid "8. 认证、事件服务器和自定义方法"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:240
+#: ab641ee7365b478ea14bdcd02de06adf
+msgid "8.1 认证"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:249
+#: 6b789f60ad4e43dfb3de2848810014fa
+msgid "认证缓存可通过 `NUTAG_AUTH_CACHE()` 控制。应用需要记录最终状态，避免错误 密码导致无限重试。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:252
+#: 18548ef52f1d43939f1cbdcccfa722ac
+msgid "8.2 内置事件服务器"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:254
+#: 9b20d57466314da98afb447b398c19d9
+msgid ""
+"NUA 还提供 notifier、subscription、authorize 和 terminate 相关 API，可用于 构建简单的 "
+"Presence 或其他 SIP event server："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:265
+#: 4587f438f07845c0b04388539f2e4844
+msgid "应用负责决定是否授权订阅、事件 body 内容和事件包语义。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:267
+#: c9b5db3d12bf4aa19a8eec9bddda41cd
+msgid "8.3 自定义 SIP 方法"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:278
+#: d2c0375653c045ba8cbd172c35d7b4b6
+msgid ""
+"自定义方法还需要通过 `NUTAG_ALLOW()` 或 `NUTAG_APPL_METHOD()` 声明，并在 `nua_i_method` /"
+" `nua_r_method` 中处理结果。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:281
+#: 530156b8fb394335a58ff43ec201726d
+msgid "9. 实现检查清单"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:297
+#: 63edc66dd9634f20986995fcca866d11
+msgid "参考资料"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:299
+#: f20d8ed17556402798bed63b16c0784a
+msgid ""
+"[NUA API Overview](https://sofia-"
+"sip.sourceforge.net/refdocs/nua/nua_api_overview.html)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:300
+#: 8ad3c8e3880546e3a05301a581af1c0e
+msgid ""
+"[Sofia-SIP NUA main page](https://sofia-"
+"sip.sourceforge.net/refdocs/nua/index.html)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:301
+#: 6883826f0fe24900a7fb3cd3b466b219
+msgid ""
+"[NUA Call Model](https://sofia-"
+"sip.sourceforge.net/refdocs/nua/nua_call_model.html)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/19-sofia-nua-api-guide.md:302
+#: 90ea4b96f0f04e99bbb69d8fdc1e8fa2
+msgid ""
+"[Sofia-SIP `nua` page index](https://sofia-"
+"sip.sourceforge.net/refdocs/nua/pages.html)"
+msgstr ""
+

@@ -1,0 +1,484 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Zoom Video Communications
+# This file is distributed under the same license as the FreeSWITCH package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FreeSWITCH \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-18 16:04+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:1
+#: ff8857d70e314500a5ee2e43381646a1
+msgid "18. Sofia-SIP NUA：呼叫状态机和回调"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:5
+#: 4f82be32539c496d9c98f7b8467bcd8a
+msgid ""
+"NUA 的关键不是“调用 `nua_invite()` 发一个包”，而是理解：一次呼叫会经过多 个状态，应用通过 callback "
+"观察结果并决定下一步。官方把这个模型分为 client side、server side 和会话修改/释放三部分。[NUA Call "
+"Model](https://sofia-sip.sourceforge.net/refdocs/nua/nua_call_model.html)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:9
+#: 4aa229217a0049d6ae096388733bed4d
+msgid "1. Callback 先看懂"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:11
+#: 7db7c1ef5f214f01890fe841173ebe60
+msgid "典型 callback 形状如下："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:40
+#: 71e7044e6a444881816e44c7e1c3f961
+msgid "1.1 事件命名规律"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: ced856ee3bf64ea1bf37ec4af1302962
+msgid "前缀/事件"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: 46f5124c8ec8479ba0d727f2f6043543 dd972172d9754a58b2ea873f762667cf
+msgid "含义"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: 5e7a5b1395704e4c93fb850d5445a183
+msgid "例子"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: aa43f2d8424c4ad8ba16c75807b88612
+msgid "`nua_r_...`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: fce03ee07a1f45c8bde8544962e2aabd
+msgid "应用发出的请求收到响应/结果"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: e5f757428dd2483d8d9b65f333f899a1
+msgid "`nua_r_invite`、`nua_r_bye`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: be7e01f48cd44a2592fe00444e25281d
+msgid "`nua_i_...`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: 85b1bedafaa94affa9db46ab8623c9b1
+msgid "收到对端请求或状态指示"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: 11813ee7ca134bc19f35b47041578f5e
+msgid "`nua_i_invite`、`nua_i_message`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: 6231dc8a3f2f4525bdf19b956c04e9b8
+msgid "`nua_i_state`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: ca4e50cbbe574dbbb014c8d61c273ec3
+msgid "呼叫状态或媒体协商状态改变"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: 81f5e3813dbf45ae949dcbe12ad075c0
+msgid "`NUTAG_CALLSTATE_REF()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: aed35ba1edf04f399eeaf53a0d9dc928
+msgid "`nua_r_shutdown`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: cfe51da9d9274a21b53e287c1aba57bd
+msgid "优雅关闭完成或失败"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: 6061ca3ba98345a0ad96f73463429537
+msgid "`su_root_break()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:49
+#: 1455f72b2c814a4bb3072f5e97c4455e
+msgid ""
+"`status` 是 SIP 状态码或 NUA 操作结果，`phrase` 是可读原因，`nh` 指向相关 handle，`sip` 是收到的 "
+"SIP 消息，`tags` 包含额外的结果和状态。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:52
+#: a69940a1017e4d739e79620239812f37
+msgid "2. 呼叫状态总图"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:87
+#: 75c2c80844ad452a97ef6535cab14e04
+msgid "出站呼叫常见状态是："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:93
+#: 8030d5a7322e4f6e8d1dc248162d5da8
+msgid "入站呼叫常见状态是："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:99
+#: facf9a65ad9f422dbd22f646b26d8f26
+msgid ""
+"状态名来自 `nua_callstate`，在 `nua_i_state` 事件的 `NUTAG_CALLSTATE()` 中取得。可以用 "
+"`nua_callstate_name()` 转成可读字符串。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:102
+#: 9cd81b21b6f54cd2a30a474d77b4d4c6
+msgid "3. 出站呼叫"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:104
+#: 35b7c316cc7040d0b8a08b69e380c3cf
+msgid "3.1 创建 handle 并发送 INVITE"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:127
+#: 6572b509098a407481b7593bc1f84df9
+msgid ""
+"调用 `nua_invite()` 后不要同步等待 200 OK；结果会通过 `nua_r_invite` 和 `nua_i_state` "
+"异步返回。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:130
+#: 87b0c02521054aa59c92b51489a8e84e
+msgid "3.2 处理响应"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:152
+#: 7282c16a69ff420f83aa22041e223fc7
+msgid ""
+"官方 call model 说明：如果初始 INVITE 携带 SDP offer，通常在 2xx 中收到 answer；发送 ACK 后 "
+"Offer/Answer 完成，媒体进入 active 状态。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:155
+#: 063634cb049248289555c6789fce6114
+msgid "3.3 读取呼叫和 SDP 状态"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:174
+#: bfcc629931c940619e2610d76508f7c4
+msgid "实际项目中应根据当前 Sofia-SIP 版本的头文件类型使用对应的 `SOATAG_*` 引用宏；重点是从 `nua_i_state` 同时读取："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: 5dc5ce1510774785be877b941a99f516
+msgid "Tag"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: 3451e73608c64fbd8f8e0c1858865ebc
+msgid "`NUTAG_CALLSTATE()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: 69db3e9d1d5a404ca9f82287d24ccccf
+msgid "当前 NUA 呼叫状态"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: 099ac9b8eb2e47349379f2d8d9470285
+msgid "`NUTAG_OFFER_SENT()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: ea8611c6dcc34adebc4e7d907bd119d7
+msgid "本地是否发送过 offer"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: 52a88a7412004fd6b0ff3b2510fb047e
+msgid "`NUTAG_ANSWER_SENT()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: 028bc5a3e6f24bd2a6a41ba992a86f16
+msgid "本地是否发送过 answer"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: 2fdb5a9038ea44819a117e22ef0c6b9c
+msgid "`NUTAG_OFFER_RECV()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: 5e624b2264164805bcb16d569c8611ae
+msgid "是否收到远端 offer"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: 4da9a68afc2b4472af020306d1f7a76b
+msgid "`NUTAG_ANSWER_RECV()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: 081981b4915b459798c65a9107d8a02d
+msgid "是否收到远端 answer"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: ce5cd6cc2c9a4923a228827c87f0ad8d
+msgid "`SOATAG_LOCAL_SDP()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: 325fa04921594453bbeba2d5af4a1b2c
+msgid "本地 SDP"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: 2d7312c11232413d8072208643f88062
+msgid "`SOATAG_REMOTE_SDP()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: ab86d51a0f374144b68c2236a5f9ba4f
+msgid "远端 SDP"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: 3d7bf820a9de4d8ba1d8532fa785c22d
+msgid "`SOATAG_ACTIVE_AUDIO()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: 1500f1a7684b48878d13c438fc3c391d
+msgid "音频媒体是否 active"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: 15cf991dc8414ff581845b377893a62a
+msgid "`SOATAG_ACTIVE_VIDEO()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: cd2d13174aa745b9b60e4d3589f00a66
+msgid "视频媒体是否 active"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:189
+#: a190fc581a044a8da1760dc8576bebee
+msgid "4. 入站呼叫"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:191
+#: 04d3b1b02b7b4e5db7a2ee6e268c292e
+msgid "收到新 INVITE 时，NUA 会创建 handle 并触发 `nua_i_invite`。应用可以振铃、拒绝 或接听："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:212
+#: 535e783ec7d44aae8fcab1efa01d596a
+msgid "常见决策："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: 50cbe6c918e045e49ceb9179d3c665f7
+msgid "业务决定"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: e296bc5a047e4bc5ac307e9a7fd3d0dc
+msgid "NUA 动作"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: bc4db54d15394ca8af77856b1c38de2c
+msgid "正在振铃"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: 28f5d392e0bc43c0811a760273e390fd
+msgid "`nua_respond(nh, SIP_180_RINGING, ...)`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: 3e869726ebba413984b0157284a5e8bd
+msgid "发送早期媒体"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: 8db28b5bf515461b9b5b569897bf4110
+msgid "`nua_respond()` 携带 SDP"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: 7ef516e571d74ca59d2a06ca4ce44c75
+msgid "接听"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: 2bf2c9540a11471d82a59a5beb565714
+msgid "`nua_respond(nh, SIP_200_OK, ...)`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: 7c5d77dc83d94dc0a93c040bfe22d9a1
+msgid "忙线"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: deb87cebc9c34bbca94d59306751d265
+msgid "`nua_respond(nh, SIP_486_BUSY_HERE, ...)`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: 4fd652209af14b80bb21d4e9235074b3
+msgid "拒绝"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md
+#: e8e0cbf74a5044a492513cd4c8bfccf1
+msgid "`nua_respond(nh, 4xx/5xx/6xx, ...)`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:222
+#: b2455c4658724a1b83624cd97d998a41
+msgid "入站侧收到 ACK 后进入 `READY`；如果 200 OK 发出后迟迟收不到 ACK，NUA 会在 超时后发送 BYE 终止呼叫。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:225
+#: 2de7962f1a0643119945e576e21eb6eb
+msgid "5. 取消、挂断和竞争条件"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:227
+#: d4ab9ed798c747eeb7a4f887802a05b3
+msgid "5.1 `nua_cancel()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:233
+#: a6c1cd4a0f49450aa42d50f54df27d8c
+msgid "适用于出站呼叫仍处于 `CALLING` 或 `PROCEEDING` 阶段。常见报文是："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:240
+#: 5e870ae551b04ed2b1117346b7171cdc
+msgid "但存在竞态：对端可能在收到 CANCEL 前已经返回 200 OK。此时呼叫反而建立， 应用需要在确认成功后调用 `nua_bye()`。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:243
+#: c4f2d1707d6d4023a4e468ec7c99e387
+msgid "5.2 `nua_bye()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:249
+#: 199db661c0d944f6a0d39dbed9c1f481
+msgid ""
+"已建立对话使用 BYE。早期对话进入 `PROCEEDING` 后也可以使用 BYE；在尚未 建立对话时，NUA 可能把应用的结束动作转换为 "
+"CANCEL。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:252
+#: 4cd3ad6199ff493292e1d350539d36a6
+msgid "收到 `nua_r_bye` 的最终响应后再销毁 handle："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:261
+#: 00cc07b0792a48d2ad464c06d37243a1
+msgid "不要在仍有未完成 NUA 操作时提前释放 `hmagic` 指向的业务对象。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:263
+#: e555941360904712aabb20129f9336d0
+msgid "6. 会话修改"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:265
+#: 273a1a188f224907a96df5552eaa3785
+msgid "进入 `READY` 后，re-INVITE 或 UPDATE 可以用于："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:267
+#: ca2d5771fbff4a94b39ef3c31d6de3a0
+msgid "hold/resume：修改 `a=sendonly`、`a=recvonly`、`a=inactive` 或 `a=sendrecv`。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:268
+#: 925f4625465c46a78f44435fe0ba80a4
+msgid "增加或删除媒体流。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:269
+#: c961f98b13b24136ba20818cc05510fb
+msgid "更新编解码和媒体地址。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:270
+#: 499f9f2cf0754281bbfb25555a6ce407
+msgid "在早期对话中完成额外 Offer/Answer。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:278
+#: 0f572c7bbfb240beb0c8661fec3125e9
+msgid ""
+"NUA API Overview 将 `nua_update()`、`nua_prack()` 和 Offer/Answer tags 归在 "
+"呼叫模型扩展中；`100rel`、precondition 和 early media 需要同时检查对端的 "
+"`Supported`/`Require`。[NUA API Overview — call model extensions](https"
+"://sofia-sip.sourceforge.net/refdocs/nua/nua_api_overview.html)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:282
+#: edfc0bb8776f474cbd7615e97331b7fc
+msgid "7. 生命周期清理"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:292
+#: 2a23dba8cc5940df9731bdd9e006c05a
+msgid "只有在确认呼叫进入 `TERMINATED`、且相关最终响应已处理后，才释放呼叫上下文。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:294
+#: aeb9ff4298fd42b89c5423f227dde644
+msgid "参考资料"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:296
+#: d8039981f09048ee879e7734128bf844
+msgid ""
+"[NUA Call Model](https://sofia-"
+"sip.sourceforge.net/refdocs/nua/nua_call_model.html)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:297
+#: 635c4471e03f4b2d997f456f501d36b0
+msgid ""
+"[NUA API Overview](https://sofia-"
+"sip.sourceforge.net/refdocs/nua/nua_api_overview.html)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.sip-media/18-sofia-nua-call-model.md:298
+#: 594304d858e94f129e9ec09b31a3b3f3
+msgid ""
+"[Sofia-SIP NUA main page](https://sofia-"
+"sip.sourceforge.net/refdocs/nua/index.html)"
+msgstr ""
+

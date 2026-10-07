@@ -1,0 +1,1024 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Zoom Video Communications
+# This file is distributed under the same license as the FreeSWITCH package.
+# Walter Fan <walter.fan@ustc.etu>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version:  FreeSWITCH\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-18 16:34+0800\n"
+"PO-Revision-Date: 2026-08-30 23:13+0800\n"
+"Last-Translator: Walter Fan <walter.fan@ustc.etu>\n"
+"Language: zh_CN\n"
+"Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:1
+#: 2fe8d6b120b64d32b70fdacd618ee919
+msgid "08. Build, Release, and Publish"
+msgstr "08. 构建、发布与文档发布"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:5
+#: 196b02f7970c47d28d6a22597387c97c
+#, fuzzy
+msgid ""
+"Local Autotools/Windows builds, GitHub Actions, Debian/Docker packaging, "
+"version fields, and PKB HTML. First-run commands live in [Quick "
+"Start](../0.getting-started/02-quick-start.md); this page is the pipeline"
+" map. macOS Homebrew packages and flags are documented here against "
+"`.github/workflows/macos.yml`."
+msgstr ""
+"本地 Autotools/Windows 构建、GitHub Actions、Debian/Docker 打包、版本字段以及 PKB "
+"HTML。首次运行命令见[快速开始](01-quick-start.md)；本页是流水线地图。macOS Homebrew 软件包和参数根据 "
+"`.github/workflows/macos.yml` 记录。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:7
+#: 2e1c54d9a6aa4638b561a66825362de8
+msgid "Scope"
+msgstr "范围"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:9
+#: 57a723c60d2348a7b459102b356e7937
+msgid "Unix source build (`bootstrap.sh` → `configure` → `make` → `make install`)"
+msgstr "Unix 源码构建（`bootstrap.sh` → `configure` → `make` → `make install`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:10
+#: 2198950f4cab4a2980f9ff8642256de5
+msgid "macOS Homebrew deps (Xcode CLT + SignalWire tap) matching `macos.yml`"
+msgstr "与 `macos.yml` 一致的 macOS Homebrew 依赖（Xcode CLT + SignalWire tap）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:11
+#: 92cb179513c849c88a99eb50ac66fde6
+msgid "Per-module rebuild, install layout, sounds"
+msgstr "按模块重建、安装布局、语音包"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:12
+#: 0c8aaff134ed4948897165eb7a163029
+msgid ""
+"GitHub Actions (unit tests, scan-build, Debian matrix, macOS, Windows, "
+"tarball)"
+msgstr "GitHub Actions（单元测试、scan-build、Debian 矩阵、macOS、Windows、tarball）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:13
+#: 7dae0dc4787849fcb84e4d7bad6b5d1d
+msgid "Packaged install (FSGET) and `.deb` build (FSDEB)"
+msgstr "打包安装（FSGET）与 `.deb` 构建（FSDEB）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:14
+#: 8f67058cf29843339bf53f2fb6b7ae8d
+msgid "Version strings and release branches"
+msgstr "版本字符串与发布分支"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:15
+#: a91c65c159ec46d5a5f0814c0898765c
+msgid "PKB Sphinx bilingual build / AgentBox publish"
+msgstr "PKB Sphinx 双语构建 / AgentBox 发布"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:17
+#: 65c1c4a0abef44658a0f6fbab6acb16e
+msgid ""
+"Upstream operator docs: [FreeSWITCH Users "
+"Manual](https://developer.signalwire.com/freeswitch/) ([Ch 2 Getting "
+"Started](https://developer.signalwire.com/freeswitch/foundations/getting-"
+"started)). Package downloads: "
+"[files.freeswitch.org](https://files.freeswitch.org/releases/freeswitch/)."
+" Historical wiki: [FreeSWITCH "
+"Explained](https://developer.signalwire.com/freeswitch/FreeSWITCH-"
+"Explained/)."
+msgstr ""
+"上游运维文档：[FreeSWITCH 用户手册](https://developer.signalwire.com/freeswitch/)（[第"
+" 2 章入门](https://developer.signalwire.com/freeswitch/foundations/getting-"
+"started)）。软件包下载：[files.freeswitch.org](https://files.freeswitch.org/releases/freeswitch/)。历史"
+" wiki：[FreeSWITCH Explained](https://developer.signalwire.com/freeswitch"
+"/FreeSWITCH-Explained/)。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:19
+#: 7ed9858f1c6b4e0e9abdc5b1ed2387db
+msgid "Local Build Paths"
+msgstr "本地构建路径"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:21
+#: dbef3f6529074c01b1f7e8a91695e522
+msgid "Development (Unix / macOS)"
+msgstr "开发（Unix / macOS）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:23
+#: 387f4feb6fa947cf881ce6849a92ea63
+#, fuzzy
+msgid ""
+"Prerequisites: Autotools floors in `scripts/ci/build-requirements.sh` "
+"(autoconf `>= 2.59`, automake `>= 1.7`, libtool `>= 1.5.14`) plus Sofia-"
+"SIP, SpanDSP, libks, signalwire-c as in [Tech Stack](../1.architecture/02"
+"-tech-stack.md). On macOS, install those from Homebrew first — see [macOS"
+" (Homebrew)](#macos-homebrew)."
+msgstr ""
+"前置条件：`scripts/ci/build-requirements.sh` 中规定的 Autotools 最低版本（autoconf `>= "
+"2.59`、automake `>= 1.7`、libtool `>= 1.5.14`），以及[技术栈](03-tech-stack.md)中的 "
+"Sofia-SIP、SpanDSP、libks、signalwire-c。在 macOS 上请先通过 Homebrew "
+"安装这些依赖——参见[macOS（Homebrew）](#macos-homebrew)。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:33
+#: 1a189c51cf704938b031b1c3d7a39a9b
+msgid ""
+"Debug CFLAGS (`-ggdb3 -O0`): `./devel-bootstrap.sh` then the same "
+"`configure`/`make`."
+msgstr "调试 CFLAGS（`-ggdb3 -O0`）：先 `./devel-bootstrap.sh`，再同样的 `configure`/`make`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:35
+#: 01b609d71d144aa1adab939c45252c40
+msgid "Rebuild one module after `modules.conf` is already in place:"
+msgstr "`modules.conf` 已就位后重建单个模块："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:42
+#: 835fe025b1bf4d97a089f721deb77efc
+msgid "(Top-level `Makefile.am` dispatches `mod_*` into `src/mod`.)"
+msgstr "（顶层 `Makefile.am` 把 `mod_*` 分发到 `src/mod`。）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:44
+#: d36aa8d1ffcb4ef2ab9a67af122dc219
+msgid "ASAN unit-test configure used by CI:"
+msgstr "CI 使用的 ASAN 单元测试 configure："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:52
+#: 33f820a4ab3c462e8caada0614ebf4fb
+msgid "(`ci.sh` also builds Sofia-SIP when `-c sofia-sip`.)"
+msgstr "（`ci.sh` 在 `-c sofia-sip` 时也会构建 Sofia-SIP。）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:54
+#: 1b67e75cef054854bed137246169db59
+msgid "macOS (Homebrew)"
+msgstr "macOS（Homebrew）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:56
+#: f68169b851284624b7caa8c9dfa474f5
+msgid ""
+"Sofia-SIP, libks, SpanDSP, and signalwire-c are **not** in this git tree."
+" Install them from Homebrew first, then use the same Autotools path as "
+"Unix. Package list and tap names below match "
+"`.github/workflows/macos.yml`."
+msgstr ""
+"Sofia-SIP、libks、SpanDSP 和 signalwire-c **不在**此 git 树中。请先通过 Homebrew "
+"安装它们，然后使用与 Unix 相同的 Autotools 路径。下面的软件包列表和 tap 名称与 "
+"`.github/workflows/macos.yml` 一致。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:58
+#: 90a0889d070a48d083d87623db625918
+msgid "Toolchain"
+msgstr "工具链"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:65
+#: 8c164b8ee21f4e9da57ec9f9fb3972de
+msgid ""
+"GNU autotools floors are in `scripts/ci/build-requirements.sh` (autoconf "
+"`>= 2.59`, automake `>= 1.7`, libtool `>= 1.5.14`). On macOS use Homebrew"
+" `libtool` (`glibtool`); Apple’s stock tools are too old."
+msgstr ""
+"GNU autotools 最低版本位于 `scripts/ci/build-requirements.sh`（autoconf `>= "
+"2.59`、automake `>= 1.7`、libtool `>= 1.5.14`）。在 macOS 上使用 Homebrew 的 "
+"`libtool`（`glibtool`）；Apple 自带工具版本太旧。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:67
+#: d70ced0033ab4194ae7f3e8d0629e8fd
+msgid "Homebrew packages"
+msgstr "Homebrew 软件包"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:102
+#: b23a37185f6b4844aa1089b0fa5f408f
+msgid ""
+"CI also runs `brew install --adopt` for the SignalWire formulas "
+"(overwrite a conflicting cellar install). The runner-only `brew uninstall"
+" cmake` step is **not** needed on a developer Mac."
+msgstr ""
+"CI 还会对 SignalWire formulas 运行 `brew install --adopt`（覆盖冲突的 cellar 安装）。仅针对"
+" runner 的 `brew uninstall cmake` 步骤在开发者 Mac 上**不需要**。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:104
+#: 9a592f789d1e458baee81d5196340aa9
+msgid ""
+"On Apple Silicon, Homebrew lives under `/opt/homebrew`. `ffmpeg@7` and "
+"`libpq@18` are keg-only; CI force-links them so `pkg-config` / "
+"`configure` see them. If you skip the force-link, add those prefixes to "
+"`PKG_CONFIG_PATH` (and often `PATH` / `LDFLAGS`) before `./configure`."
+msgstr ""
+"在 Apple Silicon 上，Homebrew 位于 `/opt/homebrew`。`ffmpeg@7` 和 `libpq@18` 是 "
+"keg-only 软件包；CI 会强制链接它们，使 `pkg-config` / `configure` 能够找到。如果跳过强制链接，请在 "
+"`./configure` 前将这些前缀加入 `PKG_CONFIG_PATH`（通常还要加入 `PATH` / `LDFLAGS`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:106
+#: 73a1d722dda1472491ff66f94927673b
+msgid "Configure, build, install"
+msgstr "配置、构建、安装"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:108
+#: d8125de3f32b4d42af0b71b05c6dff2f
+msgid ""
+"Use a home prefix so you do not need root. The command below uses "
+"`--disable-fhs` so the installed `bin/`, `conf/`, `mod/`, `db/`, `log/`, "
+"and `run/` directories stay below `$HOME/fs`. Default without `--prefix` "
+"is `/usr/local/freeswitch` (`configure.ac`). macOS CI uses "
+"`--prefix=…/OUT` plus `--enable-shared --enable-static` and therefore "
+"follows its FHS-style output paths."
+msgstr ""
+"使用家目录前缀即可无需 root。下面的命令使用 `--disable-fhs`，因此安装后的 "
+"`bin/`、`conf/`、`mod/`、`db/`、`log/` 和 `run/` 目录都位于 `$HOME/fs` 下。不带 "
+"`--prefix` 时默认前缀为 `/usr/local/freeswitch`（`configure.ac`）。macOS CI 使用 "
+"`--prefix=…/OUT` 加上 `--enable-shared --enable-static`，因此遵循 FHS 风格的输出路径。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:123
+#: 1bdf7c04bf4f4af18b5aeffd3e1dab6a
+msgid ""
+"`bootstrap.sh` copies `build/modules.conf.in` → `modules.conf` if "
+"missing, then runs Autotools. `-j` parallelizes bundled library "
+"bootstraps."
+msgstr ""
+"如果 `modules.conf` 不存在，`bootstrap.sh` 会复制 `build/modules.conf.in` → "
+"`modules.conf`，然后运行 Autotools。`-j` 会并行执行捆绑库的 bootstrap。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:124
+#: 235d01b0fa8b4b74b1165c5c9014bae3
+msgid ""
+"Edit **`modules.conf`** (build list: `src/mod/...` lines) **after** "
+"bootstrap and **before** `./configure` / `make`. Runtime load is a "
+"separate file: `modules.conf.xml`. A compiled module can still be "
+"unloaded."
+msgstr ""
+"请在 bootstrap **之后**、`./configure` / `make` **之前**编辑 "
+"**`modules.conf`**（构建列表：`src/mod/...` "
+"行）。运行时加载使用另一个文件：`modules.conf.xml`。已编译的模块仍可能处于未加载状态。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:125
+#: 4c78e172d3fd48938077cb6747a38b9f
+msgid ""
+"`make install` installs vanilla sample config when `$prefix/conf` does "
+"not exist (`samples-conf`)."
+msgstr "当 `$prefix/conf` 不存在时，`make install` 会安装 vanilla 示例配置（`samples-conf`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:126
+#: f35ce92207df4113bc7c5997f12957f7
+#, fuzzy
+msgid ""
+"Sounds / music-on-hold are **not** in git. If you need playback or the "
+"echo test: `make cd-sounds-install cd-moh-install` (see [Quick "
+"Start](../0.getting-started/02-quick-start.md))."
+msgstr ""
+"声音和保持音乐**不在** git 中。如果需要播放或回声测试，请运行 `make cd-sounds-install cd-moh-"
+"install`（参见[快速开始](01-quick-start.md)）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:127
+#: 33e53fb3e1ea4200a6e4580ac5533b0d
+msgid ""
+"Debug CFLAGS (`-ggdb3 -O0`): `./devel-bootstrap.sh` instead of "
+"`./bootstrap.sh`."
+msgstr "调试 CFLAGS（`-ggdb3 -O0`）：使用 `./devel-bootstrap.sh`，不要使用 `./bootstrap.sh`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:129
+#: 1aff249a2bae4764a2da01634d43de6d
+msgid "Run (prefix install)"
+msgstr "运行（前缀安装）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:136
+#: 2f0d6de63a9441b7842b8b3f7ff8350d
+#, fuzzy
+msgid ""
+"A working process prints a line starting with `UP`. Stop with "
+"`\"$HOME/fs/bin/freeswitch\" -stop`. Vanilla is a **demo PBX**, not "
+"production: SIP users `1000`–`1019` share password `1234`; the `fs_cli` "
+"client targets `127.0.0.1:8021` by default, while vanilla ESL listens on "
+"wildcard `::`:8021 with password `ClueCon`. Start with `-nonat` unless "
+"you want UPnP NAT helpers. First-call steps: [Quick Start](../0.getting-"
+"started/02-quick-start.md)."
+msgstr ""
+"正常运行的进程会输出以 `UP` 开头的一行。使用 `\"$HOME/fs/bin/freeswitch\" -stop` 停止。Vanilla "
+"是**演示 PBX**，不是生产配置：SIP 用户 `1000`–`1019` 共用密码 `1234`；`fs_cli` 客户端默认连接 "
+"`127.0.0.1:8021`，而 vanilla ESL 在通配 `::`:8021 上监听，密码为 `ClueCon`。除非需要 UPnP "
+"NAT 辅助，否则请使用 `-nonat` 启动。首次呼叫步骤见[快速开始](01-quick-start.md)。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:138
+#: bd4b0c52efa948e884a94a5a609d73e9
+msgid "Production / prefix install"
+msgstr "生产 / 前缀安装"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:140
+#: edabb5a1087b429abcf50bc4299ca092
+#, fuzzy, python-brace-format
+msgid ""
+"Same `configure && make && make install`. Default prefix is "
+"`/usr/local/freeswitch` (`AC_PREFIX_DEFAULT` in `configure.ac`). With an "
+"explicit custom prefix, `configure` enables FHS layout unless `--disable-"
+"fhs` is supplied; modules then go under `${libdir}/freeswitch/mod` and "
+"configuration under `${sysconfdir}/freeswitch`. Use [Quick Start](../0"
+".getting-started/02-quick-start.md#source-build-developer-path) for the "
+"single-prefix developer layout."
+msgstr ""
+"同样是 `configure && make && make install`。默认前缀为 "
+"`/usr/local/freeswitch`（`configure.ac` 中的 "
+"`AC_PREFIX_DEFAULT`）。显式指定自定义前缀时，除非提供 `--disable-fhs`，否则 `configure` 会启用 "
+"FHS 布局；模块位于 `${libdir}/freeswitch/mod`，配置位于 "
+"`${sysconfdir}/freeswitch`。单前缀开发者布局请参见[快速开始](01-quick-start.md#source-"
+"build-developer-path)。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:142
+#: 971f901bdc754d449ca4386a6d78fa43
+msgid ""
+"Debian systemd unit (`debian/freeswitch-systemd.freeswitch.service`) "
+"starts:"
+msgstr "Debian systemd 单元（`debian/freeswitch-systemd.freeswitch.service`）启动："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:148
+#: cffc665a304b49c7878c135d8592d8af
+msgid ""
+"Sounds are **not** in this git tree. `make sounds` / `make sounds-"
+"install` downloads Callie 8 kHz packages (`Makefile.am`, default `en-us-"
+"callie-8000`). Specs at repo root: `freeswitch-sounds-*.spec`."
+msgstr ""
+"语音包**不在**本 git 树中。`make sounds` / `make sounds-install` 会下载 Callie 8 kHz "
+"包（`Makefile.am`，默认 `en-us-callie-8000`）。规格文件在仓库根目录：`freeswitch-"
+"sounds-*.spec`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:150
+#: 537b38526c2648baae21b89701ae3870
+msgid "Windows"
+msgstr "Windows"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:156
+#: aa01112a70a0483888cbbec6722eeb16
+msgid ""
+"Helper: `msbuild.cmd` (locates VS via `vswhere.exe`). Projects under "
+"`w32/`. CI uploads `x64\\*.msi` on master / v1.10 / v1.11 (or PR titles "
+"containing `:upload-artifacts`)."
+msgstr ""
+"辅助脚本：`msbuild.cmd`（通过 `vswhere.exe` 定位 VS）。工程在 `w32/`。CI 在 master / v1.10"
+" / v1.11 上上传 `x64\\*.msi`（或 PR 标题含 `:upload-artifacts`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:158
+#: 6a3f9f78a43642539d453d600c56b6f5
+msgid "Expected outputs (Unix prefix)"
+msgstr "预期产出（Unix 前缀）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 8aba3bc52fbb4bbb93e1192f82b243a7
+msgid "Path"
+msgstr "路径"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 7df97bc4488c420a9b3a3fae772a478e
+msgid "Content"
+msgstr "内容"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: b4eea839161141eaab48d383ce0e7234
+msgid "`$prefix/bin/`"
+msgstr "`$prefix/bin/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: b3674cd06b254d8289657975e4709c31
+msgid ""
+"`freeswitch`, `fs_cli`, `fs_encode`, `fs_tts`, `fs_ivrd` (`bin_PROGRAMS` "
+"in `Makefile.am`) for a `--disable-fhs` install"
+msgstr ""
+"`--disable-fhs` 安装中的 "
+"`freeswitch`、`fs_cli`、`fs_encode`、`fs_tts`、`fs_ivrd`（`Makefile.am` 中的 "
+"`bin_PROGRAMS`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: d8cb7ba398344a7db210c9b65bc17ac4
+msgid "`$prefix/mod/`"
+msgstr "`$prefix/mod/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 080ee294c2094b54a4ee3af2c2a7eabc
+msgid "Loadable `.so` / `.dylib` / `.dll` for a `--disable-fhs` install"
+msgstr "`--disable-fhs` 安装中的可加载 `.so` / `.dylib` / `.dll`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: ca95c25039f9455492870558ed326480
+msgid "`$prefix/conf/`"
+msgstr "`$prefix/conf/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 612f1a065c914ad7881213462a3dd9c1
+msgid ""
+"Vanilla samples if the dir did not exist (`samples-conf`) for a "
+"`--disable-fhs` install"
+msgstr "`--disable-fhs` 安装中目录不存在时的 vanilla 示例（`samples-conf`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 4f270d15578c4dff9e3f290d5fc67d2f
+msgid "`$prefix/db/`, `log/`, `run/`, `scripts/`, `htdocs/`"
+msgstr "`$prefix/db/`, `log/`, `run/`, `scripts/`, `htdocs/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 8c8df446f722437f9d2a87753cba5f04
+msgid ""
+"Runtime dirs (`install-data-local`) for a `--disable-fhs` install; FHS "
+"installs use their configured `var/`, `share/`, `etc/`, and `lib/` "
+"locations"
+msgstr ""
+"`--disable-fhs` 安装中的运行时目录（`install-data-local`）；FHS 安装使用其配置的 "
+"`var/`、`share/`、`etc/` 和 `lib/` 路径"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 5902c5106e5843d2ace6ae10dc15b14a
+msgid "`src/include/switch_version.h`"
+msgstr "`src/include/switch_version.h`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 4b5439fbb47f439e8ef16471171b654a
+msgid "Generated from `switch_version.h.template`"
+msgstr "由 `switch_version.h.template` 生成"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:168
+#: 525041dde1f746f6aad06b66d48a665d
+msgid "CI/CD Pipelines"
+msgstr "CI/CD 流水线"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:170
+#: f675bab7e70c44acae90b38ed9f971ab
+msgid ""
+"All under `.github/workflows/`. Linux jobs use `signalwire/freeswitch-"
+"public-ci-base:bookworm-amd64` unless noted."
+msgstr ""
+"全部在 `.github/workflows/` 下。除非另有说明，Linux 作业使用 `signalwire/freeswitch-"
+"public-ci-base:bookworm-amd64`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 6a3b1953a69d4c71a745ec5c0eee9027
+msgid "Workflow"
+msgstr "工作流"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 476d829758644340a4b8def7bc022790
+msgid "Trigger"
+msgstr "触发条件"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 776ccb6a068d4f6dbbc53262ce7fa08d
+msgid "Purpose"
+msgstr "用途"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 5869462e07ed4f9e9c7e36cf615d50ec
+msgid "Key output"
+msgstr "关键产出"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: a67d2240c28c4e329b05bd990105c56b
+msgid "`ci.yml`"
+msgstr "`ci.yml`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 797aa386dfec49d79b87272a8350d3a8
+msgid "push `master` / `v1.10` / `v1.11`; PR open/sync; `workflow_dispatch`"
+msgstr "推送 `master` / `v1.10` / `v1.11`；PR 打开/同步；`workflow_dispatch`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 873bfd662dd54c358362535fd8699897
+msgid ""
+"Unit tests in 2 groups (`unit-test.yml` via `ci.sh`); optional DinD "
+"(`unit-test-dind.yml`); clang `scan-build.yml`"
+msgstr ""
+"分 2 组单元测试（经 `ci.sh` 的 `unit-test.yml`）；可选 DinD（`unit-test-"
+"dind.yml`）；clang `scan-build.yml`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 8d4ccfbf84344447b5e6aa9e2e2f3019
+msgid "Pass/fail; scan-build reports"
+msgstr "通过/失败；scan-build 报告"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 0ff56480946d4228aec72c3febe734fe
+msgid "`build.yml` (“Build and Distribute”)"
+msgstr "`build.yml`（「Build and Distribute」）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: ea2e53d5757e4660a0058cc8bf149769
+msgid "PR; push `master` / `v1.10` / `v1.11`; `workflow_dispatch`"
+msgstr "PR；推送 `master` / `v1.10` / `v1.11`；`workflow_dispatch`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: e9f06d0fa5bc451aa48c306a67171f12
+msgid ""
+"Debian **bookworm** + **trixie** × amd64 / arm32v7 / arm64v8. PR excludes"
+" some ARM combos. Branch `v1.10`/`v1.11` → `release`; `master` → "
+"`unstable`"
+msgstr ""
+"Debian **bookworm** + **trixie** × amd64 / arm32v7 / arm64v8。PR 排除部分 ARM "
+"组合。分支 `v1.10`/`v1.11` → `release`；`master` → `unstable`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 21203dbfb6f14757934d5c3f61d1df75
+msgid ""
+"`.deb` / `.dsc` / `.changes` / tarballs; upload when push is on "
+"`signalwire/freeswitch`"
+msgstr "`.deb` / `.dsc` / `.changes` / tarball；当推送到 `signalwire/freeswitch` 时上传"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: f8f7730b929941dd9888a23195ecb6dd
+msgid "`macos.yml`"
+msgstr "`macos.yml`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: dc3233cc7da140e6836a55069ae853a8
+msgid "push/PR those branches; `workflow_dispatch`"
+msgstr "推送/PR 这些分支；`workflow_dispatch`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 5a973e48d7ab448ca504e20b19f48548
+msgid ""
+"Homebrew deps + `./bootstrap.sh -j` + `./configure --prefix=OUT` + `make "
+"install`"
+msgstr ""
+"Homebrew 依赖 + `./bootstrap.sh -j` + `./configure --prefix=OUT` + `make "
+"install`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 6be5421c4e8e4d2ca5da0cf0fe94d2ac
+msgid "Artifact `freeswitch-macos-build`"
+msgstr "产物 `freeswitch-macos-build`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 6d4b6133d89e4584a09d5be01f916180
+msgid "`windows.yml`"
+msgstr "`windows.yml`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 3bc6cf223b084e4596314fa466422367
+msgid "PR; push `master` / `release`"
+msgstr "PR；推送 `master` / `release`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 481c03dd73594705a29e0623f2ca5457
+msgid "MSBuild x64 Release"
+msgstr "MSBuild x64 Release"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: f942629736164c46a2c96336a5fc76fb
+msgid "MSI artifact"
+msgstr "MSI 产物"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 7ca3499dff404c238405a28e5bf37d9e
+msgid "`tarball.yml`"
+msgstr "`tarball.yml`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 739e48f9594e41b8a6fc67c3a94fbfd4
+msgid "push `v1.10` / `v1.11`; `workflow_dispatch`"
+msgstr "推送 `v1.10` / `v1.11`；`workflow_dispatch`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 39f5355201eb47538a551944c56e9ddc
+msgid "`scripts/ci/src_tarball.sh`"
+msgstr "`scripts/ci/src_tarball.sh`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: c13dac4d479542d1b57ede95ca16715c
+msgid ""
+"`.tar.gz` / `.bz2` / `.xz` / `.zip` + checksums under `src_dist/`; "
+"Teleport upload on branch push"
+msgstr "`.tar.gz` / `.bz2` / `.xz` / `.zip` 及校验和，位于 `src_dist/`；分支推送时 Teleport 上传"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: b91bb95e808a44ac8fb1cccc667176c0
+msgid "`unit-test.yml`"
+msgstr "`unit-test.yml`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: b1768eeedfc54812bc409349501ca330
+msgid "`workflow_call` from `ci.yml`"
+msgstr "来自 `ci.yml` 的 `workflow_call`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: e463891efd9c42edb7021cc5517e82ef
+msgid ""
+"Configure/build/install Sofia-SIP + FreeSWITCH; `tests/unit/run-"
+"tests.sh`; `libs/esl` `make check` on group 1"
+msgstr ""
+"配置/构建/安装 Sofia-SIP + FreeSWITCH；`tests/unit/run-tests.sh`；第 1 组对 "
+"`libs/esl` 执行 `make check`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 21efaf4a0bc24fa291f9327bf3d47a0f
+msgid "Logs on failure"
+msgstr "失败时的日志"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:181
+#: 09c59a06dba24c2f8be1ad18c9de8136
+msgid ""
+"`build.yml` issues a temporary repo token (`repo-auth-client`) before the"
+" public Debian Docker matrix "
+"(`.github/docker/debian/<codename>/<arch>/public.<release>.Dockerfile`)."
+msgstr ""
+"`build.yml` 在公共 Debian Docker "
+"矩阵（`.github/docker/debian/<codename>/<arch>/public.<release>.Dockerfile`）之前签发临时仓库"
+" token（`repo-auth-client`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:183
+#: 0c7431d58fb04dbfae3fde0ac4250e66
+msgid "Release Process"
+msgstr "发布流程"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:185
+#: c240fae02284464c92e35124f9480b08
+msgid "Version fields that **must stay together** (`configure.ac` comment):"
+msgstr "必须**一起保持**的版本字段（`configure.ac` 注释）："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:187
+#: 20bbc2e84fbf4c789f73dfc6c4575c76
+msgid "`AC_INIT([freeswitch], [1.11.3-dev], …)`"
+msgstr "`AC_INIT([freeswitch], [1.11.3-dev], …)`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:188
+#: 56969695c6e2417694392d5babfaf1ae
+msgid ""
+"`SWITCH_VERSION_MAJOR` / `MINOR` / `MICRO` (and optional `REVISION` / "
+"`REVISION_HUMAN` for a tagged release)"
+msgstr ""
+"`SWITCH_VERSION_MAJOR` / `MINOR` / `MICRO`（打标签发布时还可选 `REVISION` / "
+"`REVISION_HUMAN`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:189
+#: 115115fd7e5f4e5186c5df0bc0fec6e2
+msgid ""
+"`build/next-release.txt` (currently `1.11.3-dev`) — `src_tarball.sh` "
+"reads this and writes `.version`"
+msgstr ""
+"`build/next-release.txt`（当前为 `1.11.3-dev`）——`src_tarball.sh` 读取它并写入 "
+"`.version`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:191
+#: 6f814b4c11254aff826ab288b2f479c5
+msgid "Then:"
+msgstr "然后："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:193
+#: 7eefaaed23f240b9850c185f8b2b0894
+msgid ""
+"Land changes via GitHub PR (`docs/SubmittingPatches`, `README.md`). Topic"
+" branches; `./scripts/setup-git.sh` for author identity."
+msgstr ""
+"通过 GitHub PR 合入改动（`docs/SubmittingPatches`、`README.md`）。使用主题分支；用 "
+"`./scripts/setup-git.sh` 设置作者身份。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:194
+#: 1be16fb074fc48ddb92c33eadad75f7c
+msgid "CI green on `ci.yml` + platform builds you care about."
+msgstr "`ci.yml` 以及你关心的平台构建保持 CI 绿灯。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:195
+#: 8bc86d1430474769b42e4db0e04100f9
+msgid ""
+"For a packaged line: merge/tag on `v1.10` or `v1.11` so `build.yml` "
+"treats `release=release`. `master` publishes **unstable**."
+msgstr ""
+"面向打包产品线：在 `v1.10` 或 `v1.11` 上合并/打标签，使 `build.yml` 把 "
+"`release=release`。`master` 发布的是 **unstable**。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:196
+#: df52e5a6002d4f1dbdb444f915481dc2
+msgid ""
+"Source archives: `tarball.yml` or `./scripts/ci/src_tarball.sh` (needs a "
+"**git** tree; FSDEB same constraint — "
+"`scripts/packaging/build/README.md`)."
+msgstr ""
+"源码归档：`tarball.yml` 或 `./scripts/ci/src_tarball.sh`（需要 **git** 树；FSDEB "
+"同样限制——`scripts/packaging/build/README.md`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:197
+#: c6e5de27374546df92d3717bc055fcf9
+msgid ""
+"Debian packages from git: FSDEB   `curl -sSL https://freeswitch.org/fsdeb"
+" | bash -s -- -b BUILD_NUMBER -o OUT_DIR -w /path/to/freeswitch`"
+msgstr ""
+"从 git 构建 Debian 包：FSDEB   `curl -sSL https://freeswitch.org/fsdeb | bash "
+"-s -- -b BUILD_NUMBER -o OUT_DIR -w /path/to/freeswitch`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:199
+#: 7735326e2d9b4e6db71adc75fa63d575
+msgid ""
+"Operator install from SignalWire repo: FSGET "
+"(`scripts/packaging/README.md`) — requires a PAT."
+msgstr "从 SignalWire 仓库做运维安装：FSGET（`scripts/packaging/README.md`）——需要 PAT。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:200
+#: a03c2d865c1f423492a5e197c1f55338
+msgid ""
+"Verify: `freeswitch -version` / `fs_cli -x version`; package lists under "
+"`freeswitch.signalwire.com` (workflow `REPO_DOMAIN`)."
+msgstr ""
+"验证：`freeswitch -version` / `fs_cli -x version`；软件包列表在 "
+"`freeswitch.signalwire.com`（工作流 `REPO_DOMAIN`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:202
+#: 9d8329929c614ee2971d9c1feb1ca287
+msgid ""
+"Human product release notes: [Confluence Release "
+"Notes](https://freeswitch.org/confluence/display/FREESWITCH/Release+Notes)."
+" Mechanical git draft: `cd man && make changelog-draft` (writes "
+"`_generated/`; slow on this history)."
+msgstr ""
+"面向人的产品发行说明：[Confluence Release "
+"Notes](https://freeswitch.org/confluence/display/FREESWITCH/Release+Notes)。机械"
+" git 草稿：`cd man && make changelog-draft`（写入 `_generated/`；在本仓库历史上会很慢）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:204
+#: 0a683435074d40e0817c1ed29322a1ff
+msgid "Documentation Build and Publish"
+msgstr "文档构建与发布"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:206
+#: 47ff760d85b242fd81c99228cc3e005d
+msgid "PKB lives in `man/` (not `docs/man` Unix pages)."
+msgstr "PKB 在 `man/`（不是 `docs/man` Unix 手册页）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:219
+#: 7d669bf4ee3c4470a452c1c651e4fb20
+#, python-brace-format
+msgid ""
+"Deployment configuration is maintained outside this documentation tree. "
+"Build the bilingual site with `make html-all`, then hand "
+"`_build/site/{en,zh}/` to the external publishing flow. Run `make pkb-"
+"review-status-strict` separately when a human-approval gate is required."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:224
+#: c7bfe7f1e87a439a906576f0d456bd6f
+msgid "Common Failures"
+msgstr "常见失败"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 848c5b947b02487685b7cd291412d5bf
+msgid "Symptom"
+msgstr "现象"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: ac349fb0d1494aff8a88c488ada64af8
+msgid "Likely cause"
+msgstr "可能原因"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 98cbcc090af5453da7c7bdf4235f8750
+msgid "Fix"
+msgstr "处理"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 17d66fcc93204e40b9802619f4a54f72
+msgid "`bootstrap.sh` dies on autoconf/libtool"
+msgstr "`bootstrap.sh` 在 autoconf/libtool 上失败"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 90ea15fecc364c8c9e743aa56812a483
+msgid "Tool older than `scripts/ci/build-requirements.sh`"
+msgstr "工具版本低于 `scripts/ci/build-requirements.sh`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: ec0767275eda426badc270493aca00b5
+msgid ""
+"Install GNU autotools; macOS Homebrew `autoconf automake libtool` "
+"(`glibtool`)"
+msgstr "安装 GNU autotools；macOS Homebrew 使用 `autoconf automake libtool`（`glibtool`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: f581086886d648f083b49e5eb887ee4b
+msgid "Link/configure missing Sofia, KS, SpanDSP, signalwire"
+msgstr "链接/configure 缺少 Sofia、KS、SpanDSP、signalwire"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 78df8a9dd50841e6ae3017c0c0096892
+msgid "Out-of-tree deps"
+msgstr "树外依赖"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: ed0e193c6ce14cb58a52d1ec7cf99008
+#, python-brace-format
+msgid ""
+"Linux: `docker/examples/Debian11/Dockerfile` or `ci.sh -c sofia-sip`. "
+"macOS: Homebrew `sofia-sip` plus `signalwire/homebrew-"
+"signalwire/{libks2,signalwire-c2,spandsp}` (see [macOS (Homebrew"
+")](#macos-homebrew))"
+msgstr ""
+"Linux：`docker/examples/Debian11/Dockerfile` 或 `ci.sh -c sofia-"
+"sip`。macOS：Homebrew `sofia-sip` 加上 `signalwire/homebrew-"
+"signalwire/{libks2,signalwire-c2,spandsp}`（参见[macOS（Homebrew）](#macos-"
+"homebrew)）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 286b32e5a35e48ea9997318627a715c4
+msgid "`configure` cannot find ffmpeg / libpq on macOS"
+msgstr "macOS 上 `configure` 找不到 ffmpeg / libpq"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 2ecd792f54314063ab1cd91ced58f2e2
+msgid "Keg-only `ffmpeg@7` / `libpq@18`"
+msgstr "keg-only 的 `ffmpeg@7` / `libpq@18`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: f403b8f83c6d4fdc85cf97823cafe262
+msgid ""
+"`brew link --force --overwrite ffmpeg@7 libpq@18`, or set "
+"`PKG_CONFIG_PATH`"
+msgstr "运行 `brew link --force --overwrite ffmpeg@7 libpq@18`，或设置 `PKG_CONFIG_PATH`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 68e7be182c044566a7adb74cea46dc6a
+msgid "Module not in `mod/` after install"
+msgstr "安装后模块不在 `mod/` 中"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: a7e6454536284a73b753cf99ef4154b3
+msgid "Commented in `modules.conf` **or** not in runtime `modules.conf.xml`"
+msgstr "在 `modules.conf` 中被注释掉，**或者**不在运行时 `modules.conf.xml` 中"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 80a70ee0c21b492896edc457e6f91e79
+msgid "Uncomment, `make mod_*`, and load XML"
+msgstr "取消注释，`make mod_*`，并加载 XML"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 1ec938d1f29e46a5a9196e15e35eebbb
+msgid "`make dist` / FSDEB from a tarball"
+msgstr "从 tarball 做 `make dist` / FSDEB"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: b6942c7607b24a16a01ebd87e40e50fd
+msgid "Scripts require git"
+msgstr "脚本需要 git"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 7a7394c2fdf44dc588498c68cb251374
+msgid "Clone the repo (`scripts/packaging/build/README.md`)"
+msgstr "克隆仓库（`scripts/packaging/build/README.md`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 0d6e9ad8b193442f8c9278b4a7888873
+msgid "FSGET / `docker/master` apt 401"
+msgstr "FSGET / `docker/master` apt 401"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 2667da59a5834d13aacefc81def49fa1
+msgid "No SignalWire PAT"
+msgstr "没有 SignalWire PAT"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 9e2dd97475ac48baa5d981b8d3d569f6
+msgid "PAT or source build"
+msgstr "使用 PAT 或改为源码构建"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: f6a73f56d6144067b0db4a879bd87cbd
+msgid "Debian ffmpeg headers differ"
+msgstr "Debian ffmpeg 头文件不一致"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 0b01158ef7d8471d8e906dc6603537e0
+msgid "Bookworm vs Trixie package names"
+msgstr "Bookworm 与 Trixie 的包名不同"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 633e8b4474d2450f8439e1e18ea711a1
+msgid "`debian/control-modules` `Build-Depends-Bookworm` / `Build-Depends-Trixie`"
+msgstr "`debian/control-modules` `Build-Depends-Bookworm` / `Build-Depends-Trixie`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 4e3cb933c14540b49470f47d8b89173c
+msgid "Windows MSI missing in CI"
+msgstr "CI 中缺少 Windows MSI"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 5abe26f89d1b47148fad8fbe28bf238b
+msgid "Not master/v1.10/v1.11 and PR title lacks `:upload-artifacts`"
+msgstr "不是 master/v1.10/v1.11，且 PR 标题没有 `:upload-artifacts`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: d6df0fe55c904a0087f7c954239478a0
+msgid "See `windows.yml` `if:`"
+msgstr "见 `windows.yml` 的 `if:`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: aef61b6584bb46d89f17853cdfbee319
+msgid "`scan-build-14` not found"
+msgstr "找不到 `scan-build-14`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 8dc11d8868fe49c9982ba4fd1675a47e
+msgid "Local machine lacks clang-14 analyzer"
+msgstr "本机没有 clang-14 analyzer"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 2f7a9cbc209b48df8e556578f3477db1
+msgid "Use CI image or install clang tools (`ci.sh` scan-build path)"
+msgstr "使用 CI 镜像或安装 clang 工具（`ci.sh` 的 scan-build 路径）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 1cedaf9b35c142fb80ed8348d9ffe871
+msgid "PKB `make html` fails"
+msgstr "PKB `make html` 失败"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 328d420120214c8190b3af785993f246
+msgid "Poetry env not installed; missing `linkify-it-py`"
+msgstr "未安装 Poetry 环境；缺少 `linkify-it-py`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 91da63b871164795971b7d0719d49b92
+msgid "`cd man && poetry install`"
+msgstr "`cd man && poetry install`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: c3a7de9fbd77458ead6698b9ae0cb57a
+msgid "Changelog draft hangs"
+msgstr "changelog 草稿卡住"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 5e2c7abe8bb6464389af6d25c1426f12
+msgid "`gen_changelog.sh` walks a large git log"
+msgstr "`gen_changelog.sh` 会遍历很大的 git log"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: f3fc637644ae492cb015b32af246b342
+msgid "Run with `--range` (e.g. `HEAD~20..HEAD`)"
+msgstr "用 `--range` 运行（例如 `HEAD~20..HEAD`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 08e379ec29ca44a09be022b2f16ced72
+msgid "Clicking 中文 404s `http://127.0.0.1:8000/zh/`"
+msgstr "点击「中文」后 `http://127.0.0.1:8000/zh/` 返回 404"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: 56bda94bde1046e1b29eb314cd3c8cd5
+#, python-brace-format
+msgid ""
+"`make serve-watch` (old `make serve`) serves English `_build/html`; the "
+"switcher expects `_build/site/{en,zh}`"
+msgstr ""
+"`make serve-watch`（以前的 `make serve`）只提供英文 `_build/html`；语言切换需要 "
+"`_build/site/{en,zh}`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md
+#: f8ea073fd8e24689850feb0e129953d9
+msgid "Stop that process; `make serve` or `make serve-all`"
+msgstr "先停掉该进程，再运行 `make serve` 或 `make serve-all`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:241
+#: c5b27d0cec784c5da2398bda7d2918be
+msgid "Related Documentation"
+msgstr "相关文档"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:243
+#: ab9611b0b68e4aabbd9fe7b627109aee
+#, fuzzy
+msgid "[Quick Start](../0.getting-started/02-quick-start.md)"
+msgstr "[快速开始](01-quick-start.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:244
+#: 0b47c88872db4412be125d09bc7c1c91
+#, fuzzy
+msgid "[Tech Stack](../1.architecture/02-tech-stack.md)"
+msgstr "[技术栈](03-tech-stack.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:245
+#: 5bae149ee83049918231a6cf44cfadb0
+#, fuzzy
+msgid "[Testing](03-testing.md)"
+msgstr "[测试](09-testing.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:246
+#: 811dcbefc8164aea96eae03e3b6fba2f
+#, fuzzy
+msgid "[Runbook](../5.operations/01-runbook.md)"
+msgstr "[运维手册](10-runbook.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/02-build.md:247
+#: e8e26b2cc4bd4e91b2c76147b134a260
+#, fuzzy
+msgid "[Documentation Process](../5.operations/03-document.md)"
+msgstr "[文档流程](12-document.md)"
+
+#~ msgid ""
+#~ "AgentBox (optional): `make publish` runs "
+#~ "`agentbox-init` → `html-all` → "
+#~ "`strip-confidential` (default strip `L3+`) "
+#~ "→ `gen_agentbox_files.py` → `abx func "
+#~ "deploy freeswitch-doc`. Function slug is"
+#~ " `freeswitch-doc` (`agentbox.yaml`). Run "
+#~ "`make pkb-review-status-strict` "
+#~ "separately when a human-approval gate"
+#~ " is required; the default publish "
+#~ "target remains usable while pages are"
+#~ " marked `pending`."
+#~ msgstr ""
+#~ "AgentBox（可选）：`make publish` 依次运行 `agentbox-"
+#~ "init` → `html-all` → `strip-"
+#~ "confidential`（默认剥离 `L3+`）→ `gen_agentbox_files.py` →"
+#~ " `abx func deploy freeswitch-doc`。函数 "
+#~ "slug 是 `freeswitch-"
+#~ "doc`（`agentbox.yaml`）。需要人工审批门禁时，请单独运行 `make pkb-"
+#~ "review-status-strict`；页面标记为 `pending` "
+#~ "时，默认发布目标仍可用。"
+

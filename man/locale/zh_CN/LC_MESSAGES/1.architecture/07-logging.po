@@ -1,0 +1,470 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Zoom Video Communications
+# This file is distributed under the same license as the FreeSWITCH package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FreeSWITCH \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-18 16:04+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:1
+#: a15397dfb9954d48a0f88446d266c635
+msgid "14. 在 FreeSWITCH 中打日志"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:5
+#: ca4f6af87e1349fda004bd81eed4b899
+msgid ""
+"本文说明 C/C++ 模块如何使用 FreeSWITCH 的日志引擎。实现位于 `src/switch_log.c`，公开声明位于 "
+"`src/include/switch_log.h`。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:9
+#: 98644d76d2514f5eb07acd581e9f0df4
+msgid "最常用的写法"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:21
+#: a69fa7092f2c40f8b2d4254e75deeae0
+msgid "`SWITCH_CHANNEL_LOG` 会自动填充文件名、函数名和行号。格式字符串和参数 必须匹配；通常在消息末尾加 `\\n`。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:24
+#: fc22240d7c214dedad318561d18e8a6d
+msgid "日志级别"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:26
+#: 0ec77f8d852d410c9050e5ea3c3e78c5
+msgid "`switch_log_level_t` 定义在 `src/include/switch_types.h`："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: 8b1f7788794141c7a17ab7b83e1087a8
+msgid "级别"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: 0133d53bc4d54fb3bed17c058f622e38 0924e72e33904750b9f30591401ce514
+#: 9875fafe30c24e1da7479900c1a59cdb
+msgid "用途"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: 90039514fc374cd091ab83f2be9765f4
+msgid "`SWITCH_LOG_DEBUG`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: 022bf5b12a66450a8251eebaaec39bd5
+msgid "调试信息"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: 9872400f3abe417ba9c854624288ad72
+msgid "`SWITCH_LOG_INFO`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: 86774a6807a34817843c30ca5f939efc
+msgid "正常运行信息"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: cc25aec210bf447d85e91de7c5eb6668
+msgid "`SWITCH_LOG_NOTICE`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: 4d6cf6032fef4449884e9e3e32b0870f
+msgid "重要但不是异常的信息"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: abd3653b2923487cac4b15ac8bf43b4a
+msgid "`SWITCH_LOG_WARNING`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: cf4ab6cfa91e457199811a63cb3cbe30
+msgid "可恢复问题或配置风险"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: 84ef241897354477af8f562208887ebc
+msgid "`SWITCH_LOG_ERROR`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: f7fd3fb332234b4185d9bda7003196f7
+msgid "操作失败，但进程可以继续"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: 169e843a1745435fb16edc7f6bb5eb78
+msgid "`SWITCH_LOG_CRIT`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: c4507cc3832e49b29cbe8b7cbf633068
+msgid "严重错误"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: 06761d9c7c05412f9f70b24fb4edf7c2
+msgid "`SWITCH_LOG_ALERT`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: 6bfdce36b77b4cfeb28c035c9047bc26
+msgid "需要立即处理的问题"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: 220871d9602142ff995e0d6dcf45137d
+msgid "`SWITCH_LOG_CONSOLE`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: 22824c02ea9742c0ac1caf8b2eb3143c
+msgid "控制台级别消息"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:39
+#: 46740e5dcbb74a6a9c0e04f7d8ebd023
+msgid ""
+"优先级数字越小越高。`switch_log_meta_vprintf()` 使用 `level > runtime.hard_log_level`"
+" 判断是否过滤日志。因此全局级别为 `INFO` 时，`DEBUG` 不会输出。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:52
+#: b60ebfdf055840c6b506ce7ceb0add66
+msgid "与呼叫关联"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:54
+#: 83c7257fa71e4c3581761365c0beedad
+msgid ""
+"有 `switch_core_session_t *session` 时，使用 "
+"`SWITCH_CHANNEL_SESSION_LOG(session)`："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:64
+#: 2253cc861aa0408e841bb04d87a66871
+msgid ""
+"日志节点会保存 Session UUID，后端可以据此关联同一个呼叫。只有 UUID 时使用 "
+"`SWITCH_CHANNEL_UUID_LOG(uuid)`。不需要自动前缀时使用 "
+"`SWITCH_CHANNEL_LOG_CLEAN`；需要产生 `SWITCH_EVENT_LOG` 时使用 "
+"`SWITCH_CHANNEL_EVENT`。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:69
+#: d89fd60fee064f1f95f95e9dcf4de102
+msgid "这些宏定义在 `src/include/switch_types.h`："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: 7ab548ed2f3d4eb199de5d23cee06f91
+msgid "宏"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: c6eb1d730c494800b3f85e329f7f0359
+msgid "`SWITCH_CHANNEL_LOG`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: 76095a05364045bc8ef82993a58c9d33
+msgid "普通日志，带时间、级别、文件和行号"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: 40dae746c1a4463e8f3f1c1eab91e585
+msgid "`SWITCH_CHANNEL_SESSION_LOG(session)`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: 2df5f49a76304b0d93d3f903048b858c
+msgid "与 Session 关联"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: 47dacc78e77846faa33b63c7cf66093b
+msgid "`SWITCH_CHANNEL_UUID_LOG(uuid)`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: ae0f119737214729b118194704f38e96
+msgid "与 UUID 关联"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: 1f481c0bad7542a7b6619b61ec037cc2
+msgid "`SWITCH_CHANNEL_LOG_CLEAN`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: b5e1c719aad84bb9aeb546dffe1c92fc
+msgid "不自动增加日志前缀"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: e667388450064c64b46ac24e171b1992
+msgid "`SWITCH_CHANNEL_EVENT`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: 823325e9f47342cc99fbbc914a6ffc33
+msgid "发送 `SWITCH_EVENT_LOG`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:79
+#: 4de6feb7feee4a0191979b9318d6ec8e
+msgid "一个完整的模块示例"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:108
+#: a4c2cc606c3a442486f78ce4f1a58d11
+msgid "DEBUG1 到 DEBUG10"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:110
+#: 0bd9965cf59545febd06d5f330b6563e
+msgid "`SWITCH_LOG_DEBUG1` 到 `SWITCH_LOG_DEBUG10` 用于更细的高频调试："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:119
+#: 102917c5a68b4ca8a6bb028381116299
+msgid ""
+"实现会根据 `runtime.debug_level` 过滤。例如 `DEBUG5` 需要 debug level 至少 为 5，适合 RTP "
+"和状态机细节，不应作为正常运行日志。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:122
+#: 95957e77d35b47f8aa7da3ccaad25c53
+msgid "控制台、文件和 Syslog"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:124
+#: 92ec4328e9d840fb9f6785cfa569b61a
+msgid "`switch_log.c` 负责过滤、格式化和队列分发，具体后端由 logger 模块处理："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:131
+#: a5bda470111340c39b74bc5ba300bb62
+msgid "常见配置文件："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:139
+#: b15e11c75d0e43d6a9fc0225dea6fc0a
+msgid "控制台和文件 logger 可以按文件名、函数名或 `all` 过滤："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:149
+#: 2f1e7d43a813498085d8eac435f507e7
+msgid "运行时可调整控制台级别："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:157
+#: a0aabb88fe8a456e809deb90463ea9c0
+msgid "JSON metadata"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:159
+#: 443a8a7bb3bf42be998552cc6365180e
+msgid "需要结构化字段时使用 `switch_log_meta_printf()`："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:172
+#: bf3e5d10fdd24a23b7442bf976273d04
+msgid ""
+"`meta` 的所有权会转移给日志函数；调用后不要再次释放同一个对象。日志后端 可用 `switch_log_node_to_json()` 转换"
+" `switch_log_node_t`。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:175
+#: d8d22115d6d349fea7bdaa4c6a0b6575
+msgid "自定义 logger"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:177
+#: 183bc822732f458b969069f73d28f405
+msgid "只有需要接入新的日志系统时才使用 `switch_log_bind_logger()`："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:200
+#: e7dc7db289b749cd8602d35d49672117
+msgid ""
+"logger 回调由 `log_thread()` 在绑定锁保护下调用，不应执行长时间阻塞的网络 "
+"操作，也不应形成递归日志链路；远程发送应交给模块自己的队列。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:203
+#: 04aae7d0535c46dea460f43c0f4b79cc
+msgid "其他 API"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: ea1a80864b134dcc96a75d3ef91b62b9
+msgid "API"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: 513671904ccf47b1b0a7594ec50f0324
+msgid "`switch_log_printf()` / `switch_log_vprintf()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: 96a7c23882b04f6ea1bc854fc26c8115
+msgid "普通日志"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: ed447685226b42738cd8b53172392904
+msgid "`switch_log_meta_printf()` / `switch_log_meta_vprintf()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: 209fd83c186f49c794a4b5b6f931a9b5
+msgid "带 JSON metadata"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: 5b82411d60e74571b7e8487e47204b01
+msgid "`switch_log_level2str()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: eeebe601572047698da0ee2bdb4c8fcf
+msgid "级别数值转字符串"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: dc9301cc639f476db4621d7daffb252e
+msgid "`switch_log_str2level()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: 5f0af675dab24d49aef8d6edf81d4c0e
+msgid "字符串转级别"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: d5b98d87a6374fb8a661a508e71cf176
+msgid "`switch_log_str2mask()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: ec8c9a98a158453e974d908b5d634f48
+msgid "多个级别转 bit mask"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: cec0644eed6047de944b80df32598de4
+msgid "`switch_log_check_mask()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: 050fbff3e4754832976524c9ea62713a
+msgid "检查 mask"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: 4949f75f5a124c068ca6a763f4ae562f
+msgid "`switch_log_node_dup()` / `switch_log_node_free()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md
+#: 09274130192944d687fe29430344a40f
+msgid "复制和释放日志节点"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:215
+#: f039c79b8dc74268a53ab05fc4e4e141
+msgid ""
+"普通业务代码不需要直接调用 `switch_log_node_*`、`switch_log_bind_logger()` 或 "
+"`switch_log_init()`。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:218
+#: a9a417da6f83453ca2dabbcc62675616
+msgid "排查日志不出现"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:220
+#: 23d2b2918f2c417eab1680599cd3819a
+msgid "检查 `runtime.hard_log_level` 是否过滤了该级别。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:221
+#: e7034c0d02494c18a784ec967c17ed13
+msgid "检查 `DEBUG1` 到 `DEBUG10` 是否超过当前 debug level。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:222
+#: e1980287c3a741d19d6eb43872f5cb1a
+msgid "检查目标 logger 模块是否加载。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:223
+#: ebffb74ecaed4a0fa90064263c6ea73c
+msgid "检查 `console.conf.xml` 或 `logfile.conf.xml` 的 mapping。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:224
+#: 2af3d116441649f9952faae263954018
+msgid "检查是否使用了 `SWITCH_CHANNEL_LOG_CLEAN`，导致没有文件行号前缀。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:226
+#: af32fc7673de4e1db362b4e25faf95bd
+msgid "不要记录密码、Token、SIP digest、Voicemail PIN、TLS 私钥、完整客户内容或 不必要的个人信息。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:229
+#: a037550992594bd0b99d6ba69deed84d
+msgid "代码定位"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:231
+#: 9d3b5259126e430fa22829576c5a7281
+msgid "API：`src/include/switch_log.h`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:232
+#: eff814b6e0104e3da3bd14441fbe2787
+msgid "级别和 channel 宏：`src/include/switch_types.h`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:233
+#: 675be8bb3e0d4de08ff3d35d2161195b
+msgid "核心实现：`src/switch_log.c`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:234
+#: eba8b01c49744b61ba83f541f63552b4
+msgid "控制台：`src/mod/loggers/mod_console/mod_console.c`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:235
+#: 8ce8b9257f2d4baba3a4648e01104af2
+msgid "文件：`src/mod/loggers/mod_logfile/mod_logfile.c`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/14-logging.md:236
+#: 89b45cf2e9f94dfeace299ffebcd8b57
+msgid "Syslog：`src/mod/loggers/mod_syslog/mod_syslog.c`"
+msgstr ""
+

@@ -1,0 +1,9 @@
+/build/
+/site/build*/
+/module/**/build/
+/site/config/local.yaml
+/deploy/certs/
+__pycache__/
+*.pyc
+*.pid
+*.log

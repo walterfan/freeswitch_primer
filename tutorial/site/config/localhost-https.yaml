@@ -1,0 +1,28 @@
+http:
+  host: 127.0.0.1
+  port: 9443
+  allow_remote: false
+  tls: true
+  certificate_file: ../../deploy/certs/localhost.crt
+  private_key_file: ../../deploy/certs/localhost.key
+
+content_root: ../../content
+web_root: ../web
+sound_root: ../../labs/day-16/sounds
+default_locale: zh-CN
+
+sip:
+  wss_url: wss://10.100.212.8:7443
+  domain: 10.100.212.8
+  tutorial_extensions: ["1000", "1001", "5000"]
+
+esl:
+  enabled: false
+  host: 10.100.212.8
+  port: 8021
+  password_env: FS_TUTORIAL_ESL_PASSWORD
+
+limits:
+  recent_events: 1000
+  client_queue: 256
+  call_correlations: 4096

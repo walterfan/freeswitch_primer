@@ -1,0 +1,1569 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Zoom Video Communications
+# This file is distributed under the same license as the FreeSWITCH package.
+# Walter Fan <walter.fan@ustc.etu>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version:  FreeSWITCH\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-18 16:34+0800\n"
+"PO-Revision-Date: 2026-08-30 23:13+0800\n"
+"Last-Translator: Walter Fan <walter.fan@ustc.etu>\n"
+"Language: zh_CN\n"
+"Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:1
+#: 155cd670a4e742cc8e2f11823859143d
+msgid "11. Observability"
+msgstr "11. 可观测性"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:5
+#: 78f5cdd52564490ca6fb4ecb74147d38
+msgid ""
+"What operators look at first: `fs_cli -x status`, "
+"`$log_dir/freeswitch.log`, then Sofia/channel listings. This tree has "
+"**no** `mod_prometheus` and no in-repo Grafana/Prometheus dashboards. "
+"Counters live in `fs_cli` / ESL events; optional SNMP is compiled off by "
+"default."
+msgstr ""
+"运维人员首先看：`fs_cli -x status`、`$log_dir/freeswitch.log`，然后是 Sofia/channel "
+"列表。本代码树 **没有** `mod_prometheus`，仓库内也没有 Grafana/Prometheus 仪表盘。计数器在 "
+"`fs_cli` / ESL 事件里；可选 SNMP 默认未编译进去。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:7
+#: c636ced53c5b46b8b4a035aab1e00e96
+msgid ""
+"Upstream operator docs: [FreeSWITCH Users "
+"Manual](https://developer.signalwire.com/freeswitch/) (Part 11 "
+"Troubleshooting). Historical wiki: [FreeSWITCH "
+"Explained](https://developer.signalwire.com/freeswitch/FreeSWITCH-"
+"Explained/)."
+msgstr ""
+"上游运维文档：[FreeSWITCH 用户手册](https://developer.signalwire.com/freeswitch/)（第 "
+"11 部分排障）。历史 wiki：[FreeSWITCH "
+"Explained](https://developer.signalwire.com/freeswitch/FreeSWITCH-"
+"Explained/)。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:9
+#: a20bea877c824792ab8dfe3800add8f5
+msgid "Philosophy"
+msgstr "理念"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:11
+#: f22d2065bf2d4b68a0411f41fdf980d2
+msgid ""
+"FreeSWITCH is a long-running media switch. Runtime visibility is "
+"**session-centric**, not request-trace-centric:"
+msgstr "FreeSWITCH 是长期运行的媒体交换机。运行时可见性以 **会话为中心**，而不是以请求追踪为中心："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:13
+#: 1909d77d79754f43a4e9ce03b9489870
+msgid "Is the process up and accepting sessions? (`status`, HEARTBEAT events)"
+msgstr "进程是否起来并接受会话？（`status`、HEARTBEAT 事件）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:14
+#: 9ca60c05366c4ff88b2a087399a64e66
+msgid "What is in the log for this **session UUID**?"
+msgstr "这条 **session UUID** 在日志里有什么？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:15
+#: d91c4d4ba55a4f74acb4b4b2b7e0fd1e
+msgid "What SIP/media path is live? (`sofia status`, `show channels`, siptrace)"
+msgstr "当前 SIP/媒体路径是什么？（`sofia status`、`show channels`、siptrace）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:16
+#: 0432cea168d44482994a59c3901205e0
+msgid "What happened after hangup? (CDR files / event socket)"
+msgstr "挂断之后发生了什么？（CDR 文件 / event socket）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:18
+#: fa70d27fd1434e0e94e5d39e54a0255c
+msgid ""
+"Vanilla config (`conf/vanilla/`) is a demo PBX. Treat its log levels as a"
+" starting point, not a production SLA."
+msgstr "Vanilla 配置（`conf/vanilla/`）是演示 PBX。把它的日志级别当作起点，而不是生产 SLA。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:20
+#: 3d77ffbc044747aa8ebfce6baae5ae0a
+msgid "Logging"
+msgstr "日志"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:22
+#: 9aab5f146c244762aa8f19e32905162c
+msgid ""
+"Core logger: `src/switch_log.c`, API in `src/include/switch_log.h`. "
+"Levels are `switch_log_level_t` (`src/include/switch_types.h`); names "
+"from `switch_log_level2str` / `LEVELS[]` in `switch_log.c`."
+msgstr ""
+"核心记录器：`src/switch_log.c`，API 在 `src/include/switch_log.h`。级别为 "
+"`switch_log_level_t`（`src/include/switch_types.h`）；名称来自 `switch_log.c` 中的"
+" `switch_log_level2str` / `LEVELS[]`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 6adb1909422145de9edef3b2d20cbff8
+msgid "Numeric"
+msgstr "数值"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 38314cb6da704a71b1a9ca6f7ec6b4a0
+msgid "`switch_log_level_t`"
+msgstr "`switch_log_level_t`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 742f7a0bcc3f489783c542c2a7ba0a80
+msgid "`switch_log_level2str`"
+msgstr "`switch_log_level2str`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 86efaa9e8aab4e73b586cce46200b59e
+msgid "`-1`"
+msgstr "`-1`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: a0f0e72169fc47f9b62fcc77e23164bd
+msgid "`SWITCH_LOG_DISABLE`"
+msgstr "`SWITCH_LOG_DISABLE`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 93562576d9464e34a777e4c6dd7af7d8
+msgid "`DISABLE`"
+msgstr "`DISABLE`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 6b7ba8bc5ee34415b271672393f514fd
+msgid "`0`"
+msgstr "`0`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 51a8ba620e8547299b07785ecb80d0f6
+msgid "`SWITCH_LOG_CONSOLE`"
+msgstr "`SWITCH_LOG_CONSOLE`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: d972efb7fe374942a43fbab8c920f144
+msgid "`CONSOLE`"
+msgstr "`CONSOLE`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: a2f056254f014226b97e7cad7f0a3983
+msgid "`1`"
+msgstr "`1`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: f81004a8f7384307ac7bfd4b50bd1aa0
+msgid "`SWITCH_LOG_ALERT`"
+msgstr "`SWITCH_LOG_ALERT`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 0c8530b067b948d88efc4161d2ac1fb6
+msgid "`ALERT`"
+msgstr "`ALERT`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 760c60b3325645f3892e40138f1a1273
+msgid "`2`"
+msgstr "`2`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: f128eec5229c4e67913efe95f2f8cd22
+msgid "`SWITCH_LOG_CRIT`"
+msgstr "`SWITCH_LOG_CRIT`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 2b571493fa1f4616992277bf4385bad3
+msgid "`CRIT`"
+msgstr "`CRIT`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 5ca88e34820049348ccd00bae6d9f6a6
+msgid "`3`"
+msgstr "`3`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: e4970415f47042588d52ea14c2c1e1b8
+msgid "`SWITCH_LOG_ERROR`"
+msgstr "`SWITCH_LOG_ERROR`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 80d9a6b170704435bd8236873919ca2c
+msgid "`ERR`"
+msgstr "`ERR`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: c1093c3bb3ae48228bc6bb9351a55651
+msgid "`4`"
+msgstr "`4`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: f7184282acd24372bc3ae04c33f9765e
+msgid "`SWITCH_LOG_WARNING`"
+msgstr "`SWITCH_LOG_WARNING`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: a742db94fbc346b8b2e52f9d67aa20db
+msgid "`WARNING`"
+msgstr "`WARNING`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: ccf6f5e2c882419b9f0ae42d982a28f3
+msgid "`5`"
+msgstr "`5`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 83b44990a5f14102aa27728c6d0b50bd
+msgid "`SWITCH_LOG_NOTICE`"
+msgstr "`SWITCH_LOG_NOTICE`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 8dbb066da14c4cd69624a6d4894c2324
+msgid "`NOTICE`"
+msgstr "`NOTICE`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 8fd30aac56264e04a1f33ef5e2883925
+msgid "`6`"
+msgstr "`6`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 1345b1d9dfd1400282cd4b2d0e4bc1be
+msgid "`SWITCH_LOG_INFO`"
+msgstr "`SWITCH_LOG_INFO`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: ae1b6d8e87214c6eb706175c62a2bd64
+msgid "`INFO`"
+msgstr "`INFO`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 7fc76d3f33b7490686406d6ddc53641b
+msgid "`7`"
+msgstr "`7`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 00d7ea2dd55b49d3b4c477c92f1adfc5
+msgid "`SWITCH_LOG_DEBUG`"
+msgstr "`SWITCH_LOG_DEBUG`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: d7b8f9e04f144fa9b2f11c4756cd86a4
+msgid "`DEBUG`"
+msgstr "`DEBUG`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 1dbc0f56048c4e019a72896487dfb6e0
+msgid "`101`–`110`"
+msgstr "`101`–`110`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: ebee5827d53d40ed880c1a5be0382d5b
+msgid "`SWITCH_LOG_DEBUG1` … `DEBUG10`"
+msgstr "`SWITCH_LOG_DEBUG1` … `DEBUG10`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: b16228e155c94b75839a5a3a7a271009
+msgid "clamped to `DEBUG` by `switch_log_level2str`"
+msgstr "由 `switch_log_level2str` 钳位到 `DEBUG`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:37
+#: 150ab37c8bc84ad4b78518161053b41b
+msgid "Vanilla knobs (three different filters — do not conflate them):"
+msgstr "Vanilla 旋钮（三套不同的过滤器 — 不要混为一谈）："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 9197b691ac364634b04f23c00130b2d6
+msgid "Knob"
+msgstr "旋钮"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 5ac35c1a8d7c4837bcd5466792151dcc
+msgid "File"
+msgstr "文件"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: c8acd9e28dc94224b2b110c213f00414
+msgid "Default"
+msgstr "默认值"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: ea6ef212a9e64a3899c9f97f04ae2ed2
+msgid "Effect"
+msgstr "作用"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: a23055dae5e54a2b8e59d00bf7f93428
+msgid "Global hard level"
+msgstr "全局硬上限"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 60139f6fc7ac42d19801f0aa57572831
+msgid "`conf/vanilla/autoload_configs/switch.conf.xml` `loglevel`"
+msgstr "`conf/vanilla/autoload_configs/switch.conf.xml` `loglevel`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 8b33f38b19d641d29c447e1849403904
+msgid "`debug`"
+msgstr "`debug`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 4d7ab8500dec4059999250e742ab8a7a
+msgid "`SCSC_LOGLEVEL` / `fsctl loglevel`; caps what any logger can emit"
+msgstr "`SCSC_LOGLEVEL` / `fsctl loglevel`；限制任何记录器能发出的内容"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 6ecb14afc0c24d71a7d03945cb37c9ef
+msgid "Console module"
+msgstr "控制台模块"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 76e2197388544776892f5adb90f46698
+msgid "`conf/vanilla/autoload_configs/console.conf.xml` `loglevel`"
+msgstr "`conf/vanilla/autoload_configs/console.conf.xml` `loglevel`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 78f1641c036f49df8feb752d1011f29a
+#, python-brace-format
+msgid "`$${console_loglevel}` → **`info`** (`vars.xml`)"
+msgstr "`$${console_loglevel}` → **`info`**（`vars.xml`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: b3d0ac2e05b54b80bd80f06d9398e4f2
+msgid "What `fs_cli` / stdout shows"
+msgstr "`fs_cli` / stdout 显示的内容"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: feef3ce9fa064e4e92be866f8bddfeb8
+msgid "File module mappings"
+msgstr "文件模块映射"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: e7ce0a01c4a642af9a1e2ad994fea786
+msgid "`conf/vanilla/autoload_configs/logfile.conf.xml`"
+msgstr "`conf/vanilla/autoload_configs/logfile.conf.xml`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: d4c91e76baba4888bb997ebe08259a73
+msgid "`all` → `console,debug,info,notice,warning,err,crit,alert`"
+msgstr "`all` → `console,debug,info,notice,warning,err,crit,alert`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: d0b60b403b4249f5a4a087db9404f216
+msgid "What goes to `freeswitch.log`"
+msgstr "写入 `freeswitch.log` 的内容"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 90a52e5404dd43478fbfab068e32b5ab
+msgid "CLI shortcuts"
+msgstr "CLI 快捷键"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 112145021cea453cb5c1bc744aae34c2
+msgid "`switch.conf.xml` keys 7 / 8"
+msgstr "`switch.conf.xml` 按键 7 / 8"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 8fc0588b8fe04e629d4b5c57a582c78d
+msgid "`console loglevel 0` / `7`"
+msgstr "`console loglevel 0` / `7`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 3ae207e8339b44dca3f028c8183ca59f
+msgid "Quiet vs debug on the console only"
+msgstr "仅影响控制台的安静 vs debug"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:46
+#: 68439804636840feabc19d347e55dc24
+msgid ""
+"Line format (`switch_log_vprintf`, `SWITCH_FUNC_IN_LOG` is **not** "
+"defined in this tree):"
+msgstr "行格式（`switch_log_vprintf`，本代码树 **未** 定义 `SWITCH_FUNC_IN_LOG`）："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:52
+#: fc23e8b668eb4cd18b88b82577a13afa
+msgid ""
+"`mod_logfile` prefixes the session UUID when `uuid=true` (vanilla "
+"default)."
+msgstr "当 `uuid=true` 时，`mod_logfile` 会在行首加上 session UUID（vanilla 默认）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:54
+#: 2d8827cf6bb54642819137a7b0b4d9fd
+msgid "Where the file lives"
+msgstr "日志文件位置"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:56
+#: 7534afb993004cef8dc2f32fa9c5e1bc
+msgid ""
+"`mod_logfile` default path (`src/mod/loggers/mod_logfile/mod_logfile.c`):"
+" `$SWITCH_GLOBAL_dirs.log_dir/freeswitch.log`. `log_dir` is a "
+"preprocessor variable (`conf/vanilla/vars.xml`); compile-time "
+"`SWITCH_LOG_DIR` from `configure.ac`:"
+msgstr ""
+"`mod_logfile` "
+"默认路径（`src/mod/loggers/mod_logfile/mod_logfile.c`）：`$SWITCH_GLOBAL_dirs.log_dir/freeswitch.log`。`log_dir`"
+" 是预处理器变量（`conf/vanilla/vars.xml`）；编译期 `SWITCH_LOG_DIR` 来自 `configure.ac`："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 06d86aa949af4301adec49e52e70e0df
+msgid "Install"
+msgstr "安装方式"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: ac20c01ce8b94bb89b7f5767d29173bc
+msgid "Log directory"
+msgstr "日志目录"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 0b99ceb349654de6a719fdb6e637e3e1
+msgid "Prefix (`./configure --prefix=$HOME/fs --disable-fhs`)"
+msgstr "前缀（`./configure --prefix=$HOME/fs --disable-fhs`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 1bfddee01b1b41deb2a90bfea3e4082d
+msgid "`$prefix/log` → `$HOME/fs/log/freeswitch.log`"
+msgstr "`$prefix/log` → `$HOME/fs/log/freeswitch.log`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: b25ffa0fd0a34bd4b45bae1b4b2b9091
+msgid "`--enable-fhs`"
+msgstr "`--enable-fhs`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: f022e4726fed412cb79210180140a848
+#, python-brace-format
+msgid "`${localstatedir}/log/freeswitch`"
+msgstr "`${localstatedir}/log/freeswitch`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 119c87ed3f6e4065aba6199d8e54fa9d
+msgid "`--with-logfiledir=DIR`"
+msgstr "`--with-logfiledir=DIR`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: d1b21f312abd4767ab324fc05d99fa92
+msgid "`DIR`"
+msgstr "`DIR`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: b33acb8b75ee48219e961605d3252f6b
+msgid "Debian package (`debian/freeswitch.postinst`, systemd unit)"
+msgstr "Debian 软件包（`debian/freeswitch.postinst`、systemd unit）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: fa45a7d8fac44a3285c6823521f0301a
+msgid "`/var/log/freeswitch`"
+msgstr "`/var/log/freeswitch`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:65
+#: 3ee228b47ffe457ca7850aa91d350763
+msgid ""
+"Vanilla `logfile.conf.xml` leaves `<param name=\"logfile\" "
+"value=\"/var/log/freeswitch.log\"/>` **commented**; the computed "
+"`log_dir` path is what actually opens."
+msgstr ""
+"Vanilla `logfile.conf.xml` 把 `<param name=\"logfile\" "
+"value=\"/var/log/freeswitch.log\"/>` **注释掉了**；真正打开的是计算得到的 `log_dir` 路径。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:67
+#: 557901f94336406fb248f65ced63b420
+msgid ""
+"Rotation: `rollover` 1048576000 bytes, `maximum-rotate` 32, `rotate-on-"
+"hup` true. The Debian unit (`debian/freeswitch-"
+"systemd.freeswitch.service`) does not define `ExecReload`; use `fs_cli -x"
+" \"fsctl send_sighup\"` or an explicit `kill -HUP`. The separate template"
+" `build/freeswitch.service` does define `ExecReload=/usr/bin/kill -HUP "
+"$MAINPID`. Either HUP path fires `SWITCH_EVENT_TRAP` with `Trapped-"
+"Signal=HUP`, allowing `mod_logfile` to rotate."
+msgstr ""
+"轮转：`rollover` 为 1048576000 字节，`maximum-rotate` 为 32，`rotate-on-hup` 为 "
+"true。Debian unit（`debian/freeswitch-systemd.freeswitch.service`）没有定义 "
+"`ExecReload`；请使用 `fs_cli -x \"fsctl send_sighup\"` 或显式执行 `kill "
+"-HUP`。单独的模板 `build/freeswitch.service` 定义了 `ExecReload=/usr/bin/kill -HUP"
+" $MAINPID`。任一 HUP 路径都会触发带有 `Trapped-Signal=HUP` 的 `SWITCH_EVENT_TRAP`，使 "
+"`mod_logfile` 能够轮转。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:76
+#: 2331485801b14704adb330acf228484f
+msgid "systemd journal vs the log file"
+msgstr "systemd journal 与日志文件"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:78
+#: 452d543272384c17b8a7aa6ab5910253
+msgid ""
+"Debian `debian/freeswitch-systemd.freeswitch.service` is `Type=forking` "
+"with `-ncwait`. It does **not** set `StandardOutput=journal`. `journalctl"
+" -u freeswitch` shows unit start/stop (and any leftover stdout of the "
+"forking parent), **not** the full switch log."
+msgstr ""
+"Debian `debian/freeswitch-systemd.freeswitch.service` 是带 `-ncwait` 的 "
+"`Type=forking`。它 **没有** 设置 `StandardOutput=journal`。`journalctl -u "
+"freeswitch` 显示 unit 启停（以及 fork 父进程残留的 stdout），**不是** 完整的交换机日志。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:80
+#: 61fd6b7d489c43e18e92f99d09f399ad
+msgid ""
+"`mod_syslog` is **compiled** (`build/modules.conf.in`: "
+"`loggers/mod_syslog`) but **not loaded** in vanilla (`modules.conf.xml` "
+"comments it out). If you load it, "
+"`conf/vanilla/autoload_configs/syslog.conf.xml` sends facility `user`, "
+"ident `freeswitch`, default level `warning`, with UUIDs. On systemd hosts"
+" that often appears in the journal via the syslog socket."
+msgstr ""
+"`mod_syslog` **已编译**（`build/modules.conf.in`：`loggers/mod_syslog`），但 "
+"vanilla **未加载**（`modules.conf.xml` "
+"把它注释掉了）。若加载它，`conf/vanilla/autoload_configs/syslog.conf.xml` 会以 facility "
+"`user`、ident `freeswitch`、默认级别 `warning` 发送，并带 UUID。在 systemd 主机上，这通常经 "
+"syslog 套接字出现在 journal 里。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:82
+#: deaf8d37027e4c06b49e0297b4fdd5df
+msgid ""
+"`mod_graylog2` exists under `src/mod/loggers/mod_graylog2/` but is "
+"commented in both `modules.conf.in` and vanilla `modules.conf.xml`."
+msgstr ""
+"`mod_graylog2` 位于 `src/mod/loggers/mod_graylog2/`，但在 `modules.conf.in` 和 "
+"vanilla `modules.conf.xml` 中都被注释。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:84
+#: b203394809a4419a8bb6bb2b0ffffab8
+msgid "Runtime verbosity"
+msgstr "运行时详细程度"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:100
+#: b59813b205a643f3a0d950872e3842b5
+msgid ""
+"`fs_cli -l debug` / `-x` one-shots: `libs/esl/fs_cli.c`. Function keys "
+"7/8 default to `/log console` and `/log debug`."
+msgstr ""
+"`fs_cli -l debug` / `-x` 一次性命令：`libs/esl/fs_cli.c`。功能键 7/8 默认对应 `/log "
+"console` 和 `/log debug`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:102
+#: f4c3b6c9a30d436d9537fa5d4e3fbc56
+msgid ""
+"Loaded loggers in vanilla `modules.conf.xml`: `mod_console`, "
+"`mod_logfile`. Optional JSON console lines: `console json on` "
+"(`switch_log_node_to_json`); off by default."
+msgstr ""
+"vanilla `modules.conf.xml` 中已加载的记录器：`mod_console`、`mod_logfile`。可选 JSON "
+"控制台行：`console json on`（`switch_log_node_to_json`）；默认关闭。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:104
+#: d392ba97bc7447d49e554498c7281cb1
+#, fuzzy
+msgid "Docker: follow a call"
+msgstr "跟踪一路呼叫"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:106
+#: a7d3c7b8f69245e4aee497a387cd29c6
+msgid ""
+"Commands below assume the container name `freeswitch` and the source-"
+"image prefix `/usr/local/freeswitch` from [Quick Start](../0.getting-"
+"started/02-quick-start.md) (`docker/examples/Debian11`, "
+"`freeswitch:local`, started with `-nf -nonat`). Substitute the name and "
+"paths if your Compose or image differs."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:108
+#: 79905eb2022842129e33c4a21f0e5f39
+#, python-brace-format
+msgid ""
+"Vanilla `$${console_loglevel}` is **`info`**. An inbound call can succeed"
+" while `docker logs` looks quiet. Raise verbosity for one reproduction, "
+"then restore it. The source image runs **foreground** (`-nf`), so "
+"`mod_console` output is Docker stdout."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:110
+#: a2d2dd3e05ec4e168f6b179bdba87ef8
+msgid "**1. Stream stdout** while you place the call:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:116
+#: a971d21c5e2445f3a6dad92bdf798164
+msgid "Recent lines only: `docker logs --tail 100 freeswitch`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:118
+#: ace0e4d9f8e3465a9402dcc12d7473a8
+msgid ""
+"**2. Raise the console filter** (0–7 or a level name) if you need "
+"dialplan `EXECUTE` lines, state-machine chatter, or `mod_sndfile` "
+"warnings:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:125
+#: 24fbded5ba694af5b349984b6ff2d95f
+msgid "When finished:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:132
+#: c618b0450f8b4f609a22d3dbde1dc964
+msgid ""
+"`console loglevel` is the `mod_console` filter only. `fsctl loglevel` is "
+"the global cap. `/log debug` inside `fs_cli` is the ESL stream to "
+"**that** CLI, not the file logger."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:134
+#: 013690e4bbfb47ff96faf9ab6bfaa422
+msgid "**3. Interactive ESL** (filter to one leg after `show channels`):"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:140
+#: 4d843ceaeb8344c19a8feff411dae1ad
+msgid ""
+"Inside the CLI: `/log debug`, then `/uuid <session-uuid>`. `/nolog` stops"
+" the stream."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:142
+#: 61a9de8c09fc49c18bf80bbac517c785
+#, fuzzy
+msgid ""
+"**4. SIP message dump** on the profile under test. Reproduce **one** "
+"registration or call, then disable tracing immediately:"
+msgstr "对于 Docker 源码镜像，请在待测配置档上启用 SIP 跟踪，查看容器输出，重现一次注册或呼叫，然后立即关闭跟踪："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:160
+#: fe0cd45fa52449e3a3f7e91fe9756eea
+msgid ""
+"Use `sofia global siptrace on` only when all SIP profiles are required. "
+"It is much noisier. A normal digest-authenticated call commonly contains "
+"an initial `407`, an authenticated retry, `100 Trying`, and `200 OK`; the"
+" `407` is expected challenge/response behavior, not necessarily a call "
+"failure."
+msgstr ""
+"仅当需要所有 SIP 配置档时才使用 `sofia global siptrace on`，因为它会产生更多噪声。正常的 digest "
+"认证呼叫通常包含初始 `407`、认证重试、`100 Trying` 和 `200 OK`；`407` "
+"是预期的质询/响应行为，不一定表示呼叫失败。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:162
+#: 10c0fc8048694ee19756a5db3ad63165
+msgid ""
+"**5. File logger** if stdout is empty but the switch is up. Prefix "
+"install path:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:169
+#: 17fa0ab3a156481782a3b25b21cc9fe4
+msgid ""
+"Debian/FHS images typically use `/var/log/freeswitch/freeswitch.log`. The"
+" slim `safarov/freeswitch` layout uses `/usr/share/freeswitch/` and "
+"`/etc/freeswitch/`; do not assume `/usr/local/freeswitch` there."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:171
+#: b7ea51d4fea7407d8d81236d24edbe22
+msgid ""
+"During a live call, `docker exec … fs_cli -x 'show channels'` and `sofia "
+"status profile internal` confirm legs and the SIP profile without dumping"
+" packets."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:173
+#: d0b356fb47c14662aae53f7c497a600d
+msgid "Reading common call-path lines"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:175
+#: 5db1a09693894c989ba84170add9566b
+msgid ""
+"`EXECUTE [depth=0] sofia/internal/1000@<domain> ivr(demo_ivr)` means the "
+"dialplan reached the vanilla demo IVR application. That is not a SIP "
+"failure."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:177
+#: 2d710101c8374e55b2c6abb865d6cd8a
+msgid ""
+"`[WARNING] mod_sndfile.c:… Error Opening File "
+"[/usr/local/freeswitch/sounds/en/us/callie/ivr/….wav] [… No such file or "
+"directory]` means the **Callie prompt pack is not installed**. Sound "
+"archives are not in this git tree (`Makefile.am`: `make sounds-install` "
+"downloads `en-us-callie-8000`). On the source Docker image:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:189
+#: 3fd5a369ec3f467395f1c4c9ba166914
+msgid ""
+"The source image may omit `curl`, which `build/getsounds.sh` needs. Files"
+" appear on disk immediately (no restart required for the next playback). "
+"They survive `docker restart` and are lost if the container is removed. "
+"For all Callie sample rates use `make cd-sounds-install`; for Music on "
+"Hold (`9664`) use `make moh-install` / `make cd-moh-install` as in [Quick"
+" Start](../0.getting-started/02-quick-start.md). If `/usr/src/freeswitch`"
+" is missing, unpack the GitHub release tarball "
+"(`build/sounds_version.txt`, currently `en-us-callie` **1.0.53**) into "
+"`$prefix/sounds`. The `SOUND_TYPES` / `SOUND_RATES` entrypoint in "
+"`docker/base_image/` writes under `/usr/share/freeswitch/sounds`, which "
+"is not the prefix path above."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:191
+#: 6f0104b298d3477d80b69ee9693f0afe
+msgid "Confirm:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:198
+#: 0b3cdbdc11334171aa1cdcce58065b17
+#, fuzzy
+msgid ""
+"Representative redacted SIP/console snippet for a call from Zoiper user "
+"`1000` to MoH `9664`:"
+msgstr "从 Zoiper 用户 `1000` 呼叫 MoH `9664` 的脱敏跟踪示例："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:242
+#: df7c7d5f7ae74f319d3182fa137413a3
+msgid ""
+"Redact `Proxy-Authorization`, digest nonces, call IDs, session UUIDs, "
+"phone numbers, and IP addresses before sharing traces. Turn tracing off "
+"after capture to avoid log volume and unnecessary credential-related data"
+" retention."
+msgstr ""
+"分享跟踪信息前，请脱敏 `Proxy-Authorization`、digest nonce、呼叫 ID、会话 UUID、电话号码和 IP "
+"地址。采集完成后关闭跟踪，以避免日志量增加和不必要的凭据相关数据留存。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:244
+#: 4eb3874438494e25a9959437271f2a19
+msgid "Metrics"
+msgstr "指标"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:246
+#: c40c5e7fb1794e2695878e0dedbda504
+msgid ""
+"**No first-party metrics backend in this repo.** There is no "
+"`src/mod/**/mod_prometheus*`, no OpenTelemetry/Zipkin/Jaeger module, and "
+"no Grafana dashboard files."
+msgstr ""
+"**本仓库没有第一方指标后端。** 没有 `src/mod/**/mod_prometheus*`，没有 "
+"OpenTelemetry/Zipkin/Jaeger 模块，也没有 Grafana 仪表盘文件。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:248
+#: 67e5e69e72e64bc580842f9eef8acbcc
+msgid "What you can scrape or poll instead:"
+msgstr "可以抓取或轮询的替代项："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:250
+#: 41deed0615f240ca9579143410bccbb6
+msgid "`fs_cli -x status` (`mod_commands` `status_function`)"
+msgstr "`fs_cli -x status`（`mod_commands` 的 `status_function`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:252
+#: 4769439737f4494fadfd20136bc650da
+msgid "Printed every time you ask:"
+msgstr "每次查询都会打印："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:254
+#: 69a4a0b32ef64558a6144ac5c6b0387f
+msgid "uptime"
+msgstr "uptime（运行时间）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:255
+#: 95f709e3e66d44c5a53971bcc4b3645b
+msgid "version and ready / not ready"
+msgstr "版本以及 ready / not ready"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:256
+#: 49f5a57eb9c045ecb035ac61cd796c5e
+msgid "sessions since startup"
+msgstr "启动以来的会话数"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:257
+#: c39ca947d6584a5b9df1943a30ceac48
+msgid "current sessions, peak, last-5-min peak"
+msgstr "当前会话、峰值、最近 5 分钟峰值"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:258
+#: 50efe08005c5433aacad96b5336e295d
+msgid "sessions per second (last / max / peak / last-5-min peak)"
+msgstr "每秒会话数（last / max / peak / 最近 5 分钟 peak）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:259
+#: 7495572ee2094b71a4e7027f92ba65a2
+msgid "`max-sessions` (vanilla `1000` in `switch.conf.xml`)"
+msgstr "`max-sessions`（vanilla `switch.conf.xml` 中为 `1000`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:260
+#: 7761d9f81f7d4fe1951d28dd5837c81b
+msgid "min idle CPU / current idle CPU"
+msgstr "最小空闲 CPU / 当前空闲 CPU"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:261
+#: 859c96d0ff114088b8f594caf876f344
+msgid "stack size (when available)"
+msgstr "栈大小（若可用）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:263
+#: 7c2ac37c868c41f9889b6069ddadc7a0
+msgid ""
+"`sessions-per-second` vanilla cap is `30`. `min-idle-cpu` is commented "
+"out."
+msgstr "vanilla `sessions-per-second` 上限为 `30`。`min-idle-cpu` 被注释掉。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:265
+#: bd7b5ad8df114a1aa37490d5c1ad8e3c
+msgid ""
+"Same numbers are fired on **HEARTBEAT** every 20s by default "
+"(`runtime.event_heartbeat_interval` in `src/switch_core.c`; XML `event-"
+"heartbeat-interval` is commented in `switch.conf.xml`): `Session-Count`, "
+"`Max-Sessions`, `Session-Per-Sec*`, `Session-Peak-*`, `Idle-CPU`, `Up-"
+"Time`."
+msgstr ""
+"同样的数字默认每 20 秒随 **HEARTBEAT** 发出（`src/switch_core.c` 中的 "
+"`runtime.event_heartbeat_interval`；XML `event-heartbeat-interval` 在 "
+"`switch.conf.xml` 中被注释）：`Session-Count`、`Max-Sessions`、`Session-Per-Sec"
+"*`、`Session-Peak-*`、`Idle-CPU`、`Up-Time`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:267
+#: aa253380feb444888ad140fe4876ba2c
+msgid "Optional SNMP (`mod_snmp`)"
+msgstr "可选 SNMP（`mod_snmp`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:269
+#: 9b11aa27f1994c8999dcb04c3beb7cd8
+msgid ""
+"Directory exists: `src/mod/event_handlers/mod_snmp/` plus `FREESWITCH-"
+"MIB` (enterprise `27880`). **Commented** in `build/modules.conf.in` and "
+"vanilla `modules.conf.xml`. MIB gauges overlap `status`: uptime, "
+"current/max sessions, sessions per second, current calls, core UUID."
+msgstr ""
+"目录存在：`src/mod/event_handlers/mod_snmp/` 以及 `FREESWITCH-MIB`（enterprise "
+"`27880`）。在 `build/modules.conf.in` 和 vanilla `modules.conf.xml` 中被 "
+"**注释**。MIB 仪表与 `status` 重叠：uptime、当前/最大会话、每秒会话数、当前呼叫、core UUID。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:271
+#: b9c827be58844ffa9436562691aaf092
+msgid "CDRs (post-call counters, not live metrics)"
+msgstr "CDR（通话后计数，不是实时指标）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 85198577ce3f4d5988a59fb2c798557c
+msgid "Module"
+msgstr "模块"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 355e354ba27942bb921d5a4455790e35
+msgid "In `modules.conf.in`"
+msgstr "是否在 `modules.conf.in` 中"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 4a2f4c5ac0164f87935d53fed249e916
+msgid "Loaded in vanilla"
+msgstr "vanilla 是否加载"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: d14e24d6531e4b39beb2f41712e344fe
+msgid "Default sink"
+msgstr "默认输出"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 23dad63dd2754097802ce658195ee04a
+msgid "`mod_cdr_csv`"
+msgstr "`mod_cdr_csv`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 5b919acbb1e24ad6b71a0bc14422dfae f05459c235f94176b6139013f462aa3b
+msgid "yes"
+msgstr "是"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 6deeada701cf42c7b6839cfd6421b5dd
+msgid "**yes**"
+msgstr "**是**"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 6cb152a7a6224e2bb84dea54e4355bc8
+msgid "`$log_dir/cdr-csv/Master.csv`"
+msgstr "`$log_dir/cdr-csv/Master.csv`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: cb23b3da3d604cd1bf66e94fdd0fb6dc
+msgid "`mod_cdr_sqlite`"
+msgstr "`mod_cdr_sqlite`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: e3620ce60f32472f81d00c3cbd929650 e991afd215c34111bf3ee3fdd2feaa28
+#: fdda7a29c38e4245a5225279790fadf0
+msgid "no"
+msgstr "否"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: b5a018d1a14749238546fed04a62be96
+msgid "core SQLite (see `cdr_sqlite.conf.xml`)"
+msgstr "核心 SQLite（见 `cdr_sqlite.conf.xml`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: ec1f067bd3f04f978b42b19c9e2af851
+msgid "`mod_json_cdr`"
+msgstr "`mod_json_cdr`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 3efdeeb763014d66b29b82962ac8a54e
+msgid "**commented**"
+msgstr "**已注释**"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 215b3694ea7c489aa3a83dc47afc13bc
+msgid "HTTP and/or disk (`json_cdr.conf.xml`)"
+msgstr "HTTP 和/或磁盘（`json_cdr.conf.xml`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 5023da0fdf9f4704b5a60f9e8a1696da
+msgid "`mod_cdr_pg_csv`"
+msgstr "`mod_cdr_pg_csv`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 206c14058737411882131d9016e5be8e
+msgid "commented"
+msgstr "已注释"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 2ac66266f2fb42018f05f1432e42fcc2
+#, python-brace-format
+msgid "PostgreSQL; spool `$${log_dir}/cdr-pg-csv`"
+msgstr "PostgreSQL；spool `$${log_dir}/cdr-pg-csv`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:280
+#: 6965e6e06deb4347a85462fa72784c50
+#, python-brace-format
+msgid ""
+"Vanilla CDR template includes `${uuid}`, hangup cause, codecs, stamps "
+"(`conf/vanilla` / module sample `cdr_csv.conf.xml`)."
+msgstr ""
+"Vanilla CDR 模板包含 `${uuid}`、挂断原因、编解码、时间戳（`conf/vanilla` / 模块样例 "
+"`cdr_csv.conf.xml`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:282
+#: 90aaede9d68543e6b030557fdd492b5c
+msgid "Tracing or Correlation"
+msgstr "追踪与关联"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:284
+#: a8f8ada108244b8a8a968e56594cba37
+msgid ""
+"There is **no distributed trace exporter**. Correlation is the **channel "
+"UUID**, not the SIP `Call-ID`. Operator procedure (live `/uuid`, file "
+"grep, A/B-leg, CDR): [Runbook — Follow one call by channel "
+"UUID](01-runbook.md#follow-one-call-by-channel-uuid)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:286
+#: 78c1940654a34141a96f41fb215abdee
+#, fuzzy
+msgid ""
+"Generated in `switch_core_session` request (`src/switch_core_session.c`):"
+" `switch_uuid_get` + `switch_uuid_format` into `session->uuid_str`, "
+"unless a caller supplied `use_uuid`. Channel vars `uuid` and `call_uuid` "
+"are set to the same string at create. Optional `uuid-version` `4` or `7` "
+"in `switch.conf.xml` (commented; default compiled behavior)."
+msgstr ""
+"在 `switch_core_session` "
+"请求中生成（`src/switch_core_session.c`）：`switch_uuid_get` + "
+"`switch_uuid_format` 写入 `session->uuid_str`，除非调用方提供了 `use_uuid`。通道变量 "
+"`uuid` 与 `call_uuid` 设为同一字符串。`switch.conf.xml` 中可选 `uuid-version` `4` 或 "
+"`7`（已注释；默认编译行为）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:287
+#: 3f1b7c0a209c42fd983d1eb45c5acfab
+msgid "Accessor: `switch_core_session_get_uuid()`."
+msgstr "访问器：`switch_core_session_get_uuid()`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:288
+#: 9372e6bccdef456c996bed122241c87b
+#, fuzzy
+msgid ""
+"Log macros: `SWITCH_CHANNEL_SESSION_LOG(session)` / "
+"`SWITCH_CHANNEL_UUID_LOG(uuid)` (`src/include/switch_types.h`). File "
+"logger prefixes that UUID when `uuid=true` (vanilla `logfile.conf.xml`)."
+msgstr ""
+"日志宏：`SWITCH_CHANNEL_SESSION_LOG(session)` / "
+"`SWITCH_CHANNEL_UUID_LOG(uuid)`（`src/include/switch_types.h`）。文件记录器在 "
+"`uuid=true` 时把该 UUID 加到行首。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:289
+#: cba7c2c2ca3e457cb776137e4f8c969d
+#, fuzzy
+msgid ""
+"Channel events (`switch_channel.c`) carry header **`Unique-ID`**. Bridges"
+" add `Bridge-A-Unique-ID` / `Bridge-B-Unique-ID`. Partner channel vars: "
+"`bridge_uuid`, `signal_bond`. SIP identifier: `sip_call_id`."
+msgstr ""
+"通道事件（`switch_channel.c`）携带头 **`Unique-ID`**。桥接会加上 `Bridge-A-Unique-ID` / "
+"`Bridge-B-Unique-ID`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:290
+#: ad1a538c4dea42c4bbb540bd047e708b
+msgid "Process identity: `core_uuid` (`switch_core.c` at startup). Not a call id."
+msgstr "进程标识：`core_uuid`（启动时在 `switch_core.c`）。不是呼叫 ID。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:291
+#: 089af0c0b3d34e80b5cfc46ab8dab84c
+msgid ""
+"`fs_cli` `/uuid <uuid>` filters the ESL log stream to one channel. "
+"`/uuid` with no argument clears the filter. `console uuid on` prefixes "
+"UUID on `mod_console` lines without filtering."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:292
+#: 73b7d1b19b45452396246b27c946a88c
+msgid ""
+"A bridged call has **two** channel UUIDs. Join with `call_uuid` on `show "
+"channels`, or `uuid_getvar <uuid> bridge_uuid`. Siptrace lines often lack"
+" the channel UUID — grep `sip_call_id` as well."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:294
+#: 76e006d1440a4b738453089882e21521
+msgid ""
+"Subscribe to events over ESL (`mod_event_socket`, vanilla listen `::` "
+"port **8021**, password `ClueCon` in `event_socket.conf.xml` — change "
+"that before any network exposure). `fs_cli /event plain all` is the "
+"interactive equivalent."
+msgstr ""
+"通过 ESL 订阅事件（`mod_event_socket`，vanilla 监听 `::` 端口 "
+"**8021**，`event_socket.conf.xml` 中密码为 `ClueCon` — 任何网络暴露前请改掉）。交互等价命令是 "
+"`fs_cli /event plain all`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:296
+#: abafb86e2de840158340db28b989d81a
+msgid "Alerts and Health Signals"
+msgstr "告警与健康信号"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:298
+#: 500403edd4ca4d299cf45607550922f7
+msgid ""
+"This repo does **not** ship alert rules, PagerDuty/Slack hooks, or "
+"dashboards. Operators typically alert off HEARTBEAT / `status` (or SNMP "
+"if they load `mod_snmp`)."
+msgstr ""
+"本仓库 **不** 附带告警规则、PagerDuty/Slack 钩子或仪表盘。运维通常根据 HEARTBEAT / `status` "
+"告警（若加载 `mod_snmp` 也可用 SNMP）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 4760ea50b76541da8bed23b3d1252f9a
+msgid "Condition"
+msgstr "条件"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 4c977b397c1648bba8fe41347100b8f2
+msgid "Signal"
+msgstr "信号"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: ac44283cfa1948e084d609a339f0c060
+msgid "Expected action"
+msgstr "预期动作"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: d30900f488204863bb676823ec1d34c1
+msgid "Process down"
+msgstr "进程宕机"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 3dab7632d2d44b83b1131720716a24cc
+msgid "systemd unit failed; `fs_cli` cannot connect to 8021"
+msgstr "systemd unit 失败；`fs_cli` 无法连接到 8021"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 4770ef46349342ff86fb4ac644ae9003
+#, fuzzy
+msgid "Check `systemctl status freeswitch`; see [Runbook](01-runbook.md)"
+msgstr "检查 `systemctl status freeswitch`；见 [运行手册](10-runbook.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 8e9a9c9bbf6542e28b0aa95f2ff56279
+msgid "Not ready"
+msgstr "未就绪"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 7e90b123351944b19e0b23b446906b37
+msgid "`status` says `not ready`"
+msgstr "`status` 显示 `not ready`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: c78d87def1f3432caf4bc93679e6765d
+msgid "Core still starting or shutting down; wait or inspect log"
+msgstr "核心仍在启动或关闭；等待或检查日志"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 2dd8650ed8064978bfdd060f27639264
+msgid "Session cap"
+msgstr "会话上限"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 39c9368141be46968d176ab2978d78d6
+msgid "current sessions → `max-sessions` (1000 vanilla)"
+msgstr "当前会话数 → `max-sessions`（vanilla 为 1000）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 4bec4da6b2514569b5829f6bd292ac8a
+msgid "New calls refused; raise cap or add capacity"
+msgstr "新呼叫被拒绝；提高上限或增加容量"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: bcb6982aefe84bef9d0ec1875ba2e73a
+msgid "SPS cap"
+msgstr "SPS 上限"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 45738c92634e433b9ecf8d5ac3dfa253
+msgid "last SPS → `sessions-per-second` (30 vanilla)"
+msgstr "最近 SPS → `sessions-per-second`（vanilla 为 30）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 8bd8bebf793f44f3882b2c31f15f8eba
+msgid "Bursts rejected; raise SPS or shed load"
+msgstr "突发被拒绝；提高 SPS 或减载"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: e27109337dd147bdbb4ce27e186c6fce
+msgid "CPU floor"
+msgstr "CPU 下限"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 96e461a6f5a3428cae9c65dd1a50063e
+msgid "`min-idle-cpu` (off unless enabled)"
+msgstr "`min-idle-cpu`（未启用则为 off）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: db9319a1f00e45939217e6a65830df95
+msgid "Calls refused when idle CPU is too low"
+msgstr "空闲 CPU 过低时拒绝呼叫"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 62e60f8dbbd84586b98c4e4de379ebec
+msgid "SIP profile down"
+msgstr "SIP profile 宕掉"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 0a5fc3dfd62b491c92438fb972d0479a
+msgid "`sofia status` profile not running"
+msgstr "`sofia status` 显示 profile 未运行"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 119eeb0457dd432f88d5608fb0b2a766
+msgid "`sofia status profile <name>`; log + siptrace"
+msgstr "`sofia status profile <name>`；日志 + siptrace"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: a3c59a5ea25b4d4c8eaf344d6b3a0131
+msgid "Log flood / disk"
+msgstr "日志刷屏 / 磁盘"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: cb83d7c7fe0b4372bc82a5f7c35e4ec0
+msgid "`freeswitch.log` rollover; rotate count 32"
+msgstr "`freeswitch.log` 滚动；轮转计数 32"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: a09b334f6c9744e6ad6bc2189577703a
+msgid "Confirm HUP rotate; free disk"
+msgstr "确认 HUP 轮转；释放磁盘"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 7c72f27478f04e3d9f52fb61cecde579
+msgid "Heartbeat silent"
+msgstr "心跳静默"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: e3ed1fd2a8194a13ab781bcdbca89a89
+msgid "no `HEARTBEAT` on ESL for ≫ 20s"
+msgstr "ESL 上长时间（≫ 20s）没有 `HEARTBEAT`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 2fd7623c3a2d47d5906fbdbeba4fc1cb
+msgid "Event system or process stuck; capture `status` and log tail"
+msgstr "事件系统或进程卡住；抓取 `status` 和日志尾部"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:311
+#: 1f4452f2b0eb489cb0a9df8403b95f2e
+msgid ""
+"`[NEEDS INPUT: production paging destinations and numeric thresholds for "
+"sessions / SPS / idle CPU — not defined in this tree]`"
+msgstr ""
+"`[NEEDS INPUT: production paging destinations and numeric thresholds for "
+"sessions / SPS / idle CPU — not defined in this tree]`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:313
+#: a8f4a58ddf404dd19228fae258125793
+msgid "Diagnostic Tools"
+msgstr "诊断工具"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:315
+#: 2538c494b4ef4af4b90462bf132057b8
+msgid ""
+"Vanilla `switch.conf.xml` CLI keybindings are the intended first panel: "
+"`help`, `status`, `show channels`, `show calls`, `sofia status`, "
+"`reloadxml`, console loglevel 0/7, `sofia status profile internal`, "
+"siptrace on/off, `version`."
+msgstr ""
+"Vanilla `switch.conf.xml` 的 CLI 快捷键是预期的第一块面板：`help`、`status`、`show "
+"channels`、`show calls`、`sofia status`、`reloadxml`、console loglevel "
+"0/7、`sofia status profile internal`、siptrace on/off、`version`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: b82369d4c1b942f98de41a964c3f2342
+msgid "Tool"
+msgstr "工具"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 418685b6829149d9a6d62d99fd237b15
+msgid "Use"
+msgstr "用途"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: bba2aa1e24ea425282478d0d86b92d34
+msgid "`fs_cli -x status`"
+msgstr "`fs_cli -x status`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: f0ca46ededd74893a2b674b9d16cd87c
+msgid "Live health one-liner (same as Quick Start smoke check)"
+msgstr "实时健康一行命令（与快速开始冒烟检查相同）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 15498dd8cd2c4aa68910147efa2917ff
+msgid "`fs_cli -x 'sofia status'`"
+msgstr "`fs_cli -x 'sofia status'`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 4fb6ec9e867247cead17e65c88a002cf
+msgid "SIP profiles / gateways"
+msgstr "SIP 配置文件 / 网关"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 092c687f52bd44f59b3aac9d2bcd28c4
+msgid "`fs_cli -x 'show channels'` / `'show channels count'`"
+msgstr "`fs_cli -x 'show channels'` / `'show channels count'`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: b6a8e614d8714086806e2c4bc869a312
+msgid "Active sessions (core SQL `channels` table)"
+msgstr "活动会话（核心 SQL `channels` 表）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: c05ebd72d77b422486b767a43dc7fd8d
+msgid "`fs_cli -x 'show calls'`"
+msgstr "`fs_cli -x 'show calls'`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: ca719e3ae5e84bee88eea28d3fec1a4b
+msgid "Calls (not the same as channels)"
+msgstr "呼叫（与 channel 不是一回事）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: c4407c0288eb43c3976b82ff2a736712
+msgid "`fs_cli -x 'show codec'`"
+msgstr "`fs_cli -x 'show codec'`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 73a7514ac3a04872956998dca1c94cf6
+msgid "Loaded codec interfaces"
+msgstr "已加载的编解码接口"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: be99a8b32d0048818d5f66848aa9ebdf
+msgid "`fs_cli -x version`"
+msgstr "`fs_cli -x version`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: e9e65d611d2f4e9e850c2d9c7f9112bb
+msgid "Binary version"
+msgstr "二进制版本"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 88d8fc6715fd4ae3a8982dbabd3936c2
+msgid "`docker logs -f --since=10s <name>`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 55db27b28e5240dd90f2f298c69f0a59
+msgid "Prefix image stdout (`-nf`); vanilla console is `info` until raised"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: b45c4a15747244b7af4b6dc5acada379
+msgid "`docker exec … fs_cli`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 464fa10eed1c401cb627a9273735e494
+msgid "Same APIs as host `fs_cli`; use the image prefix `bin/`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: fb78c764d4e24e31904aa948f5b8ee4f
+msgid "`sofia profile <name> siptrace on`"
+msgstr "`sofia profile <name> siptrace on`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 49e5059194d34b51b036b44b99749635
+msgid "SIP message dump into the log (noisy; key 10/11)"
+msgstr "把 SIP 消息倾倒进日志（很吵；快捷键 10/11）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: e4a30f80bc75434886aacf77deabba98
+msgid "`sofia loglevel all 9`"
+msgstr "`sofia loglevel all 9`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: e4e1abc3fb0045d58d89901a753a2dda
+msgid "Sofia-SIP internals 0–9"
+msgstr "Sofia-SIP 内部 0–9"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 6c775604a7fb40cdb1b18f76c686b090
+msgid "ESL `event` / `filter` / `log`"
+msgstr "ESL `event` / `filter` / `log`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: f1f0b561e03f40da8a90fd2e8f40327f
+msgid "External collectors; `mod_event_socket`"
+msgstr "外部采集器；`mod_event_socket`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 2581ded074d940448f8356e3a4d9cc02
+msgid "`uuid_dump <uuid>` / `uuid_buglist`"
+msgstr "`uuid_dump <uuid>` / `uuid_buglist`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 240ffb0bb330424a8ca0a7acefee74a6
+msgid "Per-session variables (via `mod_commands`)"
+msgstr "每会话变量（经 `mod_commands`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 555a619e04be4d93a92ca0a88ff40808
+msgid "Log file + `/uuid`"
+msgstr "日志文件 + `/uuid`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 307bc247beb9463b9728d1405cd3cfad
+msgid "Follow one call"
+msgstr "跟踪一路呼叫"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: 99de76e5cda94f9cac4e15fe708b2d4d
+msgid "`mod_cdr_csv` `Master.csv`"
+msgstr "`mod_cdr_csv` 的 `Master.csv`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md
+#: db85cb96d8374d608a49c082dac2fbda
+msgid "After-the-fact hangup cause / duration"
+msgstr "事后挂断原因 / 时长"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:334
+#: f3a1d3a3b3f54e339cc160e0e6f079e1
+#, fuzzy
+msgid ""
+"clang **scan-build** in `.github/workflows/` is CI static analysis, not a"
+" runtime signal (see [Build](../4.development/02-build.md))."
+msgstr ""
+"`.github/workflows/` 中的 clang **scan-build** 是 CI 静态分析，不是运行时信号（见 "
+"[构建](08-build.md)）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:336
+#: 01bbbea8fc93451fb392bd74597132f2
+msgid "Operational Checklist"
+msgstr "运维检查清单"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:338
+#: 11049cc87ac3462eb67ff1436fec50e1
+msgid ""
+"Know `log_dir`: prefix `log/freeswitch.log` vs Debian "
+"`/var/log/freeswitch`"
+msgstr "弄清 `log_dir`：前缀安装的 `log/freeswitch.log` vs Debian 的 `/var/log/freeswitch`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:339
+#: a2b35ae4e32245479f972860f337f88d
+msgid ""
+"Docker: `docker logs -f` is console stdout; fall back to `tail -F "
+"$prefix/log/freeswitch.log`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:340
+#: 2506e61b53634042a6dc44bb3200d875
+msgid ""
+"`fs_cli -x status` shows **ready**, sessions below `max-sessions`, SPS "
+"below cap"
+msgstr "`fs_cli -x status` 显示 **ready**，会话数低于 `max-sessions`，SPS 低于上限"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:341
+#: e0f0e5e7d8264be78ba1008d19082ccd
+msgid ""
+"Console is `info` (vanilla); raise to `debug` only while reproducing; "
+"`fsctl loglevel` is the global cap"
+msgstr "控制台为 `info`（vanilla）；仅在复现问题时升到 `debug`；`fsctl loglevel` 是全局上限"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:342
+#: dc572f7d996e49fb90df165cf48e953d
+msgid ""
+"File logger still capturing debug if you need post-mortem (vanilla "
+"mappings include `debug`)"
+msgstr "若需要事后分析，文件记录器仍在捕获 debug（vanilla 映射包含 `debug`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:343
+#: 8ca7209b3764454fa778da053e0dd391
+#, python-brace-format
+msgid ""
+"Correlate with **channel UUID** (`Unique-ID`, log prefix, CDR `${uuid}`);"
+" bridged calls also need `bridge_uuid` / B-leg; siptrace needs "
+"`sip_call_id`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:344
+#: 36c17412013f4d74820a7b848debc452
+#, fuzzy
+msgid ""
+"Sofia: `sofia status` before siptrace; turn siptrace **off** after "
+"capture; restore `console loglevel notice`"
+msgstr "Sofia：先 `sofia status` 再 siptrace；抓完后把 siptrace **关掉**"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:345
+#: 236ce35c43a4462b95ec9cec4001d1a1
+msgid ""
+"Missing `sounds/en/us/callie/ivr/*.wav` is `mod_sndfile` WARNING, not a "
+"SIP error — `make sounds-install`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:346
+#: 8df3d2d949a041a4b4c1519a02cd5720
+msgid "ESL password not left at `ClueCon` on a reachable 8021"
+msgstr "可达的 8021 上不要把 ESL 密码留成 `ClueCon`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:347
+#: 4e239c339b984fcba45a1be421fbc109
+msgid ""
+"HEARTBEAT or periodic `status` is what you would page on — there is no "
+"in-tree alert backend"
+msgstr "你会对 HEARTBEAT 或周期性 `status` 做寻呼 — 树内没有告警后端"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:348
+#: f57c8af358934a4bb4376e62096bfd83
+msgid "HUP/reload rotates logs (`rotate-on-hup`); confirm disk after incidents"
+msgstr "HUP/reload 会轮转日志（`rotate-on-hup`）；事故后确认磁盘"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:349
+#: 676952fc89ea4f0883aa5e9f4630f4b7
+msgid "Do not expect Prometheus/Grafana from this git tree"
+msgstr "不要指望从这个 git 树得到 Prometheus/Grafana"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:351
+#: a0cc0de089f045c8b5db2cdde258750e
+msgid "Related Documentation"
+msgstr "相关文档"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:353
+#: af7999cbf6e2420e8f75d39012238996
+#, fuzzy
+msgid ""
+"[Quick Start](../0.getting-started/02-quick-start.md) — first `fs_cli -x "
+"status`; Docker `-nf` and MoH sound install"
+msgstr "[快速开始](01-quick-start.md) — 第一次 `fs_cli -x status`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:354
+#: b203e6e8d67240c9aeb3e11b43d25291
+#, fuzzy
+msgid "[Architecture](../1.architecture/01-architecture.md)"
+msgstr "[架构](02-architecture.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:355
+#: d19bfca94ad941ba88b9da33647170c8
+#, fuzzy
+msgid "[Build](../4.development/02-build.md) — CI including scan-build"
+msgstr "[构建](08-build.md) — 含 scan-build 的 CI"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:356
+#: 4cb29e729fec4166bfa139396266f846
+#, fuzzy
+msgid "[Testing](../4.development/03-testing.md)"
+msgstr "[测试策略](09-testing.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/02-observability.md:357
+#: e143d0ed787b411eb50016c55bbbb33b
+msgid ""
+"[Runbook](01-runbook.md) — start/stop, ESL ACL, [follow one call by "
+"channel UUID](01-runbook.md#follow-one-call-by-channel-uuid)"
+msgstr ""
+
+#~ msgid "Container SIP trace"
+#~ msgstr "容器 SIP 跟踪"
+
+#~ msgid ""
+#~ "The file logger normally writes the "
+#~ "same runtime log under the image "
+#~ "prefix. Follow it directly when the "
+#~ "trace is not visible in `docker "
+#~ "logs`:"
+#~ msgstr "文件日志记录器通常会在镜像前缀下写入相同的运行时日志。如果在 `docker logs` 中看不到跟踪信息，请直接跟踪该日志文件："
+
+#~ msgid ""
+#~ "There is **no distributed trace "
+#~ "exporter**. Correlation is the **session "
+#~ "UUID**."
+#~ msgstr "**没有分布式追踪导出器**。关联键是 **session UUID**。"
+
+#~ msgid "`fs_cli` `/uuid <uuid>` filters the ESL log stream to one call."
+#~ msgstr "`fs_cli` 的 `/uuid <uuid>` 把 ESL 日志流过滤到一路呼叫。"
+
+#~ msgid "Correlate with session UUID (`Unique-ID`, log prefix, CDR `${uuid}`)"
+#~ msgstr "用 session UUID 关联（`Unique-ID`、日志前缀、CDR `${uuid}`）"
+
+#~ msgid "[Runbook](10-runbook.md)"
+#~ msgstr "[运行手册](10-runbook.md)"
+
+#~ msgid ""
+#~ "Commands below assume the container name"
+#~ " `freeswitch` and the source-image "
+#~ "prefix `/usr/local/freeswitch` from [Quick "
+#~ "Start](../0.getting-started/01-quick-start.md) "
+#~ "(`docker/examples/Debian11`, `freeswitch:local`, started"
+#~ " with `-nf -nonat`). Substitute the "
+#~ "name and paths if your Compose or"
+#~ " image differs."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The source image may omit `curl`, "
+#~ "which `build/getsounds.sh` needs. Files appear"
+#~ " on disk immediately (no restart "
+#~ "required for the next playback). They"
+#~ " survive `docker restart` and are "
+#~ "lost if the container is removed. "
+#~ "For all Callie sample rates use "
+#~ "`make cd-sounds-install`; for Music "
+#~ "on Hold (`9664`) use `make moh-"
+#~ "install` / `make cd-moh-install` "
+#~ "as in [Quick Start](../0.getting-started/01"
+#~ "-quick-start.md). If `/usr/src/freeswitch` is "
+#~ "missing, unpack the GitHub release "
+#~ "tarball (`build/sounds_version.txt`, currently "
+#~ "`en-us-callie` **1.0.53**) into "
+#~ "`$prefix/sounds`. The `SOUND_TYPES` / "
+#~ "`SOUND_RATES` entrypoint in `docker/base_image/` "
+#~ "writes under `/usr/share/freeswitch/sounds`, which"
+#~ " is not the prefix path above."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "There is **no distributed trace "
+#~ "exporter**. Correlation is the **channel "
+#~ "UUID**, not the SIP `Call-ID`. "
+#~ "Operator procedure (live `/uuid`, file "
+#~ "grep, A/B-leg, CDR): [Runbook — Follow"
+#~ " one call by channel UUID](10-runbook.md"
+#~ "#follow-one-call-by-channel-uuid)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "[Runbook](10-runbook.md) — start/stop, ESL "
+#~ "ACL, [follow one call by channel "
+#~ "UUID](10-runbook.md#follow-one-call-by-"
+#~ "channel-uuid)"
+#~ msgstr ""
+

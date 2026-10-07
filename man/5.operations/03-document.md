@@ -1,0 +1,161 @@
+# 12. Documentation Process
+
+<!-- maintained-by: human+ai -->
+
+How this Project Knowledge Base is authored, refreshed, translated, and published. Operator configuration stays in the [FreeSWITCH Users Manual](https://developer.signalwire.com/freeswitch/) — this PKB does not replace it. Historical wiki: [FreeSWITCH Explained](https://developer.signalwire.com/freeswitch/FreeSWITCH-Explained/) and [Confluence](https://freeswitch.org/confluence/). Pipeline commands for Autotools/CI live in [Build](../4.development/02-build.md); this page is the PKB maintenance contract.
+
+## Purpose
+
+Keep a bilingual, AI-readable map of **this git tree** so humans and assistants can locate code, understand architecture, and verify changes. English MyST under `man/` is the working source. Deterministic scripts refresh facts into `man/_generated/`. Humans (with targeted AI) merge those facts into numbered topic pages plus [C Runtime](../1.architecture/06-c-runtime.md). Sphinx HTML and AgentBox are derived outputs.
+
+`PKB_ROOT` is **`man/` at the repo root**. `docs/man/` is Unix man-page source (`freeswitch.1.ronn`), not the PKB.
+
+## Source of Truth
+
+| Layer | Path | Status |
+|-------|------|--------|
+| **English source (canonical)** | `man/<topic>/*.md`, `man/7.appendix/6.decisions/adr/`, `man/7.appendix/6.decisions/changes/` | Implemented. Edit these pages. |
+| **Navigation / toctree** | `man/index.md` | Implemented. Sphinx `master_doc`. |
+| **Sphinx config / theme** | `man/conf.py`, `man/_templates/layout.html`, `man/_static/custom.css` | Implemented. Language switcher + PKB metadata footer injection. |
+| **PKB Python deps** | `man/pyproject.toml`, `man/requirements.txt` | Implemented. **Sphinx/MyST/sphinx-intl only** — not FreeSWITCH runtime deps (`configure.ac`). |
+| **zh_CN gettext catalogs** | `man/locale/zh_CN/LC_MESSAGES/` | **Implemented.** One `.po` per source file (`gettext_compact = False`). Refresh with `make gettext && make intl-update`, then fill empty `msgstr` via polib (`scripts/i18n_apply_json.py`). Compiled `.mo` files are gitignored. |
+| **Sidecar artifacts** | `man/_generated/` | Implemented. Scripts write here. `conf.py` `exclude_patterns` includes `_generated`. Do **not** treat these as published pages. |
+| **Built HTML** | `man/_build/site/{en,zh}/` plus landing `index.html` | Derived. Not yet built in this tree (`_build/` is gitignored and absent). Never edit HTML by hand. |
+| **Published HTML** | `_build/site/{en,zh}/` | Generated locally; deployment configuration is maintained outside this tree. |
+| **Review / confidentiality** | `<!-- PKB-metadata -->` footer on each page | Implemented in source. `review_status` is **`pending` on every page**. AI never sets `approved`. `confidentiality: L1` on current pages. |
+| **Product / operator docs** | [Users Manual](https://developer.signalwire.com/freeswitch/), Explained, Confluence, `docs/man/` | Out of band. PKB links to the Users Manual; it is not a second copy of parameter tables. |
+
+**Rule:** change English Markdown first. Catalogs follow English. HTML follows catalogs + English. AgentBox follows stripped HTML.
+
+## Advisory Update Loop
+
+1. Code, Autotools, CI, or XML-config changes land in the repo.
+2. Run `cd man && make pkb-check` (`scripts/check_pkb_staleness.py`). Optionally `make pkb-check-i18n` once `.po` files exist.
+3. A human decides which English PKB pages need a refresh this PR / sprint (do not regenerate everything).
+4. Run Level 1 scripts first (`make pkb-level1`). Merge facts from `_generated/` into the affected human pages. Use a targeted LLM pass only for Level 2 synthesis (diff + those pages + the sidecar artifacts — not the whole tree).
+5. Stamp the metadata footer (`last_updated`, `commit`, `updated_by`). Leave `review_status: pending` unless a human is approving.
+6. After English wording changes: run the explicit catalog refresh (`make gettext && make intl-update`), fill new `msgstr` values, then rebuild HTML. Normal HTML builds consume the tracked catalogs and do not rewrite them.
+7. A human reviews (`make pkb-review-status`) before any AgentBox publish.
+
+## Cost-Aware Update Strategy
+
+| Strategy | Guidance |
+|----------|----------|
+| Rule first, LLM second | `make pkb-check` before any `/PKB-*` rewrite. Spend zero tokens until the report flags likely stale pages. |
+| Minimal context | Feed the model only the git diff, the affected `man/<topic>/*.md` page(s), and the matching `_generated/` artifact. Do not dump `src/` or `src/mod/`. |
+| Tiered updates | Level 1 = scripts. Level 2 = bounded LLM merge. Level 3 = human rationale (ADR, product intent). |
+| Batch instead of thrash | Refresh per PR, sprint, or release — not after every FreeSWITCH commit. This history is large. |
+
+## Deterministic Script Toolbox
+
+All paths below exist under `man/scripts/`. There is **no** in-tree `init_pkb.sh` (that helper lives in the PKB skill and already ran at scaffold time).
+
+Scripts write sidecar files under `man/_generated/` with an `<!-- Auto-generated by … -->` header. They **must not** overwrite human-maintained pages (`01-overview.md` … `03-document.md`, `index.md`, appendices). Inferred meaning stays as `[NEEDS INPUT: …]`.
+
+| Script | Role | Level | Notes on this repo |
+|--------|------|-------|--------------------|
+| `check_pkb_staleness.py` | Freshness report (`info` / `warning` / `critical`) | 1 | `make pkb-check`. Default source→doc map is generic (JS/Go/Python). No `man/pkb-source-doc-map.json` yet, so C/`src/mod/`/`conf/` drift is under-signaled. |
+| `update_doc_level1.sh` | Orchestrates repo-map, tech-stack, index candidate, staleness, optional i18n | 1 | `make pkb-level1`. Writes `level1-refresh-summary.generated.md`. |
+| `gen_repo_map.sh` | Directory tree snapshot | 1 | Input for [Repository Map](../1.architecture/03-repo-map.md). |
+| `gen_tech_stack.py` | Manifest version inventory | 1 | Sees `man/pyproject.toml` (Sphinx). Does **not** parse `configure.ac`. Human page still owns Autotools floors. |
+| `gen_index.py` | `index.md` **candidate** | 1 | Compare to human `man/index.md`; do not replace the toctree blindly. |
+| `extract_api_signatures.py` | Tauri/REST heuristic extract | 1 input | Already ran: `_generated/04-data-and-api.signatures.generated.md` is empty of REST/Tauri. ESL/Verto/XML stay human-authored in [Data and API](../1.architecture/04-data-and-api.md). |
+| `gen_dep_graph.py` | Import graph (JS/TS/Py/Go/Rust) | 1 input | Weak signal for this C tree. Optional. |
+| `gen_changelog.sh` | `git log` draft → `_generated/02-build.changelog.generated.md` | 1 | `make changelog-draft`. **Slow on this history.** Pass `--range` (e.g. `HEAD~20..HEAD` or `v1.10.12..HEAD`). Makefile target does not forward `--range`; invoke the script directly. |
+| `check_translation_sync.py` | zh_CN catalog drift | 1 | `make pkb-check-i18n`. Flags empty/fuzzy/stale `.po` after English edits. |
+| `pkb_review_status.py` | Review/confidentiality dashboard | 1 | `make pkb-review-status`. Currently all `pending`, score `0`. `--strict` fails while any page is pending. |
+| `strip_confidential.py` | Drop `L3+` pages from `_build/site/` | 1 | `make strip-confidential` (default `CONF_MIN_LEVEL=L3`). Runs between HTML build and AgentBox packaging. |
+| `gen_agentbox_files.py` | Encode site files for an external publisher | 1 | Optional helper; no in-tree AgentBox configuration is shipped. |
+| `render_landing.py` | Bilingual `_build/site/index.html` | 1 | `make build-landing` (also part of `html-all`). |
+| `translate_po.py` | Optional dictionary fill of `.po` `msgstr` | 1 | `make translate-zh`. This tree uses `make compile-intl` to compile catalogs; `scripts/i18n_apply_json.py` (polib) can apply reviewed JSON translations. |
+| `i18n_apply_json.py` | Apply `msgid`→`msgstr` JSON onto a `.po` via polib | 1 | Preferred over editing `.po` by hand or `sed`. |
+| `i18n_identity_and_dump.py` | Copy code/URL msgids; dump remaining English as JSON | 1 | Input for a translation pass. |
+| `validate_template_links.py` | Stale numbering / broken relative links | 1 | Skill-side checker copied in-tree. |
+
+Shared helpers (not standalone Make targets): `generated_output.py`, `generated_output.sh`.
+
+## Three-Level Update Policy
+
+- **Level 1 — Automatic (zero token):** tree snapshots, Sphinx-dep inventory, index candidate, staleness/i18n reports, changelog draft, confidential strip, AgentBox `files.ts`. Run `make pkb-level1` (and the specific script if you only need one artifact). Stop if the sidecar is enough for a mechanical merge (path rename, version bump).
+- **Level 2 — LLM-assisted:** new/removed modules, ESL/event contract wording, build/CI narrative, workflow traces. Handoff package: git diff + the published page(s) + only the relevant `_generated/` files (for example `03-repo-map.generated.md` into [Repository Map](../1.architecture/03-repo-map.md), `02-tech-stack.generated.md` into [Tech Stack](../1.architecture/02-tech-stack.md), changelog draft into [CHANGELOG](../7.appendix/01-changelog.md) / [Build](../4.development/02-build.md)). Set `review_status: pending` after a substantive rewrite.
+- **Level 3 — Human-led:** ADRs (`man/7.appendix/6.decisions/adr/`; none recorded yet beyond the template), change proposals (`man/7.appendix/6.decisions/changes/`), product direction, “why we load this module.” AI formats and cross-links; it does not invent rationale.
+
+## Translation and Build
+
+English HTML and zh_CN `.po` catalogs are implemented. Rebuild Chinese HTML after catalog edits.
+
+```bash
+cd man
+poetry install              # PKB Sphinx env only
+
+make html-en                # _build/site/en/
+make serve                  # bilingual http://127.0.0.1:7008/ (en/ + zh/)
+make serve-watch            # English autobuild only; 中文 → /zh/ will 404
+
+make gettext                # _build/gettext/ .pot
+make intl-update            # locale/zh_CN/LC_MESSAGES/*.po
+make pkb-check-i18n         # or: poetry run python scripts/check_translation_sync.py --repo-root .. --doc-dir man
+# fill any new empty msgstr (polib / scripts/i18n_apply_json.py), then:
+make html-zh                # _build/site/zh/; consumes tracked catalogs
+make html-all               # en + zh + landing; does not refresh .po files
+make serve-all              # http://127.0.0.1:7008/
+```
+
+AgentBox (optional, **wired, not yet published**):
+
+```bash
+make pkb-review-status      # confirm pending vs approved, L1–L5
+make pkb-review-status-strict # optional human-approval gate
+make publish                # agentbox-init → html-all → strip-confidential (L3+) → gen_agentbox_files.py → abx func deploy freeswitch-doc
+```
+
+The previous in-tree AgentBox configuration and `functions/` handler have been removed. Publish generated HTML through the external deployment flow.
+
+## Suggested Checklist
+
+1. Update the English source page under `man/` first.
+2. Run the matching Level 1 script(s) so `_generated/` is current (`make pkb-level1` for the default set).
+3. Merge facts into the human page. Keep `[NEEDS INPUT: …]` rather than inventing rationale. Do not paste the whole sidecar over the narrative.
+4. Refresh the `<!-- PKB-metadata -->` footer: `last_updated`, `commit` (`git rev-parse --short HEAD`), `updated_by`. Leave `review_status: pending` and `review_score: 0` unless a human is approving. Never lower `confidentiality`.
+5. After English wording changes, refresh zh_CN catalogs (once they exist) and re-check `make pkb-check-i18n`.
+6. Rebuild: `make html-en` or `make html-all`.
+7. Verify toctree links, Mermaid, and the language switcher. For a public drop: `make strip-confidential` then AgentBox gen/deploy.
+
+## Common Mistakes
+
+| Mistake | Result | Fix |
+|---------|--------|-----|
+| Edit `docs/man/` thinking it is the PKB | Wrong tree (Unix man page) | PKB is `man/` at repo root |
+| Treat `_generated/` or `_build/site/` as source | Overwrites vanish; HTML is regenerated | Edit `man/<topic>/*.md` only |
+| Let Level 1 scripts rewrite `03-repo-map.md` / `index.md` | Human narrative and toctree lost | Scripts write sidecars; merge by hand |
+| Assume `man/pyproject.toml` is the product stack | Sphinx versions mistaken for FreeSWITCH deps | Product floors are in `configure.ac` / [Tech Stack](../1.architecture/02-tech-stack.md) |
+| Run `make changelog-draft` with no `--range` | `gen_changelog.sh` walks a huge git log | `bash scripts/gen_changelog.sh --repo-root .. --doc-dir . --range HEAD~20..HEAD` |
+| AI sets `review_status: approved` | False sign-off | Only a human may approve; AI keeps `pending` |
+| Publish without `strip-confidential` | `L3+` pages could ship (none today; still the gate) | Use `make publish`, not a raw `abx` after `html-all` |
+| Skip `intl-update` after English edits | Chinese pages show stale or English body text | `make gettext && make intl-update`, fill empty `msgstr`, then `html-zh` |
+| Assume `html-all` refreshes catalogs | A normal build changes no tracked PO source | Run `make gettext` and `make intl-update` explicitly before translating |
+| Feed the whole FreeSWITCH tree to an LLM to “refresh docs” | Token burn, shallow pages | Staleness report → one page + diff + one artifact |
+
+## Related Documentation
+
+- [Build, Release, and Publish](../4.development/02-build.md) — Autotools/CI plus the short PKB HTML command block
+- [C Runtime Framework](../1.architecture/06-c-runtime.md) — `switch_*` lifetime model
+- [Tech Stack](../1.architecture/02-tech-stack.md) — product vs PKB Sphinx deps
+- [Repository Map](../1.architecture/03-repo-map.md)
+- [Testing](../4.development/03-testing.md)
+- [AI Guide](../7.appendix/5.ai/01-ai-guide.md)
+- [Documentation Changelog](../7.appendix/01-changelog.md)
+- [ADR index](../7.appendix/6.decisions/adr/index.md)
+- [Change proposals](../7.appendix/6.decisions/changes/index.md)
+- [FreeSWITCH Users Manual](https://developer.signalwire.com/freeswitch/)
+
+---
+<!-- PKB-metadata
+last_updated: 2026-08-30
+commit: d94936cc10
+updated_by: human+ai
+review_status: pending
+review_score: 0
+reviewed_by:
+confidentiality: L1
+-->

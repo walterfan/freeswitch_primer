@@ -1,0 +1,952 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Zoom Video Communications
+# This file is distributed under the same license as the FreeSWITCH package.
+# Walter Fan <walter.fan@ustc.etu>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version:  FreeSWITCH\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-18 16:34+0800\n"
+"PO-Revision-Date: 2026-08-30 23:13+0800\n"
+"Last-Translator: Walter Fan <walter.fan@ustc.etu>\n"
+"Language: zh_CN\n"
+"Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:1
+#: f4dcc50f11c04b5b8d2ce1831e35c35a
+msgid "Implementation Tasks: [Title]"
+msgstr "实施任务：[Title]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:5
+#: fff4bdc8a4204302964f8dceb3ffb455
+msgid "Metadata"
+msgstr "元数据"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:7
+#: b2c4ff58eefb4580ae87ed4ce80afdd4
+msgid "**Change ID**: `[change-id]`"
+msgstr "**变更 ID**：`[change-id]`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:8
+#: 9dd59efef04a49b4927b449339f38257
+msgid "**Owner**: [Name/Email]"
+msgstr "**负责人**：[Name/Email]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:9
+#: 34fd01ebb0884e77a9ed7291e1ce0211
+msgid "**Status**: `Not Started` | `In Progress` | `Completed`"
+msgstr "**状态**：`未开始` | `进行中` | `已完成`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:10
+#: 00f83d7e2d484b81a2d8ac2601b4811f
+msgid "**Target Completion**: [Date]"
+msgstr "**目标完成日期**：[Date]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:12
+#: d0c1349f4e78481bb47892aa38586103
+msgid "Overview"
+msgstr "概述"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:14
+#: 24ca653c9dca48e5a5b6357e3fe1f148
+msgid "[Brief summary of what needs to be implemented]"
+msgstr "[简要说明需要实施的内容]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:16
+#: 8c416350fd084638a12d0873f4de3b31
+msgid "**Related Documents**:"
+msgstr "**相关文档**："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:17
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:356
+#: 29700d63f93d42ba8b99852bff31ca24 b4b159c44eb249ce8a78783382588758
+#, fuzzy
+msgid "Proposal: [Link to 02-proposal.md]"
+msgstr "提案：[Link to proposal.md]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:18
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:357
+#: 7fc72576f3e74140aa227e3d97287635 9b1fb1c389034369851ff8b73c493e9f
+#, fuzzy
+msgid "Design: [Link to 01-design.md]"
+msgstr "设计：[Link to design.md]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:20
+#: 3043a79727864957a74134938f7f8f0c
+msgid "Task Breakdown"
+msgstr "任务分解"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:22
+#: 874f6995d7c84ba6aa6dc289fa033824
+msgid "Phase 1: Preparation"
+msgstr "阶段 1：准备"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:24
+#: c7aae5ac53cc4e778bcc8eca72523e56
+msgid "Task 1.1: Setup development environment"
+msgstr "任务 1.1：搭建开发环境"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:26
+#: b7eddc08cf7a491c9e788718d555e162
+msgid "Create feature branch: `feature/[change-id]`"
+msgstr "创建功能分支：`feature/[change-id]`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:27
+#: 4569fd52744e42d99c304013baaf4732
+msgid "Set up local development environment"
+msgstr "搭建本地开发环境"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:28
+#: aef2cb2b303d4d65acf67a1a4d1fdb5a
+msgid "Configure test database/services"
+msgstr "配置测试数据库/服务"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:29
+#: 46f00e42cb9547d5b07e2f196719888d
+msgid "Review design document"
+msgstr "审阅设计文档"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:31
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:41
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:147
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:182
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:195
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:205
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:215
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:228
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:240
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:254
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:267
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:278
+#: 066c7a7ea2e04ac5b42481575bc266f8 2a0e15ef90a440d1bd89ea0d290dda88
+#: 3f6bbc35fa114c938887c09ce444fbb2 3f91da29113245ff910cbb82255a7dbe
+#: 4555d06db89a4f94b41bab55d6827017 4f37f6754c3042f1bf723472f3bdd137
+#: 509becc710444d98a93ae76be1d440eb 9d4034d246284897ba44f710252cfa6d
+#: a584749a39794806b43adb05f02e3c92 c72c9f9728474ed09899246d56249463
+#: d4cc577952124f92952e457b917d0aca f72c358854cb4b18a4cadc66510c29c8
+msgid "**Owner**: [Name] **Estimate**: [X hours/days] **Due**: [Date]"
+msgstr "**负责人**：[Name] **估算**：[X hours/days] **截止日期**：[Date]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:35
+#: f559979c9380464e97d807128d7daded
+msgid "Task 1.2: Update dependencies"
+msgstr "任务 1.2：更新依赖"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:37
+#: 8e1dd673605a449587ec7b7bbc2ab155
+msgid "Add new library: `[library-name@version]`"
+msgstr "添加新库：`[library-name@version]`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:38
+#: a1d515247d814af5858875295a0a5d18
+msgid "Update existing library: `[library-name]` to `[version]`"
+msgstr "将现有库 `[library-name]` 更新到 `[version]`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:39
+#: 0e88dcdda03a4b68a0a399352872bb4e
+msgid "Run dependency security scan"
+msgstr "运行依赖安全扫描"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:45
+#: 454d67567f7a46a587b0c205cbfc8d37
+msgid "Phase 2: Database Changes"
+msgstr "阶段 2：数据库变更"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:47
+#: d21e8973a4ef4c2cac06343e64d09111
+msgid "Task 2.1: Create migration scripts"
+msgstr "任务 2.1：创建迁移脚本"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:49
+#: cbbc4a66430144289e23feca3aa84f58
+msgid "Write migration: `YYYYMMDD_add_new_table.sql`"
+msgstr "编写迁移：`YYYYMMDD_add_new_table.sql`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:50
+#: c2901fbfc84b458682b2aa88312d881c
+msgid "Write rollback script"
+msgstr "编写回滚脚本"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:51
+#: b85ea410fa034f6e974faede237f4a5c
+msgid "Test migration locally"
+msgstr "在本地测试迁移"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:52
+#: 620a99c9bdc845618e51168ce6e954e6
+msgid "Review with DBA"
+msgstr "与 DBA 一起评审"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:54
+#: 8c20e01b0e9a45d6bfcc864afb25c8c6
+msgid ""
+"**Owner**: [Name] **Estimate**: [X hours/days] **Due**: [Date] **Files**:"
+" `migrations/YYYYMMDD_add_new_table.sql`"
+msgstr ""
+"**负责人**：[Name] **估算**：[X hours/days] **截止日期**：[Date] "
+"**文件**：`migrations/YYYYMMDD_add_new_table.sql`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:59
+#: 2d1bdb31c4564c10be4a59183ff9d4d7
+msgid "Task 2.2: Update repository layer"
+msgstr "任务 2.2：更新仓储层"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:61
+#: eeb445a60e1d485d9785dd48e09a918e
+msgid "Create new repository interface: `NewRepository`"
+msgstr "创建新仓储接口：`NewRepository`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:62
+#: ce6d3463a66643d6a80873992891fdc6
+msgid "Implement repository: `newRepositoryImpl`"
+msgstr "实现仓储：`newRepositoryImpl`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:63
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:81
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:95
+#: 2f413f0cdb244c5bb06242e6ff6b4deb a8846dac28ea4c3f81fbd599da326bb2
+#: f6673a1b6ac74de3a357d6a0503f310e
+msgid "Add unit tests"
+msgstr "添加单元测试"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:64
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:96
+#: 6d1c2c07ec0d48feb966b3563b0607f1 98e1fc44332a40bc8a0d186f11b4736f
+msgid "Add integration tests"
+msgstr "添加集成测试"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:66
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:83
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:98
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:118
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:131
+#: 3cffd15878a344b0984ae1da15faf215 82d4b5fc5df245b29a1f610594da56e0
+#: 90a8597fa3f043b69cf28f5ae0b005ee 94dde4760d4e49f8adb05f2885881192
+#: e7083728c3af425a93af6dad8f2ca60a
+msgid "**Owner**: [Name] **Estimate**: [X hours/days] **Due**: [Date] **Files**:"
+msgstr "**负责人**：[Name] **估算**：[X hours/days] **截止日期**：[Date] **文件**："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:70
+#: 4b1bfc82a17147378559ef4ead374a7b
+msgid "`internal/repository/new_repository.go`"
+msgstr "`internal/repository/new_repository.go`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:71
+#: 883fcb2e0ae741b89a32418079ba589f
+msgid "`internal/repository/new_repository_impl.go`"
+msgstr "`internal/repository/new_repository_impl.go`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:72
+#: ca9b12bbed474cce82b4e04d2c7224a4
+msgid "`internal/repository/new_repository_test.go`"
+msgstr "`internal/repository/new_repository_test.go`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:74
+#: 5dc77829c6ed4050b5c222655d26628e
+msgid "Phase 3: Domain Logic"
+msgstr "阶段 3：领域逻辑"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:76
+#: cb38f6e78d5740f890be907d53e69052
+msgid "Task 3.1: Implement domain entities"
+msgstr "任务 3.1：实现领域实体"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:78
+#: e699e1fc1fd44e6686449af5ca2a83a2
+msgid "Create entity: `NewEntity`"
+msgstr "创建实体：`NewEntity`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:79
+#: db7f052a1b9742ca80b3673b5ebd9607
+msgid "Create value objects"
+msgstr "创建值对象"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:80
+#: b45583b79b4746e1a3db2fb23c80bd4c
+msgid "Add validation logic"
+msgstr "添加校验逻辑"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:87
+#: eab19afbac424acea3ee336de7e90140
+msgid "`internal/domain/entity/new_entity.go`"
+msgstr "`internal/domain/entity/new_entity.go`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:88
+#: bbd38313000f4919a22b8b4acc54d5ab
+msgid "`internal/domain/entity/new_entity_test.go`"
+msgstr "`internal/domain/entity/new_entity_test.go`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:90
+#: 2fc99d6f7b634f1180d630831ef65120
+msgid "Task 3.2: Implement use cases"
+msgstr "任务 3.2：实现用例"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:92
+#: af0920cf30c0446abb8af1f00629e380
+msgid "Create use case: `CreateNewEntity`"
+msgstr "创建用例：`CreateNewEntity`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:93
+#: 3263ddeecf1c4b7cbb500242ede97cad
+msgid "Create use case: `UpdateNewEntity`"
+msgstr "创建用例：`UpdateNewEntity`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:94
+#: 7cb12260ef524285beee3c520df94523
+msgid "Create use case: `DeleteNewEntity`"
+msgstr "创建用例：`DeleteNewEntity`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:102
+#: 2406bde806fa43869d2007a6bdc87f75
+msgid "`internal/domain/usecase/new_entity_usecase.go`"
+msgstr "`internal/domain/usecase/new_entity_usecase.go`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:103
+#: 7ec26733b41f41ee8e0d4e8f1ca6cf62
+msgid "`internal/domain/usecase/new_entity_usecase_test.go`"
+msgstr "`internal/domain/usecase/new_entity_usecase_test.go`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:105
+#: 2526aec511ed42f3a15ebd9887727413
+msgid "Phase 4: API Layer"
+msgstr "阶段 4：API 层"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:107
+#: 5c191970aa1b4919a86119d3bcb8baa2
+msgid "Task 4.1: Create API handlers"
+msgstr "任务 4.1：创建 API 处理器"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:109
+#: 0bf4ff84c6cc4bf79e7db9bbfad9d801
+msgid "Create handler: `NewEntityHandler`"
+msgstr "创建处理器：`NewEntityHandler`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:110
+#: 7482d8af77824528958b0d907b6ee5dd
+msgid "Implement `POST /api/v1/new-entities`"
+msgstr "实现 `POST /api/v1/new-entities`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:111
+#: 75ffdbb626de4eeba77981f66dd35df0
+#, python-brace-format
+msgid "Implement `GET /api/v1/new-entities/{id}`"
+msgstr "实现 `GET /api/v1/new-entities/{id}`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:112
+#: bcba7bd9e72e4a46bde27f661489eba7
+#, python-brace-format
+msgid "Implement `PUT /api/v1/new-entities/{id}`"
+msgstr "实现 `PUT /api/v1/new-entities/{id}`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:113
+#: b994b1019dc744b1973aba032ae2a80f
+#, python-brace-format
+msgid "Implement `DELETE /api/v1/new-entities/{id}`"
+msgstr "实现 `DELETE /api/v1/new-entities/{id}`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:114
+#: 3e70fcfd22cb4dd09c59840c6df742e7
+msgid "Add request validation"
+msgstr "添加请求校验"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:115
+#: baeefcfea17047569aad2322deed1dc4
+msgid "Add response formatting"
+msgstr "添加响应格式化"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:116
+#: 28e5118a7fed4b79b356e33e9cb5a05a
+msgid "Add error handling"
+msgstr "添加错误处理"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:122
+#: 330a1d92ca9a40d797be00482a73a358
+msgid "`internal/api/handler/new_entity_handler.go`"
+msgstr "`internal/api/handler/new_entity_handler.go`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:123
+#: 4855e171164c4bb7a919cf41711c4395
+msgid "`internal/api/handler/new_entity_handler_test.go`"
+msgstr "`internal/api/handler/new_entity_handler_test.go`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:125
+#: 2d0388a9e8ab490ab779a3b01400616f
+msgid "Task 4.2: Update router"
+msgstr "任务 4.2：更新路由"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:127
+#: 70ffddf975064c51a40677447a8e7cc9
+msgid "Add routes for new endpoints"
+msgstr "为新端点添加路由"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:128
+#: a0db522412954a628e2f87a42c75fc71
+msgid "Add middleware (auth, rate limiting)"
+msgstr "添加中间件（认证、限流）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:129
+#: affd53edf223409b920dc25dd939c036
+msgid "Update API documentation"
+msgstr "更新 API 文档"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:135
+#: 37f7e834992544a19ffd22a80cbc8af2
+msgid "`internal/api/router.go`"
+msgstr "`internal/api/router.go`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:136
+#: d2cbcabbaecf4de9a19af69557a85e9a
+msgid "`docs/api/openapi.yaml`"
+msgstr "`docs/api/openapi.yaml`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:138
+#: 0d11af5f68114a968fc45cd8a0fc5dfe
+msgid "Phase 5: Testing"
+msgstr "阶段 5：测试"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:140
+#: bc349234478947608ff2c43014f010af
+msgid "Task 5.1: Unit tests"
+msgstr "任务 5.1：单元测试"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:142
+#: a780ef8b9c5346fd89048046a6289a7d
+#, python-format
+msgid "Repository layer: 100% coverage"
+msgstr "仓储层：100% 覆盖率"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:143
+#: 13e23785ee964e1da9795830e0cc349a
+#, python-format
+msgid "Domain layer: 100% coverage"
+msgstr "领域层：100% 覆盖率"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:144
+#: 22576c180f6b42cda9c84ce1418d04ca
+#, python-format
+msgid "API handler: 90% coverage"
+msgstr "API 处理器：90% 覆盖率"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:145
+#: e232cf8aa73f4cb6bd1bc99b5e2bd185
+msgid "Run all unit tests: `make test-unit`"
+msgstr "运行全部单元测试：`make test-unit`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:151
+#: 53e0e2a3bebd459fbdbf706eeb172151
+msgid "Task 5.2: Integration tests"
+msgstr "任务 5.2：集成测试"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:153
+#: f15bf5e630944a159fd7bffb370b2c80
+msgid "Database integration tests"
+msgstr "数据库集成测试"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:154
+#: 6f41a1abde054206817100c3ee686c25
+msgid "External service integration tests"
+msgstr "外部服务集成测试"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:155
+#: 289f1e26ddcb4d44b8f9fe02ff716ba1
+msgid "End-to-end API tests"
+msgstr "端到端 API 测试"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:156
+#: d3d478c36a15426fa0d20a868d28253e
+msgid "Run all integration tests: `make test-integration`"
+msgstr "运行全部集成测试：`make test-integration`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:158
+#: adb030c531f24fdc97b37fdbd84f130b
+msgid ""
+"**Owner**: [Name] **Estimate**: [X hours/days] **Due**: [Date] **Files**:"
+" `test/integration/new_entity_test.go`"
+msgstr ""
+"**负责人**：[Name] **估算**：[X hours/days] **截止日期**：[Date] "
+"**文件**：`test/integration/new_entity_test.go`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:163
+#: 33d48db99b084179b9af4ed89b748860
+msgid "Task 5.3: E2E tests"
+msgstr "任务 5.3：端到端测试"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:165
+#: 3b1f8e09f0154a23a5a96e9e7ba99850
+msgid "Test user flow 1"
+msgstr "测试用户流程 1"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:166
+#: b69f624b4cfe4c85be3cf20d423181fb
+msgid "Test user flow 2"
+msgstr "测试用户流程 2"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:167
+#: 3f1bad919e6a4cb5afca68d5e4a330af
+msgid "Test error scenarios"
+msgstr "测试错误场景"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:168
+#: bfbea3693362455db61a0497c6132e8f
+msgid "Run all E2E tests: `make test-e2e`"
+msgstr "运行全部端到端测试：`make test-e2e`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:170
+#: 66822eb7568446bb91152e63fd3dd68f
+msgid ""
+"**Owner**: [Name] **Estimate**: [X hours/days] **Due**: [Date] **Files**:"
+" `test/e2e/new_entity_test.go`"
+msgstr ""
+"**负责人**：[Name] **估算**：[X hours/days] **截止日期**：[Date] "
+"**文件**：`test/e2e/new_entity_test.go`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:175
+#: 8400abc33f344755bd1f8dc97d5e02d6
+msgid "Task 5.4: Performance tests"
+msgstr "任务 5.4：性能测试"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:177
+#: 0c67296c2957405cb7c11376bb3ad9fa
+msgid "Load test: [X] requests/second"
+msgstr "负载测试：[X] 请求/秒"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:178
+#: 97f5a75b696a4e38895c6e72bbb8aaf1
+msgid "Stress test: Peak load"
+msgstr "压力测试：峰值负载"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:179
+#: 442fb36ddd2343109b68e5c1e364facf
+msgid "Endurance test: [Y] hours"
+msgstr "耐久测试：[Y] 小时"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:180
+#: efb115acd18a4ae384a574e73fe3ecfa
+msgid "Analyze results and optimize"
+msgstr "分析结果并优化"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:186
+#: fd718a5d7ebb4cd5a9e4901bae762e18
+msgid "Phase 6: Documentation"
+msgstr "阶段 6：文档"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:188
+#: 6779a6c81b434bf7bd35a66665a7af54
+msgid "Task 6.1: Update technical documentation"
+msgstr "任务 6.1：更新技术文档"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:190
+#: 58e2928bfb3b4094952b7d0d830af645
+msgid "Update API documentation: `docs/api/`"
+msgstr "更新 API 文档：`docs/api/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:191
+#: 73d65bc89ab943a2800a9e04f9ca47cd
+msgid "Update architecture diagrams"
+msgstr "更新架构图"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:192
+#: a4e58eff756e48d0b8629e204318b76a
+msgid "Update data model documentation"
+msgstr "更新数据模型文档"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:193
+#: fa0597ad021646bba2398caa840875eb
+msgid "Create/update ADR"
+msgstr "创建/更新 ADR"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:199
+#: ad49e163af31423395ff99232fe1e5dd
+msgid "Task 6.2: Update operational documentation"
+msgstr "任务 6.2：更新运维文档"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:201
+#: ec1e87122fcd411e982d34c8f4c93a2a
+msgid "Update runbook: Add new operations"
+msgstr "更新运维手册：补充新操作"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:202
+#: 8d50d82e97dd401fb74e796be15e9717
+msgid "Update monitoring: Add new metrics/alerts"
+msgstr "更新监控：补充新指标/告警"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:203
+#: 711c5fd2d71a4026b133c3dbe405098b
+msgid "Update troubleshooting guide"
+msgstr "更新故障排查指南"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:209
+#: c8e3794275774457a88887091f820709
+msgid "Task 6.3: User documentation"
+msgstr "任务 6.3：用户文档"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:211
+#: 0fdc329215e3445a91f51eeeda7ac666
+msgid "Update user guide"
+msgstr "更新用户指南"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:212
+#: af9e8d35317a43cda4f65617f7ba675a
+msgid "Create migration guide (if breaking changes)"
+msgstr "编写迁移指南（如有破坏性变更）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:213
+#: 23a4e15d79c0430da550e69d4cce8066
+msgid "Update release notes"
+msgstr "更新发行说明"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:219
+#: 4d64a90955524dac86ac6a3c4facbb91
+msgid "Phase 7: Deployment"
+msgstr "阶段 7：部署"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:221
+#: 6fa8a0751897457595008720631a5883
+msgid "Task 7.1: Prepare deployment"
+msgstr "任务 7.1：准备部署"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:223
+#: 6e216eb5a0b34ddab550a71293889f50
+msgid "Create deployment checklist"
+msgstr "创建部署检查清单"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:224
+#: fd96ad14a9c34a85a00313b7774a23b4
+msgid "Prepare rollback plan"
+msgstr "准备回滚计划"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:225
+#: d27bad65e5b8466bbea7ab8aa8647619
+msgid "Set up feature flags"
+msgstr "配置功能开关"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:226
+#: 65cb1b12f8cf41319d7edf6c3c04efd7
+msgid "Coordinate with ops team"
+msgstr "与运维团队协调"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:232
+#: dedc7990216c48b2b5af03ce2235f2c0
+msgid "Task 7.2: Deploy to staging"
+msgstr "任务 7.2：部署到预发环境"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:234
+#: 835fcc96715540aebbf23e77f491c194
+msgid "Run database migration on staging"
+msgstr "在预发环境运行数据库迁移"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:235
+#: 9f468664668443d8928b4108361369da
+msgid "Deploy application to staging"
+msgstr "将应用部署到预发环境"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:236
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:250
+#: 5dc882696c52422686c71cc588df3149 c8c5dc19cbcb44aeb2acccfd2b3373a8
+msgid "Run smoke tests"
+msgstr "运行冒烟测试"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:237
+#: b43e9f4951174af3a248e2e48256c404
+msgid "Run full test suite on staging"
+msgstr "在预发环境运行完整测试套件"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:238
+#: b183160b441e4293b10defc8ef1088e7
+msgid "Get stakeholder approval"
+msgstr "获得干系人批准"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:244
+#: 77192be1d25f4518991654420f66e622
+msgid "Task 7.3: Deploy to production"
+msgstr "任务 7.3：部署到生产环境"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:246
+#: e7d016023e4c445396e08a02ffc3bcef
+msgid "Schedule maintenance window (if needed)"
+msgstr "安排维护窗口（如需要）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:247
+#: 610db442d10e4eabaa6ca121e4d7f9ae
+msgid "Communicate to users (if breaking changes)"
+msgstr "向用户沟通（如有破坏性变更）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:248
+#: aa125d7357114650b67eb73a9d0a1c1d
+msgid "Run database migration on production"
+msgstr "在生产环境运行数据库迁移"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:249
+#: ed9c04dde5a14a6195af0ce0cfbaceec
+msgid "Deploy application to production"
+msgstr "将应用部署到生产环境"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:251
+#: 728f62048e4f4e619b525a61355d2105
+msgid "Monitor metrics and logs"
+msgstr "监控指标与日志"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:252
+#: c6981b57f85c475899817ecf10d4fd8f
+msgid "Confirm success with stakeholders"
+msgstr "与干系人确认成功"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:258
+#: e2767485bba1444483dd7dec5cdd0372
+msgid "Phase 8: Post-Deployment"
+msgstr "阶段 8：部署后"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:260
+#: a20ad8eb1a5a4196840654d65d24e037
+msgid "Task 8.1: Monitor and validate"
+msgstr "任务 8.1：监控与验证"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:262
+#: 0b71edbff6f04f62a747283003dc4bdb
+msgid "Monitor error rates for 24 hours"
+msgstr "监控错误率 24 小时"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:263
+#: 7d3f6494b8204d9ea2925793bb11a253
+msgid "Monitor performance metrics"
+msgstr "监控性能指标"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:264
+#: 94ed153e65dd49afae1cf10d1b343803
+msgid "Check logs for issues"
+msgstr "检查日志是否有问题"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:265
+#: f0920691980043f78650e4bf1e73334d
+msgid "Validate success criteria"
+msgstr "验证成功标准"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:271
+#: 87fc7c2a3cd74b46a06b3261cfa0b9d0
+msgid "Task 8.2: Clean up"
+msgstr "任务 8.2：清理"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:273
+#: 5cdcf2c1c6d848fe901d0f274b2be85b
+msgid "Remove feature flags (after stabilization)"
+msgstr "移除功能开关（稳定之后）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:274
+#: 261478cddda54d8ab5a382215f0b92d8
+msgid "Remove deprecated code"
+msgstr "移除已废弃代码"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:275
+#: 244d969664a849ee971ae682f4b2e685
+msgid "Update documentation"
+msgstr "更新文档"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:276
+#: 3f3f1c997f0341cfb34f889a5f894337
+msgid "Close related issues"
+msgstr "关闭相关 issue"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:282
+#: c0c34d9b67074aa687240ed06c0b8668
+msgid "Dependencies"
+msgstr "依赖"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:284
+#: c22002e3d27744119954531a0f21a4de
+msgid "Blocking Tasks"
+msgstr "阻塞任务"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:286
+#: 99855543e366412b996be6e053ad1dd9
+msgid "Task A must complete before Task B"
+msgstr "任务 A 必须在任务 B 之前完成"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:287
+#: e6c0ce430ca4411a88caf3e53ee5fa0d
+msgid "Task C requires external dependency: [Description]"
+msgstr "任务 C 依赖外部项：[Description]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:289
+#: 4529ef5dd04e4597a4c1d978df8cca96
+msgid "External Dependencies"
+msgstr "外部依赖"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:291
+#: 1b7392e19b5246d1a440334cd3efc763
+msgid "Dependency 1: [Description]"
+msgstr "依赖 1：[Description]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:292
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:296
+#: 7037b07f356e4ee792a22d6a44469c70 cd8022ea6020495b9c9ecc91711b0246
+msgid "**Owner**: [Name/Team]"
+msgstr "**负责人**：[Name/Team]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:293
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:297
+#: 38fff1b4047d4f8eb1de8e2552b8cfea e38258d54f0a4e649fd734f4e2d43b21
+msgid "**ETA**: [Date]"
+msgstr "**预计完成**：[Date]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:295
+#: e30d92d78f0f4b43bfedf9a6c640bd78
+msgid "Dependency 2: [Description]"
+msgstr "依赖 2：[Description]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:299
+#: 1e112eb68d644056acbde85c8d5f1f09
+msgid "Progress Tracking"
+msgstr "进度跟踪"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:301
+#: b04c647759b54f1898f52406d2b4597c
+msgid "Summary"
+msgstr "摘要"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:303
+#: 6d71be9e7bf4449cbfb29aea1b75e034
+msgid "**Total tasks**: [Number]"
+msgstr "**任务总数**：[Number]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:304
+#: cafaf91cb4d742ceb3156609078e833d
+msgid "**Completed**: [Number]"
+msgstr "**已完成**：[Number]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:305
+#: 2726f6277a314dc49bb1a5ce2ddb4705
+msgid "**In progress**: [Number]"
+msgstr "**进行中**：[Number]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:306
+#: 33e517f3b8af45c9be04fc8560105242
+msgid "**Blocked**: [Number]"
+msgstr "**已阻塞**：[Number]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:307
+#: a4cdfe89f20d40ad858a553016de951b
+msgid "**Not started**: [Number]"
+msgstr "**未开始**：[Number]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:309
+#: dd4e7dd635f14f5ea2bfe2284d4fa4ef
+msgid "Timeline"
+msgstr "时间线"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:318
+#: cd6f03bd764d4cf289a422289e2ef3aa
+msgid "Status Updates"
+msgstr "状态更新"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:320
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:325
+#: 6aed5c9bd19c44f6a9419ca27cf0282c eb63c17a16d64bb59256f6f6a16cbcbe
+msgid "**[Date]**:"
+msgstr "**[Date]**："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:321
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:326
+#: 5d6f29d9b20e4a0ba4e25baed8af7eb1 fad7493a786e4a51b9b409c2ad174296
+msgid "Completed: [Tasks]"
+msgstr "已完成：[Tasks]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:322
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:327
+#: 316fc69a3dbf48f38107c5761b07928e b36dfff63ec4470abe2ad60f0669f9c8
+msgid "In progress: [Tasks]"
+msgstr "进行中：[Tasks]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:323
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:328
+#: 32b2c7df1d984909bf49d9a01a2406f5 7e0d859bf56a4bf1ae97845d3c82d634
+msgid "Blockers: [Issues]"
+msgstr "阻塞项：[Issues]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:330
+#: 80659b68dcda422ea25017e27440f966
+msgid "Risks"
+msgstr "风险"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:332
+#: 8ee22620e5964400b45d2e72554bb698
+msgid "Risk 1: [Description]"
+msgstr "风险 1：[Description]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:334
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:341
+#: bc5b5c3785f04348844f75d876ae0e34 dc50833f15bf43b1866368a68b32a143
+msgid "**Impact**: High | Medium | Low"
+msgstr "**影响**：高 | 中 | 低"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:335
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:342
+#: 0d997b92223544bfa2ff91881dbb93d6 874d2a387987417ea075d5a05e83d73b
+msgid "**Probability**: High | Medium | Low"
+msgstr "**可能性**：高 | 中 | 低"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:336
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:343
+#: b19ceeeb642e455d95256f39879c1107 dc93742e5b7e4f669b6bb59b978b2d65
+msgid "**Mitigation**: [Strategy]"
+msgstr "**缓解**：[Strategy]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:337
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:344
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:351
+#: 0291147b717148dfa0cadc179cdec43f 231691ad9c1c490383cd94fc3c1c89f9
+#: ac1f8432ffeb40fdbe6136521ba77318
+msgid "**Owner**: [Name]"
+msgstr "**负责人**：[Name]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:339
+#: 6b8b1be7231942788a510daa4a71edd6
+msgid "Risk 2: [Description]"
+msgstr "风险 2：[Description]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:346
+#: 2c00762ae8c943bdac4b9c334a1e5011
+msgid "Issues"
+msgstr "问题"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:348
+#: e3bfae44073644f9bcade275c0b4153c
+msgid "Issue 1: [Description]"
+msgstr "问题 1：[Description]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:350
+#: 23d41e87b1ff48fab2efd4523660a83e
+msgid "**Status**: Open | Blocked | Resolved"
+msgstr "**状态**：开放 | 阻塞 | 已解决"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:352
+#: 5f5c0c7130ea4dfab23cc0cad0564b4a
+msgid "**Resolution**: [How it was resolved]"
+msgstr "**解决方案**：[如何解决]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:354
+#: d3d614ba17f7457a97737df6ad6fb64d
+msgid "References"
+msgstr "参考资料"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:358
+#: d122e29ffa444d029735446b789ec191
+msgid "Issue tracker: [Link]"
+msgstr "问题跟踪：[Link]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:359
+#: 72b93a21a0eb41b8b3d241ea803e4bc7
+msgid "Pull requests: [Links]"
+msgstr "Pull request：[Links]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/03-tasks.md:363
+#: 83170971a0bd42c0a0481f33e312e386
+msgid "**Progress**: [X]% Complete **Next Review**: [Date]"
+msgstr "**进度**：[X]% 完成 **下次评审**：[Date]"
+

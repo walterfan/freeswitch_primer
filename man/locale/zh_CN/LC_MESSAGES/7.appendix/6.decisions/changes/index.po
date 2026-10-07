@@ -1,0 +1,182 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Zoom Video Communications
+# This file is distributed under the same license as the FreeSWITCH package.
+# Walter Fan <walter.fan@ustc.etu>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version:  FreeSWITCH\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-18 16:34+0800\n"
+"PO-Revision-Date: 2026-08-30 23:13+0800\n"
+"Last-Translator: Walter Fan <walter.fan@ustc.etu>\n"
+"Language: zh_CN\n"
+"Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/index.md:1
+#: 7bfcc66955ee46dd8fcd11898b5c45c8
+msgid "Change Proposals"
+msgstr "变更提案"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/index.md:3
+#: e65fb063c6f147fbabf039e7ce6f5fdc
+msgid ""
+"This directory contains PKB-local change proposals following the OpenSpec"
+" workflow. Repository-level proposals under `openspec/changes/` are a "
+"separate source tree and are not included in this Sphinx site; link or "
+"summarize them here when they need to be discoverable to PKB readers."
+msgstr ""
+"此目录包含遵循 OpenSpec 工作流的 PKB 本地变更提案。`openspec/changes/` 下的仓库级提案属于独立源树，不包含在此 "
+"Sphinx 站点中；如果需要让 PKB 读者发现它们，请在此处链接或摘要说明。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/index.md:8
+#: 2679e4a460b245e293e36d0f2e2d72f1
+msgid "What is a Change Proposal?"
+msgstr "什么是变更提案？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/index.md:10
+#: 26a028c69ef64fe78a4d7e68ea933077
+msgid "A change proposal documents a planned change to the system, including:"
+msgstr "变更提案记录对系统的计划变更，包括："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/index.md:12
+#: f4c076008f624d88bdce8613b5428f49
+msgid "**Why**: Problem statement and motivation"
+msgstr "**为什么**：问题陈述与动机"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/index.md:13
+#: 1a869defcc674e08bd8ab4523271e670
+msgid "**What**: Summary of changes"
+msgstr "**做什么**：变更摘要"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/index.md:14
+#: f0f0cabab0dd403a8cfe82fb98f942f9
+msgid "**Impact**: Affected components and stakeholders"
+msgstr "**影响**：受影响的组件与干系人"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/index.md:15
+#: ee5b823296d0409090db24aa43cf9c92
+msgid "**How**: Design and implementation plan"
+msgstr "**怎么做**：设计与实施计划"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/index.md:17
+#: 08a7e7014fb342269fe95f46ddf7a3e9
+msgid "Change Proposal Structure"
+msgstr "变更提案结构"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/index.md:19
+#: 582fad9f44c54cd982d27d79d1b2d2c6
+msgid "Each change is in its own directory with:"
+msgstr "每项变更位于独立目录中，包含："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/index.md:30
+#: 68ce13ebb7fd40849da5383955dd2242
+msgid "How to Create a Change Proposal"
+msgstr "如何创建变更提案"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/index.md:32
+#: dbfb8f4b91714d50aa95a17f2f9a2bd3
+msgid "Use the `/PKB-change` command:"
+msgstr "使用 `/PKB-change` 命令："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/index.md:38
+#: 5a3aa676c9a9422cae3d6cbe0d908a52
+msgid "Active Changes"
+msgstr "进行中的变更"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/index.md:40
+#: 08c9ae8782064852a649dfa8dc09b911
+#, fuzzy
+msgid ""
+"(Each change is a subdirectory with `02-proposal.md`, `01-design.md`, "
+"`03-tasks.md`. Copy `_template/` to create a new PKB-local change.)"
+msgstr ""
+"（每项变更是一个包含 `proposal.md`、`design.md`、`tasks.md` 的子目录。复制 `_template/` "
+"可创建新的 PKB 本地变更。）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/index.md:51
+#: 0c83b122495245638a056d9e32420ebe
+msgid "Change Status"
+msgstr "变更状态"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/index.md:53
+#: d0cb3fa8efff4103ab857a841541340b
+msgid "Proposed"
+msgstr "已提议"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/index.md:57
+#: 407670268d9e47a19f9676dd5cdb955a
+msgid "In Review"
+msgstr "评审中"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/index.md:61
+#: ac87b58cd736437bb3210db3a216425f
+msgid "Approved"
+msgstr "已批准"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/index.md:65
+#: 85222bf22cf848948f03246eb9e00ad5
+msgid "Implementing"
+msgstr "实施中"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/index.md:69
+#: f55a2f8740c74a1998aa04a0bcf2effd
+msgid "Completed"
+msgstr "已完成"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/index.md:73
+#: 17eb2bba4e2f40eb808c5eaf69bf6715
+msgid "Process"
+msgstr "流程"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/index.md:75
+#: c61898088acb46479f3b3ad660e3d5ed
+msgid "**Propose**: Create a change proposal with `/PKB-change`"
+msgstr "**提议**：使用 `/PKB-change` 创建变更提案"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/index.md:76
+#: 3a5d686456254fa9bc0d5d9acf082af9
+msgid "**Design**: Fill in design details"
+msgstr "**设计**：填写设计细节"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/index.md:77
+#: 14483aa7fa684d57a2da3eac05b8eaf0
+msgid "**Review**: Get feedback from stakeholders"
+msgstr "**评审**：收集干系人反馈"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/index.md:78
+#: 793c1f43e9c445bd840deff20db145d1
+msgid "**Approve**: Get approval from decision makers"
+msgstr "**批准**：获得决策者批准"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/index.md:79
+#: 9e28a5fbd6cc446c82f02d0faeb44305
+msgid "**Implement**: Execute the tasks"
+msgstr "**实施**：执行任务"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/index.md:80
+#: fae2bc4937b547ccbf4b8a3f72edd6a4
+msgid "**Close**: Mark as completed"
+msgstr "**关闭**：标记为已完成"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/index.md:82
+#: 09b3325a22a94329ab785c162037d631
+msgid "References"
+msgstr "参考资料"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/index.md:84
+#: 16bbedcbcf524e27b6980cb7f1f28580
+msgid "[OpenSpec](https://github.com/jpoehnelt/openspec)"
+msgstr "[OpenSpec](https://github.com/jpoehnelt/openspec)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/index.md:85
+#: 39e1c54880044999bba2069e0f545728
+msgid "Change management best practices"
+msgstr "变更管理最佳实践"
+

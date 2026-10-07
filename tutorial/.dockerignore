@@ -1,0 +1,8 @@
+site/build*/
+site/.cache/
+deploy/certs/
+**/*.key
+**/*.pem
+**/*.csr
+**/*.srl
+**/__pycache__/

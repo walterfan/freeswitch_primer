@@ -1,0 +1,12 @@
+{
+    "version": "0.5",
+    "requires": [
+        "yaml-cpp/0.8.0#1aa371213f0307605d88ad5445581aff%1773246038.815",
+        "openssl/1.1.1w#a8f0792d7c5121b954578a7149d23e03%1717541485.78",
+        "crowcpp-crow/1.2.1#c257853be4166386e41f7084f736b5ae%1751271794.885",
+        "asio/1.29.0#086f996887a324c84ab75bd830e0408e%1779966060.217"
+    ],
+    "build_requires": [],
+    "python_requires": [],
+    "config_requires": []
+}

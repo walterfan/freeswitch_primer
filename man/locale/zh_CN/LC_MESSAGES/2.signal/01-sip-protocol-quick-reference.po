@@ -1,0 +1,1385 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Zoom Video Communications
+# This file is distributed under the same license as the FreeSWITCH package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FreeSWITCH \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-18 16:34+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:1
+#: e560775c3f2e498e83bd8313689a449a
+msgid "16. SIP / Sofia-SIP 协议速查手册"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:5
+#: 7aa5f9d5b2654853a8e484d4b3e3f713
+msgid ""
+"本章根据 [Sofia-SIP Protocol Conformance](https://sofia-"
+"sip.sourceforge.net/refdocs/sofia_sip_conformance.html) 整理，面向 FreeSWITCH "
+"`mod_sofia` 的 SIP 报文阅读、功能开发和故障排查。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: cb326efaf1a2428e9a143c4a70c24901
+msgid "使用边界"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:11
+#: 39e7cb5943d44a4fb7cebd125212c04a
+msgid ""
+"该页面是 Sofia-SIP 1.12.11 的实现速查表，不是 RFC 的替代品。RFC 3261 已经被多个后续 RFC "
+"更新；遇到互通性或合规性问题，应以当前 RFC 和对端设备 的实现为准。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:16
+#: 17ae5b3153c247878f82695f41e4389c
+msgid "1. SIP 总览"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:35
+#: 0c69e1e8917e42efb46895466063bc7e
+msgid ""
+"Sofia-SIP 原生支持 `REGISTER`、`OPTIONS`、`INVITE`、`ACK`、`CANCEL`、 `BYE`，以及 "
+"`INFO`、`PRACK`、`SUBSCRIBE`、`NOTIFY`、`UPDATE`、`MESSAGE`、 `REFER`、`PUBLISH`"
+" 等扩展方法。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:39
+#: 0d1696494c2c41989b2a9c40173db492
+msgid "2. 三条核心时序"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:41
+#: 51c6f879956f47a3ade0149fa0f24fea
+msgid "2.1 注册与 Digest 认证"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:51
+#: 67fa9258baac449c87a3e3b48bc54a4b
+msgid ""
+"代理认证通常使用 `407 Proxy Authentication Required`、 `Proxy-Authenticate` 和 "
+"`Proxy-Authorization`。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:54
+#: 52ac7f615cfa4a519f5fc2088600586f
+msgid "2.2 呼叫建立与释放"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:68
+#: 5f0e7c400a444b009f41a35852409913
+msgid ""
+"`183 Session Progress` 可能携带早期媒体。收到 `200 OK` 后，`ACK` 是对 INVITE "
+"事务的确认；结束已建立对话使用 `BYE`。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:71
+#: b091daacae0540c08be282e9dc16b0b8
+msgid "2.3 取消呼叫"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:82
+#: 408a0b0a7d2744448ba552b0ac6412a6
+msgid "`CANCEL` 的响应和原始 `INVITE` 的最终响应属于不同事务；不要把 `200 OK (CANCEL)` 当成呼叫已经成功或失败的结果。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:85
+#: f33793a55527447da62295267634824f
+msgid "3. 常用 SIP 头域"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: e9dac357c1064a74979f70cb33810ef1
+msgid "头域"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 283651dfd3d348b69dec04fe963e35ee
+msgid "速记作用"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: b3ea1f39d64449c9a2bfd5f9bf4984e4
+msgid "排障重点"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: d037904b6aa34ea985a2977348a2556d
+msgid "`Via`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 8e6210801eca494a9b06879008875d22
+msgid "响应返回路径、事务匹配"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: bd155cff98ef46448c3a4cb7845aa98d
+msgid "`branch`、`received`、`rport`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 102bc82eb2b440be816a31ea3c768ffb
+msgid "`From`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 9e67d46420494375a682ea7605abf0f9
+msgid "请求发起方身份"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 74b55109b15d4e618dde85c3380edb11
+msgid "对话创建前后的 `tag`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 01fd990ff3c74a5592358ef9078a33d8
+msgid "`To`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 96c1046e43bb4b20a4607bdd4777abd6
+msgid "请求目标身份"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: d31cc20e6d124f4ba10ced92c1d0f9f2
+msgid "最终响应中是否出现 `tag`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 207165a570c5452588e81a225c75ccbd
+msgid "`Call-ID`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: e5e14c4361474e41b479cdf63f0c58a7
+msgid "对话标识"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: a266e52b22364fb7a2ac3df111401675
+msgid "同一通话是否始终一致"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: e54605c8ac714840b6660bb1931f7658
+msgid "`CSeq`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 4aec83bc37654998b72ae9b6a7dff150
+msgid "请求序号和方法"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 520b09a4d24f4037a0d4f26e013818b9
+msgid "对话内递增、方法是否匹配"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 0c6cce01dfe845638354f59a729e1f9a
+msgid "`Contact`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 87feb29844e8400fa1e71beb06789f45
+msgid "后续请求的直达地址"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 2b1c184d559846ca9444324bc455c5cc
+msgid "NAT、可达性、地址是否错误"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 5b6757de1ff74c6bb3f52c9133236ca6
+msgid "`Route`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: bed0aadc6511425ba4b8d109cbcea8d4
+msgid "后续请求经过的路由"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: e247195329634f84b361d735c5afc23b
+msgid "是否来自 `Record-Route`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 3089b750be19468aaa1e1e926b3ae562
+msgid "`Record-Route`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: f0b61d07dbb24321ba5a6fcb5c63c08a
+msgid "要求后续请求经过代理"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: a5150f54ac2e41f9a7dfa71d24d18d57
+msgid "代理是否正确插入"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: d64ec8836909470cbd491bfe851093ed
+msgid "`Max-Forwards`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 1b820676920e48508968e54ae534363b
+msgid "限制转发次数"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 945d3214c4b24a57aa8c4a0d71a888c9
+msgid "是否减到 0"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 57b88650bb644c4cb9845a2e5bdfb8ec
+msgid "`Supported`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 8fbfc3cde4c445b4b8dc9320a9f6d5e0
+msgid "声明支持的扩展"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 84e9491f26fb42c5b88d37ec152c087a
+msgid "如 `100rel`、`timer`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 57fa1ace0c514e578817a7407087ee80
+msgid "`Require`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 7bb36b69500d430f873adf5b6ebcd3bd
+msgid "要求对端必须支持扩展"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: d85a3f1f11af46aba3030cbc10c83c6f
+msgid "不支持时通常返回 `420`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 5a0ab2f170364fd1aedc924c6344f034
+msgid "`Allow`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 0582bfa8677a4071b8650471472525b4
+msgid "声明支持的方法"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 7bc018db73974c1e834caf1ddbf7a41d
+msgid "OPTIONS 和能力探测"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: c68b4baf7b984dabab8035d08e5faa97
+msgid "`Authorization`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 93d7e2cc720b4451a30489807e2cc604
+msgid "UAC 的认证响应"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: b6ae2af24d1a4956b950ed1c08e51d9b
+msgid "`realm`、`nonce`、`uri`、`response`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 594042c61a3640e19e259f823b57b972
+msgid "`Content-Type`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 82ecdf445f5d4fb28259dcc5b6479421
+msgid "消息体类型"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 8e361df90e05467a9649be75717fbb1c
+msgid "SDP 通常是 `application/sdp`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: a8add2ec1a64476bb17e1063dfa35489
+msgid "`Content-Length`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 33c08c20893f46bf8027ba4543a46700
+msgid "消息体长度"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 37aea49d8536471cb7f07be3f7e2f5c9
+msgid "TCP/TLS framing 和解析"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: af25411c9b37402fa59416a2c4680a98
+msgid "`Event`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 9ff3b823b44e43a39b1d3a7c635ad6df
+msgid "订阅的事件类型"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: f24855d9e317407eb416953f6243b271
+msgid "`presence`、`reg` 等"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 503f4819dc484f7ea911a37283825671
+msgid "`Subscription-State`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: a5220cdf75584fc38e5c45b0a1a8f79b
+msgid "订阅状态"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 85316513758e43a78d5cb09a9e533306
+msgid "`active`、`pending`、`terminated`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: c5fc6dc0031b46fab38ba0209b928c8d
+msgid "`Session-Expires`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 0649dcbfddf44372a003c20c30da8a8d
+msgid "会话刷新周期"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 67db1a825619469cbb1a3c4760e28073
+msgid "`refresher` 是否正确"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 623aa843e3db49d6b651d884285e95e1
+msgid "`Refer-To`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 03ea943725f3450bb427b6cd1b7425f8
+msgid "REFER 的转接目标"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: f25a7fd6943d48b2b51c7f9dbd46afdd
+msgid "转接目标 URI"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: da53a4d8af0240e3a85ce4dcaa7da261
+msgid "`Replaces`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: fced7a2e07624a88ab5f97e3aa61c8eb
+msgid "替换已有对话"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 597de47b3f4e4bc8b3c2583ba661202f
+msgid "对话匹配是否成功"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:110
+#: 446ca4dd617f4d31a7985c3747b4055c
+msgid "3.1 对话和事务的最小判断"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:119
+#: c184673cb5554366999b862f7a618d83
+msgid "4. 状态码速记"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: a2681659be8840fdbc4ed2ba5513ac17
+msgid "类别"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 3c293072a5f342c9b0161bcd4abc3b88
+msgid "常见状态码"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: a28ef4a3c5e24ed8bcfd9960e3a9ffb0
+msgid "记忆方式"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 2fb9b89ae6724154a9fd0b449650caa5
+msgid "`1xx`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 058248359547439ca486304c31985096
+msgid "`100`、`180`、`183`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 0d83d46360ee425293840197f4e54173
+msgid "请求仍在处理、振铃、早期进展"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 8442c957e2ce429b9a01e67806a3e41a
+msgid "`2xx`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: e26f797f13f84a3e817e33c586f3a413
+msgid "`200`、`202`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 36a5b744e6794b0c938599d322fe8b22
+msgid "成功、已接受异步处理"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: b579412171a949b5808ace85e2e52be8
+msgid "`3xx`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 6462b90263c9479387c2c2c90b6649dc
+msgid "`301`、`302`、`380`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: f3c8cd9e34b34a42a40c0044b2862e22
+msgid "重定向或替代服务"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: cd31e62bb86b45d1a894968ba6607c49 d9ef120661ff45cb94ed6d9fb57b9da7
+msgid "`4xx`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: a1601826c79842dfa08dc9d7f2969479
+msgid "`400`、`401`、`403`、`404`、`407`、`408`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 56f27961409e45148b970d71481d1905
+msgid "请求本身、认证、权限、路由或超时问题"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 9afb0709b90842d4b317b6b239ca54dd
+msgid "`415`、`420`、`422`、`480`、`481`、`486`、`487`、`488`、`491`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 03ee3543bc644244adddaf20581cd92d
+msgid "媒体/扩展/会话状态/被叫状态问题"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 9b46aa27d72749688f970e4b76ca6a38
+msgid "`5xx`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 33676bee0a4049248938b250b940c1c6
+msgid "`500`、`501`、`503`、`504`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 404a887dac964978b5b52f1ae56d9ef5
+msgid "服务端或上游服务问题"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 2103897bd2994dd7b34f15616b79abd3
+msgid "`6xx`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 52f85ee97f374502b8cf6b15ce6e6856
+msgid "`600`、`603`、`604`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 238293730fad4a1dbcc53b9a1c350665
+msgid "全局拒绝、不可用或不存在"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:131
+#: ab444cbe587c47e3b729d182d3bc51b7
+msgid ""
+"排障时先确认：这是哪个方法的响应、响应来自哪一跳、是否包含 `Warning`、 `Reason`、`Retry-After`、`Allow` "
+"或认证头域。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:134
+#: 25705bf3681140e7b00f776b3a4dc586
+msgid "5. RFC 功能分组"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: bbb2a5c4a7084924bca0382db3f90c38
+msgid "功能组"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 97ba976204714260b0e4451c3d041328
+msgid "主要 RFC"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 920c4b439bd941d7bb2cb7a4b026f830
+msgid "速查内容"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: df84cccd14ce41dcb383f83b7ebe87d8
+msgid "SIP 核心"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 0daf4f899d6e4160b245b4acc414d4ef
+msgid "RFC 3261"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 100f0e1ecc514c38ba862547aeb60fc1
+msgid "消息、事务、对话、代理、注册和传输"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 8b13ef183dfd406aba50f144171ff450
+msgid "认证"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 84d048e5b1bf44a295fea0e22dccec46
+msgid "RFC 2617"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 1f907717750b4b8f80ebd685a1671532
+msgid "Digest、`401`、`407`、认证头域"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: dbacbfcacec34bd7b67c00a16fc77ea7
+msgid "服务发现"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: e53a2bdb247f4febae47d917a7af1d9c
+msgid "RFC 3263"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: aed202138a444ccebaa5a81daf89e959
+msgid "SIP/SIPS URI、NAPTR、SRV、A/AAAA"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: a0f875b1bd204e3bb70153dbb148b089
+msgid "可靠临时响应"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 340e7dbc2f1745f7a951a4170c798e4f
+msgid "RFC 3262"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 4f3113e0e01d49798829f94952421b3f
+msgid "`100rel`、`PRACK`、`RSeq`、`RAck`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 0d2ec8a378b64c25adcd126b55611225
+msgid "事件订阅"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 1d9a6526206b4f8f8fc192b32df85aa2
+msgid "RFC 3265"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 0784f36592b248fd95f622c92f91ded6
+msgid "`SUBSCRIBE`、`NOTIFY`、`Event`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 00c4002c988548bfa48f37f360a1a9ce
+msgid "会话控制"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 63136977dbea4befb56918229df26dcd
+msgid "RFC 3311、4028"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 0b08bcaa89bb4be3b7be53f070abed82
+msgid "`UPDATE`、Session Timer"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 839722e9580b41d988e61607d65692c9
+msgid "呼叫控制"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 9b537950fdeb44b28984f884fc935524
+msgid "RFC 2976、3515、3891、3892"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: dc48926577744b78b698e0a0a11adc9a
+msgid "`INFO`、`REFER`、`Replaces`、`Referred-By`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 18171f4a9baf4bff90ed0059e18f7d8c
+msgid "身份和隐私"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: a4838a9fd83545a0a84a83a00a032195
+msgid "RFC 3323、3325、3326"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 9b5810d0f0ad44249b9a4969b00898cc
+msgid "`Privacy`、PAI、PPI、`Reason`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 276c4d2def3f4122a9c38104ec9d24f7
+msgid "注册路由"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 78d40e3147f94850aabe74aaa8e23c48
+msgid "RFC 3327、3608"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 6d5d6d3378254faf8528b51a987512f5
+msgid "`Path`、`Service-Route`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 5f90afc098014c2db364a597b2aadc21
+msgid "消息"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 17b6028a3e0742a0827301980282c9b2
+msgid "RFC 3420、3428"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: c4528d9ee48244c9be7999e3efc8f52b
+msgid "`message/sipfrag`、`MESSAGE`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 1060d3ab8f7145b6b508c51e4204bdb5
+msgid "Presence/状态"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 106bd84cba154d269f3d1e74df132a07
+msgid "RFC 3680、3842、3856、3857、3858、3903"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 0e7f9a533edf434ca328a826d1cd5da3
+msgid "`reg`、`message-summary`、Presence、`PUBLISH`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 03629a8688dc4c40b5d7b88d584b3cc6
+msgid "能力选择"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: f3a882c4e01e47d7a7ab200c9ae30b41
+msgid "RFC 3840、3841"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 2e83471ce5734c9eb1e056ca3967bfdf
+msgid "`Accept-Contact`、`Reject-Contact`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: aecaecd60657445682fe5546c1dfd52a
+msgid "地址类型"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 7bbc76b2f585406a975239d93e39593c
+msgid "RFC 2806、3824、3860"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: f270b286982940ac88a02f32a3e7356b
+msgid "`tel:`、ENUM、`im:`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 16f5da6e40604d43941d9b04db0b42a1
+msgid "安全和传输扩展"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 17c6b5df528c4155a0828a790f3f1c6b
+msgid "RFC 3329、3486、4168"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: d36c88f66b84426ea8bfedecf9f0048a
+msgid "Security Agreement、SigComp、SCTP"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:153
+#: 31b70be2302942c38756abac26ccdc95
+msgid "6. Sofia-SIP 支持矩阵"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 0b78d8e62b1340c28bcd34c50138e19e
+msgid "RFC/功能"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: fec953e363ab4153b3cc36691032c6e8
+msgid "Sofia-SIP"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: d9ca0fe5f3ed413199a682e4afd7428c
+msgid "应用注意"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: b846cc899d3c42b5b56421adb89102a8
+msgid "RFC 3261 基础 SIP"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 2f1ff378bfe44fe898202c1556545c9d 48bec35dac114ed1a86a3ce0d5ecbbb7
+#: 66b87a9741c742bb98cd8f7e8fe48205 a3d6d154822d43a281e4eec077a1b951
+#: b25be76b5c5a4f8db42ed3e58b062e79 d22d3d0aa30f4ddbb6d140ffc0c8bfa3
+msgid "N"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: b194e46647964748ab3e4c979ab1beda
+msgid "可作为 UA、Proxy 或 Registrar"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 4e362bb1972a45c7a18c700f554e7015
+msgid "RFC 3263 DNS 定位"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 21289753df18457d8855038a8f2cd1b9
+msgid "支持 NAPTR、SRV、A、AAAA"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 4a7d9b532ee24157a5a1e8b377824c57
+msgid "RFC 2617 Digest"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 347784eaf70f43ba8d0c175932f4f8e2
+msgid "N/X"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: e740a93d73a14742bde621e73859def7
+msgid "支持 MD5、MD5-sess；不支持 `nextnonce` 和双向认证"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: de05630cce004e9196b54ad660361c50
+msgid "RFC 3262 PRACK/100rel"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: bf0bc412d6444fa1831184a7f52a2ba5
+msgid "支持 `RSeq`、`RAck` 和临时响应重传"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: ad3df4ece8924e1ca745f3b4e6cbe0f2
+msgid "RFC 3265 SUBSCRIBE/NOTIFY"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 097e38e659f4471087a55a01914d1271 345b2682a92249d68c1dc2f9465e7470
+#: c91cec9467b5405fa927a6741ba5d246
+msgid "N/P"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 51f44104f8ed4fd5a00a1429ba2581ad
+msgid "Sofia 管理刷新和状态；应用处理事件内容；不支持 forked SUBSCRIBE"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 0f9afcd8bdd146f0b8fcfae13c556814
+msgid "RFC 2976 INFO"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 2f63f1cf8a05454f8521710cef566389
+msgid "支持方法；INFO body 的生成和处理由应用负责"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 2398055e2c2d4b249f54aa2b861c0336
+msgid "RFC 3311 UPDATE"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 36cc75bebbd64c30a0735587d9392cb7
+msgid "支持 Offer/Answer；应用发起 UPDATE"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 6b2581cb92fa426bb7fce049dd6adf88
+msgid "RFC 3515 REFER"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 3c8b16e113804190a1934e7ec08f6d2b
+msgid "可自动处理入站 REFER 并生成 NOTIFY"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: ed148da0caf54549aaa77a2a8969ecd4
+msgid "RFC 3903 PUBLISH"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 4087ab0155fd46e4b3e84a1a670e147a
+msgid "应用提供正确 `Event`，并保存 `SIP-ETag`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: ae697d92bd824894afc6d0cff652b6d4
+msgid "RFC 4028 Session Timer"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 51ff210cba6c4dffaef2e289ddd527cf
+msgid "可自动发送 UPDATE/re-INVITE；无活动时可能发送 BYE"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: f28a9477949948239ab0eeca175707d6
+msgid "RFC 3323 Privacy"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: ab92a8bcab704afcae343b3464cef502
+msgid "P/A"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 7444278974cc45e789717ae70555897d
+msgid "应用负责匿名 URI、显示名和 `Privacy` 策略"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 0ca510364ff342e69da31ef9aedda63a
+msgid "RFC 3325 Asserted Identity"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: be07f70d987043bf97f5e0f8d1763d44 c762dfcfb21c4291bffc042b1646133d
+msgid "P/X"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 2b7992d6d4d4425ab0dee61b122d93a9
+msgid "支持 PAI/PPI；不负责信任域和身份隐私策略"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 18fa2be8d6384cf1ac307b3ab095111b
+msgid "RFC 3329 Security Agreement"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 85b029e7ea914f0fb90686cbb177dd0a fd74e7a6a7c04b4885463ef99854c4bd
+msgid "X"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 5037e46ef63e4c8eaf72cfd25c2c89d6
+msgid "支持 digest 机制，但不计算正确的 `d-ver`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: b6b9010acabb43059d966e4128c1fa61
+msgid "RFC 3486 SigComp"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 9a39b8dede7f4d72a722ff7a331cc91c
+msgid "支持 `comp=sigcomp` 参数；SigComp 本身未实现"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 366843830cc34e0894f0e43a5bd98a80
+msgid "RFC 4566/3264 SDP"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 315b8245b00c47109b8d5fdb62216a20
+msgid "支持通用 Offer/Answer；`fmtp` 不参与 Answer 决策"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:180
+#: 88e33097183542079b4020605e216ff6
+msgid "7. SDP 和媒体速查"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:182
+#: 0fd3aa3d16634bd5b310c611715363a6
+msgid "7.1 SDP 行"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 2f8a28fb5a484cfa8e5f69684f44654a
+msgid "行"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 00507a5822324f128333f343db8dccaf
+msgid "含义"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 033db8d073044e5bbc9ec67c81e358b0
+msgid "`v=`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 8c1acba7bca542628fa5ab8f1cb295e7
+msgid "SDP 版本"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: ea04b321797449a1a5365cc143934988
+msgid "`o=`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: e68c72d2fd57426aa20f44f43fbbf90b
+msgid "会话所有者和版本"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 7cb91e01ea784707a44164fb17303d45
+msgid "`s=`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 71b662d736894483b34449e661dbaec9
+msgid "会话名称"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 7399ba249b9c40ebb59b8a114cd2c851
+msgid "`c=`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: f61caa0175f948d588e57facf10a4909
+msgid "媒体地址"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 7193f9e77820414ab8140699efd6ce68
+msgid "`t=`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 10c63a74a2d1460dace2aa332da0543f
+msgid "会话时间"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 74ff328ea53a43d387ce3a4f9b77f0c1
+msgid "`m=`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 8025a3ebb4684a619d504b41edf8f58e
+msgid "媒体类型、端口、协议和 payload"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 2190e119602f48dc9d5da993f636254c
+msgid "`a=`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 98b6381279db44d68d52f1816ed27773
+msgid "媒体属性"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:194
+#: de79ceaf698142f2aee76d6587f4a740
+msgid "常见属性："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:207
+#: b00ad18b5202405b8108ae7ff3781796
+msgid "7.2 SDP 排障顺序"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:220
+#: 399b630528ec4507b921eed66eea4c4a
+msgid ""
+"Sofia-SIP 负责 SDP 的通用解析、生成和 Offer/Answer 辅助；RTP、音视频处理、 媒体资源预留和复杂属性的业务语义仍由 "
+"FreeSWITCH 或应用负责。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:223
+#: a65f0a3bb55847ce93d39e870794cae2
+msgid "8. 传输、定时器和安全注意事项"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 6f731cd31b6b46609f41d48b0a661d9c
+msgid "项目"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 114587a56cf7496ba002aa6757a8de35
+msgid "Sofia-SIP 速记"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 944ca7c67dc54d49a55c4eaf338f2fda
+msgid "UDP/TCP"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: b6c19640aed24135b60640497215ba1f
+msgid "IPv4/IPv6 均支持；默认 UDP 约 1300 字节时尝试 TCP"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: ffdf72f9918c4e7bb3ce5ac39ae7af11
+msgid "TCP 连接"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 7c297e49bdf04efda1cb847b5500fdf4
+msgid "客户端可复用；服务端默认空闲 30 分钟后关闭"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 0871e8a4488d4d83bcf47e6655622ef5
+msgid "TLS/SIPS"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 743d6642025d418a8ca6ad1a2eaf3b22
+msgid "已实现；默认不要求或校验客户端证书"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 0ca90598a91045c3bd64670f65f834ef
+msgid "SIP 定时器"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 0507719b6b234ddb915907b570acb851
+msgid "默认使用 RFC 3261；`T1`、`T2`、`T4` 可配置"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 1cdb206e68244f84be591fbd7d2fa50a
+msgid "Timer C"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: b6bedd049f6845069197f1f1dadcae76
+msgid "已实现，可通过 `NTATAG_TIMER_C()` 调整"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 192597bc3cd84bd2af2be6403112b141
+msgid "非 INVITE"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: b51ec3d647d64f5e9e4db9d1ad2b2f6c
+msgid "可用 `NTATAG_EXTRA_100(1)` 改善临时响应行为"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 10d86ab690c04d3eaf218a08c5584277
+msgid "408 转发"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 67da1d0566984f8aa7bdc0f762a4ce46
+msgid "默认不转发，可通过 `NTATAG_PASS_408(1)` 开启"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:235
+#: 0dffb67a8e6044fd87e6281176bb61fa
+msgid "9. 抓包排障流程"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:257
+#: a9985224279246dfb31e97ceabe808d4
+msgid "常见现象对照："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 9b09f07f6e9d412bb0f3a1aaf68a8908
+msgid "现象"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: d062d605bcd14d34bd9a0ba4a615f8fc
+msgid "优先检查"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: e99ec470d0144d38a909ee725d990d0d
+msgid "请求发出但无响应"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: c4ec1e762c094561a086b63464129293
+msgid "DNS、目标端口、防火墙、`Via`、传输协议"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 53c0a526abd546c9bc3736471a699b49
+msgid "收到 401/407 后循环"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 695ebdbcc88c45029c63c492127334bc
+msgid "`realm`、`nonce`、URI、CSeq、Authorization 算法"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 65e6ec7f15054def80e7b001d4c50c0f
+msgid "180 正常但接不到 200"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: c85b682663ce4aefb02bec2f1cf18138
+msgid "Contact、Route、NAT、代理分支"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 37740e167c584b678e455c7f2b7bebfb
+msgid "200 OK 后对端不认 ACK"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 4ba6e676272a4394b0034091c09c3ae6
+msgid "ACK 的 Request-URI、Route、Call-ID、tag、CSeq"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 21048591b223476aaf34a1243c0721e3
+msgid "通话接通但无声音"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: ec939e34c24743b2b855de9063134478
+msgid "SDP 的 `c=`、`m=`、编解码、RTP 端口和 NAT"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 07a662c3ca5d4a21b767cff9469b794c
+msgid "BYE/INFO/UPDATE 返回 481"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 21fee0f65ce94752a4faa0a497704491
+msgid "Call-ID、From/To tag、对话是否已结束"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: b46ecda5bbbb49e08fdceb88514e7d10
+msgid "SUBSCRIBE 成功但无通知"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: a550a944937b46428221270b9c2bb8fb
+msgid "`Event`、`Accept`、订阅内容和事件包实现"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:269
+#: 65ec755fc487461a81a0aa2e07386bc6
+msgid "10. FreeSWITCH 对应入口"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:271
+#: 07069c17360c40858021dccb655284da
+msgid "本章用于理解协议；需要落实到本仓库代码时，继续查看："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 87da0e7125b44eb6a433a95a024bca8d
+msgid "目标"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 2ba8b9abcd864495a7ff53ed796aead4
+msgid "文档/代码"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 04313f3db25d4139b67b5a2f628c714b
+msgid "Sofia-SIP 与 `mod_sofia` 的关系"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: a99cb8e9319c40cfa588fa2f66361ff3
+msgid ""
+"[Tech Stack — Sofia-SIP](../1.architecture/02-tech-stack.md#sofia-sip-"
+"library)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 2e01168a34a54626b8a850ad3b1908ac
+msgid "UDP/TCP 到 NUA 的报文路径"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 9380365d5faf4cdcbf8ff427d0b464e9
+msgid ""
+"[Workflows — packet path](../1.architecture/05-workflows.md#packet-path-"
+"udptcp-to-nua)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 07345c5599914b8c8bdd9d6d437d0ea2
+msgid "SIP endpoint 模块"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 398b7571c1f04c779a8b02b37f997a44
+msgid "`src/mod/endpoints/mod_sofia/`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 134e894250b3481bb6faa7ef70d1c808
+msgid "SIP profile 配置"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 4638306093084a54b44881dbc84a70c9
+msgid "`conf/vanilla/sip_profiles/`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 892a50a9ac674a44b85273e6ce251d43
+msgid "SIP 单元测试"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:8
+#: 9396c56ea55a466ba5e645c531da8662
+msgid "`tests/unit/`、`src/mod/endpoints/mod_sofia/test/`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:281
+#: 938ed9c7a9d84217be5a70271bdd1d5c
+msgid "参考资料"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:283
+#: 12c3f0f64140454aa64998f0e25c453a
+msgid ""
+"[Sofia-SIP: SIP and SDP Protocol Features](https://sofia-"
+"sip.sourceforge.net/refdocs/sofia_sip_conformance.html)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:284
+#: 58148f52a6b347468465bd9b29ef01e1
+msgid ""
+"[RFC 3261: SIP: Session Initiation Protocol](https://www.rfc-"
+"editor.org/rfc/rfc3261)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:285
+#: 5abaa09d706e4d3eabd94bdc58c8afb9
+msgid "[FreeSWITCH Tech Stack](../1.architecture/02-tech-stack.md)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/01-sip-protocol-quick-reference.md:286
+#: bcd70f9a538f4413a2c5dfb96c6a59e6
+msgid "[FreeSWITCH Workflows](../1.architecture/05-workflows.md)"
+msgstr ""
+
+#~ msgid ""
+#~ "[Tech Stack — Sofia-SIP](../1.architecture/03"
+#~ "-tech-stack.md#sofia-sip-library)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "[Workflows — packet "
+#~ "path](../1.architecture/06-workflows.md#packet-path-"
+#~ "udptcp-to-nua)"
+#~ msgstr ""
+
+#~ msgid "[FreeSWITCH Tech Stack](../1.architecture/03-tech-stack.md)"
+#~ msgstr ""
+
+#~ msgid "[FreeSWITCH Workflows](../1.architecture/06-workflows.md)"
+#~ msgstr ""
+

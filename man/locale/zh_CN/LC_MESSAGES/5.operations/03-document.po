@@ -1,0 +1,1202 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Zoom Video Communications
+# This file is distributed under the same license as the FreeSWITCH package.
+# Walter Fan <walter.fan@ustc.etu>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version:  FreeSWITCH\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-18 16:34+0800\n"
+"PO-Revision-Date: 2026-08-30 23:13+0800\n"
+"Last-Translator: Walter Fan <walter.fan@ustc.etu>\n"
+"Language: zh_CN\n"
+"Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:1
+#: 039482d8f2794ef58d3f73a332f02b26
+msgid "12. Documentation Process"
+msgstr "12. 文档流程"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:5
+#: 9a8e1d0362034b07bb6227c05879c852
+#, fuzzy
+msgid ""
+"How this Project Knowledge Base is authored, refreshed, translated, and "
+"published. Operator configuration stays in the [FreeSWITCH Users "
+"Manual](https://developer.signalwire.com/freeswitch/) — this PKB does not"
+" replace it. Historical wiki: [FreeSWITCH "
+"Explained](https://developer.signalwire.com/freeswitch/FreeSWITCH-"
+"Explained/) and [Confluence](https://freeswitch.org/confluence/). "
+"Pipeline commands for Autotools/CI live in "
+"[Build](../4.development/02-build.md); this page is the PKB maintenance "
+"contract."
+msgstr ""
+"本项目知识库如何撰写、刷新、翻译与发布。运维配置以 [FreeSWITCH "
+"用户手册](https://developer.signalwire.com/freeswitch/) 为准 — 本 PKB 并不取代它。历史 "
+"wiki：[FreeSWITCH Explained](https://developer.signalwire.com/freeswitch"
+"/FreeSWITCH-Explained/) 与 "
+"[Confluence](https://freeswitch.org/confluence/)。Autotools/CI 的流水线命令见 "
+"[构建](08-build.md)；本页是 PKB 维护契约。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:7
+#: 7808ac811cc44f25be1982a90ec21293
+msgid "Purpose"
+msgstr "目的"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:9
+#: 4f6cd957e83d4a8ea658973a442754d7
+#, fuzzy
+msgid ""
+"Keep a bilingual, AI-readable map of **this git tree** so humans and "
+"assistants can locate code, understand architecture, and verify changes. "
+"English MyST under `man/` is the working source. Deterministic scripts "
+"refresh facts into `man/_generated/`. Humans (with targeted AI) merge "
+"those facts into numbered topic pages plus [C "
+"Runtime](../1.architecture/06-c-runtime.md). Sphinx HTML and AgentBox are"
+" derived outputs."
+msgstr ""
+"为 **本 git 树** 保留一份双语、可供 AI 阅读的地图，方便人和助手定位代码、理解架构并核对变更。`man/` 下的英文 MyST "
+"是工作源。确定性脚本把事实刷新到 `man/_generated/`。人类（配合定向 AI）把这些事实合并进编号页面 "
+"`00`–`12`。Sphinx HTML 和 AgentBox 是派生输出。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:11
+#: 3aa292b47db74d7f894bb58f1737d1d2
+msgid ""
+"`PKB_ROOT` is **`man/` at the repo root**. `docs/man/` is Unix man-page "
+"source (`freeswitch.1.ronn`), not the PKB."
+msgstr ""
+"`PKB_ROOT` 是 **仓库根目录下的 `man/`**。`docs/man/` 是 Unix man page "
+"源（`freeswitch.1.ronn`），不是 PKB。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:13
+#: e1d28ff4ae8f43ad861413103dd61ed9
+msgid "Source of Truth"
+msgstr "事实来源"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 5d06f460b691491c83b3c8d27e46752e
+msgid "Layer"
+msgstr "层级"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 6a0dfd2bbe9b479b8fe5f2806298c3c7
+msgid "Path"
+msgstr "路径"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: c4115d107d8b485081ae0462bdff6d64
+msgid "Status"
+msgstr "状态"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: e194eacb0a0244769905e0b59ad2fe55
+msgid "**English source (canonical)**"
+msgstr "**英文源（权威）**"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 2018992d96b246cba968d4dd6ee41096
+#, fuzzy
+msgid ""
+"`man/<topic>/*.md`, `man/7.appendix/6.decisions/adr/`, "
+"`man/7.appendix/6.decisions/changes/`"
+msgstr "`man/*.md`, `man/adr/`, `man/changes/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 3b1d15164e0246edae78c6577dbee626
+msgid "Implemented. Edit these pages."
+msgstr "已落地。编辑这些页面。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 6593a3f5b1594503949366cb9b3fd62a
+msgid "**Navigation / toctree**"
+msgstr "**导航 / toctree**"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 0ccd497181fe43689a3b4e4a259e5880
+msgid "`man/index.md`"
+msgstr "`man/index.md`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 6878d10289dd48c98de57782e461d432
+msgid "Implemented. Sphinx `master_doc`."
+msgstr "已落地。Sphinx `master_doc`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: a9fe152832d44190a7ee82c79c56d368
+msgid "**Sphinx config / theme**"
+msgstr "**Sphinx 配置 / 主题**"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 3fc393c5779549a2b13d5f60b2dc7155
+msgid "`man/conf.py`, `man/_templates/layout.html`, `man/_static/custom.css`"
+msgstr "`man/conf.py`, `man/_templates/layout.html`, `man/_static/custom.css`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 4092f67ff6234a7c9f92b0c2ce0d4610
+msgid "Implemented. Language switcher + PKB metadata footer injection."
+msgstr "已落地。语言切换器 + PKB 元数据页脚注入。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 7ac46fa6949d4458bd2838891b1028e8
+msgid "**PKB Python deps**"
+msgstr "**PKB Python 依赖**"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 02c8bb88335a4dc29d5c914b227d9009
+msgid "`man/pyproject.toml`, `man/requirements.txt`"
+msgstr "`man/pyproject.toml`, `man/requirements.txt`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 0481a7c1ce9541648c05888d5eb4dcd2
+msgid ""
+"Implemented. **Sphinx/MyST/sphinx-intl only** — not FreeSWITCH runtime "
+"deps (`configure.ac`)."
+msgstr "已落地。**仅 Sphinx/MyST/sphinx-intl** — 不是 FreeSWITCH 运行时依赖（`configure.ac`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 8de66774a29042989496abc5af69a113
+msgid "**zh_CN gettext catalogs**"
+msgstr "**zh_CN gettext 目录**"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 5f2a62208ad04e248bf807146f596e45
+msgid "`man/locale/zh_CN/LC_MESSAGES/`"
+msgstr "`man/locale/zh_CN/LC_MESSAGES/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: c29e6da572504332ab3e8d45158c1aa6
+msgid ""
+"**Implemented.** One `.po` per source file (`gettext_compact = False`). "
+"Refresh with `make gettext && make intl-update`, then fill empty `msgstr`"
+" via polib (`scripts/i18n_apply_json.py`). Compiled `.mo` files are "
+"gitignored."
+msgstr ""
+"**已落地。** 每个源文件一份 `.po`（`gettext_compact = False`）。用 `make gettext && make"
+" intl-update` 刷新，再用 polib（`scripts/i18n_apply_json.py`）填空 `msgstr`。编译出的 "
+"`.mo` 已加入 gitignore。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 7752c216d3bf440c95a6f719df3d0e6a
+msgid "**Sidecar artifacts**"
+msgstr "**附属产物**"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 387a1a227be84d379e655a1685f0c770
+msgid "`man/_generated/`"
+msgstr "`man/_generated/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 0175cb22063e49b3adc55c8596891911
+msgid ""
+"Implemented. Scripts write here. `conf.py` `exclude_patterns` includes "
+"`_generated`. Do **not** treat these as published pages."
+msgstr ""
+"已落地。脚本写到这里。`conf.py` 的 `exclude_patterns` 包含 "
+"`_generated`。**不要**把它们当成已发布页面。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: d08613e3be6f422a90105786441d0c90
+msgid "**Built HTML**"
+msgstr "**构建出的 HTML**"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 25ff2374ca0a4f55b7ba780dfa1ad663
+#, python-brace-format
+msgid "`man/_build/site/{en,zh}/` plus landing `index.html`"
+msgstr "`man/_build/site/{en,zh}/` 以及落地页 `index.html`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: dba1971bb075444d8f2c0fc7c6dc37e4
+msgid ""
+"Derived. Not yet built in this tree (`_build/` is gitignored and absent)."
+" Never edit HTML by hand."
+msgstr "派生。本仓库里尚未构建（`_build/` 被 gitignore 且当前不存在）。切勿手工改 HTML。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 509aac89661e4d078495db4bedffe7c6
+#, fuzzy
+msgid "**Published HTML**"
+msgstr "**构建出的 HTML**"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 8a570982782046f5992e8eedf70702f8
+#, python-brace-format
+msgid "`_build/site/{en,zh}/`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: ced4b26c2b3b491e8744c9d08ccdfc37
+msgid ""
+"Generated locally; deployment configuration is maintained outside this "
+"tree."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: a2139267c0cf4aee8bcd5ca6787ce906
+msgid "**Review / confidentiality**"
+msgstr "**评审 / 密级**"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 44c54e77af734e10b96ca5163680a055
+msgid "`<!-- PKB-metadata -->` footer on each page"
+msgstr "每页的 `<!-- PKB-metadata -->` 页脚"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: eee3169d34ad4f6d9e6cb5ab450396a1
+msgid ""
+"Implemented in source. `review_status` is **`pending` on every page**. AI"
+" never sets `approved`. `confidentiality: L1` on current pages."
+msgstr ""
+"已在源文件落地。每页的 `review_status` 都是 **`pending`**。AI 从不设 `approved`。当前页面 "
+"`confidentiality: L1`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 306b4035e218404e90bc14a2ceb7f4f5
+msgid "**Product / operator docs**"
+msgstr "**产品 / 运维文档**"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 64a257533871472296d09ff3e2afc63c
+msgid ""
+"[Users Manual](https://developer.signalwire.com/freeswitch/), Explained, "
+"Confluence, `docs/man/`"
+msgstr "[用户手册](https://developer.signalwire.com/freeswitch/)、Explained、Confluence、`docs/man/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 841dfe84f3c74f39b63b014ded094675
+msgid ""
+"Out of band. PKB links to the Users Manual; it is not a second copy of "
+"parameter tables."
+msgstr "带外资料。PKB 链接到用户手册，而不是再抄一份参数表。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:28
+#: 42d4135acf884a7ab7f62be167a47d47
+msgid ""
+"**Rule:** change English Markdown first. Catalogs follow English. HTML "
+"follows catalogs + English. AgentBox follows stripped HTML."
+msgstr "**规则：** 先改英文 Markdown。目录跟随英文。HTML 跟随目录 + 英文。AgentBox 跟随剥离后的 HTML。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:30
+#: 234bac0220734d9bb9164aac407aa874
+msgid "Advisory Update Loop"
+msgstr "建议更新循环"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:32
+#: 066269b41d8849ad985022a9d52592d4
+msgid "Code, Autotools, CI, or XML-config changes land in the repo."
+msgstr "代码、Autotools、CI 或 XML 配置变更合入仓库。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:33
+#: dd03af4f5e3d4a01a0ef22e66ff1d3d0
+msgid ""
+"Run `cd man && make pkb-check` (`scripts/check_pkb_staleness.py`). "
+"Optionally `make pkb-check-i18n` once `.po` files exist."
+msgstr ""
+"运行 `cd man && make pkb-check`（`scripts/check_pkb_staleness.py`）。一旦存在 "
+"`.po` 文件，可再跑 `make pkb-check-i18n`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:34
+#: 576e24a22ea34ea99b2c89afbb78e940
+msgid ""
+"A human decides which English PKB pages need a refresh this PR / sprint "
+"(do not regenerate everything)."
+msgstr "由人决定本 PR / 迭代需要刷新哪些英文 PKB 页面（不要整套重生成）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:35
+#: ff4485dc222748cd92df8730bb50ba17
+msgid ""
+"Run Level 1 scripts first (`make pkb-level1`). Merge facts from "
+"`_generated/` into the affected human pages. Use a targeted LLM pass only"
+" for Level 2 synthesis (diff + those pages + the sidecar artifacts — not "
+"the whole tree)."
+msgstr ""
+"先跑 Level 1 脚本（`make pkb-level1`）。把 `_generated/` 里的事实合并进受影响的人工页面。Level 2 "
+"综合只用定向 LLM（diff + 那些页面 + 附属产物 — 不是整棵树）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:36
+#: 7ca895f5a0214dbe829f4c81061d6d12
+msgid ""
+"Stamp the metadata footer (`last_updated`, `commit`, `updated_by`). Leave"
+" `review_status: pending` unless a human is approving."
+msgstr ""
+"盖上元数据页脚（`last_updated`、`commit`、`updated_by`）。除非人类正在批准，否则保持 "
+"`review_status: pending`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:37
+#: 40c24c253acd40a2b083706d1cb4b413
+msgid ""
+"After English wording changes: run the explicit catalog refresh (`make "
+"gettext && make intl-update`), fill new `msgstr` values, then rebuild "
+"HTML. Normal HTML builds consume the tracked catalogs and do not rewrite "
+"them."
+msgstr ""
+"英文措辞更改后：运行显式目录刷新（`make gettext && make intl-update`），填写新的 `msgstr` "
+"值，然后重新构建 HTML。普通 HTML 构建会使用已跟踪的目录，不会重写它们。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:38
+#: 9c61280f30b14aff8935ef6454f33ec3
+msgid "A human reviews (`make pkb-review-status`) before any AgentBox publish."
+msgstr "任何 AgentBox 发布前，由人评审（`make pkb-review-status`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:40
+#: 7583ffdc61ac4050b71d69086cf6fe8d
+msgid "Cost-Aware Update Strategy"
+msgstr "成本敏感的更新策略"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 2d663999fdcb4cdb94b5f23db6e1d38f
+msgid "Strategy"
+msgstr "策略"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 64c5dc28f36546a58dec2f257b7d9da3
+msgid "Guidance"
+msgstr "指引"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: d4d0d624879b4739b7c71279ec71956e
+msgid "Rule first, LLM second"
+msgstr "规则优先，LLM 其次"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 20b8c60bdf7d4d59a8b03a2bae8b1a02
+msgid ""
+"`make pkb-check` before any `/PKB-*` rewrite. Spend zero tokens until the"
+" report flags likely stale pages."
+msgstr "任何 `/PKB-*` 重写之前先 `make pkb-check`。报告标出可能过时的页面之前，不消耗 token。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: e0ee6edbdbd34e73a843a5104e2050b1
+msgid "Minimal context"
+msgstr "最小上下文"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 3539f68695b64c11be8ac2c560abc692
+#, fuzzy
+msgid ""
+"Feed the model only the git diff, the affected `man/<topic>/*.md` "
+"page(s), and the matching `_generated/` artifact. Do not dump `src/` or "
+"`src/mod/`."
+msgstr ""
+"只把 git diff、受影响的 `man/*.md` 页面，以及对应的 `_generated/` 产物喂给模型。不要倾倒 `src/` 或 "
+"`src/mod/`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 4adebc8a44f6408095f761477f8b54af
+msgid "Tiered updates"
+msgstr "分层更新"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: f9044ab2053e43c5ac8d4250afd81c96
+msgid ""
+"Level 1 = scripts. Level 2 = bounded LLM merge. Level 3 = human rationale"
+" (ADR, product intent)."
+msgstr "Level 1 = 脚本。Level 2 = 有边界的 LLM 合并。Level 3 = 人类理由（ADR、产品意图）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 9ddf5902911143e49f65917fed8bf4dc
+msgid "Batch instead of thrash"
+msgstr "批量更新，避免反复折腾"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 67333235469244a6984843af4f9a8ebc
+msgid ""
+"Refresh per PR, sprint, or release — not after every FreeSWITCH commit. "
+"This history is large."
+msgstr "按 PR、迭代或发版刷新 — 不要每个 FreeSWITCH 提交都刷。这段历史很长。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:49
+#: c9007615561e4469991e7f351abb5c80
+msgid "Deterministic Script Toolbox"
+msgstr "确定性脚本工具箱"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:51
+#: e9924d5a676f4bceb6f49ce89150ff08
+msgid ""
+"All paths below exist under `man/scripts/`. There is **no** in-tree "
+"`init_pkb.sh` (that helper lives in the PKB skill and already ran at "
+"scaffold time)."
+msgstr ""
+"下列路径都在 `man/scripts/` 下。仓库内 **没有** `init_pkb.sh`（该助手在 PKB skill "
+"里，脚手架时已经跑过）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:53
+#: 6ae017884bed42d1b5a1f468148631ea
+#, fuzzy
+msgid ""
+"Scripts write sidecar files under `man/_generated/` with an `<!-- Auto-"
+"generated by … -->` header. They **must not** overwrite human-maintained "
+"pages (`01-overview.md` … `03-document.md`, `index.md`, appendices). "
+"Inferred meaning stays as `[NEEDS INPUT: …]`."
+msgstr ""
+"脚本把附属文件写到 `man/_generated/`，带 `<!-- Auto-generated by … -->` 头。它们 **不得** "
+"覆盖人工维护的页面（`00-overview.md` … `12-document.md`、`index.md`、附录）。推断出的含义保持 "
+"`[NEEDS INPUT: …]`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 58d3baee18384788baf20f133e39cd4c
+msgid "Script"
+msgstr "脚本"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: f8d3ea19643343849fe5770e66e79fc4
+msgid "Role"
+msgstr "职责"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 6201744f38ce430eae1444083d9ca12f
+msgid "Level"
+msgstr "级别"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 7b52c892326642348e5deb2a5fcc8576
+msgid "Notes on this repo"
+msgstr "本仓库说明"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 92f6c135a30341b29fc3cbca283d6bcf
+msgid "`check_pkb_staleness.py`"
+msgstr "`check_pkb_staleness.py`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: d5c2ad3846b74e63b9e720b78aa52c89
+msgid "Freshness report (`info` / `warning` / `critical`)"
+msgstr "新鲜度报告（`info` / `warning` / `critical`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 0354bac86fee4fd1a6124637af8e70cc 1c72e4d039aa47808774bfde7a09ac05
+#: 1f5cd1a650594c189eefc1eee5d72538 205ae0c881144350aedaf3a941bc9e9a
+#: 24edcbe5d0c64110b2616444b3ac2f2e 43953d30bbbe413bb9488ffd126af44f
+#: 46ececa7fd704c58a29e64ca5286c349 4f57a951597b4141bb0a7510a612fd2c
+#: 5d047ea58fa646bd90ba7f97783db8d3 83aa0769888c4150949d2086b8fe0ede
+#: 89615f0176504c89a2d9bafa9c1997bd 9a5d2ce0268e452f8c19a7767d97b687
+#: 9d2f6ab6517d497095c7df52c3dc6b0d a6039f9cc366406d97b9648bec844e51
+#: d8e4422f5dbc4e529e25d2af16c08e4b
+msgid "1"
+msgstr "1"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: c0c87e8aa92043f68f3d8b3baeabf8bb
+msgid ""
+"`make pkb-check`. Default source→doc map is generic (JS/Go/Python). No "
+"`man/pkb-source-doc-map.json` yet, so C/`src/mod/`/`conf/` drift is "
+"under-signaled."
+msgstr ""
+"`make pkb-check`。默认的源→文档映射是通用的（JS/Go/Python）。尚无 `man/pkb-source-doc-"
+"map.json`，因此 C/`src/mod/`/`conf/` 的漂移信号偏弱。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 3daf2da94def4081afb6694afa6f8c69
+msgid "`update_doc_level1.sh`"
+msgstr "`update_doc_level1.sh`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: b054d095209347ec8cd5051f79033181
+msgid ""
+"Orchestrates repo-map, tech-stack, index candidate, staleness, optional "
+"i18n"
+msgstr "编排仓库地图、技术栈、index 候选、过期检查、可选 i18n"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 9b1b30d4c8f040fa837a212f9602cc30
+msgid "`make pkb-level1`. Writes `level1-refresh-summary.generated.md`."
+msgstr "`make pkb-level1`。写出 `level1-refresh-summary.generated.md`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: aec11ad90c2943c9aa6709ee435060ab
+msgid "`gen_repo_map.sh`"
+msgstr "`gen_repo_map.sh`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: c6bbb1de7e9d421f80c84920612c2943
+msgid "Directory tree snapshot"
+msgstr "目录树快照"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 1d13862a57b14a2c9f7c94c5f75ad4a8
+#, fuzzy
+msgid "Input for [Repository Map](../1.architecture/03-repo-map.md)."
+msgstr "供 [仓库地图](04-repo-map.md) 使用。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 8e02d000b0174f6b98578f4f9d92bfe9
+msgid "`gen_tech_stack.py`"
+msgstr "`gen_tech_stack.py`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: d42e496ce1814ef48315b4560207b705
+msgid "Manifest version inventory"
+msgstr "清单版本盘点"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 815c1c8de5e341d5b4476f5a65567967
+msgid ""
+"Sees `man/pyproject.toml` (Sphinx). Does **not** parse `configure.ac`. "
+"Human page still owns Autotools floors."
+msgstr ""
+"能看到 `man/pyproject.toml`（Sphinx）。**不会** 解析 `configure.ac`。Autotools "
+"下限仍由人工页面负责。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 0acb973abec44dea912dc99fd3de3f73
+msgid "`gen_index.py`"
+msgstr "`gen_index.py`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 518f45c33cda4e3e964c8084d2ed425b
+msgid "`index.md` **candidate**"
+msgstr "`index.md` **候选稿**"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 6fd9bc45eee04e4ca564f70dc3de6bf5
+msgid "Compare to human `man/index.md`; do not replace the toctree blindly."
+msgstr "与人工维护的 `man/index.md` 对照；不要盲目替换 toctree。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 43c6dbcd5ed64c5bacc3fd212b02beac
+msgid "`extract_api_signatures.py`"
+msgstr "`extract_api_signatures.py`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 452e678d3eea41e28c5576fbca17c543
+msgid "Tauri/REST heuristic extract"
+msgstr "Tauri/REST 启发式抽取"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 353edbb0c49a470fb0a67e14b1b2d060 53c2e1297d6a4d12b5842b80d3340dcf
+msgid "1 input"
+msgstr "1 输入"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 8c92c60201ad4ce2bb7a410c4e5daed0
+#, fuzzy
+msgid ""
+"Already ran: `_generated/04-data-and-api.signatures.generated.md` is "
+"empty of REST/Tauri. ESL/Verto/XML stay human-authored in [Data and "
+"API](../1.architecture/04-data-and-api.md)."
+msgstr ""
+"已跑过：`_generated/05-data-and-api.signatures.generated.md` 里没有 "
+"REST/Tauri。ESL/Verto/XML 仍由人工写在 [数据与 API](05-data-and-api.md)。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 5f62e8cfe9dc422fb2ec2a1b0538af35
+msgid "`gen_dep_graph.py`"
+msgstr "`gen_dep_graph.py`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 241cf70dbdc84eb49569ffcbf51590dd
+msgid "Import graph (JS/TS/Py/Go/Rust)"
+msgstr "导入图（JS/TS/Py/Go/Rust）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: bf17ef33b4c146b1b1f71c3da6db5523
+msgid "Weak signal for this C tree. Optional."
+msgstr "对本 C 代码树信号弱。可选。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 2de38087ce2141d6a62b811ac061cb83
+msgid "`gen_changelog.sh`"
+msgstr "`gen_changelog.sh`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: dbdb6b2f708a46b0b7ecf2993aabe1f0
+#, fuzzy
+msgid "`git log` draft → `_generated/02-build.changelog.generated.md`"
+msgstr "`git log` 草稿 → `_generated/08-build.changelog.generated.md`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: a442b1f00d934b97bcb4e76bd59a2741
+msgid ""
+"`make changelog-draft`. **Slow on this history.** Pass `--range` (e.g. "
+"`HEAD~20..HEAD` or `v1.10.12..HEAD`). Makefile target does not forward "
+"`--range`; invoke the script directly."
+msgstr ""
+"`make changelog-draft`。**在这段历史上很慢。** 传入 `--range`（例如 `HEAD~20..HEAD` 或 "
+"`v1.10.12..HEAD`）。Makefile 目标不会转发 `--range`；请直接调用脚本。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: aa09bc2374a64d45b32b2059a67da620
+msgid "`check_translation_sync.py`"
+msgstr "`check_translation_sync.py`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: c90140666eb844bdaa62fc7b9c15451d
+msgid "zh_CN catalog drift"
+msgstr "zh_CN 目录漂移"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 91a22bdd751b4434830963bfce3c9b2c
+msgid "`make pkb-check-i18n`. Flags empty/fuzzy/stale `.po` after English edits."
+msgstr "`make pkb-check-i18n`。在英文源更新后标记空译文、fuzzy 或过期的 `.po`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 800d92f6e24e4d36b0f3f33c3d1b0f3f
+msgid "`pkb_review_status.py`"
+msgstr "`pkb_review_status.py`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 5d1ffe9c3ee245b5b7b8b4cc65c0a503
+msgid "Review/confidentiality dashboard"
+msgstr "评审/密级仪表盘"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 4ce2257b414a475dbbce019ed98c15b5
+msgid ""
+"`make pkb-review-status`. Currently all `pending`, score `0`. `--strict` "
+"fails while any page is pending."
+msgstr ""
+"`make pkb-review-status`。当前全部 `pending`，分数 `0`。只要有页面仍是 pending，`--strict`"
+" 就会失败。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 805482f6a7484940a122dca389948a72
+msgid "`strip_confidential.py`"
+msgstr "`strip_confidential.py`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: ed9e83f892c04c56a1343788729d0f8e
+msgid "Drop `L3+` pages from `_build/site/`"
+msgstr "从 `_build/site/` 去掉 `L3+` 页面"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: b0688266c3b64f209f6b180b42ed01cf
+msgid ""
+"`make strip-confidential` (default `CONF_MIN_LEVEL=L3`). Runs between "
+"HTML build and AgentBox packaging."
+msgstr ""
+"`make strip-confidential`（默认 `CONF_MIN_LEVEL=L3`）。在 HTML 构建与 AgentBox "
+"打包之间运行。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 8459248073e04b088b00ae25e139fc33
+msgid "`gen_agentbox_files.py`"
+msgstr "`gen_agentbox_files.py`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 70eeee1ea19449fdad29c32ac3df7be7
+msgid "Encode site files for an external publisher"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: dde680e93c43428b87aed5299d52873c
+msgid "Optional helper; no in-tree AgentBox configuration is shipped."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: dfd7a235d2ab49a2ac91fde633a3b8c9
+msgid "`render_landing.py`"
+msgstr "`render_landing.py`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 6725a71dc47f4ecba38f16193737325c
+msgid "Bilingual `_build/site/index.html`"
+msgstr "双语 `_build/site/index.html`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 8fe7899e13534b369417a70a43c2901f
+msgid "`make build-landing` (also part of `html-all`)."
+msgstr "`make build-landing`（也是 `html-all` 的一部分）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: ec8a9e41d2ae45ddad8f85b871b24db0
+msgid "`translate_po.py`"
+msgstr "`translate_po.py`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: d10d7e04be0740aa8fb5232dcb64e253
+msgid "Optional dictionary fill of `.po` `msgstr`"
+msgstr "可选：用词典批量填写 `.po` 的 `msgstr`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 6799ea4f26854f45b1244a389bec19bc
+msgid ""
+"`make translate-zh`. This tree uses `make compile-intl` to compile "
+"catalogs; `scripts/i18n_apply_json.py` (polib) can apply reviewed JSON "
+"translations."
+msgstr ""
+"`make translate-zh`。本树使用 `make compile-intl` "
+"编译目录；`scripts/i18n_apply_json.py`（polib）可应用经过审阅的 JSON 翻译。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 97b3eab2f786486fa9dffd86cc19a535
+msgid "`i18n_apply_json.py`"
+msgstr "`i18n_apply_json.py`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 244d860d746a47508ee24e4b0d617f86
+msgid "Apply `msgid`→`msgstr` JSON onto a `.po` via polib"
+msgstr "用 polib 把 `msgid`→`msgstr` 的 JSON 写进 `.po`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 78be317feb3141539be1f2988c172dbe
+msgid "Preferred over editing `.po` by hand or `sed`."
+msgstr "优先于手改 `.po` 或用 `sed`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: db4f970bc0594d00848f4011ae10c1b6
+msgid "`i18n_identity_and_dump.py`"
+msgstr "`i18n_identity_and_dump.py`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 46dbafb089684585924c6a780f101ae0
+msgid "Copy code/URL msgids; dump remaining English as JSON"
+msgstr "原样拷贝代码/URL 的 msgid；将其余英文导出为 JSON"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 9ccc8a80c450460f80a49bb934d36b01
+msgid "Input for a translation pass."
+msgstr "供一轮翻译使用的输入。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: c894e2004055486599551467a2c5f227
+msgid "`validate_template_links.py`"
+msgstr "`validate_template_links.py`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: b9ac320d6d9146fa89b0e7621086a397
+msgid "Stale numbering / broken relative links"
+msgstr "过时编号 / 损坏的相对链接"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 379da4093f164d0d8ffa0507fc74f304
+msgid "Skill-side checker copied in-tree."
+msgstr "技能侧检查器已拷入本仓库。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:75
+#: 3cad3f49c1c54fada3f7821bc6adb84d
+msgid ""
+"Shared helpers (not standalone Make targets): `generated_output.py`, "
+"`generated_output.sh`."
+msgstr "共享助手（不是独立 Make 目标）：`generated_output.py`、`generated_output.sh`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:77
+#: c1cb07f8eef54929af2585a39aced76d
+msgid "Three-Level Update Policy"
+msgstr "三级更新策略"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:79
+#: 9243bd679d1e4fb6af5f717bdb09581e
+msgid ""
+"**Level 1 — Automatic (zero token):** tree snapshots, Sphinx-dep "
+"inventory, index candidate, staleness/i18n reports, changelog draft, "
+"confidential strip, AgentBox `files.ts`. Run `make pkb-level1` (and the "
+"specific script if you only need one artifact). Stop if the sidecar is "
+"enough for a mechanical merge (path rename, version bump)."
+msgstr ""
+"**Level 1 — 自动（零 token）：** 树快照、Sphinx 依赖盘点、index 候选、过期/i18n 报告、changelog "
+"草稿、密级剥离、AgentBox `files.ts`。跑 `make pkb-"
+"level1`（若只要一件产物则跑对应脚本）。若附属产物已足够做机械合并（路径改名、版本号），就停。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:80
+#: c87d2e83651a4172a2d088d6b97cf34b
+#, fuzzy
+msgid ""
+"**Level 2 — LLM-assisted:** new/removed modules, ESL/event contract "
+"wording, build/CI narrative, workflow traces. Handoff package: git diff +"
+" the published page(s) + only the relevant `_generated/` files (for "
+"example `03-repo-map.generated.md` into [Repository "
+"Map](../1.architecture/03-repo-map.md), `02-tech-stack.generated.md` into"
+" [Tech Stack](../1.architecture/02-tech-stack.md), changelog draft into "
+"[CHANGELOG](../7.appendix/01-changelog.md) / "
+"[Build](../4.development/02-build.md)). Set `review_status: pending` "
+"after a substantive rewrite."
+msgstr ""
+"**Level 2 — LLM 辅助：** 新增/删除模块、ESL/事件契约措辞、构建/CI 叙述、工作流追踪。交接包：git diff + "
+"已发布页面 + 仅相关 `_generated/` 文件（例如把 `04-repo-map.generated.md` 合进 [仓库地图](04"
+"-repo-map.md)，把 `03-tech-stack.generated.md` 合进 [技术栈](03-tech-stack.md)，把"
+" changelog 草稿合进 [CHANGELOG](CHANGELOG.md) / [构建](08-build.md)）。实质性改写后设 "
+"`review_status: pending`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:81
+#: 01e712774177499489c039f7eb336be4
+#, fuzzy
+msgid ""
+"**Level 3 — Human-led:** ADRs (`man/7.appendix/6.decisions/adr/`; none "
+"recorded yet beyond the template), change proposals "
+"(`man/7.appendix/6.decisions/changes/`), product direction, “why we load "
+"this module.” AI formats and cross-links; it does not invent rationale."
+msgstr ""
+"**Level 3 — 人类主导：** "
+"ADR（`man/adr/`；除模板外尚未记录）、变更提案（`man/changes/`）、产品方向、“我们为什么加载这个模块”。AI "
+"负责排版和交叉链接；不编造理由。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:83
+#: 2c9ab5784ef14458bb520e39b77430c5
+msgid "Translation and Build"
+msgstr "翻译与构建"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:85
+#: 277d9498ef854c31a261a4875f64bb41
+msgid ""
+"English HTML and zh_CN `.po` catalogs are implemented. Rebuild Chinese "
+"HTML after catalog edits."
+msgstr "英文 HTML 与 zh_CN `.po` 目录均已落地。改完目录后请重建中文 HTML。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:104
+#: c78c152567114b06bdce7dd0d1854aea
+msgid "AgentBox (optional, **wired, not yet published**):"
+msgstr "AgentBox（可选，**已接线，尚未发布**）："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:112
+#: a0a1c9abe73f4ee784db0d2d53da1e3f
+msgid ""
+"The previous in-tree AgentBox configuration and `functions/` handler have"
+" been removed. Publish generated HTML through the external deployment "
+"flow."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:114
+#: 712ce6a105664e7faaaa1d506954e0c3
+msgid "Suggested Checklist"
+msgstr "建议检查清单"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:116
+#: 42b275c212eb4437981fc18b344e48f6
+msgid "Update the English source page under `man/` first."
+msgstr "先更新 `man/` 下的英文源页面。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:117
+#: f4dd359f3a4f4670b977a6f1a0cf46aa
+msgid ""
+"Run the matching Level 1 script(s) so `_generated/` is current (`make "
+"pkb-level1` for the default set)."
+msgstr "跑对应的 Level 1 脚本，让 `_generated/` 保持最新（默认集合用 `make pkb-level1`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:118
+#: b417136358344a08b597f4d65e104f45
+msgid ""
+"Merge facts into the human page. Keep `[NEEDS INPUT: …]` rather than "
+"inventing rationale. Do not paste the whole sidecar over the narrative."
+msgstr "把事实合并进人工页面。保留 `[NEEDS INPUT: …]`，不要编造理由。不要把整份附属产物贴进叙述。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:119
+#: 6663ad04f1204108a9cf690fd836e799
+msgid ""
+"Refresh the `<!-- PKB-metadata -->` footer: `last_updated`, `commit` "
+"(`git rev-parse --short HEAD`), `updated_by`. Leave `review_status: "
+"pending` and `review_score: 0` unless a human is approving. Never lower "
+"`confidentiality`."
+msgstr ""
+"刷新 `<!-- PKB-metadata -->` 页脚：`last_updated`、`commit`（`git rev-parse "
+"--short HEAD`）、`updated_by`。除非人类正在批准，否则保持 `review_status: pending` 和 "
+"`review_score: 0`。永远不要降低 `confidentiality`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:120
+#: 11dc28f965464a0a9345312fb3c6a814
+msgid ""
+"After English wording changes, refresh zh_CN catalogs (once they exist) "
+"and re-check `make pkb-check-i18n`."
+msgstr "英文措辞变更后，刷新 zh_CN 目录（一旦它们存在）并再跑 `make pkb-check-i18n`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:121
+#: 9dc3c63f104a4d3d929c02b5b8af9f64
+msgid "Rebuild: `make html-en` or `make html-all`."
+msgstr "重建：`make html-en` 或 `make html-all`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:122
+#: 78deedefcdac4ba8b03d5a8020a13922
+msgid ""
+"Verify toctree links, Mermaid, and the language switcher. For a public "
+"drop: `make strip-confidential` then AgentBox gen/deploy."
+msgstr ""
+"核对 toctree 链接、Mermaid 和语言切换器。对外发布：`make strip-confidential`，再做 AgentBox "
+"生成/部署。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:124
+#: e64659bf7570458bb439e881b9d2987a
+msgid "Common Mistakes"
+msgstr "常见错误"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 7d527bc6d74844f2b1642117603a105a
+msgid "Mistake"
+msgstr "错误做法"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 41d5ac04ea6e49ffb1b17af0caa17496
+msgid "Result"
+msgstr "后果"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 0b6c79e60bd040509d92cb6664da7333
+msgid "Fix"
+msgstr "纠正"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: e97d030224c249a7a2b2c1fe0defa5bd
+msgid "Edit `docs/man/` thinking it is the PKB"
+msgstr "把 `docs/man/` 当成 PKB 来改"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 1013227c86bd47728ae870a8785c42ee
+msgid "Wrong tree (Unix man page)"
+msgstr "改错了树（Unix man page）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 42b859718a2b4473abfd2ec6a720736f
+msgid "PKB is `man/` at repo root"
+msgstr "PKB 是仓库根目录的 `man/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: e97174cc6d574e08ad917c21848e17e5
+msgid "Treat `_generated/` or `_build/site/` as source"
+msgstr "把 `_generated/` 或 `_build/site/` 当源"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 51c2c14ae6d347549efabdf9e1919a14
+msgid "Overwrites vanish; HTML is regenerated"
+msgstr "覆盖会消失；HTML 会重新生成"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 260cbe92943b44ea81826dc8e889a1ed
+#, fuzzy
+msgid "Edit `man/<topic>/*.md` only"
+msgstr "只编辑 `man/*.md`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 2d327d1cad7f40128941f2ccbff41934
+#, fuzzy
+msgid "Let Level 1 scripts rewrite `03-repo-map.md` / `index.md`"
+msgstr "让 Level 1 脚本重写 `04-repo-map.md` / `index.md`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 530874750c5f4fafbf424350a1b6172b
+msgid "Human narrative and toctree lost"
+msgstr "人工叙述和 toctree 丢失"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 1f08460655a14902b4ed159c5522ea39
+msgid "Scripts write sidecars; merge by hand"
+msgstr "脚本只写附属产物；人工合并"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 12f49f7facd04cc59dad67135bdbcc33
+msgid "Assume `man/pyproject.toml` is the product stack"
+msgstr "把 `man/pyproject.toml` 当成产品技术栈"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 867e51030e7949f6aee82fde07f638f5
+msgid "Sphinx versions mistaken for FreeSWITCH deps"
+msgstr "把 Sphinx 版本误当成 FreeSWITCH 依赖"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 4e93768e456e4f7ea69a1e38579ac27f
+#, fuzzy
+msgid ""
+"Product floors are in `configure.ac` / [Tech Stack](../1.architecture/02"
+"-tech-stack.md)"
+msgstr "产品下限在 `configure.ac` / [技术栈](03-tech-stack.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: f7cb086f53564eeeadfa1e854086281d
+msgid "Run `make changelog-draft` with no `--range`"
+msgstr "不带 `--range` 跑 `make changelog-draft`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 060368407ad2473da2aa49147dcc960d
+msgid "`gen_changelog.sh` walks a huge git log"
+msgstr "`gen_changelog.sh` 会扫超长 git log"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: f9ea97f8247d45b5909bfb5d956bab43
+msgid ""
+"`bash scripts/gen_changelog.sh --repo-root .. --doc-dir . --range "
+"HEAD~20..HEAD`"
+msgstr ""
+"`bash scripts/gen_changelog.sh --repo-root .. --doc-dir . --range "
+"HEAD~20..HEAD`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: ed10fd60f7f04c849502051b5f0f4f46
+msgid "AI sets `review_status: approved`"
+msgstr "AI 把 `review_status: approved` 设上"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 109bae8b0f174e1eb51a4f9361a205a2
+msgid "False sign-off"
+msgstr "虚假签核"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 84d77f749f3a4798af930cf8a4783fea
+msgid "Only a human may approve; AI keeps `pending`"
+msgstr "只有人可以批准；AI 保持 `pending`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 17aa2d331c324475bc8e529324e2781e
+msgid "Publish without `strip-confidential`"
+msgstr "不跑 `strip-confidential` 就发布"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: b5e79c8edfb547c8827a5226159b84be
+msgid "`L3+` pages could ship (none today; still the gate)"
+msgstr "`L3+` 页面可能被发出去（今天没有；但仍是门禁）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 7e2f8efddb2c41e9bcea9e488f8beb45
+msgid "Use `make publish`, not a raw `abx` after `html-all`"
+msgstr "用 `make publish`，不要在 `html-all` 之后直接跑裸 `abx`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: e95274fc385f49ca954ff34bd64fea28
+msgid "Skip `intl-update` after English edits"
+msgstr "改完英文后跳过 `intl-update`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 2eeb942b4106407896eaa6a163dfd617
+msgid "Chinese pages show stale or English body text"
+msgstr "中文页面正文过期或仍显示英文"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 11f7642c3bf84e32a7f228ce01aca2f0
+msgid "`make gettext && make intl-update`, fill empty `msgstr`, then `html-zh`"
+msgstr "`make gettext && make intl-update`，填空 `msgstr`，再 `html-zh`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 5a03136029a242d9a39aba0d76533397
+msgid "Assume `html-all` refreshes catalogs"
+msgstr "假设 `html-all` 会刷新目录"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: dde509d3ead34341a911ab4eec396f5f
+msgid "A normal build changes no tracked PO source"
+msgstr "普通构建不会修改已跟踪的 PO 源文件"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 94afd910a1dc489c9576b8eae721993d
+msgid "Run `make gettext` and `make intl-update` explicitly before translating"
+msgstr "翻译前显式运行 `make gettext` 和 `make intl-update`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: d0a01e3ec91a429196b76c7c3bd3275c
+msgid "Feed the whole FreeSWITCH tree to an LLM to “refresh docs”"
+msgstr "把整棵 FreeSWITCH 树喂给 LLM 来“刷新文档”"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 4ae73c8e76164098ba80268236ecad01
+msgid "Token burn, shallow pages"
+msgstr "烧 token，页面浅"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md
+#: 9935eadfc3db4b7b9352b5a09ee895d7
+msgid "Staleness report → one page + diff + one artifact"
+msgstr "过期报告 → 一页 + diff + 一份产物"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:139
+#: f979544c96b74cfbbf13f460727c9e89
+msgid "Related Documentation"
+msgstr "相关文档"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:141
+#: a5cf8e2fd4b04ae7a9d03cba46d12ff7
+#, fuzzy
+msgid ""
+"[Build, Release, and Publish](../4.development/02-build.md) — "
+"Autotools/CI plus the short PKB HTML command block"
+msgstr "[构建、发布与上线](08-build.md) — Autotools/CI 以及简短的 PKB HTML 命令块"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:142
+#: b933905dc0b6492a982fc4c1b6adc93d
+msgid ""
+"[C Runtime Framework](../1.architecture/06-c-runtime.md) — `switch_*` "
+"lifetime model"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:143
+#: 84b7d4c640014b92b995fd0e8310c68c
+#, fuzzy
+msgid ""
+"[Tech Stack](../1.architecture/02-tech-stack.md) — product vs PKB Sphinx "
+"deps"
+msgstr "[技术栈](03-tech-stack.md) — 产品依赖 vs PKB Sphinx 依赖"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:144
+#: 0d14aff6285d4d679e8536f3665ba9ab
+#, fuzzy
+msgid "[Repository Map](../1.architecture/03-repo-map.md)"
+msgstr "[仓库地图](04-repo-map.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:145
+#: 56d7bdc53ddc4f47bd7195871d535ed5
+#, fuzzy
+msgid "[Testing](../4.development/03-testing.md)"
+msgstr "[测试](09-testing.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:146
+#: 01a09cf6803b476dbb2c5156388a356a
+#, fuzzy
+msgid "[AI Guide](../7.appendix/5.ai/01-ai-guide.md)"
+msgstr "[AI 指南](ai-guide.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:147
+#: 074e255f0db142a48afa625e9871c3a9
+#, fuzzy
+msgid "[Documentation Changelog](../7.appendix/01-changelog.md)"
+msgstr "[文档变更日志](CHANGELOG.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:148
+#: 5b999d891882483aa913a1e7d5af3d7c
+#, fuzzy
+msgid "[ADR index](../7.appendix/6.decisions/adr/index.md)"
+msgstr "[ADR 索引](adr/index.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:149
+#: 285ba58d98994946a43e1c1f89106ec7
+#, fuzzy
+msgid "[Change proposals](../7.appendix/6.decisions/changes/index.md)"
+msgstr "[变更提案](changes/index.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/5.operations/03-document.md:150
+#: 3c46f534432f47269c8b2ebdacb2f6e3
+msgid "[FreeSWITCH Users Manual](https://developer.signalwire.com/freeswitch/)"
+msgstr "[FreeSWITCH 用户手册](https://developer.signalwire.com/freeswitch/)"
+
+#~ msgid "[C Runtime Framework](13-c-runtime.md) — `switch_*` lifetime model"
+#~ msgstr ""
+
+#~ msgid "**AgentBox function**"
+#~ msgstr "**AgentBox 函数**"
+
+#~ msgid ""
+#~ "`man/agentbox.yaml` slug `freeswitch-doc`; "
+#~ "handler `man/functions/freeswitch-doc/index.ts`"
+#~ msgstr ""
+#~ "`man/agentbox.yaml` 的 slug 为 `freeswitch-"
+#~ "doc`；处理程序 `man/functions/freeswitch-doc/index.ts`"
+
+#~ msgid ""
+#~ "Handler **implemented**. `files.ts` is **not**"
+#~ " present until `make agentbox-gen`. "
+#~ "Publish is a Makefile target, not "
+#~ "a completed deploy."
+#~ msgstr ""
+#~ "处理程序 **已实现**。`files.ts` 在 `make agentbox-"
+#~ "gen` 之前 **不存在**。发布是 Makefile 目标，不是已完成的部署。"
+
+#~ msgid "Encode site → `functions/freeswitch-doc/files.ts`"
+#~ msgstr "把站点编码进 `functions/freeswitch-doc/files.ts`"
+
+#~ msgid "Used by `make agentbox-gen` / `make publish`."
+#~ msgstr "供 `make agentbox-gen` / `make publish` 使用。"
+
+#~ msgid ""
+#~ "Slug is `freeswitch-doc` "
+#~ "(`man/agentbox.yaml`). Bypass strip only by"
+#~ " running `agentbox-gen` pieces by "
+#~ "hand; that is not the intended "
+#~ "path."
+#~ msgstr ""
+#~ "slug 是 `freeswitch-doc`（`man/agentbox.yaml`）。只有手工跑"
+#~ " `agentbox-gen` 各步才会绕过剥离；那不是预定路径。"
+
+#~ msgid ""
+#~ "[C Runtime Framework](../1.architecture/13-c-runtime.md)"
+#~ " — `switch_*` lifetime model"
+#~ msgstr ""
+

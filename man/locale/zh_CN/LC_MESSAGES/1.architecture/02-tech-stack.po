@@ -1,0 +1,1621 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Zoom Video Communications
+# This file is distributed under the same license as the FreeSWITCH package.
+# Walter Fan <walter.fan@ustc.etu>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version:  FreeSWITCH\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-18 16:34+0800\n"
+"PO-Revision-Date: 2026-08-30 23:13+0800\n"
+"Last-Translator: Walter Fan <walter.fan@ustc.etu>\n"
+"Language: zh_CN\n"
+"Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:1
+#: ce95d9bdb6c643369655e31c89dc46ea
+msgid "03. Tech Stack"
+msgstr "03. 技术栈"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:5
+#: a95b99f073c34aaabdc0ea8482dfa162
+#, fuzzy
+msgid ""
+"FreeSWITCH is a **C Autotools** softswitch. There is no `package.json` / "
+"`go.mod` / `Cargo.toml` for the product. `scripts/gen_tech_stack.py` only"
+" found the **PKB Sphinx** manifests under `man/` (see `_generated/02"
+"-tech-stack.generated.md`). Product versions below come from "
+"`configure.ac` `PKG_CHECK_MODULES` / `AC_CHECK_LIB` floors and from "
+"bundled `libs/` headers."
+msgstr ""
+"FreeSWITCH 是 **C Autotools** 软交换。产品没有 `package.json` / `go.mod` / "
+"`Cargo.toml`。`scripts/gen_tech_stack.py` 只在 `man/` 下找到了 **PKB Sphinx** "
+"清单（见 `_generated/03-tech-stack.generated.md`）。下文产品版本来自 `configure.ac` 的 "
+"`PKG_CHECK_MODULES` / `AC_CHECK_LIB` 下限，以及捆绑的 `libs/` 头文件。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:7
+#: 5357a958852f4096a4e963c212c603ab
+msgid "This tree is **1.11.3-dev** (`AC_INIT` in `configure.ac`)."
+msgstr "本源码树为 **1.11.3-dev**（`configure.ac` 中的 `AC_INIT`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:9
+#: 97453bc8ed5142dab81c67f9a67b1eb5
+msgid "Purpose"
+msgstr "目的"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:11
+#: 6591810270b646a9bb92eda6835a7f8e
+#, fuzzy
+msgid ""
+"A threaded C core (`libfreeswitch`) plus loadable DSOs implement "
+"SIP/WebRTC switching, RTP, dialplan, and ESL. DSOs **register** named C "
+"interfaces into core hashes at load; they are not described by an IDL "
+"([Architecture — Loadable module contract](01-architecture.md#loadable-"
+"module-contract)). System libraries (Sofia-SIP, SpanDSP, OpenSSL, libks) "
+"and a few vendored trees (`libs/apr`, `libs/srtp`, `libs/libvpx`, …) "
+"provide portability, crypto, and codecs."
+msgstr ""
+"带线程的 C 核心（`libfreeswitch`）加上可加载 DSO，实现 SIP/WebRTC 交换、RTP、拨号计划和 ESL。系统库"
+"（Sofia-"
+"SIP、SpanDSP、OpenSSL、libks）以及若干内嵌树（`libs/apr`、`libs/srtp`、`libs/libvpx`、…）提供可移植性、加密和编解码器。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:13
+#: 48437638cdb54796b8073d887b549407
+msgid "System View"
+msgstr "系统视图"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:28
+#: 8bdde37073974056b42c7090daae4f38
+msgid "Stack Summary"
+msgstr "技术栈摘要"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 379013a118e9453cb6b1c41f94b28c94 9936fa1b05cc4946a97d4f1515851a51
+msgid "Layer"
+msgstr "层级"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: a507af22bc274859a58165efea177b7c
+msgid "Main technology"
+msgstr "主要技术"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 4e9d1cabfec94cc9982f1a61c4316415
+msgid "Why it exists in this repo"
+msgstr "在本仓库中的作用"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 9b8a529e2fb54f07ad4e0ad1d32d2f3f
+msgid "Signaling"
+msgstr "信令"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 78d98004c7794024b7c4bd4185fdf849
+msgid "Sofia-SIP (`sofia-sip-ua >= 1.13.18`), Verto + libks"
+msgstr "Sofia-SIP（`sofia-sip-ua >= 1.13.18`），Verto + libks"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 66fc804fb03e49fb9f5415b919ff218c
+msgid "SIP and HTML5/WebRTC endpoints (`mod_sofia`, `mod_verto`)"
+msgstr "SIP 与 HTML5/WebRTC 端点（`mod_sofia`、`mod_verto`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 9c3d77bba57441209e75245c2210a5b6
+msgid "Runtime"
+msgstr "运行时"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: ea5a91816fda48ffa65c54228ab65b46
+msgid "C11-era C + pthreads; some C++ modules"
+msgstr "C11 时代的 C + pthreads；部分 C++ 模块"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: d47c9839d24f43fa99ed59c730e5aa24
+msgid "Core, modules, Windows service"
+msgstr "核心、模块、Windows 服务"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 091952dded45469ba8b3b90abb6ab596
+msgid "Media"
+msgstr "媒体"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: fdeb380545ac46b8ad94770ca749c7b9
+msgid ""
+"RTP (`src/switch_rtp.c`), Cisco libSRTP 2.4.0, Opus, SpeexDSP, SpanDSP, "
+"libvpx 1.12.0"
+msgstr ""
+"RTP（`src/switch_rtp.c`）、Cisco libSRTP 2.4.0、Opus、SpeexDSP、SpanDSP、libvpx "
+"1.12.0"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 234f3e31c4b84812810337c183e0f870
+msgid "Real-time audio/video, SRTP, fax/modem, VP8/VP9"
+msgstr "实时音视频、SRTP、传真/调制解调器、VP8/VP9"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: da86d2321c76402b9e9455aba58f3077
+msgid "Control plane"
+msgstr "控制面"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: ed491d4fb5e8410f964ad9d9ae43f7ea
+msgid "ESL (`libs/esl`) + `mod_event_socket`"
+msgstr "ESL（`libs/esl`）+ `mod_event_socket`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 4feda45af00c444792d347239e28c49b
+msgid "Out-of-process API; `fs_cli`"
+msgstr "进程外 API；`fs_cli`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 3b47b943aa9f41bbbdac9534f94ae7fc
+msgid "Config"
+msgstr "配置"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 9640f9b013674d54ae82238df6832e59
+msgid "XML + preprocessor"
+msgstr "XML + 预处理器"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: df1c30769a78424fa60f6a93e271e2d4
+msgid "Dialplan, directory, profiles — not compiled constants"
+msgstr "拨号计划、号码簿、配置文件——不是编译期常量"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 089697ae644c43e0811f023386cfae1d
+msgid "Storage"
+msgstr "存储"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 83f0083f2c7b4617b8b3ba6f7cdfc791
+msgid "SQLite `>= 3.6.20` (core); optional PostgreSQL / MariaDB `>= 3.0.9`"
+msgstr "SQLite `>= 3.6.20`（核心）；可选 PostgreSQL / MariaDB `>= 3.0.9`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: d89f493a269148f59757838e128fa12d
+msgid "Scoreboard, voicemail/CDR backends"
+msgstr "记分板、语音信箱/CDR 后端"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 2346f5277dc643778d372d002b71a50f
+msgid "Build"
+msgstr "构建"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 8f321d34e004476388e19d21d4ad52bb
+msgid "Autotools (autoconf `>= 2.59`, automake `>= 1.7`, libtool `>= 1.5.14`)"
+msgstr "Autotools（autoconf `>= 2.59`、automake `>= 1.7`、libtool `>= 1.5.14`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 6674a850160548d5b31a8003c5c03aa3
+msgid "Unix; Windows via `Freeswitch.2017.sln`"
+msgstr "Unix；Windows 通过 `Freeswitch.2017.sln`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 29291eee40aa4078b564d900850aefa5
+msgid "Testing"
+msgstr "测试"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: d7260e01c0cf41b5afe69f2e8f781e4b
+msgid "FCTX macros in `src/include/test/switch_fct.h` via `switch_test.h`"
+msgstr "`src/include/test/switch_fct.h` 中的 FCTX 宏，经由 `switch_test.h`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 8f35af30387b4f67a60e044f6d1b0a9a
+msgid "`tests/unit/` Autotools programs"
+msgstr "`tests/unit/` 下的 Autotools 程序"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 299e504b17164774a4d51a533dab32d6
+msgid "Docs PKB"
+msgstr "文档 PKB"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 4636e3d74d4040598846ae383379440f
+msgid "Sphinx + MyST + sphinx-intl (`man/pyproject.toml`, Python `>=3.10,<4.0`)"
+msgstr "Sphinx + MyST + sphinx-intl（`man/pyproject.toml`，Python `>=3.10,<4.0`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 6be1a303582a4d218de37d1ae0ec9905
+msgid "This knowledge base only — not linked into `freeswitch`"
+msgstr "仅用于本知识库——不链接进 `freeswitch`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:42
+#: bfbe0a3a45404e36bd37d17a7d79d536
+msgid "Main Languages and Frameworks"
+msgstr "主要语言与框架"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:44
+#: 8ed57f53ad694bb7804d5947822ba101
+msgid ""
+"**Primary language**: C (core `src/switch_*.c`, most modules). Public API"
+" is `src/include/switch.h`."
+msgstr "**主语言**：C（核心 `src/switch_*.c`、大多数模块）。公开 API 为 `src/include/switch.h`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:45
+#: 1b1402af61d2422590af22cf42329173
+msgid ""
+"**Secondary languages**: C++ (`src/switch_cpp.cpp`, `mod_v8`, `mod_opal`,"
+" `mod_cv`, `mod_mariadb` headers); Lua (`mod_lua`, tries luajit then lua "
+"5.3/5.2/5.1); Python 3 (`mod_python3`); JavaScript via V8 (`mod_v8`); "
+"Perl, Java, C# (`mod_managed`)."
+msgstr ""
+"**次要语言**：C++（`src/switch_cpp.cpp`、`mod_v8`、`mod_opal`、`mod_cv`、`mod_mariadb`"
+" 头文件）；Lua（`mod_lua`，先试 luajit 再试 lua 5.3/5.2/5.1）；Python "
+"3（`mod_python3`）；经由 V8 的 "
+"JavaScript（`mod_v8`）；Perl、Java、C#（`mod_managed`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:46
+#: e99944572655440fb15fd5d225d4e153
+msgid ""
+"**Primary “framework”**: FreeSWITCH module ABI "
+"(`SWITCH_MODULE_DEFINITION`, `switch_loadable_module_interface`) — not a "
+"web framework."
+msgstr ""
+"**主要“框架”**：FreeSWITCH 模块 "
+"ABI（`SWITCH_MODULE_DEFINITION`、`switch_loadable_module_interface`）——不是 "
+"Web 框架。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:47
+#: cbabf947f617442293982ab28b801cc0
+msgid ""
+"**Build tool**: GNU Autotools (`bootstrap.sh` → `configure` → `make`). "
+"Historical `src/CMakeLists.txt` (CMake 2.6 comment) is not the CI path. "
+"macOS CI uses Homebrew; Linux CI uses Debian **bookworm** / **trixie** "
+"images (`.github/workflows/`)."
+msgstr ""
+"**构建工具**：GNU Autotools（`bootstrap.sh` → `configure` → `make`）。历史遗留的 "
+"`src/CMakeLists.txt`（CMake 2.6 注释）不是 CI 路径。macOS CI 使用 Homebrew；Linux CI "
+"使用 Debian **bookworm** / **trixie** 镜像（`.github/workflows/`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:49
+#: a802953ff2dd49e7b50fe088f20c6c64
+msgid "Key Dependencies"
+msgstr "关键依赖"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:51
+#: 6d4cb0bd88d64e738f876dd3649914f6
+msgid ""
+"Minimum versions are **configure floors**. Distro packages may be newer. "
+"Out-of-tree deps are **not** in this git tree."
+msgstr "最低版本是 **configure 下限**。发行版软件包可能更新。树外依赖**不**在本 git 树中。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: bd049ef110094975ad5a12f651402367
+msgid "Package"
+msgstr "软件包"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 42e69e76302b40d9959835829234298a
+msgid "Area"
+msgstr "领域"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 1616eba57c394ee2b93162a2984c88cb
+msgid "Why it matters"
+msgstr "为何重要"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 22de754324f5422cb784f49bec6c7728
+msgid "Evidence"
+msgstr "依据"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 9b55263a97bc45c59eaf752c2ee5cbd1
+msgid "Sofia-SIP `sofia-sip-ua >= 1.13.18`"
+msgstr "Sofia-SIP `sofia-sip-ua >= 1.13.18`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 21a96a1aec6e4eabbc8b1e69cb5861f7
+msgid "SIP"
+msgstr "SIP"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: cb107a17572d427ab30727639b01acf0
+#, fuzzy
+msgid ""
+"`mod_sofia`; CI clones [`freeswitch/sofia-"
+"sip`](https://github.com/freeswitch/sofia-sip)"
+msgstr "`mod_sofia`；CI 克隆 `freeswitch/sofia-sip`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 021daeed3afd47ce98e2bfdb2456045e 17cb95fcfad3456f876d5c71ff43ed6d
+#: 2a94e5b42b8a49ecb3a621514c8e7093 2d817bf1ab504eb5b2366b98bdc360a0
+#: 333930893ab747cf92542cc03d2597e1 46e5d9b19c244e45b0b8c858f87cd081
+#: 696e57f17437453c9349d65480cbb8a7 6a2d6784585a4c4ea8c2447492d8af1e
+#: 6b0ff836936f4f239ad65408b8a648c1 78af85cc15f14a5cb7ad2e728e07be89
+#: 9031f060dc2c47f582b81bd57d69d297 a5c944e23b834d0ba87f577be01a821c
+#: ba36a1c1b53d4366a4b807cbfa3c99d2 bd9c639d628b456cb72c19e47adad00e
+#: ce8c93e6ddb6427796236dfd0b9d4a30 d1b29153619a496db2b7946b99549d8b
+msgid "`configure.ac`"
+msgstr "`configure.ac`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: b0ed91c0c8d643a7ae5436dfd4351b62
+msgid "SpanDSP `>= 3.1.1`"
+msgstr "SpanDSP `>= 3.1.1`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: c4889ed31941477582c8cd463158c0f9
+msgid "DSP / fax / some codecs"
+msgstr "DSP / 传真 / 部分编解码器"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: f3dadcfb38ed4f92867c384d366579d2
+msgid "`mod_spandsp`; hard error if missing"
+msgstr "`mod_spandsp`；缺失则硬错误"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 152de4f8b54b4e2db65259390f2dc13a
+msgid "libks2 `>= 2.0.11` or libks `>= 1.8.2`"
+msgstr "libks2 `>= 2.0.11` or libks `>= 1.8.2`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: e72ee58a5a014136ae89af69109f6929
+msgid "KS runtime"
+msgstr "KS 运行时"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: e6b6cb518bf1400fa0ccc99db2f2c2c7
+msgid "Required if `mod_verto` or `mod_signalwire` enabled"
+msgstr "启用 `mod_verto` 或 `mod_signalwire` 时必需"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: c9f3b5ca85c143c9b87e11b6a6dfad89
+msgid "signalwire_client2 `>= 2.0.0` or signalwire_client `>= 1.0.0`"
+msgstr "signalwire_client2 `>= 2.0.0` or signalwire_client `>= 1.0.0`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 225ca9a0659343499d2c3eb3aa92cb4c
+msgid "Cloud pairing"
+msgstr "云端配对"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 434820e837754436a6c01ae2a29f14fd
+msgid "`mod_signalwire`"
+msgstr "`mod_signalwire`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 8c21a73d13eb4114a72878de88bae04e
+msgid "OpenSSL `>= 1.0.1e`"
+msgstr "OpenSSL `>= 1.0.1e`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: af1588924c5440fab881e56525d62d30
+msgid "TLS / DTLS-SRTP"
+msgstr "TLS / DTLS-SRTP"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: c7877596e6a845b1918bd897a0ceff9a
+msgid "`SAC_OPENSSL`; `SSL_CTX_set_tlsext_use_srtp`, `DTLSv1_method`"
+msgstr "`SAC_OPENSSL`; `SSL_CTX_set_tlsext_use_srtp`, `DTLSv1_method`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 0f2193d9cce54f169e10830fabb705b3
+msgid "SQLite `>= 3.6.20`"
+msgstr "SQLite `>= 3.6.20`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 28faca2dc69b42adb47e0ce81f130dca
+msgid "Core DB"
+msgstr "核心数据库"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 1fd7cfd6ea6e477e931e7aa181a04f8f
+msgid "`sqlite3_initialize()` in `switch_core_init`"
+msgstr "`sqlite3_initialize()` in `switch_core_init`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: ce3db1ef2b704389a029611bd04743f7
+msgid "`configure.ac`, `src/switch_core.c`"
+msgstr "`configure.ac`, `src/switch_core.c`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 6fcceb65ca2a436ea765d3787ce7dfae
+msgid "PCRE2 `libpcre2-8 >= 10.00`"
+msgstr "PCRE2 `libpcre2-8 >= 10.00`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 199a9e6655d84d50953410f73068ae13
+msgid "Regex"
+msgstr "正则表达式"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: c11b26d8f477431f8f2f19a2c087976c
+msgid "Dialplan / XML matching"
+msgstr "拨号计划 / XML 匹配"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: f29d097f812a4b0594b9b82615d663df
+msgid "libcurl `>= 7.19`"
+msgstr "libcurl `>= 7.19`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 58dd21f960f244259192eb4c30fb5ab9
+msgid "HTTP"
+msgstr "HTTP"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: d2f33ba6ebf94ea8abb40472614d5f82
+msgid "`mod_xml_curl`, `mod_http_cache`, core CURL"
+msgstr "`mod_xml_curl`, `mod_http_cache`, core CURL"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 197571ba35704782a910779223e86c85
+msgid "libedit `>= 2.11`"
+msgstr "libedit `>= 2.11`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: ea27b2c82fa0470ab2b29a6714f02381
+msgid "Console"
+msgstr "控制台"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: e6adaf9610d543d98b063021b35589b8
+msgid "CLI line editing; `--disable-core-libedit-support` to skip"
+msgstr "CLI 行编辑；`--disable-core-libedit-support` 可跳过"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 4b26affc54d94dcf977d602f0b4f0d6c
+msgid "zlib"
+msgstr "zlib"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: d9e7bdb7566d46ddbdde8559081edb45
+msgid "Compression"
+msgstr "压缩"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 2d82bf3d017b43a79b36ca9fadd1461e ada9ca5c26374cdea259555e2437216a
+msgid "Hard error if missing"
+msgstr "缺失则硬错误"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: a9cde79b59d24293a9fdd4444e440428
+msgid "libjpeg"
+msgstr "libjpeg"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 5584d2a3edf84b1bba5f1fe879d50d2a
+msgid "Images"
+msgstr "图像"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: c580dfcd2b3344038afc178b934c32d6
+msgid "Speex / SpeexDSP `>= 1.2rc1`"
+msgstr "Speex / SpeexDSP `>= 1.2rc1`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 7e87f9a7597048fb80928ef1bb4fe3b5 7fa92627a07b46a99bce1bb6eb1b5593
+msgid "Audio"
+msgstr "音频"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 84a65f047cb446938f58d42879dae4bb
+msgid "Core codecs / AGC"
+msgstr "核心编解码器 / AGC"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: f3abd025197440958143e1b1113f3e4a
+msgid "Opus `>= 1.1`"
+msgstr "Opus `>= 1.1`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 558b35b783274efea420b843b6c3d6e4
+msgid "`mod_opus`"
+msgstr "`mod_opus`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: e6ef0d39cbc14bc8b33b8225c13f3cc6
+msgid "libsndfile `>= 1.0.20`"
+msgstr "libsndfile `>= 1.0.20`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 9154dcad5a7e4217b74d45b4bafcdd74
+msgid "Files"
+msgstr "文件"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 3023924958a746d6a30abec25b1074e1
+msgid "`mod_sndfile`"
+msgstr "`mod_sndfile`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 6220220dbef445d294eae8fe7c7e36f1
+msgid "APR 1.2.8 (forked as `fspr`)"
+msgstr "APR 1.2.8（分叉为 `fspr`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 41f393ee6ba2403cb515147d2fe54ea9
+msgid "Portability"
+msgstr "可移植性"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 35b384169d084f629b0e0fc41b0828cb
+msgid ""
+"Bundled `libs/apr` (`fspr_version.h`) unless `SYSTEM_APR`. OS abstraction"
+" only — telephony types are core ([C Runtime](06-c-runtime.md))"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 166e206a4d734d66b738980d8947ad58
+msgid "`libs/apr/include/fspr_version.h`"
+msgstr "`libs/apr/include/fspr_version.h`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 97f06f5393cc41f8aa5150e462d4d00e
+msgid "libSRTP **2.4.0**"
+msgstr "libSRTP **2.4.0**"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 58725132500d438ca36d440d41efde3d
+msgid "SRTP"
+msgstr "SRTP"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 2b150fa493834e2f8e80a1a0a4883602
+msgid "Bundled `libs/srtp`"
+msgstr "捆绑 `libs/srtp`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: d5afced918a240fcae20554f391a49ac
+msgid "`libs/srtp/configure.ac` `AC_INIT`"
+msgstr "`libs/srtp/configure.ac` `AC_INIT`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: da1f4d58c7b8410894078287fccd0156
+msgid "libvpx **1.12.0** (“Torrent Duck”)"
+msgstr "libvpx **1.12.0**（“Torrent Duck”）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 7dabd31d90694d8e9a87198a8afa7c62
+msgid "VP8/VP9"
+msgstr "VP8/VP9"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: f49f0af32cd945548272092cf5bdf22c
+msgid "Bundled `libs/libvpx`"
+msgstr "捆绑 `libs/libvpx`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: e4decece06cf416c9e97678b82d244b3
+msgid "`libs/libvpx/README`"
+msgstr "`libs/libvpx/README`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 7a158727138e43cd897e8c1a25730fa0
+msgid "libyuv"
+msgstr "libyuv"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 7cd796ef93434284b0f10e0a132597eb
+msgid "Video scale/convert"
+msgstr "视频缩放/转换"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: bd3d517d176f4f15b2d9d7ed09a78d6b
+msgid "Bundled `libs/libyuv`"
+msgstr "捆绑 `libs/libyuv`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 9d05bc7b52bb4b58b275410437ea49cb
+msgid "`libs/libyuv/README.md`"
+msgstr "`libs/libyuv/README.md`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 95a7e8f52fdc4cbda2008b5dd71055db
+msgid "PostgreSQL libpq"
+msgstr "PostgreSQL libpq"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 3c0f618fb2bb4c4c8e3392c78e0c5a4d 5a75df35265b4e49ad09a4563ceb03ed
+msgid "Optional DB"
+msgstr "可选数据库"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 9177f114b76f455e9bf1f23e6403201f
+msgid "`mod_pgsql`; `AC_CHECK_LIB([pq])`"
+msgstr "`mod_pgsql`; `AC_CHECK_LIB([pq])`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 0402ae2b840447b791677e2cc524f57b
+msgid "MariaDB `>= 3.0.9`"
+msgstr "MariaDB `>= 3.0.9`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: b93d3c237e6b45a89e93a8acd4ca0aa2
+msgid "`mod_mariadb`"
+msgstr "`mod_mariadb`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 4d9795faaa3344388708eb84388003d6
+msgid "FFmpeg libs (avcodec `>= 53.35.0`, avformat, swscale, …)"
+msgstr "FFmpeg 库（avcodec `>= 53.35.0`、avformat、swscale、…）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: ced6efd8f429477588a20c56e46da018
+msgid "Optional A/V"
+msgstr "可选音视频"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: e9604d9f682d448dbcedc3c56a25c11f
+msgid "`mod_av`"
+msgstr "`mod_av`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 3cce424937a74e8e8aaf9cc354efa293
+msgid "`configure.ac`, `debian/control-modules`"
+msgstr "`configure.ac`, `debian/control-modules`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: c0a6f58bed3a48e99ba5f994b6ef3fed
+msgid "Python 3"
+msgstr "Python 3"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: aa38653b2a8740eab043a92a144f2864
+msgid "Embedded scripts"
+msgstr "嵌入式脚本"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: c54cfdfeacba49309412e4e6b7eecfda
+msgid "`mod_python3`; version taken from `python3 -V` at configure"
+msgstr "`mod_python3`；版本在 configure 时取自 `python3 -V`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:78
+#: 9dd9b243534a4219a0e81c1b6ea087ef
+msgid ""
+"Optional/module-only floors also exist for mpg123, shout, AMR, codec2, "
+"flite, mongoc, memcached, AMQP `librabbitmq >= 0.5.2`, pocketsphinx `>= "
+"5`, OpenCV, VLC, ImageMagick, and others in `configure.ac` — enable the "
+"matching `modules.conf` line or the check is skipped."
+msgstr ""
+"mpg123、shout、AMR、codec2、flite、mongoc、memcached、AMQP `librabbitmq >= "
+"0.5.2`、pocketsphinx `>= 5`、OpenCV、VLC、ImageMagick 以及 `configure.ac` "
+"中的其他库也有可选/仅模块下限——启用对应的 `modules.conf` 行，否则检查会被跳过。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:80
+#: 86c3ad0218e94fe4a7164f8fbd9aa7ad
+msgid "Sofia-SIP library"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:82
+#: b50c4fba8c484295b831e358e94f6080
+msgid ""
+"[Sofia-SIP](https://github.com/freeswitch/sofia-sip) (`sofia-sip-ua`) is "
+"the SIP stack under `mod_sofia`. It is a separate Autotools/LGPL project:"
+" RFC 3261 User-Agent library, originally from Nokia Research Center, "
+"forked and maintained for FreeSWITCH. Historical site: [sofia-"
+"sip.sourceforge.net](http://sofia-sip.sourceforge.net). **Do not look for"
+" it under `libs/`** (APR, SRTP, ESL, VPX *are* bundled). CI clones the "
+"GitHub repo; macOS CI uses Homebrew `sofia-sip`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:84
+#: cc3640c982ed4c448bf4342d99213bcf
+msgid ""
+"`mod_sofia` links `libsofia-sip-ua` and drives it through NUA. Useful "
+"source trees in that repo (`libsofia-sip-ua/`):"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 5f692b6fc5df436a940cd53dcc62495a
+msgid "Submodule"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 226fbc90562e4afaaef7c464f9344c21
+msgid "Role in an inbound INVITE"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 9de57bd72df740debc5db990ff9ae7cb
+msgid "`su`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: c80046a12d2a4bd590904768b26eb66e
+msgid "Portable OS layer; `su_root_t` event loop (`select`/`kqueue`/`epoll`)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 2afcf0d691fc4b3b92648486d1e75269
+msgid "`tport`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: daf06ec8a8374bf0a406e1502842433e
+msgid "UDP/TCP/TLS/WS sockets, `recv`/`send`, siptrace (`TPTAG_LOG`)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: cc8cfe0ce3a542088be22b39fe35f226
+msgid "`msg` / `sip` / `bnf` / `url`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: c9dcaeeeadb945b6a14e11058d60e6e1
+msgid "Message parser and SIP header objects (`sip_t`)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: bcae4af852ab4d9991650d1dbf8fc32d
+msgid "`nta`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 3b9a4d393f4f4ecb828439cbdcfbb0e2
+msgid "RFC 3261 transactions and dialogs"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 6120d981ef3847c9b67c9d66729845ed
+msgid "`nua`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 68d00f5e2eed45d1b12efb0f2e5cacfe
+msgid "High-level UA: `nua_create`, `nua_i_invite`, `nua_respond`, `nua_bye`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: a04bcee307144025a0c3bbcce9ac0f56
+msgid "`sdp` / `soa`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: c2c11116180b4314926eba86fe914821
+msgid "SDP offer/answer helpers used with media tags"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 49d1c8e68337419998a223b8e81949af
+msgid "`sresolv`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 6e442b4cb2c7453994145c2a56be6ab5
+msgid "DNS SRV/NAPTR (`NTATAG_USE_SRV` / `USE_NAPTR` from the Sofia profile)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 8aa806d1fdeb49b9805023d43fb22472
+msgid "`iptsec`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: c8f3b005b1964fcb8b0500da2a11f2d7
+msgid "Digest / auth helpers used with REGISTER and INVITE"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:97
+#: 569a3bf88d5a4b8bb09f3afffc047184
+msgid ""
+"How FreeSWITCH binds a profile and hops off the stack thread: "
+"[Architecture](01-architecture.md#sofia-sip-out-of-tree). Byte-level "
+"INVITE: [Workflows](05-workflows.md#packet-path-udptcp-to-nua). API usage"
+" below."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:99
+#: fa77f4ab695e448eb00880739cd793f8
+msgid ""
+"Example clients in the Sofia-SIP tree (`utils/`: `sip-options`, `sip-"
+"date`) are **not** FreeSWITCH modules. Historical NUA/NTA reference: "
+"[sofia-sip.sourceforge.net/refdocs](http://sofia-"
+"sip.sourceforge.net/refdocs/). Compile against the library with `pkg-"
+"config --cflags --libs sofia-sip-ua`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:101
+#: 023a8ad15f1d441f8ece36e876aac961
+msgid "NUA versus NTA"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:103
+#: b0a67d6bf8044014ba3483033862f477
+msgid "Daily use is **event loop + UA + tag list + callback on `sip_t`**."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 178ec8bd82ae481081182513d886a870
+msgid "Header"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: f0b71f9ec30f4ae89985ebc46b593ba9
+msgid "You do"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: d914913d8eb843508e4e9fb46da582df
+msgid "Who uses it here"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 3dd475aa161c4b5dae02802aa028a820
+msgid "**su**"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 695584e69d534ca79e98ccf28745ff05
+msgid "`sofia-sip/su.h`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 6fddc2681b08472489e1ca3a44bbc3a3
+msgid "Threads, `su_home` allocator, `su_root` reactor"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 2e36c8c7cc794ce0aa05c999ac2866d5
+msgid "Every Sofia program"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: b07f01f368454dd68e217cdf97a7d205
+msgid "**tport**"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 6ae350f4f6174be2bbf2e6797ccb0d21
+msgid "`sofia-sip/tport_tag.h`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: d072b9043a86491a995c03ff9e8191d9
+msgid "UDP/TCP/TLS `bind`/`recv` (internal)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: a5562be0dfa84604bdf72c7c9df36dbf
+msgid "NTA and NUA"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 46c803f014f446f0a2cf6ab9e217ea2d
+msgid "**nta**"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: c0f57939f56449319dbe52a5381d4f57
+msgid "`sofia-sip/nta.h`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 722add6a2b22423db63ba8f786f4f0f6
+msgid "Transactions; you assemble OPTIONS/INVITE"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 757a8193535e40a19293afc53b6b1924
+msgid "Sofia-SIP `utils/sip-options.c`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 340e754ad8254059b99323476aaa3781
+msgid "**nua**"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 31ee57dc625049c39dbda510f7d8d2c9
+msgid "`sofia-sip/nua.h`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 682ed8831a884f9d96c74d033ebd6e90
+msgid "Full UA: dialogs, 100rel, session timers"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 9290c13be6a948d3be862d966909bbc0
+#, fuzzy
+msgid "**`mod_sofia`**"
+msgstr "`mod_sndfile`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:112
+#: 151c1a0f537b48e085bb4e6f91d0cf4f
+msgid ""
+"A softswitch or B2BUA uses **NUA**. A one-shot OPTIONS probe can use "
+"**NTA**."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:114
+#: 9632377bd2dc4607916bc1fb3e2b8ce8
+msgid "Tag lists"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:116
+#: 4fea0650345945c59a75144780e30985
+msgid "Optional arguments are a tag list and **must** end with `TAG_END()`:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:124
+#: e60297ced735488098bf5b7f1bf49306
+msgid ""
+"`NUTAG_*` configures NUA, `NTATAG_*` the transaction agent, `TPTAG_*` "
+"transport, `SIPTAG_*` SIP headers. `mod_sofia` passes the same families "
+"from profile XML into `nua_create()` / `nua_set_params()`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:126
+#: 749a0f57ae60464688df7e301ab8130e
+msgid "Minimal NUA agent"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:128
+#: 062bde1c9cb94ad296aa9b4890666505
+msgid ""
+"Same skeleton as a Sofia profile: create `su_root`, `nua_create` with a "
+"callback and bind URL, then run the reactor."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:176
+#: 58c3a62b7ad3400594c7c7d20338719d
+msgid ""
+"FreeSWITCH does not block on `su_root_run()`. The profile thread calls "
+"`su_root_step(profile->s_root, 1000)` so it can interleave other work. "
+"Shutdown is `nua_shutdown` → wait for `nua_r_shutdown` → `nua_destroy` → "
+"`su_root_destroy` (`sofia_profile_thread_run` in "
+"`src/mod/endpoints/mod_sofia/sofia.c`)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:178
+#: be6f18bf038c4a868cb5db51f6fd61ef
+msgid "Callback arguments and events"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:180
+#: 38d87bc5fa7d4e3bb392de571d19f834
+msgid ""
+"`mod_sofia` types the NUA magic pointer as `sofia_profile_t *` "
+"(`sofia_event_callback` in `sofia.c`)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 9fede5e7b7fc47578199f9b5a1583ae0
+msgid "Argument"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 1cb36a4f1f9e4a879eaa34895e7bb931
+msgid "Meaning"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 86cfa31cfe1245ffa39c9769fecd2a9c
+msgid "`event`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 5aa4f0025f3e44538f6adc09b8b7a4ea
+msgid ""
+"`nua_i_*` inbound request/notice; `nua_r_*` is a **response to a request "
+"this UA sent**"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: ffd1b689c4bf47fa82bb443cc738e428
+msgid "`status` / `phrase`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 46c65782d9f04273816a4eedf20e7f1b
+msgid "SIP status (meaningful on `nua_r_*`)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 759342e041cd4f9e9ee185c43d79545f
+msgid "`nh`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 7b1e33c0167442c182b048f30fd8170d
+msgid "Handle for this dialog/transaction; pass it to `nua_respond` / `nua_bye`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 1fdb62bb06c6455baae8f5e56457a705
+#, fuzzy
+msgid "`sip`"
+msgstr "SIP"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 806ec7e3a54346d6b01e7a22ae0d3486
+msgid ""
+"Parsed message (`sip_from`, `sip_to`, `sip_call_id`, `sip_contact`, "
+"`sip_payload`)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: b68a6fec25c14450ae2453581f071331
+msgid "`hmagic`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 84d8ac64785d465fa74f28adef852ece
+msgid "Pointer from `nua_handle_bind(nh, ptr)`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 82a0f029f3d54021a432080c2ec3bbc8
+#, fuzzy
+msgid "Event"
+msgstr "依据"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 0115ae0458a9475a85c5d613d04d32f4
+msgid "When"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: d5b16c16f9254d63be88bb8a8dbfb04b
+msgid "Typical action"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 1e389a526e854e0aa4e34a2b83636c56
+msgid "`nua_i_invite`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: d958c58b3419441d8ec046ebe2e126b3
+msgid "Inbound INVITE"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 96fa5541ce28484dad0109db4779b220
+msgid "`nua_respond(nh, 100/180/200, …)`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 90b9750ee8c7430cab6a1fecd57e647a
+msgid "`nua_i_register`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 6cf1cf2cfd32430fa98f3c4223430979
+#, fuzzy
+msgid "REGISTER"
+msgstr "正则表达式"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: b2e734b82fd8484994121697805c2050
+msgid "Challenge or 200"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: a59bda027b714e62978261a8fc7d8e85
+msgid "`nua_i_state`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 9023fefce2bc4f9bb7a91f3b167de96f
+msgid "Call-state / SDP progress"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: e5527832e4024d6b9c7dfad4c6107423
+msgid "Read `NUTAG_CALLSTATE`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: c548059e83c74a28acf9b9bddf377c38
+msgid "`nua_r_invite`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 7f5e47dfff3f4008abe9b02f8b087598
+msgid "Response to **your** INVITE"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 2c5edcd8829b40869eece40d8b5f4c27
+msgid "Handle 401 / 180 / 200"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 7d3dc5ed89b94c59b0c5b16d0e5b4248
+msgid "`nua_i_bye` / `nua_i_cancel`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: f02137d0da764277baf37a291f34305b
+msgid "Peer ended the call"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 89001bc49e0f4f13827c6c2d62537048
+msgid "200 then `nua_handle_destroy`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:198
+#: a346c97f1c9b41dd9086e8225dd850c2
+msgid "Outbound INVITE:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:208
+#: 35cafa1f7f404d619b8ee9d1720ba83b
+msgid ""
+"Answer with SDP: `nua_respond(nh, SIP_200_OK, SOATAG_USER_SDP_STR(sdp), "
+"TAG_END())`. Hang up: `nua_bye(nh, TAG_END())`. Unknown headers: "
+"`SIPTAG_HEADER_STR(\"X-Foo: bar\")`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:210
+#: 0d99cb2bcc8045378174a76359655934
+msgid "Stack-thread rules"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:212
+#: de820c8212ed427e9a433cf4abfba16c
+msgid "These are why `mod_sofia` clones events off the profile thread:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:214
+#: 5c307ea5ab424bf4971330206233a462
+msgid ""
+"**Stack thread.** `nua_create`, `nua_invite`, `nua_respond`, "
+"`nua_destroy`, and the NUA callback all run on the thread that drives "
+"`su_root_run` / `su_root_step`. Do not hunt dialplan, block on SQL, or "
+"sleep in the callback — that stalls SIP I/O. FreeSWITCH copies the event "
+"with `nua_save_event` onto `signal_data_queue` or `msg_queue`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:215
+#: b956e0f8a90a421bbf024a3af748f8a8
+msgid ""
+"**Handle lifetime.** One `nua_handle_t` per dialog. Inbound handles are "
+"created by the stack; bind application state with `nua_handle_bind`. "
+"Destroy with `nua_handle_destroy`. Crossing threads requires "
+"`nua_handle_ref` / `nua_handle_unref` (and the `*_user` variants)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:216
+#: b22614b742ee4d5fa25df6848e778cc3
+msgid ""
+"**Memory.** `sip_t` is valid only until the callback returns. Copy Call-"
+"ID / Contact into a `su_home_t` (`su_strdup`) or your own heap. "
+"Destroying the home frees those copies."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:218
+#: edc896128b994d3f9448707a12ecb750
+msgid "Reading sip_t"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:230
+#: c984d865b55b46e28e37181fce8cbd37
+msgid "Walk unknown headers on `sip->sip_unknown`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:232
+#: 65f09631995d435490c32c40d30dd0e8
+msgid "NTA OPTIONS example"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:234
+#: 6714eb1a19a24428b1d0d628577ed9b4
+msgid ""
+"[sofia-sip `utils/sip-options.c`](https://github.com/freeswitch/sofia-"
+"sip/blob/master/utils/sip-options.c) (not in this git tree):"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:248
+#: 43dcfcd16261434885994341d2bab834
+msgid ""
+"That is fire-and-forget. FreeSWITCH does not originate calls this way; "
+"NUA owns dialog and SDP state."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:250
+#: 51b584c1ddd04edb9e8d594205b811fe
+msgid "Mapping to mod_sofia"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 17092c8af5c3411e820001ac71767644
+msgid "Sofia-SIP"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 45ca2d10f994470586e900d10b0d8cc0
+msgid "FreeSWITCH"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 5f61c92e168349078735e7fb5e02d485
+msgid "One `su_root` + one `nua`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: b38fe22df2fe4971b434e8454bb2944e
+msgid "One SIP **profile** thread"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: aefa5ff372564183997d8cd49a06b7dd
+msgid "`NUTAG_URL(bindurl)`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: d1af6175ef4549bea837adae3639aaf6
+msgid "`sip-ip` / `sip-port`; default `transport=udp,tcp`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 378a01cf89d0457392d2f6daca6c3639
+msgid "NUA callback"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 7531eafff7d840e78c85149d321bcd0f
+msgid "`sofia_event_callback` (admit, then `nua_save_event`)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 278ef04e56c54ef293fb0461fce9aa4c
+msgid "`nua_handle` + `nua_handle_bind`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: a52185ca250a4897b664de0cb7e5d696
+msgid "`sofia_private` / session UUID"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 04499a2b497e406daec19218ae1c75b0
+msgid "`nua_invite` / `nua_respond` / `nua_bye`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 0255f989fe2a4c019ca4ce67879f01f2
+msgid "`sofia_glue_do_invite`, `sofia_acknowledge_call`, `sofia_on_hangup`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: e5e5ae69e1154a769d5cfe6f77dd7725
+msgid "SDP via `soa`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 1c9336d2d1e74198a3e64b609f6efb7d
+msgid "Then **`switch_rtp`** — RTP is not Sofia-SIP"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:261
+#: 6bc58469a1be464bb88fb651c339defa
+msgid ""
+"Debug: environment `TPORT_LOG=1`, `NTA_DEBUG`, or `sofia profile <name> "
+"siptrace on` (`TPTAG_LOG` on the profile). See "
+"[Observability](../5.operations/02-observability.md)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:263
+#: 16592e5a50a74d2a8e1148077d1a90ea
+msgid ""
+"The stock build is not limited to the hard core dependencies: uncommented"
+" entries in `build/modules.conf.in` enable `mod_av`, `mod_pgsql`, and "
+"`mod_sndfile`, and the vanilla runtime configuration loads them. Install "
+"FFmpeg/libswscale, libpq, and libsndfile development packages for that "
+"default module set, or disable both the build entry and the corresponding"
+" runtime `<load>` when those capabilities are not needed."
+msgstr ""
+"默认构建并不只需要核心依赖：`build/modules.conf.in` 中未注释的条目会启用 `mod_av`、`mod_pgsql` 和 "
+"`mod_sndfile`，vanilla 运行时配置也会加载它们。对于这组默认模块，请安装 FFmpeg/libswscale、libpq 和 "
+"libsndfile 开发包；如果不需要这些能力，则同时禁用构建条目和对应的运行时 `<load>`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:270
+#: 1d73d18ed71c43a0823809c679a590ae
+msgid "Runtime Interaction Model"
+msgstr "运行时交互模型"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:272
+#: 501a927a83ab40be98886fd49c63c7e3
+msgid ""
+"**Signaling** (Sofia/Verto) accepts a call and asks the core for a "
+"`switch_core_session_t`."
+msgstr "**信令**（Sofia/Verto）接受呼叫并向核心请求 `switch_core_session_t`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:273
+#: 6d928a6f77d345b180fa81ab0c0567f8
+msgid ""
+"**Core** runs the channel state machine; **XML dialplan** "
+"(`mod_dialplan_xml`) picks applications."
+msgstr "**核心**运行通道状态机；**XML 拨号计划**（`mod_dialplan_xml`）选择应用。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:274
+#: b90e77d22d024776b1501a905982ad20
+msgid ""
+"**Applications** (dptools, conference, …) bridge or play media; "
+"**codecs** and **libSRTP/OpenSSL** handle RTP."
+msgstr "**应用**（dptools、conference、…）桥接或播放媒体；**编解码器**和 **libSRTP/OpenSSL** 处理 RTP。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:275
+#: 6b83195f7d3c475b9ce48b8b8b0d3868
+msgid ""
+"**Events** go to the in-process bus; **ESL** clients and CDR modules "
+"consume them. **SQLite** holds core scoreboard unless `-nosql`."
+msgstr "**事件**进入进程内总线；**ESL** 客户端和 CDR 模块消费它们。除非 `-nosql`，**SQLite** 保存核心记分板。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:277
+#: ce79bed579764eaf90b1d00763785dc1
+msgid ""
+"Layers do **not** talk over HTTP internally. The process is the unit of "
+"composition; DSOs register interface tables."
+msgstr "各层内部**不**通过 HTTP 通信。进程是组合单元；DSO 注册接口表。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:279
+#: 5a81f80e69764a4995bf968d954db000
+msgid "Build and Packaging Notes"
+msgstr "构建与打包说明"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:281
+#: 6e567a3aabea48a38372483b9d78f7d7
+#, fuzzy
+msgid ""
+"**Local development**: `./bootstrap.sh -j && ./configure --prefix=... "
+"--disable-fhs && make && make install` ([Quick Start](../0.getting-"
+"started/02-quick-start.md)). Debug: `./devel-bootstrap.sh`."
+msgstr ""
+"**本地开发**：`./bootstrap.sh -j && ./configure --prefix=... --disable-fhs && "
+"make && make install`（[快速开始](01-quick-start.md)）。调试使用：`./devel-"
+"bootstrap.sh`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:282
+#: 33b8cd2bbd064c8e9fad741eb53fbc7c
+#, python-brace-format
+msgid ""
+"**CI**: `.github/workflows/ci.yml` (Debian bookworm-amd64 base "
+"`signalwire/freeswitch-public-ci-base`), `macos.yml` (Homebrew + "
+"`signalwire/homebrew-signalwire/{libks2,signalwire-c2,spandsp}`), "
+"`windows.yml`, `scan-build.yml` (clang-14)."
+msgstr ""
+"**CI**：`.github/workflows/ci.yml`（Debian bookworm-amd64 基础镜像 `signalwire"
+"/freeswitch-public-ci-base`）、`macos.yml`（Homebrew + `signalwire/homebrew-"
+"signalwire/{libks2,signalwire-c2,spandsp}`）、`windows.yml`、`scan-"
+"build.yml`（clang-14）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:283
+#: 8b60a695c2b3494eaa62684a9c397a45
+msgid ""
+"**Production / distro**: Debian packages via FSGET/FSDEB "
+"(`scripts/packaging/`); module `Build-Depends` in `debian/control-"
+"modules` (Bookworm vs Trixie ffmpeg package names differ). Docker "
+"packaged images need a SignalWire token (`docker/master/Dockerfile`); "
+"source image recipe is `docker/examples/Debian11/Dockerfile`."
+msgstr ""
+"**生产 / 发行版**：通过 FSGET/FSDEB 打 Debian 包（`scripts/packaging/`）；模块 `Build-"
+"Depends` 在 `debian/control-modules`（Bookworm 与 Trixie 的 ffmpeg "
+"包名不同）。Docker 打包镜像需要 SignalWire token（`docker/master/Dockerfile`）；源码镜像配方为 "
+"`docker/examples/Debian11/Dockerfile`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:284
+#: d4ac5b9d0ec64e99b96485a688eef6b7
+msgid ""
+"**Windows**: Visual Studio 2017 solution `Freeswitch.2017.sln`, projects "
+"under `w32/`."
+msgstr "**Windows**：Visual Studio 2017 解决方案 `Freeswitch.2017.sln`，工程在 `w32/` 下。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:286
+#: 393cc527e3164981bfd35ec710c2b7de
+msgid "Docs tooling (not in the switch binary)"
+msgstr "文档工具（不在交换机二进制中）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:288
+#: 340cc447e6d441dd856d8d565ce38b78
+msgid ""
+"`man/pyproject.toml` / `man/requirements.txt`: Python `^3.10`, Sphinx "
+"`>=7`, myst-parser, sphinx-rtd-theme, sphinx-intl, sphinxcontrib-mermaid."
+" Used only to build this PKB."
+msgstr ""
+"`man/pyproject.toml` / `man/requirements.txt`：Python `^3.10`、Sphinx `>=7"
+"`、myst-parser、sphinx-rtd-theme、sphinx-intl、sphinxcontrib-mermaid。仅用于构建本 "
+"PKB。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:290
+#: 6559e946e4a64044a1de4e1af977942a
+msgid "Common Misconceptions"
+msgstr "常见误解"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: b37b4cfaff804f2dbb4a801e75e315cf
+msgid "Misconception"
+msgstr "误解"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 15c0fc24bf2c4512a9ca12905f4ea5a9
+msgid "Reality in this repo"
+msgstr "本仓库中的实际情况"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 5a574e8c8b414811af1b3e794310abdc
+msgid "FreeSWITCH is a Node/Java/Go service"
+msgstr "FreeSWITCH 是 Node/Java/Go 服务"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: aa06cf78447f43d9b56f1520fa72419e
+msgid "It is a C process with optional language modules"
+msgstr "它是带可选语言模块的 C 进程"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 70afb6cda4ab459e9af3b1c310395c0b
+msgid "Sofia-SIP / SpanDSP / libks live in `libs/`"
+msgstr "Sofia-SIP / SpanDSP / libks 位于 `libs/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: f59af1ab6f184803931040d9218ae7c8
+msgid "They are **external**; CI and Docker clone and install them first"
+msgstr "它们是**外部**依赖；CI 和 Docker 会先克隆并安装"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: dfe417d958ef43c59e2502e9138c528c
+msgid "`src/CMakeLists.txt` is how you build"
+msgstr "`src/CMakeLists.txt` 就是构建方式"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: adb4821f225249098a89f1448b8d3ca9
+msgid "Autotools is the supported Unix path; CMake file is historical"
+msgstr "Autotools 才是受支持的 Unix 路径；CMake 文件是历史遗留"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 0ba2c799d38b4ac5954524ac89476e57
+msgid "`man/pyproject.toml` is a product dependency"
+msgstr "`man/pyproject.toml` 是产品依赖"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 579f7ccffeb44962bf4636cbee8f6a25
+msgid "It is Sphinx for documentation only"
+msgstr "它只是用于文档的 Sphinx"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 004f7444d05841e0a34c6fc489255a16
+msgid "`build/` is a CMake output directory"
+msgstr "`build/` 是 CMake 输出目录"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 8bbd12113eea42efac875bb01e74f260
+msgid "It is Autotools helper sources (`modules.conf.in`, config macros)"
+msgstr "它是 Autotools 辅助源（`modules.conf.in`、配置宏）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 8081aba38ba2425d81027930cd869d1d
+msgid "SQLite is optional for a default core"
+msgstr "默认核心中 SQLite 是可选的"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 75b3696c83114fe0a65879e653198251
+msgid ""
+"Core calls `sqlite3_initialize()` at init; `-nosql` only disables the "
+"internal SQL scoreboard"
+msgstr "核心在初始化时调用 `sqlite3_initialize()`；`-nosql` 只禁用内部 SQL 记分板"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 3a57d86dd4414fca85b704a4fd993386
+msgid "One `modules.conf`"
+msgstr "只有一份 `modules.conf`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:15
+#: 9f4c16ce824842f7b10d8b1ea728bd12
+#, fuzzy
+msgid ""
+"Build-time `modules.conf` vs runtime `autoload_configs/modules.conf.xml` "
+"([Architecture](01-architecture.md))"
+msgstr ""
+"构建时 `modules.conf` vs 运行时 "
+"`autoload_configs/modules.conf.xml`（[架构](02-architecture.md)）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:302
+#: 7eeafe793e9c4dcb9871fc845bbb9bc2
+msgid "Related Documentation"
+msgstr "相关文档"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:304
+#: 4ff75e7616544bd0a3a4dbc3b018b71c
+#, fuzzy
+msgid "[Architecture](01-architecture.md)"
+msgstr "[架构](02-architecture.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:305
+#: c030310fba924c00831ac757ce8dabbb
+msgid "[C Runtime Framework](06-c-runtime.md)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:306
+#: ef1ede7f21824885979be57f6f5014d1
+msgid "[Workflows](05-workflows.md#packet-path-udptcp-to-nua)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:307
+#: 150586fe7e6741cdbd52517cedadcfec
+msgid "[Observability](../5.operations/02-observability.md)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:308
+#: ca538a40eb3f40ec8f99a1a4c550de29
+#, fuzzy
+msgid "[Repository Map](03-repo-map.md)"
+msgstr "[仓库地图](04-repo-map.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:309
+#: e2d8d6162d50451fb96e3808693d8acc
+#, fuzzy
+msgid "[Quick Start](../0.getting-started/02-quick-start.md)"
+msgstr "[快速入门](01-quick-start.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:310
+#: 0844b31f5c054015a861fc5121492459
+#, fuzzy
+msgid "[Build](../4.development/02-build.md)"
+msgstr "[构建](08-build.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/02-tech-stack.md:311
+#: 2333f15936094304b638808cda5361ab
+msgid "[Sofia-SIP](https://github.com/freeswitch/sofia-sip)"
+msgstr ""
+
+#~ msgid "Bundled `libs/apr` (`fspr_version.h`) unless `SYSTEM_APR`"
+#~ msgstr "捆绑 `libs/apr`（`fspr_version.h`），除非定义 `SYSTEM_APR`"
+
+#~ msgid ""
+#~ "Debug: environment `TPORT_LOG=1`, `NTA_DEBUG`, "
+#~ "or `sofia profile <name> siptrace on`"
+#~ " (`TPTAG_LOG` on the profile). See "
+#~ "[Observability](11-observability.md)."
+#~ msgstr ""
+
+#~ msgid "[Observability](11-observability.md)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Debug: environment `TPORT_LOG=1`, `NTA_DEBUG`, "
+#~ "or `sofia profile <name> siptrace on`"
+#~ " (`TPTAG_LOG` on the profile). See "
+#~ "[Observability](../4.operations/11-observability.md)."
+#~ msgstr ""
+
+#~ msgid "[Observability](../4.operations/11-observability.md)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Bundled `libs/apr` (`fspr_version.h`) unless "
+#~ "`SYSTEM_APR`. OS abstraction only — "
+#~ "telephony types are core ([C "
+#~ "Runtime](13-c-runtime.md))"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "How FreeSWITCH binds a profile and "
+#~ "hops off the stack thread: "
+#~ "[Architecture](02-architecture.md#sofia-sip-out-"
+#~ "of-tree). Byte-level INVITE: "
+#~ "[Workflows](06-workflows.md#packet-path-udptcp-"
+#~ "to-nua). API usage below."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Debug: environment `TPORT_LOG=1`, `NTA_DEBUG`, "
+#~ "or `sofia profile <name> siptrace on`"
+#~ " (`TPTAG_LOG` on the profile). See "
+#~ "[Observability](../5.operations/11-observability.md)."
+#~ msgstr ""
+
+#~ msgid "[C Runtime Framework](13-c-runtime.md)"
+#~ msgstr ""
+
+#~ msgid "[Workflows](06-workflows.md#packet-path-udptcp-to-nua)"
+#~ msgstr ""
+
+#~ msgid "[Observability](../5.operations/11-observability.md)"
+#~ msgstr ""
+

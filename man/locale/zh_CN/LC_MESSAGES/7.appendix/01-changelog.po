@@ -1,0 +1,655 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Zoom Video Communications
+# This file is distributed under the same license as the FreeSWITCH package.
+# Walter Fan <walter.fan@ustc.etu>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version:  FreeSWITCH\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-18 16:34+0800\n"
+"PO-Revision-Date: 2026-08-30 23:13+0800\n"
+"Last-Translator: Walter Fan <walter.fan@ustc.etu>\n"
+"Language: zh_CN\n"
+"Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:1
+#: dbc5310404cb41daa5f101c4ab06c355
+msgid "Appendix-04: Documentation Changelog"
+msgstr "附录-04: 文档变更记录"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:5
+#: b195d49c2fed4ed9a17ca64b88a76725
+msgid ""
+"Tracks Project Knowledge Base changes (page additions, translations, "
+"tooling). Code and feature changes belong in the repository "
+"`docs/ChangeLog` and upstream release notes, not here."
+msgstr "记录项目知识库（PKB）变更（页面新增、翻译、工具链）。代码和功能变更应写入仓库的 `docs/ChangeLog` 和上游发行说明，而不是这里。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:7
+#: 8e9e2725e18d474f84e2a40f5b60eba0
+#, fuzzy
+msgid "2026-09-15"
+msgstr "2026-08-17"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:9
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:19
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:29
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:35
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:60
+#: 18449ea0ae82487ab8e8a474c6e0fd41 46a6eaa45c584dae967bc5a553b3dc03
+#: 52859358d5b64aa3bd5fea856730e392 5bf8b36951174fcea9d683e9d38d5e6d
+#: 7cf58bedea3c4a7ea69df6fa468c882d
+msgid "Added"
+msgstr "新增"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:11
+#: 293e6ae5488d4c2798874733bf34ad41
+msgid ""
+"**FS core concepts**: numbered endpoint / channel / call / bridge / "
+"session plus the three config domains (directory / dialplan / "
+"configuration), bilingual gloss (`man/0.getting-started/01-overview.md"
+"#fs-core-concepts`)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:12
+#: e1a9ed184d6c4528a391f874668eb537
+#, fuzzy
+msgid ""
+"**C Runtime Framework**: `switch_*` programming model, FSPR vs core, "
+"memory pools, session lifetime, threads/events/frames, reading order "
+"(`man/1.architecture/06-c-runtime.md`)"
+msgstr ""
+"**C 运行时框架**：`switch_*` 编程模型、FSPR 与 core、memory pool、session "
+"生命周期、线程/事件/帧、阅读顺序（`man/13-c-runtime.md`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:13
+#: d7b11cd9887d4ab7aaaec79272859550
+#, python-brace-format
+msgid ""
+"Follow one call by **channel UUID** (grep `freeswitch.log`, `fs_cli` "
+"`/uuid`, A/B-leg `bridge_uuid`, SIP `Call-ID`, CDR `${uuid}` / "
+"`${bleg_uuid}`) (`man/5.operations/01-runbook.md#follow-one-call-by-"
+"channel-uuid`; Observability, FAQ, glossary)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:14
+#: 808fc94d18cb449b93e2be39e9410b63
+msgid ""
+"Worked example: `fs_cli -x 'show channels'` CSV during a two-leg `bridge`"
+" (1002 inbound → 1001 WebRTC Contact) "
+"(`man/1.architecture/05-workflows.md#worked-example-show-channels-"
+"during-a-bridge`)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:15
+#: 531dd0c29e8b44b08a79e2d5f20b3664
+msgid ""
+"Worked example: SIP REGISTER Digest after **401** (`WWW-Authenticate`); "
+"INVITE uses **407** (`man/1.architecture/05-workflows.md#worked-example-"
+"register-digest-after-401`; FAQ, glossary)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:17
+#: 23e4396927024b36bb00048f39136d04
+#, fuzzy
+msgid "2026-09-14"
+msgstr "2026-08-17"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:21
+#: d49c0b2110984fe1928b5cab91ebbec3
+msgid ""
+"Remote Event Socket ACL: commented-out `apply-inbound-acl` still defaults"
+" to `loopback.auto`; `fs_cli` `Error Connecting []` / `text/rude-"
+"rejection` (`man/5.operations/01-runbook.md#remote-event-socket-acl`, "
+"FAQ)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:23
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:45
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:51
+#: 4eb0c1cbd469452e9cb2f98d8ca12bf6 52b6a36353a54240bb07e706c1e7dfab
+#: d50920d261684628ac7531c1ffcfb704
+msgid "Changed"
+msgstr "变更"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:25
+#: 3fb50dd51351408fab4bfd3973128c3f
+msgid ""
+"Quick Start, Data and API, Workflows, Conventions, glossary, and "
+"`index.md` now distinguish ESL listen (`::`:8021) from ESL ACL (loopback-"
+"only until `apply-inbound-acl` is set)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:27
+#: 84b07eae9ab0426db7f0237b3038cb92
+#, fuzzy
+msgid "2026-09-11"
+msgstr "2026-08-17"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:31
+#: 9507a2fe541049e2b79b8eb71354d89e
+msgid ""
+"FAQ: print globals and channel vars from `fs_cli` (`global_getvar`, "
+"`uuid_dump`, `uuid_getvar`, `eval`) (`man/7.appendix/02-faq.md`)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:33
+#: 3db17b736a0a40168d532bdcd1054a9d
+#, fuzzy
+msgid "2026-09-07"
+msgstr "2026-08-17"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:37
+#: ca41d4b836e8493caa4320a26835d0a3
+msgid ""
+"Golden path **`answer`**: `SWITCH_ADD_APP` expansion, `application_hash`,"
+" hunt queue, `CS_EXECUTE` → `answer_function` "
+"(`man/1.architecture/01-architecture.md#golden-path-answer`, "
+"`man/1.architecture/05-workflows.md#worked-example-answer`)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:38
+#: 52b1304226d84ecc8fa2741c842d775a
+msgid ""
+"C-style **service registry**: modules register name→function-pointer "
+"interfaces at load (`SWITCH_ADD_*`, global hashes); no IDL "
+"(`man/1.architecture/01-architecture.md#loadable-module-contract`, "
+"`man/1.architecture/05-workflows.md#interface-registry-lookup`)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:39
+#: 8eb02a09c0b941dd8ae12d489c8f58f4
+msgid ""
+"**Loadable module contract**: in-process DSO tables "
+"(`SWITCH_MODULE_DEFINITION`, interface bag, endpoint IO/`CS_*` handlers, "
+"`SWITCH_ADD_*`) as the core extensibility mechanism "
+"(`man/1.architecture/01-architecture.md#loadable-module-contract`; "
+"Conventions, Overview, glossary)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:40
+#: 8b89de83d07348c08c9007f1c03eda48
+msgid ""
+"Runtime **`<load>` tag**: preprocessor include → "
+"`switch_xml_open_cfg(\"modules.conf\")` → `dlopen` / "
+"`SWITCH_MODULE_DEFINITION` (`man/1.architecture/01-architecture.md"
+"#runtime-load-tag`, `man/1.architecture/05-workflows.md#runtime-load-"
+"tag`; FAQ + glossary)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:41
+#: 835e835f5c16490eb68b722a3f9181be
+msgid ""
+"Inbound SIP **packet path**: UDP/TCP → Sofia-SIP tport/nta/nua → "
+"`sofia_event_callback` (profile thread) → session `signal_data_queue` "
+"(`man/1.architecture/05-workflows.md`, "
+"`man/1.architecture/01-architecture.md`)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:42
+#: 7b789411c5654f14bb32b95a86fd3581
+msgid ""
+"Sofia-SIP library map for out-of-tree [`freeswitch/sofia-"
+"sip`](https://github.com/freeswitch/sofia-sip) (`su`, `tport`, `nta`, "
+"`nua`, …) on [Tech Stack](../1.architecture/02-tech-stack.md)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:43
+#: fb2c7c7d0c504329b8f51e1f45a58c4e
+msgid ""
+"Sofia-SIP **NUA/NTA usage**: tag lists, minimal agent, callback/`sip_t`, "
+"stack-thread rules, mapping to `mod_sofia` ([Tech "
+"Stack](../1.architecture/02-tech-stack.md#sofia-sip-library))"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:47
+#: a691b7d782e1418e8bb8179e811d241c
+msgid ""
+"FAQ, glossary, repo map, overview, and `index.md` PKB↔manual table now "
+"point at the Sofia-SIP section instead of only stating “not in `libs/`”"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:49
+#: e41b055d916e4972808edb450230efd2
+msgid "2026-08-17"
+msgstr "2026-08-17"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:53
+#: c4bdca5a0b974c7ba44279ce5137b1a7
+msgid ""
+"Aligned PKB with the [FreeSWITCH Users "
+"Manual](https://developer.signalwire.com/freeswitch/) as the operator "
+"configuration source of truth (Explained/Confluence remain historical)"
+msgstr ""
+"将 PKB 与 [FreeSWITCH 用户手册](https://developer.signalwire.com/freeswitch/) "
+"对齐，作为运维配置的权威来源（Explained/Confluence 仅作历史资料）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:54
+#: 1b5afacaf0d84e24ada575f9a85f5c7e
+msgid ""
+"Added PKB ↔ Users Manual page map on `index.md`; three configuration "
+"domains (directory / dialplan / configuration) on overview and "
+"architecture"
+msgstr ""
+"在 `index.md` 增加 PKB ↔ 用户手册页面对照；在概述与架构中补充三大配置域（directory / dialplan / "
+"configuration）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:55
+#: fd2e513e158e4325992a982379209e35
+msgid ""
+"Extended Quick Start with configuration-root table, vanilla first-call "
+"numbers (`9196` echo, `1000`–`1019`), and `default_password=1234` "
+"(verified in `vars.xml`)"
+msgstr ""
+"在快速开始中补充配置根目录表、vanilla 首呼号码（`9196` 回声、`1000`–`1019`），以及已在 `vars.xml` 核实的 "
+"`default_password=1234`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:56
+#: 1b3014fa1fbd435eb4bb0fb361435053
+#, python-brace-format
+msgid ""
+"Documented `$${var}` vs `${var}`, `user_context` vs SIP profile "
+"`context`, `pre_load_modules.conf.xml`, compiled XML in `log_dir`, and "
+"media late-negotiation / bypass / proxy flags"
+msgstr ""
+"记录 `$${var}` 与 `${var}`、`user_context` 与 SIP profile "
+"`context`、`pre_load_modules.conf.xml`、编译后 XML 位于 `log_dir`，以及媒体 late-"
+"negotiation / bypass / proxy 标志"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:57
+#: 061b1149503b40d099dd49eedc1f7018
+msgid ""
+"Glossary, FAQ, runbook, AI guide, and documentation-process pages now "
+"point at Users Manual chapters instead of treating Explained as primary"
+msgstr "术语表、FAQ、运维手册、AI 指南与文档流程页改为指向用户手册章节，不再把 Explained 当作主文档"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:58
+#: ca0d316cae9c42839c96e8a773e3c0f7
+msgid ""
+"Refreshed `locale/zh_CN/LC_MESSAGES/` for the Users Manual alignment (new"
+" strings + unfuzzy of updated paragraphs)"
+msgstr "按用户手册对齐刷新了 `locale/zh_CN/LC_MESSAGES/`（新字符串 + 更新段落去 fuzzy）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:62
+#: ba3261d9f1644ad8b16eac1e7cfb8ac1
+msgid ""
+"Added zh_CN gettext catalogs under `locale/zh_CN/LC_MESSAGES/` (all "
+"numbered pages, appendices, ADR/change templates)"
+msgstr "在 `locale/zh_CN/LC_MESSAGES/` 增加 zh_CN gettext 目录（全部编号页、附录、ADR/变更模板）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:63
+#: 8e4cf1e025454951b5dbb96fd711496f
+#, fuzzy
+msgid ""
+"Filled `02-faq.md` and `03-glossary.md` (install, two `modules.conf`, ESL"
+" bind vs `fs_cli`, 25 terms)"
+msgstr ""
+"填写 `appendix-01-faq.md` 和 `appendix-02-glossary.md`（安装、两份 "
+"`modules.conf`、ESL 绑定 vs `fs_cli`、25 个术语）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:64
+#: 805ff3cc07784faa9f0ee251bb763b6b
+#, fuzzy
+msgid ""
+"Filled `03-document.md` (PKB `man/` source of truth, Level 1–3, zh_CN "
+"catalogs)"
+msgstr "填写 `12-document.md`（PKB 以 `man/` 为源、Level 1–3、zh_CN 目录）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:65
+#: ee6aff2d7ff546619b6e3496f92edab1
+#, fuzzy
+msgid ""
+"Filled `01-conventions.md` (`.clang-format`, SubmittingPatches, two "
+"`modules.conf`, secrets)"
+msgstr ""
+"填写 `07-conventions.md`（`.clang-format`、SubmittingPatches、两份 "
+"`modules.conf`、密钥）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:66
+#: 56f72dc96d7346448fc450e77f03e827
+#, fuzzy
+msgid ""
+"Filled `02-observability.md` (`switch_log` levels, `freeswitch.log`, "
+"HEARTBEAT/`status`; no Prometheus)"
+msgstr ""
+"填写 `11-observability.md`（`switch_log` "
+"级别、`freeswitch.log`、HEARTBEAT/`status`；无 Prometheus）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:67
+#: e7a796230e634ebc825eb5a3ebe4968b
+#, fuzzy
+msgid ""
+"Filled `05-workflows.md` (inbound SIP, REGISTER, ESL originate, "
+"`reloadxml`)"
+msgstr "填写 `06-workflows.md`（入局 SIP、REGISTER、ESL originate、`reloadxml`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:68
+#: 25cefaf927ee486d8403bf7a2a3b2e5c
+#, fuzzy
+msgid ""
+"Filled `01-runbook.md` (start/stop/`fs_cli`, inspect `$PREFIX`, 12 common"
+" issues)"
+msgstr "填写 `10-runbook.md`（启动/停止/`fs_cli`、检查 `$PREFIX`、12 个常见问题）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:69
+#: d58287e567e041418c00526fcf20b9a0
+#, fuzzy
+msgid ""
+"Filled `03-testing.md` (`tests/unit/run-tests.sh`, `ci.sh`, ESL `make "
+"check`, PKB `make html-en`)"
+msgstr ""
+"填写 `09-testing.md`（`tests/unit/run-tests.sh`、`ci.sh`、ESL `make check`、PKB"
+" `make html-en`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:70
+#: 31746841699b4eb9bf28d0622a9546c0
+#, fuzzy
+msgid ""
+"Filled `02-build.md` (Autotools, GHA matrix, FSDEB/tarball, PKB Sphinx "
+"publish)"
+msgstr "填写 `08-build.md`（Autotools、GHA 矩阵、FSDEB/tarball、PKB Sphinx 发布）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:71
+#: 9b4b6bbe844e4d7db022ed71af081d97
+#, fuzzy
+msgid ""
+"Filled `04-data-and-api.md` (XML/SQL model, ESL, Verto JSON-RPC, core "
+"events; extractor found no REST)"
+msgstr "填写 `05-data-and-api.md`（XML/SQL 模型、ESL、Verto JSON-RPC、核心事件；提取器未发现 REST）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:72
+#: e3dd74c4e2054ec2be68f178de39fd8f
+#, fuzzy
+msgid ""
+"Filled `02-tech-stack.md` from `configure.ac` floors plus bundled lib "
+"versions (`gen_tech_stack.py` only saw PKB Sphinx)"
+msgstr ""
+"根据 `configure.ac` 最低版本及捆绑库版本填写 `03-tech-stack.md`（`gen_tech_stack.py` 只看到"
+" PKB Sphinx）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:73
+#: 6c782706916d41b5b3cf0408e6314845
+#, fuzzy
+msgid ""
+"Filled `01-architecture.md` (C4 Context→Code, SIP session flow, module vs"
+" autoload)"
+msgstr "填写 `02-architecture.md`（C4 Context→Code、SIP 会话流程、模块 vs 自动加载）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:74
+#: da3ea4a71f4840089c5851c58490818d
+#, fuzzy
+msgid "Filled `02-quick-start.md` from bootstrap/CI/Docker/packaging commands"
+msgstr "根据 bootstrap/CI/Docker/打包命令填写 `01-quick-start.md`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:75
+#: e88b5796d81d4bd2b873005ceacc37ff
+#, fuzzy
+msgid ""
+"Filled `03-repo-map.md` from `gen_repo_map.sh` plus verified `src/mod/` "
+"category map"
+msgstr "根据 `gen_repo_map.sh` 及已核实的 `src/mod/` 分类图填写 `04-repo-map.md`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:76
+#: 3320101235df4732bb7365600ab58399
+#, fuzzy
+msgid ""
+"Filled `01-overview.md` from repo facts (purpose, users, C4 context, "
+"scope)"
+msgstr "根据仓库事实填写 `00-overview.md`（目的、用户、C4 上下文、范围）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:77
+#: ebfa2fa3b3464c889558ee16d99a8cea
+msgid ""
+"Initial bilingual Sphinx PKB skeleton under `man/` (`/PKB-init --sphinx "
+"--bilingual=zh_CN`)"
+msgstr "在 `man/` 下初始化双语 Sphinx PKB 骨架（`/PKB-init --sphinx --bilingual=zh_CN`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:78
+#: 2ad57406f12f4c749a89ea09c6bf7924
+msgid ""
+"Standard numbered pages `00`–`12`, appendices, ADR/change templates, and "
+"helper scripts"
+msgstr "标准编号页面 `00`–`12`、附录、ADR/变更模板以及辅助脚本"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/01-changelog.md:79
+#: b1bf91e306814371b8ad1341c4ba697b
+msgid "Language switcher scaffold for English and `zh_CN`"
+msgstr "英文与 `zh_CN` 的语言切换脚手架"
+
+#~ msgid ""
+#~ "Follow one call by **channel UUID** "
+#~ "(grep `freeswitch.log`, `fs_cli` `/uuid`, "
+#~ "A/B-leg `bridge_uuid`, SIP `Call-ID`, "
+#~ "CDR `${uuid}` / `${bleg_uuid}`) "
+#~ "(`man/10-runbook.md#follow-one-call-by-"
+#~ "channel-uuid`; Observability, FAQ, glossary)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Worked example: `fs_cli -x 'show "
+#~ "channels'` CSV during a two-leg "
+#~ "`bridge` (1002 inbound → 1001 WebRTC "
+#~ "Contact) (`man/06-workflows.md#worked-example-"
+#~ "show-channels-during-a-bridge`)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Worked example: SIP REGISTER Digest "
+#~ "after **401** (`WWW-Authenticate`); INVITE "
+#~ "uses **407** (`man/06-workflows.md#worked-"
+#~ "example-register-digest-after-401`; FAQ, "
+#~ "glossary)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Remote Event Socket ACL: commented-out"
+#~ " `apply-inbound-acl` still defaults "
+#~ "to `loopback.auto`; `fs_cli` `Error Connecting"
+#~ " []` / `text/rude-rejection` "
+#~ "(`man/10-runbook.md#remote-event-socket-acl`, "
+#~ "FAQ)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "FAQ: print globals and channel vars "
+#~ "from `fs_cli` (`global_getvar`, `uuid_dump`, "
+#~ "`uuid_getvar`, `eval`) (`man/appendix-01-faq.md`)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Golden path **`answer`**: `SWITCH_ADD_APP` "
+#~ "expansion, `application_hash`, hunt queue, "
+#~ "`CS_EXECUTE` → `answer_function` "
+#~ "(`man/02-architecture.md#golden-path-answer`, "
+#~ "`man/06-workflows.md#worked-example-answer`)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "C-style **service registry**: modules register"
+#~ " name→function-pointer interfaces at load"
+#~ " (`SWITCH_ADD_*`, global hashes); no IDL"
+#~ " (`man/02-architecture.md#loadable-module-contract`,"
+#~ " `man/06-workflows.md#interface-registry-lookup`)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Loadable module contract**: in-process "
+#~ "DSO tables (`SWITCH_MODULE_DEFINITION`, interface"
+#~ " bag, endpoint IO/`CS_*` handlers, "
+#~ "`SWITCH_ADD_*`) as the core extensibility "
+#~ "mechanism (`man/02-architecture.md#loadable-module-"
+#~ "contract`; Conventions, Overview, glossary)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Runtime **`<load>` tag**: preprocessor include"
+#~ " → `switch_xml_open_cfg(\"modules.conf\")` → "
+#~ "`dlopen` / `SWITCH_MODULE_DEFINITION` "
+#~ "(`man/02-architecture.md#runtime-load-tag`, "
+#~ "`man/06-workflows.md#runtime-load-tag`; FAQ +"
+#~ " glossary)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Inbound SIP **packet path**: UDP/TCP →"
+#~ " Sofia-SIP tport/nta/nua → "
+#~ "`sofia_event_callback` (profile thread) → "
+#~ "session `signal_data_queue` (`man/06-workflows.md`, "
+#~ "`man/02-architecture.md`)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Sofia-SIP library map for out-"
+#~ "of-tree [`freeswitch/sofia-"
+#~ "sip`](https://github.com/freeswitch/sofia-sip) (`su`, "
+#~ "`tport`, `nta`, `nua`, …) on [Tech "
+#~ "Stack](03-tech-stack.md)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Sofia-SIP **NUA/NTA usage**: tag lists,"
+#~ " minimal agent, callback/`sip_t`, stack-"
+#~ "thread rules, mapping to `mod_sofia` "
+#~ "([Tech Stack](03-tech-stack.md#sofia-sip-"
+#~ "library))"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Follow one call by **channel UUID** "
+#~ "(grep `freeswitch.log`, `fs_cli` `/uuid`, "
+#~ "A/B-leg `bridge_uuid`, SIP `Call-ID`, "
+#~ "CDR `${uuid}` / `${bleg_uuid}`) "
+#~ "(`man/4.operations/10-runbook.md#follow-one-call-"
+#~ "by-channel-uuid`; Observability, FAQ, "
+#~ "glossary)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Remote Event Socket ACL: commented-out"
+#~ " `apply-inbound-acl` still defaults "
+#~ "to `loopback.auto`; `fs_cli` `Error Connecting"
+#~ " []` / `text/rude-rejection` "
+#~ "(`man/4.operations/10-runbook.md#remote-event-socket-"
+#~ "acl`, FAQ)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**FS core concepts**: numbered endpoint "
+#~ "/ channel / call / bridge / "
+#~ "session plus the three config domains"
+#~ " (directory / dialplan / configuration),"
+#~ " bilingual gloss (`man/0.getting-"
+#~ "started/00-overview.md#fs-core-concepts`)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Follow one call by **channel UUID** "
+#~ "(grep `freeswitch.log`, `fs_cli` `/uuid`, "
+#~ "A/B-leg `bridge_uuid`, SIP `Call-ID`, "
+#~ "CDR `${uuid}` / `${bleg_uuid}`) "
+#~ "(`man/5.operations/10-runbook.md#follow-one-call-"
+#~ "by-channel-uuid`; Observability, FAQ, "
+#~ "glossary)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Worked example: `fs_cli -x 'show "
+#~ "channels'` CSV during a two-leg "
+#~ "`bridge` (1002 inbound → 1001 WebRTC "
+#~ "Contact) (`man/1.architecture/06-workflows.md#worked-"
+#~ "example-show-channels-during-a-bridge`)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Worked example: SIP REGISTER Digest "
+#~ "after **401** (`WWW-Authenticate`); INVITE "
+#~ "uses **407** (`man/1.architecture/06-workflows.md"
+#~ "#worked-example-register-digest-after-401`; "
+#~ "FAQ, glossary)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Remote Event Socket ACL: commented-out"
+#~ " `apply-inbound-acl` still defaults "
+#~ "to `loopback.auto`; `fs_cli` `Error Connecting"
+#~ " []` / `text/rude-rejection` "
+#~ "(`man/5.operations/10-runbook.md#remote-event-socket-"
+#~ "acl`, FAQ)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "FAQ: print globals and channel vars "
+#~ "from `fs_cli` (`global_getvar`, `uuid_dump`, "
+#~ "`uuid_getvar`, `eval`) "
+#~ "(`man/7.appendix/appendix-01-faq.md`)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Golden path **`answer`**: `SWITCH_ADD_APP` "
+#~ "expansion, `application_hash`, hunt queue, "
+#~ "`CS_EXECUTE` → `answer_function` "
+#~ "(`man/1.architecture/02-architecture.md#golden-path-"
+#~ "answer`, `man/1.architecture/06-workflows.md#worked-"
+#~ "example-answer`)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "C-style **service registry**: modules register"
+#~ " name→function-pointer interfaces at load"
+#~ " (`SWITCH_ADD_*`, global hashes); no IDL"
+#~ " (`man/1.architecture/02-architecture.md#loadable-module-"
+#~ "contract`, `man/1.architecture/06-workflows.md#interface-"
+#~ "registry-lookup`)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Loadable module contract**: in-process "
+#~ "DSO tables (`SWITCH_MODULE_DEFINITION`, interface"
+#~ " bag, endpoint IO/`CS_*` handlers, "
+#~ "`SWITCH_ADD_*`) as the core extensibility "
+#~ "mechanism (`man/1.architecture/02-architecture.md#loadable-"
+#~ "module-contract`; Conventions, Overview, "
+#~ "glossary)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Runtime **`<load>` tag**: preprocessor include"
+#~ " → `switch_xml_open_cfg(\"modules.conf\")` → "
+#~ "`dlopen` / `SWITCH_MODULE_DEFINITION` "
+#~ "(`man/1.architecture/02-architecture.md#runtime-load-tag`,"
+#~ " `man/1.architecture/06-workflows.md#runtime-load-tag`;"
+#~ " FAQ + glossary)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Inbound SIP **packet path**: UDP/TCP →"
+#~ " Sofia-SIP tport/nta/nua → "
+#~ "`sofia_event_callback` (profile thread) → "
+#~ "session `signal_data_queue` "
+#~ "(`man/1.architecture/06-workflows.md`, "
+#~ "`man/1.architecture/02-architecture.md`)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Sofia-SIP library map for out-"
+#~ "of-tree [`freeswitch/sofia-"
+#~ "sip`](https://github.com/freeswitch/sofia-sip) (`su`, "
+#~ "`tport`, `nta`, `nua`, …) on [Tech "
+#~ "Stack](../1.architecture/03-tech-stack.md)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Sofia-SIP **NUA/NTA usage**: tag lists,"
+#~ " minimal agent, callback/`sip_t`, stack-"
+#~ "thread rules, mapping to `mod_sofia` "
+#~ "([Tech Stack](../1.architecture/03-tech-stack.md#sofia-"
+#~ "sip-library))"
+#~ msgstr ""
+

@@ -1,0 +1,8 @@
+<!-- Tutorial-only. Mount under conf/dialplan/default/, never copy into product vanilla. -->
+<include>
+  <extension name="tutorial-ivr-entry">
+    <condition field="destination_number" expression="^9000$">
+      <action application="transfer" data="9000 XML tutorial"/>
+    </condition>
+  </extension>
+</include>

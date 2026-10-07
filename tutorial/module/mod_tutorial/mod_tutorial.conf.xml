@@ -1,0 +1,13 @@
+<configuration name="mod_tutorial.conf" description="Isolated FreeSWITCH tutorial module">
+  <menus>
+    <menu name="main">
+      <choice digit="1"/>
+      <choice digit="2"/>
+      <choice digit="3"/>
+    </menu>
+    <menu name="submenu">
+      <choice digit="1"/>
+      <choice digit="2"/>
+    </menu>
+  </menus>
+</configuration>

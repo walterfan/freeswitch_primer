@@ -1,0 +1,1318 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Zoom Video Communications
+# This file is distributed under the same license as the FreeSWITCH package.
+# Walter Fan <walter.fan@ustc.etu>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version:  FreeSWITCH\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-18 16:34+0800\n"
+"PO-Revision-Date: 2026-08-30 23:13+0800\n"
+"Last-Translator: Walter Fan <walter.fan@ustc.etu>\n"
+"Language: zh_CN\n"
+"Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:1
+#: d724bc5d108942c393399c45e6476720
+msgid "04. Repository Map"
+msgstr "04. 仓库地图"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:5
+#: 1b2f8ecb70844188bdf95e7ceeab84bb
+#, fuzzy
+msgid ""
+"Top-level layout of this FreeSWITCH tree. Module internals belong in "
+"[Architecture](01-architecture.md); APIs and events in [Data and API](04"
+"-data-and-api.md)."
+msgstr ""
+"本 FreeSWITCH 目录树的顶层布局。模块内部细节见 [架构](02-architecture.md)；API 与事件见 [数据与 "
+"API](05-data-and-api.md)。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:7
+#: 7c5f8c96407d4d5b97881d2935666bbb
+msgid ""
+"The directory tree below is a curated depth-2 snapshot of the repository "
+"directories. For a current deterministic snapshot, run "
+"`man/scripts/gen_repo_map.sh --repo-root . --doc-dir man`; its default "
+"output uses depth 3 and excludes generated/build directories. `src/mod/` "
+"is expanded in the module table because the curated snapshot only shows "
+"`src/include` and `src/mod`."
+msgstr ""
+"下面的目录树是仓库目录的人工整理深度 2 快照。要生成当前的确定性快照，请运行 `man/scripts/gen_repo_map.sh "
+"--repo-root . --doc-dir man`；其默认输出深度为 3，并排除生成目录和构建目录。模块表中展开了 "
+"`src/mod/`，因为整理后的快照只显示 `src/include` 和 `src/mod`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:14
+#: f3ba2aa923594e65a4fbf2406b246335
+msgid "Directory Structure"
+msgstr "目录结构"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:111
+#: 1d1840abd45446d284af57625631dfc8
+msgid ""
+"Not shown as directories at this depth: Autotools/Windows files at the "
+"repo root (`bootstrap.sh`, `configure.ac`, `Makefile.am`, "
+"`Freeswitch.2017.sln`, `ci.sh`) and ~79 core `.c` files sitting directly "
+"in `src/`."
+msgstr ""
+"此深度未作为目录显示的内容：仓库根目录的 Autotools/Windows "
+"文件（`bootstrap.sh`、`configure.ac`、`Makefile.am`、`Freeswitch.2017.sln`、`ci.sh`），以及直接位于"
+" `src/` 下的约 79 个核心 `.c` 文件。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:113
+#: c9b6999fa45b461f9cf83ac81e522d5f
+msgid "Directory Responsibilities"
+msgstr "目录职责"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 81efadd79acd460d811e0ae50e3b0973 9b9c162dac1a47ba83f8454b1a76abdd
+msgid "Path"
+msgstr "路径"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 1956c78f16144a44b8e778ddadb8d052
+msgid "Responsibility"
+msgstr "职责"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 0bd8df62d93e4316a6428c63ae59d4fb
+msgid "Notes"
+msgstr "备注"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 90343024dea44f63ab696dfa6688e964
+msgid "`src/`"
+msgstr "`src/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 4edd193a903c4f38871f6588634f5682
+msgid "Core library and `freeswitch` binary"
+msgstr "核心库与 `freeswitch` 二进制"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 4cb50148dd0e4790aa61a2a3db1fd87d
+msgid ""
+"`switch_*.c` (~71 files) plus `switch.c` (`main`), `fs_encode.c`, "
+"`fs_tts.c`. Public headers in `src/include/`."
+msgstr ""
+"`switch_*.c`（约 71 个文件）以及 "
+"`switch.c`（`main`）、`fs_encode.c`、`fs_tts.c`。公共头文件在 `src/include/`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 47201c944b88450799f105a223edce7e
+msgid "`src/mod/`"
+msgstr "`src/mod/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: a8474d5d2b084b2784cccc8e377d317e
+msgid "Loadable modules, grouped by role"
+msgstr "可加载模块，按角色分组"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: df0ca2edafad435e8534b7e4f272cd46
+msgid ""
+"Built from `modules.conf` (copied from `build/modules.conf.in`). See "
+"table below."
+msgstr "由 `modules.conf` 构建（从 `build/modules.conf.in` 复制）。见下表。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 1002cc48f4c84456b10f3ceaf1ec7b0c
+msgid "`src/include/`"
+msgstr "`src/include/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 41d8f0f3661e4667882698ba9575a0da
+msgid "Public C API (`switch.h` and `switch_*.h`)"
+msgstr "公共 C API（`switch.h` 与 `switch_*.h`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 864b38bcd008405d9a8b6869d86139e6
+msgid "Module authors include `switch.h`. ~54 headers."
+msgstr "模块作者包含 `switch.h`。约 54 个头文件。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 359bfe097c4045c0a76abd2b8f2470d4
+msgid "`libs/`"
+msgstr "`libs/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: a4808b374a264ca8bcf9a924ef5f21a4
+msgid "Bundled third-party and first-party libraries"
+msgstr "捆绑的第三方与第一方库"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: b03890b14ed448e29b326364268eab28
+#, fuzzy
+msgid ""
+"APR, SRTP, VPX, ESL (`fs_cli`), xmlrpc-c, NAT helpers. Prefer in-tree "
+"copies unless `--with-system-*` / `SYSTEM_APR`. **Not here:** [Sofia-"
+"SIP](https://github.com/freeswitch/sofia-sip), SpanDSP, libks — [Tech "
+"Stack](02-tech-stack.md#sofia-sip-library)."
+msgstr ""
+"APR、SRTP、VPX、ESL（`fs_cli`）、xmlrpc-c、NAT 辅助库。除非使用 `--with-system-*` / "
+"`SYSTEM_APR`，否则优先使用树内副本。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 40f09313fa3b48c782c9e81d566d7867
+msgid "`conf/`"
+msgstr "`conf/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 64110cf81b2745a9ade08ebf46e59baf
+msgid "XML configuration profiles"
+msgstr "XML 配置方案"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 812d535805b54e119302084194bade38
+#, fuzzy
+msgid ""
+"Root `conf/freeswitch.xml` includes `vanilla/freeswitch.xml`. Profiles: "
+"`vanilla` (default PBX), `sbc`, `minimal`, `curl`, `insideout`, "
+"`softphone`, `testing`. The Users Manual writes paths relative to the "
+"**configuration root** (the directory that contains `freeswitch.xml`). "
+"Installed configuration paths depend on whether `--disable-fhs` was used;"
+" see [Overview](../0.getting-started/01-overview.md#install-and-runtime-"
+"defaults)."
+msgstr ""
+"根配置 `conf/freeswitch.xml` 包含 `vanilla/freeswitch.xml`。配置档包括：`vanilla`（默认 "
+"PBX）、`sbc`、`minimal`、`curl`、`insideout`、`softphone`、`testing`。用户手册路径相对于**配置根**（包含"
+" `freeswitch.xml` 的目录）。安装后的配置路径取决于是否使用了 `--disable-"
+"fhs`；参见[概览](00-overview.md#install-and-runtime-defaults)。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 299ad6e90a30440586b28285b4f6017b
+msgid "`build/`"
+msgstr "`build/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 924a779eed694167aaab0b1688c34192
+msgid "Autotools helpers, `modules.conf.in`, sounds version files"
+msgstr "Autotools 辅助文件、`modules.conf.in`、语音包版本文件"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 5cdb2aff337b4ad5b22441dfe7dfc4f6
+msgid "Not a CMake `build/` output dir. Do not treat as generated."
+msgstr "不是 CMake 的 `build/` 输出目录。请勿当作生成物。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 801f8f6ecc8949d7a8da1e575eb11ca7
+msgid "`tests/unit/`"
+msgstr "`tests/unit/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: ee6b4f531ccb457c968dfa931e6fd26f
+msgid "Core unit tests against `libfreeswitch`"
+msgstr "针对 `libfreeswitch` 的核心单元测试"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 3ea1a8cd8dda40c1a3fe75b178c24bcd
+msgid ""
+"Must use `src/include/test/switch_test.h` (`tests/unit/README`). Per-test"
+" XML fixtures in `conf_*` subdirs."
+msgstr ""
+"必须使用 `src/include/test/switch_test.h`（`tests/unit/README`）。各测试的 XML 夹具在 "
+"`conf_*` 子目录中。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 6ba190d1999b4479a049071e338644e4
+msgid "`libs/esl/`"
+msgstr "`libs/esl/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 47aaffc33b0042238b73168b35732e9f
+msgid "Event Socket Library and `fs_cli`"
+msgstr "Event Socket 库与 `fs_cli`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 6511656cf65841a99895ec580f90b04c
+#, python-brace-format
+msgid ""
+"Out-of-process control; language bindings under "
+"`libs/esl/{perl,python3,lua,ruby,php}`."
+msgstr "进程外控制；语言绑定位于 `libs/esl/{perl,python3,lua,ruby,php}`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: d6f296ca567942f9ab841131f912ee2e
+msgid "`debian/`, `scripts/packaging/`, `yum/`"
+msgstr "`debian/`, `scripts/packaging/`, `yum/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 61038f54ecc142b4b881756471531966
+msgid "Linux packaging"
+msgstr "Linux 打包"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 7c85de9b41fd47629249dceb2a3c843f
+msgid "Debian/Ubuntu packages, FSGET/FSDEB helpers, RPM repo files."
+msgstr "Debian/Ubuntu 软件包、FSGET/FSDEB 辅助工具、RPM 仓库文件。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: db2e2364d24b4499ba22b0eaa976846f
+msgid "`docker/`"
+msgstr "`docker/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 5d829b6b40304028835555f6ad15c9bf
+msgid "Official images and example Dockerfiles"
+msgstr "官方镜像与示例 Dockerfile"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: a79a0ccd90aa4ef68e48586c299cd060
+msgid "Host networking expected; see `docker/README.md`."
+msgstr "预期使用主机网络；见 `docker/README.md`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 249644bc33584ef1af41bc948ffb0734
+msgid "`w32/`, `Freeswitch.2017.sln`"
+msgstr "`w32/`, `Freeswitch.2017.sln`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: f129cd585df34631af0e4b6b082bae73
+msgid "Windows Visual Studio build"
+msgstr "Windows Visual Studio 构建"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 8860b5a93a474e6faf4a6506355f6b40
+msgid "Console, Library, Setup."
+msgstr "Console、Library、Setup。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 581d6153b13a4a189568b51aa394f747
+msgid "`.github/workflows/`"
+msgstr "`.github/workflows/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 901cd70387304c8a89c97760854a7704 9f5d750de4964fc6b593d9adadbcc5eb
+msgid "CI"
+msgstr "CI"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 95989844115847bca0f7776cf63fe314
+msgid ""
+"`ci.yml` on `master` / `v1.10` / `v1.11`; also macOS, Windows, tarball, "
+"scan-build, unit-test."
+msgstr ""
+"`ci.yml` 针对 `master` / `v1.10` / `v1.11`；另有 macOS、Windows、tarball、scan-"
+"build、unit-test。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 83eb34f56c7a4577b3c3b18de15f6ece
+msgid "`scripts/`"
+msgstr "`scripts/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 966472ffbd674ee5bcb47e19d116caae
+msgid "Dev, CI, packaging, and example scripts"
+msgstr "开发、CI、打包与示例脚本"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 46bbd7666d964c46955b71b9786e8f44
+msgid "`scripts/ci/` used by `bootstrap.sh`."
+msgstr "`scripts/ci/` 由 `bootstrap.sh` 使用。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 432490c61ea544bc9758b1b9ef817b0c
+msgid "`docs/`"
+msgstr "`docs/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 2833ab84304d46fd8ddff58b19908514
+msgid "Doxygen, Unix man pages, legal copies"
+msgstr "Doxygen、Unix man 手册、法律文本副本"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 5f045af977a4423187aac01937bfd00a
+msgid "`docs/man` is **not** this PKB."
+msgstr "`docs/man` **不是** 本 PKB。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 3b8cebf4339245038495479a5033bdc5
+msgid "`man/`"
+msgstr "`man/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 0c98bb8b8cbb4681b2b154b9d0c0b552
+msgid "This Project Knowledge Base (Sphinx)"
+msgstr "本项目知识库（Sphinx）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: c859099bd20340d6bbb1e1cf6fc7a83f
+msgid ""
+"Bilingual English / `zh_CN`; `_generated/` is an optional derived-"
+"artifact directory and may be absent."
+msgstr "双语 English / `zh_CN`；`_generated/` 是可选的派生工件目录，可能不存在。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: f2a53c81944648a8aa0fbbe99b64d297
+msgid "`htdocs/`"
+msgstr "`htdocs/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 54614056a60049d5ac829b86cd1e1bd8
+msgid "Bundled HTTP/portal assets"
+msgstr "捆绑的 HTTP/门户资源"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 0761a75cd93e4c09bc2a75fcc8509dfa
+msgid "Served when XML/HTTP modules are enabled."
+msgstr "在启用 XML/HTTP 模块时提供服务。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 4a1bde36ac77415a905a99dccd04f245
+msgid "`fscomm/`, `clients/`"
+msgstr "`fscomm/`, `clients/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 18ca496451ef49c19b20fd4ce7c0c51d
+msgid "Optional GUI / Flex clients"
+msgstr "可选 GUI / Flex 客户端"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 18639dbd05c9417f86607c82aa4d2e8e
+msgid "Not required to run the switch."
+msgstr "运行交换机并非必需。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 1717aca020e14d3da7e14628c3cfe2d4
+msgid "`support-d/`"
+msgstr "`support-d/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 1c6b0de7977f46b1bd9b2d7c07e337f4
+msgid "Maintainer gdb helpers and keys"
+msgstr "维护者 gdb 辅助工具与密钥"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 21960258482a45c594424adad3b5efba
+msgid "Operator debugging, not runtime."
+msgstr "运维调试用，非运行时组件。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: e6d7be5daed946a2ab0d52cbbb07640a
+msgid "`dtd/`, `fonts/`, `images/`"
+msgstr "`dtd/`, `fonts/`, `images/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: bc439e5cdfe948d080bf77187eed3c77
+msgid "XML DTD, fonts, static images"
+msgstr "XML DTD、字体、静态图片"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: bd9203d236524069a91e9f238cd71212
+msgid "Supporting assets."
+msgstr "配套资源。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:137
+#: 91371e73004e4ca0bc5888af3c121e46
+msgid "`src/mod/` categories"
+msgstr "`src/mod/` 分类"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:139
+#: 31fb05a4ec74467dbb2688b6b165dcfb
+msgid ""
+"Each module lives in `src/mod/<category>/mod_<name>/`. Counts are "
+"directory counts in this tree."
+msgstr "每个模块位于 `src/mod/<category>/mod_<name>/`。数量为本树中的目录计数。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 1a7788b71d214fb4a9f565be61d443d1
+msgid "Category"
+msgstr "类别"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 6767eef52f444b8e95f12851b0198fe2
+msgid "Count"
+msgstr "数量"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: e1a88d1089a34dd591dba2cee7cdfe17
+msgid "Role"
+msgstr "角色"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 753641f5713549b6b4377c4bf061bc36
+msgid "Examples in this tree"
+msgstr "本树中的示例"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: da33e06712f840a1b39c22b7a70e7a00
+msgid "`applications`"
+msgstr "`applications`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 748c4fb8a54348a09fb995d0f5946982
+msgid "49"
+msgstr "49"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 2219abb94f7f48b086a8b8219796090f
+msgid "Dialplan apps, conference, voicemail, SignalWire"
+msgstr "拨号计划应用、会议、语音信箱、SignalWire"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 4d6fa8a2660b419abf0f74868b55598b
+msgid ""
+"`mod_dptools`, `mod_conference`, `mod_voicemail`, `mod_signalwire`, "
+"`mod_commands`"
+msgstr ""
+"`mod_dptools`, `mod_conference`, `mod_voicemail`, `mod_signalwire`, "
+"`mod_commands`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 2c8d3a3d16a24970b4d6c0cc672c9711
+msgid "`endpoints`"
+msgstr "`endpoints`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 002f0baa838a4543899688b8fc597568
+msgid "10"
+msgstr "10"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 0b4247c44522440abde4ec1b233165f4
+msgid "Signaling / channel drivers"
+msgstr "信令 / 通道驱动"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: a4a34a1a0b904abfacb6e218e19e27ea
+msgid ""
+"`mod_sofia` (SIP), `mod_verto` (HTML5/WebRTC), `mod_skinny`, "
+"`mod_loopback`, `mod_rtc`"
+msgstr "`mod_sofia`（SIP）、`mod_verto`（HTML5/WebRTC）、`mod_skinny`、`mod_loopback`、`mod_rtc`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 97e0cdeba99e4d39a42bab0364839411
+msgid "`codecs`"
+msgstr "`codecs`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: b5e2c5362c6948e0aea411dfba28439e
+msgid "15"
+msgstr "15"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 79bc59b344da477092f38962f518de91
+msgid "Audio/video codecs"
+msgstr "音频/视频编解码器"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 563f2574c9284ef8bcb7ccc23c6128c2
+msgid "`mod_opus`, `mod_amr`, `mod_g729`, `mod_openh264`"
+msgstr "`mod_opus`, `mod_amr`, `mod_g729`, `mod_openh264`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 820fecb6cf6d4ffbaa3ccc7a5c676163
+msgid "`say`"
+msgstr "`say`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: a74a20b05dd8444f9a8a8cef1d67a7be
+msgid "18"
+msgstr "18"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 1ef5481660fb48b08e7990b67081ad38
+msgid "Number/date spoken-language"
+msgstr "数字/日期的口语朗读"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 3db7ef3355bb4ef1acf8dfc13dcb2995
+msgid "`mod_say_en`, `mod_say_zh`, …"
+msgstr "`mod_say_en`, `mod_say_zh`, …"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 268a43e8b11e4990933836c24fe66998
+msgid "`event_handlers`"
+msgstr "`event_handlers`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 865b61699cbe4a8cbd24cf8f29a61359
+msgid "14"
+msgstr "14"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 78f9208672cc41ffac361bbc4a9a0e63
+msgid "ESL, CDR, SNMP, AMQP"
+msgstr "ESL、CDR、SNMP、AMQP"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 10f2ba49e2f94dbf8bbe2d1c9ae6a70a
+msgid "`mod_event_socket`, `mod_cdr_csv`, `mod_json_cdr`"
+msgstr "`mod_event_socket`, `mod_cdr_csv`, `mod_json_cdr`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 0a761871aceb4f188e86e3c8112a4952
+msgid "`formats`"
+msgstr "`formats`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 707278e5c2734cecb38fb521c29c0bac
+msgid "11"
+msgstr "11"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: c24e522b2df44f7eba7c94570b508414
+msgid "File/stream formats"
+msgstr "文件/流格式"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 848f88d21e254f4b8843450b0ceaa045
+msgid "`mod_sndfile`, `mod_shout`, `mod_local_stream`"
+msgstr "`mod_sndfile`, `mod_shout`, `mod_local_stream`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 83d46648c5354abe9c960db589e20967
+msgid "`languages`"
+msgstr "`languages`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: af2beda1f9b140839c189d549d9c86ae
+msgid "7"
+msgstr "7"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 49f35a3a5e9143368fb0cee39ccdfdd8
+msgid "Embedded interpreters"
+msgstr "嵌入式解释器"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 019e0a35870048689a8f02ba03c2fb6c
+msgid "`mod_lua`, `mod_python3`, `mod_v8`, `mod_perl`, `mod_java`, `mod_managed`"
+msgstr "`mod_lua`, `mod_python3`, `mod_v8`, `mod_perl`, `mod_java`, `mod_managed`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: c7d69556e07c470383aa34702a6da6d2
+msgid "`xml_int`"
+msgstr "`xml_int`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 1e8d342eae7c4fb2bbc8c64f9f09b9c7
+msgid "5"
+msgstr "5"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: cec2f500ea84494fbf99686a04217cd5
+msgid "Dynamic XML (curl, LDAP, RPC, CDR)"
+msgstr "动态 XML（curl、LDAP、RPC、CDR）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 6187c5ac4cf046eb9a1d31470047984e
+msgid "`mod_xml_curl`, `mod_xml_rpc`, `mod_xml_cdr`"
+msgstr "`mod_xml_curl`, `mod_xml_rpc`, `mod_xml_cdr`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: ee544e93c73c4074802193a52ba073ba
+msgid "`loggers`"
+msgstr "`loggers`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: c0e36133fc104afdab752418aa43a760
+msgid "4"
+msgstr "4"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 0f2a2873fe6e49d092c20d7849da3167
+msgid "Console / file / syslog / Graylog"
+msgstr "控制台 / 文件 / syslog / Graylog"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 95a40371eb934d1b9627fd5865c4f441
+msgid "`mod_console`, `mod_logfile`"
+msgstr "`mod_console`, `mod_logfile`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: cbe9a1a8b3cf442b8956aa9123df2305
+msgid "`dialplans`"
+msgstr "`dialplans`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 72e287358f7a4069b350e3c06d2cafdf 9b75e607f0f24748bc6d87b7820b85b2
+msgid "3"
+msgstr "3"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 5300dbd0455e48318176a0a07a5e1e6f
+msgid "Dialplan engines"
+msgstr "拨号计划引擎"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 48e51cb93b8e430ba76b0497dbcfc5c6
+msgid "`mod_dialplan_xml` (default), `mod_dialplan_asterisk`"
+msgstr "`mod_dialplan_xml`（默认）、`mod_dialplan_asterisk`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 93c6f69706114d17adca839d0300883e
+msgid "`asr_tts`"
+msgstr "`asr_tts`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 6f09dfc5e3b540758719707898a6f4a5
+msgid "Speech"
+msgstr "语音"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: a2c42ce3eeab4f239a292ec513eae55e
+msgid "`mod_flite`, `mod_pocketsphinx`, `mod_tts_commandline`"
+msgstr "`mod_flite`, `mod_pocketsphinx`, `mod_tts_commandline`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 40bf35146e75461487716b2ad27779e2
+msgid "`databases`"
+msgstr "`databases`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 2f0a9f5154204005b5bb97cbaf700396 89ee0d6b5da54239a965300a1625bc9a
+msgid "2"
+msgstr "2"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 1d11067488e14d398c7ba5f5c3ed12f0
+msgid "Core DB backends"
+msgstr "核心数据库后端"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: deb275f6070649608190b9ee3edc7fd0
+msgid "`mod_pgsql`, `mod_mariadb`"
+msgstr "`mod_pgsql`, `mod_mariadb`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: fecd44cdfa894264a7749f8fae19bd23
+msgid "`timers`"
+msgstr "`timers`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 1f1a408240c347eb98e825bf4b38198b
+msgid "OS timers"
+msgstr "操作系统定时器"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: ac284967cd954117b58225b5525f4c20
+msgid "`mod_posix_timer`, `mod_timerfd`"
+msgstr "`mod_posix_timer`, `mod_timerfd`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: a7d1d0abbdbb400b8d5a67f74d08c297
+msgid "`directories`"
+msgstr "`directories`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 180aefbe20774aa3bf8ebd3282ea3691 aadbaa8ec3fe4530b122b94fa294da43
+msgid "1"
+msgstr "1"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: c94588f9871c48d99fd09b7622bc04db
+msgid "Directory lookup"
+msgstr "目录查找"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: f4fd6b63306d4bddafd58bbddcd63f17
+msgid "`mod_ldap`"
+msgstr "`mod_ldap`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: d8bba3f2461d41ac8bc02a79d25c3af4
+msgid "`sdk`"
+msgstr "`sdk`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 1e31356741244974863e685fd56b4ca2
+msgid "Out-of-tree module SDK helpers"
+msgstr "树外模块 SDK 辅助"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 66c9e4d4b750498f834473cb46c18c07
+msgid "`src/mod/sdk/autotools`"
+msgstr "`src/mod/sdk/autotools`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:159
+#: 6216a7b496f445689247e08fc3cad902
+#, fuzzy
+msgid ""
+"Enabled-at-build-time list: uncommented lines in `build/modules.conf.in` "
+"(copied to `modules.conf` by `bootstrap.sh`). Runtime load list and "
+"`pre_load_modules.conf.xml` / `post_load_modules.conf.xml` are documented"
+" in [Users Manual Chapter "
+"5](https://developer.signalwire.com/freeswitch/configuration/module-"
+"loading/) and [Architecture](01-architecture.md)."
+msgstr ""
+"编译期启用列表：`build/modules.conf.in` 中未注释的行（`bootstrap.sh` 复制为 "
+"`modules.conf`）。运行时加载列表以及 `pre_load_modules.conf.xml` / "
+"`post_load_modules.conf.xml` 见 [用户手册第 5 "
+"章](https://developer.signalwire.com/freeswitch/configuration/module-"
+"loading/) 与 [架构](02-architecture.md)。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:161
+#: 96933d510d17499a9e4232056f9044b7
+msgid ""
+"Vanilla configuration root layout (same names the Users Manual uses, "
+"under `conf/vanilla/` in this tree):"
+msgstr "Vanilla 配置根布局（与用户手册相同的名称，在本仓库的 `conf/vanilla/` 下）："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 4dd8aa34cad84bfc93f384956a4748e3
+msgid "XML section / role"
+msgstr "XML 节 / 角色"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 335aa0d0c4b3404bbc43f8632e944237
+msgid "`freeswitch.xml`"
+msgstr "`freeswitch.xml`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: e5afbcf7b5554620b2ae177fb3cd24bd
+msgid "Root document; preprocessor includes"
+msgstr "根文档；预处理器 include"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 0a58d2c7dd804492a3eb9b8ecb3f92da
+msgid "`vars.xml`"
+msgstr "`vars.xml`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 94dc4a391bf34952a7261119a531e772
+#, python-brace-format
+msgid "`$${...}` preprocessor variables (`default_password=1234`)"
+msgstr "`$${...}` 预处理器变量（`default_password=1234`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 2e65420d46054c3bb1aa793a2986b2c2
+msgid "`autoload_configs/`"
+msgstr "`autoload_configs/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 1b0978febc1b48579c919c480e21f65a
+msgid "`configuration` section (modules, sofia, ACL, ESL, …)"
+msgstr "`configuration` 节（模块、sofia、ACL、ESL 等）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 3cb3110788d6405a840649ead4921954
+msgid "`sip_profiles/`"
+msgstr "`sip_profiles/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 43a1c052a7a04b5aa5bd0ad9a550746d
+msgid "Sofia profile XML (included from `sofia.conf.xml`)"
+msgstr "Sofia profile XML（由 `sofia.conf.xml` include）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 6784aa99f8af4a2788d4432496018f78
+msgid "`dialplan/`"
+msgstr "`dialplan/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: e9c7bc0fdeda4897b1c212795ad933a5
+msgid "`dialplan` section (`default`, `public`, `features`)"
+msgstr "`dialplan` 节（`default`、`public`、`features`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 8cf521b2dd324716a5d90801d1822f9c
+msgid "`directory/`"
+msgstr "`directory/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 819521be3dd94756990911c0e115d493
+msgid "`directory` section (users 1000–1019)"
+msgstr "`directory` 节（用户 1000–1019）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: edc0f8b88908427fb31bacdeaa086c24
+msgid "`chatplan/`"
+msgstr "`chatplan/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: a0099d34690c4030adbf8cb224d67d0f
+msgid "IM routing"
+msgstr "即时消息路由"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 01bd474fd1914823b64e56b2751bb63c
+msgid "`lang/`"
+msgstr "`lang/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: c538abca94ff48799e8f43ec2d3fa62d
+msgid "Phrase / say XML"
+msgstr "短语 / say XML"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:174
+#: 57bddf555bc54416a28be38c8434cd8e
+msgid "Key Entry Points"
+msgstr "关键入口"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 13e92591d23d4c4d8d97b8641eb9a8d6
+msgid "Area"
+msgstr "领域"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 4d13950524e7406e8db165d97c756af4
+msgid "File or directory"
+msgstr "文件或目录"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 99b8627d54374e78b79f70f507060a21
+msgid "Why it matters"
+msgstr "为何重要"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: fb3fd63b1d1d4f2fb5803eadfa0f99e1
+msgid "Autotools bootstrap"
+msgstr "Autotools 引导"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 13a9ca3867204e96bd2e3aaf9a12a94e
+msgid "`bootstrap.sh`, `configure.ac`"
+msgstr "`bootstrap.sh`, `configure.ac`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 07d93c2875e34938993514b8e3b1836f
+msgid ""
+"Generates `configure`; version `1.11.3-dev`; default prefix "
+"`/usr/local/freeswitch`."
+msgstr "生成 `configure`；版本 `1.11.3-dev`；默认前缀 `/usr/local/freeswitch`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: cbb90056ca434c85b3bff550e038a131
+msgid "Top-level make"
+msgstr "顶层 make"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 087b8139de154d94b058e6ca0d99e2c4
+msgid "`Makefile.am`"
+msgstr "`Makefile.am`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 644625c438a045a7856aad02d329b085
+msgid ""
+"`SUBDIRS = . src build tests/unit`; also drives per-module `make "
+"mod_sofia` style targets."
+msgstr "`SUBDIRS = . src build tests/unit`；同时驱动按模块的 `make mod_sofia` 风格目标。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: efc21f9bef054c95a0c5ed5c6f38fdea
+msgid "Process entry"
+msgstr "进程入口"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: c08c0cb5744e49d28c529801be75e939
+msgid "`src/switch.c`"
+msgstr "`src/switch.c`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 532e226992864e7ca852ddc6e0aacc0c
+msgid "`main`; Unix daemon / Windows service `FreeSWITCH`."
+msgstr "`main`；Unix 守护进程 / Windows 服务 `FreeSWITCH`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: fbc5bb0f317444598bf3f4b6fe3ba37a
+msgid "Core library"
+msgstr "核心库"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: af006c5b63c24756a06369acc0f7f038
+msgid "`src/switch_core.c`, `src/switch_core_session.c`"
+msgstr "`src/switch_core.c`, `src/switch_core_session.c`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: a544aa370ebb4266863101cceb52e36e
+msgid "Init, sessions, memory, SQL."
+msgstr "初始化、会话、内存、SQL。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: c81d098020d84bbcb2b8d49e585ee95f
+msgid "Module loader"
+msgstr "模块加载器"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 86a821d9f4754ea18dbed85da6c9951a
+msgid "`src/switch_loadable_module.c`"
+msgstr "`src/switch_loadable_module.c`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 1801c5c7e84445b287857ef999b08d53
+msgid "Loads DSOs from the modules directory."
+msgstr "从模块目录加载 DSO。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 64950d53df6d49bcbc6c6ee48fab721d
+msgid "Public API"
+msgstr "公共 API"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 4dfc068925ba46faad87c5761511c2fc
+msgid "`src/include/switch.h`, `src/include/switch_module_interfaces.h`"
+msgstr "`src/include/switch.h`, `src/include/switch_module_interfaces.h`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 31e947a214e2421984a33a4d2e5ac4f5
+msgid "What modules compile against."
+msgstr "模块编译时所依赖的接口。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: e96d340dddb04f8786c15f8485a17931
+msgid "Module enable list"
+msgstr "模块启用列表"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: c18cd1a2e1054d8b9fd7d636dc33ec0a
+msgid "`build/modules.conf.in`"
+msgstr "`build/modules.conf.in`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: e7de33bd6aa14f03931bab715af50992
+msgid "Which `src/mod/...` paths are built."
+msgstr "哪些 `src/mod/...` 路径会被构建。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 7a9135faa97f4e96963a9a8bc8617570
+msgid "SIP"
+msgstr "SIP"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 84ecfda861104e22b338d6c60dcb6a55
+msgid "`src/mod/endpoints/mod_sofia/mod_sofia.c`"
+msgstr "`src/mod/endpoints/mod_sofia/mod_sofia.c`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 12260555def244c6835eb3fcf6abd6f2
+msgid "Primary SIP endpoint."
+msgstr "主要 SIP 端点。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: fef077882a7d40c08551a77154d88796
+msgid "WebRTC / HTML5"
+msgstr "WebRTC / HTML5"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 2bb9fe61a1b449e38b55459cdd4649d4
+msgid "`src/mod/endpoints/mod_verto/mod_verto.c`"
+msgstr "`src/mod/endpoints/mod_verto/mod_verto.c`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: ebb43ff5dfe044ecb9f6a443fb65bf6d
+msgid "Verto endpoint `verto.rtc`."
+msgstr "Verto 端点 `verto.rtc`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 946e2a7e76224df49fe2bd021ee64943
+msgid "Event Socket"
+msgstr "Event Socket"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 25d7b04c303c4e7b920af49e6cfd3b21
+msgid "`src/mod/event_handlers/mod_event_socket/`"
+msgstr "`src/mod/event_handlers/mod_event_socket/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 85ef3748a3134f5bbed5d847c8647102
+msgid ""
+"`fs_cli` defaults to `127.0.0.1:8021`; vanilla runtime config listens on "
+"`::`:8021."
+msgstr "`fs_cli` 默认连接 `127.0.0.1:8021`；vanilla 运行时配置监听 `::`:8021。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: d9a245090c9e48cba99187993f0e48bd
+msgid "XML-RPC / HTTP"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 54a488ac046742ca8306c6c1e91f4ba8
+msgid "`src/mod/xml_int/mod_xml_rpc/`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 7bd42aee6d52462f945b6fda589b26d4
+msgid ""
+"Embedded HTTP/XML-RPC server; runtime config in "
+"`conf/vanilla/autoload_configs/xml_rpc.conf.xml`; static portal assets "
+"under `htdocs/portal/`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: da69d50facbe48388ce9443d53b392c9
+msgid "CLI client"
+msgstr "CLI 客户端"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: ab17c8b0f08e436f939999021cc81eb4
+msgid "`libs/esl/fs_cli.c`"
+msgstr "`libs/esl/fs_cli.c`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 2dfdc8037cba450f94d49f93b150a859
+msgid "Out-of-process console over ESL."
+msgstr "通过 ESL 的进程外控制台。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 7d84af22bf1e40af884c004ff23f0b74
+msgid "Default config"
+msgstr "默认配置"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 11ad759e55ac4fe8a13af5b4eb920c61
+msgid "`conf/vanilla/freeswitch.xml`, `conf/vanilla/vars.xml`"
+msgstr "`conf/vanilla/freeswitch.xml`, `conf/vanilla/vars.xml`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: f26c78b1a5134aacb754324ad5f20909
+msgid ""
+"Preprocessor includes dialplan, directory, `autoload_configs/*.xml`, SIP "
+"profiles."
+msgstr "预处理器包含拨号计划、directory、`autoload_configs/*.xml`、SIP 配置文件。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: c0c02a0841834d13a889e7dbdcb0ac46
+msgid "Vanilla SIP profiles"
+msgstr "Vanilla SIP 配置文件"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 6f18a74bc5bc49a6b2e029ce63804f4c
+msgid "`conf/vanilla/sip_profiles/`"
+msgstr "`conf/vanilla/sip_profiles/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 1e2a1cc37b62430a98d1eff5bd2bcfb4
+msgid "Internal/external Sofia profiles."
+msgstr "内部/外部 Sofia 配置文件。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 936979367e9341d0845d65e602f8de68
+msgid "Unit tests"
+msgstr "单元测试"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: ecddc625b14940ec93a5d4a835211a44
+msgid "`tests/unit/`, `tests/unit/run-tests.sh`"
+msgstr "`tests/unit/`, `tests/unit/run-tests.sh`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 80d7d514f021455297a216a17963e1bb
+msgid "Core tests; Docker helper `run-tests-docker.sh`."
+msgstr "核心测试；Docker 辅助脚本 `run-tests-docker.sh`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 6475dd5ae8da496c970faa557bfaf3dd
+msgid "`.github/workflows/ci.yml`"
+msgstr "`.github/workflows/ci.yml`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: d482e1dbbea140b39f5e156e5b740c2d
+msgid "Primary Linux CI."
+msgstr "主要 Linux CI。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 43aac3a5dea44d45870241898ee1bf47
+msgid "Windows"
+msgstr "Windows"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 45515d08dcf64f238f489d9c011774cc
+msgid "`Freeswitch.2017.sln`, `w32/`"
+msgstr "`Freeswitch.2017.sln`, `w32/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: e82a5c74c218476e96d716d603e78cb2
+msgid "MSVC solution."
+msgstr "MSVC 解决方案。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: fd3537b9329640ed9545561fdff777c4
+msgid "Docker"
+msgstr "Docker"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: ce2faadfa5704a9c89ccd19045da3988
+msgid "`docker/README.md`, `docker/base_image/`"
+msgstr "`docker/README.md`, `docker/base_image/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md
+#: 66a13749a7a344929e36cbd80ff8f331
+msgid "Runtime images; publish SIP/RTP/ESL ports."
+msgstr "运行时镜像；发布 SIP/RTP/ESL 端口。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:197
+#: 98ebc08c7b06443c87707ffe40604b91
+msgid "Organization Rules"
+msgstr "组织规则"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:199
+#: 999563334a914df89edbed16a543677b
+msgid ""
+"**Naming**: Core files are `switch_<area>.c` / `switch_<area>.h`. Modules"
+" are `mod_<name>` under a category directory. Config files are XML named "
+"`<feature>.conf.xml` under `autoload_configs/`."
+msgstr ""
+"**命名**：核心文件为 `switch_<area>.c` / `switch_<area>.h`。模块为分类目录下的 "
+"`mod_<name>`。配置文件为 `autoload_configs/` 下名为 `<feature>.conf.xml` 的 XML。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:200
+#: 3dbd2b49b62a4278895aaf1fe424ed74
+msgid ""
+"**Layering**: `src/switch.c` → core (`switch_core_*`, RTP, IVR, XML) → "
+"loadable modules. Modules call into `src/include/`; they must not become "
+"a second core. Bundled libs stay in `libs/` and are linked by the core or"
+" by specific modules."
+msgstr ""
+"**分层**：`src/switch.c` → 核心（`switch_core_*`、RTP、IVR、XML）→ 可加载模块。模块调用 "
+"`src/include/`；不得演变成第二套核心。捆绑库留在 `libs/`，由核心或特定模块链接。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:201
+#: e95cf4f8684849ee841764b299265be9
+msgid ""
+"**Module boundaries**: Category folders are the ownership boundary "
+"(endpoint vs application vs codec). Enable/disable is `modules.conf`, not"
+" `#ifdef` sprawl in the core. Out-of-tree modules can be cloned via "
+"`modules.conf` git-source lines (`src/mod/Makefile.am`)."
+msgstr ""
+"**模块边界**：分类目录即所有权边界（端点 vs 应用 vs 编解码器）。启用/禁用通过 `modules.conf`，而不是在核心里铺开 "
+"`#ifdef`。树外模块可通过 `modules.conf` 的 git-source 行克隆（`src/mod/Makefile.am`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:202
+#: 6f01ea6bb0c64c0faa78ed8a0ce9ae67
+msgid ""
+"**Config vs code**: Runtime behavior is XML under `conf/<profile>/`, not "
+"compiled constants. The preprocessor (`X-PRE-PROCESS` / `#include`) "
+"flattens to `freeswitch.xml.fsxml` at start."
+msgstr ""
+"**配置 vs 代码**：运行时行为是 `conf/<profile>/` 下的 XML，而非编译期常量。预处理器（`X-PRE-PROCESS`"
+" / `#include`）在启动时展平为 `freeswitch.xml.fsxml`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:203
+#: a16492118b294e77ae0063241e6677de
+msgid ""
+"**Scripts and tooling**: packaging in `scripts/packaging/` and `debian/`;"
+" CI glue in `scripts/ci/` and `.github/`; maintainer gdb in "
+"`support-d/gdb/`."
+msgstr ""
+"**脚本与工具**：打包在 `scripts/packaging/` 与 `debian/`；CI 粘合在 `scripts/ci/` 与 "
+"`.github/`；维护者 gdb 在 `support-d/gdb/`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:204
+#: 0fc62249c476418283661d83797559ba
+msgid ""
+"**Tests**: core unit tests in `tests/unit/` (libfreeswitch only). Some "
+"modules carry their own `test/` trees (for example Sofia SIPp scenarios "
+"under `src/mod/endpoints/mod_sofia/test/`)."
+msgstr ""
+"**测试**：核心单元测试在 `tests/unit/`（仅 libfreeswitch）。部分模块自带 `test/` 目录（例如 Sofia "
+"SIPp 场景位于 `src/mod/endpoints/mod_sofia/test/`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:205
+#: 0e44cb44c934464cbfef1d9cf35a983f
+msgid ""
+"**Build systems**: Autotools is the supported Unix path. "
+"`src/CMakeLists.txt` exists but is historical (CMake 2.6 comment). "
+"Windows uses the `.sln` / `w32/` project files."
+msgstr ""
+"**构建系统**：Autotools 是受支持的 Unix 路径。`src/CMakeLists.txt` 存在但属历史遗留（CMake 2.6 "
+"注释）。Windows 使用 `.sln` / `w32/` 工程文件。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:207
+#: c3a7415c8c0b4e3189cbaeeef38ffa33
+msgid "Things New Contributors Usually Need First"
+msgstr "新贡献者通常最先需要的内容"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:209
+#: bd5f9003b5354b58bc3cd59e9c9ce006
+msgid "`README.md` — product pointer and package/build links"
+msgstr "`README.md` — 产品指引与软件包/构建链接"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:210
+#: 652d5f667c0f4de4881cff63418b98f3
+msgid "`configure.ac` + `bootstrap.sh` — version and Unix build"
+msgstr "`configure.ac` + `bootstrap.sh` — 版本与 Unix 构建"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:211
+#: 8b5c7b075fcb4f52972083b5f46d5c1f
+msgid "`src/switch.c` + `src/switch_core.c` — process and core"
+msgstr "`src/switch.c` + `src/switch_core.c` — 进程与核心"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:212
+#: 9cf5c44052164731aadeb408337f7a74
+msgid "`src/include/switch.h` — API surface"
+msgstr "`src/include/switch.h` — API 表面"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:213
+#: 9a9e7981613d411687ab9ba1af6b7ab8
+msgid "`build/modules.conf.in` — what actually gets compiled"
+msgstr "`build/modules.conf.in` — 实际会编译的内容"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:214
+#: ba4f3943de924ca5a93d8433966a997e
+msgid ""
+"`src/mod/endpoints/mod_sofia/` — SIP (`mod_sofia`); sockets in out-of-"
+"tree Sofia-SIP tport"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:215
+#: d1b961f6b36f44dcaecb15e314e07b4a
+msgid "`conf/vanilla/` — default PBX XML (dialplan, directory, SIP profiles)"
+msgstr "`conf/vanilla/` — 默认 PBX XML（拨号计划、directory、SIP 配置文件）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:216
+#: 69848e4b0db8416994b8f03f3012eb23
+msgid ""
+"`libs/esl/fs_cli.c` and `src/mod/event_handlers/mod_event_socket/` — "
+"control plane"
+msgstr "`libs/esl/fs_cli.c` 与 `src/mod/event_handlers/mod_event_socket/` — 控制面"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:217
+#: 24acb582f7064a388a403ca1544e622a
+msgid "`tests/unit/README` — how to add a core test"
+msgstr "`tests/unit/README` — 如何添加核心测试"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:218
+#: b67887bd128a47db8ed0b358adb5cbb8
+#, fuzzy
+msgid "`man/0.getting-started/01-overview.md` — PKB product snapshot"
+msgstr "`man/00-overview.md` — PKB 产品快照"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:220
+#: 951172b02da642019eaf46c1e4e7f2a1
+msgid "Related Documentation"
+msgstr "相关文档"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:222
+#: e57a209472234213a625fdf4f001fcea
+#, fuzzy
+msgid "[Overview](../0.getting-started/01-overview.md)"
+msgstr "[概述](00-overview.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:223
+#: a18413cc32bb42028d42981809cd7dff
+#, fuzzy
+msgid "[Architecture](01-architecture.md)"
+msgstr "[架构](02-architecture.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:224
+#: 949a32b29cee4c41a9d2b7f27be09b20
+#, fuzzy
+msgid "[Data and API](04-data-and-api.md)"
+msgstr "[数据与 API](05-data-and-api.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:225
+#: 045a30fa041c452a9c8166d13d925734
+#, fuzzy
+msgid "[Conventions](../4.development/01-conventions.md)"
+msgstr "[约定](07-conventions.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/03-repo-map.md:226
+#: bd237fc9968d4fd4b392da558851b512
+msgid ""
+"[Users Manual](https://developer.signalwire.com/freeswitch/) — config "
+"paths are relative to the directory that contains `freeswitch.xml`"
+msgstr ""
+"[用户手册](https://developer.signalwire.com/freeswitch/) — 配置路径相对于含 "
+"`freeswitch.xml` 的目录"
+
+#~ msgid "`src/mod/endpoints/mod_sofia/` — SIP"
+#~ msgstr "`src/mod/endpoints/mod_sofia/` — SIP"
+

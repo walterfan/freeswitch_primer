@@ -1,0 +1,26 @@
+http:
+  host: 127.0.0.1
+  port: 7009
+  allow_remote: false
+  tls: false
+
+content_root: ../../content
+web_root: ../web
+sound_root: ../../labs/day-16/sounds
+default_locale: zh-CN
+
+sip:
+  wss_url: wss://127.0.0.1:7443
+  domain: 127.0.0.1
+  tutorial_extensions: ["1000", "1001", "9000"]
+
+esl:
+  enabled: true
+  host: 127.0.0.1
+  port: 8021
+  password_env: TUTORIAL_ESL_PASSWORD
+
+limits:
+  recent_events: 1000
+  client_queue: 256
+  call_correlations: 4096

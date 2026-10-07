@@ -1,0 +1,450 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Zoom Video Communications
+# This file is distributed under the same license as the FreeSWITCH package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FreeSWITCH \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-18 16:34+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:1
+#: 4b99d1f81a8a4e989a13bd95f6a1e4c8
+msgid "17. Sofia-SIP NUA：先建立正确的心智模型"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:5
+#: a1378b7de6514331b7a095844dbcf2b9
+msgid ""
+"NUA（Sofia SIP User Agent）是 Sofia-SIP 面向应用的高层用户代理模块。它把 SIP "
+"事务、对话、注册、订阅、发布和基本 SDP Offer/Answer 组合成一组异步 API；底层事务主要由 NTA 处理，传输由 tport "
+"处理。[官方 NUA 概览](https://sofia-sip.sourceforge.net/refdocs/nua/index.html)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:9
+#: 5dea28cee02d4afcb12a0557020385bd
+msgid "1. NUA 在 Sofia-SIP 中的位置"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:27
+#: f107c703698b4ccd8e150999a188d253
+msgid "可以把 NUA 理解为“帮应用管理 SIP 状态机的异步控制器”："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:29
+#: cb0a19d8f7f44b419042a97184056b72
+msgid "应用决定要做什么：呼叫、接听、挂断、注册或订阅。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:30
+#: d83685f3da8f4bbab88e9391be1aed30
+msgid "NUA 负责把动作转换为 SIP 报文和事务。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:31
+#: 3798bf16b16344d39226cf03e44b7a1e
+msgid "NUA 通过 callback 把响应、入站请求、呼叫状态和 SDP 结果交还应用。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:32
+#: ff2330688252483da5b595129f4c16b6
+msgid "应用负责业务策略，例如是否接听、如何处理 MESSAGE body、是否允许订阅。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:34
+#: c29436a4f0634074bccf9e2ca2514b44
+msgid "NUA 可以创建终端、网关或 MCU 类型的 SIP 用户代理；它隐藏了很多低层信令 细节，但仍允许应用通过 tags 控制 SIP 和媒体参数。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:37
+#: d67db3c642f244bbbf512c2391561a93
+msgid "2. 四个必须理解的对象"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: 2296d634c99e42738a9399aa7bc35148
+msgid "对象"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: 06b4fb0de9934c499fec54e18ac5c876
+msgid "类型"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: 884205ab88114d259249a78aa7d9b229
+msgid "作用"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: b1198734aa96467682c697f8ef8d6990
+msgid "生命周期"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: d2aa7c9efdbb4e05a69906117c6fa424
+msgid "Root"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: c53836162c214958beee51c5e7b900b1
+msgid "`su_root_t *`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: 896890cbcef1495182ac66bf4709c678
+msgid "事件循环、定时器、异步消息分发"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: 399301218e914491b835664b3b26a769
+msgid "先创建，最后销毁"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: aa3cce7c77264e7aa4103ca3b04da1a4
+msgid "Agent"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: d75f9196b4c3481a971af8c9256ad5a7
+msgid "`nua_t *`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: 04d01e7ef83e4d6d86158cddc358c144
+msgid "一个 SIP UA stack，包含传输和全局参数"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: bd93fa303c9541498d1a970a1091d680
+msgid "`nua_create()` 到 `nua_destroy()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: 19dc5766cdca4453a03f3ecfe964b923
+msgid "Handle"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: f665411dbfbe4155bb5a19fd3ad08bab
+msgid "`nua_handle_t *`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: 733985b133ac4ef0bc13ca37cba1a5eb
+msgid "一次呼叫、注册、订阅或简单 SIP 操作的上下文"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: 6b84368c821c417b947ef1f108ae3f2e
+msgid "`nua_handle()` 到 `nua_handle_destroy()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: 811fa205b70a4fb6a308cac4d1f21a77
+msgid "Magic"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: 46b1ae03f29c403482e7afdefbe2a0bc
+msgid "`void *` 类型上下文"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: fd8220b7568648fe91a1fe05f9ff2ea7
+msgid "把应用自己的上下文带回 callback"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: 2b3a5c56d0904b69ba8f83f8d783300a
+msgid "由应用管理"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:46
+#: 591831fd44ee40bf9e6a0d306432301f
+msgid "2.1 Root：事件循环"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:48
+#: ccba86ce7c4a46a8b0c291ea8025d357
+msgid "NUA 不会替应用主动运行事件循环。应用必须创建 root，并调用："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:57
+#: 0f8a9e0f3c714bc3991f05d758f1104e
+msgid ""
+"如果应用自己已经有循环，可以周期性调用 `su_root_step(root, timeout)`。 没有执行 `su_root_run()` 或"
+" `su_root_step()`，NUA 的回调就不会被及时处理。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:60
+#: c160f142960c4d8986f22b5a50a5da22
+msgid "2.2 Agent：整个 SIP 栈"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:70
+#: 54015ff12ea94d7b84bc4bf6f45bc76a
+msgid ""
+"`nua_create()` 会创建 NUA agent，并建立由 `NUTAG_URL()`、 `NUTAG_SIPS_URL()` "
+"等参数指定的传输。创建后可用："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:78
+#: 3bb494e5c9a54e44aa60a1a1d4a01d01
+msgid "全局参数适合放在 agent 上；某个呼叫或订阅独有的参数应放在 handle 上。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:80
+#: 7d71cc8b4d0545ccb4d531c23706233e
+msgid "2.3 Handle：一次操作的“档案夹”"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:91
+#: 68628301956a43b0a37392dd0940b745
+msgid ""
+"Handle 保存对话、媒体、注册、订阅或简单事务的状态。入站 `INVITE`、 `MESSAGE` 等请求也会由 NUA 自动创建 "
+"handle，并把它传给 callback。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:94
+#: 9fb2a0ef78bf47b8a91258ae04ccffa1
+msgid "不要把 `nua_handle_t` 当成可直接访问的结构体；它是 opaque object，只能通过 NUA API 查询或修改。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:97
+#: 92ed535a9d03469a9678545984c4b0fc
+msgid "2.4 Magic：应用自己的上下文"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:99
+#: 169d4f88d0394eadaf91962aa0abf70d
+msgid "NUA 不理解应用上下文的内容，只保存指针并在 callback 时原样返回："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:115
+#: 44829bd75f3f498ba5ee16b9be4020e7
+msgid ""
+"推荐把 agent 级别的数据放入 `magic`，把单呼叫或单订阅数据放入 `hmagic`。这样 callback 收到 `nh` "
+"时可以直接找到业务对象。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:118
+#: 588ded3b8c2a43d280a3fbe0ba468054
+msgid "3. 异步线程模型"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:131
+#: 649a2f543b94411aabeadbae21ffbb09
+msgid ""
+"官方模型允许应用和协议引擎运行在不同线程；NUA API 调用和 callback 之间通过 异步消息交互。callback 在 root "
+"对应的执行上下文中被调用。[官方线程和消息模型](https://sofia-"
+"sip.sourceforge.net/refdocs/nua/index.html)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:134
+#: 80dd06e99eee4c5b8d1fc26582723814
+msgid "因此 callback 中应遵守三条规则："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:136
+#: e750f1011b504eddb843a301ce309272
+msgid "快速读取 `status`、`sip` 和 tags，并复制需要长期保存的数据。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:137
+#: a3dffce2aa424d95909776e154a9854f
+msgid "不要在 callback 中执行阻塞 I/O、长时间 SQL 或等待另一个线程。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:138
+#: 87d8f7932fd245c79f1b3ad9e13d1b11
+msgid "`sip_t const *sip` 和 callback 中的 tag 数据只按回调期间有效处理；需要跨回调使用时复制内容。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:140
+#: 58c5cc5414d94a1eae1a7dc402fcd8c5
+msgid ""
+"FreeSWITCH 的 `mod_sofia` 也遵循这个边界：Sofia 线程负责 SIP I/O，业务处理 转交到 FreeSWITCH "
+"自己的队列和线程。[Tech Stack — Sofia-SIP](../1.architecture/02-tech-stack.md"
+"#sofia-sip-library)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:143
+#: 03edaf8811c146349646421031e6a427
+msgid "4. Tags：NUA 的参数系统"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:145
+#: 1a0176b51b8940afb7b0362b9ec0f011
+msgid "Sofia 使用 typed tags 模拟可变参数："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:154
+#: b79dece6b12b4a378cee463a334f4a72
+msgid "规则如下："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: 8fb0469b9d9a495b8d6ea2eaa7228c80
+msgid "写法"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: 8c4c344a03d541b1badcc41b1e74b1c8
+msgid "用途"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: 5ba53e422efa48858d6ea63a68e05135
+msgid "`NUTAG_NAME(value)`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: 466b6d256ee2423cb1d48665f1a272ea
+msgid "NUA 参数"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: 0c0a77352e934c7eb509ddc3165909c9
+msgid "`SIPTAG_NAME(value)`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: 19e9ccbeee264b6db63dbf8b02ae067c
+msgid "传入已解析的 SIP 结构"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: 38da751b5b20472d8745cf31b8bd8420
+msgid "`SIPTAG_NAME_STR(\"...\")`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: 6d6bc3e823a844b8890a074bfb4caa26
+msgid "传入字符串，由 Sofia 解析"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: bbd245f73a96454fb62d53e51c94a553
+msgid "`NUTAG_NAME_REF(x)`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: 66a102abd3a348e5b44f263b7f6c6f15
+msgid "通过 `tl_gets()` 取回 NUA 参数"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: 809be7f850d54a6ea3a1d58f34879528
+msgid "`SIPTAG_NAME_REF(x)`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: 8b3b6a32dccd4d6790142adfa871d95f
+msgid "通过 `tl_gets()` 取回解析后的头域"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: 79b2618401d440718c7323961575fc7e
+msgid "`SIPTAG_NAME_STR_REF(x)`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: 5dc8f809239e4ac2a2b09581851e5010
+msgid "通过 `tl_gets()` 取回字符串形式的头域"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: 67843195b2854d22b2955ac016ba73a7
+msgid "`TAG_END()` / `TAG_NULL()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md
+#: d7b12559fdc54869a320f6a8a159e119
+msgid "tag 列表结束，必须放在最后"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:166
+#: 99b332b6de49431089787be499c2d6b6
+msgid ""
+"相同头域可以重复传入，例如多个 `Accept`。对只能出现一次的头域，新的 tag 值会替换原值；`NULL` 不修改，特殊值 `(void "
+"*)-1` 可移除对应头域。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:169
+#: 928581bf904e495d8fc0aa0bbb124212
+msgid ""
+"部分头域是 handle 的 sticky headers：`Contact`、`User-Agent`、`Supported`、 `Allow`"
+" 和 `Organization`。它们在 handle 级调用中设置后，可能自动出现在 后续请求中。[NUA API "
+"Overview](https://sofia-"
+"sip.sourceforge.net/refdocs/nua/nua_api_overview.html)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:173
+#: 428f3e23105b490c80f728a6d1c73880
+msgid "5. 最小生命周期"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:202
+#: d3a16549aa8a4914b1fc9b760e8999ca
+msgid ""
+"生产代码应在退出时先调用 `nua_shutdown()`，等待 `nua_r_shutdown` 的最终 callback，再调用 "
+"`su_root_break()` 让事件循环退出，最后销毁 NUA 和 root。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:205
+#: 1c4973110dbf4f89a1bac9deab72b3ce
+msgid "6. 一句话记忆"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:211
+#: 7923173bc6154caca6fca91fb2083394
+msgid "参考资料"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:213
+#: 9c4ac0df0ba5421993911ca9c4c0fe3e
+msgid ""
+"[Sofia-SIP NUA main page](https://sofia-"
+"sip.sourceforge.net/refdocs/nua/index.html)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:214
+#: 6894373f3296428b9669b79e48586ab1
+msgid ""
+"[NUA API Overview](https://sofia-"
+"sip.sourceforge.net/refdocs/nua/nua_api_overview.html)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/2.signal/02-sofia-nua-overview.md:215
+#: 84688ba2d5bb43628002b1dd7ef67bfa
+msgid ""
+"[FreeSWITCH Tech Stack — Sofia-SIP](../1.architecture/02-tech-stack.md"
+"#sofia-sip-library)"
+msgstr ""
+
+#~ msgid ""
+#~ "FreeSWITCH 的 `mod_sofia` 也遵循这个边界：Sofia 线程负责"
+#~ " SIP I/O，业务处理 转交到 FreeSWITCH 自己的队列和线程。[Tech"
+#~ " Stack — Sofia-SIP](../1.architecture/03-tech-"
+#~ "stack.md#sofia-sip-library)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "[FreeSWITCH Tech Stack — Sofia-"
+#~ "SIP](../1.architecture/03-tech-stack.md#sofia-sip-"
+#~ "library)"
+#~ msgstr ""
+

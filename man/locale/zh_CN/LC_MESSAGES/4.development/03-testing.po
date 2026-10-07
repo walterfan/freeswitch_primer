@@ -1,0 +1,1329 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Zoom Video Communications
+# This file is distributed under the same license as the FreeSWITCH package.
+# Walter Fan <walter.fan@ustc.etu>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version:  FreeSWITCH\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-18 16:34+0800\n"
+"PO-Revision-Date: 2026-08-30 23:13+0800\n"
+"Last-Translator: Walter Fan <walter.fan@ustc.etu>\n"
+"Language: zh_CN\n"
+"Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:1
+#: 958aadb30cbd487091bb50a39958986c
+msgid "09. Testing Strategy"
+msgstr "09. 测试策略"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:5
+#: 1699dd4f7f064f0cbbe304647b205640
+msgid ""
+"How this tree is validated: C unit binaries under `tests/unit/`, per-"
+"module Autotools `TESTS` collected by `make print_tests`, ESL `make "
+"check`, clang `scan-build`, then a short live-process smoke after `make "
+"install`. GitHub Actions is the source of truth for the automated path "
+"(`.github/workflows/ci.yml`). There is no published coverage percentage "
+"in this repo."
+msgstr ""
+"本仓库如何验证：`tests/unit/` 下的 C 单元二进制、由 `make print_tests` 收集的各模块 Autotools "
+"`TESTS`、ESL `make check`、clang `scan-build`，以及 `make install` "
+"之后的短时在线冒烟。自动化路径的权威来源是 GitHub "
+"Actions（`.github/workflows/ci.yml`）。本仓库没有公布覆盖率百分比。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:7
+#: 0538e713c8d64154b28283a66e945a76
+#, fuzzy
+msgid ""
+"New core tests must use `src/include/test/switch_test.h` "
+"(`tests/unit/README`). Do not use GoogleTest, Catch2, or a tree-wide C++ "
+"harness. Do not use `scripts/debian_min_build.sh` as a test or build "
+"environment (Jessie / FreeSWITCH 1.6 pins; see [Quick Start](../0"
+".getting-started/02-quick-start.md))."
+msgstr ""
+"新的核心测试必须使用 `src/include/test/switch_test.h`（`tests/unit/README`）。不要把 "
+"`scripts/debian_min_build.sh` 当作测试或构建环境（钉死 Jessie / FreeSWITCH 1.6；见 "
+"[快速开始](01-quick-start.md)）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:9
+#: 740af727d727435c883be7987c764ab9
+msgid "How a Core Unit Test Is Written"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:11
+#: 7104aa75255c4665a0c5dde6a76bf180
+msgid ""
+"This is not GoogleTest. A core test is a **standalone C program**: one "
+"`tests/unit/*.c` file compiles to one `noinst_PROGRAMS` binary with "
+"`main` supplied by macros. Assertions and suites come from two stacked "
+"headers:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: ae6f061994214e45b94a4013f6cd0f9b d0e55bc4f6534408bf80127c63aefdcd
+msgid "Layer"
+msgstr "层级"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 0fbad1ccc5724b1dbdcd1be7fb4ba961
+msgid "Header"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 95b44aba165340ac9b95371902ea6f0c
+#, fuzzy
+msgid "Role"
+msgstr "模块"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 8bf69c985f944e75abf0bf3ea685f0bb
+msgid "FCT (Fast C Test)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 5d815a367dd74b249a870767eeb2b421
+msgid "`src/include/test/switch_fct.h`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: f15910a92e364944ab2b573eae87db31
+msgid ""
+"Ian Blumel’s BSD C framework: `FCT_BGN` / `FCT_TEST_BGN` / `fct_chk` / "
+"`fct_req`. Header-only."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 5efca57a96da4453b76910c7216160c3
+msgid "FST"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: ac1f1efb97de452e9e96216ab2f9e017
+msgid "`src/include/test/switch_test.h`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 2f06975ab5fd44efbffe155ef202a74a
+msgid ""
+"FreeSWITCH wrapper: start `libfreeswitch`, load modules, allocate "
+"`fst_pool`, optional null session. Macros are named `FST_*` / `fst_*`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:18
+#: 65ce3fcf3cff4d51ac831d8de41869d4
+msgid "GoogleTest mapping (approximate):"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: f4ae31184bdd4550832f627ed5bf593b
+msgid "GoogleTest"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 947a6e6cc84041c4885b1f230cb9a94f
+msgid "This tree"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: f6ef38c9da9c4a6bb8a0a2d1b6cf5f23
+msgid "`TEST(suite, name)`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: f421ab61314a45d1834c2ca7a3d0cc20
+msgid "`FST_TEST_BEGIN(name)` … `FST_TEST_END()` inside `FST_SUITE_BEGIN`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: bdaf73c6820d44eca4e965784226cf28
+msgid "`SetUp()` / `TearDown()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 7cf426ffd7654e799230b0a8b9e0de77
+msgid "`FST_SETUP_BEGIN` / `FST_TEARDOWN_BEGIN` (run **before/after each** test)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: b487efcc1df1495eb4b0c1541cd59662
+msgid "`ASSERT_*` (abort the test)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 41d3f405e9af470685b6655734580ae2
+msgid "`fst_requires` → `fct_req`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: b716641d9108407b90c4a34c6070e06e
+msgid "`EXPECT_*` (continue)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 3c807892187a41d39a091151bf939688
+msgid "`fst_check`, `fst_check_string_equals`, … → `fct_chk*`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: cf132fe58770427899262dc71b552e57
+msgid "Process fixture"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: ad8d32e44800427bbdb1a16d1636949d
+msgid ""
+"`FST_CORE_BEGIN(\"./conf\")` … `FST_CORE_END()` — "
+"`switch_core_init_and_modload()` then `switch_core_destroy()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:28
+#: c53dc631f7754412ab0658ff534a4b48
+msgid "Core load variants:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:30
+#: e64648f65033498c802d446fe67e6706
+msgid ""
+"`FST_CORE_BEGIN(confdir)` — full core + modules from that conf tree "
+"(`tests/unit/conf` is the shared default)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:31
+#: bd670dc0043c464f8a44068afc4c2e82
+msgid "`FST_CORE_DB_BEGIN` — same plus `SCF_USE_SQL`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:32
+#: 1c7afa7127a9438ab4f0496c3e4ba91d
+msgid ""
+"`FST_MINCORE_BEGIN` — `switch_core_init(SCF_MINIMAL)` (XML/event tests "
+"that do not need a PBX)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:33
+#: cb3bd0d9593b454bb996dbe80ced468a
+msgid ""
+"`FST_SESSION_BEGIN(name)` — originate `null/+…` via `mod_loopback` (also "
+"requires `mod_sndfile` for `/tmp/<name>.wav`). Defines `fst_session` / "
+"`fst_channel`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:34
+#: b7f7dac76d334dfc9f668daaadca5c98
+msgid ""
+"`FST_MODULE_BEGIN(mod_foo, suite)` — used under `src/mod/…/test/`, loads "
+"the module from `../.libs/` relative to `SWITCH_TEST_BASE_DIR_OVERRIDE`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:36
+#: ea7f50b2bd1045cbbb08afee390296c4
+msgid ""
+"A typical `tests/unit` binary that needs modules **without** a prefix "
+"install should `switch_loadable_module_load_module()` from "
+"`src/mod/<category>/mod_*/.libs` (see `load_built_module()` in "
+"`tests/unit/switch_dialplan_xml.c`). `FST_MODULE_BEGIN`’s `../.libs` path"
+" is for tests that live next to the module, not under `tests/unit/`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:38
+#: a991256885504e288678e855cfa1201c
+msgid ""
+"`fst_requires` is for preconditions (session exists, module loaded). "
+"`fst_check*` is the actual oracle. Failed binaries print `FAILED TESTS` "
+"with file:line; `run-tests.sh` wraps each binary."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:40
+#: b7d512414ab346fcb3a5d7068513c7b6
+msgid ""
+"Worked example: `tests/unit/switch_dialplan_xml.c` (GitHub issue 3141). "
+"It is closer to an **in-process module integration test** than a shallow "
+"`switch_regex_perform()` call, but it still uses only `switch_test.h`:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:42
+#: 6df3f62115db42ab867d53c35999300b
+msgid ""
+"`FST_CORE_BEGIN(\"./conf\")` starts core with "
+"`tests/unit/conf/freeswitch.xml`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:43
+#: 31e6101e524f45608ab75ca6df5b443c
+msgid ""
+"Setup loads `mod_loopback` and `mod_dialplan_xml` from the build tree "
+"`.libs` directories (`SWITCH_MOD_BUILDDIR`)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:44
+#: 19df738d48d1485982fb3302097a4887
+msgid ""
+"`switch_ivr_originate(…, \"null/+15553334444\", …)` creates a channel "
+"with no SIP/RTP."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:45
+#: a9aec3190dc549a6a9d4616900f65533
+msgid ""
+"Channel vars `did_number` and `sip_h_Diversion` are set to the issue’s "
+"Diversion URI."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:46
+#: 80413fcbc44f4c4d94f27c71eff7d404
+msgid ""
+"A temporary XML document is written; `dialplan_hunt`’s `arg` is that path"
+" (`hunt_function(session, xml_path, NULL)`). `<context>` must be a "
+"**direct child** of `<section name=\"dialplan\">` because "
+"`switch_xml_find_child(…, \"dialplan\", NULL, NULL)` returns the section "
+"itself when attr/value are NULL."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:47
+#: 0266c307cd8f4a0bb5e22efbe1194393
+#, python-brace-format
+msgid ""
+"`fst_check_extension_apps` compares the hunted "
+"`switch_caller_extension_t` application stack to `{ \"log\", \"transfer "
+"to 7001234567\", NULL }`. The oracle is queued **application_data** after"
+" `$1` substitution, not a log-line scrape."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:48
+#: 363671670ebf48268bcd3bf1d57903a0
+msgid ""
+"Hangup and `switch_core_session_rwunlock`. `UNPROTECT_INTERFACE` after "
+"`switch_loadable_module_get_dialplan_interface(\"XML\")` (the interface "
+"name is `XML`, not `mod_dialplan_xml`)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:50
+#: ac9c7c9865894f0192511220b982539b
+#, python-brace-format
+msgid ""
+"Two tests in that file: `regex_all_var_field_keeps_capture` "
+"(`regex=\"all\"` + `${var}` — the UAF path) and "
+"`classic_var_field_keeps_capture` (same capture on a single "
+"`<condition>`). Run one binary:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:57
+#: 837e07100806470993fc456826dddcad
+msgid "Test Layers"
+msgstr "测试分层"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 6a03e01b683e4439a13a203562910253
+msgid "Primary checks"
+msgstr "主要检查"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 6e865e3adb0f4529a729f70e34a9a5a6
+msgid "Ownership / notes"
+msgstr "归属 / 说明"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 3b4beba0e382484b9190991754e3e9c6
+msgid "Core C unit binaries"
+msgstr "核心 C 单元二进制"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: e27c7d685c9747d1bea31be94462b169
+msgid ""
+"`cd tests/unit && ./run-tests.sh` after configure/build/install. Programs"
+" in `tests/unit/Makefile.am` `noinst_PROGRAMS`, listed as `TESTS`."
+msgstr ""
+"configure/build/install 之后执行 `cd tests/unit && ./run-tests.sh`。程序在 "
+"`tests/unit/Makefile.am` 的 `noinst_PROGRAMS` 中，并列为 `TESTS`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: ca24795ed01f41669909c2c34a1b7c19
+msgid ""
+"libfreeswitch / core. Framework: FCT via `src/include/test/switch_test.h`"
+" and `src/include/test/switch_fct.h`. Each binary is a separate process."
+msgstr ""
+"libfreeswitch / 核心。框架：经 `src/include/test/switch_test.h` 与 "
+"`src/include/test/switch_fct.h` 的 FCT。每个二进制是独立进程。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 067487b5e6cf4eac93c8bc199d9d08a6
+msgid "Per-module tests"
+msgstr "按模块测试"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 1e29b65f75a04b0e9a7a19075c48bebd
+msgid ""
+"Same runner: top-level `make print_tests` also walks `src/mod` "
+"(`OUR_TEST_MODULES` → `<mod>-print_tests` in `configure.ac`)."
+msgstr ""
+"同一运行器：顶层 `make print_tests` 也会遍历 `src/mod`（`configure.ac` 中 "
+"`OUR_TEST_MODULES` → `<mod>-print_tests`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: f426da5600174b39bb7ffec2628eefcf
+msgid ""
+"Module `Makefile.am` that sets `TESTS`. Only enabled modules in "
+"`modules.conf` are printed."
+msgstr "设置了 `TESTS` 的模块 `Makefile.am`。只有 `modules.conf` 中已启用的模块会被打印。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: b52f4dfad9f34b82aaf9f2bfd8309ed6
+msgid "ESL library"
+msgstr "ESL 库"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 3c1719f2160a4810b298c79b9f757dc2
+msgid "`make -C libs/esl check`"
+msgstr "`make -C libs/esl check`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 45a9faaddc7d40dc836440bc62fcbcb4
+msgid ""
+"`libs/esl/tests/test_recv_event.c`. CI runs this only on **group 1** "
+"(`.github/workflows/unit-test.yml`)."
+msgstr ""
+"`libs/esl/tests/test_recv_event.c`。CI 仅在**第 1 组**运行（`.github/workflows"
+"/unit-test.yml`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 4b3953243c894ceeb2b1b9e8ec879c8d
+msgid "Static analysis"
+msgstr "静态分析"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 9a7c78fe76a944b995717160dadcca4f
+msgid "`./ci.sh -t scan-build -a configure|build|validate -c freeswitch`"
+msgstr "`./ci.sh -t scan-build -a configure|build|validate -c freeswitch`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 87548b0687a045d59451662425b46072
+msgid ""
+"`.github/workflows/scan-build.yml` + `scan-build-14`. Fails if the log "
+"does not contain `scan-build: No bugs found`."
+msgstr ""
+"`.github/workflows/scan-build.yml` + `scan-build-14`。若日志中不含 `scan-build: "
+"No bugs found` 则失败。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 895135a036224f218a9c839acb16bb7a
+msgid "Platform compile"
+msgstr "平台编译"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: ab734af4c60843e1aa1f3f83cd2fa171
+msgid "`macos.yml` Homebrew build; `windows.yml` MSBuild `Freeswitch.2017.sln`"
+msgstr "`macos.yml` Homebrew 构建；`windows.yml` MSBuild `Freeswitch.2017.sln`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 0b7377bd057f4a58aa2771f6962aafb5
+msgid ""
+"Compile/install (and Windows MSI), **not** `run-tests.sh`. A subset of "
+"unit sources have `.2017.vcxproj` entries in the solution."
+msgstr ""
+"编译/安装（以及 Windows MSI），**不是** `run-tests.sh`。部分单元源在解决方案中有 `.2017.vcxproj` "
+"条目。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 9c210b2f07ef447a8e3a14234e2dd323
+msgid "Live smoke"
+msgstr "在线冒烟"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 418d79d395d040308bf78d21f4494a6b
+msgid "`fs_cli -x status` after a prefix install"
+msgstr "前缀安装之后执行 `fs_cli -x status`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: f9a24fe4617d457da056c52b3f3f03da
+msgid ""
+"Manual / Docker healthcheck. Complements unit tests; does not replace "
+"them."
+msgstr "手工 / Docker 健康检查。补充单元测试，不能替代它们。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: c5f47120a16641f0ae3bac2978da2c17
+msgid "PKB docs"
+msgstr "PKB 文档"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: aef4ed793fa948568755c0cb8d1c7538
+msgid "`cd man && poetry install && make html-en && make pkb-check`"
+msgstr "`cd man && poetry install && make html-en && make pkb-check`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 9a16dcf6aeb146198d79447753ef3096
+msgid ""
+"This Sphinx tree (`man/`), not `docs/man/` Unix pages. Not part of "
+"`.github/workflows/ci.yml`."
+msgstr ""
+"这份 Sphinx 树（`man/`），不是 `docs/man/` Unix 手册页。不属于 "
+"`.github/workflows/ci.yml`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:69
+#: f6b34ed8cece4f19ae3333d8dddbb661
+msgid ""
+"`tests/unit/switch_eavesdrop.c` is built as `bin_PROGRAMS` example only "
+"(`examples = switch_eavesdrop`); `Makefile.am` comments that `make check`"
+" will not run it."
+msgstr ""
+"`tests/unit/switch_eavesdrop.c` 仅作为 `bin_PROGRAMS` 示例构建（`examples = "
+"switch_eavesdrop`）；`Makefile.am` 注明 `make check` 不会运行它。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:71
+#: 95ebfea7f62d4dfa9115b6d9f20e4d9e
+msgid "Core Regression Areas"
+msgstr "核心回归范围"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:73
+#: e2a151d6865246138fbc87e45e43fba6
+msgid ""
+"These are the `tests/unit/` programs in `noinst_PROGRAMS` (plus "
+"`switch_rtp_pcap` when `pcap-config` exists — `HAVE_PCAP` in "
+"`configure.ac`). Names match the C files."
+msgstr ""
+"这些是 `noinst_PROGRAMS` 中的 `tests/unit/` 程序（若存在 `pcap-config` 则加上 "
+"`switch_rtp_pcap`——`configure.ac` 中的 `HAVE_PCAP`）。名称与 C 文件一致。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: b54147b3efb447d0be59a059172d4ce3
+msgid "Area"
+msgstr "领域"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: cec4ecdd80d7418f8c81ba1a2db104c0
+msgid "Program"
+msgstr "程序"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 3ec841d1e02448dca8f38a71cedb8474
+msgid "What it exercises"
+msgstr "覆盖内容"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 78066a302e9747819ce282cca9f91ebd
+msgid "Core utilities"
+msgstr "核心工具"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: c0e232526eb34168ba8afc4e782a264f
+msgid "`switch_core`"
+msgstr "`switch_core`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: dd94dcd01a3941dc9ca37020bdd77329
+msgid ""
+"IP/CIDR, regex, hashes, UUID v4/v7, spawn vs system, XML attrs, event "
+"header leak"
+msgstr "IP/CIDR、正则、哈希、UUID v4/v7、spawn 与 system、XML 属性、事件头泄漏"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 4f6ff3465ce144aab6d9f57e79bcf307
+msgid "Sessions"
+msgstr "会话"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: f9a96f11a4da478aade3983c4ed409e0
+msgid "`switch_core_session`"
+msgstr "`switch_core_session`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 3da7c7367eff4a6db949b88ec489e053
+msgid ""
+"External session ID locate/hangup "
+"(`FST_SESSION_BEGIN(session_external_id)`)"
+msgstr "外部会话 ID 查找/挂断（`FST_SESSION_BEGIN(session_external_id)`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 7bf7382c0c4e4ff3b8ecbde9e8c3e0f3
+msgid "Originate / dialplan IVR"
+msgstr "发起 / 拨号计划 IVR"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: b51be63fe8734e78b6829280fdbd9a30
+msgid "`switch_ivr_originate`"
+msgstr "`switch_ivr_originate`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 0a9ae7cecdbb43e096ca71caef05db56
+msgid ""
+"Empty dial string, group-confirm legs/timeouts, JSON dial handles, video,"
+" enterprise originate"
+msgstr "空拨号串、group-confirm 腿/超时、JSON 拨号句柄、视频、enterprise originate"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 5bba943bff1744fab7edd65e2ff1058d
+msgid "XML dialplan hunt"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: e5b6f76de92746918f6fa4d6cc559ef1
+#, fuzzy
+msgid "`switch_dialplan_xml`"
+msgstr "`switch_xml`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 8fdbb2acb2fe4c60a116213d9e093c0a
+#, python-brace-format
+msgid ""
+"`regex=\"all\"` + `${var}` capture groups vs classic `<condition>` "
+"(`mod_dialplan_xml` hunt, issue 3141)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 2edb4bf540b54aaab70a87e265c4c94b
+msgid "Play / record"
+msgstr "播放 / 录音"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 9524425440ed4fd2a1d939bb3b6f3ff2
+msgid "`switch_ivr_play_say`, `switch_ivr_async`"
+msgstr "`switch_ivr_play_say`, `switch_ivr_async`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 63bb02e7a14649ff8dd8c54251cfbb65
+msgid "Collect-input success/failure/partial; async record pause and channel vars"
+msgstr "收集输入的成功/失败/部分；异步录音暂停与信道变量"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 2f8bc6741e6943f79a0ff94e96c971f1
+msgid "RTP / RTCP"
+msgstr "RTP / RTCP"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: be7f214fd2144e5a8bb5531230d292a6
+msgid "`switch_rtp`"
+msgstr "`switch_rtp`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 717279753ac0460b8e60650327a6d8d7
+msgid "RTP session, RTCP audio event, client cert verify"
+msgstr "RTP 会话、RTCP 音频事件、客户端证书校验"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: b4535ddc46d14707a009c30312410e42
+msgid "RTP pcap (optional)"
+msgstr "RTP pcap（可选）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: d099dcc86bf74b09b2b93a6a6d446f46
+msgid "`switch_rtp_pcap`"
+msgstr "`switch_rtp_pcap`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 92d4d6ac10394d51966ddd9042006fff
+msgid ""
+"Stall with muxed RTCP, oversized NACK length, media timeout. Needs "
+"libpcap. Fixtures in `tests/unit/pcap/`"
+msgstr "带复用 RTCP 的停滞、过长 NACK、媒体超时。需要 libpcap。夹具在 `tests/unit/pcap/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: d85e88f6075846fc88ab643443675581
+msgid "SIP identity"
+msgstr "SIP 身份"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 7ecbc6b5cbb44010b79da7d25ef80083
+msgid "`switch_sip`"
+msgstr "`switch_sip`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 63c9557aa04147aa9e7e68b3ca101de6
+msgid "STIR/SHAKEN compact vs full Identity (`conf_sip/`)"
+msgstr "STIR/SHAKEN 紧凑与完整 Identity（`conf_sip/`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 509593cdf22f4106b2688c5c68bfe0dc
+msgid "Sofia load"
+msgstr "Sofia 加载"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 1860619d297841c4a07134244541fee7
+msgid "`test_sofia`"
+msgstr "`test_sofia`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: ab0f3558929342e382e7c88c2137540a
+msgid ""
+"Loads `mod_sofia` (`sofia_leaks` body is empty — ASAN leak check on "
+"process exit)"
+msgstr "加载 `mod_sofia`（`sofia_leaks` 函数体为空——进程退出时做 ASAN 泄漏检查）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 1a1a455afac4422293af99a545082390
+msgid "Event Socket"
+msgstr "Event Socket"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: f24f58dfa0614305825402c322a22c99
+msgid "`test_mod_event_socket`"
+msgstr "`test_mod_event_socket`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: bd89c9fcb29044c998ba7679d00d00ae
+msgid ""
+"ESL Content-Length validation and `sendevent` body round-trip "
+"(`conf_event_socket/`)"
+msgstr "ESL Content-Length 校验与 `sendevent` 消息体往返（`conf_event_socket/`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: d8a4c65d01a64ae2b3c5f6c3e53c1e92
+msgid "Verto HTTP"
+msgstr "Verto HTTP"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 742f66d35f7747a69aca8e3f591d4861
+msgid "`test_mod_verto`"
+msgstr "`test_mod_verto`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 2f6662392b394733a02fe430ed9072c1
+msgid "POST at cap / overflow → 413 (`conf_verto/`)"
+msgstr "达到上限 / 溢出的 POST → 413（`conf_verto/`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: e00df26454bb404dbd783dfe207ff743
+msgid "XML parser"
+msgstr "XML 解析器"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 829dc94244de47d88c752c28f36d411a
+msgid "`switch_xml`"
+msgstr "`switch_xml`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 6cadf7825e9a4a6686e68f2341b1d1e1
+msgid "CDATA, UTF-8, DTD on/off, entity-expansion limits (XXE-style)"
+msgstr "CDATA、UTF-8、DTD 开/关、实体展开限制（XXE 风格）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: f669553e2c9d4dbdb17a169fead48b37
+msgid "Events / hash / console"
+msgstr "事件 / 哈希 / 控制台"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 01e810af0f374be6b812efbdca37f606
+msgid "`switch_event`, `switch_hash`, `switch_console`"
+msgstr "`switch_event`, `switch_hash`, `switch_console`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: e9860de2adab49e18765c9a1b5a8a45c
+msgid "Minimal core (`FST_MINCORE_BEGIN`); includes micro-benchmarks"
+msgstr "最小核心（`FST_MINCORE_BEGIN`）；含微基准"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 1c7094c487164958a091a32508dcd6bd
+msgid "STUN"
+msgstr "STUN"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 91a727a591e4438786e4ac1072195be5
+msgid "`switch_stun`"
+msgstr "`switch_stun`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 6ca631b5cffd461b9010232f5765ddeb
+msgid "IPv4/IPv6 mapped addresses, MESSAGE-INTEGRITY, truncated attributes"
+msgstr "IPv4/IPv6 映射地址、MESSAGE-INTEGRITY、截断属性"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 9df626cfd23f4a8ca2ab1ce78f8f92a2
+msgid "Hold"
+msgstr "保持"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 9cf6193ced174cd99e4d8051478de111
+msgid "`switch_hold`"
+msgstr "`switch_hold`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: f7bf048c52034a8e85df078e657e659c
+msgid "Hold/unhold restriction (`conf_test/`)"
+msgstr "保持/取消保持限制（`conf_test/`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: eb01f45c417c4eabaed78c5df5f3201f
+msgid "Media / codecs"
+msgstr "媒体 / 编解码器"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 6c8f1983bb274fb4928cf7cf913ad66c
+msgid ""
+"`switch_core_media`, `switch_core_codec`, `switch_vad`, "
+"`switch_packetizer`, `switch_vpx`, `switch_core_asr`"
+msgstr ""
+"`switch_core_media`, `switch_core_codec`, `switch_vad`, "
+"`switch_packetizer`, `switch_vpx`, `switch_core_asr`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 1fb5c635e40a467fa075d1d5b979b9d8
+msgid ""
+"Crypto key-salt bounds, codec copy, VAD, H.264 packetizer, VP8, ASR "
+"resample"
+msgstr "加密 key-salt 边界、编解码器拷贝、VAD、H.264 打包器、VP8、ASR 重采样"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 8a511df4962247c1863fbcd9633d9d7c
+msgid "Files / DB / log / TTS"
+msgstr "文件 / DB / 日志 / TTS"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 9204ddf040134d84afae78c5879e085f
+msgid "`switch_core_file`, `switch_core_db`, `switch_log`, `test_tts_format`"
+msgstr "`switch_core_file`, `switch_core_db`, `switch_log`, `test_tts_format`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 8ac281bda84d4dc488529a42d54766d7
+msgid ""
+"File close/write channels, cache DB race, JSON log metadata, `tts://` "
+"channel UUID"
+msgstr "文件关闭/写信道、缓存 DB 竞态、JSON 日志元数据、`tts://` 信道 UUID"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: e0cd95e2440c4e9398b9bcaf27f929d2
+msgid "Utils"
+msgstr "工具函数"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 2018245171234a7bab60bd56bc3457a8
+msgid "`switch_utils`"
+msgstr "`switch_utils`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 49e5ea8ecdbd4fcbb30106739f137f68
+msgid "Base64 bounds and HTTP header parse"
+msgstr "Base64 边界与 HTTP 头解析"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 6b13c397f0e84c369602786eeb3ddfb2
+msgid "Video images"
+msgstr "视频图像"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: d87572e18959423fbcc7b24597692f04
+msgid "`switch_core_video`"
+msgstr "`switch_core_video`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 68154504d79841b9b2897f055d040104
+msgid "Patch/alpha using `tests/unit/images/`"
+msgstr "使用 `tests/unit/images/` 做 patch/alpha"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:97
+#: 716cc042fd8c45d88d773423c6041e88
+msgid ""
+"**Module `TESTS` (also on the `print_tests` list when the module is "
+"enabled):**"
+msgstr "**模块 `TESTS`（模块启用时也会出现在 `print_tests` 列表中）：**"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 60ccc4d02f2a4fbea016184ac0b9b1d3
+msgid "Module"
+msgstr "模块"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 10937fdb71b2445ea78071fdfc611195
+msgid "Tests"
+msgstr "测试"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 4a404314fd834bc5866ed029204a3d96
+msgid "`src/mod/endpoints/mod_sofia`"
+msgstr "`src/mod/endpoints/mod_sofia`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: e94bd509742943149bffdb470ac31db0
+msgid ""
+"`test/test_sofia_funcs.sh`, `test/test_nuafail`, `test/test_603plus`. "
+"SIPP (`test/test_run_sipp.sh`) is **commented out** in `Makefile.am`"
+msgstr ""
+"`test/test_sofia_funcs.sh`、`test/test_nuafail`、`test/test_603plus`。SIPP（`test/test_run_sipp.sh`）在"
+" `Makefile.am` 中被**注释掉**"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: d846c777484841c995039699564c812b
+msgid "`src/mod/applications/mod_commands`"
+msgstr "`src/mod/applications/mod_commands`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: ed2cc9e33621462086b9fa6a54b91abb
+msgid "`test/test_mod_commands`, `test/test_interface_allowlist`"
+msgstr "`test/test_mod_commands`, `test/test_interface_allowlist`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: fae33eea4dfd4e819be444cec89d68a2
+msgid "`src/mod/applications/mod_conference`"
+msgstr "`src/mod/applications/mod_conference`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 5d3bfcd3ba104081b3b6097af883d55c
+msgid "`test/test_image`, `test/test_member`"
+msgstr "`test/test_image`, `test/test_member`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 86fe71d1741f4e4f93fe5c98b8eb41f3
+msgid "`src/mod/applications/mod_http_cache`"
+msgstr "`src/mod/applications/mod_http_cache`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: d15e5e4f552f4d1b8b482dc052dc16af
+msgid "`test/test_aws`"
+msgstr "`test/test_aws`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 661d4db4b7fc47059d0afb81e1c0760b
+msgid "`src/mod/applications/mod_av`"
+msgstr "`src/mod/applications/mod_av`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 3ab637269918499db6677f9317bcfb18
+msgid "`test/test_mod_av`, `test/test_avformat`"
+msgstr "`test/test_mod_av`, `test/test_avformat`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 3a74f2e35fff4e5aa02948b2509a5ceb
+msgid "`src/mod/applications/mod_test`"
+msgstr "`src/mod/applications/mod_test`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: c7111dc571bc4dceb01ad8287ae1025b
+msgid "`test/test_asr`, `test/test_tts`"
+msgstr "`test/test_asr`, `test/test_tts`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 4a42763efba64180a5b3f68ff376f73d
+msgid "`src/mod/languages/mod_lua`"
+msgstr "`src/mod/languages/mod_lua`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: e669cf9c249648e9a29b5f3d3a41d46d
+msgid "`test/test_mod_lua`"
+msgstr "`test/test_mod_lua`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 5784874a15274f7fbc08910efde73612
+msgid "`src/mod/formats/mod_sndfile`"
+msgstr "`src/mod/formats/mod_sndfile`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 4edd2a66e5c34c6abe6a0b5be663f433
+msgid "`test/test_sndfile`, `test/test_sndfile_conf`"
+msgstr "`test/test_sndfile`, `test/test_sndfile_conf`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 75bf7d5f1f454126b6ef656528363ae6
+msgid "`src/mod/formats/mod_opusfile`"
+msgstr "`src/mod/formats/mod_opusfile`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 9dbb7f0a36fa438080fbafdb2aee5ea8
+msgid "`test/test_opusfile`"
+msgstr "`test/test_opusfile`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: d40a9c37eb6843cdaee723d1dacdc1c8
+msgid "`src/mod/codecs/mod_amr`"
+msgstr "`src/mod/codecs/mod_amr`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: d7854d593f564e99ae5e5d580840ca20
+msgid "`test/test_amr`"
+msgstr "`test/test_amr`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 3c24739f61bf406f887574aeed7da593
+msgid "`src/mod/codecs/mod_amrwb`"
+msgstr "`src/mod/codecs/mod_amrwb`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 1c516daadbfd441fbc9e10fe49bcc07d
+msgid "`test/test_amrwb`"
+msgstr "`test/test_amrwb`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: f7ce81872e1a42a88bd09bd672f8a2df
+msgid "`src/mod/codecs/mod_openh264`"
+msgstr "`src/mod/codecs/mod_openh264`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md
+#: 2c542e721bbe4eafb8466d509c8ebb71
+msgid "`test/test_mod_openh264`"
+msgstr "`test/test_mod_openh264`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:114
+#: dcb3a45ceef64b6e930a23732549b4ca
+msgid ""
+"`src/mod/timers/mod_posix_timer/test/` has C sources but **no** `TESTS` "
+"in that module’s `Makefile.am`, so `print_tests` will not emit them."
+msgstr ""
+"`src/mod/timers/mod_posix_timer/test/` 有 C 源文件，但该模块的 `Makefile.am` "
+"中**没有** `TESTS`，因此 `print_tests` 不会输出它们。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:116
+#: 87121ecb817343ea8ca0061ca9db22e7
+msgid ""
+"CI unit-test configure (`ci.sh -t unit-test`) extra-enables "
+"`mod_http_cache`, `mod_opusfile`, `mod_lua`, and appends "
+"`codecs/mod_openh264` so those module tests can appear in the list."
+msgstr ""
+"CI 单元测试 configure（`ci.sh -t unit-test`）会额外启用 "
+"`mod_http_cache`、`mod_opusfile`、`mod_lua`，并追加 "
+"`codecs/mod_openh264`，以便这些模块测试能出现在列表中。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:118
+#: 1f1296ff8a2b4ee2bb1b359fab1a3575
+msgid "Test Data and Environments"
+msgstr "测试数据与环境"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:120
+#: b5eb20f118e34210922b3e820a8956b2
+#, python-brace-format
+msgid ""
+"**Fixtures**: per-suite XML under `tests/unit/conf/` (shared core), "
+"`conf_sip/`, `conf_sofia/`, `conf_rtp/`, `conf_stun/`, `conf_verto/`, "
+"`conf_event_socket/`, `conf_eavesdrop/`, `conf_test/`, "
+"`conf_tts_format/`, `conf_playsay/`, `conf_async/`. RTP pcaps: "
+"`tests/unit/pcap/milliwatt*.pcap`. Images: "
+"`tests/unit/images/{banner,signalwire}.png`. Module tests often ship "
+"their own `test/conf` (for example `src/mod/endpoints/mod_sofia/test/`)."
+msgstr ""
+"**夹具**：套件 XML 在 "
+"`tests/unit/conf/`（共享核心）、`conf_sip/`、`conf_sofia/`、`conf_rtp/`、`conf_stun/`、`conf_verto/`、`conf_event_socket/`、`conf_eavesdrop/`、`conf_test/`、`conf_tts_format/`、`conf_playsay/`、`conf_async/`。RTP"
+" "
+"pcap：`tests/unit/pcap/milliwatt*.pcap`。图像：`tests/unit/images/{banner,signalwire}.png`。模块测试常常自带"
+" `test/conf`（例如 `src/mod/endpoints/mod_sofia/test/`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:121
+#: b5b2a8be5164458d910596b6b9a9255b
+#, python-format
+msgid ""
+"**State isolation**: `FST_CORE_BEGIN` / `FST_CORE_DB_BEGIN` / "
+"`FST_MINCORE_BEGIN` in `switch_test.h` call "
+"`fst_init_core_and_modload()`, point `conf_dir` at the suite directory, "
+"and put `log_dir` / `db_dir` under a **PID** subdirectory. `FST_CORE_END`"
+" calls `switch_core_destroy()`. Tests run **one binary at a time** inside"
+" a chunk (`run-tests.sh` sequential `make -f run-tests.mk`). CI uses "
+"`--privileged` and writes cores to `/cores/core.%s.%E.%e.%p.%t`."
+msgstr ""
+"**状态隔离**：`switch_test.h` 中的 `FST_CORE_BEGIN` / `FST_CORE_DB_BEGIN` / "
+"`FST_MINCORE_BEGIN` 会调用 `fst_init_core_and_modload()`，把 `conf_dir` "
+"指到套件目录，并把 `log_dir` / `db_dir` 放到 **PID** 子目录下。`FST_CORE_END` 调用 "
+"`switch_core_destroy()`。每个分片内测试**一次只跑一个二进制**（`run-tests.sh` 顺序执行 `make -f"
+" run-tests.mk`）。CI 使用 `--privileged`，并把 core 写到 "
+"`/cores/core.%s.%E.%e.%p.%t`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:122
+#: c4fa647998c641279c1cdd319c386ad8
+msgid ""
+"**External dependencies**: Sofia-SIP is cloned from `freeswitch/sofia-"
+"sip` (not vendored). Unit-test image: `signalwire/freeswitch-public-ci-"
+"base:bookworm-amd64`. Extra apt in `unit-test.yml`: `libpcre2-dev`, "
+"`libsphinxbase-dev`, `libpocketsphinx-dev`. ASAN: `--enable-address-"
+"sanitizer --enable-fake-dlclose` plus "
+"`ASAN_OPTIONS=log_path=stdout:disable_coredump=0:unmap_shadow_on_exit=1:fast_unwind_on_malloc=0`"
+" (workflow env and `ci.sh`)."
+msgstr ""
+"**外部依赖**：Sofia-SIP 从 `freeswitch/sofia-sip` 克隆（未内置）。单元测试镜像：`signalwire"
+"/freeswitch-public-ci-base:bookworm-amd64`。`unit-test.yml` 额外 "
+"apt：`libpcre2-dev`、`libsphinxbase-dev`、`libpocketsphinx-dev`。ASAN"
+"：`--enable-address-sanitizer --enable-fake-dlclose`，加上 "
+"`ASAN_OPTIONS=log_path=stdout:disable_coredump=0:unmap_shadow_on_exit=1:fast_unwind_on_malloc=0`（工作流环境和"
+" `ci.sh`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:123
+#: 77a61b49cac04f13913006f04e7c3a3d
+msgid ""
+"**Chunking**: `./run-tests.sh [chunks] [chunk_number]` round-robins the "
+"`print_tests` list. Default CI is **2 groups** (`ci.yml` `TOTAL_GROUPS: "
+"2`). Optional DinD (`workflow_dispatch` input `dind`) uses `tests/unit"
+"/run-tests-docker.sh` with `MAX_CONTAINERS: 8` (`.github/workflows/unit-"
+"test-dind.yml`) and `.github/docker/debian/bookworm/amd64/CI/Dockerfile`."
+msgstr ""
+"**分片**：`./run-tests.sh [chunks] [chunk_number]` 对 `print_tests` 列表做 "
+"round-robin。默认 CI 是 **2 组**（`ci.yml` 的 `TOTAL_GROUPS: 2`）。可选 "
+"DinD（`workflow_dispatch` 输入 `dind`）使用 `tests/unit/run-tests-"
+"docker.sh`，`MAX_CONTAINERS: 8`（`.github/workflows/unit-test-dind.yml`）以及 "
+"`.github/docker/debian/bookworm/amd64/CI/Dockerfile`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:125
+#: ad1c14c0b1174489afd8185dfbd00fec
+msgid ""
+"Failed binaries keep `log_run-tests_*.html` (via `ansi2html` in "
+"`test.sh`); `collect-test-logs.sh --dir logs --print` builds "
+"`artifacts.html` and dumps text when `html2text` is installed."
+msgstr ""
+"失败的二进制会保留 `log_run-tests_*.html`（经 `test.sh` 中的 `ansi2html`）；`collect-"
+"test-logs.sh --dir logs --print` 生成 `artifacts.html`，并在安装了 `html2text` "
+"时转储文本。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:127
+#: f88569a04824489eb9deeb7a6e766c86
+msgid "Validation Commands"
+msgstr "验证命令"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:129
+#: 80d8c9f9b38f4a15b6b02a931c47a12f
+msgid ""
+"CI-equivalent (Sofia-SIP already built/installed; same actions as `unit-"
+"test.yml`):"
+msgstr "与 CI 等价（Sofia-SIP 已构建/安装；动作与 `unit-test.yml` 相同）："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:146
+#: 50b37be993464cd3a77a23254b9d5c5f
+msgid "Sofia-SIP first (from repo root, path to a sofia-sip checkout):"
+msgstr "先构建 Sofia-SIP（从仓库根目录，指向 sofia-sip 检出路径）："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:154
+#: f152746820a54387bb0f8212128fc7c6
+msgid ""
+"After a normal `./configure && make && make install` (without `ci.sh` "
+"ASAN flags), the same `tests/unit/run-tests.sh` still applies; `make "
+"print_tests` from the **build root** is what the runner calls "
+"(`tests/unit/run-tests.sh`). Top-level `make check` recurses `src/mod` "
+"(`check: $(OUR_CHECK_MODULES)`) and `tests/unit` (`SUBDIRS`). That runs "
+"enabled-module `TESTS` plus core unit binaries. It does **not** run "
+"`libs/esl` — that tree is not in top-level `SUBDIRS`; CI calls `make -C "
+"libs/esl check` separately."
+msgstr ""
+"在普通 `./configure && make && make install` 之后（不带 `ci.sh` 的 ASAN 标志），同样的 "
+"`tests/unit/run-tests.sh` 仍然适用；运行器调用的是**构建根目录**上的 `make "
+"print_tests`（`tests/unit/run-tests.sh`）。顶层 `make check` 会递归 "
+"`src/mod`（`check: $(OUR_CHECK_MODULES)`）和 "
+"`tests/unit`（`SUBDIRS`）。这会运行已启用模块的 `TESTS` 加上核心单元二进制。它**不会**跑 "
+"`libs/esl`——该树不在顶层 `SUBDIRS` 中；CI 单独调用 `make -C libs/esl check`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:156
+#: 69b02ef04f3f4906ab17a73ea7a4bf48
+msgid "Static analysis:"
+msgstr "静态分析："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:167
+#: 8187020447ff4d8b9f6a6fe114bbb8c2
+msgid "Optional local Docker runner (needs a Sofia-SIP tree and Docker):"
+msgstr "可选的本地 Docker 运行器（需要 Sofia-SIP 树和 Docker）："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:179
+#: c85be17fb69e45b19e246208fdc0e489
+msgid ""
+"Windows (build only in CI): unit vcxproj in `Freeswitch.2017.sln` — "
+"`test_switch_core`, `test_switch_core_db`, `test_switch_core_codec`, "
+"`test_switch_ivr_originate`, `test_switch_xml`, `test_tts_format`."
+msgstr ""
+"Windows（CI 中仅构建）：`Freeswitch.2017.sln` 中的单元 "
+"vcxproj——`test_switch_core`、`test_switch_core_db`、`test_switch_core_codec`、`test_switch_ivr_originate`、`test_switch_xml`、`test_tts_format`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:181
+#: 215cbf5e2d774639b5d87b6d766635a7
+msgid "Manual Smoke Checks"
+msgstr "手工冒烟检查"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:183
+#: 336c796aa234424ea259b26ae9e32110
+#, fuzzy
+msgid ""
+"Automation does not start a long-lived vanilla PBX and place a SIP call. "
+"After [Quick Start](../0.getting-started/02-quick-start.md) install:"
+msgstr "自动化不会启动长期运行的 vanilla PBX 并打一通 SIP 电话。[快速开始](01-quick-start.md) 安装之后："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:185
+#: 6aa4ce506eae48a983ec952c0b2e335c
+msgid ""
+"`\"$prefix/bin/freeswitch\" -ncwait -nonat` then `\"$prefix/bin/fs_cli\" "
+"-x status` — line starts with `UP` (same check as "
+"`docker/base_image/healthcheck.sh`)."
+msgstr ""
+"`\"$prefix/bin/freeswitch\" -ncwait -nonat` 然后 `\"$prefix/bin/fs_cli\" -x"
+" status` ——行以 `UP` 开头（与 `docker/base_image/healthcheck.sh` 相同的检查）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:186
+#: ccf0f4019ab9465b9c67fc2f333884d4
+msgid ""
+"`fs_cli -x sofia status` — internal/external profiles present when "
+"`mod_sofia` is loaded."
+msgstr ""
+"`fs_cli -x sofia status` ——当 `mod_sofia` 已加载时，应有 internal/external "
+"profile。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:187
+#: d6d41b7e45384070916c398c6c83a092
+msgid ""
+"`fs_cli -x \"module_exists mod_event_socket\"` and `fs_cli -x version` — "
+"`fs_cli` targets `127.0.0.1:8021` with password `ClueCon` unless you "
+"changed it; vanilla server configuration listens on `::`:8021."
+msgstr ""
+"`fs_cli -x \"module_exists mod_event_socket\"` 以及 `fs_cli -x version` "
+"——除非你修改过，`fs_cli` 默认目标为 `127.0.0.1:8021`，密码为 `ClueCon`；vanilla 服务端配置监听 "
+"`::`:8021。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:190
+#: 942b65cbfb4744e7852d43128d9d5263
+msgid ""
+"Directory users `1000`–`1019` exist in vanilla config — **demo "
+"passwords**; do not expose on a public IP. A two-phone register/call is "
+"the usual media/SIP smoke; there is no in-tree script that places that "
+"call."
+msgstr ""
+"vanilla 配置中存在 directory 用户 `1000`–`1019`——**演示密码**；不要暴露在公网 IP "
+"上。两部电话注册/呼叫是常见的媒体/SIP 冒烟；仓库内没有脚本去打这通电话。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:191
+#: b6aadc696cbf4634beca036daccadf57
+msgid ""
+"Docker: `docker/README.md` expects **host networking**; RTP/SIP "
+"published-port setups are a common false failure."
+msgstr ""
+"Docker：`docker/README.md` 期望 **host networking**；把 RTP/SIP 做成 published-"
+"port 是常见的假失败。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:193
+#: 5e705976f6be4a9481a9f518df63b755
+msgid "Documentation Verification"
+msgstr "文档校验"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:195
+#: c611e99d613d429b81ec2cefa2de1272
+msgid "PKB lives in `man/` at the repo root (not `docs/man/`)."
+msgstr "PKB 在仓库根目录的 `man/`（不是 `docs/man/`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:206
+#: 789c97ad24834cb7ba7c9b9f8b4d566b
+#, fuzzy
+msgid ""
+"Bilingual HTML: `make html-all` (see [Build](02-build.md) and "
+"[Documentation Process](../5.operations/03-document.md))."
+msgstr "双语 HTML：`make html-all`（见 [构建](08-build.md) 与 [文档流程](12-document.md)）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:208
+#: 3ea43bdf0e8247319f2149b976ffd2fe
+msgid "Regression Additions"
+msgstr "回归用例补充"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:210
+#: 88158a0b590643d48904ed7103cc9109
+#, fuzzy
+msgid ""
+"When a bug is fixed, add the smallest check that would have failed before"
+" the fix (see [How a Core Unit Test Is Written](#how-a-core-unit-test-is-"
+"written)):"
+msgstr "修复缺陷时，补上修复前本应失败的最小检查："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:212
+#: cc68c64111a04021bd3e968e5aa0a6a1
+msgid ""
+"Prefer a new `FST_TEST_BEGIN` / `FST_SESSION_BEGIN` in an existing "
+"`tests/unit/*.c` that already loads the right `conf_*` tree."
+msgstr ""
+"优先在已经加载正确 `conf_*` 树的现有 `tests/unit/*.c` 中新增 `FST_TEST_BEGIN` / "
+"`FST_SESSION_BEGIN`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:213
+#: f7e998c20cac48c7b4c1ee4dfed917dd
+#, fuzzy
+msgid ""
+"New file: add the `.c` to `tests/unit/Makefile.am` `noinst_PROGRAMS` "
+"(that list **is** `TESTS`). Use `src/include/test/switch_test.h` only. "
+"Example: `switch_dialplan_xml.c` plus `switch_dialplan_xml_CFLAGS` when "
+"the binary must `#define SWITCH_MOD_BUILDDIR`."
+msgstr ""
+"新文件：把 `.c` 加到 `tests/unit/Makefile.am` 的 `noinst_PROGRAMS`（该列表**就是** "
+"`TESTS`）。只使用 `src/include/test/switch_test.h`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:214
+#: 46eb99c8e07a4d6a8f5952e8b87e15fa
+msgid ""
+"Module-specific: add `noinst_PROGRAMS` + `TESTS` in that module’s "
+"`Makefile.am` so `print_tests` emits `src/mod/.../test/...`."
+msgstr ""
+"模块相关：在该模块的 `Makefile.am` 中加入 `noinst_PROGRAMS` + `TESTS`，以便 `print_tests`"
+" 输出 `src/mod/.../test/...`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:215
+#: 038bceadcfc3425bbcfeb0ac7a8a3096
+msgid ""
+"ESL protocol bugs: extend `libs/esl/tests/` (Autotools `TESTS`) rather "
+"than only a live `fs_cli` check."
+msgstr "ESL 协议缺陷：扩展 `libs/esl/tests/`（Autotools `TESTS`），不要只做在线 `fs_cli` 检查。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:216
+#: 7f17bbd9c37b422689dd79755aaa5a63
+msgid ""
+"Record here: original failure, expected behavior, and the command "
+"(`./run-tests.sh` vs `make -C libs/esl check` vs a smoke step)."
+msgstr ""
+"在此记录：原先的失败、期望行为，以及命令（`./run-tests.sh` vs `make -C libs/esl check` vs "
+"冒烟步骤）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:218
+#: 12429bb9208a4ecdae705d0cf7663b5d
+msgid ""
+"Existing tests that already look like regression/security locks: XML "
+"entity expansion (`switch_xml`), STUN integrity/truncation "
+"(`switch_stun`), ESL Content-Length (`test_mod_event_socket` and "
+"`libs/esl/tests/test_recv_event.c`), Verto POST 413 (`test_mod_verto`), "
+"RTP NACK length (`switch_rtp_pcap`), crypto key-salt bounds "
+"(`switch_core_media`)."
+msgstr ""
+"已经像回归/安全锁一样的现有测试：XML 实体展开（`switch_xml`）、STUN 完整性/截断（`switch_stun`）、ESL "
+"Content-Length（`test_mod_event_socket` 与 "
+"`libs/esl/tests/test_recv_event.c`）、Verto POST 413（`test_mod_verto`）、RTP "
+"NACK 长度（`switch_rtp_pcap`）、加密 key-salt 边界（`switch_core_media`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:220
+#: e61798ba919f4f278861ea1b3692c8b2
+msgid ""
+"[NEEDS INPUT: named production incidents or ticket IDs to attach to those"
+" tests — none are referenced in the C sources.]"
+msgstr "[NEEDS INPUT: 可挂到这些测试上的具名生产事故或工单 ID——C 源中没有任何引用。]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:222
+#: 4eb768533cbc49eb8ff1545aaa85cda4
+msgid "Related Documentation"
+msgstr "相关文档"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:224
+#: b1283380f1d24c6ba4067ced06b9ba8f
+#, fuzzy
+msgid ""
+"[Quick Start](../0.getting-started/02-quick-start.md) — local install and"
+" first `run-tests.sh`"
+msgstr "[快速开始](01-quick-start.md) — 本地安装与首次 `run-tests.sh`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:225
+#: 39085d5a477d4e869150f7c86ef9bd2a
+#, fuzzy
+msgid ""
+"[Build, Release, and Publish](02-build.md) — `ci.yml` matrix, `ci.sh`, "
+"packaging"
+msgstr "[构建、发布与文档发布](08-build.md) — `ci.yml` 矩阵、`ci.sh`、打包"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:226
+#: 1ca88137b5e545ceb5d6b2130bcbd278
+#, fuzzy
+msgid "[Workflows](../1.architecture/05-workflows.md)"
+msgstr "[工作流](06-workflows.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:227
+#: 1449be988f324bd5bd85e34b457c3d90
+#, fuzzy
+msgid "[Runbook](../5.operations/01-runbook.md)"
+msgstr "[运维手册](10-runbook.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:228
+#: c63ddbaa436f4e3fbc7bc2750670d1aa
+#, fuzzy
+msgid "[Observability](../5.operations/02-observability.md)"
+msgstr "[可观测性](11-observability.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/4.development/03-testing.md:229
+#: dbfb372bb52a4773b90b94ec48e5d3ad
+#, fuzzy
+msgid "[Documentation Process](../5.operations/03-document.md)"
+msgstr "[文档流程](12-document.md)"
+

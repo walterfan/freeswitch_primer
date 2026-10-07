@@ -1,0 +1,954 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Zoom Video Communications
+# This file is distributed under the same license as the FreeSWITCH package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FreeSWITCH \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-18 16:34+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:1
+#: 0d8bec18f31d43c3a1a66639b3e1b6a9
+msgid "20. mod_sofia：SDP 协商与 RTP setup"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:5
+#: 0e0589bf1fb546b086e248bcba6679d9
+msgid ""
+"本文从 FreeSWITCH `mod_sofia` 的实现说明 SDP 协商和 RTP 建立发生在哪里、由什么事件 触发，以及 "
+"`sofia_media_negotiate_sdp()` 在不同呼叫阶段为什么使用不同的 `SDP_OFFER` / `SDP_ANSWER` "
+"类型。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:9
+#: 004c51b129de4d6fba512d2cefdbffa0
+msgid "1. 文件和入口"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:11
+#: baf30ce1bc43425c8aabd460f980625b
+msgid "`sofia_media_negotiate_sdp()` 不在 `src/switch_core_media.c` 中，而定义在："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:17
+#: c6d1cb7b5bc14ffca9700f327d5e472b
+msgid ""
+"它只是 `mod_sofia` endpoint wrapper，真正的 SDP 解析、codec/payload 匹配和 media "
+"handle 更新由以下 core 函数完成："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:26
+#: a4299b009d9d4358a02f6fb0d80b4547
+msgid ""
+"当前源码中，`sofia_media_negotiate_sdp()` 的调用点全部位于 "
+"`sofia_handle_sip_i_state()`，而不是直接位于 `switch_core_media.c`。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:29
+#: a1936b50c54744fc8b7af271ce12857e
+msgid "1.1 后台事件到媒体处理"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:43
+#: 1e4e81f07c294ba59c47bbf39632e210
+msgid ""
+"在 `sofia_handle_sip_i_state()` 中，Sofia-SIP 通过 `tags[]` 传入 NUA call "
+"state、远端 SDP 和 offer/answer 标志："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:59
+#: 6ed4ded7d43e42178c2365c8ebb9dab0
+msgid ""
+"`ss_state` 是 Sofia NUA 的呼叫状态，不是 FreeSWITCH 的 `CS_*` channel state。两者的 关系见"
+" [Sofia NUA 呼叫状态机](../2.signal/03-sofia-nua-call-model.md) 和 [媒体协商与 RTP "
+"activation](../1.architecture/05-workflows.md#media-negotiation-and-rtp-"
+"activation)。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:63
+#: 40414b83db70418dbb7662e7ce583de0
+msgid "2. Wrapper 的行为"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:65
+#: a766fe856e4e4c1cbd631be0c47d17fb
+msgid "`sofia_media_negotiate_sdp()` 的核心逻辑如下："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:81
+#: cf35adea63874278b8a6ef810e5d1e97
+msgid "其中："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:83
+#: a5f9ad49ac03488e9cd02a2bf7aaa76b
+msgid "返回值 `t` 表示 SDP/codec 是否匹配成功；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:84
+#: 2103044f91084f2e98f5897c85db4d4e
+msgid "`type` 表示当前远端 SDP 是 offer 还是 answer；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:85
+#: d2b763aad37846e485c6c406fe67fe2f
+msgid "成功匹配后设置 `TFLAG_SDP`；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:86
+#: 819b361bd85f41b998784eaf5e1fff81
+msgid "core 没有要求立即回复时设置 `TFLAG_NOREPLY`；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:87
+#: 85d8b93031e7477086cb163937c27b22
+msgid ""
+"端口选择和 RTP 激活不是这个 wrapper 自动完成的，调用方根据场景继续调用 "
+"`switch_core_media_choose_port()`、`switch_core_media_gen_local_sdp()` 和 "
+"`sofia_media_activate_rtp()`。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:91
+#: c2ae555693c5450782acf127ae0b1fe8
+msgid "3. 全部调用场景"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 127b95d86c19419c8a833096384990ce
+msgid "源码位置"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: ebc831282f1943588f83d9c93f1642a1
+msgid "NUA 状态 / 条件"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 33f43640998d4f20b1aec8f292a0a345
+msgid "SDP 类型"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 884d9c3d77d2445bbf62180def43c298
+msgid "具体场景"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 18c8908de2b14271b350b5b459cb44ac
+msgid "`sofia.c:7812`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 2e994327e53440d9bf71835cbf8a4b69
+msgid "`nua_callstate_completing` + `CF_3P_MEDIA_REQUESTED`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 3c8b62aa2a344f2a99a48d5d045d43c3 70a4cfc1926240a8914667d110138a98
+#: 972c9b5ef4d348838c79452210748ba3 e8f1fcadc50145b9b062cac633f35834
+#: ea0644bea6ce4368920a2c9652c1763d
+msgid "`SDP_OFFER`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 9c7cc2eb971e465198711fb82981b8e3
+msgid "3PCC 请求恢复实际媒体，收到远端 offer"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 0cdabb3e82254ee8b7924a05fb8a1c34
+msgid "`sofia.c:7945`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: a595c8f53611418fb33c2ba2da200fbf
+msgid "`nua_callstate_received`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 710e047d101046848845c04c15452e76
+msgid "入站 INVITE 或初始入站媒体协商"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 6e7260628d9a4e97acd09233d1cab669
+msgid "`sofia.c:8153`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 2a72c062cb0e4ab48b691cfd953d3f97
+msgid "`nua_callstate_early` + `answer_recv`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 75ee16022cfa4b7e9f723730b5cb7f60 78b07310bb794961806c331449cfecd1
+#: 8ba11e214c3d4dd184fbdc9e403d27c7 8d262590077d4915a6c01e6c6ea2203d
+msgid "`SDP_ANSWER`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 07548f63bc344950b514f1ae9032fc8a
+msgid "出站 INVITE 收到 183 等早期媒体 answer"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: badb6c5a41ed4679916b337f618fef95
+msgid "`sofia.c:8357`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 3e0cdbc275b94325a479ee6e51588444
+msgid "`nua_callstate_completed` + proxy hold"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: e292ce31390e4b999c7914116b9bd485
+msgid "hold/unhold re-INVITE 的 codec 验证"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 15eda073ea154f02b4eb15685793ac01
+msgid "`sofia.c:8456`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 2d190b6cb7d5454cacd7b16c2fc0d167
+msgid "`nua_callstate_completed`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 64587fd23f8a403fb00bb87c1a0f4408
+msgid "普通入站 re-INVITE"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 06021eeb6051444db65aa6e9a4c670c5
+msgid "`sofia.c:8544`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 8274b71c22354fa3adf3025e3c48a867
+msgid "`nua_callstate_ready` + 新 SDP"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 2722c24386d341f48bc7b2796be6e728
+msgid "已建立呼叫的 SDP answer 更新"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 570a487bb024457495b5157d1713667f
+msgid "`sofia.c:8608`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 453088337ac2466dbeeaa5607b08c2c5
+msgid "`nua_callstate_ready` + `TFLAG_GOT_ACK`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 49543b2180474f52a046a708706f0a40
+msgid "ACK 后收到的 SDP 被视为新 offer"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 1c111f5b055046f7b6278099bbed1895
+msgid "`sofia.c:8610`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: d448bcf202044c67b1ad54568f732023
+msgid "`nua_callstate_ready` + 非 `TFLAG_GOT_ACK`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 7cf3312d71e540e3a8c5df931c844d35
+msgid "ACK 前收到的 SDP 被视为 answer"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 39a263d47b7b401da9dfe90c8513bf45
+msgid "`sofia.c:8705`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: e9ec25b5bbf4462e9b01ecc7fec0178e
+msgid "`nua_callstate_ready` + 尚未完成 SDP"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: fc852c98bb3340ca9454c2288e86500b
+msgid "出站呼叫最终收到 answer"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:105
+#: 3b71b092404446f1a17f6e0d392c7e0a
+msgid ""
+"这些调用点都遵循同一条原则：先确认当前 SIP/NUA 状态和 SDP 角色，再把远端 SDP 交给 core 做 codec "
+"匹配；匹配失败通常走 SIP 488 或呼叫失败路径。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:108
+#: 67aab67f00f546e1a481a6b0e8900b74
+msgid "4. 各阶段的详细流程"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:110
+#: 1e05947890d24a7da4f762ceac588cf3
+msgid "4.1 入站 INVITE：收到 SDP offer"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:112
+#: 4f30807d96104a849e15324f560108e3
+msgid "路径位于 `nua_callstate_received`："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:124
+#: daa4b2128d454ad2a4634a8e66129eaf
+msgid ""
+"源码在 `sofia.c:7944-7964`。匹配成功后，新的 channel 从 `CS_NEW` 进入 `CS_INIT`， 随后 core"
+" state machine 的 `switch_core_standard_on_init()` 通常将其推进到 `CS_ROUTING`。如果"
+" codec 不匹配，已有 channel 会收到 SIP 488；proxy media、late negotiation 等模式会走专门分支。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:129
+#: f35f655e1b814e4899a893da04816727
+msgid "4.2 出站 INVITE：收到早期 answer"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:131
+#: 91588529bd404868a8255d99fc00f303
+msgid "`nua_callstate_early` 且 `answer_recv` 为真时，远端 SDP 是对本地 offer 的 answer："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:142
+#: c1cf1ce287e5457c9ad3722272a95e70
+msgid "对应源码为 `sofia.c:8144-8169`。成功后设置 early-media 标志并将 channel 标记为 pre-answered。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:145
+#: 73ddc7b134c34065b504544bb5738c58
+msgid "4.3 出站呼叫：最终收到 answer"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:147
+#: d3675babe72b4e66b8fd875e2b076181
+msgid "如果呼叫还没有完成 SDP，`nua_callstate_ready` 分支在 `sofia.c:8673-8727` 处理远端 answer："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:158
+#: d71f7ba44ed24f58b4b361c459385d71
+msgid "如果匹配失败，endpoint disposition 会记录 codec negotiation error，并返回失败或挂断。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:160
+#: a68d277cd9e948c4b109988b6b9265ea
+msgid "4.4 入站 re-INVITE：新的 SDP offer"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:162
+#: ac6de8c3464648ca81d8caa500d18061
+msgid "普通入站 re-INVITE 位于 `nua_callstate_completed`："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:173
+#: a74af1a600db4aaf86b77673848b4008
+msgid ""
+"对应源码为 `sofia.c:8453-8482`。如果 SDP 表示 hold/unhold，代码会先分析 "
+"`sendonly`、`inactive` 或 `0.0.0.0`，并可能把媒体变化通知 bridge 的另一条 leg。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:176
+#: b73edf3b2e1647918d8ee7084bf24172
+msgid ""
+"`PFLAG_PROXY_HOLD` 分支在 `sofia.c:8353-8359` 也会调用 `SDP_OFFER`，但主要用途是验证 "
+"offer 并把 hold 状态传给对端，不一定在当前 leg 立即执行普通 RTP activation。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:180
+#: cc17f756dc07414abd470e97f3a40371
+msgid "4.5 已建立呼叫中的 SDP 更新"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:182
+#: 92f4d27a85dd47a49def8189e509a972
+msgid ""
+"当 `nua_callstate_ready` 检测到新的 SDP，`sofia.c:8534-8558` 使用 `SDP_ANSWER` "
+"重新匹配、生成本地 SDP 并重新激活 RTP。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:185
+#: 031da14cf9e5490e8ecffa3926c5bd11
+msgid "对于 `TFLAG_NOSDP_REINVITE`，代码根据 ACK 是否已经收到决定 SDP 角色："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:195
+#: 54980719506f4e9d991b8e19723d1550
+msgid ""
+"位置是 `sofia.c:8606-8611`。这处理的是 re-INVITE / ACK 时序下 SDP 角色变化，不能 只根据 SIP "
+"方法名判断 offer 或 answer。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:198
+#: 3b3e24e2ba8c4fea94698993147e33d7
+msgid "4.6 3PCC 媒体恢复"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:200
+#: 00ac953c18f44e32aa29920d06826119
+msgid ""
+"`nua_callstate_completing` 且 `CF_3P_MEDIA_REQUESTED` 时，代码先准备 codec，再把 远端 "
+"SDP 当作 offer："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:212
+#: c7e3fde632674ead9a5ab29dbe8d89f4
+msgid "对应源码为 `sofia.c:7803-7833`。这是 3PCC 重新建立实际媒体的路径，不是普通初始 INVITE 的 codec 协商。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:215
+#: 92ef489727c14a2f8bb0533571b4526e
+msgid "5. 从 SDP 匹配到 RTP 可用"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:217
+#: b05fd457da91426ba78f4e4f621d6356
+msgid ""
+"`sofia_media_negotiate_sdp()` 返回成功后，是否立即建立 RTP 取决于调用点。典型 early media / "
+"re-INVITE setup 链为："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:232
+#: ca959788913448a4aed3672250dab4a1
+msgid ""
+"`switch_rtp_ready()` 需要同时满足：RTP session 未关闭、输入/输出 socket 存在、远端 "
+"地址存在、`SWITCH_RTP_FLAG_IO` 已设置，并且 RTP 内部 `ready == 2`。因此："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:239
+#: 221ded3ae2bc4e3096002553aec6841c
+msgid ""
+"proxy mode / proxy media 可能跳过普通 codec termination；late negotiation 可能先记录 "
+"匹配结果，待 dialplan 或 bridge 提供媒体上下文后再完成 local SDP 和 RTP setup。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:242
+#: 8c7631495d5049f1a85658f08b13a4a7
+msgid "6. `sofia_media_activate_rtp()` 的调用场景"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:244
+#: 8785199875684171b533149d560a16c7
+msgid "6.1 Early media"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:246
+#: 22efbb6c30f540cdb6cd2e2046f36a12
+msgid "`sofia_media_tech_media()` 在收到并匹配远端 SDP offer 后直接调用 wrapper："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:256
+#: e8b01fd3c4434b72bc1faf8f7e9c3603
+msgid "位置：`sofia_media.c:81-90`。这是普通 early media 的主要入口。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:258
+#: 2770aac034b74f01b7b50cf02a1f1a46
+msgid ""
+"`nua_callstate_early + answer_recv` 是出站呼叫收到 183 等早期 answer 的路径，位置为 "
+"`sofia.c:8144-8165`："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:268
+#: c38cff9d9aa1460691c9488153b3e46e
+msgid "6.2 入站呼叫最终 answer"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:270
+#: 7cfd65a69029494c82fb4565278e05cf
+msgid "`sofia_answer_channel()` 在入站呼叫最终接听时建立正式 RTP，位置为 `mod_sofia.c:925-933`："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:280
+#: 178e192bd0ad4822963584a85daeacb4
+msgid "这条路径覆盖 codec 已选定、late negotiation 完成，以及 dialplan/bridge 触发 answer 的情况。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:283
+#: 03d450b3215741db85b7472744cb0120
+msgid "6.3 入站 re-INVITE / hold / unhold"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:285
+#: 75d88ef52f26407eb044377e2458b4b3
+msgid ""
+"普通入站 re-INVITE 在 `nua_callstate_completed` 中匹配 SDP offer 后调用 wrapper，位置为 "
+"`sofia.c:8453-8482`："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:297
+#: 0062ceeb51ba43fab16582d4a1862ae5
+msgid ""
+"已建立呼叫检测到新的 SDP answer 时，`nua_callstate_ready` 在 `sofia.c:8533-8558` 重新调用 "
+"wrapper，用于更新远端地址、payload map 或媒体参数。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:300
+#: 5b4538f8e81b4604916152442d32a2c9
+msgid "6.4 NOSDP re-INVITE、ACK 和 3PCC"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:302
+#: 2a9593ac01ab485d80270b504abbb739
+msgid "以下是特殊时序或 3PCC 路径："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 163b7332c1b14a8aa6d38609be287bcb
+msgid "位置"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: c029edbb6ee84ba69157e76eb9d58495
+msgid "条件"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 25db70c371ec402e8c3d60faf587525b
+msgid "作用"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 840ead11057b40a786a6f0c3ae62e5a9
+msgid "`sofia.c:1731-1738`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 7f15b8cb720b4fef9cffde539d3f4832
+msgid "3PCC proxy 收到 ACK 且携带远端 SDP"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 5e0f48c4a509492ebb40688634bee310
+msgid "激活 RTP，并更新 proxy remote address"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 4f4334ba175f47168cfcdb1ccdccb598
+msgid "`sofia.c:8568-8575`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 85ae7db283b24da29ff1daab3b0f6376
+msgid "`TFLAG_NOSDP_REINVITE` + `CF_PROXY_MEDIA`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 6b01fb7d7b78468a8020a7b8d6fd02c3
+msgid "已有 SDP 上下文时直接重启/激活 proxy RTP"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: f419d7af2e734708831066fd5492873e
+msgid "`sofia.c:8606-8619`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: ef08595628144eb0bacd1dcaa4805478
+msgid "`TFLAG_NOSDP_REINVITE` 普通媒体"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: bfdf0c7e858443c7847e99fa38d48682
+msgid "根据 `TFLAG_GOT_ACK` 把 SDP 当 offer 或 answer，匹配后激活 RTP"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 80c2bf3e54fb4749996147edc1e66638
+msgid "`sofia.c:8638-8648`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: f7f987af77d541c18d41b6ed53580c71
+msgid "`nh == tech_pvt->nh2` 的 cheater re-INVITE"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 9e3236cf5be84676aac1d00808c704f1
+msgid "切换 handle 后重新激活 RTP"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 1f7133090bdf4e21a75f1459e2bacdd9
+msgid "`sofia.c:8673-8727`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 5e97e0bef18c4470962b2bd33663ea26
+msgid "`nua_callstate_ready` 尚未完成 SDP"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: c637750d28694ead9abe8f35756fa283
+msgid "收到最终 answer 后激活 RTP，并标记 channel answered"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: 5249a868f90f4a6eb4fc2f241d1a55db
+msgid "`sofia.c:7803-7833`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: ff1e6bd4309a4a48a10e026940ae6c50
+msgid "`CF_3P_MEDIA_REQUESTED`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md
+#: f82c4095994c4e3a9d0d7c30189d3af6
+msgid "3PCC 恢复媒体；此处有一处直接调用 `switch_core_media_activate_rtp()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:313
+#: 124dd5fbece2484dbde9c7d9bc3f81d7
+msgid ""
+"最后一行是一个重要例外：`sofia.c:7832` 没有经过 `sofia_media_activate_rtp()` "
+"wrapper，而是直接调用 core 函数。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:316
+#: 7187460ba8374e62a7dbf53fe1bbb2e8
+msgid "6.5 Proxy media 的直接激活"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:318
+#: bc31daf071894fcb8e97a7e361514fe8
+msgid ""
+"`CF_PROXY_MEDIA` 不一定经过正常 codec termination。下列路径先设置或 patch SDP，再 直接激活 "
+"proxy RTP："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:321
+#: de3c3c35f36540878388d1338baa8314
+msgid "`sofia.c:7687-7690`：`nua_callstate_proceeding` 的 proxy/early media；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:322
+#: 2299311d7afc4977ba5ab863529a72ee
+msgid "`sofia.c:7704-7713`：带 SDP 的 proxy media early response；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:323
+#: 5c4a71c0f9f64e8e8ec18304616d30ce
+msgid "`sofia.c:8276-8278`：re-INVITE hold/unhold 后更新 proxy remote address；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:324
+#: e1b7bd64af06477fb53345e9217ddf9f
+msgid "`mod_sofia.c:751`、`:805`、`:834`：3PCC/proxy answer 路径；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:325
+#: ad96712aecca454d84e9e75a9d2bad8d
+msgid "`mod_sofia.c:2580-2611`：发送 progress/183 时的 proxy media。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:327
+#: c5dd5df97d6e46c7ad8b2354be6a9dff
+msgid "这些分支的共同形式是："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:335
+#: 375d704356f544338bc96c91b61a5264
+msgid "7. RTP 通道搭建流程"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:337
+#: 65d950574ddb4edc83017816b62e7fe6
+msgid ""
+"下面描述 `sofia_media_activate_rtp()` 进入 `switch_core_media_activate_rtp()` "
+"后，audio RTP channel 的实际建立过程。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:340
+#: 1733aaa2553b48ec84120afaea324077
+msgid "7.1 前置条件和模式判断"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:348
+#: d9b293eb540c4ce6b8ba54475efb96cb
+msgid ""
+"core 首先检查 `session->media_handle` 和 channel 是否仍然 up，并根据已有 RTP session 或 "
+"`CF_REINVITE` 判断这是初次建立还是 re-INVITE 更新："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:351
+#: 461412dd8e42443db5c65ef1c6f4543a
+msgid "没有 RTP session：建立新的 audio RTP engine；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:352
+#: 3ec88a654a67403d8f55aa661f4e04ee
+msgid "已有 RTP session：更新 codec、远端地址、DTLS/ICE 或 timeout 参数；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:353
+#: ad4edafdbaa5490d9cc9e7d3c5d02041
+msgid "`CF_PROXY_MODE`：跳过普通 RTP termination，直接返回成功；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:354
+#: 56c0e304c2bf4b22b6539758e7cdd705
+msgid "`CF_PROXY_MEDIA`：使用 proxy RTP flags 和 proxy remote address。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:356
+#: 9e45d05937424f97a1ce7d84b87a825b
+msgid "源码：`switch_core_media.c:8551-8587`。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:358
+#: ac8fe2aca116434aba271df0f18906b9
+msgid "7.2 选择 codec 和 RTP flags"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:360
+#: fb4803bab583457daee482e39b91f5b0
+msgid ""
+"core 调用 `switch_core_media_set_codec()` 选择当前 audio codec，并设置 video codec。"
+" 然后根据 media flags 和 channel variables 组装 RTP flags，包括："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:363
+#: 4cf0b340d0ed4bcb847c9906d2753820
+msgid "`DATAWAIT`：等待媒体数据；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:364
+#: 4b88da0daba746b8997e84eac574d280
+msgid "`AUTOADJ`：RTP/NAT 自动调整；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:365
+#: ba5c79f8905b4c3c8406d4a18fb60c43
+msgid "RFC2833/telephone-event pass-through；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:366
+#: 0318c958736d4563a7142bd8743f9335
+msgid "`AUTOFLUSH`、raw timestamp、comfort noise；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:367
+#: a1ebcf1ad5624f5b93cda14aeea6e6c8
+msgid "little-endian L16 的 byteswap；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:368
+#: 99b58bb1f65f408b92ff80e02574ba8b
+msgid "RTCP event、SRTP/DTLS 相关设置。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:370
+#: 9811734220aa4b99b6ff665799f87e2c
+msgid "源码：`switch_core_media.c:8612-8655`。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:372
+#: 93f78ffab86146298a47ce59798dcfd5
+msgid "7.3 处理 re-INVITE 的远端地址"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:374
+#: e5314dd8430b44cf8dc0495b9f483cf8
+msgid "如果 RTP session 已存在，core 会比较旧的 remote host/port 和当前 SDP 中的地址："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:383
+#: 247587c8685847b1a43b1c088899ddeb
+msgid ""
+"源码：`switch_core_media.c:8657-8732`。地址改变时会更新 channel 变量并触发 "
+"`execute_on_audio_change`。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:386
+#: d603d39a957f4b719b2d69984da9f3b9
+msgid "7.4 创建 RTP socket/session"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:388
+#: 22c2b23efef541908f6c131174fcdf80
+msgid ""
+"初始建立时，`switch_core_media_choose_port()` 已经通过 `switch_rtp_request_port()` "
+"选好了本地端口；`switch_core_media_activate_rtp()` 随后 使用本地 IP/端口、远端 SDP "
+"IP/端口、payload type、采样间隔和 flags 创建 RTP session："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:406
+#: ac26e71160f140f79e48573bee87274c
+msgid ""
+"audio 创建位置：`switch_core_media.c:8770-8786`。创建成功后设置 payload map、读写 "
+"mutex、SSRC、`CF_FS_RTP` 以及当前 payload type。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:409
+#: 24ab1ad2458047ffa1118943a9df161d
+msgid "7.5 ICE、RTCP、DTLS 和加密"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:411
+#: 86c15e66599f4579a95d9d325d17424c
+msgid "RTP session 建立后，core 按 SDP 和 profile 配置继续挂接辅助通道："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:421
+#: 1b857048c12849f183d65320dd25253e
+msgid "相关源码："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:423
+#: 28d794d024c04f4a8e5c7f4e75e4c8dc
+msgid "ICE：`switch_core_media.c:8860-8879`；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:424
+#: b795b0a725b640c78daf4ae1f6469f19
+msgid "RTCP：`switch_core_media.c:8885-8935`；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:425
+#: 9e5144f59bff4ee282e7d22b03d8c607
+msgid "DTLS：`switch_core_media.c:8938-8960`；"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:426
+#: 9d890c65cc544581a8c18ab61efafb40
+msgid "SRTP/crypto 应用：`switch_core_media.c:9036`。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:428
+#: 075b860cc0974da9956c40644ba5e044
+msgid "7.6 Ready gate 和 RTP 收发"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:430
+#: 49935f28dff14e5a94e61d05d8ab9050
+msgid "`switch_rtp_ready()` 只有在下列条件全部满足时返回 true："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:442
+#: 14b2ad783d4b41c3ac7eadfc26f3aa1b
+msgid ""
+"当 wrapper 成功返回时，`sofia_media_activate_rtp()` 设置 `TFLAG_RTP` 和 `TFLAG_IO`；"
+" 随后 endpoint IO 才能真正收发 RTP："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:459
+#: b19f1fd91ab548d0a3528b92f9b32a6b
+msgid "因此完整边界是："
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:473
+#: 4437df36aeb84807bc601bfa08dccf19
+msgid "8. 相关源码"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:475
+#: d2a3fdcde9714778b790ec51fdcfcc40
+msgid ""
+"`src/mod/endpoints/mod_sofia/sofia.c` — `sofia_handle_sip_i_state`、各 "
+"`nua_callstate_*` 分支"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:477
+#: 13217bfc3b2346a98694f08771fe8dcb
+msgid ""
+"`src/mod/endpoints/mod_sofia/sofia_media.c` — "
+"`sofia_media_negotiate_sdp`、 "
+"`sofia_media_tech_media`、`sofia_media_activate_rtp`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:479
+#: 98aa0d91c479491c8b761729df76d38d
+msgid ""
+"`src/switch_core_media.c` — `switch_core_media_negotiate_sdp`、 "
+"`switch_core_media_choose_port`、`switch_core_media_gen_local_sdp`、 "
+"`switch_core_media_activate_rtp`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:482
+#: 5b39809a195b4d3bbf4613f2c4991835
+msgid ""
+"`src/switch_rtp.c` — `switch_rtp_request_port`、`switch_rtp_ready`、RTP "
+"read/write"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:483
+#: 68ed023e97ef49e480e02ff9343d6410
+msgid ""
+"`src/mod/endpoints/mod_sofia/mod_sofia.c` — "
+"`sofia_receive_message`、endpoint IO callbacks"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:485
+#: 2028d3b94aef4a09b6619ab8ec2b5091
+msgid ""
+"`src/mod/endpoints/mod_sofia/mod_sofia.c` — "
+"`sofia_answer_channel`、progress/answer 的 proxy media 与 late negotiation "
+"路径"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:487
+#: 3ca417208e284d68abb426ec54ebcdde
+msgid ""
+"[06. Workflows — Media negotiation and RTP "
+"activation](../1.architecture/05-workflows.md#media-negotiation-and-rtp-"
+"activation)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/3.media/01-mod-sofia-media-flow.md:488
+#: 3f920daa43214fad811d12a69c856743
+msgid "[18. Sofia-SIP NUA — 呼叫状态机和回调](../2.signal/03-sofia-nua-call-model.md)"
+msgstr ""
+
+#~ msgid ""
+#~ "`ss_state` 是 Sofia NUA 的呼叫状态，不是 "
+#~ "FreeSWITCH 的 `CS_*` channel state。两者的 "
+#~ "关系见 [Sofia NUA 呼叫状态机](18-sofia-nua-"
+#~ "call-model.md) 和 [媒体协商与 RTP "
+#~ "activation](../1.architecture/06-workflows.md#media-"
+#~ "negotiation-and-rtp-activation)。"
+#~ msgstr ""
+
+#~ msgid "[18. Sofia-SIP NUA — 呼叫状态机和回调](18-sofia-nua-call-model.md)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`ss_state` 是 Sofia NUA 的呼叫状态，不是 "
+#~ "FreeSWITCH 的 `CS_*` channel state。两者的 "
+#~ "关系见 [Sofia NUA 呼叫状态机](../2.signal/18-sofia-"
+#~ "nua-call-model.md) 和 [媒体协商与 RTP "
+#~ "activation](../1.architecture/06-workflows.md#media-"
+#~ "negotiation-and-rtp-activation)。"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "[06. Workflows — Media negotiation and"
+#~ " RTP activation](../1.architecture/06-workflows.md#media-"
+#~ "negotiation-and-rtp-activation)"
+#~ msgstr ""
+
+#~ msgid "[18. Sofia-SIP NUA — 呼叫状态机和回调](../2.signal/18-sofia-nua-call-model.md)"
+#~ msgstr ""
+

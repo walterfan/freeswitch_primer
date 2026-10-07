@@ -1,0 +1,38 @@
+name: freeswitch-tutorial
+
+include:
+  - path: ../../docker/examples/Debian11/compose.yaml
+
+services:
+  freeswitch:
+    volumes:
+      - type: bind
+        source: ../module/mod_tutorial/mod_tutorial.conf.xml
+        target: /usr/local/freeswitch/conf/autoload_configs/mod_tutorial.conf.xml
+        read_only: true
+      - type: bind
+        source: ../module/mod_tutorial/tutorial-ivr.xml
+        target: /usr/local/freeswitch/conf/dialplan/tutorial-ivr.xml
+        read_only: true
+      - type: bind
+        source: ${TUTORIAL_MODULE_SO:-../module/mod_tutorial/build/mod_tutorial.so}
+        target: /usr/local/freeswitch/mod/mod_tutorial.so
+        read_only: true
+
+  tutorial-site:
+    build:
+      context: ..
+      dockerfile: site/Dockerfile
+    network_mode: host
+    depends_on:
+      freeswitch:
+        condition: service_healthy
+    environment:
+      TUTORIAL_ESL_PASSWORD: ${TUTORIAL_ESL_PASSWORD:-}
+    volumes:
+      - type: bind
+        source: site-config.yaml
+        target: /opt/freeswitch-tutorial/site/config/config.yaml
+        read_only: true
+    restart: unless-stopped
+    stop_grace_period: 10s

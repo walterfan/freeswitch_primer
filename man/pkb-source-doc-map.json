@@ -1,0 +1,102 @@
+[
+  {
+    "pattern": "configure.ac",
+    "docs": ["02-tech-stack", "03-repo-map", "02-build", "01-runbook"]
+  },
+  {
+    "pattern": "Makefile.am",
+    "docs": ["03-repo-map", "02-build", "03-testing"]
+  },
+  {
+    "pattern": "bootstrap.sh",
+    "docs": ["02-quick-start", "03-repo-map", "02-build"]
+  },
+  {
+    "pattern": "build/modules.conf.in",
+    "docs": ["01-overview", "01-architecture", "02-tech-stack", "03-repo-map", "01-conventions", "02-build"]
+  },
+  {
+    "pattern": "src/switch*.c",
+    "docs": ["01-architecture", "04-data-and-api", "05-workflows", "03-testing", "02-observability"]
+  },
+  {
+    "pattern": "src/include/**/*.h",
+    "docs": ["01-architecture", "04-data-and-api", "01-conventions", "03-testing", "02-observability"]
+  },
+  {
+    "pattern": "src/mod/endpoints/mod_sofia/**/*.c",
+    "docs": ["01-architecture", "04-data-and-api", "05-workflows", "03-testing", "01-runbook", "02-observability"]
+  },
+  {
+    "pattern": "src/mod/endpoints/mod_verto/**/*.c",
+    "docs": ["01-architecture", "04-data-and-api", "05-workflows", "03-testing"]
+  },
+  {
+    "pattern": "src/mod/event_handlers/mod_event_socket/**/*.c",
+    "docs": ["01-overview", "01-architecture", "04-data-and-api", "05-workflows", "03-testing", "01-runbook", "02-observability"]
+  },
+  {
+    "pattern": "src/mod/applications/mod_commands/**/*.c",
+    "docs": ["04-data-and-api", "05-workflows", "03-testing", "01-runbook"]
+  },
+  {
+    "pattern": "src/mod/applications/mod_dptools/**/*.c",
+    "docs": ["01-architecture", "04-data-and-api", "05-workflows", "03-testing"]
+  },
+  {
+    "pattern": "conf/**/*.xml",
+    "docs": ["01-overview", "02-quick-start", "01-architecture", "04-data-and-api", "05-workflows", "01-runbook", "02-observability"]
+  },
+  {
+    "pattern": ".github/workflows/*.yml",
+    "docs": ["03-repo-map", "02-build", "03-testing"]
+  },
+  {
+    "pattern": ".github/workflows/*.yaml",
+    "docs": ["03-repo-map", "02-build", "03-testing"]
+  },
+  {
+    "pattern": "docker/**/Dockerfile",
+    "docs": ["02-quick-start", "03-repo-map", "02-build", "01-runbook"]
+  },
+  {
+    "pattern": "docker/**/*.Dockerfile",
+    "docs": ["02-quick-start", "03-repo-map", "02-build", "01-runbook"]
+  },
+  {
+    "pattern": "docker/**/*.yml",
+    "docs": ["02-quick-start", "03-repo-map", "02-build", "01-runbook"]
+  },
+  {
+    "pattern": "docker/**/*.yaml",
+    "docs": ["02-quick-start", "03-repo-map", "02-build", "01-runbook"]
+  },
+  {
+    "pattern": "docker/**/*.sh",
+    "docs": ["02-quick-start", "03-repo-map", "02-build", "01-runbook"]
+  },
+  {
+    "pattern": "debian/**/*.service",
+    "docs": ["02-build", "01-runbook", "02-observability"]
+  },
+  {
+    "pattern": "debian/**/*control*",
+    "docs": ["02-build"]
+  },
+  {
+    "pattern": "debian/**/*.postinst",
+    "docs": ["02-build", "01-runbook", "02-observability"]
+  },
+  {
+    "pattern": "tests/unit/**/*.c",
+    "docs": ["03-repo-map", "03-testing"]
+  },
+  {
+    "pattern": "tests/unit/Makefile.am",
+    "docs": ["02-build", "03-testing"]
+  },
+  {
+    "pattern": "libs/esl/**/*.c",
+    "docs": ["04-data-and-api", "05-workflows", "03-testing", "02-observability"]
+  }
+]

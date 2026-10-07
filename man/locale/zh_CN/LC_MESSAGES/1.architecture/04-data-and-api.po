@@ -1,0 +1,1657 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Zoom Video Communications
+# This file is distributed under the same license as the FreeSWITCH package.
+# Walter Fan <walter.fan@ustc.etu>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version:  FreeSWITCH\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-18 16:34+0800\n"
+"PO-Revision-Date: 2026-08-30 23:13+0800\n"
+"Last-Translator: Walter Fan <walter.fan@ustc.etu>\n"
+"Language: zh_CN\n"
+"Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:1
+#: 7edd42a30ffd4347b77c628f3c01a78f
+msgid "05. Data and API"
+msgstr "05. 数据与 API"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:5
+#: 32e9db379d1d47d083a82a8184beb407
+#, fuzzy
+msgid ""
+"Contracts in this tree are **not** OpenAPI/REST. Call control is ESL + "
+"console/API strings; config is XML; signaling is SIP or Verto JSON-RPC; "
+"the core scoreboard is SQL. `scripts/extract_api_signatures.py` found no "
+"Tauri/HTTP routes (`man/_generated/04-data-and-"
+"api.signatures.generated.md`) — expected for a C softswitch."
+msgstr ""
+"本树中的契约**不是** OpenAPI/REST。呼叫控制是 ESL + 控制台/API 字符串；配置是 XML；信令是 SIP 或 Verto"
+" JSON-RPC；核心记分板是 SQL。`scripts/extract_api_signatures.py` 未发现 Tauri/HTTP "
+"路由（`man/_generated/05-data-and-api.signatures.generated.md`）——对 C "
+"软交换而言这是预期结果。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:7
+#: ed99409d0e81437ba6061d74aa581871
+#, fuzzy
+msgid ""
+"Live command list at runtime: `fs_cli -x help` (every `SWITCH_ADD_API` "
+"registration). Dialplan apps: `show applications`. Event names: "
+"`src/include/switch_types.h`. Those names are entries on the module "
+"interface bag the core looks up after `dlopen` ([Architecture — Loadable "
+"module contract](01-architecture.md#loadable-module-contract))."
+msgstr ""
+"运行时实时命令列表：`fs_cli -x help`（每个 `SWITCH_ADD_API` 注册）。拨号计划应用：`show "
+"applications`。事件名：`src/include/switch_types.h`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:9
+#: 997e22b7fdad4fae8e37143893283803
+msgid "Data Model Overview"
+msgstr "数据模型概览"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 769ca75f9a3d4559804a6afc6413c2d7
+msgid "Entity"
+msgstr "实体"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 29564243d9ba48c2a021c22a06c14420
+msgid "Purpose"
+msgstr "用途"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: e6e1a9051a4049adae9e4b14225e5eef
+msgid "Primary owner"
+msgstr "主要所有者"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 44a23f6e4c004d7e98c380f3c044b593 5701fe4e1484457d955f8a70b36e211c
+#: 825b67edc54b4db990f73df252592f80
+msgid "Notes"
+msgstr "备注"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: d9f881d1a7994160bc12799c7d6eebdc
+msgid "Channel / session"
+msgstr "通道 / 会话"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 4f48b91178fa4b08b0a5587b1dabf309
+msgid "One call leg"
+msgstr "一条呼叫腿"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 53ab83c904a8430aaaa03d670bd73345
+msgid "Core (`switch_core_session_t`, `switch_channel_t`)"
+msgstr "核心（`switch_core_session_t`、`switch_channel_t`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: ed7b551dc135450b9734fa2b35817d7a
+msgid "UUID is the stable id; state `CS_*`, callstate `CCS_*`"
+msgstr "UUID 是稳定标识；状态为 `CS_*`，呼叫状态为 `CCS_*`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 59c31767846144b38754533c2d64e195
+msgid "Call"
+msgstr "呼叫"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 0ef03090827f4c2ea116b47961b9f18d
+msgid "Pair of legs"
+msgstr "一对呼叫腿"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: d89e237ea39a4754bbd5a11fc9734745
+msgid "Core SQL `calls`"
+msgstr "核心 SQL `calls`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 98270a4166764e408217978d3b42c849
+msgid "`call_uuid`, `caller_uuid`, `callee_uuid`"
+msgstr "`call_uuid`, `caller_uuid`, `callee_uuid`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 1c8f112d05434a5aa78d0aaa74d6ab1d
+msgid "XML user"
+msgstr "XML 用户"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: b2ab3b094d834959a3bf4dc6f2e200fd
+msgid "SIP/VM credentials + channel vars"
+msgstr "SIP/语音信箱凭据 + 通道变量"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 67e77b49ba0744feb19511637c65f8d8
+msgid "Directory section"
+msgstr "Directory 段"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 271dffd2fe724b9f8d309f2896572d54
+msgid ""
+"Vanilla `conf/vanilla/directory/default/1000.xml` (`id`, `password`, `vm-"
+"password`, `user_context`)"
+msgstr ""
+"Vanilla `conf/vanilla/directory/default/1000.xml`（`id`、`password`、`vm-"
+"password`、`user_context`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 1916db248fe949bf83126bb4d46624b7
+msgid "XML extension"
+msgstr "XML 分机"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 604902f151744e2d8636957fe1e7a36c
+msgid "Dialplan match + apps"
+msgstr "拨号计划匹配 + 应用"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 22a7c61992284f8ab922dd0e28f0070e
+msgid "Dialplan section"
+msgstr "Dialplan 段"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 058a372be8a34a1c82672a2fa51491e4
+msgid ""
+"`<context>` / `<extension>` / `<condition>` / `<action "
+"application=\"...\">`"
+msgstr ""
+"`<context>` / `<extension>` / `<condition>` / `<action "
+"application=\"...\">`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: c1b2943443ac4784bbaf90e2ff7a922c
+msgid "SIP profile"
+msgstr "SIP 配置文件"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 91a391119d3740dd919c4a1d20525608
+msgid "Bind, codecs, auth, ACL"
+msgstr "绑定、编解码器、认证、ACL"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: c4aad22a5d094875bc5f85816ce97289
+msgid "`mod_sofia` + `conf/vanilla/sip_profiles/`"
+msgstr "`mod_sofia` + `conf/vanilla/sip_profiles/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: b0d9f3db483b4fae837c082fb5e09553
+msgid "Internal vs external (`auth-calls`)"
+msgstr "内部 vs 外部（`auth-calls`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 4ce9ca464e23449e8eb313ed9912223d
+msgid "SIP registration"
+msgstr "SIP 注册"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 4a4ec5ff5d424c9c823aa3e55304e67c
+msgid "REGISTER state"
+msgstr "REGISTER 状态"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 2ebab8fd97f14f04a2b4bef9035d4043
+msgid "`mod_sofia` table `sip_registrations`"
+msgstr "`mod_sofia` 表 `sip_registrations`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 0338ddc9f6f94c52ab375f872fb25d48
+msgid "Also core `registrations`"
+msgstr "还有核心 `registrations`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: cb4061ec049242ec874e7b7e8249213d
+msgid "Voicemail message"
+msgstr "语音信箱消息"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: adcb8e5baefd40b5b335c82d88e22153
+msgid "Stored VM"
+msgstr "已存储的语音信箱"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: a6051c8f95d04e3a9dc9afecdb12e0b9
+msgid "`mod_voicemail` `voicemail_msgs` / `voicemail_prefs`"
+msgstr "`mod_voicemail` `voicemail_msgs` / `voicemail_prefs`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: acea31f10144451bb14f4b485ef55ad2
+msgid "ACD member/agent/tier"
+msgstr "ACD 成员/座席/层级"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: ea216fae4e69445ab43d7e92e98ea854
+msgid "Call center"
+msgstr "呼叫中心"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: fd93a40454b245cfbed086dbd6056e32
+msgid "`mod_callcenter`"
+msgstr "`mod_callcenter`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 880bd24f9c754a73ab5747772bbf115b
+msgid "Limit / db / group rows"
+msgstr "Limit / db / group 行"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 9dccac7367214b808de7a3527f20395b
+msgid "Shared counters"
+msgstr "共享计数器"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 7d19f2d30d924113a37a5b7fc76f689e
+msgid "`mod_db`"
+msgstr "`mod_db`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 16af95fefbfb4315b4074fb14a3b596b
+msgid "Event"
+msgstr "事件"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 1fbf96cdd4474e5c81dd8037f43c18e8
+msgid "In-process notification"
+msgstr "进程内通知"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 41b74b380bf64390b0c8c61721d7ff97
+msgid "Core event engine"
+msgstr "核心事件引擎"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 579e84a4e1834b08929c2294b00f0a5d
+msgid "Header bag; `Event-Name` plus channel vars when verbose"
+msgstr "头字段集合；`Event-Name`，在 verbose 时加上通道变量"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:24
+#: 2d3247c423cb4b53b60e19da9472a886
+msgid "Runtime XML sections (vanilla root `conf/vanilla/freeswitch.xml`):"
+msgstr "运行时 XML 段（vanilla 根配置 `conf/vanilla/freeswitch.xml`）："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: d7afe26736ff484c84522c89d2016fc6
+msgid "Section"
+msgstr "段"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 557c6ab5a7f2473fb67fab86a12ca88c b0ae9366e4a2460db6aad1962f9bb7e6
+#: f29be6efbc494953b8a25311574039ec
+msgid "Role"
+msgstr "角色"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 4ec952014d0a4d1288b933b8d8e019c0
+msgid "`configuration`"
+msgstr "`configuration`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 8b617e06642243f09026b93f9d27d5f5
+msgid "`autoload_configs/*.xml` (modules, sofia, ACL, ESL, …)"
+msgstr "`autoload_configs/*.xml`（模块、sofia、ACL、ESL、…）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 91ee6a545c024a5880562645253cce16
+msgid "`dialplan`"
+msgstr "`dialplan`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 42bb0e176a454117b50c6c24508bf453
+msgid "Routing"
+msgstr "路由"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: bb7b8b4795f2459380a7d935789e50c7
+msgid "`directory`"
+msgstr "`directory`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 394610c074ba41e69984e90c458e3d87
+msgid "Users / domains (Sofia auth)"
+msgstr "用户 / 域（Sofia 认证）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 13e4afd041b0431a9d062ee290421760
+msgid "`chatplan`"
+msgstr "`chatplan`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 66a14e1ee0b946c29ca2f8e6c54d99e7
+msgid "IM routing"
+msgstr "IM 路由"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 3680e4f4d19f4b8ea287e22e5eee5262
+msgid "`languages`"
+msgstr "`languages`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 654a4b6e03fd40afa5c7d32f4f87a6de
+msgid "Phrase / say XML"
+msgstr "Phrase / say XML"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:34
+#: 406d7fff5ff64441bd0a85ecd0cfa404
+#, python-brace-format
+msgid ""
+"Preprocessor: `#include` / `#set` / `X-PRE-PROCESS`. **`$${name}`** "
+"expands during assembly (global, `vars.xml`); **`${name}`** expands at "
+"call time on a channel ([Chapter "
+"3](https://developer.signalwire.com/freeswitch/configuration/xml)). "
+"Flattened file: `$log_dir/freeswitch.xml.fsxml` (typically "
+"`$prefix/log/`; comment in `conf/vanilla/freeswitch.xml`). Do not edit it"
+" while running."
+msgstr ""
+"预处理器：`#include` / `#set` / `X-PRE-PROCESS`。**`$${name}`** "
+"在组装时展开（全局，`vars.xml`）；**`${name}`** 在呼叫时对通道展开（[第 3 "
+"章](https://developer.signalwire.com/freeswitch/configuration/xml)）。展平文件：`$log_dir/freeswitch.xml.fsxml`（通常在"
+" `$prefix/log/`；见 `conf/vanilla/freeswitch.xml` 注释）。运行中不要编辑。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:36
+#: 3b20f4e63be24f489c1394a851a613b0
+msgid ""
+"Modules and other autoload files are **not** opened by disk basename. "
+"`switch_xml_open_cfg(\"modules.conf\", …)` locates `configuration` with "
+"`name=\"modules.conf\"` inside the `configuration` section "
+"(`src/switch_xml.c`). How `<load module=\"mod_sofia\"/>` becomes "
+"`dlopen`: [Architecture](01-architecture.md#runtime-load-tag), "
+"[Workflows](05-workflows.md#runtime-load-tag)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:38
+#: a67aab197c20494fae4df5c21660a66f
+msgid ""
+"Directory / dialplan / SIP-profile parameter tables: [Users Manual Ch "
+"6](https://developer.signalwire.com/freeswitch/users-and-endpoints/user-"
+"directory), [Ch "
+"12](https://developer.signalwire.com/freeswitch/dialplan/xml), [Ch "
+"7](https://developer.signalwire.com/freeswitch/users-and-endpoints/sip-"
+"profiles). This page lists the **contracts as implemented in this tree**,"
+" not every XML attribute."
+msgstr ""
+"号码簿 / 拨号计划 / SIP profile 参数表：[用户手册第 6 "
+"章](https://developer.signalwire.com/freeswitch/users-and-endpoints/user-"
+"directory)、[第 12 "
+"章](https://developer.signalwire.com/freeswitch/dialplan/xml)、[第 7 "
+"章](https://developer.signalwire.com/freeswitch/users-and-endpoints/sip-"
+"profiles)。本页列出的是**本仓库已实现的契约**，不是每一个 XML 属性。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:40
+#: 6bca36662e7140eeb96d9b68fa7dedf0
+msgid "Storage and Persistence Rules"
+msgstr "存储与持久化规则"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:42
+#: 350b11a33e44463c83d1aa42097bcb4a
+msgid ""
+"**Primary storage**: SQLite core DB under the configured `db_dir` (the "
+"documented `--disable-fhs` developer prefix uses `$prefix/db`; custom FHS"
+" prefixes use `$prefix/var/lib/freeswitch/db`). Initialized in "
+"`switch_core_init`. Optional ODBC / `mod_pgsql` / `mod_mariadb`. Disable "
+"scoreboard with `freeswitch -nosql`."
+msgstr ""
+"**主存储**：位于已配置 `db_dir` 下的 SQLite 核心数据库（文档所述 `--disable-fhs` 开发者前缀使用 "
+"`$prefix/db`；自定义 FHS 前缀使用 `$prefix/var/lib/freeswitch/db`）。在 "
+"`switch_core_init` 中初始化。可选 ODBC / `mod_pgsql` / `mod_mariadb`。用 "
+"`freeswitch -nosql` 禁用记分板。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:47
+#: 3ab1c03420e44358a627fffe46215b96
+msgid ""
+"**Schema source**: SQL strings in C, not migrations. Core: "
+"`src/switch_core_sqldb.c` (`create_channels_sql`, `create_calls_sql`, "
+"`create_interfaces_sql`, `create_tasks_sql`, `create_nat_sql`, "
+"`create_registrations_sql`, `recovery_sql`, aliases/complete). Sofia: "
+"`src/mod/endpoints/mod_sofia/sofia_glue.c` (`sip_registrations`, "
+"`sip_presence`, `sip_dialogs`, `sip_subscriptions`, `sip_authentication`,"
+" shared-appearance tables)."
+msgstr ""
+"**模式来源**：C 中的 SQL "
+"字符串，而非迁移。核心：`src/switch_core_sqldb.c`（`create_channels_sql`、`create_calls_sql`、`create_interfaces_sql`、`create_tasks_sql`、`create_nat_sql`、`create_registrations_sql`、`recovery_sql`、aliases/complete）。Sofia：`src/mod/endpoints/mod_sofia/sofia_glue.c`（`sip_registrations`、`sip_presence`、`sip_dialogs`、`sip_subscriptions`、`sip_authentication"
+"`、shared-appearance 表）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:48
+#: 87bfb990039d46ffa00ab94c37616d3c
+#, fuzzy
+msgid ""
+"**Core `channels` columns** (scoreboard): `uuid`, `direction`, `created` "
+"/ `created_epoch`, `name`, `state`, `cid_name` / `cid_num`, `ip_addr`, "
+"`dest`, `application` / `application_data`, `dialplan`, `context`, "
+"codecs/rates, `secure`, `hostname`, presence, `accountcode`, `callstate`,"
+" callee fields, `call_uuid`, initial-* copies. Column-by-column reading "
+"of a live `fs_cli -x 'show channels'` dump: [Workflows — show channels "
+"during a bridge](05-workflows.md#worked-example-show-channels-"
+"during-a-bridge)."
+msgstr ""
+"**核心 `channels` 列**（记分板）：`uuid`、`direction`、`created` / "
+"`created_epoch`、`name`、`state`、`cid_name` / "
+"`cid_num`、`ip_addr`、`dest`、`application` / "
+"`application_data`、`dialplan`、`context`、编解码器/采样率、`secure`、`hostname`、presence、`accountcode`、`callstate`、被叫字段、`call_uuid`、initial-*"
+" 副本。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:49
+#: 402cf7b2b5fc4d958b84ac0d9830a3b8
+msgid ""
+"**Consistency**: one session thread owns a channel. SQL is a "
+"**projection** for `show channels` / recovery, not the source of truth. "
+"`hostname` / `switchname` isolate rows in multi-host configs."
+msgstr ""
+"**一致性**：一条会话线程拥有一个通道。SQL 是用于 `show channels` / "
+"恢复的**投影**，不是事实来源。`hostname` / `switchname` 在多主机配置中隔离行。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:50
+#: 197524617b0641338218819793587581
+msgid ""
+"**CDR**: not in core SQL. Vanilla loads `mod_cdr_csv` (Asterisk-style "
+"CSV). Optional `mod_json_cdr`, `mod_xml_cdr`, `mod_cdr_sqlite`, "
+"`mod_odbc_cdr`, `mod_cdr_pg_csv`."
+msgstr ""
+"**CDR**：不在核心 SQL 中。Vanilla 加载 `mod_cdr_csv`（Asterisk 风格 CSV）。可选 "
+"`mod_json_cdr`、`mod_xml_cdr`、`mod_cdr_sqlite`、`mod_odbc_cdr`、`mod_cdr_pg_csv`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:51
+#: 3bc5c4d15e8b4c238d97b65d77eefc85
+msgid ""
+"**Retention**: operator-owned log/CDR rotation. `[NEEDS INPUT: site "
+"retention policy]`."
+msgstr "**保留策略**：由运维负责日志/CDR 轮转。`[NEEDS INPUT: site retention policy]`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:53
+#: 9eb431498dbc422a80ec59d3008582bd
+msgid "External Interfaces"
+msgstr "外部接口"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: cd56d867843a4ae0b473aa8d86ced76c
+msgid "Interface"
+msgstr "接口"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 4d35534e6eca4898b38c569165d83d33
+msgid "Path or endpoint"
+msgstr "路径或端点"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 41aa10f4fd9a4241b6b5093e250b345a
+msgid "Input"
+msgstr "输入"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 332bdb807bd84151b12f54cb36095d7e
+msgid "Output"
+msgstr "输出"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: f0475482629a4396ae60b88b053d8e0f
+msgid "ESL (Event Socket)"
+msgstr "ESL（Event Socket）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 2007ffd5f98a412595c1aa0c845d62bf
+msgid "Vanilla server `::`:8021; `fs_cli` client default `127.0.0.1:8021`"
+msgstr "Vanilla 服务端 `::`:8021；`fs_cli` 客户端默认 `127.0.0.1:8021`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: fd15a235815344d2b099176583252785
+msgid "Line-oriented commands after `auth`"
+msgstr "`auth` 之后的面向行命令"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: c40777355c5f4c4e93e8bf8ace08f454
+msgid "`+OK` / `-ERR`, then events"
+msgstr "`+OK` / `-ERR`，然后是事件"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 1625454b7a094359abb9017b4f254e9f
+#, fuzzy
+msgid ""
+"Default password `ClueCon`. Unset `apply-inbound-acl` still applies "
+"`loopback.auto` (`mod_event_socket.c` `config()`). Change bind, ACL, and "
+"password before network exposure. `parse_command()`"
+msgstr ""
+"默认密码为 `ClueCon`；在网络暴露前修改绑定地址、ACL 和密码。见 `mod_event_socket.c` 的 "
+"`parse_command()`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 012cf25673314dd9bca42135b2d7d061
+msgid "Console / `fs_cli`"
+msgstr "控制台 / `fs_cli`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: d5f5c2e78b7941d8a562640e0b587e73
+msgid "Same ESL, or local console"
+msgstr "同一 ESL，或本地控制台"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 53c9072f0fff42da946afecae965b47c
+msgid "API string (`status`, `sofia status`, `uuid_kill …`)"
+msgstr "API 字符串（`status`、`sofia status`、`uuid_kill …`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 74b1efa18c8148f5baecea5bb4834274
+msgid "Text"
+msgstr "文本"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 88a96a434fc7496fb99ee2d4a6d9ce07
+msgid "`fs_cli -x '<api>'`; Docker health: `status` matches `^UP`"
+msgstr "`fs_cli -x '<api>'`；Docker 健康检查：`status` 匹配 `^UP`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 96897fac66b9483485c0f5627bcd60c7
+msgid "SIP"
+msgstr "SIP"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: b65580486dba43d7bbe30aa435b93fae
+msgid "UDP/TCP 5060/5080 (TLS 5061/5081)"
+msgstr "UDP/TCP 5060/5080（TLS 5061/5081）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: b72211c7b71747f0b495fbf1ff1d4873
+msgid "RFC 3261 + SDP"
+msgstr "RFC 3261 + SDP"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 44f807c35b6e4ad0b56884adeb58a640
+msgid "SIP + RTP"
+msgstr "SIP + RTP"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 883eb92224c14fb3960852b5f5f1ea38
+msgid "`mod_sofia`; not re-specified here"
+msgstr "`mod_sofia`；此处不再复述"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 1c6128ac53504f87821914c819162b23
+msgid "Verto JSON-RPC 2.0"
+msgstr "Verto JSON-RPC 2.0"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: e7d3d75d48154ab6b61be098605829c8
+msgid "WS/WSS (vanilla `8081`/`8082`)"
+msgstr "WS/WSS（vanilla `8081`/`8082`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 32114e448b0d4c64ad370d7e1ce6f652
+#, python-brace-format
+msgid "`{\"jsonrpc\":\"2.0\",\"method\":\"…\",\"params\":{}}`"
+msgstr "`{\"jsonrpc\":\"2.0\",\"method\":\"…\",\"params\":{}}`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: e7d70e82e31c44f3b074ff79a7758d39
+msgid "JSON-RPC result/error"
+msgstr "JSON-RPC 结果/错误"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: d08939b94aa24ecd832ae608a38a442a
+msgid "Methods registered in `mod_verto.c`"
+msgstr "方法注册于 `mod_verto.c`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 48e82480c35044999356792e1d24a704
+msgid "Sofia SIP over WebSocket"
+msgstr "Sofia SIP over WebSocket"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: ce2194aa001f4f4385559c95f70c754c
+msgid "WS/WSS (vanilla `5066`/`7443`)"
+msgstr "WS/WSS（vanilla `5066`/`7443`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 10831249b9434651aaba509d653de3c7
+msgid "SIP over WebSocket"
+msgstr "SIP over WebSocket"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: e2a2172149704da690d393c9947bfcb5
+msgid "SIP responses and media negotiation"
+msgstr "SIP 响应和媒体协商"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 9a53c3e959724e16964b7de8ec21e93e
+msgid "`ws-binding` / `wss-binding` in Sofia profiles; distinct from Verto"
+msgstr "Sofia 配置档中的 `ws-binding` / `wss-binding`；与 Verto 不同"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 4a9b1801bf564f87a4ea7a29bdb6f442
+msgid "XML-RPC / HTTP"
+msgstr "XML-RPC / HTTP"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: dd8375eab57f4fa48c8a52f2d30916b6
+msgid "Default port **8080**"
+msgstr "默认端口 **8080**"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 4a4a58de285d4c98a2234152cce5284c
+msgid "HTTP basic auth"
+msgstr "HTTP 基本认证"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 25df1257fc834b8e917a3d6f1a5ecae0
+msgid "XML-RPC"
+msgstr "XML-RPC"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: b4b540aeb5ab4e49bf092704b45e8f1d
+msgid ""
+"`mod_xml_rpc` **not** in vanilla autoload. Demo auth `freeswitch` / "
+"`works` in `xml_rpc.conf.xml`"
+msgstr ""
+"`mod_xml_rpc` **不**在 vanilla 自动加载中。演示认证 `freeswitch` / `works` 见 "
+"`xml_rpc.conf.xml`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 00c26e30b23b434babf534e6352beb11
+msgid "Dynamic XML"
+msgstr "动态 XML"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 653412c09f114cd1aab008b46b040d06
+msgid "HTTP(S) from `mod_xml_curl`"
+msgstr "来自 `mod_xml_curl` 的 HTTP(S)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 8326a32dda194c1196d029515fd0b134
+msgid "Request params (`action`, section, …)"
+msgstr "请求参数（`action`、section、…）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 9fc62b3042aa4aac81b14a0d19e5cafe
+msgid "XML fragments"
+msgstr "XML 片段"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: daa6496c7e344cdc9d48f4d27c603d55
+msgid "Replaces file sections when enabled"
+msgstr "启用时替换文件中的段"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: b3bc2cdbe7cf4a658a6dcbe01c41aa73
+msgid "HTTAPI"
+msgstr "HTTAPI"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 54be9116c51f45999fb73045faa9d7fa
+msgid "`mod_httapi`"
+msgstr "`mod_httapi`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 8070d61e79c04465bd6a12d2c00de8c2
+msgid "HTTP to app server"
+msgstr "发往应用服务器的 HTTP"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 47e01a95dfc748b2bca2566bb2141157
+msgid "XML instructions"
+msgstr "XML 指令"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 7c543e2348bf430ba7819c26f9d917bc
+msgid "Dialplan-driven HTTP IVR"
+msgstr "拨号计划驱动的 HTTP IVR"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:66
+#: 9dbef9ac81514984bf769d4e953cd05a
+msgid "`mod_xml_rpc` HTTP and portal surface"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:68
+#: b404dbd0da944c2f9a9e3a664f4ca169
+msgid ""
+"`mod_xml_rpc` is an in-process HTTP server, not a complete administration"
+" UI. It registers XML-RPC at `/RPC2`, exposes FreeSWITCH API commands "
+"through `/api/`, `/webapi/`, `/txtapi/`, and `/xmlapi/`, and serves "
+"static files from the core `htdocs_dir`. The module redirects `/portal` "
+"to `/portal/index.html`, so a portal page can be installed at "
+"`<htdocs_dir>/portal/index.html` (the bundled starter assets are under "
+"`htdocs/portal/`). The htdocs directory can be overridden with the "
+"process `-htdocs` option."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:77
+#: 880a11281c4640e5932f9db9224f4c43
+msgid ""
+"The module is compiled when `xml_int/mod_xml_rpc` is enabled in the "
+"build-time `modules.conf`; runtime loading is separate: "
+"`conf/vanilla/autoload_configs/modules.conf.xml` must contain `<load "
+"module=\"mod_xml_rpc\"/>`, and "
+"`conf/vanilla/autoload_configs/xml_rpc.conf.xml` controls the HTTP port "
+"and Basic Authentication. Supplying all three `auth-realm`, `auth-user`, "
+"and `auth-pass` parameters protects non-`/pub` HTTP requests. `/pub` is "
+"intended for public static content and bypasses that authentication hook."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:86
+#: 941fffb024db4f6aa701af42bd69235b
+msgid ""
+"The sample credentials (`freeswitch` / `works`) are demo values. Restrict"
+" the listener with host/VPN firewall policy or an HTTPS reverse proxy; do"
+" not expose an unaudited portal or unrestricted API endpoint on a public "
+"interface."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:90
+#: 5d390940cd8f4c2c9a0882ffc28d0f5a
+msgid "ESL command surface"
+msgstr "ESL 命令面"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:92
+#: a9ebdfaa5f8342a5bc7bf32023b9b72f
+msgid ""
+"Unauthenticated: `auth <password>` or `userauth user@domain:pass` "
+"(directory `esl-password` / `esl-allowed-api` / `esl-allowed-events`). "
+"Then (`parse_command` in `mod_event_socket.c`):"
+msgstr ""
+"未认证：`auth <password>` 或 `userauth user@domain:pass`（directory 的 `esl-"
+"password` / `esl-allowed-api` / `esl-allowed-"
+"events`）。然后（`mod_event_socket.c` 中的 `parse_command`）："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 2b0b4a046c8043f69cc45e8d073ab3bd
+msgid "Command"
+msgstr "命令"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 98c30de302cd4d6ba41133b1e001a30e
+msgid "`api <cmd> [<args>]`"
+msgstr "`api <cmd> [<args>]`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 36bf4428a0bc49dfbf7601bdca2779ba
+msgid "Run a console API synchronously"
+msgstr "同步运行控制台 API"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 5613f3d53c644fcea439eb1e277b0297
+msgid "`bgapi <cmd> [<args>]`"
+msgstr "`bgapi <cmd> [<args>]`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 2861f63aac124c139740fe65233826ac
+msgid "Same, async; `Job-UUID` + `BACKGROUND_JOB` event"
+msgstr "同上，异步；`Job-UUID` + `BACKGROUND_JOB` 事件"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: a52f6a11623b4948b409fac9a51ca1e0
+msgid "`event <plain|json|xml> <types|ALL>`"
+msgstr "`event <plain|json|xml> <types|ALL>`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 4587efb16513424f8f68f99324573512
+msgid "Subscribe"
+msgstr "订阅"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 22359822ac2547c28fcedbb218268e20
+msgid "`nixevent` / `noevents`"
+msgstr "`nixevent` / `noevents`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: dd5e73f44ecb4cb0845b098e53bbbfcd
+msgid "Unsubscribe"
+msgstr "取消订阅"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: e69f43e62ca648ac994ae67deb154961
+msgid "`myevents`"
+msgstr "`myevents`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 2b51c9fa2d204bfd8683aa3a31c11e01
+msgid "Events for one UUID"
+msgstr "单个 UUID 的事件"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: ec2916325ca94c32ab56826c97035110
+msgid "`sendmsg <uuid>` + headers"
+msgstr "`sendmsg <uuid>` + 头字段"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 94775721321546c88a22e02005e92b5f
+msgid "Execute app / hangup on a channel (`call-command`)"
+msgstr "在通道上执行应用 / 挂断（`call-command`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 437a288ad64d409ca96ed99662499358
+msgid "`sendevent <EVENT>`"
+msgstr "`sendevent <EVENT>`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: bcd18285f5304fb19af77864f22846e5
+msgid "Inject a core event"
+msgstr "注入核心事件"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 5f20c277a16644a2a1e5195219bca363
+msgid "`getvar`"
+msgstr "`getvar`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: bbeedfd83a3c45af97c2b7171f79cc17
+msgid "Channel variable"
+msgstr "通道变量"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 517f3902a32d40228a8e12fe510ad352
+msgid "`log` / `nolog`"
+msgstr "`log` / `nolog`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: b6356f0fdff64eb09f6e27fc1e1b5a7c
+msgid "Log stream"
+msgstr "日志流"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: e314f6aaeada42afa65cb1625d8620c4
+msgid "`linger` / `nolinger`"
+msgstr "`linger` / `nolinger`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 28f607080e2544aca3b251f0c4c433b2
+msgid "Keep socket after hangup"
+msgstr "挂断后保持套接字"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: f3b396ec6f334756a0e85a02589a6866
+msgid "`exit`"
+msgstr "`exit`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 189dc66eb4ba439b80a9c4a0bb9be730
+msgid "Close (`+OK bye`)"
+msgstr "关闭（`+OK bye`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:108
+#: 27d99272dd18400388dd1a651f8bc630
+msgid ""
+"Replies start with `+OK` or `-ERR`. Events serialize via "
+"`switch_event_serialize()` (plain headers) or "
+"`switch_event_serialize_json()`."
+msgstr ""
+"回复以 `+OK` 或 `-ERR` 开头。事件通过 `switch_event_serialize()`（纯文本头）或 "
+"`switch_event_serialize_json()` 序列化。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:110
+#: 416193b4950943f986c899d3574c6762
+msgid "Verto methods"
+msgstr "Verto 方法"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:112
+#: 5f068d3d6368424c8fa02728bf7e90df
+msgid ""
+"Registered in `mod_verto.c`: `login`, `echo`, `jsapi`, `fsapi`, "
+"`verto.invite`, `verto.answer`, `verto.bye`, `verto.attach`, "
+"`verto.modify`, `verto.info`, `verto.ping`, `verto.subscribe`, "
+"`verto.unsubscribe`, `verto.broadcast`. Unauthenticated sockets may only "
+"`login` until `JPFLAG_AUTHED`."
+msgstr ""
+"注册于 "
+"`mod_verto.c`：`login`、`echo`、`jsapi`、`fsapi`、`verto.invite`、`verto.answer`、`verto.bye`、`verto.attach`、`verto.modify`、`verto.info`、`verto.ping`、`verto.subscribe`、`verto.unsubscribe`、`verto.broadcast`。未认证套接字在"
+" `JPFLAG_AUTHED` 之前只能 `login`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:114
+#: 1d18666f6e8e422eb8ade0eb3e1fac0d
+msgid "Console API (subset)"
+msgstr "控制台 API（子集）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:116
+#: 11fd5ab0fd214e70842e8c1da9de8e04
+msgid ""
+"Registered with `SWITCH_ADD_API` in "
+"`src/mod/applications/mod_commands/mod_commands.c` (not exhaustive):"
+msgstr ""
+"在 `src/mod/applications/mod_commands/mod_commands.c` 中用 `SWITCH_ADD_API` "
+"注册（并非穷尽）："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 95c3199f702b45f3b4b1b7e3d114725e
+msgid "API"
+msgstr "API"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 3456f6a05e6841939138b9b21990675e
+msgid "Syntax (from registration)"
+msgstr "语法（来自注册）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: b9910c1262b14ad5b72005f61796f692
+msgid "`status`"
+msgstr "`status`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 273316b269cc43ec95b6f4583ab11652
+msgid "Process health"
+msgstr "进程健康"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: a3e7aa9a23e54caba89ef66cbfaf9d2b
+msgid "`version`"
+msgstr "`version`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 92073c1b19534318a2e8e1b34bb86b30
+msgid "`[short]`"
+msgstr "`[short]`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 931d51180bb7499ba4b6ebfc940655f1
+msgid "Build version"
+msgstr "构建版本"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: fa98d5fb7a8642caa838b000acc2a7fa
+msgid "`sofia`"
+msgstr "`sofia`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 4c983ae38e2c402891b6c4c69ec4a55b
+msgid "(sofia module)"
+msgstr "（sofia 模块）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 05ad82c59dae40328b654b89f00e632e
+msgid "SIP profiles / registrations"
+msgstr "SIP 配置文件 / 注册"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: dc81dcaeadcd41aebf8b105466c2dd07
+msgid "`originate`"
+msgstr "`originate`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: cf5f5f8511134eb39f247d34b36bea4c
+msgid "(dptools/commands)"
+msgstr "（dptools/commands）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: cf342f025e774f5d917453b5af24e404
+msgid "Outbound call"
+msgstr "呼出呼叫"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 9645aee9832e4664b87dcdab99402d34
+msgid "`uuid_kill` / `uuid_bridge` / `uuid_transfer`"
+msgstr "`uuid_kill` / `uuid_bridge` / `uuid_transfer`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 09b4a8c682da43bfa1c1dc882f98079f
+msgid "UUID + args"
+msgstr "UUID + 参数"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 887169933d9442c1bbd1aaa783645629
+msgid "Leg control"
+msgstr "呼叫腿控制"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 4832acc3ea5e4183b99cc21dcec4c1c1
+msgid "`show`"
+msgstr "`show`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 751b69ae9a2b44aaaa506251b55cb4ed
+msgid "`channels`, `calls`, …"
+msgstr "`channels`, `calls`, …"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: be7808da16324649b2ab3a7c5e54b58e
+msgid "SQL scoreboard"
+msgstr "SQL 记分板"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 33007ff5ed264b8da5a6b4b198497bb7 c6f893860da544d9ac1bb4e91c068374
+msgid "`reloadxml`"
+msgstr "`reloadxml`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 646c29b516294d41bf9e3ac06ce4b064
+msgid "Re-parse XML"
+msgstr "重新解析 XML"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 38a62754c64d4b018ebe777b72437587
+msgid "`load` / `unload` / `reload`"
+msgstr "`load` / `unload` / `reload`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: d5d62fa5b9cc41a790cc81360e2dd084
+msgid "module name"
+msgstr "模块名"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: c0ae3b00d5c34a87940eeff57e496813
+msgid "DSOs"
+msgstr "DSO"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 1c75cc2033f3462182b30ba2876a18a3
+msgid "`fsctl`"
+msgstr "`fsctl`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 8c541a0677164d85aee4f0cb2ecf3274
+msgid "Pause, loglevel, and other core controls (`CTL_SYNTAX`)"
+msgstr "暂停、日志级别及其他核心控制（`CTL_SYNTAX`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 90c00d6d96ab4e3595ccf12be1ed25df
+msgid "`global_getvar` / `global_setvar`"
+msgstr "`global_getvar` / `global_setvar`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: c6584d4c94dd4fa09fa20145f5b69aae
+msgid "`$$` / global vars"
+msgstr "`$$` / 全局变量"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: c8cea6cda04a421a84b2cb22c837893d
+msgid "`acl`"
+msgstr "`acl`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 43ab6474f475494ebbbe8c24bb8f7e3a
+msgid "`<ip> <list_name>`"
+msgstr "`<ip> <list_name>`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: b8eb288db4e6481c953c6fb7a52b621b
+msgid "ACL test"
+msgstr "ACL 测试"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: aafb5b6988a44caaa5e0c8a05519be42
+msgid "`help`"
+msgstr "`help`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 512b9eb54ebb4edd935fcee52c6c28ef
+msgid "Full API list"
+msgstr "完整 API 列表"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:133
+#: 2830784d304e43188adbfa2b3f78c291
+msgid "Dialplan applications (subset)"
+msgstr "拨号计划应用（子集）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:135
+#: 268d6d1a86f44b959e5948a297d8a736
+msgid ""
+"`SWITCH_ADD_APP` in `src/mod/applications/mod_dptools/mod_dptools.c`: "
+"`answer`, `pre_answer`, `bridge` (`<channel_url>`), `transfer`, `sleep`, "
+"`playback`/`phrase`, `hold`/`unhold`, `park`, `set`/`export`, `hangup`, "
+"`eavesdrop`, … Other modules add `conference`, `voicemail`, `fifo`, "
+"`httapi`, etc."
+msgstr ""
+"`src/mod/applications/mod_dptools/mod_dptools.c` 中的 "
+"`SWITCH_ADD_APP`：`answer`、`pre_answer`、`bridge`（`<channel_url>`）、`transfer`、`sleep`、`playback`/`phrase`、`hold`/`unhold`、`park`、`set`/`export`、`hangup`、`eavesdrop`、…"
+" 其他模块还会加入 `conference`、`voicemail`、`fifo`、`httapi` 等。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:137
+#: 905b2bcf6d3c4db7ae989e7633493659
+#, fuzzy
+msgid ""
+"Vanilla default context: `conf/vanilla/dialplan/default.xml` "
+"(authenticated internal users via `user_context=default`); public context"
+" for unauthenticated/external (`conf/vanilla/dialplan/public.xml`). Demo "
+"destinations (echo `9196`, voicemail `4000`/`*98`, …) are listed in "
+"[Quick Start](../0.getting-started/02-quick-start.md)."
+msgstr ""
+"Vanilla 默认上下文：`conf/vanilla/dialplan/default.xml`（经 "
+"`user_context=default` 的已认证内部用户）；未认证/外部走 public "
+"上下文（`conf/vanilla/dialplan/public.xml`）。演示号码（回声 `9196`、语音信箱 `4000`/`*98` "
+"等）见 [快速开始](01-quick-start.md)。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:139
+#: 1752abe439e043939f0f95d66f34526d
+msgid "Internal Commands and Events"
+msgstr "内部命令与事件"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:141
+#: 6d3abafc539d4ea8a97751bc502e3bc4
+msgid ""
+"Event ids are `switch_event_types_t` in `src/include/switch_types.h`. The"
+" engine is `src/switch_event.c` (APR FIFO + dispatch thread). Bind with "
+"`switch_event_bind`. Custom subclasses use `SWITCH_EVENT_CUSTOM`."
+msgstr ""
+"事件 id 是 `src/include/switch_types.h` 中的 `switch_event_types_t`。引擎是 "
+"`src/switch_event.c`（APR FIFO + 分发线程）。用 `switch_event_bind` 绑定。自定义子类使用 "
+"`SWITCH_EVENT_CUSTOM`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:143
+#: 7b3d7cc6164c45028479aadf750d3d92
+msgid ""
+"Core always sets header `Event-Name` (`switch_event.c`). Channel events "
+"typically include `Unique-ID`, `Channel-State`, `Caller-*`, `variable_*` "
+"when verbose (`verbose_events` app)."
+msgstr ""
+"核心始终设置头 `Event-Name`（`switch_event.c`）。通道事件通常包含 `Unique-ID`、`Channel-"
+"State`、`Caller-*`，在 verbose 时还有 `variable_*`（`verbose_events` 应用）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: dba6a0d5cd76481087c4bf7c089121d6
+msgid "Name"
+msgstr "名称"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: d5249c70e48849e3a8e4d294c60e0588
+msgid "Trigger"
+msgstr "触发"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 5d444f713a9b482fad89a0fc8e3ef689
+msgid "Consumer"
+msgstr "消费者"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: de7e44cfde384b9cae1e6031813f3095
+msgid "`SWITCH_EVENT_STARTUP`"
+msgstr "`SWITCH_EVENT_STARTUP`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 8dbb87a332434db1a347b7196ada27f7
+msgid "`switch_core_init_and_modload`"
+msgstr "`switch_core_init_and_modload`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: ca105e92db2d4a5493f41c2158cd6094
+msgid "ESL, scripts"
+msgstr "ESL、脚本"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: f169a1f156e14ae3805e9484672eff46
+msgid "System ready"
+msgstr "系统就绪"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 121d6035bf0941aa927f81062c5dd615
+msgid "`SWITCH_EVENT_CHANNEL_CREATE`"
+msgstr "`SWITCH_EVENT_CHANNEL_CREATE`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 75d59d2eaab44abbb0816c5b599706a0
+msgid "Session allocated"
+msgstr "会话已分配"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: c671defd3d184ffe853f1d5b6422e6e3
+msgid "ESL, CDR prelude"
+msgstr "ESL、CDR 前奏"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 021c49b4ae9d4a578db596605c385ec7
+msgid "New leg"
+msgstr "新呼叫腿"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 369d579445c9493fba2f6f13a6b85de5
+msgid "`SWITCH_EVENT_CHANNEL_STATE`"
+msgstr "`SWITCH_EVENT_CHANNEL_STATE`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 9067c2041f7b46dc9d634f4da5db89f1
+msgid "`CS_*` change"
+msgstr "`CS_*` 变化"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 32b4a46116ab4972be3ee6700d9369f3
+msgid "`SWITCH_EVENT_CHANNEL_ANSWER` / `_PROGRESS` / `_PROGRESS_MEDIA`"
+msgstr "`SWITCH_EVENT_CHANNEL_ANSWER` / `_PROGRESS` / `_PROGRESS_MEDIA`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 4b0fe6382a4e4879888b0f9bf5b0496b
+msgid "Signaling"
+msgstr "信令"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: c74f5bfc9b4b43029108ffe289b90ae9
+msgid "`SWITCH_EVENT_CHANNEL_EXECUTE` / `_COMPLETE`"
+msgstr "`SWITCH_EVENT_CHANNEL_EXECUTE` / `_COMPLETE`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: c22282ae157b463ca5dc8164d0f806df
+msgid "Dialplan app"
+msgstr "拨号计划应用"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 4844d372ab084927bf62bf5ed9fb0c6f
+msgid "`Application` header"
+msgstr "`Application` 头"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 5c7c061a682b45fd99e2b97db4f77b89
+msgid "`SWITCH_EVENT_CHANNEL_BRIDGE` / `_UNBRIDGE`"
+msgstr "`SWITCH_EVENT_CHANNEL_BRIDGE` / `_UNBRIDGE`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 33d62626f0a2494b89d5bac517f36d60
+msgid "Bridge"
+msgstr "桥接"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 670e1c30da26422ab8a87d3554994a4d
+msgid "`SWITCH_EVENT_CHANNEL_HANGUP` / `_HANGUP_COMPLETE`"
+msgstr "`SWITCH_EVENT_CHANNEL_HANGUP` / `_HANGUP_COMPLETE`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 2204d96e578d48a1aaddcbb7d7720f7a
+msgid "Hangup"
+msgstr "挂断"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 2c071aae5bde4381987398288b0b9097
+msgid "CDR modules"
+msgstr "CDR 模块"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 6a4f89633b2341ab92adb08f88378906
+msgid "Cause on channel"
+msgstr "通道上的挂断原因"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: bcd14d0889b44c4eb2f7ff17d7468262
+msgid "`SWITCH_EVENT_CHANNEL_ORIGINATE`"
+msgstr "`SWITCH_EVENT_CHANNEL_ORIGINATE`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: d8753582e996475bb134a4bd50ca77b9
+msgid "Outbound"
+msgstr "呼出"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 19cd1c5762d045258b8b91a680f3c55b
+msgid "`SWITCH_EVENT_DTMF`"
+msgstr "`SWITCH_EVENT_DTMF`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 093d014b09de4564a3fb1132880495ad
+msgid "DTMF"
+msgstr "DTMF"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: f87989dcf2ae43f988fc4a56b6d6a2f9
+msgid "IVR"
+msgstr "IVR"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: ab946160e60c449ab9988804cb0bae69
+msgid "`SWITCH_EVENT_CODEC`"
+msgstr "`SWITCH_EVENT_CODEC`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: fc4fc5f5bf764537bb1a8d08b3090bba
+msgid "Codec change"
+msgstr "编解码器变更"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 457f310b8518473eb6989f2e2f6e8a20
+msgid "`SWITCH_EVENT_BACKGROUND_JOB`"
+msgstr "`SWITCH_EVENT_BACKGROUND_JOB`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 51d8b720acb2482c9b65bf3ccb2ae49d
+msgid "`bgapi` done"
+msgstr "`bgapi` 完成"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 992b64da3d9c4cc3bbd7b09733a7ffb6
+msgid "ESL"
+msgstr "ESL"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: a350dd5a28d34e5f9f0d4e71d9705f54
+msgid "`SWITCH_EVENT_HEARTBEAT`"
+msgstr "`SWITCH_EVENT_HEARTBEAT`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 9ff1bfd1b32e4a71956c667e34f8fbca
+msgid "Core timer"
+msgstr "核心定时器"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 89f2be6a09c543b1a4294e214c56bf9a
+msgid "Monitoring"
+msgstr "监控"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 4e7de908329e49298fa2c57e188bb2e5
+msgid ""
+"Interval `runtime.event_heartbeat_interval` (default 20s in "
+"`switch_core_init`)"
+msgstr "间隔 `runtime.event_heartbeat_interval`（`switch_core_init` 中默认 20 秒）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 5bdcac6ebf0a4664bec416b370dc40cd
+msgid "`SWITCH_EVENT_RELOADXML`"
+msgstr "`SWITCH_EVENT_RELOADXML`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 7962e9e245e647dca35834d6795ef2b6
+msgid "`SWITCH_EVENT_MODULE_LOAD` / `_UNLOAD`"
+msgstr "`SWITCH_EVENT_MODULE_LOAD` / `_UNLOAD`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 518cd9a124574016a617d50fd54392c7
+msgid "DSO"
+msgstr "DSO"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 8020d469c99f4fd198b26295fddb09e3
+msgid "`SWITCH_EVENT_API`"
+msgstr "`SWITCH_EVENT_API`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: cf7cd3c85f43458fa057e1f3258781c3
+msgid "API invocation"
+msgstr "API 调用"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: c45938f369194bd1887006994a48718a
+msgid "`SWITCH_EVENT_RECORD_START` / `_STOP`"
+msgstr "`SWITCH_EVENT_RECORD_START` / `_STOP`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 6d264ccc04f24039a3ef0355b3f79e23
+msgid "Record"
+msgstr "录音"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 8444eaf5b65c47a99ab54be4d0039783
+msgid "`SWITCH_EVENT_PLAYBACK_START` / `_STOP`"
+msgstr "`SWITCH_EVENT_PLAYBACK_START` / `_STOP`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 0654e469418b4f8ebba7f0d8c5a0ae31
+msgid "Playback"
+msgstr "放音"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 506802c8a76e4ce78c2280d6e1aa12e6
+msgid "`SWITCH_EVENT_CUSTOM`"
+msgstr "`SWITCH_EVENT_CUSTOM`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 03067f806d194e25a34726cc565ecf82
+msgid "Modules (Verto login, conference, …)"
+msgstr "模块（Verto 登录、会议、…）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: a4a95b33606f4cc48aa39fd953202d7f
+msgid "Subclass name required"
+msgstr "必须提供子类名"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: 8e20ed6de31447138bf216b49c0f2ae2
+msgid "`SWITCH_EVENT_SHUTDOWN`"
+msgstr "`SWITCH_EVENT_SHUTDOWN`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md
+#: eb81f51f5cc245ca8adc0bca2a0a84ad
+msgid "Process exit"
+msgstr "进程退出"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:167
+#: 637f1c2b73184481b26b60b14d9296e6
+msgid ""
+"Do not block the event thread (`switch_event.h`): long work must queue to"
+" another thread."
+msgstr "不要阻塞事件线程（`switch_event.h`）：耗时工作必须排队到其他线程。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:169
+#: b0e483c174e943a491396dd10c75402e
+msgid ""
+"Session-to-session messages (not the event bus): "
+"`switch_core_session_message_types_t` (`SWITCH_MESSAGE_INDICATE_ANSWER`, "
+"`HOLD`, `BRIDGE`, …) in `switch_types.h`."
+msgstr ""
+"会话到会话的消息（不是事件总线）：`switch_types.h` 中的 "
+"`switch_core_session_message_types_t`（`SWITCH_MESSAGE_INDICATE_ANSWER`、`HOLD`、`BRIDGE`、…）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:171
+#: 902639a6506f4c2d88f80f8c9bcd8170
+msgid "Validation and Compatibility"
+msgstr "校验与兼容性"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:173
+#: d70488e5fd5d451d99552277e5c0529c
+msgid ""
+"**XML**: well-formed document after preprocessor; bad root fails startup "
+"(`switch_xml_open_root`). Dialplan conditions are regex on channel "
+"fields/vars (`mod_dialplan_xml`)."
+msgstr "**XML**：预处理器之后必须是格式良好的文档；根节点错误会导致启动失败（`switch_xml_open_root`）。拨号计划条件是对通道字段/变量的正则（`mod_dialplan_xml`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:174
+#: 0e6f1d87e8c04cc4842f9640247ca442
+msgid ""
+"**SIP auth**: directory digest + profile `auth-calls` + ACL (`apply-"
+"inbound-acl` → `domains` list in `acl.conf.xml`)."
+msgstr ""
+"**SIP 认证**：directory digest + 配置文件 `auth-calls` + ACL（`apply-inbound-acl`"
+" → `acl.conf.xml` 中的 `domains` 列表）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:175
+#: b4059137a62c4cddae2162fb56b18455
+msgid ""
+"**ESL**: ACL is checked **before** `auth/request`. A denied source IP "
+"gets `Content-Type: text/rude-rejection` / `Access Denied, go away.` "
+"(`mod_event_socket.c`). If `apply-inbound-acl` is unset, the default list"
+" is `loopback.auto`. After ACL allow, the client must `auth`; wrong "
+"password closes the socket (`-ERR invalid`). Remote clients: [Remote "
+"Event Socket ACL](../5.operations/01-runbook.md#remote-event-socket-acl)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:176
+#: fca220055f174b07a42642e46fec3808
+msgid ""
+"**API/apps**: stringly typed; `help` / app syntax strings are the "
+"contract. Unknown API → error text, not HTTP codes."
+msgstr "**API/应用**：字符串类型；`help` / 应用语法字符串即契约。未知 API 返回错误文本，而不是 HTTP 状态码。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:177
+#: f2dcb0eb5fd344e683ee68285ce3a778
+msgid ""
+"**Backward compatibility**: event **names** and common headers are the "
+"long-lived contract (1.x line). Adding headers is common; removing "
+"`Event-Name` / `Unique-ID` is not. XML schema is conventional, not XSD-"
+"enforced (DTD folder `dtd/` exists for some docs). Version is "
+"`1.11.3-dev` in `configure.ac`."
+msgstr ""
+"**向后兼容**：事件**名称**与常见头是长期契约（1.x 系列）。增加头很常见；删除 `Event-Name` / `Unique-ID` "
+"则不是。XML schema 是约定俗成的，并非 XSD 强制（`dtd/` 目录存在于部分文档）。版本为 `configure.ac` 中的 "
+"`1.11.3-dev`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:178
+#: 1e56b786eb254c34944a4be359f44b7e
+msgid ""
+"**Secrets in contracts**: vanilla directory passwords and ESL `ClueCon` "
+"are demo values — not a stable security model."
+msgstr "**契约中的密钥**：vanilla directory 密码和 ESL `ClueCon` 是演示值——不是稳定的安全模型。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:180
+#: 2ca9b601448f417fb4f25888b95d1c2e
+msgid "Key Code References"
+msgstr "关键代码引用"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:182
+#: 69ecc6e38ea8437a8abac227e288804d
+msgid ""
+"`src/include/switch_types.h` — `switch_event_types_t`, "
+"`switch_channel_state_t`"
+msgstr ""
+"`src/include/switch_types.h` — "
+"`switch_event_types_t`、`switch_channel_state_t`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:183
+#: a61faef3f0894bfb8c9942a6382c0e88
+msgid ""
+"`src/include/switch_event.h` / `src/switch_event.c` — bus, serialize, "
+"`Event-Name`"
+msgstr "`src/include/switch_event.h` / `src/switch_event.c` — 总线、序列化、`Event-Name`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:184
+#: 22bc1461ca954ebc8ee0873b86d60ea0
+#, fuzzy
+msgid ""
+"`src/include/switch_module_interfaces.h` — `switch_endpoint_interface_t`,"
+" `switch_io_routines_t`, `switch_state_handler_table_t`, "
+"`switch_api_interface_t`, `switch_application_interface_t`"
+msgstr ""
+"`src/include/switch_module_interfaces.h` — "
+"`switch_api_interface_t`、`switch_application_interface_t`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:185
+#: dbfaa033fb9640328f45e645eddc98e2
+#, fuzzy
+msgid ""
+"`src/include/switch_loadable_module.h` — "
+"`switch_loadable_module_interface_t`, `SWITCH_ADD_API` / `SWITCH_ADD_APP`"
+" / `SWITCH_ADD_CHAT`"
+msgstr ""
+"`src/include/switch_module_interfaces.h` — "
+"`switch_api_interface_t`、`switch_application_interface_t`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:186
+#: 5edf9c50991043699e7d8f0d3f1d23db
+msgid "`src/switch_core_sqldb.c` — core tables"
+msgstr "`src/switch_core_sqldb.c` — 核心表"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:187
+#: ddaa9dd8189c45ffa78a887cd149ce2c
+msgid "`src/mod/event_handlers/mod_event_socket/mod_event_socket.c` — ESL"
+msgstr "`src/mod/event_handlers/mod_event_socket/mod_event_socket.c` — ESL"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:188
+#: b07508b8cbb54af180494ab8a6fdfb55
+msgid "`src/mod/applications/mod_commands/mod_commands.c` — `SWITCH_ADD_API`"
+msgstr "`src/mod/applications/mod_commands/mod_commands.c` — `SWITCH_ADD_API`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:189
+#: 5bcd626a95ef48699e33d6ade613f84a
+msgid "`src/mod/applications/mod_dptools/mod_dptools.c` — `SWITCH_ADD_APP`"
+msgstr "`src/mod/applications/mod_dptools/mod_dptools.c` — `SWITCH_ADD_APP`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:190
+#: da682dd55b924dfd9d597cd8c407de2a
+msgid "`src/mod/endpoints/mod_sofia/sofia_glue.c` — SIP SQL"
+msgstr "`src/mod/endpoints/mod_sofia/sofia_glue.c` — SIP SQL"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:191
+#: fe4ff75918ca4794a628bb903952a8d9
+msgid "`src/mod/endpoints/mod_verto/mod_verto.c` — JSON-RPC methods"
+msgstr "`src/mod/endpoints/mod_verto/mod_verto.c` — JSON-RPC 方法"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:192
+#: daa821a1bf074d4e8be5ed9578f0082d
+msgid "`conf/vanilla/freeswitch.xml` — XML sections"
+msgstr "`conf/vanilla/freeswitch.xml` — XML 段"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:193
+#: a15e57c485994b90b29b569567934285
+#, fuzzy
+msgid "`src/switch_xml.c` — `switch_xml_open_cfg`, `switch_xml_locate`"
+msgstr ""
+"`src/include/switch_types.h` — "
+"`switch_event_types_t`、`switch_channel_state_t`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:194
+#: 04cfe075b1cb497a861e1b2b795948fe
+msgid ""
+"`src/switch_loadable_module.c` — `<load>` walk in "
+"`switch_loadable_module_init`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:195
+#: 91580608d49248b09c5d2ba2b43ca662
+msgid "`libs/esl/` — client library (`fs_cli`)"
+msgstr "`libs/esl/` — 客户端库（`fs_cli`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:197
+#: bca2d39a5a9443aaa9bd0cce59f1536e
+msgid "Related Documentation"
+msgstr "相关文档"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:199
+#: 56ce73d638574736ad4ce3871f882504
+#, fuzzy
+msgid "[Architecture](01-architecture.md)"
+msgstr "[架构](02-architecture.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:200
+#: 6e8f14a7c5e64b96924cc3c54612f9f9
+#, fuzzy
+msgid "[Workflows](05-workflows.md)"
+msgstr "[工作流](06-workflows.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:201
+#: 9fd9194248974fe89c546480f2bfd2f1
+#, fuzzy
+msgid "[Testing](../4.development/03-testing.md)"
+msgstr "[测试](09-testing.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/04-data-and-api.md:202
+#: 08551a9771fd4b25852c17506149f36e
+msgid ""
+"[Users Manual Ch 46 Inbound "
+"ESL](https://developer.signalwire.com/freeswitch/programming/esl-inbound)"
+" — client bindings in `libs/esl/`"
+msgstr ""
+"[用户手册第 46 章入站 "
+"ESL](https://developer.signalwire.com/freeswitch/programming/esl-inbound)"
+" — 客户端绑定在 `libs/esl/`"
+
+#~ msgid ""
+#~ "**ESL**: must `auth` before other "
+#~ "commands; wrong password closes the "
+#~ "socket (`-ERR invalid`)."
+#~ msgstr "**ESL**：其他命令之前必须 `auth`；密码错误会关闭套接字（`-ERR invalid`）。"
+
+#~ msgid ""
+#~ "**ESL**: ACL is checked **before** "
+#~ "`auth/request`. A denied source IP gets"
+#~ " `Content-Type: text/rude-rejection` / "
+#~ "`Access Denied, go away.` "
+#~ "(`mod_event_socket.c`). If `apply-inbound-acl`"
+#~ " is unset, the default list is "
+#~ "`loopback.auto`. After ACL allow, the "
+#~ "client must `auth`; wrong password "
+#~ "closes the socket (`-ERR invalid`). "
+#~ "Remote clients: [Remote Event Socket "
+#~ "ACL](../4.operations/10-runbook.md#remote-event-socket-"
+#~ "acl)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Modules and other autoload files are "
+#~ "**not** opened by disk basename. "
+#~ "`switch_xml_open_cfg(\"modules.conf\", …)` locates "
+#~ "`configuration` with `name=\"modules.conf\"` inside"
+#~ " the `configuration` section "
+#~ "(`src/switch_xml.c`). How `<load "
+#~ "module=\"mod_sofia\"/>` becomes `dlopen`: "
+#~ "[Architecture](02-architecture.md#runtime-load-tag), "
+#~ "[Workflows](06-workflows.md#runtime-load-tag)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**ESL**: ACL is checked **before** "
+#~ "`auth/request`. A denied source IP gets"
+#~ " `Content-Type: text/rude-rejection` / "
+#~ "`Access Denied, go away.` "
+#~ "(`mod_event_socket.c`). If `apply-inbound-acl`"
+#~ " is unset, the default list is "
+#~ "`loopback.auto`. After ACL allow, the "
+#~ "client must `auth`; wrong password "
+#~ "closes the socket (`-ERR invalid`). "
+#~ "Remote clients: [Remote Event Socket "
+#~ "ACL](../5.operations/10-runbook.md#remote-event-socket-"
+#~ "acl)."
+#~ msgstr ""
+

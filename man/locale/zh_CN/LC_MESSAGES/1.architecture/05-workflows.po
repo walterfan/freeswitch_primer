@@ -1,0 +1,4196 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Zoom Video Communications
+# This file is distributed under the same license as the FreeSWITCH package.
+# Walter Fan <walter.fan@ustc.etu>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version:  FreeSWITCH\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-18 16:34+0800\n"
+"PO-Revision-Date: 2026-08-30 23:13+0800\n"
+"Last-Translator: Walter Fan <walter.fan@ustc.etu>\n"
+"Language: zh_CN\n"
+"Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1
+#: ec92b7761de74a998488eec68f6f8bd1
+msgid "06. Workflows"
+msgstr "06. 工作流"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:5
+#: 32811f148fcc4f288e625d5c2fee3b2f
+#, fuzzy
+msgid ""
+"Critical **runtime** paths in this tree. Channel states (`CS_*`) and the "
+"state-handler contract are in [Architecture](01-architecture.md); ESL "
+"commands, events, and SQL tables are in [Data and API](04-data-and-"
+"api.md). Default inbound progression after create: `CS_NEW` → `CS_INIT` →"
+" `CS_ROUTING` → `CS_EXECUTE` → media or hangup `CS_HANGUP` → "
+"`CS_REPORTING` → `CS_DESTROY` (`src/include/switch_types.h`)."
+msgstr ""
+"本仓库中的关键 **运行时** 路径。通道状态（`CS_*`）与状态处理约定见 [架构](02-architecture.md)；ESL "
+"命令、事件和 SQL 表见 [数据与 API](05-data-and-api.md)。创建后的默认呼入推进：`CS_NEW` → "
+"`CS_INIT` → `CS_ROUTING` → `CS_EXECUTE` → 媒体或挂断 `CS_HANGUP` → "
+"`CS_REPORTING` → `CS_DESTROY`（`src/include/switch_types.h`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:7
+#: 9db2ddcb12364e4e8f248b3af75e58b2
+msgid ""
+"These flows use vanilla XML (`conf/vanilla/`). Other profiles "
+"(`conf/sbc`, `conf/minimal`, `conf/curl`) change bind ports, auth, and "
+"whether directory/dialplan come from files or `mod_xml_curl`. Operator-"
+"level walkthrough of the same 1000→1001 call: [Users Manual Chapter "
+"1](https://developer.signalwire.com/freeswitch/foundations/introduction)."
+msgstr ""
+"这些流程使用 vanilla "
+"XML（`conf/vanilla/`）。其他配置档（`conf/sbc`、`conf/minimal`、`conf/curl`）会改变绑定端口、鉴权，以及"
+" directory/dialplan 来自文件还是 `mod_xml_curl`。同一通 1000→1001 呼叫的运维走查见 [用户手册第 1"
+" "
+"章](https://developer.signalwire.com/freeswitch/foundations/introduction)。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:9
+#: ddcb4e503e044840bbdd9a7040f43215
+msgid "Workflow Index"
+msgstr "工作流索引"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:11
+#: 91b71f5d01884e4298604444b26ae6eb
+msgid ""
+"[Server startup](#server-startup) ([runtime `<load>` tag](#runtime-load-"
+"tag))"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:12
+#: af8ae5621df24c839a120cd5ff587cb9
+msgid ""
+"[Interface registry lookup](#interface-registry-lookup) ([`answer` golden"
+" path](#worked-example-answer))"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:13
+#: c19c82ad32ad47e1854083c01cc1e40b
+msgid ""
+"[Inbound SIP call](#inbound-sip-call) ([`show channels` during a bridge"
+"](#worked-example-show-channels-during-a-bridge))"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:14
+#: 4b71ee2850c24080bf444c99c75ca6e0
+msgid ""
+"[Media negotiation and RTP activation](#media-negotiation-and-rtp-"
+"activation)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:15
+#: 36dc7bbad3ba416db393f5d142a61d6b
+#, fuzzy
+msgid ""
+"[SIP registration and directory lookup](#sip-registration-and-directory-"
+"lookup) ([Digest after 401](#worked-example-register-digest-after-401))"
+msgstr "[SIP 注册与 directory 查找](#sip-registration-and-directory-lookup)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:16
+#: 6174266bb2f24085a24ca79ce4cb78cf
+msgid "[ESL originate and event control](#esl-originate-and-event-control)"
+msgstr "[ESL originate 与事件控制](#esl-originate-and-event-control)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:17
+#: 0f6dccab233643639ec514ed34c6a4ad
+msgid "[XML reload](#xml-reload)"
+msgstr "[XML 重载](#xml-reload)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:19
+#: bf05c17dc0064084937e7938d4e81b6c
+#, python-brace-format
+msgid ""
+"Vanilla 1000 calling 1001 (config files, not C): REGISTER on "
+"`sip_profiles/internal.xml` → directory `directory/default/1000.xml` "
+"(`user_context=default`) → INVITE `1001` → `dialplan/default.xml` "
+"`Local_Extension` → `bridge` `user/${dialed_extension}@${domain_name}`. "
+"Internal profile `context` is `public`; that value applies only to "
+"**unauthenticated** inbound. Late codec negotiation: `inbound-late-"
+"negotiation=true` on the internal profile."
+msgstr ""
+"Vanilla 分机 1000 呼叫 1001（配置文件路径，不是 C 符号）：在 `sip_profiles/internal.xml` 上 "
+"REGISTER → 号码簿 `directory/default/1000.xml`（`user_context=default`）→ "
+"INVITE `1001` → `dialplan/default.xml` 的 `Local_Extension` → `bridge` "
+"`user/${dialed_extension}@${domain_name}`。internal profile 的 `context` 是 "
+"`public`，该值只用于**未认证**入局。延迟编解码协商：internal profile 上 `inbound-late-"
+"negotiation=true`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:21
+#: 8157604ac4384816b9985d8624ad934c
+msgid ""
+"Packet receive through Sofia-SIP (`su` / `tport` / `nta` / `nua`) is "
+"**out of this git tree**. Stack layout and NUA usage: [Sofia-SIP "
+"library](02-tech-stack.md#sofia-sip-library). Bind and callback symbols: "
+"[Architecture](01-architecture.md#sofia-sip-out-of-tree)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:25
+#: ef5bf748660143198453027a3a1c5861
+msgid "Server Startup"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:27
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:166
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:269
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:710
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:925
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1025
+#: 38ec36fc172f468490cc9636a8802b44 5f604be666d14a63a4c18e03d5c10053
+#: 62483652b7a44e9f9ca13e05b9c99e50 62ecebd8725b4a9495314ff641f5c6a6
+#: c7e0e02a3fcb4693bc156d499cdf7473 e9b5d705728b4564a65367d6feb6cba6
+msgid "Trigger and Goal"
+msgstr "触发条件与目标"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:29
+#: 9fea8ffabdce45238ac5606fcd323bc7
+msgid ""
+"**Trigger**: execute `freeswitch` with command-line options. The common "
+"local command is `freeswitch -ncwait -nonat`; `-ncwait` backgrounds the "
+"process and waits for the child to report readiness, while `-nonat` "
+"disables automatic NAT detection."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:30
+#: bb4d17dd58fa4373ba397a788e503e56
+msgid ""
+"**Goal**: establish process and runtime state, create the configured "
+"directories and PID lock, initialize the core services, load XML "
+"configuration and modules, announce `SWITCH_EVENT_STARTUP`, then remain "
+"in the console or background runtime loop until shutdown."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:32
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:171
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:360
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:717
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:937
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1030
+#: 0760c64bed3340bdbe92af16268d17c2 1f40ba984b5f4bbe8230f065d2655e02
+#: 88a783ec681b4d72b2a953bf588860b8 afbdeed366984db89080d3bed16670ef
+#: e5084564befc47568c3191b1a0efa240 efb823b51c114407b16e45a81193c1d9
+msgid "Main Flow"
+msgstr "主流程"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:68
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:193
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:399
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:748
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:974
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1059
+#: 1e01fe127c164047b70d05ae460548da 34a0993fd9fb47bd8cf5a0b42570ec0b
+#: 41f50135ad7b40f5af358f4540edcb26 90f30cb9b78347fd98e2b9e8f9cac37f
+#: 97228feb13fe48bbbe6284e8f0d69755 da6f5405aba043d1a64b1a07e75840ad
+msgid "Key Steps"
+msgstr "关键步骤"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:70
+#: 164b291d5b1844dea2f2c13ec5e90624
+msgid ""
+"**Parse process options.** `main()` starts with core flags for SQL "
+"scoreboard, automatic NAT detection / port mapping, clock calibration, "
+"and realtime clock. Options such as `-nosql`, `-nonat`, `-nonatmap`, "
+"`-nc`, `-ncwait`, `-c`, `-conf`, `-log`, `-run`, and `-mod` modify those "
+"flags or global directories. `FREESWITCH_OPTS` is appended to the "
+"command-line arguments before parsing."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:71
+#: 9226ac600c194bceb011e6d1f62338e7
+#, python-brace-format
+msgid ""
+"**Initialize the process runtime.** APR is initialized before the core. "
+"`switch_core_set_globals()` resolves the base, configuration, module, "
+"log, run, database, and related directories. The process creates or locks"
+" `${run_dir}/freeswitch.pid`; a second process using the same run "
+"directory exits instead of starting a duplicate server."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:72
+#: 39a35edcfe634b1ca534e8da6b10d80c
+msgid ""
+"**Choose foreground or background mode.** `-c` passes `console=true` and "
+"enters the interactive console loop. `-nc` backgrounds without waiting. "
+"`-ncwait` backgrounds and uses a pipe so the parent waits until "
+"initialization succeeds or fails. `-nonat` removes `SCF_USE_AUTO_NAT`; it"
+" does not disable SIP or RTP."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:73
+#: c3f139e122404ee0ab25ecd3fde8dc05
+msgid ""
+"**Apply process controls.** Signal handlers are installed for shutdown, "
+"optional priority is selected (`-rp`, `-lp`, or `-np`), resource limits "
+"are set, and `-u` / `-g` can drop to the requested user and group before "
+"core initialization."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:74
+#: 4dd2eeb5f6f34c77a393cf643d8e415e
+msgid ""
+"**Initialize the core.** `switch_core_init()` resets runtime state, "
+"initializes SQLite, APR-backed memory pools, core session structures, "
+"global events, MIME types, console, event engine, and channel globals. It"
+" creates the configured directories and sets global variables such as "
+"`conf_dir`, `log_dir`, `run_dir`, and `mod_dir`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:75
+#: b8f289525b88446fabfc8010e63f2d84
+msgid ""
+"**Load the root configuration.** `switch_xml_init()` parses the "
+"configured `freeswitch.xml` and its preprocessor includes. Unless "
+"`SCF_MINIMAL` is set, `switch_core_init()` then loads `switch.conf`, "
+"initializes the state machine and media layer, starts the scheduler task "
+"thread, performs late NAT initialization, initializes RTP, and schedules "
+"heartbeat / IP-check tasks."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:76
+#: c9e66e63a9d7419fb0634978acfb942b
+msgid ""
+"**Load modules in dependency order.** `switch_loadable_module_init()` "
+"first prepares the module registries and loads core modules. It then "
+"reads `pre_load_modules.conf.xml`, starts the core SQL scoreboard, "
+"releases module-load events held until SQL is ready, reads "
+"`modules.conf.xml` and `post_load_modules.conf.xml`, and finally starts "
+"module runtime threads. A `critical=\"true\"` module failure aborts "
+"startup. How each `<load>` tag is located and executed: [Runtime load tag"
+"](#runtime-load-tag)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:77
+#: 1b54c84a7e464cb388100d5d678af4d5
+msgid ""
+"**Publish readiness.** `switch_core_init_and_modload()` logs `Bringing up"
+" environment.` and `Loading Modules.`, fires `SWITCH_EVENT_STARTUP` with "
+"`Event-Info: System Ready`, prints the banner and startup summary, "
+"executes the optional `api_on_startup` command, and clears "
+"`SCF_NO_NEW_SESSIONS`. With systemd support it also sends `READY=1`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:78
+#: 0eee47b579cf4a3fa04e317c74216f56
+msgid ""
+"**Enter the runtime loop.** `switch_core_runtime_loop(nc)` waits on "
+"`runtime.running` in background mode or reads console input in foreground"
+" mode. `-ncwait` reports readiness to its parent only after the "
+"initialization function returns successfully."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:79
+#: abf5e1d9e7194be883abdbece231242a
+msgid ""
+"**Shutdown and cleanup.** SIGTERM / console shutdown leaves the runtime "
+"loop, calls `switch_core_destroy()`, marks the runtime as shutting down, "
+"rejects new sessions, hangs up existing sessions, shuts down modules and "
+"event / XML / RTP services, closes the PID file, removes it, and "
+"optionally re-execs when the result is `SWITCH_STATUS_RESTART`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:81
+#: 1e884334ccad478f95fb9e8775b189b1
+msgid "Startup Output and Checks"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:83
+#: 94bc9b3ef73740d2a7fa08f73d44ba1c
+msgid "Typical console output includes:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:91
+#: 622528906ebd4569a7a6e2452529c19e
+msgid ""
+"For a background install, readiness should be checked through ESL after "
+"the process starts:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:98
+#: 8d1526a3bc1747129b0b37abab50371a
+msgid ""
+"`fs_cli -x status` should print a line beginning with `UP`. `-ncwait` "
+"only means the parent waits for the child initialization handshake; it "
+"does not replace an application-level health check."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:100
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:241
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:412
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:759
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:986
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1069
+#: 1c685d704b9449a386f10082c9bc8312 6d7147e97b214574a8a916e378a85ddd
+#: 6f497258a9874e06ae54cd59cbaf0de6 8a9140304fab4817a9ec0d2de5f76b67
+#: a7b086a8b1bf4b9ab2b24e86639fbb82 e4024febad5b43c4b91a24417ebd9329
+msgid "Error and Edge Cases"
+msgstr "错误与边界情况"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:34
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:205
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:719
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1032
+#: 1feaae3362924a398448ede6ecbed7a5 285ecc3c8e764fc38f8429be59abd039
+#: 505a07f6beb347998d9211aa90e1f623 8960ce21d6aa4a578cb5a1c225ae0c1c
+#: be47cec4ef864639880cd0ee3fe8b6be ec1e29c6e8d14c708c7a9ce4f6ff33b2
+msgid "Case"
+msgstr "情形"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:34
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:719
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1032
+#: 076af9b437a54c15a9f6fd4b130669b7 88b0c2716ceb45e6814cff1dd1371b1e
+#: c44a9b0801874bdcbf519b7651b98f91 e36cd2c31d3c4c509071818ff53dda0b
+#: fe04605bf06b41719f98eed93b639e7f
+msgid "Where handled"
+msgstr "处理位置"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:34
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:719
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1032
+#: 0ff377974cca4a12a9d63f5083e1bb55 3e0e0796effc441dacc58b421cb8b8e5
+#: 903dceafe08d41d990fa4636c4e4e6c9 ac56a31b141e4fe682158cf69438b78e
+#: d07b25e274bb4b0b82b2358106471851
+msgid "Expected outcome"
+msgstr "预期结果"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:34
+#: a7d4063269fb4294a149d70d43d8ef1b
+msgid "Existing or locked PID file"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:34
+#: aad1f6d826db462cb288f324015b47c6
+msgid "`main` / `switch_file_lock`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:34
+#: f05dfcc110a645878842912b73127053
+msgid "Startup stops; the old PID content is preserved in the failure path"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:34
+#: ba9cd30839db45bbbb361b85c1d1d850
+msgid "Invalid command-line option"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:34
+#: dcee5afdcdc64d3a9b41d8216aec9fc2
+msgid "`main`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:34
+#: c14806fbc0a24614856df3dc94ef4e8d
+msgid "Error text and non-zero exit"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:34
+#: ec8207c2d38a436d9b4622949ac214c8
+msgid "Missing XML root or malformed configuration"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:34
+#: 403e42f00adb4c74b14f3708310e9e65
+#, fuzzy
+msgid "`switch_xml_init` / `switch_xml_open_root`"
+msgstr "`__switch_xml_open_root`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:34
+#: b78ea478fe4d460b8554a38085f565c1
+msgid "Initialization fails unless `SCF_MINIMAL` permits missing configuration"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:34
+#: ced9147c46dc4461a77b484ebf931868
+msgid "Core SQL unavailable"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:34
+#: ff28547f52f24a9db4dcf33e9aa54ffc
+#, fuzzy
+msgid "`switch_core_sqldb_init`"
+msgstr "`switch_core_standard_on_init`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:34
+#: 3789b8122a504da1b4bbe5a59e90848a
+msgid "Module loading is interrupted and startup fails"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:34
+#: 9eaae2d1bd1c47f68775f15299964c68
+msgid "Critical module cannot load"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:34
+#: 2e6648f9f70f467f985226bd82ba921f 8eb23aab9d6d40b39a371a7c2573fc5b
+#, fuzzy
+msgid "`switch_loadable_module_init`"
+msgstr "`switch_core_standard_on_init`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:34
+#: d4bb81bcbeb04a20abec0feadb1ce578
+msgid "Logs a critical error and calls `abort()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:34
+#: 7d32d65dcfac49ce934e69536162b707
+msgid "Non-critical module cannot load"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:34
+#: 51263f08d85c4c3a9051cd3cf21ce4af
+msgid "Logs the module error and continues loading other modules"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:34
+#: b3538e81bfde44b3a6b8a3813c816eba
+msgid "`-ncwait` child initialization failure"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:34
+#: c4c6a089d9144799936b94f635581120
+msgid "`daemonize` pipe handshake"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:34
+#: 2fbff96658374de680ae01a4ac1d9385
+msgid ""
+"Parent reports `Error starting system!` and exits after terminating the "
+"child"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:34
+#: d13225c0e68148a1b2a2d86499281227
+msgid "SIGTERM"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:34
+#: acf6804a729a4d0896953b87b47fae70
+msgid "`handle_SIGTERM` / `handle_SIGILL`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:34
+#: 13f98d148b3d4283897f497444bd132b
+msgid "Requests elegant or immediate core shutdown, depending on `-elegant-term`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:34
+#: baad9ee119fb4a29bbc6e7b54888e1fb
+msgid "Restart requested by a module / API"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:34
+#: b4b6f991e90a480cbaf7e2c69b8fd1c4
+#, fuzzy
+msgid "`switch_core_destroy` → `main`"
+msgstr "`switch_core_standard_on_routing`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:34
+#: b7fc9e73430440958e0d9df46dcac81c
+msgid "PID file is removed and the process re-execs, with a fork/system fallback"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:114
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:430
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:773
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1001
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1081
+#: 23c1df4cc048492bb612243ba3537adc 58e674292bbc4518903aec831f498bac
+#: 670c8c5ec3c04c588cfee9422275481c 7c93ded6564d4041bccd098a13b94fd2
+#: d4f4db0d96ea4a238e4568d22adc28af
+msgid "Data and Contracts Involved"
+msgstr "涉及的数据与约定"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:116
+#: 45c80f0ebc2c4f11889b31d93474ec50
+#, python-brace-format
+msgid ""
+"Global directory structure: `SWITCH_GLOBAL_dirs` and "
+"`${run_dir}/freeswitch.pid`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:117
+#: a3ffc8e6f4754c388a242802be58c733
+msgid ""
+"Runtime flags: `SCF_USE_SQL`, `SCF_USE_AUTO_NAT`, `SCF_USE_NAT_MAPPING`, "
+"`SCF_NO_NEW_SESSIONS`, and `SCF_SHUTTING_DOWN`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:118
+#: 36d4c0d6f2b9494f84dfcca156bf0789
+msgid ""
+"XML configuration layers: `freeswitch.xml`, `switch.conf`, "
+"`pre_load_modules.conf.xml`, `modules.conf.xml`, "
+"`post_load_modules.conf.xml`. Lookup is by `configuration/@name` "
+"(`switch_xml_open_cfg`), not by opening those filenames as standalone "
+"documents."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:119
+#: 51a5f33b65de405ba6a7d0cd5a8600f9
+msgid "Startup event: `SWITCH_EVENT_STARTUP` with `Event-Info: System Ready`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:120
+#: aec2a465b59544258d657720d2592a5a
+msgid ""
+"Readiness state: `runtime.running` and the `-ncwait` parent/child pipe "
+"handshake."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:122
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:252
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:439
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:781
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1008
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1087
+#: 0f2b94c513fb4d67a3e401cc65dd1a70 591127e8525b4ea792f53e8185245cf8
+#: 667e9be97dbb4e7f9899ddc0ce8df8d8 99a1b73bdcfa4ec2b0f58f53e4d2f681
+#: 9d5d9443ae6a43b597d31ac1c6bdf691 c28203941f924e35bddb84a664fd39e1
+msgid "Code References"
+msgstr "代码引用"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:124
+#: 1d134578b83d470b9808b631ab9a4051
+msgid ""
+"`src/switch.c` — `main`, option parsing, daemonization, PID file, signal "
+"handling, runtime loop"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:125
+#: 11559cde24e94dd68941ef4b1fa4aca1
+msgid ""
+"`src/switch_core.c` — `switch_core_init`, `switch_core_init_and_modload`,"
+" `switch_core_runtime_loop`, `switch_core_destroy`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:126
+#: fc05e3184ead46b9a4293067548803ae
+msgid ""
+"`src/switch_loadable_module.c` — `switch_loadable_module_init`, "
+"`switch_loadable_module_load_module_ex`, "
+"`switch_loadable_module_load_file`, preload/common/postload ordering, "
+"runtime threads"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:127
+#: c786b3f49f87449493544a8a197103e7
+#, fuzzy
+msgid ""
+"`src/switch_xml.c` — XML root initialization, `switch_xml_open_cfg` / "
+"`switch_xml_locate`, reload primitives"
+msgstr ""
+"`src/switch_xml.c` — "
+"`switch_xml_locate_user_merged`、`switch_xml_locate_user`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:128
+#: 632b72cc884541dab3b5f6c95293e625
+msgid ""
+"`src/include/switch_types.h` — `SWITCH_MODULE_DEFINITION` / "
+"`SWITCH_MODULE_LOAD_FUNCTION`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:129
+#: 6a0f87660a9c40bea3f3aa15c48f8f7b
+msgid ""
+"`src/switch_core_sqldb.c` — core SQL scoreboard initialization and "
+"shutdown"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:130
+#: 2cc4286603bc49599105b76ee7a77ee7
+msgid ""
+"`conf/vanilla/freeswitch.xml` — default configuration root and included "
+"sections"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:131
+#: ea197347d13449f2a282ab7dce0d3193
+#, fuzzy
+msgid ""
+"`conf/vanilla/autoload_configs/modules.conf.xml` — runtime module load "
+"list"
+msgstr "`conf/vanilla/autoload_configs/event_socket.conf.xml`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:132
+#: ba61e4e6803b4da0aee44dfca6fc22e7
+#, fuzzy
+msgid ""
+"`src/mod/endpoints/mod_sofia/mod_sofia.c` — "
+"`SWITCH_MODULE_DEFINITION(mod_sofia, …)`, `mod_sofia_load`"
+msgstr "`src/mod/endpoints/mod_sofia/mod_sofia.c` — `sofia profile … rescan`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:134
+#: 0a8ed1138595441e973cb1e597a2b9a7
+msgid "Runtime load tag"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:136
+#: 98aec4bf81724d2497f5ff14b66255c4
+msgid ""
+"**Trigger**: `switch_core_init_and_modload()` calls "
+"`switch_loadable_module_init(SWITCH_TRUE)` after `switch_xml_init()` has "
+"already compiled `freeswitch.xml` (including `autoload_configs/*.xml`) "
+"into `MAIN_XML_ROOT`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:137
+#: f171b2dfafa9453287181f2fd36b6189
+msgid ""
+"**Goal**: walk each `<load>` child in the pre-load, common, and post-load"
+" configuration nodes and `dlopen` the matching DSO. Attribute semantics "
+"and the two `modules.conf` files: [Architecture](01-architecture.md"
+"#runtime-load-tag)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:155
+#: c3608c82c1db4343a5b0e27e95e37d2a
+msgid ""
+"**Find the configuration node.** `switch_xml_open_cfg(\"modules.conf\", "
+"&cfg, NULL)` (`cf` in `switch_loadable_module_init`). The same helper is "
+"used with `\"pre_load_modules.conf\"` and `\"post_load_modules.conf\"`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:156
+#: 9589e1438f0b44db9375e1d0c0e2b595
+msgid ""
+"**Iterate `<load>`.** `switch_xml_child(cfg, \"modules\")` then "
+"`switch_xml_child(mods, \"load\")`. Document-commented tags are not "
+"children. Empty `module` or a dotted name that is not a known DSO suffix "
+"is skipped (`Invalid extension for …`)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:157
+#: a17936c62f134b7d8d414974621c1cc6
+#, python-brace-format
+msgid ""
+"**Open and call load.** Path `{dir}/{module}.so` (non-Windows). "
+"`switch_loadable_module_load_file` resolves `{filename}_module_interface`"
+" and invokes `load_func_ptr(&module_interface, pool)`. For Sofia that is "
+"`mod_sofia_load()`, which registers the endpoint and runs "
+"`config_sofia(SOFIA_CONFIG_LOAD, NULL)`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:158
+#: 254695316c0348ed8f1bdf6b60b34930
+msgid ""
+"**After the lists.** `switch_loadable_module_runtime()` starts each "
+"module’s optional runtime thread. If every XML list was empty, the loader"
+" loads all files in `mod_dir` instead (`No modules loaded, assuming 'load"
+" all'`)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:160
+#: f5865ada683e41a6ba3b677e78e20ac3
+msgid ""
+"`reloadxml` replaces the XML root; it does **not** re-execute these "
+"`<load>` rows. Use `load` / `unload` / `reload` (or restart) to change "
+"the set of DSOs."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:164
+#: 8abfa4458a334fe68fa0088de0583ca4
+msgid "Interface registry lookup"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:168
+#: 8614aa266b0048869987882791f5624d
+msgid ""
+"**Trigger**: a **name** appears at runtime — dialplan "
+"`application=\"bridge\"`, ESL/`fs_cli` `api status`, originate `sofia/…`,"
+" or a codec IANA name. The module that implements that name has already "
+"run its load function during startup ([Runtime load tag](#runtime-load-"
+"tag))."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:169
+#: 741cc8ddd2f64c8ca7fbb4db6c21f21b
+msgid ""
+"**Goal**: resolve the string through `loadable_modules.*_hash` to a "
+"function pointer and invoke it. Architecture and why this is not an IDL: "
+"[Loadable module contract](01-architecture.md#loadable-module-contract)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:195
+#: f7b730e720eb4fde9468932d74e3a1a5
+msgid ""
+"**Register at load.** `SWITCH_ADD_APP(app_interface, \"bridge\", …, "
+"audio_bridge_function, …)` in `mod_dptools.c` appends a "
+"`switch_application_interface_t` on the module bag. `SWITCH_ADD_API(..., "
+"\"status\", …, status_function, …)` in `mod_commands.c`. Sofia has no "
+"`SWITCH_ADD_ENDPOINT`; it `create_interface(..., "
+"SWITCH_ENDPOINT_INTERFACE)` and sets `interface_name = \"sofia\"`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:196
+#: 7bc79f4a84ce48119af806c69ba11afd
+msgid ""
+"**Index.** `switch_loadable_module_process` inserts each named node into "
+"`application_hash` / `api_hash` / `endpoint_hash` (and logs `Adding "
+"Application 'bridge'`). Duplicate names last-writer-wins at hash insert."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:197
+#: 65523e33597e4fd49381face43657a5f
+msgid ""
+"**Application dispatch.** `mod_dialplan_xml` `exec_app` / "
+"`switch_core_session_execute_application` → "
+"`switch_loadable_module_get_application_interface(app)` → "
+"`switch_core_session_exec` → "
+"`application_interface->application_function(session, arg)`. `bridge`’s "
+"function may later call `switch_ivr_multi_threaded_bridge`; that is an "
+"implementation detail, not the registry key."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:198
+#: 63731b64bcce48699f23c4ed6e2c9a0c
+msgid ""
+"**API dispatch.** `switch_api_execute(cmd, arg, session, stream)` → "
+"`get_api_interface(cmd)` → `api->function`. Used by console, ESL "
+"`api`/`bgapi`, and other modules."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:199
+#: 298f772a799549f7baecd94b8956502a
+msgid ""
+"**Endpoint dispatch.** `switch_core_session_outgoing_channel(..., "
+"\"sofia\", profile, …)` → `get_endpoint_interface` → "
+"`io_routines->outgoing_channel`. Inbound Sofia sessions attach the same "
+"endpoint interface when the session is created."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:201
+#: 85323dc293cf4beb9257d947d6560980
+msgid "Worked example: `answer`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:203
+#: 31d2dcebbcc64a5d9fff411f6ba8da96
+msgid ""
+"The shortest real chain from XML to C. Source: `mod_dptools.c` "
+"(`SWITCH_MODULE_DEFINITION(mod_dptools, mod_dptools_load, "
+"mod_dptools_shutdown, NULL)`), `switch_loadable_module.h` "
+"(`SWITCH_ADD_APP`), `switch_core_session.c`, "
+"`switch_core_state_machine.c` `switch_core_standard_on_execute`. Macro "
+"field names: the name is **`interface_name`**, not `application_name`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:226
+#: 501dad5e5b074363982544f8cfef5663
+msgid ""
+"**Load (once).** `mod_dptools_load` calls "
+"`switch_loadable_module_create_module_interface`, then:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:233
+#: 967f1556506643da916125c0f66358ee
+msgid ""
+"That expands to `create_interface(..., SWITCH_APPLICATION_INTERFACE)` and"
+" fills `interface_name`, `application_function`, descriptions, "
+"`syntax=\"\"`, `flags`. `process()` inserts `\"answer\"` into "
+"`application_hash`. `answer_function` is `SWITCH_STANDARD_APP`: `static "
+"void (session, data)` ending in `switch_channel_answer`. Flags "
+"`SAF_SUPPORT_NOMEDIA` skip the “needs media / pre_answer” path in "
+"`execute_application_get_flags`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:235
+#: 3f66a7f32d9f4281909e6c3e9115e048
+msgid ""
+"**Hunt (per call).** `<action application=\"answer\"/>` does not `dlopen`"
+" anything. `mod_dialplan_xml` queues the string `\"answer\"` on the "
+"caller extension (or `exec_app` if inline). The consumer never mentions "
+"`mod_dptools`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:237
+#: 9723178570844a1dbbd7b8c5ccf25017
+msgid ""
+"**Execute.** `switch_core_session_execute_application` is `#define` → "
+"`switch_core_session_execute_application_get_flags`. Lookup failure: "
+"`Invalid Application` + hangup `DESTINATION_OUT_OF_ORDER`. Success: "
+"`switch_core_session_exec` → pointer call. Log line `EXECUTE [depth=…] … "
+"answer()`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:239
+#: 90dd7cbd169e44dbabfe653f7226181c
+msgid ""
+"Same pattern for API `\"status\"` via `SWITCH_ADD_API` / "
+"`switch_api_execute`. Endpoints differ: name → **vtable** "
+"(`io_routines`), not one function. See the "
+"[Architecture](01-architecture.md) page for the golden path."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:205
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 457240f45d0c4f2a83c2d0d00ac7eada f37da34c9b7744e884f9cdc86f069741
+msgid "Where"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:205
+#: d20bfeacdbe345c683a4592c9548154e
+#, fuzzy
+msgid "Outcome"
+msgstr "预期结果"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:205
+#: 31ee8a9a2b1b4184993f60f69e4af921
+msgid "Unknown app name"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:205
+#: 7129f6655bb74501b1c4902b61ddd2fe
+msgid "`get_application_interface` NULL"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:205
+#: 6fe5b28905de41ab858a5c83e27386c4
+msgid "`Invalid Application`; hunt path may hang up `DESTINATION_OUT_OF_ORDER`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:205
+#: 1c1967d770a0446090d19384acccf592
+msgid "App has no function pointer"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:205
+#: 118037055a9f40be98e0906b04bb1eb9
+msgid "`exec_app`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:205
+#: 6959986568fd4ed28255830d146d4da2
+msgid "`No Function for …`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:205
+#: d4cc22047788477cb3eee2c48bbbb912
+msgid "Unknown API"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:205
+#: caee945d96c841ed927da0c43adf1397
+#, fuzzy
+msgid "`switch_api_execute`"
+msgstr "`switch_ivr_parse_event`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:205
+#: e49c628c1b744f20a1ccbc2211ec1ddd
+#, fuzzy
+msgid "`INVALID COMMAND!`"
+msgstr "`auth_api_command`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:205
+#: 504c7aace5a04c22913f67b3f4e4bb62
+#, fuzzy
+msgid "Unknown endpoint token"
+msgstr "未知用户 / 指针用户"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:205
+#: fc81e58cf200447ba3941d60c4e8bd97
+#, fuzzy
+msgid "`switch_core_session_outgoing_channel`"
+msgstr "`switch_core_standard_on_routing`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:205
+#: d0ec8a8f14164504bacc91ef9a91cf13
+msgid "`Could not locate channel type` / `CHAN_NOT_IMPLEMENTED`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:205
+#: 20532e7fa89443e3955f88b179bf3281
+msgid "Allowlist in `switch.conf`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:205
+#: c1c1c50efa29451b8b9ac08c5154e6b2
+msgid "`switch_loadable_module_interface_allowed`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:205
+#: c25b84c4dd4a4c09a8a66a61eeefee42
+msgid "App/API skipped at index time (`Skipping Application`)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:205
+#: f2c396e83bff4cf991d8a1de6bbc624f
+msgid "Module unloaded"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:205
+#: 81e06a3deb2642b9b479160a6bcccf3b
+msgid "`unprocess` deletes hash keys"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:205
+#: 734e5629ac2b4dc18024537622036d7f
+msgid "Later lookup fails like unknown name"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:254
+#: 9bb977d28af844768127db9d9f7a08ea
+msgid ""
+"`src/switch_loadable_module.c` — `create_interface`, `process`, "
+"`HASH_FUNC` getters, `switch_api_execute`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:255
+#: e0344b327b3a42efa974075ec6c2e1b9
+msgid ""
+"`src/include/switch_loadable_module.h` — `SWITCH_ADD_APP` / "
+"`SWITCH_ADD_API` / `SWITCH_ADD_CODEC`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:256
+#: 8c4a2c8b4b0445da9cbfc4456662a607
+msgid "`src/include/switch_module_interfaces.h` — interface structs"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:257
+#: f6b0e6c742174072bf7f60db50023aae
+#, fuzzy
+msgid ""
+"`src/mod/applications/mod_dptools/mod_dptools.c` — `SWITCH_ADD_APP(..., "
+"\"answer\", …, answer_function)` and `\"bridge\"`"
+msgstr ""
+"`src/mod/applications/mod_dptools/mod_dptools.c` — "
+"`audio_bridge_function`（`bridge`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:258
+#: f7b671b740fc4f6995ae5c972a350d46
+#, fuzzy
+msgid ""
+"`src/switch_core_session.c` — "
+"`switch_core_session_execute_application_get_flags`, "
+"`switch_core_session_exec`"
+msgstr ""
+"`src/switch_core_session.c` — "
+"`switch_core_session_request`、`switch_core_session_thread_launch`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:259
+#: 23238c36f9414d379762480c6978d289
+#, fuzzy
+msgid "`src/switch_core_state_machine.c` — `switch_core_standard_on_execute`"
+msgstr ""
+"`src/switch_core_state_machine.c` — "
+"`STATE_MACRO`、`switch_core_standard_on_routing`、`switch_core_standard_on_execute`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:260
+#: 60dce681126843289eb5fe1aca62cf2e
+#, fuzzy
+msgid ""
+"`src/mod/applications/mod_commands/mod_commands.c` — `SWITCH_ADD_API(...,"
+" \"status\", …)`"
+msgstr ""
+"`src/mod/applications/mod_commands/mod_commands.c` — "
+"`originate_function`、`ORIGINATE_SYNTAX`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:261
+#: 04e67ed503134ba68aafcd11ac1b61e1
+#, fuzzy
+msgid ""
+"`src/mod/endpoints/mod_sofia/mod_sofia.c` — endpoint `interface_name = "
+"\"sofia\"`"
+msgstr "`src/mod/endpoints/mod_sofia/mod_sofia.c` — `sofia profile … rescan`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:262
+#: 0b3606cd64264be6b95a22a3c567e611
+#, fuzzy
+msgid "`src/mod/dialplans/mod_dialplan_xml/mod_dialplan_xml.c` — `exec_app`"
+msgstr "`src/mod/dialplans/mod_dialplan_xml/mod_dialplan_xml.c` — `dialplan_hunt`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:263
+#: 9aefb5d4a4424b7089e5a75f1232e8c7
+#, fuzzy
+msgid ""
+"`src/switch_core_session.c` — `switch_core_session_exec`, "
+"`switch_core_session_outgoing_channel`"
+msgstr ""
+"`src/switch_core_session.c` — "
+"`switch_core_session_request`、`switch_core_session_thread_launch`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:267
+#: d6d172ed012647968c88b46cd8cfd2ac
+msgid "Inbound SIP Call"
+msgstr "呼入 SIP 呼叫"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:271
+#: 17305dda1a884bb89d03fb66b2d28e0a
+#, fuzzy
+msgid ""
+"**Trigger**: a SIP `INVITE` datagram or TCP segment arrives on a Sofia "
+"profile bind (vanilla internal typically UDP/TCP **5060**, external "
+"**5080**). The kernel delivers it to a socket owned by Sofia-SIP "
+"**tport**, not by `libfreeswitch`. After parse and transaction matching, "
+"NUA delivers `nua_i_invite` to `sofia_event_callback()` in "
+"`src/mod/endpoints/mod_sofia/sofia.c` on the **profile** thread."
+msgstr ""
+"**触发条件**：SIP `INVITE` 到达 Sofia 配置档（vanilla 内部通常为 UDP/TCP **5060**，外部为 "
+"**5080**）。Sofia-SIP 将 `nua_i_invite` 投递给 "
+"`src/mod/endpoints/mod_sofia/sofia.c` 中的 `sofia_event_callback()`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:272
+#: 5f8638ab0b36495b88c553a2d2845ba8
+#, python-brace-format
+msgid ""
+"**Goal**: allocate a session/channel, authenticate if the profile "
+"requires it, hunt an XML extension, run applications (vanilla "
+"`Local_Extension` bridges `user/${dialed_extension}@${domain_name}`), "
+"exchange media, then hang up with a SIP response/`BYE`/`CANCEL` and "
+"CDR/events."
+msgstr ""
+"**目标**：分配会话/通道，若配置档要求则鉴权，查找 XML extension，运行应用（vanilla 的 "
+"`Local_Extension` 会 bridge "
+"`user/${dialed_extension}@${domain_name}`），交换媒体，然后以 SIP 响应/`BYE`/`CANCEL`"
+" 挂断并产生 CDR/事件。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:274
+#: dbb83eacea7b42f9a7bdb7423bc4d84e
+msgid "Packet path (UDP/TCP to NUA)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:276
+#: 34ab3a9826664896afd1662e995881e2
+msgid ""
+"FreeSWITCH never `recv()`s SIP on the session thread. Each profile thread"
+" creates `su_root_t`, calls `nua_create(..., sofia_event_callback, "
+"profile, NUTAG_URL(profile->bindurl), ...)`, then loops `su_root_step()`."
+" `config_sofia_profile_urls()` builds `bindurl` as `sip:<user>@<sip-ip"
+">:<sip-port>` plus `transport=udp,tcp` unless `bind-params` override it "
+"(`sofia.c`). TLS/WS/WSS are extra `NUTAG_SIPS_URL` / `NUTAG_WS_URL` / "
+"`NUTAG_WSS_URL` binds."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:278
+#: 59512072d3f2466bb7e4c07a44e6d939
+msgid ""
+"Inside [Sofia-SIP](https://github.com/freeswitch/sofia-sip) (`libsofia-"
+"sip-ua`):"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:280
+#: 1ba7fa6987e8492f9cef550de615bf14
+msgid ""
+"**tport** (`libsofia-sip-ua/tport`) — `recvfrom` / TCP `read` (TLS "
+"decrypt, WebSocket unframe). UDP is usually one SIP message per datagram "
+"(`NTATAG_UDP_MTU(65535)` on IPv4 in `nua_create`). TCP is framed with "
+"`Content-Length`. `TPTAG_LOG` / `sofia profile <name> siptrace on` dumps "
+"this layer ([Observability](../5.operations/02-observability.md))."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:281
+#: 8e6d2edb754a4ce4b51fc6f4ae4953d0
+msgid "**msg / sip** — parse start-line, headers, body into `msg_t` / `sip_t`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:282
+#: 052260b7c8ac432e9a3e22a960d59b69
+msgid ""
+"**nta** (`libsofia-sip-ua/nta`) — match or create a transaction (`Via` / "
+"`Call-ID` / `CSeq` / branch). Inbound INVITE is a UAS transaction."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:283
+#: 0ea3f4fdf8354f26bfb92cf3eec409e9
+msgid ""
+"**nua** (`libsofia-sip-ua/nua`) — map to `nua_i_invite` and invoke "
+"`sofia_event_callback` **during** `su_root_step` on the profile thread."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:300
+#: 0bf9933a151f498487f736e1b7645282
+msgid "Three threads on a typical INVITE:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:285
+#: fc3477a5f46e4ec5a5bfc209e53c21f3
+msgid "Thread"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:285
+#: ef270e6338a845ca9aabb5ce4c2a4316
+msgid "Created by"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:285
+#: 63bc7cf028bc4935902cb9e80beb7b70
+msgid "Role"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:285
+#: 93cc234235734750ba4e599c700b44e4
+msgid "Profile `sofia_profile_thread_run`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:285
+#: 6ea8a1fa03134a8797b5e908e87a0966
+msgid "one per Sofia profile"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:285
+#: a23c964b0e2b414cb44dea9b79f5ce2a
+msgid ""
+"Owns sockets; `su_root_step`; first entry to `sofia_event_callback`; must"
+" return quickly"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:285
+#: 6b8e84e55d024ab8b88c6b520c14f175
+#, fuzzy
+msgid "Session `switch_core_session_thread_launch`"
+msgstr ""
+"`src/switch_core_session.c` — "
+"`switch_core_session_request`、`switch_core_session_thread_launch`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:285
+#: 9f408d3794124d5a97023a62604f2f8a
+msgid "first inbound INVITE"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:285
+#: 81cda21520c946af86c43363938bf7d7
+msgid ""
+"`CS_*` state machine; `SWITCH_MESSAGE_INDICATE_SIGNAL_DATA` → "
+"`sofia_receive_message`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:285
+#: 008e227bee5c425ba5aa2f84abc8f16a
+msgid "MSG `sofia_msg_thread_run`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:285
+#: c66bf0046b8c4313af33fba7df1a5576
+msgid "global `msg_queue`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:285
+#: b019fc4f03fc441dafa3e5e59762536e
+msgid ""
+"Events with **no** session (REGISTER, OPTIONS, …); scales when the queue "
+"is deep"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:308
+#: aa63a5c964534ec69a0b1fa678edb253
+msgid ""
+"`sofia_event_callback` admits the request on the profile thread "
+"(503/422), then `nua_save_event` into `sofia_dispatch_event_t` so NUA can"
+" free the stack event. A **new** INVITE allocates "
+"`switch_core_session_request`, `sofia_glue_attach_private`, launches the "
+"session thread in `CS_NEW`, and `switch_core_session_queue_signal_data`. "
+"`sofia_handle_sip_i_invite` runs later on the **session** thread via "
+"`sofia_process_dispatch_event` → `our_sofia_event_callback`. Follow-up "
+"SIP on the same `nua_handle` (re-INVITE, BYE, `nua_i_state`) also uses "
+"`signal_data_queue`. REGISTER without a session uses "
+"`sofia_queue_message`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:310
+#: 67c1bf32763240f4ae1fc00a5444e94a
+msgid "Session-timer admission (RFC 4028)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:312
+#: c46debe1c68f4146b6a0caa1d23344f9
+msgid ""
+"Before queueing an incoming INVITE, `sofia_event_callback()` checks the "
+"request's `Session-Expires` against the profile's `minimum-session-"
+"expires` setting "
+"([`sofia.c:2450-2459`](https://github.com/signalwire/freeswitch/tree/master/src/mod/endpoints/mod_sofia/sofia.c))."
+" `sip->sip_session_expires->x_delta` is the requested interval in "
+"seconds. If it is below the configured minimum, FreeSWITCH sends:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:323
+#: 6050c6e7e62b4ac5ad06f8b8c8b43c89
+msgid ""
+"The `goto end` skips event allocation and queueing, so the rejected "
+"INVITE is not admitted as a call. If the interval is equal to or greater "
+"than the local minimum, this guard does nothing and normal INVITE "
+"processing continues."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:327
+#: 2ba3a50e38ce45e38d6126e43bacad5f
+msgid "`Session-Expires` and `Min-SE` have different meanings:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:329
+#: 465d743d81f2471ab7245c75d84c1240
+msgid "`Session-Expires` is the requested maximum time between session refreshes."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:330
+#: 60542f459af3424b896410cf269df0b6
+msgid "`Min-SE` is the lower bound that an element is willing to accept."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:332
+#: 392f578b44644c9399c225da2cf68019
+msgid ""
+"Therefore this code compares `Session-Expires` with the local minimum; it"
+" does not compare the peer's `Min-SE` value. The profile value is parsed "
+"from `minimum-session-expires` and values below 90 seconds are raised to "
+"90, in accordance with RFC 4028. The same value is passed to Sofia-SIP "
+"with `NUTAG_MIN_SE` when session timers are configured "
+"([`sofia.c:3355-3356`](https://github.com/signalwire/freeswitch/tree/master/src/mod/endpoints/mod_sofia/sofia.c))."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:338
+#: 5c894513d9e34076b723207a867ad14a
+msgid ""
+"RFC 4028 defines `Session-Expires`, `Min-SE`, and response code 422. A "
+"UAS or proxy may reject an INVITE whose session interval is below its "
+"local policy; the 422 response must contain `Min-SE` with that policy "
+"value. The minimum is 90 seconds, and a successful 2xx response carries "
+"the negotiated `Session-Expires` and identifies the refresher (`uac` or "
+"`uas`). The refresher typically sends a re-INVITE or UPDATE before "
+"expiry; this code covers only the early admission/rejection step, not the"
+" later refresh transaction."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:346
+#: 379164d20e09486cb4fcb0c2808a284e
+msgid ""
+"For example, with `minimum-session-expires=120`, an INVITE containing "
+"`Session-Expires: 60` receives 422 and `Min-SE: 120`; the caller should "
+"retry with an interval of at least 120 seconds. This block does not "
+"reject an INVITE that has no `Session-Expires` header. RFC 4028 also "
+"discusses the `Supported: timer` capability negotiation; this local guard"
+" itself checks the presence and value of `Session-Expires`, but does not "
+"explicitly inspect `Supported`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:353
+#: efdbc71049624f92b0c3637379da0d52
+msgid ""
+"See [RFC 4028](https://www.rfc-editor.org/rfc/rfc4028.html), especially "
+"Sections 4–6 and 9."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:356
+#: daeeea2c5e6849c1ba310f1580fd7003
+msgid ""
+"Digest **401** then a second INVITE with `Authorization` is often **one**"
+" session UUID: the first callback may detach the handle and store Call-ID"
+" in `profile->chat_hash`; the authenticated INVITE re-attaches (`Re-"
+"attaching to session`). Siptrace shows two INVITEs."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:358
+#: 1c9839439e5a4279865c095720b50575
+msgid ""
+"Session threads send SIP only through `nua_respond` / `nua_bye` / "
+"`nua_invite`; tport `send` still runs on the profile `su_root`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:401
+#: ae7a8af49c2a4d1d8a0d152d7274739f
+#, fuzzy
+msgid ""
+"**Admit the INVITE.** `sofia_event_callback()` rejects with **503** "
+"`\"Maximum Calls In Progress\"` / `\"System Busy\"` / `\"System Paused\"`"
+" when session limit, message-queue critical watermark, or `PFLAG_STANDBY`"
+" is hit. Missing `Call-ID` → **503** `\"INVALID INVITE\"`. An incoming "
+"`Session-Expires` below the profile's `minimum-session-expires` → **422**"
+" with `Min-SE`."
+msgstr ""
+"**准入 INVITE。** 当命中会话上限、消息队列临界水位或 `PFLAG_STANDBY` "
+"时，`sofia_event_callback()` 以 **503** `\"Maximum Calls In Progress\"` / "
+"`\"System Busy\"` / `\"System Paused\"` 拒绝。缺少 `Call-ID` → **503** "
+"`\"INVALID INVITE\"`。会话定时器 `Min-SE` 过小 → **422**。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:402
+#: 7ed8374fe92749e7bbc81e66f9a5ddbe
+msgid ""
+"**Create the inbound session.** `switch_core_session_request()` (or "
+"`switch_core_session_request_uuid()` when `PFLAG_CALLID_AS_UUID`) plus "
+"`sofia_glue_new_pvt()` / `sofia_glue_attach_private()`. The event is "
+"queued onto the session with `switch_core_session_queue_signal_data()`; "
+"the session thread starts in `CS_NEW`."
+msgstr ""
+"**创建呼入会话。** `switch_core_session_request()`（当 `PFLAG_CALLID_AS_UUID` 时为 "
+"`switch_core_session_request_uuid()`），再加上 `sofia_glue_new_pvt()` / "
+"`sofia_glue_attach_private()`。事件通过 "
+"`switch_core_session_queue_signal_data()` 入队到该会话；会话线程从 `CS_NEW` 启动。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:403
+#: 37dc3eeb3625495baeec177720b56c60
+msgid ""
+"**Handle the INVITE body.** `sofia_handle_sip_i_invite()` requires a "
+"`Contact` (**400** `\"Missing Contact Header\"` otherwise). Source "
+"IP/port become `sip_network_ip` / `sip_network_port`. Destination number "
+"is Request-URI user (`req_user`), or the full URI when `full-id-in-"
+"dialplan` (`PFLAG_FULL_ID`)."
+msgstr ""
+"**处理 INVITE 消息体。** `sofia_handle_sip_i_invite()` 要求有 `Contact`（否则 **400**"
+" `\"Missing Contact Header\"`）。源 IP/端口成为 `sip_network_ip` / "
+"`sip_network_port`。被叫号码是 Request-URI 的 user（`req_user`），或在 `full-id-in-"
+"dialplan`（`PFLAG_FULL_ID`）时为完整 URI。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:404
+#: 3b5fdab5e372496e95f7565e654e3134
+#, python-brace-format
+msgid ""
+"**Authenticate when required.** Vanilla internal profile: `auth-"
+"calls=$${internal_auth_calls}` (`true` in `conf/vanilla/vars.xml`) and "
+"`apply-inbound-acl` = `domains`. Failed ACL can fall back to Digest. "
+"Digest uses the same `sofia_reg_handle_register(..., REG_INVITE, ...)` "
+"path as REGISTER. Success sets `sip_authorized=true` and loads directory "
+"XML via `switch_ivr_set_user_xml()` (including `user_context`). External "
+"profile: `auth-calls=false` — typically no digest; context stays the "
+"profile context (`public`)."
+msgstr ""
+"**需要时鉴权。** Vanilla 内部配置档：`auth-"
+"calls=$${internal_auth_calls}`（`conf/vanilla/vars.xml` 中为 `true`）且 "
+"`apply-inbound-acl` = `domains`。ACL 失败可回退到 Digest。Digest 走与 REGISTER 相同的 "
+"`sofia_reg_handle_register(..., REG_INVITE, ...)` 路径。成功后设置 "
+"`sip_authorized=true`，并通过 `switch_ivr_set_user_xml()` 加载 directory XML（含 "
+"`user_context`）。外部配置档：`auth-calls=false` — 通常不做 "
+"digest；上下文保持为配置档上下文（`public`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:405
+#: 4b21cabecfef469f8af3a29802390f32
+msgid ""
+"**Build the caller profile.** Context order in "
+"`sofia_handle_sip_i_invite()`: ACL override → channel `user_context` → "
+"profile `context` (or From-host when profile context is `_domain_`). "
+"Dialplan defaults to profile `dialplan` (`XML`) unless `inbound_dialplan`"
+" is set."
+msgstr ""
+"**构建 caller profile。** `sofia_handle_sip_i_invite()` 中的 context 顺序：ACL 覆盖"
+" → 通道 `user_context` → 配置档 `context`（当配置档 context 为 `_domain_` 时用 From-"
+"host）。除非设置了 `inbound_dialplan`，dialplan 默认为配置档 `dialplan`（`XML`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:406
+#: 76620bcbfced4bc39264d1869c17da2c
+msgid ""
+"**Leave `CS_NEW`.** `sofia_handle_sip_i_state()` on "
+"`nua_callstate_received` sets `CS_INIT` after SDP offer handling "
+"(`sofia_media_negotiate_sdp` unless proxy/late-neg). `STATE_MACRO(init)` "
+"runs `sofia_on_init` then, if the endpoint returns "
+"`SWITCH_STATUS_SUCCESS`, `switch_core_standard_on_init()` (moves to "
+"`CS_ROUTING`, or `CS_EXECUTE` when `CF_RECOVERING`). After that macro, "
+"the `CS_INIT` case fires `SWITCH_EVENT_CHANNEL_CREATE`."
+msgstr ""
+"**离开 `CS_NEW`。** `sofia_handle_sip_i_state()` 在 `nua_callstate_received` "
+"时，于 SDP offer 处理之后（除非 proxy/late-neg，否则走 `sofia_media_negotiate_sdp`）设置 "
+"`CS_INIT`。`STATE_MACRO(init)` 先运行 `sofia_on_init`，若 endpoint 返回 "
+"`SWITCH_STATUS_SUCCESS`，再运行 `switch_core_standard_on_init()`（进入 "
+"`CS_ROUTING`，若 `CF_RECOVERING` 则进入 `CS_EXECUTE`）。该宏之后，`CS_INIT` 分支会触发 "
+"`SWITCH_EVENT_CHANNEL_CREATE`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:407
+#: b3b2643f16fb424c8e7cb7810e3b8fd3
+msgid ""
+"**Optional 100 Trying.** `sofia_on_routing()` sends `SIP_100_TRYING` when"
+" `PFLAG_AUTO_INVITE_100` and the inbound channel is not yet answered "
+"(`sofia_acknowledge_call()`)."
+msgstr ""
+"**可选的 100 Trying。** 当 `PFLAG_AUTO_INVITE_100` "
+"且呼入通道尚未应答时，`sofia_on_routing()` 发送 "
+"`SIP_100_TRYING`（`sofia_acknowledge_call()`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:408
+#: 00d190be62164568a3b6b72c68243805
+msgid ""
+"**Hunt the dialplan.** `switch_core_standard_on_routing()` looks up "
+"`caller_profile->dialplan` (comma-separated names) and calls "
+"`hunt_function`. `mod_dialplan_xml` registers name `\"XML\"` → "
+"`dialplan_hunt()`. Hunt locates `<context name=\"...\">` (fallback "
+"`global`), walks `<extension>` / `<condition>` regexes (`parse_exten`). "
+"Vanilla authenticated users (`user_context=default`) match "
+"`Local_Extension` `^(10[01][0-9])$` in "
+"`conf/vanilla/dialplan/default.xml`."
+msgstr ""
+"**查找 dialplan。** `switch_core_standard_on_routing()` 查找 "
+"`caller_profile->dialplan`（逗号分隔的名称）并调用 `hunt_function`。`mod_dialplan_xml`"
+" 将名称 `\"XML\"` 注册为 `dialplan_hunt()`。查找定位 `<context name=\"...\">`（回退 "
+"`global`），遍历 `<extension>` / `<condition>` 正则（`parse_exten`）。Vanilla "
+"已鉴权用户（`user_context=default`）匹配 `conf/vanilla/dialplan/default.xml` 中的 "
+"`Local_Extension` `^(10[01][0-9])$`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:409
+#: 8689879311f04efebebe7573a8cdf39c
+#, python-brace-format
+msgid ""
+"**Execute applications.** `switch_core_standard_on_execute()` walks "
+"`extension->current_application` and "
+"`switch_core_session_execute_application()`. Vanilla `Local_Extension` "
+"sets `hangup_after_bridge=true` / `continue_on_fail=true`, then `bridge` "
+"`user/${dialed_extension}@${domain_name}`. `audio_bridge_function()` "
+"calls `switch_ivr_originate()` for the B-leg, then "
+"`switch_ivr_multi_threaded_bridge()` (or `switch_ivr_signal_bridge()` "
+"when `CF_PROXY_MODE`). Failed originate can fall through to voicemail via"
+" `loopback/app=voicemail:...`."
+msgstr ""
+"**执行应用。** `switch_core_standard_on_execute()` 遍历 "
+"`extension->current_application` 并调用 "
+"`switch_core_session_execute_application()`。Vanilla 的 `Local_Extension` "
+"设置 `hangup_after_bridge=true` / `continue_on_fail=true`，然后 `bridge` "
+"`user/${dialed_extension}@${domain_name}`。`audio_bridge_function()` 为 "
+"B-leg 调用 `switch_ivr_originate()`，再调用 "
+"`switch_ivr_multi_threaded_bridge()`（`CF_PROXY_MODE` 时为 "
+"`switch_ivr_signal_bridge()`）。originate 失败可通过 "
+"`loopback/app=voicemail:...` 落到语音信箱。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:410
+#: 8ce5e55fdd104480ae79015f1b83af30
+msgid ""
+"**Hang up.** `switch_channel_hangup()` fires "
+"`SWITCH_EVENT_CHANNEL_HANGUP` (`src/switch_channel.c`). Session thread "
+"`CS_HANGUP` → `sofia_on_hangup()`: answered → `nua_bye`; unanswered "
+"outbound → `nua_cancel`; unanswered inbound → `nua_respond` with "
+"`hangup_cause_to_sip()`. Then `CS_REPORTING` → `CS_DESTROY`. Vanilla CDR "
+"is `mod_cdr_csv`, not core SQL."
+msgstr ""
+"**挂断。** `switch_channel_hangup()` 触发 "
+"`SWITCH_EVENT_CHANNEL_HANGUP`（`src/switch_channel.c`）。会话线程 `CS_HANGUP` → "
+"`sofia_on_hangup()`：已应答 → `nua_bye`；未应答的呼出 → `nua_cancel`；未应答的呼入 → 以 "
+"`hangup_cause_to_sip()` 做 `nua_respond`。然后 `CS_REPORTING` → "
+"`CS_DESTROY`。Vanilla CDR 由 `mod_cdr_csv` 产生，而非核心 SQL。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: eac337da783b426198c1788502f3eb73
+msgid "Session limit / queue overload / standby"
+msgstr "会话上限 / 队列过载 / 待机"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: fd1a32d954794a55965497cfae0c1228
+msgid "`sofia_event_callback`"
+msgstr "`sofia_event_callback`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: faf816c0c33844999fb3bbbd26249ea1
+msgid "SIP **503** with `Retry-After: 300` (busy/max); standby has no Retry-After"
+msgstr "SIP **503** 带 `Retry-After: 300`（busy/max）；待机没有 Retry-After"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 774677d1b39c4a04874e04c8601c428b
+msgid "Session timer interval below profile minimum"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 61e477ae16b64dd6801bf1b147418479
+#, fuzzy
+msgid "`sofia_event_callback` (`sofia.c:2450-2459`)"
+msgstr "`sofia_event_callback`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 0ad01e9e94ac4d35bb348dccad09cb76
+msgid ""
+"SIP **422** `Session Interval Too Small` with `Min-SE: <minimum-session-"
+"expires>`; INVITE is not queued"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 7a98dbffb0864d899bbfd0c994e80d6d
+msgid "No Contact"
+msgstr "无 Contact"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 4a13042d792f47c1a7353f57fdcd23d4 81c794e6a579498197c71cdef3e45fb4
+msgid "`sofia_handle_sip_i_invite`"
+msgstr "`sofia_handle_sip_i_invite`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 75c99dea940a4757a0174ac6f2bfbfa8
+msgid "SIP **400** `\"Missing Contact Header\"`; `ib_failed_calls++`"
+msgstr "SIP **400** `\"Missing Contact Header\"`；`ib_failed_calls++`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 9e729d56e16b49e3a296d29329967a95
+msgid "Auth required, no credentials"
+msgstr "需要鉴权但无凭据"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: e308d790ad76407793f138e7c9ec4d77
+msgid "`sofia_reg_handle_register` / `sofia_reg_auth_challenge`"
+msgstr "`sofia_reg_handle_register` / `sofia_reg_auth_challenge`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 1a428e34f94f4de29a56b64a6933bb36
+msgid ""
+"SIP **401** with `WWW-Authenticate` Digest; nonce stored in "
+"`sip_authentication`"
+msgstr "SIP **401** 带 `WWW-Authenticate` Digest；nonce 存入 `sip_authentication`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: f8eae3c473e14096aae0f9776774d4ce
+msgid "Bad digest / unknown user"
+msgstr "错误的 digest / 未知用户"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:719
+#: 691b1a2ae3d8427ca2d54c6234dd9bb3 e3e0b9d78b594375bdae4167b60e1124
+msgid "`sofia_reg_parse_auth`"
+msgstr "`sofia_reg_parse_auth`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 85c16b518e354c6bb2b7cc99b06193e8
+msgid ""
+"`AUTH_FORBIDDEN` → **403** (or **401** if not marked forbidden); log "
+"`\"Can't find user [user@domain]\"`"
+msgstr ""
+"`AUTH_FORBIDDEN` → **403**（若未标记为 forbidden 则为 **401**）；日志 `\"Can't find "
+"user [user@domain]\"`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 017826de57ba4081b235f1a63e4c78bd
+msgid "ACL reject with `auth-calls-acl-only`"
+msgstr "因 `auth-calls-acl-only` 被 ACL 拒绝"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 2e9ffefc3dff46e8b9e2f4260971dee1
+msgid "SIP **403**; no digest fallback"
+msgstr "SIP **403**；无 digest 回退"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: a874a444f60e46df999f39a6f78c46b5
+msgid "No matching extension"
+msgstr "无匹配的 extension"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 990d3b8b9ced496899f81bc11a9b0a32
+msgid "`switch_core_standard_on_routing`"
+msgstr "`switch_core_standard_on_routing`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 008140c6547649459af2399680f45a86
+msgid "Hangup `SWITCH_CAUSE_NO_ROUTE_DESTINATION`"
+msgstr "挂断 `SWITCH_CAUSE_NO_ROUTE_DESTINATION`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 99e775f318984fc696d25db8e2f76822
+msgid "Codec mismatch on offer"
+msgstr "offer 编解码不匹配"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: fcb805dc0ddc47e790e96e626ac7db4b
+msgid "`sofia_media_negotiate_sdp` / `nua_callstate_received`"
+msgstr "`sofia_media_negotiate_sdp` / `nua_callstate_received`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 9f5949e25b9b4b05828c0eb25fbd08b5
+msgid "SIP **488** if already past `CS_NEW`"
+msgstr "若已越过 `CS_NEW` 则 SIP **488**"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 56f5a2323da84fb996fd0169c3d86b9b
+msgid "`bridge` originate fails"
+msgstr "`bridge` originate 失败"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 9daae209f2614b1a90b8f781671a132c
+msgid "`audio_bridge_function`"
+msgstr "`audio_bridge_function`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 91afdc77eca64f5e82fbcf0c5c17b1fe
+msgid ""
+"Logs `\"Originate Failed\"`; vanilla `continue_on_fail=true` continues to"
+" voicemail loopback"
+msgstr ""
+"记录 `\"Originate Failed\"`；vanilla 的 `continue_on_fail=true` 会继续到语音信箱 "
+"loopback"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 0729b303e4794a61a3ad1c1f53146464
+msgid "Recovered channel (`CF_RECOVERING`)"
+msgstr "恢复的通道（`CF_RECOVERING`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 2d86e6e2318940ccb82eb82d131160c8
+msgid "`switch_core_standard_on_init`"
+msgstr "`switch_core_standard_on_init`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: c606f4e4c36b44a5ba8b6989912874bc
+msgid "Skips `CS_ROUTING`; goes to `CS_EXECUTE`"
+msgstr "跳过 `CS_ROUTING`；进入 `CS_EXECUTE`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: d528783372e44dcaa3fa9d5fd9aa68e8
+msgid "Proxy media (`CF_PROXY_MODE` / `CF_PROXY_MEDIA`)"
+msgstr "代理媒体（`CF_PROXY_MODE` / `CF_PROXY_MEDIA`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 66dee42cb793421a805d6adc1046cbe5
+msgid "`sofia_on_init`, bridge"
+msgstr "`sofia_on_init`，bridge"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: f2439e3b1676450380739e9f1160b22c
+msgid "SDP absorbed; `switch_ivr_signal_bridge` instead of RTP bridge"
+msgstr "SDP 被吸收；使用 `switch_ivr_signal_bridge` 而非 RTP 桥接"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 2afd22589379493b8985547baae2a67c
+msgid "Re-INVITE while both legs reinvite"
+msgstr "双腿同时 reinvite 时的 Re-INVITE"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 7f94ebda70624dc79311016807b156a2
+msgid "`nua_callstate_received`"
+msgstr "`nua_callstate_received`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: c3f18d9930344f74a81135b0105ced83
+msgid "**491** Request Pending; redo outbound invite"
+msgstr "**491** Request Pending；重做呼出 invite"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 3b3e46f8ee8f489a9e6e2a08fb963c18
+msgid "Digest 401 then authenticated INVITE"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: e7839bf1b3dd437a84ce87b6e7f364bd
+msgid "`nua_i_terminated` + `chat_hash`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: a0288b719b294aa9bd390f7ecc364304
+msgid "Re-attach to the same session UUID; not a second A-leg"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:432
+#: 68ea3abe68404cc78afe50343dcd6b6a
+msgid ""
+"Channel / session UUID; `switch_caller_profile_t` (`destination_number`, "
+"`context`, `dialplan`)."
+msgstr ""
+"通道 / 会话 "
+"UUID；`switch_caller_profile_t`（`destination_number`、`context`、`dialplan`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:433
+#: c9dfeb6bde7c4187b35ec8c82d5623eb
+msgid ""
+"Directory user XML after auth (`id`, `password`, `user_context`) — "
+"vanilla `conf/vanilla/directory/default/1000.xml`."
+msgstr ""
+"鉴权后的 directory 用户 XML（`id`、`password`、`user_context`）— vanilla "
+"`conf/vanilla/directory/default/1000.xml`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:434
+#: 1ec0afe21d6c4a3ea33b94452f99ff32
+msgid ""
+"Dialplan XML: `conf/vanilla/dialplan/default.xml` (`Local_Extension`), "
+"`conf/vanilla/dialplan/public.xml` for unauthenticated/external."
+msgstr ""
+"Dialplan "
+"XML：`conf/vanilla/dialplan/default.xml`（`Local_Extension`），未鉴权/外部走 "
+"`conf/vanilla/dialplan/public.xml`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:435
+#: e03cac28f50847f7b01e2caccccc5678
+msgid ""
+"Events: `SWITCH_EVENT_CHANNEL_CREATE`, `CHANNEL_STATE`, `CHANNEL_EXECUTE`"
+" / `_COMPLETE`, `CHANNEL_BRIDGE` / `_UNBRIDGE`, `CHANNEL_HANGUP` / "
+"`_HANGUP_COMPLETE`, outbound B-leg also `CHANNEL_ORIGINATE`."
+msgstr ""
+"事件：`SWITCH_EVENT_CHANNEL_CREATE`、`CHANNEL_STATE`、`CHANNEL_EXECUTE` / "
+"`_COMPLETE`、`CHANNEL_BRIDGE` / `_UNBRIDGE`、`CHANNEL_HANGUP` / "
+"`_HANGUP_COMPLETE`，呼出 B-leg 还有 `CHANNEL_ORIGINATE`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:436
+#: 28bb20f012b344e695de575748c777d5
+msgid ""
+"Core SQL `channels` / `calls` are a scoreboard projection, not the source"
+" of truth."
+msgstr "核心 SQL 的 `channels` / `calls` 是记分牌投影，不是事实源。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:437
+#: 5108b3e2293249648843d0f4ae42010e
+msgid ""
+"SIP hangup mapping: `hangup_cause_to_sip()` in `mod_sofia.c`; optional "
+"Q.850 `Reason` unless `disable_q850_reason`."
+msgstr ""
+"SIP 挂断映射：`mod_sofia.c` 中的 `hangup_cause_to_sip()`；除非 "
+"`disable_q850_reason`，否则可选 Q.850 `Reason`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:441
+#: 9429cae23e8f474bb1cd785d13239974
+msgid ""
+"`src/mod/endpoints/mod_sofia/sofia.c` — `config_sofia_profile_urls`, "
+"`nua_create`, `sofia_profile_thread_run` / `su_root_step`, "
+"`sofia_event_callback`, `sofia_queue_message`, "
+"`sofia_process_dispatch_event`, `our_sofia_event_callback`, "
+"`sofia_handle_sip_i_invite`, `sofia_handle_sip_i_state`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:442
+#: d260a0574ef44efa8acd39cfc62495a2
+#, fuzzy
+msgid ""
+"`src/mod/endpoints/mod_sofia/mod_sofia.c` — `sofia_receive_message` "
+"(`SWITCH_MESSAGE_INDICATE_SIGNAL_DATA`), `sofia_on_init`, "
+"`sofia_on_routing`, `sofia_on_execute`, `sofia_on_hangup`, "
+"`sofia_outgoing_channel`, `sofia_acknowledge_call`"
+msgstr ""
+"`src/mod/endpoints/mod_sofia/mod_sofia.c` — "
+"`sofia_on_init`、`sofia_on_routing`、`sofia_on_execute`、`sofia_on_hangup`、`sofia_outgoing_channel`、`sofia_acknowledge_call`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:443
+#: 2a28d60b25e54145ab1d85b881096e4f
+#, fuzzy
+msgid ""
+"`src/mod/endpoints/mod_sofia/sofia_media.c` — "
+"`sofia_media_negotiate_sdp`, `sofia_media_activate_rtp`, "
+"`sofia_media_tech_media`"
+msgstr ""
+"`src/mod/endpoints/mod_sofia/sofia.c` — "
+"`sofia_event_callback`、`sofia_handle_sip_i_invite`、`sofia_handle_sip_i_state`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:444
+#: 3c9fcfa915354d8f99ad6ee7632df564
+#, python-brace-format
+msgid ""
+"[sofia-sip](https://github.com/freeswitch/sofia-sip) `libsofia-sip-"
+"ua/{su,tport,nta,nua,sip,msg}` — sockets, parse, transactions (not in "
+"this git tree)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:445
+#: bb5b1bec54b746f69c5ae1b8620bae8c
+msgid ""
+"`src/mod/endpoints/mod_sofia/sofia_glue.c` — `sofia_glue_do_invite`, "
+"`sofia_glue_new_pvt`"
+msgstr ""
+"`src/mod/endpoints/mod_sofia/sofia_glue.c` — "
+"`sofia_glue_do_invite`、`sofia_glue_new_pvt`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:446
+#: bdac9568b16e4f0fb6b51df5f7063f53
+#, fuzzy
+msgid ""
+"`src/mod/endpoints/mod_sofia/rtp.c` — endpoint RTP IO routines for the "
+"compact RTP endpoint"
+msgstr "`src/mod/endpoints/mod_sofia/mod_sofia.c` — `sofia profile … rescan`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:447
+#: d9218d1286b34794869d361433874a06
+#, fuzzy
+msgid ""
+"`src/mod/endpoints/mod_sofia/mod_sofia.c` — `sofia_read_frame`, "
+"`sofia_write_frame`, audio endpoint IO routines"
+msgstr "`src/mod/endpoints/mod_sofia/mod_sofia.c` — `sofia profile … rescan`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:448
+#: 5a587793581c4b77877b850f831c20b2
+msgid ""
+"`src/switch_core_media.c` — `switch_core_media_negotiate_sdp`, "
+"`switch_core_media_gen_local_sdp`, `switch_core_media_activate_rtp`, "
+"`switch_core_media_read_frame`, `switch_core_media_write_frame`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:449
+#: 6389622bc4cd4f38ae88e5df5fe2dd23
+#, fuzzy
+msgid ""
+"`src/switch_core_io.c` — `switch_core_session_read_frame`, "
+"`switch_core_session_write_frame`"
+msgstr ""
+"`src/switch_core_session.c` — "
+"`switch_core_session_request`、`switch_core_session_thread_launch`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:450
+#: 14d1b4c08f0d45e799e00bd93f165917
+msgid ""
+"`src/switch_rtp.c` — `switch_rtp_ready`, `rtp_common_read`, "
+"`switch_rtp_zerocopy_read_frame`, `switch_rtp_write_frame`, "
+"`switch_rtp_write_raw`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:451
+#: 43898774bada4add95c3e3d036c72c5c
+msgid ""
+"`src/switch_core_session.c` — `switch_core_session_request`, "
+"`switch_core_session_thread_launch`"
+msgstr ""
+"`src/switch_core_session.c` — "
+"`switch_core_session_request`、`switch_core_session_thread_launch`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:452
+#: 00e6239d8c0e4e6abaa25295892e88f6
+msgid ""
+"`src/switch_core_state_machine.c` — `STATE_MACRO`, "
+"`switch_core_standard_on_routing`, `switch_core_standard_on_execute`"
+msgstr ""
+"`src/switch_core_state_machine.c` — "
+"`STATE_MACRO`、`switch_core_standard_on_routing`、`switch_core_standard_on_execute`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:453
+#: 17697d7a00fd44288903b0a3f764fc61
+msgid "`src/mod/dialplans/mod_dialplan_xml/mod_dialplan_xml.c` — `dialplan_hunt`"
+msgstr "`src/mod/dialplans/mod_dialplan_xml/mod_dialplan_xml.c` — `dialplan_hunt`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:454
+#: b8d5db2bee174f66b9b8fb508a5d92b7
+msgid ""
+"`src/mod/applications/mod_dptools/mod_dptools.c` — "
+"`audio_bridge_function` (`bridge`)"
+msgstr ""
+"`src/mod/applications/mod_dptools/mod_dptools.c` — "
+"`audio_bridge_function`（`bridge`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:455
+#: 455e1a488dcd4028a3992c77acd4c417
+msgid "`src/switch_ivr_originate.c` — `switch_ivr_originate`"
+msgstr "`src/switch_ivr_originate.c` — `switch_ivr_originate`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:456
+#: 9a7659cfaacf48f3882ce5be70fbe844
+msgid "`src/switch_ivr_bridge.c` — media / signal bridge"
+msgstr "`src/switch_ivr_bridge.c` — 媒体 / 信令桥接"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:457
+#: 6525c919cc7d4919a317167f0c9c6d7f
+msgid ""
+"`conf/vanilla/sip_profiles/internal.xml`, "
+"`conf/vanilla/sip_profiles/external.xml`"
+msgstr "`conf/vanilla/sip_profiles/internal.xml`、`conf/vanilla/sip_profiles/external.xml`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:458
+#: ce45883525104c0988df34e2dfecfd1f
+msgid "`conf/vanilla/dialplan/default.xml`"
+msgstr "`conf/vanilla/dialplan/default.xml`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:460
+#: 79a8f504248b4a51985254822c09f5c6
+msgid "Media negotiation and RTP activation"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:462
+#: 130a8c5821ea4afe82a7a6c829177874
+msgid ""
+"This is a separate signal/media path from the session state machine. "
+"`switch_core_session_run()` in `src/switch_core_state_machine.c:530` "
+"schedules `CS_*` handlers; it does not itself parse SDP or run an RTP "
+"packet loop. For Sofia, SIP callbacks and media IO enter the core through"
+" endpoint callbacks and `io_routines`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:467
+#: 16dfba47fb0b4614ab95bc9fb675544c
+#, fuzzy
+msgid "Backend dispatch into `sofia_handle_sip_i_state`"
+msgstr "`sofia_handle_sip_i_invite`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:469
+#: 0c233319fa2e436db2bfb0eec46bd8cc
+msgid ""
+"The SDP-bearing state event normally crosses two threads. Sofia-SIP "
+"receives and parses the SIP message on the profile thread; FreeSWITCH "
+"queues a saved `sofia_dispatch_event_t` to the session thread. The "
+"session thread then invokes the endpoint message callback and finally "
+"dispatches `nua_i_state` to `sofia_handle_sip_i_state()`:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:485
+#: 32fd1cc51103497097640f5ad20138e7
+msgid ""
+"For a new inbound INVITE, `sofia_event_callback()` first creates/attaches"
+" the session and queues the event; the same dispatch then reaches "
+"`nua_i_invite` and `sofia_handle_sip_i_invite()`. If there is no session "
+"to attach, the event goes through `sofia_queue_message()` and the "
+"message-thread path instead. Inside `sofia_handle_sip_i_state()`, Sofia "
+"tags provide the call state plus local/remote SDP and offer/answer flags."
+" The handler restores the saved SDP for relevant 100/200 events, stores "
+"the remote SDP, calls `switch_core_media_set_sdp_codec_string()` / "
+"`sofia_glue_pass_sdp()`, and then selects the `nua_callstate_*` branch. "
+"This is the control-plane entry point for the media flows below; it is "
+"not the RTP packet loop."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:495
+#: b5a2ceb9aa804f6ba79e44c9f42d88fc
+msgid "When negotiation happens"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:497
+#: bd2e08e211aa47bf872d64591ec26a09
+msgid ""
+"Negotiation happens while processing an SDP-bearing `INVITE`, `re-"
+"INVITE`, or the answer to an outbound offer. The endpoint wrapper "
+"`sofia_media_negotiate_sdp()` calls `switch_core_media_negotiate_sdp()`, "
+"which parses the remote SDP, matches codecs and payload types, and stores"
+" remote media/crypto/ICE parameters in the session media handle."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:502
+#: 34c0839c66ee4dbe8d110851238cbc83
+msgid "The important branches are:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:504
+#: 62b92ee6562b48a09111fc1aa1d23710
+msgid ""
+"**Inbound offer**: `nua_callstate_received` calls "
+"`sofia_media_negotiate_sdp(session, r_sdp, SDP_OFFER)`. A successful "
+"match marks the Sofia leg ready and moves a new channel toward `CS_INIT`;"
+" the local answer is generated on the response path with "
+"`switch_core_media_gen_local_sdp(..., SDP_ANSWER, ...)`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:508
+#: bc06b272f79f4d71b2f1b80d8060604e
+msgid ""
+"**Outbound offer / answer**: `sofia_glue_do_invite()` generates the local"
+" offer with `switch_core_media_gen_local_sdp(..., SDP_OFFER, ...)`. When "
+"the remote answer arrives, `nua_callstate_early` or `nua_callstate_ready`"
+" uses `SDP_ANSWER`, then regenerates the local SDP if needed and "
+"activates the media."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:512
+#: 2735a230dc7d406791e6b42ae7385125
+msgid ""
+"**Early media**: `nua_callstate_proceeding` passes an SDP offer to "
+"`sofia_media_tech_media()`, which performs negotiation, chooses a port, "
+"activates RTP, and marks the channel pre-answered."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:515
+#: 9514b9a5f5e840a896c10cbf4faae40e
+msgid ""
+"**Proxy/no-media**: `CF_PROXY_MODE` / `CF_PROXY_MEDIA` take a separate "
+"path. The handler may copy or patch the SDP and set remote media "
+"variables, but it does not perform the normal endpoint codec/packet "
+"termination path."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:535
+#: d0378fedbbd24e52a7915f40fed826f2
+msgid ""
+"With `inbound-late-negotiation=true`, the inbound leg may defer codec "
+"negotiation until the dialplan/bridge has supplied the required media "
+"context. Proxy-media paths are an important exception: `CF_PROXY_MODE` / "
+"`CF_PROXY_MEDIA` can keep FreeSWITCH from terminating or inspecting RTP "
+"in the normal codec path."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:540
+#: f99a9379be9f41b298d6a8b31eb3b7ab
+msgid "When RTP becomes usable"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:542
+#: 2cbe8bc4a4594b3589ed7c29163a2658
+msgid ""
+"RTP setup has three distinct phases; SDP parsing alone does not mean that"
+" RTP can flow."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:544
+#: c6b3f9ac7c7f4305bf53d73df0b7bd20
+msgid ""
+"**Choose the local endpoint** — `switch_core_media_choose_port()` "
+"requests a port from `switch_rtp_request_port()`, selects the advertised "
+"IP/port, and applies NAT mapping when required. Proxy mode, proxy media, "
+"an existing advertised port, or an existing RTP session can make this a "
+"no-op."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:548
+#: 98b8fee453414e4da94f54da8ba31bf0
+msgid ""
+"**Activate media** — `sofia_media_activate_rtp()` takes the Sofia mutex "
+"and calls `switch_core_media_activate_rtp()`. The core selects codecs, "
+"applies RTP/RTCP, timestamp, RFC2833, auto-adjust, SRTP/DTLS and re-"
+"INVITE flags, then creates or updates the RTP engines and remote address."
+" On success the Sofia wrapper sets `TFLAG_RTP` and `TFLAG_IO`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:552
+#: 0747d3bddf9e41b9962f11a936e6ad4e
+msgid ""
+"**Pass the readiness gate** — `switch_rtp_ready()` requires a live, non-"
+"shutdown session, input and output sockets, a remote address, "
+"`SWITCH_RTP_FLAG_IO`, and `ready == 2`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:565
+#: ef8ded2326be492a823bd5ae0f82520c
+msgid ""
+"For an inbound offer, `nua_callstate_received` may first perform only the"
+" codec match and later complete local SDP/port setup on the answer path. "
+"For early media, the explicit setup chain above is in "
+"`sofia_media_tech_media()`. Re-INVITE/unhold handling reuses the same "
+"core media functions with `SDP_OFFER` or `SDP_ANSWER` as appropriate. "
+"Once the readiness gate is true, the endpoint IO callbacks can read and "
+"write RTP frames."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:571
+#: 1412b8fd812c47bca46bb93f2f3c785c
+msgid "RTP receive path"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:573
+#: 4fc021a1f0f14bfdb80f3c74e12cada5
+msgid ""
+"The session does not receive RTP in `CS_EXECUTE` or `CS_EXCHANGE_MEDIA` "
+"by virtue of entering that state. A consumer that asks for a frame enters"
+" the endpoint IO path:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:586
+#: 45c22a631bd44e9f8af41b4b953ab042
+msgid ""
+"`rtp_common_read()` polls and parses RTP/RTCP, applies packet/jitter "
+"handling, and `switch_rtp_zerocopy_read_frame()` exposes the received "
+"packet as a `switch_frame_t`. The core then performs codec "
+"decode/resampling as needed before returning the frame to the caller."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:590
+#: 5d3ddd69c8104a8eaa5decd32f029dbb
+msgid "RTP send path"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:592
+#: fbb7042a2eb74f21b5db7b1915d5a8c3
+msgid ""
+"Applications, bridges, codecs, or media threads write a frame through the"
+" session IO path:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:605
+#: 3b1b8dc7ed62431d921006a55da754f1
+msgid ""
+"Before `switch_rtp_write_frame()`, the core may encode, transcode, "
+"resample, process media bugs, and update timestamps. The RTP layer then "
+"builds the RTP header and applies SRTP/encryption when configured. Proxy "
+"packets can take the fast pass-through branch instead of the normal codec"
+" path."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:609
+#: 9ab33e1a07af4a67aba720595e135bd4
+msgid "Ownership and timing summary"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 59cb625cb99b45e69a62b2691711f1d6
+msgid "Concern"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: a40ee832111140e9adc7f98afeef8e6a
+msgid "When"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 5842ddc765f14cc38851f0d2ad5531e8
+msgid "SIP/SDP signal handling"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 237b308a3fe1456ea4303bc13c05f13f
+msgid "`mod_sofia/sofia.c`, `sofia_media.c`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: d0ade1c4648849b6b136fccbf2e32a5f
+msgid "INVITE/re-INVITE/answer processing"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 65f0486627f441e78c6b0e7adffa17b4
+msgid "SDP parsing and codec match"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 3671ad33d08f4174aa26b937dd18d5a3
+msgid "`switch_core_media_negotiate_sdp()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 38e2349d0dab429a90ecaa02e53f4760
+msgid "after remote SDP arrives"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: e35e814f6b834429b8ac3141e14bc69b
+msgid "Local SDP offer/answer"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 89b4ce7ab9ca4f1bab525cb2a3be8453
+msgid "`switch_core_media_gen_local_sdp()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: e3ab88ec6fb347e388300c264cb2f292
+msgid "before sending SIP offer/answer"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 18ab627fa5174f009bdbbaa031c497b5
+msgid "RTP session activation"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 1e4981a5e8634dba9cc5435b6c6ae183
+msgid "`switch_core_media_activate_rtp()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: ec0e389c9b4f4e9e9f06b18c1b261762
+msgid "after negotiation and port selection"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: afea990cb05342619d2330f2aaea620b
+msgid "RTP receive"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 0e5aa27587aa4bfca6c41573f9417343
+msgid "endpoint `read_frame` → `switch_rtp_zerocopy_read_frame()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: ca75ca0838864469adf84c424978b2de
+msgid "when a consumer reads a frame"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: c1b3017c3ca64fbda1bfc94d51f25ef9
+msgid "RTP send"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 9f61a5f720cc4829a3b95f920c7f51d6
+msgid "endpoint `write_frame` → `switch_rtp_write_frame()`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: e8af721d9a9b414fb20e3c9108d67af3
+msgid "when a producer writes a frame"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 0b981910b9e64a29b41aa9431e24f1d1
+msgid "Session state transitions"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 7a6d3b58bda54350853fccae9d36e898
+#, fuzzy
+msgid "`switch_core_session_run()`"
+msgstr "`switch_core_standard_on_routing`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 89b7bc3f235c4377890a7b54e199493b
+msgid "throughout channel lifetime; orchestration only"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:621
+#: c05ab51539b140cfb1a1412a2c44595f
+msgid ""
+"The key boundary is therefore: **SDP negotiates the media contract; RTP "
+"activation creates the usable media session; frame IO moves packets.**"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:624
+#: f1aa5a93ad5c4632a949db33dfaffcdf
+msgid "Worked example: `show channels` during a bridge"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:626
+#: 4e22712e9d474313ac831ee1bdea0333
+msgid ""
+"`fs_cli -x 'show channels'` is a CSV dump of the core SQL `channels` "
+"scoreboard (`select * from channels where hostname=… order by "
+"created_epoch` in `show_function()`, "
+"`src/mod/applications/mod_commands/mod_commands.c`). Schema: "
+"`create_channels_sql` in `src/switch_core_sqldb.c`. The session thread is"
+" the source of truth; this table is a projection for operators and "
+"recovery ([Data and API](04-data-and-api.md))."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:628
+#: e945ee0eb2a64a4bb2f2794194db6e56
+msgid "Docker (default prefix inside the image):"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:634
+#: c3f9af01f7db49acb08cd2f18ba05b01
+msgid ""
+"On a prefix install: `\"$PREFIX/bin/fs_cli\" -x 'show channels'`. "
+"Related: `show calls` (view `basic_calls`, one row per bridged pair), "
+"`show channels count`, `show channels like <pattern>`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:636
+#: 9b6c3c685d6744568f25f2a12cd4f7e4
+msgid "Column meanings"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: e7b3601d763c4fab894c4a345787ca71
+msgid "Column"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:800
+#: 12982a6518f24ef586a398e328e9295a 239477f25f58426aa8434420a17f72a2
+#: 9754ceae68554d56a500460e07731a3e
+msgid "Meaning"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 1c1ee2e4fd6544f3922feda64357e75c
+msgid "`uuid`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 4d9ae7fcf55045a289a5ddc5d80b0dfe
+msgid "Channel (leg) UUID"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: ef9c756ddb58410abbcdcf6c9b6a91c6
+#, fuzzy
+msgid "`direction`"
+msgstr "`audio_bridge_function`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: a13e0294830846799d748abb31a83adb
+msgid ""
+"`inbound` (accepted by FreeSWITCH) or `outbound` (originated by "
+"FreeSWITCH)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 20e382fb32ae4070a77efaba8449459a
+msgid "`created` / `created_epoch`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 2cfa84282aaa4e6598814d8ea576c05f
+msgid "Create time (local string) and Unix seconds"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 4511434b9ece4beaaf3aa97b1ddca16d
+msgid "`name`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 82f63bb1ddd34caa9acc1733a5c33f21
+msgid "Channel name: typically `sofia/<profile>/<user>@<host>`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: be9288825d14470aa7a52539628ca893
+#, fuzzy
+msgid "`state`"
+msgstr "`AUTH_STALE`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: da69cabb09994237b3f08abe791293ca
+msgid ""
+"Channel state machine (`CS_*` in `src/include/switch_types.h`). Distinct "
+"from `callstate` (`CCS_*`)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 86872426742946a5aad1b28c3ecf0a63
+msgid "`cid_name` / `cid_num`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: a6a879d6dd0747a0aca73af7ec4a8e13
+msgid "Current caller ID name / number"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 3b0c6dae8dcc4d77ba908c73dc4e65eb
+msgid "`ip_addr`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: f216c3f5629b485281a24877275f6616
+msgid "Remote IP stored on this channel"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 65ee5a86d9c84918bcaee443a3830bd5
+msgid "`dest`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: dff5e748204b43ff9a13024c1ccbd28d
+msgid "Destination (often Request-URI / originate target user)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: f858545288f643aeb004192a096afe72
+msgid "`application` / `application_data`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: a5127b028fdc47b99d65171c2aa5d5c7
+msgid "Dialplan app currently running and its argument (empty when none)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: b091c5d274a54a22a2641a4b1abf4f86
+msgid "`dialplan` / `context`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 1d381b58975e405084179e3c6bcd48c2
+msgid "Dialplan module name (`XML`) and hunt context"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 318ee3fbd1f34815b147bb56c9b5ed42
+msgid "`read_codec` / `read_rate` / `read_bit_rate`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: b6463356a1804d7ca2af73d4b139dcad
+msgid "Receive codec, sample rate, bit rate"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: fd8f834aea6b4ade9f635c049bf698fa
+msgid "`write_codec` / `write_rate` / `write_bit_rate`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: adfd516ec79b4d629c1ffc7efa6a838d
+msgid "Send codec, sample rate, bit rate"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 59c951b94a7b4bbd8364c27161cb716f
+msgid "`secure`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 571450d7dfdc45d7bc00baf5af5d59a7
+msgid "Media crypto label (for example SRTP over DTLS)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: c1d99f48ba7c4245809fee0ec45a5dfe
+#, fuzzy
+msgid "`hostname`"
+msgstr "`AUTH_STALE`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 38eb20f61afa47658a40fff76dd2165e
+msgid "Switch hostname (`switchname` / hostname filter on the SQL row)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 60c54f15b8eb4b9abecafef4b4ccd1e8
+msgid "`presence_id` / `presence_data`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: a0b88be2eb5e4252b0fbc11b04ff39c6
+msgid "Presence identity (often `user@domain`) and extra presence payload"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: e46fa894b24142ed8cff397fdd751593
+msgid "`accountcode`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 85b81dca93804963a357ee1c1d5c0dbb
+msgid "Billing / account code"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 6599dbbf817d4b5db85d205867a71457
+#, fuzzy
+msgid "`callstate`"
+msgstr "`nua_callstate_received`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 13e6056ef9f04830a4dd1f0802c46f61
+msgid "Call state (`ACTIVE`, `RINGING`, …), not `CS_*`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 437f13e4c9c9467f9aedde7d66fdc52d
+msgid "`callee_name` / `callee_num`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: cb64a8ba2ce94989b05386ac12c47e29
+msgid "Callee display name / number on this channel"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 163d1c5913414b328df02065ff05eb63
+msgid "`callee_direction`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 03b0453b0f63459f84c418036427eefb
+msgid "Callee direction flag (`SEND` in this snapshot)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: d113455eddf644bc97f235d5b6d99129
+msgid "`call_uuid`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 899b020a87164c0faaedbd601647b941
+msgid "Call-level UUID shared by legs of the same call"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 4d4a63abaccb43c9b092f0b281aa3080
+msgid "`sent_callee_name` / `sent_callee_num`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 2ed00e0dae9a44e3b0e96e054e3b41b2
+msgid "Callee identity actually sent toward the peer"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 20b509e7d8134e0a9b35b5ff008ef1e4
+msgid "`initial_cid_name` / `initial_cid_num`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: a194139f8b8f48d1951a2a902ad5c656
+msgid "Caller ID at channel create"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 9023f69eab0e4b729cf9726be6b4a39a
+msgid "`initial_ip_addr` / `initial_dest`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 49d51767c47c4e87bafb003457d6da7b
+msgid "Remote IP and dest at create"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 8364d49104fa4945be948fc248726729
+msgid "`initial_dialplan` / `initial_context`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:362
+#: 42452f3996f34cf186c9654a5a97c744
+msgid "Dialplan / context at create"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:665
+#: b0332e5a54594f06953c70006a191db1
+msgid ""
+"`CS_EXECUTE`: channel is executing its dialplan. `CS_EXCHANGE_MEDIA`: "
+"channel is exchanging media with another channel (`switch_types.h`)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:667
+#: 3157b51e951a48bba9009ae5111f9bac
+msgid "Snapshot (lab, 2026-09-15)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:669
+#: b7d1277d80db47c08d35c699fe1c3064
+msgid ""
+"Header plus two rows from a running container. Values are a lab capture, "
+"not a production baseline."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:677
+#: 33d2f629b3214325a8652059202c445e
+msgid ""
+"Join the legs on **`call_uuid`**. When `call_uuid` equals the inbound "
+"`uuid`, that inbound channel is the call’s A-leg (the `calls` table uses "
+"that id as `call_uuid`)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:685
+#: ada7e8f66e26468da7bdcda440aee66c
+msgid "**Inbound leg** (`26ff4896-…`, `direction=inbound`):"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:687
+#: 5d4a7d32afd64611a54022b913083942
+msgid ""
+"`name` `sofia/internal/1002@10.100.212.8`: Sofia **internal** profile; "
+"authenticated user **1002** on domain `10.100.212.8`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:688
+#: 8cc463c548a0417ebaf922b5f34758f0
+#, python-brace-format
+msgid ""
+"`state=CS_EXECUTE`: still running dialplan. `application=bridge`, "
+"`application_data=user/1001@10.100.212.8` matches vanilla "
+"`Local_Extension` (`bridge` `user/${dialed_extension}@${domain_name}` in "
+"`conf/vanilla/dialplan/default.xml`)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:689
+#: 7085b420694347a186abaf4889a2f919
+msgid ""
+"`dest=1001`: dialed extension. `cid_*` and `initial_*` are still 1002 / "
+"`10.100.168.105` / dest `1001`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:690
+#: c71ba8dddad84b45ab9163d23d167624
+msgid "`ip_addr=10.100.168.105`: remote address of this SIP/WebRTC peer."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:691
+#: a154176fe507410f86e6e93f85f78d29
+msgid ""
+"Codecs: opus 48 kHz both ways. "
+"`secure=srtp:dtls:AES_CM_128_HMAC_SHA1_80`: DTLS-SRTP (typical WebRTC)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:692
+#: f093bd6cc1414cffa3dc1b1abf3d41ed
+msgid "`presence_id=1002@10.100.212.8`, `accountcode=1002`, `callstate=ACTIVE`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:693
+#: d22db7c8a03344f6b9924c57c082cb58
+msgid ""
+"`callee_num=ll7n8l5n` (and `sent_callee_*`): the **registered Contact "
+"user** of the B-leg, not the directory id `1001`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:695
+#: 5cdf06d4035a4086aa9769fe68b4bcd2
+msgid "**Outbound leg** (`5e2c53e0-…`, `direction=outbound`):"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:697
+#: 42f9461b6f1b492c9145d3b1dc7502f6
+msgid ""
+"Created about 11 seconds later (`created_epoch` 1789438686 vs "
+"1789438675): originate / answer delay after the A-leg started `bridge`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:698
+#: d26dfbd409d148c1b8af63ba2977e803
+msgid ""
+"`name` `sofia/internal/ll7n8l5n@8rv9m8q3nf0v.invalid`: outbound INVITE to"
+" Contact **`ll7n8l5n`**. Host `.invalid` is the RFC 2606 reserved TLD; "
+"SIP.js / JsSIP and similar WebRTC stacks often use a random "
+"`user@….invalid` Contact, not a resolvable DNS name."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:699
+#: 9ba4df0667f640af9ce82ae1e55f7405
+msgid ""
+"`state=CS_EXCHANGE_MEDIA`: media path with the other channel. "
+"`application` / `application_data` empty: this leg is not executing a "
+"dialplan app."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:700
+#: 7ab83c3ec99248ea9ad005dae6a81a7f
+msgid ""
+"`cid_name=Extension 1002`, `cid_num=1002`: caller identity presented "
+"toward 1001."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:701
+#: 76e9cd24e5824808bfc7154cd92f2626
+msgid ""
+"`dest=ll7n8l5n`: originate target is the Contact user. "
+"**`presence_id=1001@10.100.212.8`**: directory / presence user for this "
+"leg is **1001** — that is how the two names (`1001` vs `ll7n8l5n`) fit "
+"together."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:702
+#: 125ef4fb513443c2913e451ec81ad75e
+msgid ""
+"Same opus / DTLS-SRTP / `callstate=ACTIVE`. Same `call_uuid` as the "
+"inbound row."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:704
+#: 2ab2435c557c47ec99c2823e0b17017b
+msgid ""
+"This is a normal two-leg **bridge**: 1002 inbound → `bridge user/1001@…` "
+"→ FreeSWITCH originates to 1001’s current registration (here a WebRTC "
+"Contact). Use `uuid` for logs and `uuid_*` APIs; use `call_uuid` to group"
+" legs. SIP `Call-ID` is not this CSV."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:708
+#: 7b5fbfec953748c88568ca9d7a882b8f
+msgid "SIP Registration and Directory Lookup"
+msgstr "SIP 注册与 Directory 查找"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:712
+#: 6926ff4c47ea492d81c3884d2207200b
+msgid ""
+"**Trigger**: SIP `REGISTER` on a Sofia profile (`nua_i_register` → "
+"`sofia_reg_handle_sip_i_register()` in "
+"`src/mod/endpoints/mod_sofia/sofia_reg.c`). Directory lookup is also used"
+" for INVITE digest (`REG_INVITE`) and Verto login."
+msgstr ""
+"**触发条件**：Sofia 配置档上的 SIP `REGISTER`（`nua_i_register` → "
+"`src/mod/endpoints/mod_sofia/sofia_reg.c` 中的 "
+"`sofia_reg_handle_sip_i_register()`）。Directory 查找也用于 INVITE "
+"digest（`REG_INVITE`）和 Verto 登录。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:713
+#: 82966fe48dfa40f8ac4213d94bd942bf
+msgid ""
+"**Goal**: locate `user@domain` in the XML `directory` section, complete "
+"Digest (unless ACL/blind-reg), persist the Contact in Sofia "
+"`sip_registrations` and core `registrations`, answer **200 OK**, fire "
+"`CUSTOM sofia::register`."
+msgstr ""
+"**目标**：在 XML `directory` 段中定位 `user@domain`，完成 Digest（除非 ACL/blind-reg），将"
+" Contact 持久化到 Sofia `sip_registrations` 和核心 `registrations`，应答 **200 "
+"OK**，触发 `CUSTOM sofia::register`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:715
+#: 0480d07013cd415fa0ee2978a4a6b650
+#, python-brace-format
+msgid ""
+"Vanilla directory: domain `$${domain}` in "
+"`conf/vanilla/directory/default.xml`, users `1000`–`1019` under "
+"`conf/vanilla/directory/default/*.xml`. Password is "
+"`$${default_password}`. Domain for REGISTER is the To/From host unless "
+"the profile sets `reg-domain`."
+msgstr ""
+"Vanilla directory：`conf/vanilla/directory/default.xml` 中的域 "
+"`$${domain}`，用户 `1000`–`1019` 位于 "
+"`conf/vanilla/directory/default/*.xml`。密码为 "
+"`$${default_password}`。REGISTER 的域是 To/From host，除非配置档设置了 `reg-domain`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:750
+#: e9ca7394ec59441fb2c88bbf15092070
+msgid ""
+"**Profile gates.** If the profile lacks `MFLAG_REGISTER`, respond "
+"**403**. Optional `apply-register-acl`: reject IP → **403**; pass without"
+" `PFLAG_BLIND_REG` → `REG_AUTO_REGISTER` (skip digest). Vanilla internal "
+"has `apply-register-acl` commented out."
+msgstr ""
+"**配置档门禁。** 若配置档缺少 `MFLAG_REGISTER`，应答 **403**。可选 `apply-register-acl`：拒绝 "
+"IP → **403**；通过且无 `PFLAG_BLIND_REG` → `REG_AUTO_REGISTER`（跳过 "
+"digest）。Vanilla 内部配置档中 `apply-register-acl` 被注释掉。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:751
+#: e492c0320c4f4a6192c96fcecab566b7
+msgid ""
+"**Missing Contact.** With `reg_deny_binding_fetch_and_no_lookup`, no "
+"Contact → **400**. Otherwise a fetch-style REGISTER may proceed without "
+"adding a binding."
+msgstr ""
+"**缺少 Contact。** 若启用 `reg_deny_binding_fetch_and_no_lookup`，无 Contact → "
+"**400**。否则 fetch 式 REGISTER 可不添加绑定而继续。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:752
+#: 15f5116c51854e4e81ff6ae5acfb6e58
+msgid ""
+"**Challenge.** No `Authorization` (and not auto/blind) → "
+"`sofia_reg_auth_challenge()` inserts a nonce into `sip_authentication` "
+"and sends **401** `Digest realm=..., nonce=..., algorithm=MD5, "
+"qop=\"auth\"` (RFC 8760 extra algorithms when configured)."
+msgstr ""
+"**质询。** 无 `Authorization`（且非 auto/blind）→ `sofia_reg_auth_challenge()` 向 "
+"`sip_authentication` 插入 nonce，并发送 **401** `Digest realm=..., nonce=..., "
+"algorithm=MD5, qop=\"auth\"`（配置时还有 RFC 8760 额外算法）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:753
+#: 11fd0c90836e43a5be16d58829e4b70a
+msgid ""
+"**Locate the user.** `sofia_reg_parse_auth()` calls "
+"`switch_xml_locate_user_merged(\"id\", username, domain_name, ip, ...)`. "
+"Domain is `profile->reg_domain` if set, else Digest realm. Pointer users "
+"(`type=\"pointer\"` in group XML) cannot register. Missing user → "
+"`AUTH_FORBIDDEN` and the log line that the domain/user must exist in "
+"directory."
+msgstr ""
+"**定位用户。** `sofia_reg_parse_auth()` 调用 "
+"`switch_xml_locate_user_merged(\"id\", username, domain_name, ip, "
+"...)`。域为已设置的 `profile->reg_domain`，否则为 Digest realm。指针用户（组 XML 中 "
+"`type=\"pointer\"`）不能注册。用户不存在 → `AUTH_FORBIDDEN`，并记录 domain/user 必须存在于 "
+"directory 的日志行。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:754
+#: 06d9800556214a31915e589869e6c89d
+msgid ""
+"**Verify Digest.** Directory `<param name=\"password\">` or `a1-hash`. "
+"`sip-forbid-register=true` forbids. Per-user `auth-acl` can still reject "
+"the source IP. Results: `AUTH_OK`, `AUTH_RENEWED`, `AUTH_STALE` (re-"
+"challenge), `AUTH_FORBIDDEN`."
+msgstr ""
+"**校验 Digest。** Directory 的 `<param name=\"password\">` 或 `a1-hash`。`sip-"
+"forbid-register=true` 会禁止。每用户 `auth-acl` 仍可拒绝源 "
+"IP。结果：`AUTH_OK`、`AUTH_RENEWED`、`AUTH_STALE`（重新质询）、`AUTH_FORBIDDEN`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:755
+#: 9fba8e0c13d44af8a7b05f239d775d22
+msgid ""
+"**Store the binding.** `insert into sip_registrations` (or `update` on "
+"refresh) in `sofia_reg.c`; `switch_core_add_registration()` writes the "
+"core `registrations` table. Expires 0 deletes "
+"(`switch_core_del_registration`) and fires `CUSTOM sofia::unregister`."
+msgstr ""
+"**存储绑定。** 在 `sofia_reg.c` 中 `insert into sip_registrations`（刷新时 "
+"`update`）；`switch_core_add_registration()` 写入核心 `registrations` 表。Expires"
+" 0 删除（`switch_core_del_registration`）并触发 `CUSTOM sofia::unregister`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:756
+#: d944d3423b3d40d5bc4c6f38eaa6169b
+msgid ""
+"**Respond and notify.** **200 OK** with Contact list from positive-"
+"expires bindings. Fire `CUSTOM sofia::register` (`MY_EVENT_REGISTER`). "
+"Attempts also fire `sofia::register_attempt` with `auth-result` `SUCCESS`"
+" / `RENEWED` / `STALE` / `FORBIDDEN`."
+msgstr ""
+"**应答并通知。** **200 OK** 带正 Expires 绑定的 Contact 列表。触发 `CUSTOM "
+"sofia::register`（`MY_EVENT_REGISTER`）。尝试还会触发带 `auth-result` `SUCCESS` / "
+"`RENEWED` / `STALE` / `FORBIDDEN` 的 `sofia::register_attempt`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:757
+#: 400b48a33e624432a8d672877d78ad15
+msgid ""
+"**INVITE reuse.** Inbound INVITE with `PFLAG_AUTH_CALLS` calls the same "
+"`sofia_reg_handle_register(..., REG_INVITE, ...)` using `Proxy-"
+"Authorization` / `Authorization`, then copies directory variables onto "
+"the channel."
+msgstr ""
+"**INVITE 复用。** 带 `PFLAG_AUTH_CALLS` 的呼入 INVITE 走同一条 "
+"`sofia_reg_handle_register(..., REG_INVITE, ...)` 路径，使用 `Proxy-"
+"Authorization` / `Authorization`，然后将 directory 变量复制到通道。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:719
+#: fe75d8fb3b29437395dd22619b3c7455
+msgid "Profile not accepting REGISTER"
+msgstr "配置档不接受 REGISTER"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:719
+#: c93ece699767478ab929c8431d285c12
+msgid "`sofia_reg_handle_sip_i_register`"
+msgstr "`sofia_reg_handle_sip_i_register`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:719
+#: d1dfad77241848a2a0b7d91e839a199b
+msgid "SIP **403**"
+msgstr "SIP **403**"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:719
+#: 679ca739582f49b3b078a077ec582174
+msgid "Register ACL miss"
+msgstr "注册 ACL 未命中"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:719
+#: fe7ab42e84e046349e58c1f0591bed5a
+msgid "`reg_acl` loop"
+msgstr "`reg_acl` 循环"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:719
+#: b17196685f4f48239a414030635e8238
+msgid "SIP **403**; log `\"IP … Rejected by register acl\"`"
+msgstr "SIP **403**；日志 `\"IP … Rejected by register acl\"`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:719
+#: 74a9972e48834710b962a8f61f36eb5c
+msgid "Incomplete To/From"
+msgstr "To/From 不完整"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:719
+#: 0dec428052ab4536a35ad2d0b8a90091
+msgid "`sofia_reg_handle_register_token`"
+msgstr "`sofia_reg_handle_register_token`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:719
+#: af80a4b9c4a0409997ac0b601de2718f
+msgid "SIP **401**; log cannot authorize without complete header"
+msgstr "SIP **401**；日志记录缺少完整头无法鉴权"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:719
+#: eba8ad74ed0f43dbbd5bc2d129e28a42
+msgid "Unknown user / pointer user"
+msgstr "未知用户 / 指针用户"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:719
+#: 81709d7746c3461aaf616af233d47d61
+msgid "`AUTH_FORBIDDEN` → **403**"
+msgstr "`AUTH_FORBIDDEN` → **403**"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:719
+#: cf258216e0e843d79a889084314b562d
+msgid "Stale nonce"
+msgstr "过期 nonce"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:719
+#: 912e046d04c349c8bf18a45222c73995
+msgid "`AUTH_STALE`"
+msgstr "`AUTH_STALE`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:719
+#: 1b5f313b78c44d6583c723e933a083d5
+msgid "New **401** with `stale=true`"
+msgstr "新的 **401** 带 `stale=true`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:719
+#: 2b1d9618d6384b6da82ade9e7ccafd32
+msgid "`Expires: 0`"
+msgstr "`Expires: 0`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:719
+#: 73599a545e284af6aaf1d17b0b1e0197
+msgid "unregister branch"
+msgstr "unregister 分支"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:719
+#: f54683a5d0044e4da849f349361fa2b1
+msgid "Delete rows; `sofia::unregister`; **200**"
+msgstr "删除行；`sofia::unregister`；**200**"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:719
+#: a72a33d1c8ce4f408ba0923ef9eb8f03
+msgid "NAT / WS / TLS"
+msgstr "NAT / WS / TLS"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:719
+#: 984bb031f1b34912b2cbb222401cce03
+msgid "via / Contact / `nat-acl`"
+msgstr "via / Contact / `nat-acl`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:719
+#: 2787ecdf40d14dc3b2d34708fa8f2525
+msgid ""
+"Status text e.g. `Registered(WS-NAT)`; Contact rewritten toward received "
+"address"
+msgstr "状态文本例如 `Registered(WS-NAT)`；Contact 改写为指向收到的地址"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:719
+#: adc2cab272e54b67849231db8f763105
+msgid "`mod_xml_curl` directory"
+msgstr "`mod_xml_curl` directory"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:719
+#: d657d920881248e6a032a4b2f7c139ab
+msgid "`switch_xml_locate_user` open-root hook"
+msgstr "`switch_xml_locate_user` 的 open-root 钩子"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:719
+#: 1bebf542ffff44d0ab1a979ab3422441
+msgid ""
+"Same locate API; HTTP/LDAP backend is operator config — **[NEEDS INPUT: "
+"whether this deploy uses file XML or curl/LDAP]**"
+msgstr ""
+"同一套 locate API；HTTP/LDAP 后端由运维配置 — **[NEEDS INPUT: 本次部署使用文件 XML 还是 "
+"curl/LDAP]**"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:719
+#: e1a96685b2f24cdd87f0be4ff0243252
+msgid "`cacheable` user XML"
+msgstr "`cacheable` 用户 XML"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:719
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1032
+#: 0442f8e77e594daa9a841dd90c7331ae e5c640fdf80346dabaf942892e2910a6
+msgid "`switch_xml_locate_user_merged`"
+msgstr "`switch_xml_locate_user_merged`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:719
+#: 815f426a9e7d4584b1ffd766c7dfb5e9
+msgid ""
+"Cached user can survive `reloadxml` until TTL; vanilla demo users have no"
+" `cacheable` attr"
+msgstr "缓存用户可在 TTL 内挺过 `reloadxml`；vanilla 演示用户没有 `cacheable` 属性"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:775
+#: fb1c53f6356845b08060a41bb6e72ba8
+msgid ""
+"XML directory section; vanilla users `1000`–`1019`, groups `sales` / "
+"`billing` / `support` as pointers."
+msgstr ""
+"XML directory 段；vanilla 用户 `1000`–`1019`，组 `sales` / `billing` / "
+"`support` 作为指针。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:776
+#: 851eb07719144007883c205ad68403b0
+msgid ""
+"Sofia tables (`sofia_glue.c`): `sip_registrations`, `sip_authentication`,"
+" `sip_dialogs`, `sip_presence`, `sip_subscriptions`."
+msgstr ""
+"Sofia "
+"表（`sofia_glue.c`）：`sip_registrations`、`sip_authentication`、`sip_dialogs`、`sip_presence`、`sip_subscriptions`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:777
+#: eb433dee7780480696506437fef55a9c
+msgid ""
+"Core table `registrations` (`switch_core_add_registration` in "
+"`src/switch_core_sqldb.c`)."
+msgstr ""
+"核心表 `registrations`（`src/switch_core_sqldb.c` 中的 "
+"`switch_core_add_registration`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:778
+#: 699349f4165e4b5cb45780f0958431ab
+msgid ""
+"Events: `CUSTOM sofia::register`, `sofia::register_attempt`, "
+"`sofia::register_failure`, `sofia::unregister` (`MY_EVENT_*` in "
+"`mod_sofia.h`)."
+msgstr ""
+"事件：`CUSTOM "
+"sofia::register`、`sofia::register_attempt`、`sofia::register_failure`、`sofia::unregister`（`mod_sofia.h`"
+" 中的 `MY_EVENT_*`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:779
+#: ca53fab898df44ecab20abb3e78075b6
+msgid ""
+"Channel vars after INVITE auth: `sip_authorized`, directory `<variables>`"
+" (e.g. `user_context=default`)."
+msgstr ""
+"INVITE 鉴权后的通道变量：`sip_authorized`，directory `<variables>`（例如 "
+"`user_context=default`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:783
+#: 93010f86ec76481e8d26a7cd87762062
+msgid ""
+"`src/mod/endpoints/mod_sofia/sofia_reg.c` — "
+"`sofia_reg_handle_sip_i_register`, `sofia_reg_handle_register_token`, "
+"`sofia_reg_parse_auth`, `sofia_reg_auth_challenge`"
+msgstr ""
+"`src/mod/endpoints/mod_sofia/sofia_reg.c` — "
+"`sofia_reg_handle_sip_i_register`、`sofia_reg_handle_register_token`、`sofia_reg_parse_auth`、`sofia_reg_auth_challenge`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:784
+#: 2d15a20fcb0b468aba80851cfd8638ba
+msgid ""
+"`src/mod/endpoints/mod_sofia/sofia.c` — `nua_i_register` dispatch; INVITE"
+" `REG_INVITE`"
+msgstr ""
+"`src/mod/endpoints/mod_sofia/sofia.c` — `nua_i_register` 分发；INVITE "
+"`REG_INVITE`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:785
+#: ef1bdd336aa440108297ac6b6a18b3cd
+msgid ""
+"`src/switch_xml.c` — `switch_xml_locate_user_merged`, "
+"`switch_xml_locate_user`"
+msgstr ""
+"`src/switch_xml.c` — "
+"`switch_xml_locate_user_merged`、`switch_xml_locate_user`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:786
+#: f6af8b7b3d624d719eeb8e090ba97537
+msgid ""
+"`src/mod/endpoints/mod_sofia/sofia_glue.c` — `CREATE TABLE "
+"sip_registrations`"
+msgstr ""
+"`src/mod/endpoints/mod_sofia/sofia_glue.c` — `CREATE TABLE "
+"sip_registrations`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:787
+#: 88ff2c9412e846749a5f54c7b4f5652d
+msgid ""
+"`conf/vanilla/directory/default.xml`, "
+"`conf/vanilla/directory/default/1000.xml`"
+msgstr "`conf/vanilla/directory/default.xml`、`conf/vanilla/directory/default/1000.xml`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:788
+#: 999b2473ec114c968ef8f1afe3d1a5bd
+msgid ""
+"`conf/vanilla/sip_profiles/internal.xml` (`auth-calls`, commented `apply-"
+"register-acl`)"
+msgstr ""
+"`conf/vanilla/sip_profiles/internal.xml`（`auth-calls`，已注释的 `apply-"
+"register-acl`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:790
+#: 6965ff79470048678bb2941eb4cda8ac
+msgid "Worked example: REGISTER Digest after 401"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:792
+#: 82fe0c68e84d4e08aad56c08d15b5515
+msgid ""
+"Vanilla **internal** REGISTER is Digest (RFC 3261 / RFC 2617), not a "
+"cleartext password on the wire. The UAC sends REGISTER with **no** "
+"`Authorization`. `sofia_reg_auth_challenge()` "
+"(`src/mod/endpoints/mod_sofia/sofia_reg.c`) inserts a nonce into Sofia "
+"`sip_authentication` and answers **401** with `WWW-Authenticate`. After "
+"the UAC retries with `Authorization`, `sofia_reg_parse_auth()` locates "
+"the directory user and checks `password` or `a1-hash`. Success stores the"
+" Contact and returns **200 OK**. That binding is what later `bridge "
+"user/1001@…` looks up ([`show channels` during a bridge](#worked-example-"
+"show-channels-during-a-bridge))."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:794
+#: 233819d1f72a4340bbfa93a1568b8a40
+msgid ""
+"**REGISTER vs INVITE in this tree:** `REG_REGISTER` uses **401** + `WWW-"
+"Authenticate`. Inbound **INVITE** with `auth-calls` uses the same Digest "
+"math but **407** + `Proxy-Authenticate` (`sofia_reg_auth_challenge` when "
+"`regtype == REG_INVITE`). A 401/407 then a second request is the "
+"challenge, not by itself a failure."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:796
+#: faa82e9c36e84026a69229ca1dec3d82
+msgid ""
+"Default vanilla challenge string (no RFC 8760 extra algorithms): `Digest "
+"realm=\"…\", nonce=\"<uuid>\", algorithm=MD5, qop=\"auth\"`. Stale nonce "
+"adds `stale=true,`. Nonce TTL is `profile->nonce_ttl` or "
+"`DEFAULT_NONCE_TTL`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:798
+#: fc45a4627c4b40fb96e534852641e0d5
+#, python-brace-format
+msgid ""
+"Schematic lab messages for user **1002** registering to `10.100.212.8` "
+"(headers abbreviated; `Call-ID` / `nonce` / `response` below are "
+"**examples**, not a capture). Vanilla password is `$${default_password}` "
+"(`1234` in `conf/vanilla/vars.xml`) — demo only."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:820
+#: 1573a0b6f23f40afbbd071e9519aaf99
+msgid "**1. REGISTER without credentials** — no `Authorization` header:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:833
+#: 7774cc7b81a84d7a938410801bbb0790
+msgid "**2. 401 challenge** — `WWW-Authenticate` parameters:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:800
+#: d51a4243a3b04835b2c6cee88dc34282
+msgid "Parameter"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:800
+#: 602a10d977c642e5a4c20f4288a173a9
+msgid "`realm`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:800
+#: a432dc3cec094eecb80e752be0f09151
+msgid "Digest realm (often the SIP domain / challenge realm)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:800
+#: 7fa3d2041a3e49dea7845fe788cee64e
+msgid "`nonce`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:800
+#: aa23aa6e18f84864850172c79d1fe373
+msgid "Server nonce (here a UUID stored in `sip_authentication`; anti-replay)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:800
+#: 503e46f930534a909eedbb245f25e746
+msgid "`algorithm`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:800
+#: fe33c6955d7e41fc862e3a8b0b763261
+msgid "Hash algorithm (`MD5` by default; RFC 8760 algs when configured)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:800
+#: 03193b79907747e09d46b6c8e9277882
+msgid "`qop`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:800
+#: acecaac13af446bab3d242451d2c6646
+msgid "Quality of protection; vanilla uses `\"auth\"` (not `auth-int`)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:855
+#: f929ba3f0a6b4df9be0241eacbcfa9eb
+msgid ""
+"**3. UAC computes Digest and retries** — same `Call-ID`, **`CSeq` "
+"increments** (1 → 2). With `qop=auth` (RFC 2617):"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:863
+#: ac59a127505549b5bba14cdabecd7a33
+msgid ""
+"For this example: username `1002`, realm `10.100.212.8`, method "
+"`REGISTER`, URI `sip:10.100.212.8`. `nc` is the nonce count (`00000001` "
+"on first use); `cnonce` is client-generated. FreeSWITCH also accepts "
+"directory `a1-hash` (precomputed HA1) instead of a plaintext `password`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:800
+#: 0e367f056d4a4321a2b007daab2c0802
+msgid "Field"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:800
+#: b2498d9ee6c04107b1bfadd28d0cb028
+msgid "`username`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:800
+#: ad23b558df8045cb99ec793020c75ce2
+msgid "Digest user (directory id, here `1002`)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:800
+#: e20ed77ea51e43f383067b5ddb8e5de4
+msgid "`response`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:800
+#: 71c666891a7644919e87106855244942
+msgid "Client Digest (not the password)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:800
+#: c2a7a1414f334a5ab5b58621c3298c68
+msgid "`nc` / `cnonce`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:800
+#: 03db2bc1f8df4c58b10118eb6f23e9d9
+msgid "Nonce count and client nonce (replay resistance with `qop`)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:800
+#: e78324e091f9459bb50d54844418d988
+#, fuzzy
+msgid "`CSeq`"
+msgstr "情形"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:800
+#: 2c813305c8ec49d7b3a3356f85213f99
+msgid "Must increase for the authenticated retry"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:892
+#: b412082f489745f38a2bd08489894fb1
+msgid ""
+"**4. Registrar verifies** — recomputes Digest from directory credentials "
+"and compares `response`:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:894
+#: 2f442ee9f9364f13983b79ae78d18f2e
+msgid ""
+"Match (`AUTH_OK` / `AUTH_RENEWED`) → **200 OK**, insert/update "
+"`sip_registrations`, `switch_core_add_registration`, event `CUSTOM "
+"sofia::register`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:895
+#: 9da4ab944c37418cb0ed9d3b3c7e6901
+msgid ""
+"`AUTH_FORBIDDEN` → **403 Forbidden** (unknown user, bad password, `sip-"
+"forbid-register`, …)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:896
+#: abd140dc1c7a4e7f99daf5cd0d2b2715
+msgid ""
+"`AUTH_STALE` → new **401** with `stale=true`; client retries with the new"
+" nonce (password may still be correct)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:909
+#: ceb814edae8840f6ab28b21f71d7a488
+msgid ""
+"Why Digest instead of sending the password: the wire carries a hash bound"
+" to method, URI, and nonce; an old `response` cannot be replayed after "
+"the nonce expires. Digest is **not** equivalent to TLS: capture plus an "
+"offline attack on HA1 is still possible. Use SIPS/TLS for transport "
+"confidentiality; change vanilla `1234` before any public bind."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:800
+#: 80019c215fc34836b0a501c79110ffb4
+msgid "Symptom"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:800
+#: 783f9112cd394edb9771bf8f40556e15
+msgid "Typical cause in this tree"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:800
+#: 469b659fb30b43fc865b4e98b4b7fd6e
+msgid "Repeated **401**"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:800
+#: d1517c4d705a4f2385056235149ac989
+msgid ""
+"Missing/wrong `Authorization`, stale nonce, or another challenge "
+"(`AUTH_STALE`)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:800
+#: 5b9adf7741a844ad9fcf26ce00c297ee
+#, fuzzy
+msgid "**403**"
+msgstr "SIP **403**"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:800
+#: a0c662effaaa4e48a63c710e226b4929
+msgid ""
+"`AUTH_FORBIDDEN`: unknown directory user, bad password/`a1-hash`, pointer"
+" user, `sip-forbid-register`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:800
+#: ea88415d37184d39909237212cbebfd2
+msgid "`stale=true`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:800
+#: e7b43b7560c7418486eac028bbc1c87b
+msgid "Nonce expired or unknown; retry with the new nonce"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:800
+#: 2dbb11e8f87b496495298c6471590672
+msgid "Algorithm mismatch"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:800
+#: 8ee1555d802c476b8c38519e03561d17
+msgid "Client MD5 vs profile RFC 8760 algorithms (or the reverse)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:800
+#: 2ec3c1c4347c454b8dd02d26002ece4c
+msgid "REGISTER **403** before Digest"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:800
+#: 99a878b1b33545f4bccbe7145afcd60e
+msgid ""
+"Profile not accepting REGISTER, or `apply-register-acl` rejected the "
+"source IP"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:919
+#: 32df839849be4576b51e794e2f95c23c
+msgid ""
+"After **200 OK**, 1002 can place and receive calls on that Contact. "
+"Siptrace: `fs_cli -x \"sofia profile internal siptrace on\"` "
+"([Observability](../5.operations/02-observability.md))."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:923
+#: e171efef34df4cd88244cfb14d820f20
+msgid "ESL Originate and Event Control"
+msgstr "ESL Originate 与事件控制"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:927
+#: 1d73cfa1ac854a42b6683a07c5b0f352
+#, fuzzy
+msgid ""
+"**Trigger**: TCP client (`fs_cli` or custom `libs/esl`) connects to "
+"`mod_event_socket`. Vanilla listen: port **8021**, password "
+"**`ClueCon`**, `listen-ip` **`::`** in "
+"`conf/vanilla/autoload_configs/event_socket.conf.xml`. `fs_cli` itself "
+"defaults to **`127.0.0.1:8021`** / `ClueCon` (`libs/esl/fs_cli.c`). If "
+"`apply-inbound-acl` is unset, `config()` still applies "
+"**`loopback.auto`** before any `auth/request`."
+msgstr ""
+"**触发条件**：TCP 客户端（`fs_cli` 或自定义 `libs/esl`）连接到 `mod_event_socket`。Vanilla "
+"监听：端口 **8021**，密码 **`ClueCon`**，`listen-ip` **`::`**，见 "
+"`conf/vanilla/autoload_configs/event_socket.conf.xml`。`fs_cli` 自身默认 "
+"**`127.0.0.1:8021`** / `ClueCon`（`libs/esl/fs_cli.c`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:928
+#: 0eea4396cd0649e2b5101f1fc19c20ef
+msgid ""
+"**Goal**: authenticate, then run console APIs (`api` / `bgapi`, including"
+" `originate`), subscribe to events, and/or drive a live UUID with "
+"`sendmsg` (`call-command: execute|hangup|…`). Outbound mode: dialplan app"
+" `socket` connects **from** FreeSWITCH to a controller."
+msgstr ""
+"**目标**：鉴权，然后运行控制台 API（`api` / `bgapi`，包括 `originate`），订阅事件，和/或用 `sendmsg"
+"`（`call-command: execute|hangup|…`）驱动活动 UUID。呼出模式：dialplan 应用 `socket` "
+"**从** FreeSWITCH 连到控制器。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:930
+#: 6f33980c63e748e4bad331d25d604b5c
+#, fuzzy
+msgid ""
+"For production, bind ESL to loopback or a trusted management network, set"
+" `apply-inbound-acl` to an explicit list (commented-out is **not** “no "
+"ACL”), and replace `ClueCon`; the vanilla `listen-ip` is `::` (wildcard "
+"IPv6, with IPv4 behavior dependent on the host socket settings). Remote "
+"`fs_cli`: [Remote Event Socket ACL](../5.operations/01-runbook.md#remote-"
+"event-socket-acl). **[NEEDS INPUT: site ESL bind, ACL CIDR, and "
+"password]**."
+msgstr ""
+"生产环境应将 ESL 绑定到 loopback 或可信管理网络，启用入站 ACL 并替换 `ClueCon`；vanilla 的 `listen-"
+"ip` 为 `::`（通配 IPv6，IPv4 行为取决于主机套接字设置）。**[NEEDS INPUT: 站点 ESL 绑定地址和密码]**。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:976
+#: 415a301534714c3fa61703984993c870
+#, fuzzy
+msgid ""
+"**ACL, then challenge.** If `prefs.acl_count` is set (including the "
+"`loopback.auto` default), `switch_check_network_list_ip()` runs on "
+"`listener->remote_ip` **before** `auth/request`. A miss sends `Content-"
+"Type: text/rude-rejection` / `Access Denied, go away.` and closes the "
+"socket — `fs_cli` reports `Error Connecting []`. On allow, the listener "
+"sends `Content-Type: auth/request`. Until `LFLAG_AUTHED`, only `auth "
+"<password>` (compared to `prefs.password`) or `userauth user@domain:pass`"
+" (directory `esl-password` / `esl-allowed-api` / `esl-allowed-events`) "
+"are accepted. Wrong password: `-ERR invalid` and the socket is closed."
+msgstr ""
+"**接受并质询。** 监听线程发送 `Content-Type: auth/request`。在 `LFLAG_AUTHED` 之前，只接受 "
+"`auth <password>`（与 `prefs.password` 比较）或 `userauth "
+"user@domain:pass`（directory 的 `esl-password` / `esl-allowed-api` / `esl-"
+"allowed-events`）。密码错误：`-ERR invalid` 并关闭套接字。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:977
+#: 8255b55d002c4776b0d55687532a2c94
+msgid ""
+"**Parse commands.** `parse_command()` in `mod_event_socket.c`. After "
+"auth: `api`, `bgapi` (async + `Job-UUID` + `BACKGROUND_JOB`), `event` / "
+"`nixevent` / `noevents` / `myevents`, `sendmsg`, `sendevent`, `getvar`, "
+"`log`, `linger`, `exit` (`+OK bye`). Replies are `+OK` or `-ERR`."
+msgstr ""
+"**解析命令。** `mod_event_socket.c` 中的 `parse_command()`。鉴权后：`api`、`bgapi`（异步 "
+"+ `Job-UUID` + `BACKGROUND_JOB`）、`event` / `nixevent` / `noevents` / "
+"`myevents`、`sendmsg`、`sendevent`、`getvar`、`log`、`linger`、`exit`（`+OK "
+"bye`）。回复为 `+OK` 或 `-ERR`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:978
+#: 2455558d5fb34f8bbd9ec9e114fb2368
+msgid ""
+"**`api originate`.** `originate_function` in `mod_commands.c`. Syntax: "
+"`<call url> <exten>|&<application_name>(<app_args>) [<dialplan>] "
+"[<context>] [<cid_name>] [<cid_num>] [<timeout_sec>]`. Defaults: dialplan"
+" `XML`, context `default`, timeout **60s**. Calls "
+"`switch_ivr_originate()`. On success the new session is transferred into "
+"the extension or `&app(args)` inline extension; on failure `-ERR` plus "
+"`switch_channel_cause2str(cause)`."
+msgstr ""
+"**`api originate`。** `mod_commands.c` 中的 `originate_function`。语法：`<call "
+"url> <exten>|&<application_name>(<app_args>) [<dialplan>] [<context>] "
+"[<cid_name>] [<cid_num>] [<timeout_sec>]`。默认：dialplan `XML`，context "
+"`default`，超时 **60s**。调用 `switch_ivr_originate()`。成功时新会话转入 extension 或 "
+"`&app(args)` 内联 extension；失败则 `-ERR` 加上 "
+"`switch_channel_cause2str(cause)`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:979
+#: a82bcc2766a84581bc5d9fbb26724fcd
+msgid ""
+"**Outbound SIP leg.** `sofia_outgoing_channel()` sets `TFLAG_OUTBOUND` "
+"and `CS_INIT`. `sofia_on_init()` then `sofia_glue_do_invite()` sends the "
+"INVITE. Core also fires `SWITCH_EVENT_CHANNEL_ORIGINATE` for outbound "
+"legs."
+msgstr ""
+"**呼出 SIP 腿。** `sofia_outgoing_channel()` 设置 `TFLAG_OUTBOUND` 和 "
+"`CS_INIT`。随后 `sofia_on_init()` 再由 `sofia_glue_do_invite()` 发送 "
+"INVITE。核心还会为呼出腿触发 `SWITCH_EVENT_CHANNEL_ORIGINATE`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:980
+#: 58d893e17cd44f169fbc167e008d2dd7
+msgid ""
+"**`sendmsg`.** Headers include `call-command`. `switch_ivr_parse_event()`"
+" hashes `execute` (needs `execute-app-name` / `execute-app-arg`), "
+"`hangup`, `nomedia`, `unicast`, `xferext`. With a UUID, the event is "
+"queued on that session (`switch_core_session_queue_private_event`); "
+"outbound `socket` sessions may run it inline."
+msgstr ""
+"**`sendmsg`。** 头字段包含 `call-command`。`switch_ivr_parse_event()` 哈希 "
+"`execute`（需要 `execute-app-name` / `execute-app-"
+"arg`）、`hangup`、`nomedia`、`unicast`、`xferext`。有 UUID "
+"时事件入队到该会话（`switch_core_session_queue_private_event`）；呼出 `socket` 会话可内联执行。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:981
+#: 0ed147fe6f70474cbde2357acd36651f
+msgid ""
+"**Outbound ESL (`socket` app).** `SWITCH_ADD_APP(..., \"socket\", ..., "
+"socket_function, \"<ip>[:<port>]\")`. The channel connects out; the "
+"controller sends the same `sendmsg` vocabulary. `LFLAG_OUTBOUND` without "
+"`LFLAG_FULL` skips inbound-only commands (`api`, `sendevent`, …)."
+msgstr ""
+"**呼出 ESL（`socket` 应用）。** `SWITCH_ADD_APP(..., \"socket\", ..., "
+"socket_function, \"<ip>[:<port>]\")`。通道向外连接；控制器发送同一套 `sendmsg` "
+"词汇。`LFLAG_OUTBOUND` 且无 `LFLAG_FULL` 时跳过仅呼入命令（`api`、`sendevent`、…）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:982
+#: f1880d243a3e4c31a273e3661cd3a01b
+msgid ""
+"**Events to the client.** `mod_event_socket` binds `SWITCH_EVENT_ALL`. "
+"Serialize with `switch_event_serialize()` (plain) or JSON. Do not block "
+"the event thread (`switch_event.h`)."
+msgstr ""
+"**发给客户端的事件。** `mod_event_socket` 绑定 `SWITCH_EVENT_ALL`。用 "
+"`switch_event_serialize()`（plain）或 JSON 序列化。不要阻塞事件线程（`switch_event.h`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:984
+#: cc7a5323154a47e59f3c5dfd2c1e7499
+msgid ""
+"`bgapi` is the non-blocking form of `api`; `originate` itself can block "
+"up to the timeout (the API logs a notice if invoked on an existing "
+"session)."
+msgstr "`bgapi` 是 `api` 的非阻塞形式；`originate` 本身可阻塞直到超时（若在已有会话上调用，API 会记一条 notice）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: 42eeb1d749094238aea54f584d585f12
+msgid "Source IP not in ESL ACL"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: 2a174e32b5344dab936ba6916c4547ab
+msgid "`listener_run` ACL loop"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: 5332e940f495430aa8263e6e2ed808b6
+msgid ""
+"`text/rude-rejection` / `Access Denied, go away.`; no `auth/request`. "
+"Default list is `loopback.auto` when `apply-inbound-acl` is unset"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: 18a1f595af9841b381a232842ad4b06c
+msgid "Bad ESL password"
+msgstr "错误的 ESL 密码"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: b7105961b3e1423f8e2cf56279aa3770
+msgid "`parse_command` auth"
+msgstr "`parse_command` 鉴权"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: a61ea29f998047099beb8c02c5fe3fbc
+msgid "`-ERR invalid`; connection dropped"
+msgstr "`-ERR invalid`；连接断开"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: f8ef8baf54874b1da605381db4679427
+msgid "Command before auth"
+msgstr "鉴权前的命令"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: 1fcdf020c9e242dca5fe24f42ac93933
+msgid "`LFLAG_AUTHED` check"
+msgstr "`LFLAG_AUTHED` 检查"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: 83f3fa6f93b44b5eb0ec4938c2e6ab4e
+msgid "Ignored except `auth` / `userauth`"
+msgstr "除 `auth` / `userauth` 外忽略"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: e7d4ce97cd5644ad85e35ddadcfd6b58
+msgid "`userauth` API not in allow-list"
+msgstr "`userauth` API 不在允许列表"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: 3f33ac364e6547e5aa62ae4447af00e4
+msgid "`auth_api_command`"
+msgstr "`auth_api_command`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: a689308de3794294a8cc85affff66b5e
+msgid "`-ERR permission denied`"
+msgstr "`-ERR permission denied`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: d385fe3364b24f98be0cd7ec4361cd23
+msgid "`originate` argc not 2–7"
+msgstr "`originate` 的 argc 不是 2–7"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: 397d3c60d50b4749bbc470d3a9fc530d
+msgid "`originate_function`"
+msgstr "`originate_function`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: d5a52283362e4b0eaef2bf014b0ae277
+msgid "`-USAGE:` plus `ORIGINATE_SYNTAX`"
+msgstr "`-USAGE:` 加上 `ORIGINATE_SYNTAX`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: c83d36ca48ef4a51b6a02dd4f47aec98
+msgid "Originate timeout / SIP fail"
+msgstr "Originate 超时 / SIP 失败"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: 19ff2910c84846749f591794ab8e0f11
+msgid "`switch_ivr_originate`"
+msgstr "`switch_ivr_originate`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: 3f11c11475fb434996f00bf6166f9df2
+msgid "`-ERR` cause string (`NO_ANSWER`, `USER_BUSY`, …)"
+msgstr "`-ERR` 原因字符串（`NO_ANSWER`、`USER_BUSY`、…）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: cf7d354dec6c44bf9ffe82bc6a4531c8
+msgid "`sendmsg` unknown UUID"
+msgstr "`sendmsg` 未知 UUID"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: dd300ca256724666af185dfd356d4e70
+msgid "`parse_command`"
+msgstr "`parse_command`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: 57863b83372c47938fb795d9a3156cc1
+msgid "`-ERR invalid session id [… ]`"
+msgstr "`-ERR invalid session id [… ]`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: f3561ee9db1447869164d04c9ada3290
+msgid "Missing `call-command`"
+msgstr "缺少 `call-command`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: 92bd00fc17804e4fb200b33cdfeef4b3
+msgid "`switch_ivr_parse_event`"
+msgstr "`switch_ivr_parse_event`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: a41f23b829bb48f4a3a369c844add414
+msgid "Log `\"Invalid Command!\"`; `SWITCH_STATUS_FALSE`"
+msgstr "日志 `\"Invalid Command!\"`；`SWITCH_STATUS_FALSE`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: 2192b63468f74b7898793f321171adf1
+msgid "Unload/reload `mod_event_socket` via `api`"
+msgstr "通过 `api` 卸载/重载 `mod_event_socket`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: 869bdcd19d274edc9ba747e32c56f722
+msgid "cheat rewrite"
+msgstr "作弊改写"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: 1ea6519253a649878cf764b6fe504743
+msgid "Forced to `bgapi` so the listener thread is not torn down mid-command"
+msgstr "强制改为 `bgapi`，以免监听线程在命令执行中被拆掉"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: e242472c27aa4ae4b026449847d156cb
+msgid "Slow ESL consumer"
+msgstr "缓慢的 ESL 消费者"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: 045e4995404d426fb91a6e98ccc9e6b8
+msgid "event delivery thread"
+msgstr "事件投递线程"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:939
+#: a4f138f9be5c42d4900b62c52e79e397
+msgid "Core warns; client must queue locally"
+msgstr "核心发出警告；客户端必须本地排队"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1003
+#: 8e12da504f954db6bd5cf17eb35bc00c
+#, fuzzy
+msgid ""
+"ESL line protocol after `auth` (see [Data and API](04-data-and-api.md) "
+"command table)."
+msgstr "`auth` 之后的 ESL 行协议（见 [数据与 API](05-data-and-api.md) 命令表）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1004
+#: 5e22b20ad984432c913645b7966e2488
+msgid ""
+"Console APIs: `originate`, `uuid_kill`, `uuid_bridge`, `uuid_transfer`, "
+"`status`, `show channels` (`mod_commands.c`)."
+msgstr ""
+"控制台 "
+"API：`originate`、`uuid_kill`、`uuid_bridge`、`uuid_transfer`、`status`、`show "
+"channels`（`mod_commands.c`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1005
+#: 6be0e4a866b04b2da9ff57bf1e26c7be
+msgid "Events as subscribed; `BACKGROUND_JOB` for `bgapi`."
+msgstr "按订阅投递事件；`bgapi` 对应 `BACKGROUND_JOB`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1006
+#: 96754d456d084224b0944ac95bd8dea3
+msgid ""
+"Channel UUID returned on successful originate — handle for later "
+"`sendmsg` / `uuid_*`."
+msgstr "成功 originate 返回的通道 UUID — 供后续 `sendmsg` / `uuid_*` 使用。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1010
+#: 09d6f2ca36e0465eaffcebb919e7b218
+#, fuzzy
+msgid ""
+"`src/mod/event_handlers/mod_event_socket/mod_event_socket.c` — `config()`"
+" (`loopback.auto` default), ACL `text/rude-rejection`, `parse_command`, "
+"`LFLAG_AUTHED`, `socket_function`"
+msgstr ""
+"`src/mod/event_handlers/mod_event_socket/mod_event_socket.c` — "
+"`parse_command`、`LFLAG_AUTHED`、`socket_function`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1011
+#: ff05757dc1c74559a656555f1e17510b
+msgid "`libs/esl/src/esl.c` — `esl_connect_timeout`, `esl_send_recv`"
+msgstr "`libs/esl/src/esl.c` — `esl_connect_timeout`、`esl_send_recv`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1012
+#: 3532d41b0272428aa133d8c244aaecaf
+msgid ""
+"`libs/esl/fs_cli.c` — default host/port/password; `-x` one-shot (`fs_cli "
+"-x status`)"
+msgstr "`libs/esl/fs_cli.c` — 默认 host/port/password；`-x` 一次性命令（`fs_cli -x status`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1013
+#: ff0194e497b84cf18bfd9049e828b211
+msgid ""
+"`src/mod/applications/mod_commands/mod_commands.c` — "
+"`originate_function`, `ORIGINATE_SYNTAX`"
+msgstr ""
+"`src/mod/applications/mod_commands/mod_commands.c` — "
+"`originate_function`、`ORIGINATE_SYNTAX`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1014
+#: 5f295c7ea2ea4fb2bb5a255facac0682
+msgid ""
+"`src/include/switch_ivr.h` / `src/switch_ivr_originate.c` — "
+"`switch_ivr_originate`"
+msgstr ""
+"`src/include/switch_ivr.h` / `src/switch_ivr_originate.c` — "
+"`switch_ivr_originate`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1015
+#: 1a2921c4aab14654957fa493af04c718
+msgid "`src/switch_ivr.c` — `switch_ivr_parse_event` (`call-command`)"
+msgstr "`src/switch_ivr.c` — `switch_ivr_parse_event`（`call-command`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1016
+#: e011426be5e5461d9ad883c6a1c8f741
+msgid "`src/switch_event.c` — bus, `switch_event_serialize`"
+msgstr "`src/switch_event.c` — 事件总线，`switch_event_serialize`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1017
+#: b77a4f7c4d9e4040a45498ad3d9ca30f
+msgid "`conf/vanilla/autoload_configs/event_socket.conf.xml`"
+msgstr "`conf/vanilla/autoload_configs/event_socket.conf.xml`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1018
+#: e2e76d423aff44ca92593160c1954025
+#, fuzzy
+msgid "`conf/vanilla/autoload_configs/acl.conf.xml`"
+msgstr "`conf/vanilla/autoload_configs/event_socket.conf.xml`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1019
+#: 8b4f396736514e928cabe4f08ebac3cf
+msgid "`src/switch_core.c` — `loopback.auto` (`127.0.0.0/8`, `::1/128`)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1023
+#: ef18bf367f384cac9683d314ba21dadd
+msgid "XML Reload"
+msgstr "XML 重载"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1027
+#: 35296bdd112940e797c3a9a1527b06d6
+msgid ""
+"**Trigger**: console/ESL `reloadxml` (`reload_xml_function` in "
+"`mod_commands.c`), or `reloadacl` / `sofia profile <name> rescan` which "
+"also call `switch_xml_reload()`."
+msgstr ""
+"**触发条件**：控制台/ESL `reloadxml`（`mod_commands.c` 中的 "
+"`reload_xml_function`），或同样会调用 `switch_xml_reload()` 的 `reloadacl` / "
+"`sofia profile <name> rescan`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1028
+#: aba7891893c1451bbd4cc40681a7b03f
+msgid ""
+"**Goal**: re-parse `conf_dir` + `freeswitch.xml` (vanilla root "
+"`conf/vanilla/freeswitch.xml` with preprocessor includes), replace "
+"`MAIN_XML_ROOT`, fire `SWITCH_EVENT_RELOADXML` so **new** dialplan hunts "
+"and directory locates see the new tree. In-flight sessions keep the "
+"extension they already hunted."
+msgstr ""
+"**目标**：重新解析 `conf_dir` + `freeswitch.xml`（vanilla 根为带预处理器 include 的 "
+"`conf/vanilla/freeswitch.xml`），替换 `MAIN_XML_ROOT`，触发 "
+"`SWITCH_EVENT_RELOADXML`，使**新的** dialplan 查找和 directory "
+"定位看到新树。进行中的会话仍保留已经查到的 extension。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1057
+#: fdeab5214670488d9e2d7b4681a54990
+#, python-format
+msgid ""
+"(`reload_xml_function` always prints `+OK [%s]` with the `err` string "
+"from `switch_xml_reload` — including failure text. Check the bracketed "
+"message, not only `+OK`.)"
+msgstr ""
+"（`reload_xml_function` 始终打印带 `switch_xml_reload` 返回的 `err` 字符串的 `+OK "
+"[%s]` — 包括失败文本。请检查方括号内的消息，不要只看 `+OK`。）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1061
+#: 693a626adc504da6b40dae5025ff93d7
+msgid ""
+"**Re-open root.** `switch_xml_reload()` → `switch_xml_open_root(1, err)` "
+"→ `__switch_xml_open_root()`. Path: `SWITCH_GLOBAL_dirs.conf_dir` + "
+"`SWITCH_GLOBAL_filenames.conf_name`. Preprocessor expands `X-PRE-PROCESS`"
+" / `#include` / `#set`. Flattened copy remains `freeswitch.xml.fsxml` (do"
+" not edit while running)."
+msgstr ""
+"**重新打开 root。** `switch_xml_reload()` → `switch_xml_open_root(1, err)` → "
+"`__switch_xml_open_root()`。路径：`SWITCH_GLOBAL_dirs.conf_dir` + "
+"`SWITCH_GLOBAL_filenames.conf_name`。预处理器展开 `X-PRE-PROCESS` / `#include` /"
+" `#set`。展平副本仍为 `freeswitch.xml.fsxml`（运行中不要编辑）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1062
+#: 1c3ca303a27346f48de16046758fafc2
+msgid ""
+"**Commit or keep old.** Parse error: `switch_xml_error()` copied to "
+"`err`, new tree discarded, previous root stays. Success: "
+"`switch_xml_set_root(new_main)`, `err` = `\"Success\"`."
+msgstr ""
+"**提交或保留旧树。** 解析错误：`switch_xml_error()` 复制到 `err`，新树丢弃，保留原 "
+"root。成功：`switch_xml_set_root(new_main)`，`err` = `\"Success\"`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1063
+#: ffa6eec1abb843a595422fdebbed0bc7
+msgid ""
+"**Notify.** If a root is returned, `SWITCH_EVENT_RELOADXML` is fired "
+"(`switch_xml_open_root`). Modules that `switch_event_bind(..., "
+"SWITCH_EVENT_RELOADXML, ...)` refresh themselves (examples in-tree: "
+"`mod_voicemail` does not bind this id for its main config in the same "
+"way; `mod_enum`, `mod_cidlookup`, `mod_loopback`, `mod_avmd`, "
+"`mod_tts_commandline` do)."
+msgstr ""
+"**通知。** 若返回了 root，则触发 `SWITCH_EVENT_RELOADXML`（`switch_xml_open_root`）。通过"
+" `switch_event_bind(..., SWITCH_EVENT_RELOADXML, ...)` "
+"绑定的模块会自行刷新（树内示例：`mod_voicemail` 不以同样方式绑定该 id "
+"来刷新主配置；`mod_enum`、`mod_cidlookup`、`mod_loopback`、`mod_avmd`、`mod_tts_commandline`"
+" 会绑定）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1064
+#: baa77c30f9e541c888090d4e0f8a1963
+msgid ""
+"**What picks up immediately.** Next `dialplan_hunt()` / "
+"`switch_xml_locate_user()` reads the new root. Vanilla file users without"
+" `cacheable` are re-read from XML."
+msgstr ""
+"**立即生效的部分。** 下一次 `dialplan_hunt()` / `switch_xml_locate_user()` 读取新 "
+"root。没有 `cacheable` 的 vanilla 文件用户会从 XML 重新读取。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1065
+#: 83ab489f2b1e47cfbd5c1c98b74e1161
+#, fuzzy
+msgid ""
+"**What does not auto-apply.** `mod_sofia` does **not** bind "
+"`SWITCH_EVENT_RELOADXML`. `sofia profile <name> rescan` reloads supported"
+" profile data and reparses gateways, domains, and aliases, but it does "
+"not rebind transport sockets. Changes to `sip-ip`, `sip-port`, TLS, `ws-"
+"binding`, or `wss-binding` require a profile restart or process restart. "
+"ACL lists: `reloadacl` reloads XML **and** "
+"`switch_load_network_lists(SWITCH_TRUE)`. Loaded DSOs: adding or removing"
+" `<load>` in `modules.conf.xml` is **not** applied by `reloadxml`; use "
+"`load` / `unload` / `reload` or restart. See [Runtime load tag](#runtime-"
+"load-tag)."
+msgstr ""
+"**不会自动生效的部分。** `mod_sofia` **不会**绑定 `SWITCH_EVENT_RELOADXML`。`sofia "
+"profile <name> rescan` 会重新加载支持的配置档数据并重新解析网关、域和别名，但不会重新绑定传输套接字。修改 `sip-ip"
+"`、`sip-port`、TLS、`ws-binding` 或 `wss-binding` 后必须重启配置档或进程。ACL "
+"列表：`reloadacl` 会重载 XML **并**调用 "
+"`switch_load_network_lists(SWITCH_TRUE)`。已加载的 DSO：`reload <module>` 与 XML"
+" 分开处理。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1067
+#: 0104426021b0453d9a2184a72eac70cc
+msgid ""
+"`mod_xml_curl` (when enabled) may replace `__switch_xml_open_root` via "
+"`switch_xml_set_open_root_function()` — then “reload” is whatever that "
+"hook does (HTTP fetch). **[NEEDS INPUT: whether this deploy uses "
+"`mod_xml_curl` for live XML]**."
+msgstr ""
+"`mod_xml_curl`（启用时）可通过 `switch_xml_set_open_root_function()` 替换 "
+"`__switch_xml_open_root` — 此时“reload”就是该钩子所做的事（HTTP 拉取）。**[NEEDS INPUT: "
+"本次部署是否用 `mod_xml_curl` 提供实时 XML]**。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1032
+#: cda943dbb1ad4a51b4fc78bb3b314e72
+msgid "Broken include / bad XML"
+msgstr "损坏的 include / 错误 XML"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1032
+#: 90a304e039a14da192fa2da3ab8baf7d
+msgid "`__switch_xml_open_root`"
+msgstr "`__switch_xml_open_root`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1032
+#: 6dac3dc37abd4634bc134bfc13efc36a
+msgid ""
+"`err` set (e.g. parser message or `\"Cannot Open log directory or XML "
+"Root!\"`); old root kept"
+msgstr "设置 `err`（例如解析器消息或 `\"Cannot Open log directory or XML Root!\"`）；保留旧 root"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1032
+#: b78bb6d253b2491b85a05d9bd54d317a
+msgid "Success string vs API prefix"
+msgstr "成功字符串 vs API 前缀"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1032
+#: f96b41ca45c046a1b40f42513587e21c
+msgid "`reload_xml_function`"
+msgstr "`reload_xml_function`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1032
+#: 815b66f836ad405da7f95a5ca4880762
+#, python-format
+msgid "Stream is always `+OK [%s]\\n` — inspect `%s`"
+msgstr "输出流始终为 `+OK [%s]\\n` — 检查 `%s`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1032
+#: 73f6106b5a4c4a06bbbe206d3f0581f5
+msgid "In-call session"
+msgstr "通话中的会话"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1032
+#: 24ba9cc624cf44aeb0145a6e10260c85
+msgid "dialplan already hunted"
+msgstr "dialplan 已经查找过"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1032
+#: a95c8ff322584aa4ba1f4372c4442ce6
+msgid "Continues current extension; next transfer/new call uses new XML"
+msgstr "继续当前 extension；下一次 transfer/新呼叫使用新 XML"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1032
+#: a869a291e4ed421181d4b64784f3d310
+msgid "`cacheable` directory users"
+msgstr "`cacheable` directory 用户"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1032
+#: 2725d70270a94ed4815dbcdb3d873dc6
+msgid ""
+"Cache **not** cleared by `switch_xml_set_root`; stale user until TTL or "
+"`switch_xml_clear_user_cache`"
+msgstr ""
+"`switch_xml_set_root` **不会**清除缓存；用户会过期直到 TTL 或 "
+"`switch_xml_clear_user_cache`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1032
+#: 25359c502f5b44b0beee08c4b3767581
+msgid "Sofia bind/codec/gateway XML"
+msgstr "Sofia 绑定/编解码/网关 XML"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1032
+#: 8fa9ccabed594d1f846ae624d39b47d3
+msgid "`mod_sofia` (no RELOADXML bind)"
+msgstr "`mod_sofia`（未绑定 RELOADXML）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1032
+#: e9ffc92fdc434791a2a8b0111ec4a1df
+msgid "Still running old profile until `sofia profile <name> rescan` / `restart`"
+msgstr "仍运行旧配置档，直到 `sofia profile <name> rescan` / `restart`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1032
+#: feb67736b50245e39ae3a8e847cd4ff6
+msgid "ACL XML only"
+msgstr "仅 ACL XML"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1032
+#: 901c42cd4919412291d5b8662dd969e8
+msgid "`reloadxml` alone"
+msgstr "仅 `reloadxml`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1032
+#: 9524279d0e5242889b2ef2c4dfda55d4
+msgid "Network lists not rebuilt until `reloadacl`"
+msgstr "网络列表直到 `reloadacl` 才重建"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1032
+#: 42f7639afb4e458b8f82fb4570b1f1ee
+msgid "`reloadacl reloadxml` extra arg"
+msgstr "`reloadacl reloadxml` 额外参数"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1032
+#: cb7584b48b654e059b459d8deeae057b
+msgid "`reload_acl_function`"
+msgstr "`reload_acl_function`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1032
+#: 89d69d58bfc0442284ec17dd6ca11e2f
+msgid "Deprecated notice; ACL path **always** reloads XML now"
+msgstr "已弃用提示；ACL 路径现在**总是**重载 XML"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1083
+#: 7c47ab9781ae457ca12040709c2894d8
+msgid ""
+"XML sections: `configuration`, `dialplan`, `directory`, `chatplan`, "
+"`languages` (`conf/vanilla/freeswitch.xml`)."
+msgstr ""
+"XML "
+"段：`configuration`、`dialplan`、`directory`、`chatplan`、`languages`（`conf/vanilla/freeswitch.xml`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1084
+#: f6c58abd447f4332b60e1fb3ae8b37dd
+msgid "Event `SWITCH_EVENT_RELOADXML` (`switch_types.h`)."
+msgstr "事件 `SWITCH_EVENT_RELOADXML`（`switch_types.h`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1085
+#: 6ad0e2e05b3d496794a4a5c117182bf9
+msgid ""
+"Sofia CLI: `sofia profile <name> [start\\|stop\\|restart\\|rescan]` "
+"(`mod_sofia.c`)."
+msgstr ""
+"Sofia CLI：`sofia profile <name> "
+"[start\\|stop\\|restart\\|rescan]`（`mod_sofia.c`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1089
+#: b0ba5740aea047cdbd037a788ecc956c
+msgid ""
+"`src/mod/applications/mod_commands/mod_commands.c` — "
+"`reload_xml_function`, `reload_acl_function`"
+msgstr ""
+"`src/mod/applications/mod_commands/mod_commands.c` — "
+"`reload_xml_function`、`reload_acl_function`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1090
+#: 5bb95142bc7d4704a414ae26c18125f5
+msgid ""
+"`src/switch_xml.c` — `switch_xml_reload`, `switch_xml_open_root`, "
+"`__switch_xml_open_root`, `switch_xml_set_root`"
+msgstr ""
+"`src/switch_xml.c` — "
+"`switch_xml_reload`、`switch_xml_open_root`、`__switch_xml_open_root`、`switch_xml_set_root`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1091
+#: e20f4a4ed83349bab81b97fc4ef9336c
+msgid "`src/mod/endpoints/mod_sofia/mod_sofia.c` — `sofia profile … rescan`"
+msgstr "`src/mod/endpoints/mod_sofia/mod_sofia.c` — `sofia profile … rescan`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1092
+#: f969a5e67369496bb7669c0b702d8d3d
+msgid "`conf/vanilla/freeswitch.xml`"
+msgstr "`conf/vanilla/freeswitch.xml`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1096
+#: 61ca12b9e71c4a8c91fac8b704b7c176
+msgid "Related Documentation"
+msgstr "相关文档"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1098
+#: 4a1e11476fb84de1b0216300c25bf312
+msgid ""
+"[Architecture](01-architecture.md) (registry: [Loadable module "
+"contract](01-architecture.md#loadable-module-contract))"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1099
+#: 154a2c16372f4b88bae7634d16557bd3
+#, fuzzy
+msgid "[Data and API](04-data-and-api.md)"
+msgstr "[数据与 API](05-data-and-api.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1100
+#: b9d79609c21b4557a6513910dd32aeb2
+#, fuzzy
+msgid "[Testing](../4.development/03-testing.md)"
+msgstr "[测试](09-testing.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1101
+#: f5594d8829d745cf920cfcbdaa297c66
+msgid ""
+"[Runbook](../5.operations/01-runbook.md) (`show channels`: [worked "
+"example](05-workflows.md#worked-example-show-channels-during-a-bridge); "
+"follow a call: [channel UUID](../5.operations/01-runbook.md#follow-one-"
+"call-by-channel-uuid); REGISTER Digest: [401 example](05-workflows.md"
+"#worked-example-register-digest-after-401))"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/1.architecture/05-workflows.md:1102
+#: 1642081042c940ce81fa81a8b60b9960
+#, fuzzy
+msgid ""
+"[Users Manual Ch "
+"1](https://developer.signalwire.com/freeswitch/foundations/introduction),"
+" [Ch 5 modules](https://developer.signalwire.com/freeswitch/configuration"
+"/module-loading/), [Ch 7 SIP "
+"profiles](https://developer.signalwire.com/freeswitch/users-and-endpoints"
+"/sip-profiles), [Ch 12 "
+"Dialplan](https://developer.signalwire.com/freeswitch/dialplan/xml)"
+msgstr ""
+"[用户手册第 1 "
+"章](https://developer.signalwire.com/freeswitch/foundations/introduction)、[第"
+" 7 章 SIP profiles](https://developer.signalwire.com/freeswitch/users-and-"
+"endpoints/sip-profiles)、[第 12 章 "
+"Dialplan](https://developer.signalwire.com/freeswitch/dialplan/xml)"
+
+#~ msgid "[Inbound SIP call](#inbound-sip-call)"
+#~ msgstr "[呼入 SIP 呼叫](#inbound-sip-call)"
+
+#~ msgid "[Architecture](02-architecture.md)"
+#~ msgstr "[架构](02-architecture.md)"
+
+#~ msgid "[Runbook](10-runbook.md)"
+#~ msgstr "[运维手册](10-runbook.md)"
+
+#~ msgid ""
+#~ "Same pattern for API `\"status\"` via"
+#~ " `SWITCH_ADD_API` / `switch_api_execute`. "
+#~ "Endpoints differ: name → **vtable** "
+#~ "(`io_routines`), not one function. "
+#~ "Architecture: [Golden path: "
+#~ "answer](02-architecture.md#golden-path-answer)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Same pattern for API `\"status\"` via"
+#~ " `SWITCH_ADD_API` / `switch_api_execute`. "
+#~ "Endpoints differ: name → **vtable** "
+#~ "(`io_routines`), not one function. "
+#~ "Architecture: {ref}`Golden path: answer "
+#~ "<golden-path-answer>`."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**tport** (`libsofia-sip-ua/tport`) — "
+#~ "`recvfrom` / TCP `read` (TLS decrypt,"
+#~ " WebSocket unframe). UDP is usually "
+#~ "one SIP message per datagram "
+#~ "(`NTATAG_UDP_MTU(65535)` on IPv4 in "
+#~ "`nua_create`). TCP is framed with "
+#~ "`Content-Length`. `TPTAG_LOG` / `sofia "
+#~ "profile <name> siptrace on` dumps this"
+#~ " layer "
+#~ "([Observability](../4.operations/11-observability.md))."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "After **200 OK**, 1002 can place "
+#~ "and receive calls on that Contact. "
+#~ "Siptrace: `fs_cli -x \"sofia profile "
+#~ "internal siptrace on\"` "
+#~ "([Observability](../4.operations/11-observability.md))."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "[Runbook](../4.operations/10-runbook.md) (`show channels`:"
+#~ " [worked example](06-workflows.md#worked-example-"
+#~ "show-channels-during-a-bridge); follow a "
+#~ "call: [channel UUID](../4.operations/10-runbook.md"
+#~ "#follow-one-call-by-channel-uuid); "
+#~ "REGISTER Digest: [401 example](06-workflows.md"
+#~ "#worked-example-register-digest-after-401))"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Packet receive through Sofia-SIP (`su`"
+#~ " / `tport` / `nta` / `nua`) is"
+#~ " **out of this git tree**. Stack "
+#~ "layout and NUA usage: [Sofia-SIP "
+#~ "library](03-tech-stack.md#sofia-sip-library). "
+#~ "Bind and callback symbols: "
+#~ "[Architecture](02-architecture.md#sofia-sip-out-"
+#~ "of-tree)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Goal**: walk each `<load>` child in"
+#~ " the pre-load, common, and post-"
+#~ "load configuration nodes and `dlopen` "
+#~ "the matching DSO. Attribute semantics "
+#~ "and the two `modules.conf` files: "
+#~ "[Architecture](02-architecture.md#runtime-load-tag)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Goal**: resolve the string through "
+#~ "`loadable_modules.*_hash` to a function "
+#~ "pointer and invoke it. Architecture and"
+#~ " why this is not an IDL: "
+#~ "[Loadable module contract](02-architecture.md#loadable-"
+#~ "module-contract)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Same pattern for API `\"status\"` via"
+#~ " `SWITCH_ADD_API` / `switch_api_execute`. "
+#~ "Endpoints differ: name → **vtable** "
+#~ "(`io_routines`), not one function. See "
+#~ "the [Architecture](02-architecture.md) page for "
+#~ "the golden path."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**tport** (`libsofia-sip-ua/tport`) — "
+#~ "`recvfrom` / TCP `read` (TLS decrypt,"
+#~ " WebSocket unframe). UDP is usually "
+#~ "one SIP message per datagram "
+#~ "(`NTATAG_UDP_MTU(65535)` on IPv4 in "
+#~ "`nua_create`). TCP is framed with "
+#~ "`Content-Length`. `TPTAG_LOG` / `sofia "
+#~ "profile <name> siptrace on` dumps this"
+#~ " layer "
+#~ "([Observability](../5.operations/11-observability.md))."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`fs_cli -x 'show channels'` is a "
+#~ "CSV dump of the core SQL "
+#~ "`channels` scoreboard (`select * from "
+#~ "channels where hostname=… order by "
+#~ "created_epoch` in `show_function()`, "
+#~ "`src/mod/applications/mod_commands/mod_commands.c`). Schema: "
+#~ "`create_channels_sql` in `src/switch_core_sqldb.c`. "
+#~ "The session thread is the source "
+#~ "of truth; this table is a "
+#~ "projection for operators and recovery "
+#~ "([Data and API](05-data-and-api.md))."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "After **200 OK**, 1002 can place "
+#~ "and receive calls on that Contact. "
+#~ "Siptrace: `fs_cli -x \"sofia profile "
+#~ "internal siptrace on\"` "
+#~ "([Observability](../5.operations/11-observability.md))."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "[Architecture](02-architecture.md) (registry: [Loadable"
+#~ " module contract](02-architecture.md#loadable-"
+#~ "module-contract))"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "[Runbook](../5.operations/10-runbook.md) (`show channels`:"
+#~ " [worked example](06-workflows.md#worked-example-"
+#~ "show-channels-during-a-bridge); follow a "
+#~ "call: [channel UUID](../5.operations/10-runbook.md"
+#~ "#follow-one-call-by-channel-uuid); "
+#~ "REGISTER Digest: [401 example](06-workflows.md"
+#~ "#worked-example-register-digest-after-401))"
+#~ msgstr ""
+

@@ -1,0 +1,623 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Zoom Video Communications
+# This file is distributed under the same license as the FreeSWITCH package.
+# Walter Fan <walter.fan@ustc.etu>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version:  FreeSWITCH\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-18 16:34+0800\n"
+"PO-Revision-Date: 2026-08-30 23:13+0800\n"
+"Last-Translator: Walter Fan <walter.fan@ustc.etu>\n"
+"Language: zh_CN\n"
+"Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:1
+#: 879c010e24674326b6eacc2fc63150c5
+msgid "Change Proposal: [Title]"
+msgstr "变更提案：[Title]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:5
+#: 894252d8ebb84f0ca217a1f5bbb2367d
+msgid "Metadata"
+msgstr "元数据"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:7
+#: f67385edbfa549c8bafe8f5d87e776f8
+msgid "**Change ID**: `[change-id]`"
+msgstr "**变更 ID**：`[change-id]`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:8
+#: f16c1fa36d214ecd9c99379cf4b08d1b
+msgid ""
+"**Status**: `Proposed` | `In Review` | `Approved` | `Implementing` | "
+"`Completed` | `Rejected`"
+msgstr "**状态**：`已提议` | `评审中` | `已批准` | `实施中` | `已完成` | `已拒绝`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:9
+#: 336a424826664e98951f6457f1c26b49
+msgid "**Proposed by**: [Name/Email]"
+msgstr "**提议人**：[Name/Email]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:10
+#: b6825c3815c24ee19d7e51e6ca5c5a37
+msgid "**Proposed on**: [Date]"
+msgstr "**提议日期**：[Date]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:11
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:128
+#: 08baaa780ca54c65b7f65bac4d1652a2 696f66b5b35447ccbcd0def91aac888a
+msgid "**Reviewers**: [Names]"
+msgstr "**评审人**：[Names]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:12
+#: 33a3da79062b48b192b70e22e1fab595
+msgid "**Target version**: [e.g., v2.1.0]"
+msgstr "**目标版本**：[例如 v2.1.0]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:14
+#: 265c441f78d846b1863b74cf04758b81
+msgid "Why"
+msgstr "为什么"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:16
+#: 26475e7ef1c74e2b9dd6fb67d73276d9
+msgid "Problem Statement"
+msgstr "问题陈述"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:18
+#: 6d710ccca2704a7fb4a37f99c2df6bbe
+msgid ""
+"[Describe the problem or opportunity. What is not working well? What "
+"could be better?]"
+msgstr "[描述问题或机会。哪些地方运行不畅？哪些地方可以更好？]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:20
+#: 3bf5528452fc43bbac67d7755e6c17fc
+msgid "Motivation"
+msgstr "动机"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:22
+#: a5c292000b4a4f32a71dca14e04ec15e
+msgid "[Why is this change important? What are the consequences of not doing it?]"
+msgstr "[为什么这项变更重要？如果不做会有什么后果？]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:24
+#: 831ddb0670ac4b4eba9ffead0dd4873c
+msgid "Current State"
+msgstr "当前状态"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:26
+#: 80aeba93b61d45368fec0b010fbbdb34
+msgid "[Describe how things work today]"
+msgstr "[描述当前如何运作]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:28
+#: 0484ef806f7d4d24a69ae8915be84385
+msgid "Desired State"
+msgstr "期望状态"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:30
+#: dbb50d3a869a4ad4852deef234757cff
+msgid "[Describe how things should work after this change]"
+msgstr "[描述变更完成后应如何运作]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:32
+#: d47cbaaaa881424eb4f61f53ba258a9f
+msgid "What Changes"
+msgstr "变更内容"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:34
+#: 728d2c7dfb404b2fbb9c52a3e053e2ac
+msgid "Summary"
+msgstr "摘要"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:36
+#: f3bc32070df14d25aa414fe5b42279a7
+msgid "[High-level summary of the proposed changes]"
+msgstr "[对拟议变更的高层摘要]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:38
+#: fd1ca022d692490fa283c43d480820f2
+msgid "Scope"
+msgstr "范围"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:40
+#: 50f48207c7f94329afd5a9e68f40e3eb
+msgid "In Scope"
+msgstr "范围内"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:42
+#: 71c09cefad2b4e8790c05511ed4b5ec8
+msgid "Change 1"
+msgstr "变更 1"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:43
+#: 4a06b219af9f4146bc359e80b4f64bff
+msgid "Change 2"
+msgstr "变更 2"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:44
+#: fbd1df3696ce49038071086e50db8715
+msgid "Change 3"
+msgstr "变更 3"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:46
+#: 772e93f78e074606a266f14b47762797
+msgid "Out of Scope"
+msgstr "范围外"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:48
+#: 1cd69027e856428ab1294884bca4a87f
+msgid "Not changing 1"
+msgstr "不变更 1"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:49
+#: 4bbcb7266ff94f38afda97fa175bf310
+msgid "Not changing 2"
+msgstr "不变更 2"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:50
+#: 8d3e675f713344c0960ec885a72d503e
+msgid "Not changing 3"
+msgstr "不变更 3"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:52
+#: 7fe36a3f9da44f96b43c9378e9f73b6b
+msgid "Components Affected"
+msgstr "受影响组件"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:54
+#: c69f398682bb44799a390ebc61e6744f
+msgid "Component 1: [Description of changes]"
+msgstr "组件 1：[变更说明]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:55
+#: ffe1399c79b84848b6d016ed15710ed5
+msgid "Component 2: [Description of changes]"
+msgstr "组件 2：[变更说明]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:56
+#: 7a112e7e39bd4618890a177bc5b7b7d2
+msgid "Component 3: [Description of changes]"
+msgstr "组件 3：[变更说明]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:58
+#: 8220e77766f94a6bbfc715910a6e8515
+msgid "Impact"
+msgstr "影响"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:60
+#: 4cfcd43b15ee4cb9a2bf8faf71b14722
+msgid "Breaking Changes"
+msgstr "破坏性变更"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:62
+#: eb5855bce0134651a9c26c1ba971161c
+msgid "Yes - This change breaks existing APIs/contracts"
+msgstr "是 — 此项变更会破坏现有 API/契约"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:63
+#: c211ac14e70f485596d740f816c923e6
+msgid "No - This change is backward compatible"
+msgstr "否 — 此项变更向后兼容"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:65
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:80
+#: 2d2a30d9736e43e19e7e781f1c721109 dc7a36016dfa435483a38b80a3b54b0d
+msgid "**If yes, describe**:"
+msgstr "**如果是，请说明**："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:66
+#: 5dce1c8887244f7facce9f66ec2fcd87
+msgid "Breaking change 1: [Impact and mitigation]"
+msgstr "破坏性变更 1：[影响与缓解]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:67
+#: bcac5cf13f3940afbd9afebb52b0b9b9
+msgid "Breaking change 2: [Impact and mitigation]"
+msgstr "破坏性变更 2：[影响与缓解]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:69
+#: a828eef3e70d421196e1950fad1b12ae
+msgid "Affected Stakeholders"
+msgstr "受影响干系人"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:71
+#: 9750f1ba49e6472ba663256608608d6c
+msgid "**Team 1**: [How they're affected]"
+msgstr "**团队 1**：[如何受影响]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:72
+#: 545fd96d05404882a48ba0c5fda716b8
+msgid "**Team 2**: [How they're affected]"
+msgstr "**团队 2**：[如何受影响]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:73
+#: ff3f37f507df41c98e569cdaa7832081
+msgid "**End Users**: [How they're affected]"
+msgstr "**最终用户**：[如何受影响]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:75
+#: afef798bfbde4f3ebdc41d1870eb4528
+msgid "Migration Required"
+msgstr "是否需要迁移"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:77
+#: 45390180c2e5406c9149eb7dd783b048
+msgid "Yes - Migration is required"
+msgstr "是 — 需要迁移"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:78
+#: 84272629986c4cd2baab20d09501cec8
+msgid "No - No migration needed"
+msgstr "否 — 无需迁移"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:81
+#: 371fba7e3380441283859194a1ef9e00
+msgid "Migration step 1"
+msgstr "迁移步骤 1"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:82
+#: 6ed0336b9cde4c1eaaed6814ce8e1586
+msgid "Migration step 2"
+msgstr "迁移步骤 2"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:83
+#: b8a1933149064de8bef3a6e34aa02fa3
+msgid "Migration step 3"
+msgstr "迁移步骤 3"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:85
+#: ca107bda8bb641b3bde38d05a9589b12
+msgid "Testing Scope"
+msgstr "测试范围"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:87
+#: 606a5a600f3d41009b6821eb61219ac0
+msgid "Unit tests: [What needs testing]"
+msgstr "单元测试：[需要测什么]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:88
+#: 8bec8668f44a42a8a4e76e128ba363f2
+msgid "Integration tests: [What needs testing]"
+msgstr "集成测试：[需要测什么]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:89
+#: a90ee71113ad4c2a9377e729b035e9c6
+msgid "E2E tests: [What needs testing]"
+msgstr "端到端测试：[需要测什么]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:90
+#: 07b6f2d469fb48e7acd1e2dcbaf8d48f
+msgid "Performance tests: [What needs testing]"
+msgstr "性能测试：[需要测什么]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:92
+#: a936c003a76b414faee2289ef5bf2bdf
+msgid "Documentation Updates"
+msgstr "文档更新"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:94
+#: d1d9726fe24443ebbdeacfd2973dbc62
+msgid "API documentation"
+msgstr "API 文档"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:95
+#: 8537e009f0224217938de2b7ed8224b4
+msgid "User guide"
+msgstr "用户指南"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:96
+#: 23c86aa86a0f46ccbc18ec1f595b567b
+msgid "Runbook"
+msgstr "运维手册"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:97
+#: 977bc35554434038b0242f03abc61ab2
+msgid "Architecture diagrams"
+msgstr "架构图"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:98
+#: b7d26a22726344b6b93df750dfbe5796
+msgid "ADR (new or update)"
+msgstr "ADR（新建或更新）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:100
+#: 3b6f195fd4524a59962878eca24ca511
+msgid "Timeline"
+msgstr "时间线"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:102
+#: bfc501f18c0345d2b39e37737deaf184
+msgid "Proposed Schedule"
+msgstr "建议排期"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:104
+#: be8d1c1874124a5d99187b670225b1f9
+msgid "**Proposal review**: [Date range]"
+msgstr "**提案评审**：[Date range]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:105
+#: 252c8d24def641d2afe7d0b14333238f
+msgid "**Design phase**: [Date range]"
+msgstr "**设计阶段**：[Date range]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:106
+#: 020e27592b0b44d0bd2dd519a2286ce4
+msgid "**Implementation start**: [Date]"
+msgstr "**实施开始**：[Date]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:107
+#: 50da69bc6d4a46fb87af3a62d3178dc7
+msgid "**Code complete**: [Date]"
+msgstr "**代码完成**：[Date]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:108
+#: ff46b319430345439a03075eedb0d779
+msgid "**Testing complete**: [Date]"
+msgstr "**测试完成**：[Date]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:109
+#: 458107e55de04f56ae9abfdc56801538
+msgid "**Deployment**: [Date]"
+msgstr "**部署**：[Date]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:111
+#: d6d8757ad6e9438ca070b7e3bd8e1108
+msgid "Dependencies"
+msgstr "依赖"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:113
+#: 58a6ade8f60d4c06b12e149ae3c58438
+msgid "Dependency 1: [What we're waiting for]"
+msgstr "依赖 1：[我们在等待什么]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:114
+#: 619ad91b5573437d9b0fc39c9f017313
+msgid "Dependency 2: [What we're waiting for]"
+msgstr "依赖 2：[我们在等待什么]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:116
+#: 987f19a9d4c148f0a2af252c6027a6ab
+msgid "Milestones"
+msgstr "里程碑"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:122
+#: eff4e99afcd249bb9c119692304d1455
+msgid "Resources"
+msgstr "资源"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:124
+#: 02837f5277ea470ab1136892730b4cc3
+msgid "Team"
+msgstr "团队"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:126
+#: 7180594672a5440ebb326869a29a51ec
+msgid "**Owner**: [Name] - Responsible for delivery"
+msgstr "**负责人**：[Name] — 对交付负责"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:127
+#: dbcec642caa5491b9c877c384e4e2449
+msgid "**Contributors**: [Names]"
+msgstr "**贡献者**：[Names]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:130
+#: ea46e28358f04daf90c84e37d41001c3
+msgid "Effort Estimate"
+msgstr "工作量估算"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:132
+#: 18632bffc4644414bdbc52310632bd24
+msgid "Design: [X person-days]"
+msgstr "设计：[X person-days]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:133
+#: 807fd76a047042c6b52788cce7b52393
+msgid "Implementation: [Y person-days]"
+msgstr "实施：[Y person-days]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:134
+#: 5a9256ebccdf42a5b1619d8d69417c8a
+msgid "Testing: [Z person-days]"
+msgstr "测试：[Z person-days]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:135
+#: dfd442d046354b5897e7c846ee81451c
+msgid "Documentation: [W person-days]"
+msgstr "文档：[W person-days]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:136
+#: b58e4a136ccb43568dd6e722c12350ab
+msgid "**Total**: [Total person-days]"
+msgstr "**合计**：[Total person-days]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:138
+#: 6400d494dc1f4de8a321edcb7c1c84ab
+msgid "Risks"
+msgstr "风险"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:140
+#: ab12e42286c6481d8f8bb2717c304cb4
+msgid "Technical Risks"
+msgstr "技术风险"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:142
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:154
+#: 9e642e2f760c4836b00b5d1d1ad87e69 ab2d249925884391a69d6b89048d39fb
+msgid "**Risk 1**: [Description]"
+msgstr "**风险 1**：[Description]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:143
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:148
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:155
+#: 277b2b27b5e4494d939e932cf348778a ab171e8d5608432d849bc1e84e8d1c77
+#: da73b7acd2b7452b83f39c5522ff2b10
+msgid "**Probability**: High | Medium | Low"
+msgstr "**可能性**：高 | 中 | 低"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:144
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:149
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:156
+#: 75585e5889c945df8b7c497b2c07ac83 8451e9dc8d9a4881bac975f7f8d91f1c
+#: b265eb6c7f3540b3b06c311767fcd1fb
+msgid "**Impact**: High | Medium | Low"
+msgstr "**影响**：高 | 中 | 低"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:145
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:150
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:157
+#: 6153e973cfae4b8b9b4f3e80bb744570 cb2f00fcba3b48309dbcf029d47c9ceb
+#: e58ead46910246d8940daebdb9bc1b74
+msgid "**Mitigation**: [Strategy]"
+msgstr "**缓解**：[Strategy]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:147
+#: 3708f8a62a344944a227a8d87c300a0e
+msgid "**Risk 2**: [Description]"
+msgstr "**风险 2**：[Description]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:152
+#: abf9c63f3e7d477ebaf963d9f625e9e5
+msgid "Business Risks"
+msgstr "业务风险"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:159
+#: 064ab5c323834897a4be8f61425eeaaa
+msgid "Alternatives Considered"
+msgstr "考虑过的备选方案"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:161
+#: c2fbb2eb2ae842a08df406e3de996afb
+msgid "Alternative 1: [Name]"
+msgstr "备选 1：[Name]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:163
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:170
+#: 3b372b8d0f574a23bd69b2b61b50fc03 c848a592a71448708e101cf4bf97be6f
+msgid "**Description**: [Brief description]"
+msgstr "**描述**：[简要说明]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:164
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:171
+#: 163332cb88f447b186387399a48a4e7f 773611d87e9441da903506fb3db0a332
+msgid "**Pros**: [List]"
+msgstr "**优点**：[List]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:165
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:172
+#: 07e1b1f5be4f4ad7a2b41fe98d45be8c c47f4b1c9eaa447eb5c22130c9fc86c4
+msgid "**Cons**: [List]"
+msgstr "**缺点**：[List]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:166
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:173
+#: 00ef2acb9142406697cf3fd49faae16b 73d3473d8d7c4ef889f8f8082ec7c856
+msgid "**Why not chosen**: [Reason]"
+msgstr "**未选原因**：[Reason]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:168
+#: e6fa7d5415a5436fa21ffedba1c6b921
+msgid "Alternative 2: [Name]"
+msgstr "备选 2：[Name]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:175
+#: b2b50835bc7f483aa473f6c9f00f73d0
+msgid "Success Criteria"
+msgstr "成功标准"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:177
+#: 6e3605a1ebca4381a5da7891ade83c52
+msgid "Criterion 1: [Measurable outcome]"
+msgstr "标准 1：[可度量结果]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:178
+#: 61fdb7ea6409473cba0d022f1cd9394d
+msgid "Criterion 2: [Measurable outcome]"
+msgstr "标准 2：[可度量结果]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:179
+#: c85132b49c864b86b58419027b25175b
+msgid "Criterion 3: [Measurable outcome]"
+msgstr "标准 3：[可度量结果]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:181
+#: 716bac2eda9946b188ba1cb5b800d6d2
+msgid "Rollback Plan"
+msgstr "回滚计划"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:183
+#: 673cddddc6b249b9b1c75b9d9f70135b
+msgid "[How to rollback if this change causes issues]"
+msgstr "[如果此项变更引发问题，如何回滚]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:185
+#: 9c75f694ab074300bd1e215ec72cc418
+msgid "Rollback step 1"
+msgstr "回滚步骤 1"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:186
+#: cc2b2d4bcee24f7f8500877a6cce0daf
+msgid "Rollback step 2"
+msgstr "回滚步骤 2"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:187
+#: f7db6f21eb13426398c9f253c6268b57
+msgid "Rollback step 3"
+msgstr "回滚步骤 3"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:189
+#: 105b71c4dd0946c881ac5229de38faa0
+msgid "References"
+msgstr "参考资料"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:191
+#: 7fb0e353d06f402ba72eb137e8fdde97
+msgid "Related issue: [Link]"
+msgstr "相关 issue：[Link]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:192
+#: 3e22bb16b37642c79419c9a5d8e95702
+msgid "Related ADR: [Link]"
+msgstr "相关 ADR：[Link]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:193
+#: 347265d88af54af8b99eff62c7e48215
+#, fuzzy
+msgid "Design doc: [Link to 01-design.md]"
+msgstr "设计文档：[Link to design.md]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:194
+#: c4cb805d0f35469a98c776cd17be52c6
+#, fuzzy
+msgid "Implementation tasks: [Link to 03-tasks.md]"
+msgstr "实施任务：[Link to tasks.md]"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:198
+#: 73cb0a0d562543678ad5f9e124610c4f
+msgid "**Status Log**:"
+msgstr "**状态日志**："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:199
+#: a3ab1cc57ae54125aa2b9bdfe531a77f
+msgid "[Date]: Proposed by [Name]"
+msgstr "[Date]：由 [Name] 提议"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:200
+#: cb80561276174057ae322a2e1ae89f4c
+msgid "[Date]: Review requested from [Names]"
+msgstr "[Date]：向 [Names] 请求评审"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/7.appendix/6.decisions/changes/_template/02-proposal.md:201
+#: 3cb914784a9346fd84971995e1a6287d
+msgid "[Date]: [Status change and reason]"
+msgstr "[Date]：[状态变更及原因]"
+

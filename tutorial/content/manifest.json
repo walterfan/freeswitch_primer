@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "default_locale": "zh-CN",
+  "locales": [
+    {"id": "zh-CN", "complete": true},
+    {"id": "en-US", "complete": false, "fallback": "zh-CN"}
+  ],
+  "phases": [
+    {"id": "foundations", "days": [1, 5], "title_zh": "FreeSWITCH 基础", "outcome_zh": "运行实验环境，完成 SIP 注册、通话和 UUID 追踪"},
+    {"id": "sip-media", "days": [6, 10], "title_zh": "SIP 与媒体", "outcome_zh": "解释并定位 REGISTER、INVITE、SDP、RTP、codec 与 NAT 问题"},
+    {"id": "webrtc-audio", "days": [11, 15], "title_zh": "WebRTC 音频", "outcome_zh": "浏览器通过 SIP/WSS 注册并与 SIP 软电话双向通话"},
+    {"id": "ivr-esl", "days": [16, 20], "title_zh": "IVR 与 ESL", "outcome_zh": "构建多级 DTMF IVR，并通过 C++ ESL 客户端观察通话"},
+    {"id": "module-development", "days": [21, 25], "title_zh": "C/C++ 模块开发", "outcome_zh": "构建、加载、调用、观察和测试 mod_tutorial"},
+    {"id": "metrics-capstone", "days": [26, 30], "title_zh": "Metrics 与综合项目", "outcome_zh": "输出健康、通话和 IVR 指标，完成端到端综合验收"}
+  ],
+  "lessons": [
+    {
+      "id": "day-01", "day": 1, "phase": "foundations",
+      "title_zh": "FreeSWITCH 系统模型与健康检查",
+      "path": "content/zh-CN/days/day-01.md", "prerequisites": [],
+      "assets": ["labs/day-01"],
+      "checks": [{"id": "service-health", "mode": "automatic"}]
+    },
+    {
+      "id": "day-02", "day": 2, "phase": "foundations",
+      "title_zh": "Docker、端口、日志与 fs_cli",
+      "path": "content/zh-CN/days/day-02.md", "prerequisites": ["day-01"],
+      "assets": ["labs/day-02"],
+      "checks": [{"id": "freeswitch-status", "mode": "automatic"}]
+    },
+    {
+      "id": "day-03", "day": 3, "phase": "foundations",
+      "title_zh": "核心与可加载模块",
+      "path": "content/zh-CN/days/day-03.md", "prerequisites": ["day-02"],
+      "assets": ["labs/day-03"],
+      "checks": [{"id": "module-inventory", "mode": "automatic"}]
+    },
+    {
+      "id": "day-04", "day": 4, "phase": "foundations",
+      "title_zh": "XML 配置域与变量",
+      "path": "content/zh-CN/days/day-04.md", "prerequisites": ["day-03"],
+      "assets": ["labs/day-04"],
+      "checks": [{"id": "xml-routing", "mode": "semi-automatic"}]
+    },
+    {
+      "id": "day-05", "day": 5, "phase": "foundations",
+      "title_zh": "首次 SIP 注册与通话",
+      "path": "content/zh-CN/days/day-05.md", "prerequisites": ["day-04"],
+      "assets": ["labs/day-05"],
+      "checks": [{"id": "sip-first-call", "mode": "manual"}]
+    },
+    {
+      "id": "day-06", "day": 6, "phase": "sip-media",
+      "title_zh": "SIP 消息、事务与 Dialog",
+      "path": "content/zh-CN/days/day-06.md", "prerequisites": ["day-05"],
+      "assets": ["labs/day-06"],
+      "checks": [{"id": "sip-call-trace", "mode": "semi-automatic"}]
+    },
+    {
+      "id": "day-07", "day": 7, "phase": "sip-media",
+      "title_zh": "REGISTER Digest 与 Directory",
+      "path": "content/zh-CN/days/day-07.md", "prerequisites": ["day-06"],
+      "assets": ["labs/day-07"],
+      "checks": [{"id": "sip-registration", "mode": "automatic"}]
+    },
+    {
+      "id": "day-08", "day": 8, "phase": "sip-media",
+      "title_zh": "INVITE、Dialplan 与 Bridge",
+      "path": "content/zh-CN/days/day-08.md", "prerequisites": ["day-07"],
+      "assets": ["labs/day-08"],
+      "checks": [{"id": "dialplan-bridge", "mode": "semi-automatic"}]
+    },
+    {
+      "id": "day-09", "day": 9, "phase": "sip-media",
+      "title_zh": "SDP、RTP、DTMF 与 codec",
+      "path": "content/zh-CN/days/day-09.md", "prerequisites": ["day-08"],
+      "assets": ["labs/day-09"],
+      "checks": [{"id": "media-negotiation", "mode": "semi-automatic"}]
+    },
+    {
+      "id": "day-10", "day": 10, "phase": "sip-media",
+      "title_zh": "NAT、抓包与单向音频",
+      "path": "content/zh-CN/days/day-10.md", "prerequisites": ["day-09"],
+      "assets": ["labs/day-10"],
+      "checks": [{"id": "one-way-audio", "mode": "manual"}]
+    },
+    {
+      "id": "day-11", "day": 11, "phase": "webrtc-audio",
+      "title_zh": "浏览器音频与安全上下文",
+      "path": "content/zh-CN/days/day-11.md", "prerequisites": ["day-10"],
+      "assets": ["labs/day-11"],
+      "checks": [{"id": "browser-audio-preflight", "mode": "semi-automatic"}]
+    },
+    {
+      "id": "day-12", "day": 12, "phase": "webrtc-audio",
+      "title_zh": "SIP over WSS 与证书",
+      "path": "content/zh-CN/days/day-12.md", "prerequisites": ["day-11"],
+      "assets": ["labs/day-12"],
+      "checks": [{"id": "browser-registration", "mode": "semi-automatic"}]
+    },
+    {
+      "id": "day-13", "day": 13, "phase": "webrtc-audio",
+      "title_zh": "ICE、DTLS-SRTP 与 Opus",
+      "path": "content/zh-CN/days/day-13.md", "prerequisites": ["day-12"],
+      "assets": ["labs/day-13"],
+      "checks": [{"id": "webrtc-negotiation", "mode": "semi-automatic"}]
+    },
+    {
+      "id": "day-14", "day": 14, "phase": "webrtc-audio",
+      "title_zh": "WebRTC 到 SIP 桥接",
+      "path": "content/zh-CN/days/day-14.md", "prerequisites": ["day-13"],
+      "assets": ["labs/day-14"],
+      "checks": [{"id": "webrtc-sip-call", "mode": "manual"}]
+    },
+    {
+      "id": "day-15", "day": 15, "phase": "webrtc-audio",
+      "title_zh": "WebRTC 音频故障挑战",
+      "path": "content/zh-CN/days/day-15.md", "prerequisites": ["day-14"],
+      "assets": ["labs/day-15"],
+      "checks": [{"id": "webrtc-failure-drill", "mode": "manual"}]
+    },
+    {
+      "id": "day-16", "day": 16, "phase": "ivr-esl",
+      "title_zh": "Playback、Record 与 Phrase",
+      "path": "content/zh-CN/days/day-16.md", "prerequisites": ["day-15"],
+      "assets": ["labs/day-16"],
+      "checks": [{"id": "ivr-sounds", "mode": "semi-automatic"}]
+    },
+    {
+      "id": "day-17", "day": 17, "phase": "ivr-esl",
+      "title_zh": "DTMF 收集与错误分支",
+      "path": "content/zh-CN/days/day-17.md", "prerequisites": ["day-16"],
+      "assets": ["labs/day-17"],
+      "checks": [{"id": "ivr-dtmf", "mode": "semi-automatic"}]
+    },
+    {
+      "id": "day-18", "day": 18, "phase": "ivr-esl",
+      "title_zh": "多级 XML IVR",
+      "path": "content/zh-CN/days/day-18.md", "prerequisites": ["day-17"],
+      "assets": ["labs/day-18"],
+      "checks": [{"id": "ivr-menu", "mode": "manual"}]
+    },
+    {
+      "id": "day-19", "day": 19, "phase": "ivr-esl",
+      "title_zh": "ESL 命令、事件与关联",
+      "path": "content/zh-CN/days/day-19.md", "prerequisites": ["day-18"],
+      "assets": ["labs/day-19"],
+      "checks": [{"id": "esl-events", "mode": "semi-automatic"}]
+    },
+    {
+      "id": "day-20", "day": 20, "phase": "ivr-esl",
+      "title_zh": "C++ ESL 客户端",
+      "path": "content/zh-CN/days/day-20.md", "prerequisites": ["day-19"],
+      "assets": ["labs/day-20"],
+      "checks": [{"id": "esl-client", "mode": "automatic"}]
+    },
+    {
+      "id": "day-21", "day": 21, "phase": "module-development",
+      "title_zh": "FreeSWITCH 模块生命周期",
+      "path": "content/zh-CN/days/day-21.md", "prerequisites": ["day-20"],
+      "assets": ["labs/day-21"],
+      "checks": [{"id": "module-build", "mode": "automatic"}]
+    },
+    {
+      "id": "day-22", "day": 22, "phase": "module-development",
+      "title_zh": "tutorial_metrics API",
+      "path": "content/zh-CN/days/day-22.md", "prerequisites": ["day-21"],
+      "assets": ["labs/day-22"],
+      "checks": [{"id": "module-api", "mode": "automatic"}]
+    },
+    {
+      "id": "day-23", "day": 23, "phase": "module-development",
+      "title_zh": "tutorial_ivr_metric Application",
+      "path": "content/zh-CN/days/day-23.md", "prerequisites": ["day-22"],
+      "assets": ["labs/day-23"],
+      "checks": [{"id": "module-application", "mode": "automatic"}]
+    },
+    {
+      "id": "day-24", "day": 24, "phase": "module-development",
+      "title_zh": "Custom event 与并发计数",
+      "path": "content/zh-CN/days/day-24.md", "prerequisites": ["day-23"],
+      "assets": ["labs/day-24"],
+      "checks": [{"id": "module-event", "mode": "automatic"}]
+    },
+    {
+      "id": "day-25", "day": 25, "phase": "module-development",
+      "title_zh": "模块测试与源码调试",
+      "path": "content/zh-CN/days/day-25.md", "prerequisites": ["day-24"],
+      "assets": ["labs/day-25"],
+      "checks": [{"id": "module-integration", "mode": "semi-automatic"}]
+    },
+    {
+      "id": "day-26", "day": 26, "phase": "metrics-capstone",
+      "title_zh": "FreeSWITCH 原生观测信号",
+      "path": "content/zh-CN/days/day-26.md", "prerequisites": ["day-25"],
+      "assets": ["labs/day-26"],
+      "checks": [{"id": "native-metrics", "mode": "automatic"}]
+    },
+    {
+      "id": "day-27", "day": 27, "phase": "metrics-capstone",
+      "title_zh": "ESL Collector 与有界快照",
+      "path": "content/zh-CN/days/day-27.md", "prerequisites": ["day-26"],
+      "assets": ["labs/day-27"],
+      "checks": [{"id": "metrics-collector", "mode": "automatic"}]
+    },
+    {
+      "id": "day-28", "day": 28, "phase": "metrics-capstone",
+      "title_zh": "Prometheus、健康与陈旧性",
+      "path": "content/zh-CN/days/day-28.md", "prerequisites": ["day-27"],
+      "assets": ["labs/day-28"],
+      "checks": [{"id": "prometheus-metrics", "mode": "automatic"}]
+    },
+    {
+      "id": "day-29", "day": 29, "phase": "metrics-capstone",
+      "title_zh": "事件面板与故障演练",
+      "path": "content/zh-CN/days/day-29.md", "prerequisites": ["day-28"],
+      "assets": ["labs/day-29"],
+      "checks": [{"id": "observability-drill", "mode": "semi-automatic"}]
+    },
+    {
+      "id": "day-30", "day": 30, "phase": "metrics-capstone",
+      "title_zh": "端到端综合项目",
+      "path": "content/zh-CN/days/day-30.md", "prerequisites": ["day-29"],
+      "assets": ["labs/day-30"],
+      "checks": [{"id": "capstone", "mode": "manual"}]
+    }
+  ]
+}

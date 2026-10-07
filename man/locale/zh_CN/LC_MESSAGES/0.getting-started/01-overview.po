@@ -1,0 +1,1638 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Zoom Video Communications
+# This file is distributed under the same license as the FreeSWITCH package.
+# Walter Fan <walter.fan@ustc.etu>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version:  FreeSWITCH\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-18 16:34+0800\n"
+"PO-Revision-Date: 2026-08-30 23:13+0800\n"
+"Last-Translator: Walter Fan <walter.fan@ustc.etu>\n"
+"Language: zh_CN\n"
+"Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:1
+#: 7753012875724921841b02860134a4aa
+msgid "00. Project Overview"
+msgstr "00. 项目概述"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:5
+#: 8d930f0e9da048acbf334987c1b07a1c
+msgid ""
+"FreeSWITCH is a modular softswitch: a software-defined telecom stack that"
+" replaces proprietary PBX and class-5 switching hardware with a process "
+"that runs on commodity servers, from a Raspberry Pi to a multi-core host."
+" This repository is the C core, loadable modules, XML configuration "
+"profiles, packaging, and Event Socket tooling for that stack. Version in "
+"this tree is **1.11.3-dev** (`configure.ac`). License is **MPL 1.1**. "
+"SignalWire is the primary sponsor; `mod_signalwire` in this tree pairs a "
+"local switch with SignalWire cloud services."
+msgstr ""
+"FreeSWITCH 是一套模块化软交换：用运行在通用服务器上的进程（从 Raspberry Pi 到多核主机）替代专有 PBX 和 "
+"class-5 交换硬件的软件定义电信栈。本仓库是该栈的 C 核心、可加载模块、XML 配置模板、打包以及 Event Socket "
+"工具。本树版本为 **1.11.3-dev**（`configure.ac`）。许可证为 **MPL 1.1**。SignalWire "
+"是主要赞助方；本树中的 `mod_signalwire` 将本地交换机与 SignalWire 云服务对接。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:7
+#: 72ba1d21b658465fa4a171237ff17982
+msgid "Purpose"
+msgstr "目的"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:9
+#: 195ed77cc56f4f09825228a39ad92695
+msgid ""
+"Switch, bridge, and transcode real-time voice, video, and messaging "
+"sessions."
+msgstr "交换、桥接并转码实时语音、视频和消息会话。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:10
+#: f01228e49594484da30080e79995e840
+msgid ""
+"Expose a loadable-module API so SIP, WebRTC, codecs, dialplans, "
+"languages, and CDR backends can be added without forking the core."
+msgstr "提供可加载模块 API，以便在无需 fork 核心的情况下增加 SIP、WebRTC、编解码器、拨号计划、语言和 CDR 后端。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:11
+#: 8f6f1a314e234081b475b22bb93d345f
+msgid ""
+"Provide a working default PBX configuration (`conf/vanilla`) so operators"
+" can start testing immediately."
+msgstr "提供可用的默认 PBX 配置（`conf/vanilla`），方便运维人员立即开始测试。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:12
+#: dd896e96c6f44b5f920274727ef32cec
+msgid ""
+"Offer an out-of-process control plane (Event Socket / ESL) so "
+"applications can originate, hang up, and subscribe to events without "
+"embedding in the media process."
+msgstr "提供进程外控制面（Event Socket / ESL），使应用可以发起呼叫、挂断并订阅事件，而无需嵌入媒体进程。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:14
+#: 33de872363134fdcb42533abac9ba2e8
+msgid ""
+"This PKB documents **this source tree**. Operator configuration — XML, "
+"directory, SIP profiles, dialplan, codecs, applications, WebRTC, ESL — "
+"lives in the [FreeSWITCH Users "
+"Manual](https://developer.signalwire.com/freeswitch/). Every parameter "
+"table there is verified against FreeSWITCH source and the shipped vanilla"
+" config. Older wiki pages remain on [FreeSWITCH "
+"Explained](https://developer.signalwire.com/freeswitch/FreeSWITCH-"
+"Explained/) and [Confluence](https://freeswitch.org/confluence/)."
+msgstr ""
+"本 PKB 记录的是**本源码树**。运维配置（XML、号码簿、SIP profiles、拨号计划、编解码、应用、WebRTC、ESL）在 "
+"[FreeSWITCH "
+"用户手册](https://developer.signalwire.com/freeswitch/)。手册中的参数表均对照 FreeSWITCH"
+" 源码与随附 vanilla 配置核实。旧 wiki 仍在 [FreeSWITCH "
+"Explained](https://developer.signalwire.com/freeswitch/FreeSWITCH-"
+"Explained/) 与 [Confluence](https://freeswitch.org/confluence/)。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:16
+#: c0082e7eaf004378925e75a61eae91f3
+msgid ""
+"The Users Manual applies to both **Open Source FreeSWITCH** (this tree "
+"and [release builds](https://files.freeswitch.org/releases/freeswitch/)) "
+"and **FreeSWITCH Enterprise** (commercially supported SignalWire builds)."
+" Hosted SignalWire cloud is still a separate product."
+msgstr ""
+"用户手册同时适用于 **开源 "
+"FreeSWITCH**（本仓库与[发行构建](https://files.freeswitch.org/releases/freeswitch/)）和"
+" **FreeSWITCH Enterprise**（SignalWire 商业支持构建）。托管的 SignalWire 云仍是独立产品。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:18
+#: c9e107ddf2094fbabba76002f941bc25
+msgid "Scope Boundaries"
+msgstr "范围边界"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md
+#: c3ea654cc97d4c799257fb321945e7ea
+msgid "In scope"
+msgstr "范围内"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md
+#: 1959a770abb34d199481af3ec84b8342
+msgid "Out of scope"
+msgstr "范围外"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md
+#: 91d02e9de20a470da645c86549a80051
+msgid ""
+"Core switch process (`src/switch.c`, `src/switch_core.c`) and "
+"session/media/event libraries"
+msgstr "核心交换进程（`src/switch.c`、`src/switch_core.c`）以及会话/媒体/事件库"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md
+#: 0f339295cafb4311b21833303a2442c2
+msgid ""
+"SignalWire hosted cloud, SMS, and serverless products (separate repos and"
+" services)"
+msgstr "SignalWire 托管云、短信和无服务器产品（独立仓库与服务）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md
+#: eb22a41ca10f4adfaf9a988bb3d248c8
+msgid ""
+"Loadable modules under `src/mod/` (endpoints, codecs, applications, event"
+" handlers, languages, XML interfaces)"
+msgstr "`src/mod/` 下的可加载模块（终端、编解码器、应用、事件处理器、语言、XML 接口）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md
+#: 8ad26b1ae3264febb8b712da2e52988f
+msgid ""
+"Prompt/sound packages (`freeswitch-sounds-*` specs and the [sounds "
+"release repo](https://github.com/freeswitch/freeswitch-sounds))"
+msgstr ""
+"提示音/语音包（`freeswitch-sounds-*` spec 以及 [sounds "
+"发行仓库](https://github.com/freeswitch/freeswitch-sounds)）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md
+#: 7aa34fe3df1a452dbd05f0ae3dfdb32f
+msgid ""
+"XML config profiles (`conf/vanilla`, `conf/sbc`, `conf/minimal`, …) and "
+"module autoload list (`build/modules.conf.in`)"
+msgstr ""
+"XML 配置模板（`conf/vanilla`、`conf/sbc`、`conf/minimal` "
+"等）以及模块自动加载列表（`build/modules.conf.in`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md
+#: 264c76d567d64b9380296edb8013a2e3
+msgid ""
+"Third-party [Sofia-SIP](https://github.com/freeswitch/sofia-sip) / "
+"SpanDSP / libks sources ([Tech Stack](../1.architecture/02-tech-stack.md"
+"#sofia-sip-library))"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md
+#: 01c928deedb242b494f4d071612aa8f0
+msgid "ESL library and `fs_cli` (`libs/esl/`)"
+msgstr "ESL 库和 `fs_cli`（`libs/esl/`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md
+#: d872a381c0f54a74955453d85189291c
+msgid "A hosted multi-tenant SaaS control plane"
+msgstr "托管的多租户 SaaS 控制面"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md
+#: 1080cdd8f60f45f1be2527664e47a0ec
+msgid "Autotools/Windows/Docker/Debian packaging in this repo"
+msgstr "本仓库中的 Autotools/Windows/Docker/Debian 打包"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md
+#: 3a0e875abb394847bcf57bd8d70d3075
+msgid "Duplicating Users Manual parameter tables — link out instead"
+msgstr "不要复制用户手册参数表 — 外链即可"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:28
+#: 1c42b9423c2542a8a81cd62ead5c9da7
+msgid "Key Users and Use Cases"
+msgstr "主要用户与用例"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:30
+#: a807582aef0549709e09312a78fc5f14
+msgid ""
+"**PBX / CCaaS operator**: run vanilla or a custom XML profile as an IP-"
+"PBX, conference, voicemail, or call-center node; register SIP phones; "
+"route DIDs."
+msgstr ""
+"**PBX / CCaaS 运维人员**：以 vanilla 或自定义 XML 配置运行 IP-PBX、会议、语音信箱或呼叫中心节点；注册 SIP"
+" 话机；路由 DID。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:31
+#: 462917e26507455e98b1466ca420ef03
+msgid ""
+"**SBC / interconnect engineer**: use the `conf/sbc` profile and Sofia SIP"
+" (`mod_sofia`) to border-control SIP trunks and media."
+msgstr "**SBC / 互联工程师**：使用 `conf/sbc` 配置和 Sofia SIP（`mod_sofia`）对 SIP 中继和媒体做边界控制。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:32
+#: dc6e5ad998cd4661b606097a54227dd1
+msgid ""
+"**Application developer**: control calls from Lua/Python/JavaScript "
+"modules or from an external process over ESL (`mod_event_socket` on TCP "
+"8021, `libs/esl/fs_cli.c`)."
+msgstr ""
+"**应用开发者**：通过 Lua/Python/JavaScript 模块，或经 ESL 从外部进程控制呼叫（`mod_event_socket`"
+" 监听 TCP 8021，`libs/esl/fs_cli.c`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:33
+#: 50da3c9219ce4b44a15681c22034682a
+msgid ""
+"**WebRTC / HTML5 developer**: terminate browser sessions through Verto "
+"(`mod_verto`, endpoint name `verto.rtc`)."
+msgstr "**WebRTC / HTML5 开发者**：通过 Verto（`mod_verto`，终端名 `verto.rtc`）终结浏览器会话。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:34
+#: 41f6333215a0485b9eca28d1f459f5c3
+#, fuzzy
+msgid ""
+"**Module developer**: implement `SWITCH_MODULE_LOAD_FUNCTION` against "
+"`src/include/switch.h`, register named interface tables, and drop a `.so`"
+" into the modules directory "
+"([Architecture](../1.architecture/01-architecture.md#loadable-module-"
+"contract))."
+msgstr ""
+"**模块开发者**：对照 `src/include/switch.h` 实现 `SWITCH_MODULE_LOAD_FUNCTION`，并将 "
+"`.so` 放入模块目录。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:35
+#: cd2d9125baf04579868ec98de2cd1a28
+msgid ""
+"**Packager / SRE**: build from source (`bootstrap.sh` + Autotools), "
+"Debian packages (`debian/`, `scripts/packaging`), Windows (`w32/`, "
+"`Freeswitch.2017.sln`), or Docker (`docker/`)."
+msgstr ""
+"**打包人员 / SRE**：从源码构建（`bootstrap.sh` + Autotools）、Debian "
+"包（`debian/`、`scripts/packaging`）、Windows（`w32/`、`Freeswitch.2017.sln`）或 "
+"Docker（`docker/`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:37
+#: 496efee5b0f04d61a8cf381a5808e81e
+#, fuzzy
+msgid "FS core concepts"
+msgstr "项目"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:39
+#: ccad46abd65b437e983b176a283e9c5b
+msgid ""
+"Operator terms come from [Users Manual Chapter "
+"1](https://developer.signalwire.com/freeswitch/foundations/introduction)."
+" This page maps them onto **this clone**. C types and the session state "
+"machine: [Architecture](../1.architecture/01-architecture.md). The "
+"`switch_*` lifetime model (pools, FSPR, frames): [C Runtime "
+"Framework](../1.architecture/06-c-runtime.md). The same 1000→1001 path "
+"with core symbols: [Workflows](../1.architecture/05-workflows.md)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:41
+#: 02daa02b0e804d10a6de165acb458573
+msgid ""
+"Behavior is determined by XML, not by editing the C core. Vanilla "
+"(`conf/vanilla/`) is a working demo PBX so you can test immediately; it "
+"is not a production security baseline ([FAQ](../7.appendix/02-faq.md))."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:43
+#: 02ac259898c8418891b816e6a99755cd
+msgid "Endpoints, channels, and calls"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:45
+#: 239c3aee518d4008b8a87cbc9acd94c7
+msgid ""
+"A protocol endpoint is not a call. A channel is one **leg**. A call is "
+"one or more legs associated together. A session is the runtime object "
+"that holds one channel plus the application running on it."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:58
+#: 04fcb974c7a7419cbfe63fbe329b0882
+msgid ""
+"**Endpoint** — A protocol interface that originates or receives calls. "
+"Each endpoint is a module, for example Sofia for SIP or Verto for WebRTC."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:60
+#: d7d0cd0811854fb7a61149cfaf1590f4
+msgid "端点是一个协议接口，用来发起或接收呼叫。每个端点就是一个模块，例如 Sofia（SIP）或 Verto（WebRTC）。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:62
+#: 15a77de9b25f470da117b1301baf8fb5
+msgid ""
+"In this tree: loadable modules under `src/mod/endpoints/` (`mod_sofia`, "
+"`mod_verto`, …)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:64
+#: 39ede07099b040d5bf525f51ae6b7fca
+msgid ""
+"**Channel** — One leg of communication between FreeSWITCH and a single "
+"endpoint. A channel carries call state, media, and a set of channel "
+"variables."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:66
+#: 2a871a5f71d7417bbed2eae03bd5f84c
+msgid "通道是 FS 与一个单独 Endpoint 之间的一条腿（call leg）。一个通道承载 call state、media 和一组通道变量。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:68
+#: fd134adbdcbb4763969a84fb9475d3e7
+msgid "In this tree: `switch_channel_t` (`src/switch_channel.c`)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:70
+#: c3afcb1aeca14f5a8a2e342f958182f3
+msgid ""
+"**Call** — One or more channels associated together. A typical call "
+"between two parties is two channels joined by a bridge."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:72
+#: 72ee27730a2645139466c9a62acf0f69
+msgid "一个或多个通道关联在一起形成一个 Call。双方之间的典型 Call 是由 bridge 连起来的两个通道。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:74
+#: b0c07e1e0d664b3c885634ba55c8f880
+msgid ""
+"In this tree: core SQL `calls` (`caller_uuid` / `callee_uuid` in "
+"`src/switch_core_sqldb.c`). A call is **not** one session."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:76
+#: 141abc5176654e37bde4190b438019c4
+msgid ""
+"**Bridge** — The association that joins two channels so their media flows"
+" between them."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:78
+#: dcebd6827ccd443882e464c6e5ff0044
+msgid "桥接是两个通道之间的联系，用来搭起它们之间的媒体通路。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:80
+#: 233bb6ac42f045948fc00e7f40442f25
+msgid "In this tree: dialplan app `bridge`; core `switch_ivr_bridge`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:82
+#: b10e2e8917654a5994ce5a3409fd24f4
+msgid ""
+"**Session** — The runtime container for a channel and the application "
+"state running on it."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:84
+#: 77be06cd8b4143c6af3ed3768219a5ef
+msgid "会话是一个运行时容器，包含一个 Channel 以及在上面运行的应用状态。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:86
+#: c7777b180f4b47ccb795f9baa8980cd2
+msgid ""
+"In this tree: `switch_core_session_t` (`src/switch_core_session.c`). "
+"Lifetime/pool: [C Runtime](../1.architecture/06-c-runtime.md)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: 30a618dc3ea6428d82d0e0d17bf534aa
+msgid "Term"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: 2669a1b89a4645f9aef9a1051dd6c52b
+#, fuzzy
+msgid "Meaning"
+msgstr "域"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: 184c9103eea94420809f539d5a6b99e7
+msgid "In this tree"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: 7feeee9736e64304a7a2878dc511ef64
+msgid "Endpoint"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: 80641cad49de4634b3b703e14538d29a
+msgid "Protocol interface that originates or receives calls"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: 01314afcc7b9472d89961f4e33a99313
+msgid "`src/mod/endpoints/` (`mod_sofia` SIP, `mod_verto` WebRTC, …)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: c478dc324eaa47e090b7e4e40832c1c4
+msgid "Channel"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: 878ebe788dd0444faa92a2c96cd812ac
+msgid "One leg; call state, media, channel variables"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: 7f4aeca677fd42c288b8d74dc0ec9e07
+msgid "`switch_channel_t`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: 618d6633fc63462699e6aab1d2b94783
+msgid "Session"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: 76a189f67dfe47329bc64ee12a61b901
+msgid "Runtime container for a channel plus the application on it"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: c701b3d4124141c9af546a5c7aeac566
+msgid "`switch_core_session_t`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: 101e6baca0ca439da3010376467d3ca2
+msgid "Call"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: b5e008f4d9954080a55e5324ae5090f8
+msgid "One or more associated channels"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: dfe59d789145420ca884ef3fc43b7fce
+msgid "Core SQL `calls`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: dcc0e7e270164d9cae124e1b8005b110
+msgid "Bridge"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: 9abff999b03a413d804878e4b5fda220
+msgid "Joins two channels so media can flow"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: 21a633b3ad914381a64f91ae981ded17
+msgid "`bridge` app / `switch_ivr_bridge`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:96
+#: 48745c7aa42246639853dda23be40484
+#, python-brace-format
+msgid ""
+"Channel variables are `${name}` at **call time**. Preprocessor variables "
+"are `$${name}` and expand **once** while assembling XML "
+"(`conf/vanilla/vars.xml`). Mixing them is a common config bug ([Chapter "
+"3](https://developer.signalwire.com/freeswitch/configuration/xml), "
+"[FAQ](../7.appendix/02-faq.md))."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:98
+#: b41a8ab9227d4a71a3f090df3f265081
+#, fuzzy
+msgid "Three configuration domains"
+msgstr "三大配置域"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:100
+#: 3d9818e36a3544f0938de0169d526a75
+msgid ""
+"FreeSWITCH separates configuration into three domains. Keeping them "
+"distinct is the key to understanding the system. They are **not** one XML"
+" blob."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:102
+#: bdc909ec544a441981ccbf455e174cf1
+#, fuzzy
+msgid "**Directory** — Who is allowed to connect, and what are their properties?"
+msgstr "谁可以接入，具备哪些属性？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:104
+#: 0318910255c442f58d89fa365e2ee52f
+msgid "目录：谁被允许连接，他们有哪些属性。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:106
+#: a37d6dfda3464fdcbb9bc1f54ada619f
+#, fuzzy
+msgid ""
+"**Dialplan** — When a call arrives, where does it go and what happens to "
+"it?"
+msgstr "呼叫到达后去哪里？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:108
+#: 287b7a872c8748e8884803b857debdc6
+msgid "拨号计划：当一个呼叫进来，它要从哪里走，会发生哪些事。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:110
+#: 21fb108ca9a94a95bebf3353aa7b8be8
+msgid "**Configuration** — How does each module and the core behave?"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:112
+#: 4dc37b0515434b3b881e88448dc381be
+msgid "配置：核心和每个模块如何行为。"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:114
+#: a56f2be1188b4c278829fc9d2185473a
+#, fuzzy
+msgid ""
+"This tree stores them under `conf/vanilla/` (the configuration root is "
+"the directory that contains `freeswitch.xml`):"
+msgstr ""
+"用户手册（[第 1 "
+"章](https://developer.signalwire.com/freeswitch/foundations/introduction)）把运维配置分成三个域。本仓库把它们放在"
+" `conf/vanilla/`（安装后即含 `freeswitch.xml` 的配置根）："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: 663c74432bd347699f25e881be56f047
+msgid "Domain"
+msgstr "域"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: fc38bac19dc247ad9342c76d3e1f96cb
+msgid "Question it answers"
+msgstr "回答什么问题"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: d08314c2b98e482e8bb4d4904a54cdcf
+msgid "Vanilla path"
+msgstr "Vanilla 路径"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: 32633937d0a44a148d6852c336d1937a
+msgid "Hunt / load"
+msgstr "查找 / 加载"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: 7d367a098d1a4fa2af4eb34cb3643363
+msgid "Directory"
+msgstr "号码簿"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: c8e479afc520422990d8e30f209da90f
+msgid "Who may connect, and with what properties?"
+msgstr "谁可以接入，具备哪些属性？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: a1457ec71566434ab574ba7556b3a747
+msgid "`conf/vanilla/directory/`"
+msgstr "`conf/vanilla/directory/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: e4571386ca0242da92c949b498ed521a
+msgid "SIP digest, `user_context`, `user/` bridge lookup"
+msgstr "SIP digest、`user_context`、`user/` 桥接查找"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: 574b32f8186849b3a7f8901cea7f9754
+msgid "Dialplan"
+msgstr "拨号计划"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: 3cbf676d071a4d778d2724f4810ca039
+#, fuzzy
+msgid "When a call arrives, where does it go and what happens?"
+msgstr "呼叫到达后去哪里？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: 00f2ade51645493f8743dc4a01f0d39f
+msgid "`conf/vanilla/dialplan/`"
+msgstr "`conf/vanilla/dialplan/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: d6d66bc5651b4f1eb9eaeaac634cae32
+msgid "`mod_dialplan_xml` in `CS_ROUTING`"
+msgstr "`CS_ROUTING` 中的 `mod_dialplan_xml`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: 614cea75d13848139f13d200734263be
+msgid "Configuration"
+msgstr "配置"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: fef21e088f8345d6beb393ad6d309913
+msgid "How do the core and each module behave?"
+msgstr "核心与各模块如何表现？"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: aa22767af1c24489b0984886f92fcbc9
+msgid "`conf/vanilla/autoload_configs/`"
+msgstr "`conf/vanilla/autoload_configs/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:47
+#: 25abf9562b694cd3a19c2da8911777e8
+#, fuzzy
+msgid "Module `.conf.xml`; SIP profiles live beside this in `sip_profiles/`"
+msgstr "模块 `.conf.xml` 块；SIP profiles 在旁边的 `sip_profiles/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:122
+#: afc2452ecf0942f2ac91312227c10b16
+#, fuzzy
+msgid ""
+"A directory user authenticates to a Sofia profile. After digest auth, "
+"that user’s `user_context` selects the dialplan context. Vanilla internal"
+" profile `context` is `public` (`conf/vanilla/sip_profiles/internal.xml`)"
+" and applies to **unauthenticated** inbound only; users 1000–1019 have "
+"`user_context=default` (`conf/vanilla/directory/default/1000.xml`). "
+"Operator detail: [Chapter 6](https://developer.signalwire.com/freeswitch"
+"/users-and-endpoints/user-directory), [Chapter "
+"7](https://developer.signalwire.com/freeswitch/users-and-endpoints/sip-"
+"profiles), [Chapter "
+"12](https://developer.signalwire.com/freeswitch/dialplan/xml)."
+msgstr ""
+"号码簿用户向 Sofia profile 认证。认证后，该用户的 `user_context` 选择拨号计划上下文。Vanilla "
+"internal profile 的 `context` 是 "
+"`public`（`conf/vanilla/sip_profiles/internal.xml`），用于**未认证**入局；已认证用户 "
+"1000–1019 的 "
+"`user_context=default`（`conf/vanilla/directory/default/1000.xml`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:133
+#: c942a33730a04dd5bde730f1cc4a577f
+msgid "Anatomy of a vanilla 1000→1001 call"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:135
+#: a6fdf540eeaf409e8568763add8a71fb
+msgid ""
+"**REGISTER.** 1000 registers to the internal profile "
+"(`conf/vanilla/sip_profiles/internal.xml`). With `auth-calls` enabled, "
+"Sofia challenges and checks `conf/vanilla/directory/default/1000.xml`. On"
+" success it stores the Contact binding and loads user variables, "
+"including `user_context=default` and caller-ID fields."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:136
+#: ce79257922f24fd6bd3b7985286caa6d
+msgid ""
+"**INVITE.** 1000 sends INVITE for `1001`. After the same digest check, "
+"routing uses `user_context` (`default`), not the profile’s "
+"`context=public`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:137
+#: cfc9be591a424a968a567198e19f736d
+msgid ""
+"**Dialplan match.** `mod_dialplan_xml` evaluates "
+"`conf/vanilla/dialplan/default.xml`. `Local_Extension` matches "
+"`^(10[01][0-9])$`; `$1` becomes `dialed_extension`. The extension sets "
+"`call_timeout`, `hangup_after_bridge`, and `continue_on_fail` before "
+"bridging."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:138
+#: 716f370ada6444dfbff4650461c56046
+#, python-brace-format
+msgid ""
+"**Bridge.** `bridge` `user/${dialed_extension}@${domain_name}` looks up "
+"1001 in the directory, takes the registered Contact, and originates the "
+"B-leg. If the bridge fails and `continue_on_fail` is true, the same "
+"extension continues into the voicemail fallback."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:139
+#: b627802a928e468f82364b08a33c96c4
+#, python-brace-format
+msgid ""
+"**Media.** Internal `inbound-late-negotiation=true` defers A-leg codec "
+"choice until B-leg SDP exists. Codec prefs come from "
+"`$${global_codec_prefs}`. After 200 OK the channels are bridged and RTP "
+"flows (pass-through when both legs share a codec)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:141
+#: 35f20737aba3400eb3cd9fd39fad4a7d
+msgid ""
+"Track that call in the log by **session UUID**, not SIP `Call-ID` "
+"([FAQ](../7.appendix/02-faq.md), "
+"[Observability](../5.operations/02-observability.md))."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:143
+#: d1473911684d4256b85718f9f0fbb9a0 eff1d6000d814d9d87bb5a1de5fe071f
+msgid "Modules"
+msgstr "模块"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:145
+#: 90a40000bb524d8b9891c8ac6be8a733
+msgid ""
+"Almost all features load as in-process DSOs. Categories in this tree "
+"(`src/mod/<category>/mod_<name>/`):"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 652fe8547849403ea0d80ccc5b085c30
+msgid "Category"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 5628826f678f4b1c8f962d0b793c96af
+msgid "Provides"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: f9aaacd3c4cf41fa9a4365e1f6871912
+msgid "Examples in this tree"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 784e87e46456489695b6bbd94dc4cf62
+msgid "Endpoints"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 401448b91bb24955be079d379897c278
+msgid "Call protocols"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 1f27bd9bfb21495c9fd1d2fd586289a3
+msgid "`mod_sofia`, `mod_verto`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 281fa850d44a4b48b61b418b99bd0a6c
+msgid "Applications"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 67d5780f41e147f390c7d295951778de
+msgid "Dialplan apps and APIs"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: bbca15b21ba14d04ade2f0a46513f88c
+msgid "`mod_dptools`, `mod_conference`, `mod_voicemail`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: e4df4cfde34e4a2a833616e1ca9578de
+#, fuzzy
+msgid "Codecs"
+msgstr "模块"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: f819190d12a9466994afaad2daa29218
+msgid "Audio / video encoding"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 4b27439a35fe489a8912855e95638ce6
+msgid "`mod_opus`, `mod_av`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: fc407163151343ab812bf89ca548ed36
+msgid "File formats"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: df7f24208876463d911a9fbca9e820eb
+msgid "Read / write media"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 42c3399ff21d4834b348f0656b0e285a
+msgid "`mod_sndfile`, `mod_local_stream`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: bb996bc6c1694894b87fc409f0e8ca05
+#, fuzzy
+msgid "Dialplans"
+msgstr "拨号计划"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 3f32a49406ad43e58e413eb1372277c6
+msgid "Dialplan interpreters"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 1ddc92571ee44a129f1325f2d6a73ca7
+#, fuzzy
+msgid "`mod_dialplan_xml`"
+msgstr "`CS_ROUTING` 中的 `mod_dialplan_xml`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 6f037d52b0944a7ab5d5c2b27e722dfa
+msgid "Event handlers"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 2d4aef7716e04832ace36465c3c40a44
+msgid "ESL and CDRs"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 76c8bc2847de4262a764563243d751b4
+msgid "`mod_event_socket`, `mod_cdr_csv`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 54a9989eaae342aca0dd9967990c5a76
+msgid "Loggers"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 0905f393c906418085b9e503f18820f1
+msgid "Log output"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: facde801d9664ff88f0232ef48d822b6
+msgid "`mod_console`, `mod_logfile`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: ec3ecb69ac4b4357ac3bc7a1d3d5f16f
+msgid "Languages"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 4b8a7260efda463980edfc9e79c3adc0
+msgid "Embedded scripting"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 6110323e11974b248f02cd6f6e1df717
+msgid "`mod_lua`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: d8cdf0a08e084f2cb075bae0e8f37989
+msgid "Say / ASR / TTS"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 1d3828b15b404c8f89a7908e96badb15
+msgid "Phrases and speech"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: a977bbf072854cffb6ff1a6ef10a5171
+msgid "`mod_say_en`, `mod_flite`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:159
+#: 1c6d5122c6594d058cc8112a2af24326
+msgid ""
+"Build list: `build/modules.conf.in` (copied to `modules.conf`). Runtime "
+"load list: `conf/vanilla/autoload_configs/modules.conf.xml`. Do not mix "
+"those files ([FAQ](../7.appendix/02-faq.md), [Chapter "
+"5](https://developer.signalwire.com/freeswitch/configuration/module-"
+"loading/))."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:161
+#: 39150035e69f453a82920d675af0ccf8
+msgid ""
+"The core does not call into a module by category directory. After "
+"`dlopen`, it uses the C tables the module registered "
+"(`SWITCH_MODULE_DEFINITION`, then endpoint / API / app / codec / …). That"
+" contract: [Architecture — Loadable module "
+"contract](../1.architecture/01-architecture.md#loadable-module-contract)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:163
+#: da946fb64d264da1bc12d63116f55da6
+msgid "The single XML document"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:165
+#: 94142b7a2c124180981943a4d49c0d06
+msgid ""
+"At runtime the preprocessor (`#include` / `X-PRE-PROCESS` in "
+"`conf/vanilla/freeswitch.xml`) assembles many files into one document. "
+"Top-level sections:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 35df97122eb24244a8834a5159c2539e
+msgid "Section"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 24fbe9c592eb4d6996d69e2d3ac2afd0
+#, fuzzy
+msgid "Contents"
+msgstr "项目"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 4ada3013f3ca416a9363bf68f46508fd
+#, fuzzy
+msgid "`configuration`"
+msgstr "配置"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: b98b44a4cae54af6b8d2629a5ef4b52c
+#, fuzzy
+msgid "`autoload_configs/*.xml`"
+msgstr "`conf/vanilla/autoload_configs/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 4e5084e3468b4e04b7aa77901e0b468f
+#, fuzzy
+msgid "`dialplan`"
+msgstr "拨号计划"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 04a3903182034d9faef681fff5984392
+#, fuzzy
+msgid "`dialplan/*.xml`"
+msgstr "拨号计划"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 0459cc585d884844926ec812a7bc2941
+msgid "`chatplan`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 4dbfb3918ecc4ea288a01e64ae78f053
+msgid "`chatplan/*.xml`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 9079bb4292af4c0582ad82dcd76ae4cc
+#, fuzzy
+msgid "`directory`"
+msgstr "号码簿"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 0122a604c0f04854b2174f4fdaf9ea89
+#, fuzzy
+msgid "`directory/*.xml`"
+msgstr "号码簿"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 68ecac8e425a456f9a436024e9ddb4d2
+msgid "`languages`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 670386049c314eed94d48ae109ea0c06
+msgid "`lang/…` phrase files"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:175
+#: 7d05c3b452964e089984af72f2384e05
+#, python-brace-format
+msgid ""
+"The flattened dump is `freeswitch.xml.fsxml` under `log_dir`. Do not edit"
+" it while the process is running (it is memory-mapped). Assembly and "
+"`$${var}`: [Chapter "
+"3](https://developer.signalwire.com/freeswitch/configuration/xml)."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:177
+#: f369f0c8ce44497d868c5a237960594b
+msgid "Install and Runtime Defaults"
+msgstr "安装与运行时默认值"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:179
+#: 58b2ad444a304d899974925267d986a3
+msgid ""
+"The command examples in this PKB use a developer prefix with `--disable-"
+"fhs`, so configuration, modules, state, and logs stay below one "
+"`$prefix`. A custom prefix without that flag enables FHS layout in "
+"`configure.ac`; package installations use the distro paths shown below."
+msgstr ""
+"本 PKB 中的命令示例使用带有 `--disable-fhs` 的开发者前缀，因此配置、模块、状态和日志都位于 `$prefix` "
+"下。未指定该选项的自定义前缀会在 `configure.ac` 中启用 FHS 布局；软件包安装使用下方列出的发行版路径。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 91f86f055d534cf0b387d9295ca348ce
+msgid "Concern"
+msgstr "项目"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 301644cb65774ee9abfe5c10e8f07c2c
+msgid "Developer prefix (`--disable-fhs`)"
+msgstr "开发者前缀（`--disable-fhs`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: a5386b32189b458fbac951af38204d9b
+msgid "FHS/package layout"
+msgstr "FHS/软件包布局"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 67149861759b48ba99d274ac6b1c97e7
+msgid "Configuration root"
+msgstr "配置根"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 50224b11df4344c7b012bec54433127b
+msgid "`$prefix/conf`"
+msgstr "`$prefix/conf`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: abeb2adbe7934d198ed259fdadb9c36b
+msgid ""
+"`$prefix/etc/freeswitch` for a custom FHS prefix; `/etc/freeswitch` for "
+"Debian packages"
+msgstr "自定义 FHS 前缀使用 `$prefix/etc/freeswitch`；Debian 软件包使用 `/etc/freeswitch`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 9167ff6a68134f8483b5a2dd0539ab1b
+msgid "`$prefix/mod`"
+msgstr "`$prefix/mod`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 9bd95c6fee6b4fe8845f8a8d0f014b83
+msgid "`$prefix/lib/freeswitch/mod` for a custom FHS prefix"
+msgstr "自定义 FHS 前缀使用 `$prefix/lib/freeswitch/mod`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: b8e38408152447ccbfe0b8a91fd447e0
+msgid "Database / logs / PID"
+msgstr "数据库 / 日志 / PID"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 887ef89a151b4d96a65bda583c67c3c8
+msgid "`$prefix/db`, `$prefix/log`, `$prefix/run`"
+msgstr "`$prefix/db`、`$prefix/log`、`$prefix/run`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 750073d2973b464c934a4f820f77656c
+msgid ""
+"`$prefix/var/lib/freeswitch/db`, `$prefix/var/log/freeswitch`, "
+"`$prefix/var/run/freeswitch`; Debian uses `/var/lib/freeswitch`, "
+"`/var/log/freeswitch`, `/run/freeswitch`"
+msgstr ""
+"`$prefix/var/lib/freeswitch/db`、`$prefix/var/log/freeswitch`、`$prefix/var/run/freeswitch`；Debian"
+" 使用 `/var/lib/freeswitch`、`/var/log/freeswitch`、`/run/freeswitch`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 9ece8c9007ce4f40b25ca75db943228a
+msgid "Vanilla ESL listener"
+msgstr "Vanilla ESL 监听器"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 6e5e9aa9ba4a43ca836d375282960c64
+msgid "`::`:8021"
+msgstr "`::`:8021"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 69d6cb53e48b46818d11eea28247adec
+msgid "Depends on the selected configuration"
+msgstr "取决于所选配置"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 33a58f6be12b447d9285b3b3174eb05d
+msgid "`fs_cli` client default"
+msgstr "`fs_cli` 客户端默认值"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: 6f18ef567ea34b84b8a16683d1a4499d
+msgid "`127.0.0.1:8021` with password `ClueCon`"
+msgstr "`127.0.0.1:8021`，密码为 `ClueCon`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:124
+#: c0015781bc7c41d5ab4a370d7c086390
+msgid "Same client default unless overridden"
+msgstr "除非覆盖，否则使用相同的客户端默认值"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:192
+#: a4441b73f614418f87bb547d0fbc6198
+msgid ""
+"The shipped vanilla server configuration listens on wildcard IPv6 `::` "
+"with the inbound ACL commented out. Whether that also accepts IPv4 "
+"depends on the host's dual-stack socket behavior. The module sample "
+"instead binds `127.0.0.1`. Change the ESL password, bind, and ACL before "
+"exposing the vanilla configuration beyond a trusted management network."
+msgstr ""
+"随附的 vanilla 服务端配置监听通配 IPv6 地址 `::`，且入站 ACL 被注释掉。它是否同时接受 IPv4 "
+"取决于主机双栈套接字行为。模块示例则绑定 `127.0.0.1`。在将 vanilla 配置暴露到可信管理网络之外之前，请修改 ESL "
+"密码、绑定地址并启用 ACL。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:198
+#: 416e2b3c18064e88b3a969644ed90bd5
+msgid "System Snapshot"
+msgstr "系统快照"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:200
+#: 78087d15ced84824a3c67a6422b147a7
+msgid ""
+"**Deployment model**: single long-running `freeswitch` process per host "
+"(Unix daemon or Windows service `FreeSWITCH`), plus optional sidecar apps"
+" talking ESL. Not a microservice mesh. Default install prefix is "
+"`/usr/local/freeswitch` (`configure.ac`)."
+msgstr ""
+"**部署模型**：每台主机一个长期运行的 `freeswitch` 进程（Unix 守护进程或 Windows 服务 "
+"`FreeSWITCH`），外加可选的通过 ESL 通信的 sidecar 应用。不是微服务网格。默认安装前缀为 "
+"`/usr/local/freeswitch`（`configure.ac`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:201
+#: 776dd484a86d4aeea04171099f052eaf
+msgid ""
+"**Core runtime shape**: threaded C core owns sessions, media, timers, and"
+" a state machine; features load as DSOs from `src/mod/` categories "
+"(`endpoints`, `applications`, `codecs`, `dialplans`, `event_handlers`, "
+"`languages`, `xml_int`, …)."
+msgstr ""
+"**核心运行形态**：多线程 C 核心拥有会话、媒体、定时器和状态机；功能以 DSO 形式从 `src/mod/` "
+"各类目录加载（`endpoints`、`applications`、`codecs`、`dialplans`、`event_handlers`、`languages`、`xml_int`"
+" 等）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:202
+#: 2d2a1cb07c8e49329c3f804d69b8789f
+msgid ""
+"**Primary data path**: signaling (SIP/Verto/Skinny/…) → session "
+"(`src/switch_core_session.c`) → XML dialplan / directory → applications "
+"(bridge, conference, voicemail, …) → RTP/SRTP media (`src/switch_rtp.c`, "
+"`src/switch_core_media.c`) → CDR/event consumers."
+msgstr ""
+"**主数据路径**：信令（SIP/Verto/Skinny/…）→ 会话（`src/switch_core_session.c`）→ XML "
+"拨号计划 / directory → 应用（bridge、conference、voicemail 等）→ RTP/SRTP "
+"媒体（`src/switch_rtp.c`、`src/switch_core_media.c`）→ CDR/事件消费者。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:203
+#: 0f016bb6d97d4c2eb36a19b6ce2e1656
+msgid ""
+"**Top risk or constraint**: real-time media and large UDP port ranges. "
+"Docker docs require host networking; vanilla ESL listens on wildcard "
+"`::`:8021 with password `ClueCon` (`event_socket.conf.xml`) — change "
+"bind/password and enable an ACL before any non-loopback exposure. "
+"`fs_cli` still defaults to `127.0.0.1:8021`."
+msgstr ""
+"**主要风险或约束**：实时媒体和较大的 UDP 端口范围。Docker 文档要求使用 host 网络；vanilla ESL 在通配 "
+"`::`:8021 上监听，密码为 `ClueCon`（`event_socket.conf.xml`）——在任何非 loopback "
+"暴露之前修改绑定地址和密码并启用 ACL。`fs_cli` 仍默认连接 `127.0.0.1:8021`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:226
+#: cc4203ac7d124f75b3c166e4a86b69af
+msgid "Quality Targets"
+msgstr "质量目标"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:228
+#: 5004fbefc46c476d85b522e39c184175
+msgid ""
+"This repo does not publish numeric SLOs. The table records what the code "
+"and default config actually optimize for."
+msgstr "本仓库不发布数值化 SLO。下表记录代码和默认配置实际优化的方向。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:205
+#: 2e64af1fd51a4de7a10d14b036180808
+msgid "Area"
+msgstr "领域"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:205
+#: f83e777ab7764a889459407a75186095
+msgid "Target"
+msgstr "目标"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:205
+#: 1c8cc8c9fa05486ab990be6c5fb37304
+msgid "Notes"
+msgstr "说明"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:205
+#: a2e9868b0ed942bbbf79fa7eb4a18a57
+msgid "Performance"
+msgstr "性能"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:205
+#: f5827713e6544da38218a38967d127f9
+msgid ""
+"Real-time media; default codec ptime assumption is **20 ms** "
+"(`conf/vanilla/autoload_configs/switch.conf.xml`)"
+msgstr ""
+"实时媒体；默认编解码器 ptime 假设为 **20 "
+"ms**（`conf/vanilla/autoload_configs/switch.conf.xml`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:205
+#: ed7d199c94b441f4a7c4ffa5355d6480
+msgid ""
+"Scale is a function of cores, codec mix, and whether the process is also "
+"bridging/transcoding. No p95 SLA in-tree."
+msgstr "规模取决于核心数、编解码器组合，以及进程是否同时做桥接/转码。树内没有 p95 SLA。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:205
+#: 891e91a75a28485e91bd3842021b81ee
+msgid "Availability"
+msgstr "可用性"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:205
+#: 3dc19d5f6fb84096b96c5fbddca39eb9
+msgid ""
+"Process stays up; XML is compiled to a memory-mapped "
+"`freeswitch.xml.fsxml`; optional `switchname` for HA/clustered DB "
+"identity"
+msgstr "进程保持运行；XML 编译为内存映射的 `freeswitch.xml.fsxml`；可选 `switchname` 用于 HA/集群数据库身份"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:205
+#: dbab708a4b884858b251d5b39e01e36c
+msgid ""
+"[NEEDS INPUT: site RTO/RPO] — operators own HA (active/standby, Kamailio,"
+" etc.)."
+msgstr "[NEEDS INPUT: 站点 RTO/RPO] — 高可用由运维自行负责（主备、Kamailio 等）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:205
+#: 6e1f2ab9539441cab6e0d05f79f6c59f
+msgid "Correctness"
+msgstr "正确性"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:205
+#: c13dd713a25b4c218275d9592635adf2
+msgid ""
+"Channel/session state machine in core; dialplan and directory from XML "
+"(or curl/LDAP XML interfaces)"
+msgstr "核心中的通道/会话状态机；拨号计划和 directory 来自 XML（或 curl/LDAP XML 接口）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:205
+#: 36a90895ace849bc932e51366e2cdcfe
+msgid ""
+"Default vanilla config is documented as a working PBX, not a production "
+"security baseline."
+msgstr "默认 vanilla 配置被文档化为可用的 PBX，而非生产安全基线。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:205
+#: 4f712209b89a4f0d9e4fc57bcbe03350
+msgid "Security"
+msgstr "安全性"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:205
+#: e843d10f87294993bc47566535413e91
+msgid ""
+"Report vulns to `security@signalwire.com` (`SECURITY.md`). Vanilla ESL "
+"listens on wildcard `::`; the module sample is loopback-only."
+msgstr ""
+"漏洞请报告至 `security@signalwire.com`（`SECURITY.md`）。Vanilla ESL 监听通配 "
+"`::`；模块示例仅绑定 loopback。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:205
+#: 2dc34fcea97248ce90405f4b73308fb7
+msgid ""
+"Change ESL password `ClueCon`, bind, and ACL, plus SIP credentials before"
+" production. MPL 1.1; some bundled libs use other licenses."
+msgstr "上线前请修改 ESL 密码 `ClueCon`、绑定地址和 ACL，以及 SIP 凭据。许可证为 MPL 1.1；部分捆绑库使用其他许可证。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:237
+#: ff26235b569b4f86a3ff5371925fe459
+msgid "Key Project Facts"
+msgstr "项目关键事实"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:239
+#: 0dbf2e202b1247799b1140fb7a898a6d
+msgid ""
+"**Code roots**: `src/` (core + `src/include/` public API), `src/mod/` "
+"(modules), `libs/` (APR, SRTP, ESL, VPX, …), `conf/` (XML profiles), "
+"`build/` (Autotools helpers, `modules.conf.in`), `debian/` / "
+"`scripts/packaging/`, `w32/`, `docker/`, `tests/unit/`."
+msgstr ""
+"**代码根目录**：`src/`（核心 + `src/include/` 公共 "
+"API）、`src/mod/`（模块）、`libs/`（APR、SRTP、ESL、VPX 等）、`conf/`（XML "
+"配置）、`build/`（Autotools 辅助、`modules.conf.in`）、`debian/` / "
+"`scripts/packaging/`、`w32/`、`docker/`、`tests/unit/`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:240
+#: 974ffd597b4747beada9c48b889561f7
+msgid "**Primary interfaces**:"
+msgstr "**主要接口**："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:241
+#: 8fa767e4650e4403a54d0c5a8e8050f4
+msgid "SIP: `src/mod/endpoints/mod_sofia/` (typical 5060/5080; TLS 5061/5081)"
+msgstr "SIP：`src/mod/endpoints/mod_sofia/`（通常 5060/5080；TLS 5061/5081）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:242
+#: 410ffffe8b39459e8a8d905b856cc864
+msgid "WebRTC/HTML5: `src/mod/endpoints/mod_verto/`"
+msgstr "WebRTC/HTML5：`src/mod/endpoints/mod_verto/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:243
+#: 1d6e737a0096462bbe4320552be57c0d
+msgid ""
+"Event Socket: `src/mod/event_handlers/mod_event_socket/` + `libs/esl/` "
+"(`fs_cli`)"
+msgstr ""
+"Event Socket：`src/mod/event_handlers/mod_event_socket/` + "
+"`libs/esl/`（`fs_cli`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:244
+#: 6c1266f4049249df84559b56c444c988
+msgid ""
+"XML config: `conf/*/freeswitch.xml` preprocessor (`#include` / `X-PRE-"
+"PROCESS`)"
+msgstr "XML 配置：`conf/*/freeswitch.xml` 预处理器（`#include` / `X-PRE-PROCESS`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:245
+#: 6af64d9bd9a4462d8549998309d5f60f
+msgid ""
+"Embedded languages: `src/mod/languages/` (Lua, Python3, V8, Perl, Java, "
+"managed, …)"
+msgstr "嵌入式语言：`src/mod/languages/`（Lua、Python3、V8、Perl、Java、managed 等）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:246
+#: c88613ed4e8e48b2b009ebf32ff485db
+msgid ""
+"**Entry points**: `src/switch.c` (`main`), core init in "
+"`src/switch_core.c`, DSO loader in `src/switch_loadable_module.c`."
+msgstr ""
+"**入口点**：`src/switch.c`（`main`），核心初始化在 `src/switch_core.c`，DSO 加载器在 "
+"`src/switch_loadable_module.c`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:247
+#: fa7c082a5fdb4cdeb4eb032d3400f5a6
+msgid ""
+"**Default modules**: uncommented lines in `build/modules.conf.in` (Sofia,"
+" Verto, conference, voicemail, Opus, XML dialplan, `mod_signalwire`, …)."
+msgstr ""
+"**默认模块**：`build/modules.conf.in` "
+"中未注释的行（Sofia、Verto、conference、voicemail、Opus、XML 拨号计划、`mod_signalwire` "
+"等）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:248
+#: e26a8fd47ae74ff5a50d67f8c4827d66
+msgid ""
+"**CI**: GitHub Actions on `master`, `v1.10`, `v1.11` "
+"(`.github/workflows/ci.yml` and related workflows for macOS, Windows, "
+"tarball, scan-build)."
+msgstr ""
+"**CI**：GitHub Actions 运行于 "
+"`master`、`v1.10`、`v1.11`（`.github/workflows/ci.yml` 以及 "
+"macOS、Windows、tarball、scan-build 相关工作流）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:249
+#: e0abbc0690df4edab30992555896bead
+msgid ""
+"**Source of truth docs**: this PKB for AI/repo navigation; the "
+"[FreeSWITCH Users Manual](https://developer.signalwire.com/freeswitch/) "
+"for operator configuration; [FreeSWITCH "
+"Explained](https://developer.signalwire.com/freeswitch/FreeSWITCH-"
+"Explained/) / [Confluence](https://freeswitch.org/confluence/) for "
+"historical wiki and release notes."
+msgstr ""
+"**权威文档**：本 PKB 用于 AI/仓库导航；运维配置见 [FreeSWITCH "
+"用户手册](https://developer.signalwire.com/freeswitch/)；历史 wiki 与发行说明见 "
+"[FreeSWITCH Explained](https://developer.signalwire.com/freeswitch"
+"/FreeSWITCH-Explained/) 与 "
+"[Confluence](https://freeswitch.org/confluence/)。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:251
+#: aa6f8ae165494947b8a46feb70e6c834
+msgid "Related Documentation"
+msgstr "相关文档"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:253
+#: 2ad9c4f24a82449785cc2a36fc4eaf17
+#, fuzzy
+msgid "[Quick Start](02-quick-start.md)"
+msgstr "[快速入门](01-quick-start.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:254
+#: e627677ea9f044b189e207b054248817
+#, fuzzy
+msgid "[Architecture](../1.architecture/01-architecture.md)"
+msgstr "[架构](02-architecture.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:255
+#: 90b4bdc1795e49288a5644b7b11be8d9
+#, fuzzy
+msgid "[C Runtime Framework](../1.architecture/06-c-runtime.md)"
+msgstr "[技术栈](03-tech-stack.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:256
+#: e3ea4bbee20642db9e2a6497a2a82691
+#, fuzzy
+msgid "[Tech Stack](../1.architecture/02-tech-stack.md)"
+msgstr "[技术栈](03-tech-stack.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:257
+#: 95228a0fcb55444d92d135a271e5caba
+#, fuzzy
+msgid "[Repository Map](../1.architecture/03-repo-map.md)"
+msgstr "[仓库地图](04-repo-map.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:258
+#: 8fc2f36ffb0047c2a323f5d0cfca5044
+#, fuzzy
+msgid "[Runbook](../5.operations/01-runbook.md)"
+msgstr "[运维手册](10-runbook.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/01-overview.md:259
+#: f1bfec28bff948b0bd0e200109d696cf
+#, fuzzy
+msgid ""
+"[Users Manual](https://developer.signalwire.com/freeswitch/) — [Ch 1 "
+"concepts](https://developer.signalwire.com/freeswitch/foundations/introduction),"
+" [Ch 2 getting "
+"started](https://developer.signalwire.com/freeswitch/foundations/getting-"
+"started)"
+msgstr ""
+"[用户手册](https://developer.signalwire.com/freeswitch/) — 从 [第 1 "
+"章](https://developer.signalwire.com/freeswitch/foundations/introduction) "
+"与 [第 2 章](https://developer.signalwire.com/freeswitch/foundations"
+"/getting-started) 开始"
+
+#~ msgid ""
+#~ "Third-party Sofia-SIP / spandsp "
+#~ "packaging sources that live outside this"
+#~ " tree"
+#~ msgstr "位于本树之外的第三方 Sofia-SIP / spandsp 打包源码"
+
+#~ msgid ""
+#~ "At runtime those files are "
+#~ "preprocessor-assembled into one XML "
+#~ "document with sections `configuration`, "
+#~ "`dialplan`, `chatplan`, `directory`, and "
+#~ "`languages`. See [Architecture](02-architecture.md) "
+#~ "and [Chapter "
+#~ "3](https://developer.signalwire.com/freeswitch/configuration/xml)."
+#~ msgstr ""
+#~ "运行时这些文件由预处理器组装成一份 XML 文档，包含 "
+#~ "`configuration`、`dialplan`、`chatplan`、`directory`、`languages` "
+#~ "各节。见 [架构](02-architecture.md) 与 [第 3 "
+#~ "章](https://developer.signalwire.com/freeswitch/configuration/xml)。"
+
+#~ msgid ""
+#~ "Third-party [Sofia-"
+#~ "SIP](https://github.com/freeswitch/sofia-sip) / "
+#~ "SpanDSP / libks sources ([Tech Stack](03"
+#~ "-tech-stack.md#sofia-sip-library))"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Operator terms come from [Users Manual"
+#~ " Chapter "
+#~ "1](https://developer.signalwire.com/freeswitch/foundations/introduction)."
+#~ " This page maps them onto **this "
+#~ "clone**. C types and the session "
+#~ "state machine: [Architecture](02-architecture.md). "
+#~ "The `switch_*` lifetime model (pools, "
+#~ "FSPR, frames): [C Runtime "
+#~ "Framework](13-c-runtime.md). The same 1000→1001 "
+#~ "path with core symbols: "
+#~ "[Workflows](06-workflows.md)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Behavior is determined by XML, not "
+#~ "by editing the C core. Vanilla "
+#~ "(`conf/vanilla/`) is a working demo PBX"
+#~ " so you can test immediately; it "
+#~ "is not a production security baseline"
+#~ " ([FAQ](appendix-01-faq.md))."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Loadable modules under `src/mod/endpoints/` "
+#~ "(`mod_sofia` SIP, `mod_verto` WebRTC, …)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "One leg between FreeSWITCH and a "
+#~ "single endpoint; holds call state, "
+#~ "media, and channel variables"
+#~ msgstr ""
+
+#~ msgid "Runtime container for a channel plus the application running on it"
+#~ msgstr ""
+
+#~ msgid "`switch_core_session_t` in `src/switch_core_session.c`"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "One or more associated channels (a "
+#~ "typical two-party call is two "
+#~ "channels joined by a bridge)"
+#~ msgstr ""
+
+#~ msgid "Core SQL `calls` (`caller_uuid` / `callee_uuid`)"
+#~ msgstr ""
+
+#~ msgid "Association that joins two channels so media can flow between them"
+#~ msgstr ""
+
+#~ msgid "Dialplan app `bridge`; `switch_ivr_bridge`"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Channel variables are `${name}` at "
+#~ "**call time**. Preprocessor variables are "
+#~ "`$${name}` and expand **once** while "
+#~ "assembling XML (`conf/vanilla/vars.xml`). Mixing "
+#~ "them is a common config bug "
+#~ "([Chapter "
+#~ "3](https://developer.signalwire.com/freeswitch/configuration/xml), "
+#~ "[FAQ](appendix-01-faq.md))."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Track that call in the log by "
+#~ "**session UUID**, not SIP `Call-ID` "
+#~ "([FAQ](appendix-01-faq.md), "
+#~ "[Observability](11-observability.md))."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Build list: `build/modules.conf.in` (copied to"
+#~ " `modules.conf`). Runtime load list: "
+#~ "`conf/vanilla/autoload_configs/modules.conf.xml`. Do not"
+#~ " mix those files ([FAQ](appendix-01-faq.md), "
+#~ "[Chapter "
+#~ "5](https://developer.signalwire.com/freeswitch/configuration"
+#~ "/module-loading/))."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The core does not call into a "
+#~ "module by category directory. After "
+#~ "`dlopen`, it uses the C tables the"
+#~ " module registered (`SWITCH_MODULE_DEFINITION`, "
+#~ "then endpoint / API / app / "
+#~ "codec / …). That contract: [Architecture"
+#~ " — Loadable module contract](02-architecture.md"
+#~ "#loadable-module-contract)."
+#~ msgstr ""
+
+#~ msgid "[C Runtime Framework](13-c-runtime.md)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Track that call in the log by "
+#~ "**session UUID**, not SIP `Call-ID` "
+#~ "([FAQ](../7.appendix/appendix-01-faq.md), "
+#~ "[Observability](../4.operations/11-observability.md))."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Third-party [Sofia-"
+#~ "SIP](https://github.com/freeswitch/sofia-sip) / "
+#~ "SpanDSP / libks sources ([Tech "
+#~ "Stack](../1.architecture/03-tech-stack.md#sofia-sip-"
+#~ "library))"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Operator terms come from [Users Manual"
+#~ " Chapter "
+#~ "1](https://developer.signalwire.com/freeswitch/foundations/introduction)."
+#~ " This page maps them onto **this "
+#~ "clone**. C types and the session "
+#~ "state machine: "
+#~ "[Architecture](../1.architecture/02-architecture.md). The "
+#~ "`switch_*` lifetime model (pools, FSPR, "
+#~ "frames): [C Runtime "
+#~ "Framework](../1.architecture/13-c-runtime.md). The same"
+#~ " 1000→1001 path with core symbols: "
+#~ "[Workflows](../1.architecture/06-workflows.md)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Behavior is determined by XML, not "
+#~ "by editing the C core. Vanilla "
+#~ "(`conf/vanilla/`) is a working demo PBX"
+#~ " so you can test immediately; it "
+#~ "is not a production security baseline"
+#~ " ([FAQ](../7.appendix/appendix-01-faq.md))."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "In this tree: `switch_core_session_t` "
+#~ "(`src/switch_core_session.c`). Lifetime/pool: [C "
+#~ "Runtime](../1.architecture/13-c-runtime.md)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Channel variables are `${name}` at "
+#~ "**call time**. Preprocessor variables are "
+#~ "`$${name}` and expand **once** while "
+#~ "assembling XML (`conf/vanilla/vars.xml`). Mixing "
+#~ "them is a common config bug "
+#~ "([Chapter "
+#~ "3](https://developer.signalwire.com/freeswitch/configuration/xml), "
+#~ "[FAQ](../7.appendix/appendix-01-faq.md))."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Track that call in the log by "
+#~ "**session UUID**, not SIP `Call-ID` "
+#~ "([FAQ](../7.appendix/appendix-01-faq.md), "
+#~ "[Observability](../5.operations/11-observability.md))."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Build list: `build/modules.conf.in` (copied to"
+#~ " `modules.conf`). Runtime load list: "
+#~ "`conf/vanilla/autoload_configs/modules.conf.xml`. Do not"
+#~ " mix those files "
+#~ "([FAQ](../7.appendix/appendix-01-faq.md), [Chapter "
+#~ "5](https://developer.signalwire.com/freeswitch/configuration"
+#~ "/module-loading/))."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The core does not call into a "
+#~ "module by category directory. After "
+#~ "`dlopen`, it uses the C tables the"
+#~ " module registered (`SWITCH_MODULE_DEFINITION`, "
+#~ "then endpoint / API / app / "
+#~ "codec / …). That contract: [Architecture"
+#~ " — Loadable module "
+#~ "contract](../1.architecture/02-architecture.md#loadable-"
+#~ "module-contract)."
+#~ msgstr ""
+
+#~ msgid "[C Runtime Framework](../1.architecture/13-c-runtime.md)"
+#~ msgstr ""
+

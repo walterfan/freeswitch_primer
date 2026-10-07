@@ -1,0 +1,713 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Zoom Video Communications
+# This file is distributed under the same license as the FreeSWITCH package.
+# Walter Fan <walter.fan@ustc.etu>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version:  FreeSWITCH\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-18 16:34+0800\n"
+"PO-Revision-Date: 2026-08-30 23:13+0800\n"
+"Last-Translator: Walter Fan <walter.fan@ustc.etu>\n"
+"Language: zh_CN\n"
+"Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:35
+msgid "Getting Started"
+msgstr "入门"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:42
+#, fuzzy
+msgid "Architecture & Internals"
+msgstr "架构"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:49
+msgid "Signaling"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:56
+msgid "Media"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:63
+msgid "Development"
+msgstr "开发"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:70
+msgid "Operations"
+msgstr "运维"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+msgid "Appendix"
+msgstr "附录"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:1
+#: 56cee2caa3bd4e97bbab44f9ce82735d
+msgid "FreeSWITCH Knowledge Base"
+msgstr "FreeSWITCH 知识库"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:5
+#: 17602975dfe0438bb84947324f82a20e
+msgid ""
+"This documentation is the Project Knowledge Base for FreeSWITCH. It is "
+"designed to help both humans and AI locate code, understand architecture,"
+" execute workflows, and verify changes."
+msgstr "本文档是 FreeSWITCH 的项目知识库（PKB）。旨在帮助人和 AI 定位代码、理解架构、执行工作流并验证变更。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:7
+#: e44b6656baaa4f6c94011bc94e5e820e
+msgid "Overview"
+msgstr "概述"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:9
+#: d627b0ba7cbe4e1ea331d37d7ef15e17
+msgid "Purpose"
+msgstr "目的"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:12
+#: 15f7439ead2249979a2461004f667dd2
+msgid "This PKB should help readers:"
+msgstr "本 PKB 应帮助读者："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:13
+#: 5b9c9f1cbb164425b4d2cfe316753ed0
+msgid "**Locate** code, configs, scripts, and entry points in **this git tree**"
+msgstr "**定位** 本 git 树中的代码、配置、脚本和入口点"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:14
+#: c3263fc658d94545824a9e669c5cbc99
+msgid "**Understand** architecture, stack choices, and workflows"
+msgstr "**理解** 架构、技术栈选择和工作流"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:15
+#: 0b4f454b73cb4da2b317f121e3aa568a
+msgid "**Execute** setup, build, release, and debugging tasks"
+msgstr "**执行** 安装、构建、发布和调试任务"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:16
+#: 4c74d558a7c4466d8619c355bd5c5042
+msgid "**Verify** behavior with tests, observability, and documentation checks"
+msgstr "**验证** 行为：通过测试、可观测性和文档检查"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:19
+#: 3cfb8a2c0b024285bec2fa3b67d3e680
+msgid ""
+"Operator configuration (XML, SIP profiles, dialplan, directory, codecs, "
+"ESL programming) is documented in the [FreeSWITCH Users "
+"Manual](https://developer.signalwire.com/freeswitch/). This PKB does not "
+"replace that manual. It maps the same concepts onto verified paths in "
+"this repository."
+msgstr ""
+"运维配置（XML、SIP profiles、拨号计划、号码簿、编解码、ESL 编程）写在 [FreeSWITCH "
+"用户手册](https://developer.signalwire.com/freeswitch/)。本 PKB "
+"不替代该手册，只把同样的概念映射到本仓库已核实的路径。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:9
+#: 6dfc238426d5421d992696d0a0ae3f52
+msgid "Layer"
+msgstr "层级"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:9
+#: c5b98509ad0f48b69621b53c2cc89ff4
+msgid "What it is"
+msgstr "是什么"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:9
+#: 907c19f1f0b74d7daf4ca82c199d0b03
+msgid "Start here"
+msgstr "从这里开始"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:9
+#: e6b7d6271e78402f8bacf85821a5ceaa
+msgid "**Users Manual**"
+msgstr "**用户手册**"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:9
+#: aaa1ff2fa8b4414abfe662247bca1ca0
+msgid ""
+"Operator configuration reference. Parameters and defaults are verified "
+"against FreeSWITCH source and the shipped vanilla config."
+msgstr "运维配置参考。参数与默认值对照 FreeSWITCH 源码与随附 vanilla 配置核实。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:9
+#: 3152a864cfc44f51a28c3b3efc721021
+msgid "[developer.signalwire.com/freeswitch](https://developer.signalwire.com/freeswitch/)"
+msgstr "[developer.signalwire.com/freeswitch](https://developer.signalwire.com/freeswitch/)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:9
+#: 6a2ce49fba7d49478a4c35da30a07189
+msgid "**This PKB**"
+msgstr "**本 PKB**"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:9
+#: 7829e25c70cb454eb7c0aa6b32c6197c
+msgid ""
+"Repo map, C4 architecture, Autotools/CI, ESL/XML contracts as implemented"
+" here, runbook for this clone"
+msgstr "仓库地图、C4 架构、Autotools/CI、本仓库实现的 ESL/XML 契约、本克隆的运维手册"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:9
+#: 157510259a964da0afd2d445786d79d0
+#, fuzzy
+msgid "[Project Overview](0.getting-started/01-overview.md)"
+msgstr "[项目概述](00-overview.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:9
+#: f127ea4223ab4f79814c98ba65a135e4
+msgid "**Historical wiki**"
+msgstr "**历史 wiki**"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:9
+#: db0ce0b5fed74896b8526c5017792f53
+msgid "Older tutorials and Confluence pages still linked from `README.md`"
+msgstr "`README.md` 仍链接的旧教程与 Confluence 页面"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:9
+#: 1f3b894a90154844a12f8a344deb20ee
+msgid ""
+"[FreeSWITCH Explained](https://developer.signalwire.com/freeswitch"
+"/FreeSWITCH-Explained/), [Confluence](https://freeswitch.org/confluence/)"
+msgstr ""
+"[FreeSWITCH Explained](https://developer.signalwire.com/freeswitch"
+"/FreeSWITCH-Explained/)、[Confluence](https://freeswitch.org/confluence/)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:27
+#: e18472eabe8a407980ee582ec8aca096
+msgid "How to use both"
+msgstr "如何同时使用两者"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:30
+#: 4630c0ba7b4b4d83b0c57e88d38272f8
+msgid ""
+"Read [Users Manual Part "
+"1](https://developer.signalwire.com/freeswitch/foundations/introduction) "
+"and [Part "
+"2](https://developer.signalwire.com/freeswitch/configuration/xml) for the"
+" configuration model. Use this PKB when you need the C file, Autotools "
+"target, or CI path that implements that model."
+msgstr ""
+"先读 [用户手册第 1 "
+"部分](https://developer.signalwire.com/freeswitch/foundations/introduction)"
+" 与 [第 2 "
+"部分](https://developer.signalwire.com/freeswitch/configuration/xml) "
+"了解配置模型。需要实现该模型的 C 文件、Autotools 目标或 CI 路径时再用本 PKB。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:33
+#: 327e5e977271446ea29d0ef7efa5d5e0
+msgid "Table of Contents"
+msgstr "目录"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:84
+#: c823527982ad40f2a6ee0ca3cd66bec5
+msgid "PKB page to Users Manual"
+msgstr "PKB 页面与用户手册对照"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:86
+#: 562973e7de534c9ab6ae1d6266ce284b
+msgid ""
+"Keep PKB numbering stable. When an operator question is about *how to "
+"configure* FreeSWITCH, follow the Users Manual chapter; when it is about "
+"*where it lives in this tree*, stay on the PKB page."
+msgstr "保持 PKB 编号稳定。运维问题若是 *如何配置* FreeSWITCH，跟用户手册章节；若是 *它在本仓库哪里*，留在 PKB 页面。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: ab4fdd6906c34e1f8b36e22d1e8a6527
+msgid "PKB page"
+msgstr "PKB 页面"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: 697ddd36cf77473da46d27b51e71a835
+msgid "Users Manual"
+msgstr "用户手册"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: 09bf7b3f53214ef4ae06ffaa121582fd
+msgid "Use the PKB for"
+msgstr "PKB 用于"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: d4fabdb44e3c4f3b85b14dcd0ec43b15
+#, fuzzy
+msgid "[00 Overview](0.getting-started/01-overview.md)"
+msgstr "[00 概述](00-overview.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: c95d93145f6d4aa2b929b579be6230df
+msgid ""
+"[Ch 1 Core "
+"Concepts](https://developer.signalwire.com/freeswitch/foundations/introduction)"
+msgstr ""
+"[第 1 "
+"章核心概念](https://developer.signalwire.com/freeswitch/foundations/introduction)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: 5bd3f7bdcaf743bc82ed0cba0414979d
+msgid ""
+"Scope of this clone; **FS core concepts** (endpoint / channel / session /"
+" call / bridge; directory / dialplan / configuration)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: 9a903102bec14dbaaa429a027c08dcef
+#, fuzzy
+msgid "[01 Quick Start](0.getting-started/02-quick-start.md)"
+msgstr "[01 快速开始](01-quick-start.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: 3ace8ef4b6424c4994832fa82501a0de
+msgid ""
+"[Ch 2 Getting "
+"Started](https://developer.signalwire.com/freeswitch/foundations/getting-"
+"started)"
+msgstr ""
+"[第 2 章入门](https://developer.signalwire.com/freeswitch/foundations"
+"/getting-started)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: 3ea87e46235344648231bf9a0d2ee711
+msgid "Source-build from this tree; Sofia-SIP / libks out of tree"
+msgstr "从本仓库源码构建；Sofia-SIP / libks 在树外"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: a36d3b8c380a40bdae6bdb94beeca2af
+#, fuzzy
+msgid "[02 Architecture](1.architecture/01-architecture.md)"
+msgstr "[02 架构](02-architecture.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: f6679cedf5ea4bf28d24b9c41b64457c
+msgid ""
+"Ch 1 + [Ch 3 XML "
+"config](https://developer.signalwire.com/freeswitch/configuration/xml) + "
+"[Ch 5 Module "
+"loading](https://developer.signalwire.com/freeswitch/configuration"
+"/module-loading/)"
+msgstr ""
+"第 1 章 + [第 3 章 XML "
+"配置](https://developer.signalwire.com/freeswitch/configuration/xml) + [第 5"
+" 章模块加载](https://developer.signalwire.com/freeswitch/configuration/module-"
+"loading/)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: 4fe2fa6ad85e4f0baa128b9478ad4f9a
+#, fuzzy
+msgid ""
+"Session state machine, loadable-module contract, `<load>` → `dlopen`, in-"
+"process DSOs"
+msgstr "会话状态机、模块加载器、进程内 DSO"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: 2814af14e37d4cc58bea27685b0e2643
+#, fuzzy
+msgid "[15 FreeSWITCH Modules](1.architecture/08-modules.md)"
+msgstr "[06 工作流](06-workflows.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: e7e9361b3d9d4bb9951bcba23e504c26
+msgid "Ch 5 Module loading"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: aa7545b98f974e2b97fdb640d5297226
+msgid ""
+"How to build a module; load, initialization, runtime, shutdown, unload; "
+"`mod_sofia`, `mod_xml_rpc`, and `mod_opus`"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: 5a0492aa347f49c8877714cd0fef2240
+#, fuzzy
+msgid "[13 C Runtime](1.architecture/06-c-runtime.md)"
+msgstr "[13 C 运行时](13-c-runtime.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: 8da007bf84d1451a8a7bd34d03998939
+msgid "Ch 1 (switching platform, not a generic network server)"
+msgstr "第 1 章（交换平台，不是普通网络服务器）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: 7fce45bdb086408ab00f5ff8e87affda
+msgid ""
+"`switch_*` programming model: pools, session lifetime, FSPR vs core, "
+"frames, events"
+msgstr "`switch_*` 编程模型：pool、session 生命周期、FSPR 与 core、frame、event"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: 985100cb8d384c89967f754d0ac06ba8
+#, fuzzy
+msgid "[03 Tech stack](1.architecture/02-tech-stack.md)"
+msgstr "[03 技术栈](03-tech-stack.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: 192423b310b14644a0a778043b9760d9
+msgid "—"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: 3e583cc246ce41c09d0f97ab66874515
+#, fuzzy
+msgid "Configure floors; Sofia-SIP NUA/NTA usage; SpanDSP / libks out of tree"
+msgstr "从本仓库源码构建；Sofia-SIP / libks 在树外"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: 008eeb22a3dc4a0b89dbf4030cd856c2
+#, fuzzy
+msgid "[04 Repo map](1.architecture/03-repo-map.md)"
+msgstr "[04 仓库地图](04-repo-map.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: 07fdcd2efbb24a308bcb475128907a9c
+msgid "Config paths relative to the directory that contains `freeswitch.xml`"
+msgstr "配置路径相对于包含 `freeswitch.xml` 的目录"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: 6cac2d0634ca404789df1f74b96380e0
+msgid "`src/`, `src/mod/`, `conf/vanilla/` ownership"
+msgstr "`src/`、`src/mod/`、`conf/vanilla/` 的归属"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: cf7b43f0ddb24a9d9ff2a66918a1194b
+#, fuzzy
+msgid "[05 Data and API](1.architecture/04-data-and-api.md)"
+msgstr "[05 数据与 API](05-data-and-api.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: b44d3112092e4dd4b967f2e74576376d
+msgid ""
+"[Ch 6 Directory](https://developer.signalwire.com/freeswitch/users-and-"
+"endpoints/user-directory), [Ch 12 XML "
+"Dialplan](https://developer.signalwire.com/freeswitch/dialplan/xml), [Ch "
+"46 Inbound ESL](https://developer.signalwire.com/freeswitch/programming"
+"/esl-inbound)"
+msgstr ""
+"[第 6 章号码簿](https://developer.signalwire.com/freeswitch/users-and-"
+"endpoints/user-directory)、[第 12 章 XML "
+"拨号计划](https://developer.signalwire.com/freeswitch/dialplan/xml)、[第 46 章入站"
+" ESL](https://developer.signalwire.com/freeswitch/programming/esl-"
+"inbound)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: 3c91388fb7bc42a8811f2266dc5ebf85
+msgid "Event ids, SQL scoreboard, ESL command table in this tree"
+msgstr "本仓库中的事件 id、SQL 记分板、ESL 命令表"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: 93e4a2921c404a999526fb3352f28a40
+#, fuzzy
+msgid "[06 Workflows](1.architecture/05-workflows.md)"
+msgstr "[06 工作流](06-workflows.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: 68eeee634dd0466683d6c99e4f938699
+msgid ""
+"Ch 1 anatomy of a call; [Ch 7 SIP "
+"profiles](https://developer.signalwire.com/freeswitch/users-and-endpoints"
+"/sip-profiles)"
+msgstr ""
+"第 1 章呼叫解剖；[第 7 章 SIP "
+"profiles](https://developer.signalwire.com/freeswitch/users-and-endpoints"
+"/sip-profiles)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: 04b593d5e3354bbdb1d6531418a7477e
+msgid ""
+"UDP/TCP → tport/nua → INVITE/REGISTER/originate; REGISTER Digest 401; "
+"`show channels` two-leg `bridge`; name → registry → function pointer"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: d79db0966e32401095cfbb44f2b427b2
+#, fuzzy
+msgid "[10 Runbook](5.operations/01-runbook.md)"
+msgstr "[10 运维手册](10-runbook.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: 3a9c5529fc3b44dcad648604612e12ce
+msgid "Ch 2 + Part 11 Troubleshooting"
+msgstr "第 2 章 + 第 11 部分排障"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: ceb978a7dcc44c479f5e772c91ca2f9b
+msgid ""
+"Prefix vs FHS paths, `fs_cli` against this install, remote ESL ACL "
+"(`loopback.auto` default), follow one call by channel UUID"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: 0a9f9e18bc0347afb89fcfccf0b2090d
+#, fuzzy
+msgid "[11 Observability](5.operations/02-observability.md)"
+msgstr "[11 可观测性](11-observability.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: 33a85c9c68af478e9554748216bdac1b
+msgid "Part 11 diagnostics"
+msgstr "第 11 部分诊断"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:77
+#: 4eefadd073b54d4992f7365222447ed7
+#, fuzzy
+msgid ""
+"`switch_log` levels, HEARTBEAT; channel UUID vs SIP Call-ID; no "
+"Prometheus in-tree"
+msgstr "`switch_log` 级别、HEARTBEAT；树内没有 Prometheus"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:102
+#: 9987ecc27b854fbc9b3d00046fe7b1af
+#, fuzzy
+msgid ""
+"Parts 6–10 of the Users Manual (applications, integration, module "
+"reference, recipes) have no extra PKB chapter. Link those from "
+"[Workflows](1.architecture/05-workflows.md) and [Data and "
+"API](1.architecture/04-data-and-api.md) when an operator needs parameter "
+"tables."
+msgstr ""
+"用户手册第 6–10 部分（应用、集成、模块参考、配方）没有额外 PKB 章节。运维需要参数表时，从 [工作流](06-workflows.md)"
+" 与 [数据与 API](05-data-and-api.md) 链出去。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:104
+#: 6b67d771d51a45f9a77fa555f3529e98
+msgid "Quick Start"
+msgstr "快速入门"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:106
+#: 52de34936bfc43d3a23ba260c3d9e8c0
+msgid "For New Developers"
+msgstr "面向新开发者"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:108
+#: 803f251b478c4832a02f501122d71204
+#, fuzzy
+msgid ""
+"Read [Project Overview](0.getting-started/01-overview.md) to understand "
+"purpose, users, and scope."
+msgstr "阅读 [项目概述](00-overview.md) 以了解目的、用户和范围。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:109
+#: 8313dc08565745ed881e5556ba7caa01
+#, fuzzy
+msgid ""
+"Follow [Quick Start](0.getting-started/02-quick-start.md) to get the "
+"project running locally."
+msgstr "按照 [快速入门](01-quick-start.md) 在本地把项目跑起来。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:110
+#: 1eea59256cad414c8d1b494da0332c61
+#, fuzzy
+msgid ""
+"Study [Repository Map](1.architecture/03-repo-map.md) to locate entry "
+"points and major directories."
+msgstr "研读 [仓库地图](04-repo-map.md) 以定位入口点和主要目录。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:111
+#: 8b3e3b37f74a43c59767fd737fe31b14
+#, fuzzy
+msgid ""
+"Review [Runbook](5.operations/01-runbook.md) and "
+"[Conventions](4.development/01-conventions.md) before making changes."
+msgstr "动手修改前，先阅读 [运维手册](10-runbook.md) 和 [约定](07-conventions.md)。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:113
+#: 73de5ab9844849cb9372243f81807477
+msgid "For AI Assistants"
+msgstr "面向 AI 助手"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:115
+#: 7530c8a6b03c49e6bdc0706d0271385b
+msgid "Use a layered reading order:"
+msgstr "采用分层阅读顺序："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:117
+#: 962c9853bb5245e98e9041ca70726480
+#, fuzzy
+msgid ""
+"**Round 1**: read `0.getting-started/01-overview`, `1.architecture/03"
+"-repo-map`, and `1.architecture/01-architecture` (plus Users Manual Ch 1 "
+"if the three configuration domains are new). For C core reading, add "
+"`1.architecture/06-c-runtime`."
+msgstr ""
+"**第一轮**：阅读 `00-overview`、`04-repo-map` 和 "
+"`02-architecture`（如果不熟悉三个配置域，再阅读用户手册第 1 章）。读 C 核心时加上 `13-c-runtime`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:118
+#: 3b465d990d1a4f768adb5404234355ee
+#, fuzzy
+msgid ""
+"**Round 2**: read `1.architecture/04-data-and-api` and "
+"`1.architecture/05-workflows`"
+msgstr "**第二轮**：阅读 `05-data-and-api` 和 `06-workflows`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:119
+#: 0b88a034355c45848a6f5700d2995978
+#, fuzzy
+msgid ""
+"**Round 3**: read `4.development/03-testing`, `5.operations/01-runbook`, "
+"`5.operations/02-observability`, and `5.operations/03-document`"
+msgstr "**第三轮**：阅读 `09-testing`、`10-runbook`、`11-observability` 和 `12-document`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:121
+#: c8fdcb68a7544b609a4fd9e1e9463046
+#, fuzzy
+msgid ""
+"See [How to Use This Documentation for AI](7.appendix/5.ai/01-ai-"
+"guide.md) for the detailed workflow."
+msgstr "详细工作流见 [如何将本文档用于 AI](ai-guide.md)。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:123
+#: 00437a5ad4964a50a4777d4d17b3bb94
+msgid "Key Concepts"
+msgstr "核心概念"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:129
+#: 304752f0b1534f2fb8bdd8773c0bae04
+msgid "Navigation"
+msgstr "导航"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:133
+#: 02d3944ba8094acaac88cebe7f4f9161
+msgid "Find the project structure, startup files, and major module boundaries."
+msgstr "查找项目结构、启动文件和主要模块边界。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:136
+#: 8e28edb82381497a8e00f3a16cb1fd13
+msgid "Architecture"
+msgstr "架构"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:140
+#: 8e1e91b3e2ef4ddb804e2771b80491ff
+msgid "Learn how the system is decomposed and how the main pieces interact."
+msgstr "了解系统如何分解，以及主要部件如何交互。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:143
+#: bee6aa95eb2e4a11b796f1d466501fcc
+msgid "C Runtime"
+msgstr "C 运行时"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:147
+#: a6d99fd9503347019384c40d4469c658
+msgid "Read the switch_* lifetime model: pools, sessions, events, and frames."
+msgstr "阅读 switch_* 生命周期模型：pool、session、event 与 frame。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:150
+#: 58d5973bf226480bb42ffa634d42c42a
+msgid "Workflows"
+msgstr "工作流"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:154
+#: 378f38fbdbd74990abc05236c8019dcd
+msgid "Explore critical request, event, and business flows with code references."
+msgstr "结合代码引用，探索关键请求、事件和业务流程。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:157
+#: 0d12d9e7d3ad4641a108102a916034e8
+msgid "Testing"
+msgstr "测试"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:161
+#: d1e436d961c7434da5bb63a10d053b6b
+msgid "Review the test layers, critical regressions, and validation commands."
+msgstr "查阅测试分层、关键回归用例和验证命令。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:165
+#: 29feb78a2db145349fd28d5810eaa801
+msgid "Documentation Maintenance"
+msgstr "文档维护"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:167
+#: ff1f579100b546dd9b648f0a014a1156
+msgid "Living Documentation"
+msgstr "持续更新的文档"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:170
+#: bab33288f8ab40db9d107840800d851a
+msgid "Keep the PKB fresh without wasting tokens:"
+msgstr "在不浪费 token 的前提下保持 PKB 新鲜："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:171
+#: 72f2664fda9e4d8ca199c3353dc94f6c
+msgid "run rule-based freshness checks before LLM-heavy doc work"
+msgstr "在大量使用 LLM 写文档之前，先跑基于规则的新鲜度检查"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:172
+#: 0c901334bc6849898074324b1e1c2cb7
+msgid "apply mechanical Level 1 updates first"
+msgstr "先应用机械式的 Level 1 更新"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:173
+#: 5fa39bd525254aba8edc23e5cb533de5
+msgid "batch Level 2 refreshes by PR, sprint, or milestone"
+msgstr "按 PR、sprint 或里程碑批量做 Level 2 刷新"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:174
+#: ad012b0587814bd98cc77815f2b533e6
+msgid "keep ADRs and product rationale human-led"
+msgstr "ADR 和产品决策理由仍由人工主导"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:177
+#: 55fdbd61467e4d409bbc43771503e6dd
+msgid "Contributing"
+msgstr "贡献"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:179
+#: c91e16bb50134977a8cce3ec73b2c810
+#, fuzzy
+msgid ""
+"See [Conventions](4.development/01-conventions.md) for coding standards "
+"and [Documentation Process](5.operations/03-document.md) for PKB "
+"maintenance rules."
+msgstr "编码规范见 [约定](07-conventions.md)，PKB 维护规则见 [文档流程](12-document.md)。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:181
+#: 8f40f566474c4a8da83aced6003efbcf
+msgid "Indices and tables"
+msgstr "索引与表格"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:183
+#: fc529792093749f8b3fcea492598a565
+#, python-brace-format
+msgid "{ref}`genindex`"
+msgstr "{ref}`genindex`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:184
+#: 02d530c7e937472488f47b396ce6e0c2
+#, python-brace-format
+msgid "{ref}`search`"
+msgstr "{ref}`search`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/index.md:188
+#: 0cfb2ed06a0a42bea2f5337319f48118
+#, python-brace-format
+msgid "**Version**: {sub-ref}`release` **Last Updated**: {sub-ref}`today`"
+msgstr "**版本**：{sub-ref}`release` **最后更新**：{sub-ref}`today`"
+
+#~ msgid "INVITE/REGISTER/originate traces with C symbols"
+#~ msgstr "带 C 符号的 INVITE/REGISTER/originate 追踪"
+
+#~ msgid "Prefix vs FHS paths, `fs_cli` against this install"
+#~ msgstr "prefix 与 FHS 路径，对本安装使用 `fs_cli`"
+
+#~ msgid "Scope of this clone, C4 context, edition vs cloud"
+#~ msgstr "本克隆的范围、C4 上下文、发行版 vs 云"
+
+#~ msgid "Design & Structure"
+#~ msgstr "设计与结构"
+
+#~ msgid "SIP & Media"
+#~ msgstr ""
+
+#~ msgid "AI & Maintenance"
+#~ msgstr "AI 与维护"
+
+#~ msgid "Decision Records & Change Proposals"
+#~ msgstr "决策记录与变更提案"
+
+#~ msgid "[15 FreeSWITCH Modules](1.architecture/15-modules.md)"
+#~ msgstr ""
+

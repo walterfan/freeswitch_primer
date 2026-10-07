@@ -1,0 +1,1272 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Zoom Video Communications
+# This file is distributed under the same license as the FreeSWITCH package.
+# Walter Fan <walter.fan@ustc.etu>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version:  FreeSWITCH\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-18 16:34+0800\n"
+"PO-Revision-Date: 2026-08-30 23:13+0800\n"
+"Last-Translator: Walter Fan <walter.fan@ustc.etu>\n"
+"Language: zh_CN\n"
+"Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:1
+#: 64101bb7e5d444248b0d0beda6b3b44d
+msgid "01. Quick Start"
+msgstr "01. 快速入门"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:5
+#: 391d692790374121ab78587c7f702f32
+msgid ""
+"Goal: get a `freeswitch` process running from **this clone** and prove it"
+" with `fs_cli -x status`. Vanilla XML is a demo PBX, not a production "
+"baseline (`conf/vanilla/README_IMPORTANT.txt`). Operator-facing first-"
+"call steps (register 1000/1001, dial `9196`) match [Users Manual Chapter "
+"2](https://developer.signalwire.com/freeswitch/foundations/getting-"
+"started)."
+msgstr ""
+"目标：从 **本克隆** 跑起 `freeswitch` 进程，并用 `fs_cli -x status` 验证。Vanilla XML 是演示 "
+"PBX，不是生产基线（`conf/vanilla/README_IMPORTANT.txt`）。面向运维的首呼步骤（注册 1000/1001、拨 "
+"`9196`）与 [用户手册第 2 "
+"章](https://developer.signalwire.com/freeswitch/foundations/getting-"
+"started) 一致。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:7
+#: f09cba70809f49478693f93a2b522a1b
+msgid ""
+"If you only need a packaged daemon on Debian and have a SignalWire token,"
+" skip to [Install from packages](#install-from-packages-debian). That is "
+"what `README.md` recommends for operators."
+msgstr ""
+"如果只需要在 Debian 上安装打包好的守护进程且已有 SignalWire token，可跳到 [从软件包安装](#install-from-"
+"packages-debian)。这是 `README.md` 向运维人员推荐的路径。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:9
+#: 710b66e9836448f584797130c3e73daa
+msgid "Prerequisites"
+msgstr "前置条件"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 4632c0d0bf5e44c89a080d17c6e9be74
+msgid "Tool"
+msgstr "工具"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 06c0c3ff57a54523b4059a7688da9729
+msgid "Minimum version"
+msgstr "最低版本"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: aef8420d47bf434db88bb2f6a478b3f6
+msgid "Check command"
+msgstr "检查命令"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 7366a1280d8645f8850497d27add33f3
+msgid "Install notes"
+msgstr "安装说明"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 38243727ab3c4fba9d8ec2f9b4a8afbd
+msgid "Git"
+msgstr "Git"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 914887e62e1d49aaaaf969edf6b560f8
+msgid "any recent"
+msgstr "任意较新版本"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 57d271ca13684c79bc82624b8dd1a69b
+msgid "`git --version`"
+msgstr "`git --version`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 684467301e5b48dcb63252e00ea21dbb
+msgid "Clone this tree"
+msgstr "克隆本仓库"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: f80eee86910b43748f7166ccc7c07908
+msgid "autoconf"
+msgstr "autoconf"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 5cc28a272c5d4576876818322aecbeaa
+msgid "2.59+"
+msgstr "2.59+"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: d6ce8f712b7d4418ba3284122322a6ae
+msgid "`autoconf --version`"
+msgstr "`autoconf --version`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 6cd1b7c3a0dc48309d6a2bd9f960f205
+msgid "Enforced by `scripts/ci/build-requirements.sh` via `bootstrap.sh`"
+msgstr "由 `scripts/ci/build-requirements.sh` 经 `bootstrap.sh` 强制检查"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: dd044646077343059d7887d8c7385995
+msgid "automake / aclocal"
+msgstr "automake / aclocal"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 3c6ba68fbb47499290abee13a43a7f1f
+msgid "1.7+"
+msgstr "1.7+"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 5a77a5453f85426a8715ccf04ccb4cb6
+msgid "`automake --version`"
+msgstr "`automake --version`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: f9780f9ea8ee4ffa897c3f79dde8ab00
+msgid "Same checker"
+msgstr "同一检查脚本"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: ec0629dc4a7a4ab58a9fa046ef58046a
+msgid "libtool / libtoolize"
+msgstr "libtool / libtoolize"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 8b667666f4f74b3bb396abc73e83a263
+msgid "1.5.14+ (2.x is fine)"
+msgstr "1.5.14+（2.x 亦可）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: f1b6954542e94a12ae140cd9058d2caf
+msgid "`libtool --version`"
+msgstr "`libtool --version`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 7fabc75599214b429a4bc111349af0ed
+msgid "macOS: Homebrew `libtool` (`glibtool`)"
+msgstr "macOS：Homebrew `libtool`（`glibtool`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: ad87b120a50c4dbb8ef9b58dfb718bc0
+msgid "C/C++ toolchain"
+msgstr "C/C++ 工具链"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: a9bd3ab3a4d340d7b8373b65d2e3d7af
+msgid "GCC or Clang"
+msgstr "GCC or Clang"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: c4aac6b3c3a24fe0bd6903e7af5d5732
+msgid "`cc --version`"
+msgstr "`cc --version`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: e3027da52d9b4fccaeb7e5cfa42590af
+msgid "`build-essential` on Debian; Xcode CLT on macOS"
+msgstr "Debian 上用 `build-essential`；macOS 上用 Xcode CLT"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 6bedd350ed5246c4a46f5eddb4bde8d9
+msgid "pkg-config"
+msgstr "pkg-config"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: d11368d150864598be8caa206e460b56
+msgid "any"
+msgstr "任意"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 8ef542104d354bbb95d375464eb9a2c1
+msgid "`pkg-config --version`"
+msgstr "`pkg-config --version`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: a95a4579cc3646dfbf4b18f1418a5e3c
+msgid "Needed by `configure`"
+msgstr "`configure` 需要"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 22263c5a88d04c739a01c3b066351fc4
+msgid "Sofia-SIP, libks, SpanDSP, signalwire-c"
+msgstr "Sofia-SIP, libks, SpanDSP, signalwire-c"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 6ee0179c721842d88d4c869f9e37e0d4
+msgid "matching current FreeSWITCH"
+msgstr "与当前 FreeSWITCH 匹配"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 28886bb1dc3448ff90b01f225b5f7fee
+msgid "`pkg-config --exists sofia-sip-ua`"
+msgstr "`pkg-config --exists sofia-sip-ua`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: a9289bc755b549669e9b8071544fb0f6
+msgid ""
+"**Not fully in this repo.** CI clones [sofia-"
+"sip](https://github.com/freeswitch/sofia-sip); the Debian 11 source "
+"Dockerfile also builds libks, spandsp, and signalwire-c "
+"(`docker/examples/Debian11/Dockerfile`)."
+msgstr ""
+"**并不完全在本仓库内。** CI 会克隆 [sofia-sip](https://github.com/freeswitch/sofia-"
+"sip)；Debian 11 源码 Dockerfile 还会构建 libks、spandsp 和 "
+"signalwire-c（`docker/examples/Debian11/Dockerfile`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:21
+#: 3fe7210e05174046980b013cbe2ed398
+msgid ""
+"Debian/Ubuntu source-build packages used in "
+"`docker/examples/Debian11/Dockerfile` include `build-essential`, `cmake`,"
+" `automake`, `autoconf`, `libtool-bin`, `pkg-config`, `libssl-dev`, "
+"`zlib1g-dev`, `libpcre2-dev`, `libedit-dev`, `libsqlite3-dev`, `libcurl4"
+"-openssl-dev`, `libspeexdsp-dev`, `libopus-dev`, `libsndfile1-dev`, "
+"`liblua5.2-dev`, `python3-dev`, `libpq-dev`, and related codec/AV "
+"headers."
+msgstr ""
+"`docker/examples/Debian11/Dockerfile` 中用于 Debian/Ubuntu 源码构建的软件包包括 "
+"`build-essential`、`cmake`、`automake`、`autoconf`、`libtool-bin`、`pkg-config"
+"`、`libssl-dev`、`zlib1g-dev`、`libpcre2-dev`、`libedit-"
+"dev`、`libsqlite3-dev`、`libcurl4-openssl-dev`、`libspeexdsp-dev`、`libopus-"
+"dev`、`libsndfile1-dev`、`liblua5.2-dev`、`python3-dev`、`libpq-dev` "
+"以及相关编解码器/AV 头文件。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:23
+#: 435a9c5f4f0940f9be5c0ca7ba6d3faf
+#, python-brace-format
+msgid ""
+"macOS CI (`.github/workflows/macos.yml`) installs Homebrew formulas "
+"(`autoconf`, `automake`, `libtool`, `pcre2`, `sofia-sip`, `opus`, "
+"`speexdsp`, …) plus `signalwire/homebrew-"
+"signalwire/{libks2,signalwire-c2,spandsp}`."
+msgstr ""
+"macOS CI（`.github/workflows/macos.yml`）安装 Homebrew "
+"formula（`autoconf`、`automake`、`libtool`、`pcre2`、`sofia-"
+"sip`、`opus`、`speexdsp` 等）以及 `signalwire/homebrew-"
+"signalwire/{libks2,signalwire-c2,spandsp}`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:25
+#: 15e6ae15821c4e759cdd129548f76e1e
+msgid "Clone and Install"
+msgstr "克隆与安装"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:27
+#: 81f2abc1e01a4e63b7d589e5d90f8139
+msgid ""
+"You already have the tree if you are reading this PKB. From a fresh "
+"machine:"
+msgstr "如果你正在阅读本 PKB，说明已经有这份代码树。在全新机器上："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:34
+#: 6130fa68d8464d8daed81d5bbeca75b9
+msgid ""
+"This workspace is version **1.11.3-dev** (`configure.ac`). Upstream "
+"default remote is `https://github.com/signalwire/freeswitch`."
+msgstr ""
+"本工作区版本为 **1.11.3-dev**（`configure.ac`）。上游默认 remote 为 "
+"`https://github.com/signalwire/freeswitch`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:36
+#: 13e4bfa8c7d34b4784587e472d65109b
+msgid "Source build (developer path)"
+msgstr "源码构建（开发者路径）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:38
+#: 4e38efaf567645a782c8009950961e94
+#, fuzzy
+msgid ""
+"Install Sofia-SIP (and libks / SpanDSP / signalwire-c) first, the same "
+"way CI and `docker/examples/Debian11/Dockerfile` do. Library layout and "
+"NUA usage: [Sofia-SIP](../1.architecture/02-tech-stack.md#sofia-sip-"
+"library). Then, from the repo root:"
+msgstr ""
+"先按 CI 和 `docker/examples/Debian11/Dockerfile` 的方式安装 Sofia-SIP（以及 libks / "
+"SpanDSP / signalwire-c）。然后在仓库根目录执行："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:47
+#: 406dcec9e0d3452fa9eb5636eb4adb22
+msgid ""
+"`bootstrap.sh` copies `build/modules.conf.in` → `modules.conf` if "
+"missing, then runs Autotools. `-j` parallelizes library bootstraps."
+msgstr ""
+"若缺少 `modules.conf`，`bootstrap.sh` 会把 `build/modules.conf.in` 复制为 "
+"`modules.conf`，然后运行 Autotools。`-j` 用于并行引导依赖库。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:48
+#: 7f07c6cc4fb44f75866cba2612784c52
+msgid ""
+"Default prefix without `--prefix` is `/usr/local/freeswitch` "
+"(`configure.ac`). The explicit `--disable-fhs` keeps this developer "
+"install under `$HOME/fs`; a custom prefix without that flag uses FHS "
+"paths such as `$HOME/fs/etc/freeswitch` and "
+"`$HOME/fs/var/log/freeswitch`."
+msgstr ""
+"不带 `--prefix` 时默认前缀为 `/usr/local/freeswitch`（`configure.ac`）。显式指定 "
+"`--disable-fhs` 会使本开发者安装位于 `$HOME/fs` 下；未指定该选项的自定义前缀会使用 FHS 路径，例如 "
+"`$HOME/fs/etc/freeswitch` 和 `$HOME/fs/var/log/freeswitch`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:49
+#: add80a16796b4dada8c67643ded176d7
+msgid ""
+"`make install` also installs vanilla sample config when `$(confdir)` does"
+" not exist (`Makefile.am`: `test -d $(DESTDIR)$(confdir) || $(MAKE) "
+"samples-conf`)."
+msgstr ""
+"当 `$(confdir)` 不存在时，`make install` 还会安装 vanilla 示例配置（`Makefile.am`：`test "
+"-d $(DESTDIR)$(confdir) || $(MAKE) samples-conf`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:50
+#: 03aa50cac91b43cdb0dea7005eb42e33
+msgid ""
+"Prompts and music-on-hold are **not** in this git tree. After `make "
+"install`, [Chapter "
+"2](https://developer.signalwire.com/freeswitch/foundations/getting-"
+"started) also runs `make cd-sounds-install cd-moh-install` (Callie 8 kHz "
+"packages; `Makefile.am` `sounds-install`). Skip only if you do not need "
+"playback/echo tests."
+msgstr ""
+"提示音与保持音乐**不在**本 git 树中。`make install` 之后，[第 2 "
+"章](https://developer.signalwire.com/freeswitch/foundations/getting-"
+"started) 还会跑 `make cd-sounds-install cd-moh-install`（Callie 8 kHz "
+"包；`Makefile.am` 的 `sounds-install`）。只有不需要放音/回声测试时才可跳过。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:51
+#: 18464b79c61f44c5863ac71255b2f91f
+msgid ""
+"Debug symbols without changing configure flags: `./devel-bootstrap.sh` "
+"sets `CFLAGS`/`CXXFLAGS` to `-ggdb3 -O0` then bootstraps and configures."
+msgstr ""
+"无需改 configure 参数即可带调试符号：`./devel-bootstrap.sh` 将 `CFLAGS`/`CXXFLAGS` 设为 "
+"`-ggdb3 -O0`，然后执行 bootstrap 和 configure。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:53
+#: e2bbcdd5d09546edaf1377415102e862
+msgid ""
+"Enable extra modules by uncommenting lines in `modules.conf` **after** "
+"bootstrap and **before** `./configure` / `make`. CI’s unit-test configure"
+" (`ci.sh`) is an example of that edit pattern."
+msgstr ""
+"在 bootstrap **之后**、`./configure` / `make` **之前**，通过取消 `modules.conf` "
+"中对应行的注释来启用额外模块。CI 的单元测试 configure（`ci.sh`）就是这种修改方式的例子。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:55
+#: 220adb4aa59d4072b55bc8ecc203a010
+msgid "Install from packages (Debian)"
+msgstr "从软件包安装（Debian）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:57
+#: 5d4cbe57695747e59bf1bc9e3a17a3cf
+msgid ""
+"Requires a SignalWire Personal Access Token. From "
+"`scripts/packaging/README.md`:"
+msgstr "需要 SignalWire Personal Access Token。摘自 `scripts/packaging/README.md`："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:65
+#: 932a4c69ac664589bffa4d97a15ff476
+msgid ""
+"`release` tracks packaged releases; `prerelease` tracks what you see on "
+"`master`."
+msgstr "`release` 跟踪已打包发行版；`prerelease` 跟踪你在 `master` 上看到的内容。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:67
+#: a7377555e9294f93b53d4d6dfa553d7b
+msgid ""
+"Meta packages (Users Manual Ch 2): `freeswitch-meta-all` (every module), "
+"`freeswitch-meta-vanilla` (vanilla set + typically `freeswitch-sounds-en-"
+"us-callie` / `freeswitch-sounds-music`), `freeswitch-meta-default`, "
+"`freeswitch-meta-bare`. Packaged config root is `/etc/freeswitch`; "
+"systemd: `systemctl enable --now freeswitch`."
+msgstr ""
+"元软件包（用户手册第 2 章）：`freeswitch-meta-all`（全部模块）、`freeswitch-meta-"
+"vanilla`（vanilla 集合，通常还带 `freeswitch-sounds-en-us-callie` / `freeswitch-"
+"sounds-music`）、`freeswitch-meta-default`、`freeswitch-meta-bare`。打包安装的配置根是"
+" `/etc/freeswitch`；systemd：`systemctl enable --now freeswitch`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:69
+#: c78474f9e96c46b0920bad9ad6020fba
+msgid "Docker"
+msgstr "Docker"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:71
+#: cad6f757f892424a98a9b2c47fa34e14
+msgid ""
+"Packaged image (`docker/master/Dockerfile`) also needs a SignalWire "
+"`TOKEN` build-arg. The Debian 11 example is a **source image**, but its "
+"Dockerfile clones FreeSWITCH and its dependencies during the image build;"
+" it does not compile the checkout you are reading. From the repository "
+"root, build and run that example with:"
+msgstr ""
+"软件包镜像（`docker/master/Dockerfile`）还需要 SignalWire `TOKEN` 构建参数。Debian 11 "
+"示例是**源码镜像**，但其 Dockerfile 会在构建镜像时克隆 FreeSWITCH 及其依赖；它不会编译你正在阅读的这个 "
+"checkout。在仓库根目录运行以下命令构建并运行该示例："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:77
+#: 19b870f17cf94fe8969c45c2b8520041
+msgid ""
+"For a source image built from this exact checkout, use the native source-"
+"build path above or create a separate Dockerfile that copies this tree "
+"into the build context."
+msgstr "如果要从当前 checkout 构建源码镜像，请使用上面的原生源码构建路径，或创建一个将此树复制到构建上下文中的独立 Dockerfile。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:79
+#: 46499ef363724113b73f4fc895306edf
+msgid ""
+"Runtime containers expect **host networking** (`docker/README.md`). "
+"Typical ports: SIP 5060/5080, TLS 5061/5081, Sofia SIP WebSocket "
+"5066/7443, Verto WS/WSS 8081/8082, ESL **8021**, RTP UDP ranges "
+"16384–32768 and 64535–65535."
+msgstr ""
+"运行时容器需要 **host 网络**（`docker/README.md`）。常见端口：SIP 5060/5080、TLS "
+"5061/5081、Sofia SIP WebSocket 5066/7443、Verto WS/WSS 8081/8082、ESL "
+"**8021**、RTP UDP 范围 16384–32768 和 64535–65535。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:83
+#: 1b3321219e12423a9e4528ff1357c598
+msgid "Run and smoke-test `freeswitch:local` on Ubuntu"
+msgstr "在 Ubuntu 上运行并进行 `freeswitch:local` 冒烟测试"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:85
+#: dab70c64602040b1ba6be2f7d95dd9c1
+msgid ""
+"The Compose wrapper builds the Debian 11 example as `freeswitch:local` "
+"and starts one detached container:"
+msgstr "Compose 包装脚本将 Debian 11 示例构建为 `freeswitch:local`，并启动一个后台容器："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:96
+#: 008043954d324435b734c752d6238ee2
+msgid ""
+"Host networking is a Linux feature and avoids publishing the large RTP "
+"ranges individually. Do not add `-p` options when using `--network host`."
+msgstr "Host 网络是 Linux 特性，可避免逐一发布较大的 RTP 端口范围。使用 `--network host` 时不要添加 `-p` 选项。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:98
+#: f21e76b957604df6996047572101f3d8
+msgid "Check the container, FreeSWITCH core, and SIP profiles:"
+msgstr "检查容器、FreeSWITCH 核心和 SIP 配置档："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:106
+#: d8279e22c39d435da62827a920753cff
+msgid ""
+"A healthy smoke test shows the container as `Up`, an `UP` line from "
+"`status`, and `internal` / `external` profiles from `sofia status`. If a "
+"check fails, inspect the latest logs:"
+msgstr ""
+"健康的冒烟测试应显示容器为 `Up`、`status` 输出中有一行 `UP`，并且 `sofia status` 显示 `internal` /"
+" `external` 配置档。如果检查失败，请查看最新日志："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:112
+#: 69a8b494c25746c19c3b72a201dd051f
+msgid ""
+"For a call-path test, configure a SIP softphone on a machine that can "
+"reach the Ubuntu host:"
+msgstr "要测试呼叫路径，请在能够访问 Ubuntu 主机的设备上配置 SIP 软电话："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:122
+#: 898e0aa17d834ab496859b256c9ae216
+msgid ""
+"Confirm the registration, then dial **`9196`** and verify that speech is "
+"echoed back:"
+msgstr "确认注册成功，然后拨打 **`9196`**，验证语音会被回声返回："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:129
+#: a6af6809396446d5b83e6a2d1eb5f52e
+msgid "UDP 5060 and RTP 16384–32768 must be reachable from the softphone."
+msgstr "软电话必须能够访问 UDP 5060 以及 RTP 16384–32768。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:131
+#: f172b96d65414b75ab7872f3f7c4344b
+msgid "Install and test Music on Hold (MoH)"
+msgstr "安装并测试保持音乐（MoH）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:133
+#: 3dd1cd12e1884191b113a119c83045dd
+msgid ""
+"The source image may not include `curl`, which `build/getsounds.sh` needs"
+" to download the MoH archive. Install it in the running container, then "
+"explicitly set the download command:"
+msgstr ""
+"源码镜像可能不包含 `curl`，而 `build/getsounds.sh` 需要它下载 MoH 归档。请在运行中的容器内安装 "
+"`curl`，然后显式设置下载命令："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:145
+#: 559a3c359d7a48e4b9062f226cf855dc
+msgid ""
+"Restart the existing container and call **`9664`** from the softphone. "
+"You should hear Music on Hold:"
+msgstr "重启现有容器，然后从软电话拨打 **`9664`**。你应能听到保持音乐："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:152
+#: 550831d400714ab9b4aee9321f90c6ef
+msgid ""
+"The sound files survive `docker restart` but are lost when the container "
+"is removed and recreated. For a persistent image, add `curl` and `make "
+"cd-moh-install` to the Dockerfile build instead of installing them only "
+"in a running container."
+msgstr ""
+"声音文件会在 `docker restart` 后保留，但删除并重新创建容器后会丢失。要制作持久镜像，请将 `curl` 和 `make cd-"
+"moh-install` 加入 Dockerfile 构建过程，而不是只在运行中的容器内安装。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:154
+#: c093f96ce84446b8a8a8f8e28576f0bd
+msgid "Open UFW for SIP clients from any address"
+msgstr "为来自任意地址的 SIP 客户端开放 UFW"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:156
+#: d9397147f46946038fcc41c72f702d9a
+msgid ""
+"First check whether UFW is active. If it reports `Status: inactive`, UFW "
+"is not blocking the traffic:"
+msgstr "先检查 UFW 是否启用。如果显示 `Status: inactive`，则 UFW 没有阻止流量："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:162
+#: a3cee0fabb014c399c9e270b75b67284
+msgid "For UDP SIP and RTP from any client, add these rules:"
+msgstr "要允许任意客户端使用 UDP SIP 和 RTP，请添加以下规则："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:171
+#: b137806de39f4a29b6926d34ade9ea66
+msgid "Only when clients are configured for SIP over TCP, also add:"
+msgstr "仅当客户端配置为通过 TCP 使用 SIP 时，才添加："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:177
+#: d772587f8aaa4267b005e972fe25caaf
+msgid ""
+"With `--network host`, these host firewall rules apply directly and "
+"Docker `-p` options remain unnecessary. A cloud VM also needs equivalent "
+"inbound security-group rules for UDP 5060 and UDP 16384–32768; opening "
+"UFW alone cannot bypass the provider firewall."
+msgstr ""
+"使用 `--network host` 时，这些主机防火墙规则会直接生效，因此不需要 Docker `-p` 选项。云虚拟机还需要为 UDP "
+"5060 和 UDP 16384–32768 配置等效的入站安全组规则；仅开放 UFW 无法绕过云服务商防火墙。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:179
+#: 4cf7ec71f576431fa9735cbd5a6a9945
+msgid ""
+"Opening these rules to any address exposes SIP to internet scanning and "
+"toll-fraud attempts. The vanilla users and password above are "
+"deliberately insecure demo values; replace all SIP passwords and apply "
+"authentication/rate-limiting controls first. Keep ESL port **8021** "
+"restricted to localhost or a trusted management network; Linphone does "
+"not need it. Stop and remove the test container with `docker stop "
+"freeswitch && docker rm freeswitch`."
+msgstr ""
+"向任意地址开放这些规则会使 SIP 暴露于互联网扫描和话费欺诈尝试。上面的 vanilla 用户和密码是故意设置的不安全演示值；请先替换所有 "
+"SIP 密码并实施认证和限流控制。将 ESL 端口 **8021** 限制为 localhost 或可信管理网络；Linphone 不需要它。使用"
+" `docker stop freeswitch && docker rm freeswitch` 停止并删除测试容器。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:181
+#: 3d23a007d2f94aa3b91345ea25ea8d29
+msgid "Run Locally"
+msgstr "本地运行"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:183
+#: 9a680e624c884a0382d396b180ccebcf
+msgid "For an install under `/Users/walterfan/fs`:"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:190
+#: e1873129b2304dd58d76b7fb8da7bfb2
+msgid ""
+"`-ncwait`: background, no console, wait until the core is ready "
+"(`src/switch.c`)."
+msgstr "`-ncwait`：后台运行、无控制台，等到核心就绪（`src/switch.c`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:191
+#: ed89cf5ede3f41b385c695c0c4ed08d1
+msgid ""
+"`-nonat`: skip UPnP/NAT-PMP pinholes — required unless you *want* auto-"
+"NAT (`conf/vanilla/README_IMPORTANT.txt`)."
+msgstr ""
+"`-nonat`：跳过 UPnP/NAT-PMP 打洞——除非你*确实需要*自动 "
+"NAT，否则都应加上（`conf/vanilla/README_IMPORTANT.txt`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:192
+#: 4e229afd395a45bd93f80cf71330058d
+msgid "Foreground console instead: `freeswitch -c -nonat`."
+msgstr "若要前台控制台：`freeswitch -c -nonat`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:193
+#: d4499ee8ea0a40a5b727fb9bf46fed46
+msgid "Graceful stop: `/Users/walterfan/fs/bin/fs_cli -x \"shutdown elegant\"`."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:194
+#: 5f288770e7ea4bbbac3afad24ce64f1e
+msgid ""
+"If it will not stop, find the PID with `pgrep -f "
+"'/Users/walterfan/fs/bin/freeswitch'` and use `kill <pid>`; reserve `kill"
+" -9 <pid>` for a stuck process."
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:196
+#: 9075d73194b74a378cad06c7932511bf
+#, fuzzy
+msgid ""
+"The `fs_cli` client defaults to `127.0.0.1:8021` with password `ClueCon` "
+"(`libs/esl/fs_cli.conf`). The vanilla runtime configuration listens on "
+"wildcard IPv6 `::`:8021 with `apply-inbound-acl` commented out "
+"(`conf/vanilla/autoload_configs/event_socket.conf.xml`); the module "
+"sample binds `127.0.0.1` "
+"(`src/mod/event_handlers/mod_event_socket/conf/autoload_configs/event_socket.conf.xml`)."
+" Commented-out is **not** “no ACL”: `mod_event_socket` still defaults to "
+"`loopback.auto`, so `fs_cli -H <lan-ip>` is rejected until you set an "
+"explicit list — [Remote Event Socket ACL](../5.operations/01-runbook.md"
+"#remote-event-socket-acl). Change the password, bind, and ACL before "
+"exposing the vanilla configuration outside a trusted management network."
+msgstr ""
+"`fs_cli` 客户端默认连接 `127.0.0.1:8021`，密码为 "
+"`ClueCon`（`libs/esl/fs_cli.conf`）。Vanilla 运行时配置监听通配 IPv6 `::`:8021，入站 ACL"
+" 被注释掉（`conf/vanilla/autoload_configs/event_socket.conf.xml`）；模块示例绑定 "
+"`127.0.0.1`（`src/mod/event_handlers/mod_event_socket/conf/autoload_configs/event_socket.conf.xml`）。在将"
+" vanilla 配置暴露到可信管理网络之外之前，请修改密码、绑定地址并启用 ACL。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:208
+#: 50d88cfade184a52a5bec45118268572
+msgid ""
+"The **configuration root** is the directory that contains "
+"`freeswitch.xml` ([Chapter "
+"2](https://developer.signalwire.com/freeswitch/foundations/getting-"
+"started)):"
+msgstr ""
+"**配置根目录**是包含 `freeswitch.xml` 的目录（[第 2 "
+"章](https://developer.signalwire.com/freeswitch/foundations/getting-"
+"started)）："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 762e9c4cea8b4a838a0eb87d3d43a52d
+msgid "Install type"
+msgstr "安装类型"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: f6495cc0017f41499fa03905ab764efa
+msgid "Typical configuration root"
+msgstr "典型配置根"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 113904455cea4746b5ea04e26063f197
+msgid "Source build (this PKB, `--prefix=\"$HOME/fs\" --disable-fhs`)"
+msgstr "源码构建（本 PKB，`--prefix=\"$HOME/fs\" --disable-fhs`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 3e58a37a6de94594b49699190fe9d954
+msgid "`$HOME/fs/conf`"
+msgstr "`$HOME/fs/conf`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: d8c912eb32f14459808b487333dbb4a2
+msgid "Source build (Autotools default prefix)"
+msgstr "源码构建（Autotools 默认 prefix）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: e527cb9b7b0f46789967dcdf33e1e01c
+msgid "`/usr/local/freeswitch/conf`"
+msgstr "`/usr/local/freeswitch/conf`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: cefc919e699247bca0f1ddf5857dd511
+msgid "Source build (custom prefix with default FHS)"
+msgstr "源码构建（使用默认 FHS 的自定义前缀）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: ad89338c5c544a539be698c915ee8f41
+msgid "`$prefix/etc/freeswitch`"
+msgstr "`$prefix/etc/freeswitch`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: f63abdf2bf824a23b862b4af38e8ec7e
+msgid "Debian package"
+msgstr "Debian 软件包"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: b5360446fa65452cae1d9f502bcf5dc9
+msgid "`/etc/freeswitch`"
+msgstr "`/etc/freeswitch`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:217
+#: b5222f81cd1c4e3abb3f8649ddac3454
+msgid "**Working looks like:**"
+msgstr "**正常运行时看起来像：**"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:219
+#: f2f78055d13544edb3d0fbb287955e4e
+msgid ""
+"`fs_cli -x status` prints a line starting with `UP` (same check as "
+"`docker/base_image/healthcheck.sh`)."
+msgstr ""
+"`fs_cli -x status` 会打印以 `UP` 开头的一行（与 `docker/base_image/healthcheck.sh` "
+"相同的检查）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:220
+#: f2490abd35ec48aea45fc134f8a56cf6
+msgid "`fs_cli -x sofia status` shows SIP profiles (vanilla internal/external)."
+msgstr "`fs_cli -x sofia status` 显示 SIP profile（vanilla 的 internal/external）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:221
+#: 965359959356428590dbe5cfd9b0a2cb
+#, python-brace-format
+msgid ""
+"Directory users `1000`–`1019` exist in `conf/vanilla/directory/` with "
+"shared password `$${default_password}` = **`1234`** "
+"(`conf/vanilla/vars.xml`). Do not expose them on a public IP."
+msgstr ""
+"`conf/vanilla/directory/` 中存在分机用户 `1000`–`1019`，共享密码 "
+"`$${default_password}` = **`1234`**（`conf/vanilla/vars.xml`）。不要把它们暴露在公网 "
+"IP 上。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:223
+#: 4af9dada82ea40ebb5280a10962e4a54
+msgid "First call (vanilla PBX)"
+msgstr "首呼（vanilla PBX）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:225
+#: 086965fe3d374e7d82b18be54739b0da
+msgid ""
+"Optional, after the process is `UP`. Matches Users Manual Chapter 2 "
+"against this tree’s `conf/vanilla/dialplan/default.xml`."
+msgstr "可选，进程已 `UP` 之后。对照用户手册第 2 章与本仓库 `conf/vanilla/dialplan/default.xml`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:227
+#: 9287184c11f3488e9eaa33475d38e64a
+msgid ""
+"Register a SIP softphone as user `1000` (password `1234`, port **5060**, "
+"UDP or TCP) to the host’s SIP address. A second client as `1001` lets you"
+" call between extensions."
+msgstr ""
+"把 SIP 软电话注册为用户 `1000`（密码 `1234`，端口 **5060**，UDP 或 TCP）到主机 SIP "
+"地址。第二部客户端注册为 `1001` 即可分机互拨。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:228
+#: ed8f77cb71e04ee0b8f36dd4702f00b3
+msgid ""
+"Confirm bindings: `fs_cli -x \"show registrations\"` and `fs_cli -x "
+"\"sofia status profile internal reg\"`."
+msgstr ""
+"确认绑定：`fs_cli -x \"show registrations\"` 与 `fs_cli -x \"sofia status "
+"profile internal reg\"`。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:229
+#: 6a94139d3c004e8a93547df70468172b
+msgid ""
+"From `1000`, dial **`1001`** (`Local_Extension` `^(10[01][0-9])$`) or "
+"dial **`9196`** for the echo test (no second device)."
+msgstr ""
+"从 `1000` 拨 **`1001`**（`Local_Extension` `^(10[01][0-9])$`），或拨 **`9196`** "
+"做回声测试（不需要第二部设备）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 4e479b27e4954c72bf7aaa67b21e71ff
+msgid "Number"
+msgstr "号码"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: f9a8c48d34d94bdaa04505af69f3b612
+msgid "Destination in vanilla `default` context"
+msgstr "vanilla `default` 上下文中的目的"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: fe26134c8db44a98a4a01b286fe52d60
+msgid "`1000`–`1019`"
+msgstr "`1000`–`1019`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 80e58d62640c41a89d46883b45a63937
+msgid "Registered test extensions"
+msgstr "已注册的测试分机"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 90045ac5d877483fab004c6d5f347b1b
+msgid "`9196`"
+msgstr "`9196`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 3550140f8b0348db881c97761f48b579
+msgid "Echo (`echo` app)"
+msgstr "回声（`echo` 应用）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: ae395e7b2252448bb8881649d07117f5
+msgid "`9195`"
+msgstr "`9195`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 1e0b475cff6f4d53a61dfa24bf60eae4
+msgid "Delayed echo (`delay_echo` **5000** ms in this tree — not 250 ms)"
+msgstr "延迟回声（本仓库 `delay_echo` 为 **5000** ms，不是 250 ms）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 37e4a39187cb49fd8e330bcb2755b77c
+msgid "`9197`"
+msgstr "`9197`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: c830f3b2abcf4c1a8fdcccc2621f6d92
+msgid "Milliwatt tone (1004 Hz)"
+msgstr "毫瓦音（1004 Hz）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 91dc9077c2f7425db6b54a0f3d75de06
+msgid "`9198`"
+msgstr "`9198`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: cba1f7d50bd64d56af8915971422159c
+msgid "Tone stream demo"
+msgstr "音流演示"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: b45720915c084afa8f954392d9f70a87
+msgid "`9664`"
+msgstr "`9664`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 48b36ddc6c954e05ac6f1bc0d37c9b24
+msgid "Music on hold"
+msgstr "保持音乐"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: ab5a7e0361044b88ac33edfd6297804a
+msgid "`5000`"
+msgstr "`5000`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: b06154cb625f48d0b5ccec768d2de834
+msgid "IVR demo"
+msgstr "IVR 演示"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 580fa6d5eed84402b6888be32bc9bc45
+msgid "`5001`"
+msgstr "`5001`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 679716f2683a44b88f8d0fec23c7ff2e
+msgid "Dynamic conference"
+msgstr "动态会议"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 2ce5d46fd49c4113ab279508d56b3a9f
+msgid "`3000`–`3099`"
+msgstr "`3000`–`3099`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 09adb017f1604ac8826a2b11f1c43d6a
+msgid "Named conferences (`30xx` narrowband)"
+msgstr "命名会议室（`30xx` 窄带）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 1a076d4b098f4823bf7f44a66e2b01b7
+msgid "`4000` or `*98`"
+msgstr "`4000` 或 `*98`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 2c5dcee182bb4282bbb6aa6b37c0a412
+msgid "Voicemail main (`vmain`)"
+msgstr "语音信箱主菜单（`vmain`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 01192ede588b485b99ee5604d7b2902a
+msgid "`0` or `operator`"
+msgstr "`0` 或 `operator`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: f175724fefc84a3db186bfd4359039cf
+msgid "Operator (transfers to 1000 XML features)"
+msgstr "话务员（转到 1000 XML features）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:245
+#: b03039dcf66c405eba70ceb478080159
+msgid ""
+"Change `default_password` in `vars.xml` before any untrusted network, "
+"then `reloadxml`. `fs_cli` number keys 1–12 map to "
+"help/status/sofia/reloadxml/siptrace "
+"(`conf/vanilla/autoload_configs/switch.conf.xml`)."
+msgstr ""
+"在任何不可信网络之前先改 `vars.xml` 中的 `default_password`，然后 `reloadxml`。`fs_cli` 数字键"
+" 1–12 映射到 "
+"help/status/sofia/reloadxml/siptrace（`conf/vanilla/autoload_configs/switch.conf.xml`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:247
+#: 4e0f787edb364c10ac72d41f2380b991
+msgid "Run Tests"
+msgstr "运行测试"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:249
+#: 529585016eb94fad9b68b6843022aa94
+msgid ""
+"Unit tests are Autotools programs under `tests/unit/` linking "
+"`libfreeswitch`. CI installs first, then:"
+msgstr "单元测试是 `tests/unit/` 下链接 `libfreeswitch` 的 Autotools 程序。CI 会先安装，然后："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:259
+#: c60b7b136094442da0309c5b5227fa82
+msgid ""
+"`./run-tests.sh` calls `make -C ../.. print_tests`, then `make -f run-"
+"tests.mk`. New tests must use `src/include/test/switch_test.h` "
+"(`tests/unit/README`)."
+msgstr ""
+"`./run-tests.sh` 先调用 `make -C ../.. print_tests`，再执行 `make -f run-"
+"tests.mk`。新测试必须使用 `src/include/test/switch_test.h`（`tests/unit/README`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:261
+#: fc8e48e56cbf420ca32c8b1500b56ef9
+msgid "ASAN unit-test configure (from `ci.sh -t unit-test`):"
+msgstr "ASAN 单元测试 configure（来自 `ci.sh -t unit-test`）："
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:269
+#: 9e5af1be8006467f86f5b3b8f248f0d7
+msgid ""
+"Sofia-SIP must already be built/installed for that flow (see "
+"`.github/workflows/unit-test.yml`)."
+msgstr "该流程要求 Sofia-SIP 已经构建/安装（见 `.github/workflows/unit-test.yml`）。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:271
+#: 0ebecd878dc74b3a9e068a866cd86c42
+msgid "Build for Production"
+msgstr "生产构建"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: f12fc63d4ed14b89b8c403fd0beb13da
+msgid "Goal"
+msgstr "目标"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 12eff76941624e3ba9a05a930df80ad0
+msgid "Command / path"
+msgstr "命令 / 路径"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: b7865ef4b0db472891d46866d45b9c8f
+msgid "Unix prefix install"
+msgstr "Unix prefix 安装"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: d4552597ff074bb6bc4c18fd9d73ffe6
+msgid ""
+"`./bootstrap.sh -j && ./configure --prefix=... --disable-fhs && make && "
+"make install`"
+msgstr ""
+"`./bootstrap.sh -j && ./configure --prefix=... --disable-fhs && make && "
+"make install`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 40bb2d0ba2d04d79b0252ef87463290d
+msgid "Debian packages from a **git** tree"
+msgstr "从 **git** 树构建 Debian 包"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 8c9da537ee374143aec415d09d17c888
+msgid ""
+"`scripts/packaging/build/README.md` (`FSDEB`); tarball checkouts are not "
+"supported"
+msgstr "`scripts/packaging/build/README.md`（`FSDEB`）；不支持 tarball 检出"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: ade677a16cfe4650bf0dfe5540d3963b
+msgid "Docker (packages)"
+msgstr "Docker（软件包）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: b46467020de04f25bdc9de9a17a0d1ff
+msgid "`docker/master/Dockerfile` with `TOKEN`"
+msgstr "`docker/master/Dockerfile`，需 `TOKEN`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: fb059f9fedc541e7ad0021ac0cbd7b9f
+msgid "Windows"
+msgstr "Windows"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: fd882e87a8ad49c9aefb7ac0e7557d14
+msgid "`Freeswitch.2017.sln` / `w32/`"
+msgstr "`Freeswitch.2017.sln` / `w32/`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:280
+#: ce567268f26e497eab249fc92ae99d50
+msgid ""
+"Install layout under the documented developer prefix (`--disable-fhs`): "
+"`bin/`, `mod/`, `conf/`, `log/`, `db/`, `scripts/`, `htdocs/`, `sounds/`."
+" A custom prefix without `--disable-fhs` uses the FHS layout described "
+"above."
+msgstr ""
+"文档所述开发者前缀（`--disable-"
+"fhs`）下的安装布局：`bin/`、`mod/`、`conf/`、`log/`、`db/`、`scripts/`、`htdocs/`、`sounds/`。未指定"
+" `--disable-fhs` 的自定义前缀使用上面描述的 FHS 布局。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:282
+#: 415b3a521ae84a9db3cdd91ab5d4a6e6
+msgid ""
+"Before any public deployment: change SIP and voicemail passwords (or run "
+"`scripts/perl/randomize-passwords.pl`), change the ESL password, and "
+"start with `-nonat` unless NAT helpers are intentional."
+msgstr ""
+"任何公开部署之前：修改 SIP 和语音信箱密码（或运行 `scripts/perl/randomize-passwords.pl`），修改 ESL"
+" 密码，并加上 `-nonat` 启动，除非你有意使用 NAT 辅助。"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:284
+#: 3788b97f1c9f4eb28981b7b31eeb72cd
+msgid "Common Issues"
+msgstr "常见问题"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 8abd5e3eb74b458b89ae26164a4e7046
+msgid "Symptom"
+msgstr "现象"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: e3e2dbdfef44477ba520bb7b3eacdd58
+msgid "Likely cause"
+msgstr "可能原因"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 97d922105d64438c97268342c585e6a9
+msgid "Fix"
+msgstr "处理"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 4a7139cdf510479298d47009712a7e79
+msgid "`bootstrap.sh` exits on autoconf/automake/libtool"
+msgstr "`bootstrap.sh` 在 autoconf/automake/libtool 上退出"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 7fb5e5b8bf364b03a4061faa6c28099a
+msgid "Tool versions below `scripts/ci/build-requirements.sh`"
+msgstr "工具版本低于 `scripts/ci/build-requirements.sh` 的要求"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: ddf93fd794834630bd863ae14ef46c51
+msgid ""
+"Install GNU autotools; on macOS use Homebrew `autoconf` `automake` "
+"`libtool`"
+msgstr "安装 GNU autotools；在 macOS 上使用 Homebrew `autoconf` `automake` `libtool`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 6aaf4607eeb04921a5d5cf6d223e32fa
+msgid "`configure` / link fails on Sofia, KS, SpanDSP, or signalwire"
+msgstr "`configure` / 链接在 Sofia、KS、SpanDSP 或 signalwire 上失败"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 08b3f6136d494501933dd7e03ba4dd0f
+msgid "Those libraries are out-of-tree"
+msgstr "这些库不在本仓库内"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 3a8a33f0b7774d1ba6a28ef517cab177
+msgid ""
+"Build them first as in `docker/examples/Debian11/Dockerfile` or "
+"`.github/workflows/unit-test.yml` / `macos.yml`"
+msgstr ""
+"先按 `docker/examples/Debian11/Dockerfile` 或 `.github/workflows/unit-"
+"test.yml` / `macos.yml` 构建它们"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: cea2e1fa9fe74ab894fe3b9f3fdddf67
+msgid "`modules.conf` missing modules you expected"
+msgstr "`modules.conf` 缺少你期望的模块"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 7966d765dce041be99d9e11fdd94d84a
+msgid "File is a copy of `build/modules.conf.in`; commented lines are disabled"
+msgstr "该文件是 `build/modules.conf.in` 的副本；被注释的行表示未启用"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 7223b2aae4e947c6b1e31cf019c2c717
+msgid ""
+"Uncomment the `src/mod/...` path, then rebuild that module (`make "
+"mod_lua` style targets in top-level `Makefile.am`)"
+msgstr "取消注释 `src/mod/...` 路径，然后重建该模块（顶级 `Makefile.am` 中类似 `make mod_lua` 的目标）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 1ffb4709fefa44c7b6ade53eafa356a7
+msgid "`fs_cli` cannot connect"
+msgstr "`fs_cli` 无法连接"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: a9045d07798749ac9f3b27c51fecbcd2
+msgid "Switch not up, or ESL not on 8021"
+msgstr "交换机未起来，或 ESL 不在 8021"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: cdf40216167e412f8c32da0da1c12a47
+msgid ""
+"`freeswitch -ncwait`; confirm `mod_event_socket` loaded; `fs_cli` targets"
+" loopback but vanilla server config listens on `::`"
+msgstr ""
+"`freeswitch -ncwait`；确认 `mod_event_socket` 已加载；`fs_cli` 目标为 loopback，但 "
+"vanilla 服务端配置监听 `::`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 96d26570057d4f41834fd74575f5806e
+msgid "`fs_cli` `Error Connecting []` to a LAN IP; `127.0.0.1` works"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: e9427db1068b4753a1c33fc2ac0afa11
+msgid ""
+"Default ESL ACL `loopback.auto` (commented `apply-inbound-acl` is not “no"
+" ACL”)"
+msgstr ""
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: a76c565c89e14126afc65fdab4c44bd2
+#, fuzzy
+msgid ""
+"[Remote Event Socket ACL](../5.operations/01-runbook.md#remote-event-"
+"socket-acl)"
+msgstr "[运维手册](10-runbook.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: cf70c838475742d19e829fd7f57c6cee
+msgid "Router “pinhole” / unexpected inbound SIP"
+msgstr "路由器“打洞” / 意外的入局 SIP"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: d950c2c0d5434508ab1a7651a2644a78
+msgid "Auto NAT (UPnP/NATPMP)"
+msgstr "自动 NAT（UPnP/NATPMP）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: d9e9b405405444ffaec40ac345711e97
+msgid "Start with `-nonat`"
+msgstr "启动时加上 `-nonat`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 8915d4452f5d4d34ba16a55a4f74fd68
+msgid "Compromised demo extensions"
+msgstr "演示分机被攻破"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: f10371e2f6de40368f9f2c7104dede88
+msgid "Vanilla users 1000–1019 and ESL `ClueCon`"
+msgstr "Vanilla 用户 1000–1019 以及 ESL `ClueCon`"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 4e43a165ccab4dec9db8afa219a70148
+msgid "Randomize passwords; do not publish 5060/8021 without ACLs"
+msgstr "随机化密码；没有 ACL 就不要把 5060/8021 暴露出去"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 9e4c635e322b4550a5254da34d504915
+msgid "`FSGET` / `docker/master` apt repo 401"
+msgstr "`FSGET` / `docker/master` apt 仓库返回 401"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 4af1edb1a0a9421699ea1705d883fecb
+msgid "No SignalWire PAT"
+msgstr "没有 SignalWire PAT"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: a91ebd1d3f924b9b8a4f68b7e01efef4
+msgid ""
+"Create a PAT as linked from `scripts/packaging/README.md`, or build from "
+"source"
+msgstr "按 `scripts/packaging/README.md` 中的链接创建 PAT，或改为从源码构建"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 76b7c339f9784a659d1fbc671a633fca
+msgid "Docker RTP/SIP broken"
+msgstr "Docker 上 RTP/SIP 异常"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 76d6c1f296df4655a964e2a432257e84
+msgid "Published port ranges vs host net"
+msgstr "发布的端口范围 vs host 网络"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: efe411422f1240ada7f26ca9c904acab
+msgid "Use `docker run --network host` (`docker/README.md`)"
+msgstr "使用 `docker run --network host`（`docker/README.md`）"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: c661f73034cf4cb69f2bfe788c44b89c
+msgid "`debian_min_build.sh` fails on modern Debian"
+msgstr "`debian_min_build.sh` 在较新的 Debian 上失败"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: a5fc21388b394987a7404e7ba15876d4
+msgid "Script pins **Jessie / FreeSWITCH 1.6** repos"
+msgstr "脚本钉死了 **Jessie / FreeSWITCH 1.6** 仓库"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md
+#: 21121e18ba5245f393a45f6216eea3d4
+msgid "Use the Debian 11 Dockerfile or current FSGET docs, not that helper"
+msgstr "改用 Debian 11 Dockerfile 或当前 FSGET 文档，不要用那个辅助脚本"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:299
+#: f41f35cd27c143b7a3559b325aa08283
+msgid "Next Steps"
+msgstr "后续步骤"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:301
+#: d7de5012d44a49b1bcc08a3eb28b5390
+#, fuzzy
+msgid "[Overview](01-overview.md)"
+msgstr "[概述](00-overview.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:302
+#: c1829a955c7b43278e410bda4312d184
+#, fuzzy
+msgid "[Repository Map](../1.architecture/03-repo-map.md)"
+msgstr "[仓库地图](04-repo-map.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:303
+#: 8602708d273341a0be1ffb6c908b43fe
+#, fuzzy
+msgid "[Architecture](../1.architecture/01-architecture.md)"
+msgstr "[架构](02-architecture.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:304
+#: 9455998a49ed456ba2a0904ca12854f3
+#, fuzzy
+msgid "[Tech Stack](../1.architecture/02-tech-stack.md)"
+msgstr "[技术栈](03-tech-stack.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:305
+#: 7704d6f402c34aa0a94d87119c76611c
+#, fuzzy
+msgid "[Build](../4.development/02-build.md)"
+msgstr "[构建](08-build.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:306
+#: 2191d2a88def4e45ac3e1b833e4241fd
+#, fuzzy
+msgid "[Runbook](../5.operations/01-runbook.md)"
+msgstr "[运维手册](10-runbook.md)"
+
+#: ../../../Users/walterfan/workspace/walter/freeswitch_primer/man/0.getting-started/02-quick-start.md:308
+#: b4363792fafc4be9a2e93316260b1503
+msgid ""
+"Operator configuration: [FreeSWITCH Users "
+"Manual](https://developer.signalwire.com/freeswitch/) — especially "
+"[Chapter 2 Getting "
+"Started](https://developer.signalwire.com/freeswitch/foundations/getting-"
+"started). Historical wiki: [FreeSWITCH "
+"Explained](https://developer.signalwire.com/freeswitch/FreeSWITCH-"
+"Explained/)."
+msgstr ""
+"运维配置：[FreeSWITCH 用户手册](https://developer.signalwire.com/freeswitch/) — "
+"尤其是 [第 2 章入门](https://developer.signalwire.com/freeswitch/foundations"
+"/getting-started)。历史 wiki：[FreeSWITCH "
+"Explained](https://developer.signalwire.com/freeswitch/FreeSWITCH-"
+"Explained/)。"
+
+#~ msgid "After a prefix install:"
+#~ msgstr "完成 prefix 安装后："
+
+#~ msgid "Stop: `freeswitch -stop` (same prefix `bin/`)."
+#~ msgstr "停止：`freeswitch -stop`（同一 prefix 的 `bin/`）。"
+
+#~ msgid ""
+#~ "[Remote Event Socket "
+#~ "ACL](../4.operations/10-runbook.md#remote-event-socket-"
+#~ "acl)"
+#~ msgstr ""
+
